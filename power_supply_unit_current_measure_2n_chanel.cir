@@ -153,8 +153,8 @@ Current=32,16,16,16
 Name=Resistor
 Definition=Resistor
 Shape=Resistor_Euro
-Mask=6913
-Used=1877
+Mask=6401
+Used=1869
 memo=Resistor
 Label Offset=11,-36,10,10
 PinCnt=2
@@ -211,8 +211,8 @@ Pin="Cathode",0,0,-22,-12
 Name=Capacitor
 Definition=Capacitor
 Shape=Capacitor
-Mask=7681
-Used=1013
+Mask=6913
+Used=1003
 memo=Capacitor
 Label Offset=4,-38,12,12
 PinCnt=2
@@ -615,13 +615,14 @@ Px=264,136
 Rot=5
 
 [Attr]
-ON=-6,-40,PART
+ON=-23,-62,PART
 V=X2
 Style=8192
 
 [Attr]
-ON=68,-54,NAME
+ON=-45,-48,NAME
 V=IRF4905_IR
+Style=8192
 
 [Attr]
 ON=56,-82,PACKAGE
@@ -712,13 +713,14 @@ Px=256,296
 Rot=5
 
 [Attr]
-ON=-6,-40,PART
+ON=-19,-59,PART
 V=X3
 Style=8192
 
 [Attr]
-ON=68,-54,NAME
+ON=-38,-46,NAME
 V=IRF4905_IR
+Style=8192
 
 [Attr]
 ON=56,-82,PACKAGE
@@ -1359,9 +1361,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=0,32
+SB 3=0,48
 Scale 3=1
-Px=609,407
+Px=551,438
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000

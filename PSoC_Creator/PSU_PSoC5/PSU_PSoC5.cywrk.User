@@ -116,8 +116,20 @@
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_DelSig_v3_20.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0\Schottky_v1_0.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
@@ -129,8 +141,20 @@
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_DelSig_v3_20.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0\Schottky_v1_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -149,7 +173,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="899, 474" SelectedTabbedMdiWindow="19cb237d-6880-4bc0-b8aa-310a7e5c1ef6"><DocumentWindow Key="626ac66c-c0e8-489d-9b65-7214ad0512c2" Guid="19cb237d-6880-4bc0-b8aa-310a7e5c1ef6" /><DocumentWindow Key="a5850854-3e12-4792-8860-265b3dd81079" Guid="1366b532-540c-4d27-9ea0-9256c0f49bee" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="899, 474" SelectedTabbedMdiWindow="7c01aa86-7882-4f14-a81c-4e40c5fa07b4"><DocumentWindow Key="05e052a6-0421-4fc4-a3d3-65a9ae62e595" Guid="7c01aa86-7882-4f14-a81c-4e40c5fa07b4" /><DocumentWindow Key="d8d1c266-0501-4ec7-8cbd-b69536325ad2" Guid="c80edd7b-92d7-4fb2-9bd3-83ece022ab02" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
