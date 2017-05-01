@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfOutputConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>ColumnMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Hex</byteFormat>
+    <byteLeadingString>0x</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBytes</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>4</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_2Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_2Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_2FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_2Width</varNfWidth>
+    <varNfHeight>const uint_8 font_2Height</varNfHeight>
+    <displayName>font_2</displayName>
+  </OutputConfiguration>
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>ColumnMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Hex</byteFormat>
+    <byteLeadingString>0x</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBytes</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>3</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_0Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_0Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_0FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_0Width</varNfWidth>
+    <varNfHeight>const uint_8 font_0Height</varNfHeight>
+    <displayName>font_0</displayName>
+  </OutputConfiguration>
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Fixed</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>ColumnMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Hex</byteFormat>
+    <byteLeadingString>0x</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBytes</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>6</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_3Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_3Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_3FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_3Width</varNfWidth>
+    <varNfHeight>const uint_8 font_3Height</varNfHeight>
+    <displayName>font_3</displayName>
+  </OutputConfiguration>
+</ArrayOfOutputConfiguration>
