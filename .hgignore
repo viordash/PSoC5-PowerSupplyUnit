@@ -1,2 +1,8 @@
 syntax: glob
 *.bak_cir
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/CortexM3/
+PSoC_Creator/PSU_PSoC5/ComponentUpdateLog.txt
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/Export/PSoCCreatorExportIDE.xml
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/Generated_Source/
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/codegentemp/
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/PowerSuplyUnit_timing.html
