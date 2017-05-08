@@ -4,11 +4,11 @@ Version=11.01
 Program=Micro-Cap
 Component Version=10.00
 Shape Version=11.00
-Screen=1920,1080
+Screen=1366,768
 MCAPVersion=11.0.1.9
 Key ID=0
-NLCnt=36
-TXCnt=5
+NLCnt=68
+TXCnt=3
 
 [shapedef]
 Name=Battery
@@ -29,26 +29,6 @@ Ellipse=29,-7,31,-5
 FColor=#0000FF
 
 [shapedef]
-Name=Diode.root
-Line=0,0,20,0
-Line=28,0,48,0
-Rectangle=18,-8,20,8
-PolyClosed=3
-PolyLine=20,0
-PolyLine=28,-8
-PolyLine=28,8
-Current=32,16,16,16
-
-[shapedef]
-Name=DNMOS
-Root="Mos2.root",0,0,0
-Line=14,0,24,0
-PolyClosed=3
-PolyLine=17,0
-PolyLine=20,-3
-PolyLine=20,3
-
-[shapedef]
 Name=Ground
 Line=0,0,12,0
 Line=12,-8,12,8
@@ -56,49 +36,29 @@ Line=18,-4,18,4
 Line=24,0,24,0
 
 [shapedef]
-Name=Inductor
-Line=42,0,48,0
-Line=0,0,5,0
-Arc=5,-7,17,7 , 11,-7,5,0
-Arc=13,-7,25,7 , 19,-7,13,0
-Arc=29,-7,41,7 , 35,-7,29,0
-Arc=21,-7,33,7 , 27,-7,21,0
-Arc=6,-7,18,7 , 18,0,12,-7
-Arc=14,-7,26,7 , 26,0,20,-7
-Arc=22,-7,34,7 , 34,0,28,-7
-Arc=30,-7,42,7 , 42,0,36,-7
-Line=11,-7,12,-7
-Line=19,-7,20,-7
-Line=27,-7,28,-7
-Line=35,-7,36,-7
-Arc=13,-4,17,2 , 13,-1,15,2
-Arc=29,-4,33,2 , 29,-1,31,2
-Arc=21,-4,25,2 , 21,-1,23,2
-Arc=14,-4,18,2 , 16,2,18,-1
-Arc=30,-4,34,2 , 32,2,34,-1
-Arc=22,-4,26,2 , 24,2,26,-1
-Line=15,2,16,2
-Line=23,2,24,2
-Line=31,2,32,2
-Line=5,5,9,5
-Line=41,5,41,9
-Line=39,7,43,7
-Current=32,8,16,8
+Name=Minus.root
+Line=-2,0,2,0
 
 [shapedef]
-Name=Mos2.root
-Line=0,8,10,8
-Line=10,-8,10,8
-Line=14,-11,14,-5
-Line=14,-3,14,3
-Line=14,5,14,11
-Line=14,-8,24,-8
-Line=14,8,24,8
-Line=24,0,24,24
-Line=24,-8,24,-24
-Current=32,-24,32,-16
-Current=32,24,32,16
-Current=0,0,8,0
+Name=Opamp.root
+Line=0,48,6,48
+Line=0,0,5,0
+Line=6,-4,6,52
+Line=6,-4,48,24
+Line=6,52,48,24
+Line=48,24,72,24
+Line=10,12,14,12
+Line=12,10,12,14
+Line=10,36,14,36
+Line=4,0,6,0
+
+[shapedef]
+Name=Opamp5
+Root="Opamp.root",0,0,0
+Root="Plus.root",25,-4,0
+Root="Minus.root",25,52,0
+Line=32,56,32,34
+Line=32,-8,32,13
 
 [shapedef]
 Name=Plus.root
@@ -123,14 +83,6 @@ Ellipse=31,-1,33,1
 FColor=#0000FF
 
 [shapedef]
-Name=Schottky
-Arc=18,-13,31,1 , 27,-13,18,-7
-Root="Diode.root",0,0,0
-Arc=19,-13,30,0 , 27,-13,19,-7
-Arc=8,0,20,13 , 12,13,20,7
-Arc=9,0,19,13 , 12,13,19,7
-
-[shapedef]
 Name=Vsource.root
 Line=0,0,12,0
 Line=36,0,48,0
@@ -141,58 +93,22 @@ Root="Plus.root",41,7,0
 Current=32,16,16,16
 
 [compdef]
-Name=IRL2703_IR
-Definition=Subckt
-Shape=DNMOS
-Mask=4224
-memo=N-Channel HEXFET Power MOSFET 30V 24A
-Label Offset=30,-13,-6,26
-PinCnt=3
-Pin="1",a,3,-3,5,5
-Pin="2",a,0,1,-3,-3
-Pin="3",a,3,3,6,6
-
-[compdef]
-Name=Resistor
-Definition=Resistor
-Shape=Resistor_Euro
-Mask=7681
-Used=1873
-memo=Resistor
-Label Offset=11,-36,10,10
-PinCnt=2
-Pin="Plus",6,0,-10,-4
-Pin="Minus",0,0,-14,-4
-
-[compdef]
 Name=Ground
 Definition=Ground
 Shape=Ground
-Mask=769
-Used=730
+Mask=1793
+Used=737
 memo=Ground
 Label Offset=0,0,0,0
 PinCnt=1
 Pin="PinA",0,0,-3,-7
 
 [compdef]
-Name=Pulse Source
-Definition=Pulse source
-Shape=Pulse_Source
-Mask=4865
-Used=10
-memo=Pulse Source
-Label Offset=18,13,15,9
-PinCnt=2
-Pin="Plus",6,0,-5,-4
-Pin="Minus",0,0,-19,-4
-
-[compdef]
 Name=Battery
 Definition=Battery
 Shape=Battery
-Mask=4865
-Used=48
+Mask=4097
+Used=50
 memo=Battery
 Label Offset=19,7,10,13
 PinCnt=2
@@ -200,42 +116,57 @@ Pin="Plus",6,0,-4,-5
 Pin="Minus",0,0,-10,-5
 
 [compdef]
-Name=1N5824
-Definition=Diode
-Shape=Schottky
-Mask=4224
-memo=Schottky Barrier Rectifier Vr=30V Io=5A
-Label Offset=18,13,13,20
+Name=Pulse Source
+Definition=Pulse source
+Shape=Pulse_Source
+Mask=4865
+Used=11
+memo=Pulse Source
+Label Offset=18,13,15,9
 PinCnt=2
-Pin="Anode",6,0,-15,-12
-Pin="Cathode",0,0,-22,-12
+Pin="Plus",6,0,-5,-4
+Pin="Minus",0,0,-19,-4
+
+[compdef]
+Name=LM258
+Definition=Opamp
+Shape=Opamp5
+Mask=4224
+memo=Low Power Dual Opamp
+Label Offset=51,32,-15,46
+PinCnt=5
+Pin="Plus input",0,0,-30,-3
+Pin="Minus input",0,6,-36,17
+Pin="VEE",4,7,6,5
+Pin="Output",9,3,-13,-4
+Pin="VCC",4,-1,6,4
+
+[compdef]
+Name=Resistor
+Definition=Resistor
+Shape=Resistor_Euro
+Mask=6913
+Used=1879
+memo=Resistor
+Label Offset=11,-36,10,10
+PinCnt=2
+Pin="Plus",6,0,-10,-4
+Pin="Minus",0,0,-14,-4
 
 [compdef]
 Name=Capacitor
 Definition=Capacitor
 Shape=Capacitor
 Mask=6913
-Used=1004
+Used=1003
 memo=Capacitor
 Label Offset=4,-38,12,12
 PinCnt=2
 Pin="Plus",6,0,-3,-5
 Pin="Minus",0,0,-14,-5
 
-[compdef]
-Name=Inductor
-Definition=Inductor
-Shape=Inductor
-Mask=6145
-Used=84
-memo=Inductor
-Label Offset=18,9,11,12
-PinCnt=2
-Pin="Plus",6,0,-5,-9
-Pin="Minus",0,0,-3,-9
-
 [Circuit]
-Window Placement=2,3, -1,-1, -8,-31, 0,0,1425,576
+Window Placement=2,3, -1,-1, -8,-31, 0,0,996,456
 Default Object=Color=#000080
 Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Default Object Apply Border To Text=No
@@ -244,13 +175,13 @@ NodeVoltageFormat=3
 PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
-Window Placement in Transient Analysis=0,1, -1,-1, -8,-31, 953,0,1906,818
+Window Placement in Transient Analysis=0,1, -1,-1, -8,-31, 665,0,1341,510
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
 Show Nodes=False
 Show Voltages=True
-Show Current=True
+Show Current=False
 Show Power=False
 Show Condition=False
 Show Pin Connections=False
@@ -260,85 +191,13 @@ Show Attribute Text=True
 Show Grid Text=True
 
 [Comp]
-Name=IRL2703_IR
-Px=432,296
-
-[Attr]
-ON=30,-13,PART
-V=X1
-Style=8192
-
-[Attr]
-ON=30,1,NAME
-V=IRL2703_IR
-
-[Attr]
-ON=30,29,PACKAGE
-V=TO-220AB
-
-[Comp]
-Name=Resistor
-Px=384,304
+Name=Ground
+Px=184,304
 Rot=2
-
-[Attr]
-ON=-27,22,PART
-V=R1
-Style=8192
-
-[Attr]
-ON=-35,8,RESISTANCE
-V=10
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Ground
-Px=456,392
-Rot=7
-
-[Wire]
-Pxs=456,320,456,344
-
-[Wire]
-Pxs=416,304,432,304
-
-[Wire]
-Pxs=456,240,456,272
-
-[Wire]
-Pxs=456,240,488,240
-
-[Comp]
-Name=Pulse Source
-FColor=#FFFF00
-Px=280,368
-Rot=3
-
-[Attr]
-ON=-31,-23,PART
-V=V1
-Style=8192
-
-[Attr]
-ON=-55,-37,MODEL
-V=PULSE
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Ground
-Px=280,368
-Rot=7
 
 [Comp]
 Name=Battery
-Px=360,168
+Px=216,360
 Rot=3
 
 [Attr]
@@ -348,7 +207,290 @@ Style=8192
 
 [Attr]
 ON=-26,-41,VALUE
-V=30
+V=15
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=184,304,216,304
+
+[Wire]
+Pxs=216,360,216,408
+
+[Wire]
+Pxs=216,408,384,408
+
+[Wire]
+Pxs=216,304,216,312
+
+[Comp]
+Name=Battery
+Px=216,272
+Rot=3
+
+[Attr]
+ON=-26,-27,PART
+V=V5
+Style=8192
+
+[Attr]
+ON=-26,-41,VALUE
+V=15
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=216,272,216,304
+
+[Wire]
+Pxs=216,200,216,224
+
+[Comp]
+Name=Pulse Source
+Px=384,296
+Rot=3
+
+[Attr]
+ON=-31,-23,PART
+V=V6
+Style=8192
+
+[Attr]
+ON=-76,-37,MODEL
+V=TRIANGLE
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=LM258
+Px=616,248
+
+[Attr]
+ON=51,32,PART
+V=X2
+Style=8192
+
+[Attr]
+ON=51,46,MODEL
+V=LM258
+
+[Attr]
+ON=51,74,PACKAGE
+V=TO-5C_8
+
+[Attr]
+ON=51,88,GATE
+V=A
+
+[Attr]
+ON=51,102,COMPNAME
+V=UX1
+
+[Wire]
+Pxs=584,248,616,248
+
+[Wire]
+Pxs=584,296,616,296
+
+[Wire]
+Pxs=688,272,704,272
+
+[Wire]
+Pxs=704,272,704,368
+
+[Comp]
+Name=Ground
+Px=856,320
+Rot=7
+
+[Wire]
+Pxs=544,368,704,368
+
+[Wire]
+Pxs=648,200,648,240
+
+[Wire]
+Pxs=648,304,648,408
+
+[Comp]
+Name=Resistor
+Px=424,248
+
+[Attr]
+ON=11,-36,PART
+V=R16
+Style=8192
+
+[Attr]
+ON=11,-22,RESISTANCE
+V=10k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Resistor
+Px=424,296
+
+[Attr]
+ON=11,-36,PART
+V=R17
+Style=8192
+
+[Attr]
+ON=11,-22,RESISTANCE
+V=10k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=704,272,760,272
+
+[Comp]
+Name=Ground
+Px=496,368
+Rot=1
+
+[Comp]
+Name=Resistor
+Px=496,320
+Rot=1
+
+[Attr]
+ON=13,10,PART
+V=R18
+Style=8192
+
+[Attr]
+ON=9,29,RESISTANCE
+V=5k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Resistor
+Px=808,272
+Rot=2
+
+[Attr]
+ON=-35,22,PART
+V=R19
+Style=8192
+
+[Attr]
+ON=-34,8,RESISTANCE
+V=6k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Resistor
+Px=856,320
+Rot=3
+
+[Attr]
+ON=-34,-24,PART
+V=R20
+Style=8192
+
+[Attr]
+ON=-33,-38,RESISTANCE
+V=2k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=808,272,832,272
+
+[Wire]
+Pxs=832,272,856,272
+
+[Comp]
+Name=Resistor
+Px=632,200
+Rot=2
+
+[Attr]
+ON=-35,-35,PART
+V=R21
+Style=8192
+
+[Attr]
+ON=-35,-22,RESISTANCE
+V=11
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=216,200,584,200
+
+[Wire]
+Pxs=632,200,648,200
+
+[Comp]
+Name=Resistor
+Px=632,408
+Rot=2
+
+[Attr]
+ON=-35,-35,PART
+V=R22
+Style=8192
+
+[Attr]
+ON=-35,-22,RESISTANCE
+V=11
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=384,408,584,408
+
+[Wire]
+Pxs=632,408,648,408
+
+[Comp]
+Name=Capacitor
+Px=712,200
+Rot=6
+
+[Attr]
+ON=-21,-38,PART
+V=C1
+Style=8192
+
+[Attr]
+ON=-35,-24,CAPACITANCE
+V=10uF
+Style=8192
 
 [Attr]
 ON=0,0,PACKAGE
@@ -356,122 +498,119 @@ V
 
 [Comp]
 Name=Ground
-Px=360,168
-Rot=7
-
-[Wire]
-Pxs=280,304,280,320
-
-[Wire]
-Pxs=280,304,304,304
-
-[Wire]
-Pxs=304,304,336,304
-
-[Comp]
-Name=1N5824
-Px=488,144
-Rot=7
-
-[Attr]
-ON=13,25,PART
-V=D1
-Style=8192
-
-[Attr]
-ON=-62,34,MODEL
-V=1N5824
-
-[Attr]
-ON=-77,62,PACKAGE
-V=MOT60-01
-
-[Wire]
-Pxs=360,120,408,120
-
-[Wire]
-Pxs=656,208,656,240
-
-[Wire]
-Pxs=384,304,416,304
-
-[Wire]
-Pxs=408,120,488,120
+Px=712,200
 
 [Comp]
 Name=Capacitor
-Px=592,208
-Rot=3
+Px=712,408
+Rot=6
 
 [Attr]
-ON=-29,-26,PART
+ON=-21,-38,PART
 V=C2
 Style=8192
 
 [Attr]
-ON=-44,-40,CAPACITANCE
-V=470u
+ON=-35,-24,CAPACITANCE
+V=10uF
 Style=8192
 
 [Attr]
 ON=0,0,PACKAGE
 V
-
-[Wire]
-Pxs=488,192,488,240
-
-[Wire]
-Pxs=488,240,512,240
-
-[Wire]
-Pxs=488,120,488,144
-
-[Wire]
-Pxs=592,208,592,240
-
-[Wire]
-Pxs=592,240,656,240
-
-[Wire]
-Pxs=592,120,592,160
 
 [Comp]
-Name=Inductor
-Px=512,240
-
-[Attr]
-ON=18,9,PART
-V=L1
-Style=8192
-
-[Attr]
-ON=18,23,INDUCTANCE
-V=47u
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
+Name=Ground
+Px=712,408
 
 [Wire]
-Pxs=656,120,656,160
+Pxs=648,200,664,200
 
 [Wire]
-Pxs=560,240,592,240
+Pxs=648,408,664,408
 
 [Comp]
 Name=Resistor
-Px=656,208
-Rot=3
+Px=544,320
+Rot=1
 
 [Attr]
-ON=-26,-24,PART
-V=R2
+ON=13,10,PART
+V=R23
 Style=8192
 
 [Attr]
-ON=-26,-38,RESISTANCE
-V=3
+ON=9,29,RESISTANCE
+V=5k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=496,248,496,320
+
+[Wire]
+Pxs=496,248,584,248
+
+[Wire]
+Pxs=544,296,544,320
+
+[Wire]
+Pxs=544,296,584,296
+
+[Comp]
+Name=Pulse Source
+Enable=False
+Px=256,112
+Rot=3
+
+[Attr]
+ON=-31,-23,PART
+V=V7
+Style=8192
+
+[Attr]
+ON=-76,-37,MODEL
+V=TRIANGLE
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Ground
+Px=256,160
+Rot=7
+
+[Wire]
+Pxs=472,296,544,296
+
+[Wire]
+Pxs=472,248,496,248
+
+[Wire]
+Pxs=384,248,424,248
+
+[Wire]
+Pxs=384,296,424,296
+
+[Wire]
+Pxs=384,296,384,408
+
+[Comp]
+Name=Resistor
+Px=312,64
+
+[Attr]
+ON=11,-36,PART
+V=R25
+Style=8192
+
+[Attr]
+ON=11,-22,RESISTANCE
+V=14k
 Style=8192
 
 [Attr]
@@ -480,17 +619,46 @@ V
 
 [Comp]
 Name=Resistor
-Px=456,392
-Rot=3
+Px=312,112
 
 [Attr]
-ON=-26,-24,PART
-V=R3
+ON=11,-36,PART
+V=R26
 Style=8192
 
 [Attr]
-ON=-30,-38,RESISTANCE
-V=0.1
+ON=11,-22,RESISTANCE
+V=14k
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=256,112,312,112
+
+[Wire]
+Pxs=256,64,312,64
+
+[Comp]
+Name=Ground
+Px=376,168
+Rot=1
+
+[Comp]
+Name=Resistor
+Px=376,120
+Rot=1
+
+[Attr]
+ON=13,10,PART
+V=R27
+Style=8192
+
+[Attr]
+ON=9,29,RESISTANCE
+V=2k
 Style=8192
 
 [Attr]
@@ -498,18 +666,23 @@ ON=0,0,PACKAGE
 V
 
 [Comp]
-Name=Capacitor
-Px=496,392
-Rot=3
+Name=Ground
+Px=448,168
+Rot=1
+
+[Comp]
+Name=Resistor
+Px=448,120
+Rot=1
 
 [Attr]
-ON=-29,-26,PART
-V=C3
+ON=13,10,PART
+V=R28
 Style=8192
 
 [Attr]
-ON=-36,-40,CAPACITANCE
-V=10n
+ON=9,29,RESISTANCE
+V=2k
 Style=8192
 
 [Attr]
@@ -517,52 +690,80 @@ ON=0,0,PACKAGE
 V
 
 [Wire]
-Pxs=456,392,496,392
+Pxs=360,112,448,112
 
 [Wire]
-Pxs=456,344,496,344
+Pxs=360,64,376,64
+
+[Comp]
+Name=Resistor
+Px=544,112
+Rot=3
+
+[Attr]
+ON=10,-37,PART
+V=R29
+Style=8192
+
+[Attr]
+ON=10,-25,RESISTANCE
+V=1g
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
 
 [Wire]
-Pxs=488,120,592,120
+Pxs=376,64,376,120
 
 [Wire]
-Pxs=592,120,656,120
+Pxs=376,64,544,64
+
+[Wire]
+Pxs=448,112,448,120
+
+[Wire]
+Pxs=448,112,544,112
+
+[Comp]
+Name=Battery
+Px=256,160
+Rot=3
+
+[Attr]
+ON=-26,-27,PART
+V=V8
+Style=8192
+
+[Attr]
+ON=-26,-41,VALUE
+V=1
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
 
 [Grid Text]
-Text="in1"
-Px=416,304
+Text="out"
+Px=832,272
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
 CBorder=None
 
 [Grid Text]
-Text="Vcc"
-Px=408,120
+Text="inN1"
+Px=584,296
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
 CBorder=None
 
 [Grid Text]
-Text="Vout"
-Px=656,240
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="Vdrain"
-Px=456,240
-GridSnap=True
-JustifyH=Left
-JustifyV=Bottom
-CBorder=None
-
-[Grid Text]
-Text="in"
-Px=304,304
+Text="inP1"
+Px=584,248
 GridSnap=True
 JustifyH=Left
 JustifyV=Bottom
@@ -576,7 +777,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=0.66666666666666663
+Scale=1
 GridUser=10
 ShapeGroups="Main","Euro","Polarity","Main1","Main2","Electrolytic","GroundArrow","DeMorgan"
 CalcRMS=False
@@ -608,7 +809,7 @@ PIE=No
 LEFTBRK=No
 RIGHTBRK=No
 BOTHBRK=No
-META=Yes
+META=No
 FLAG=Yes
 INFO=Yes
 HELP=Yes
@@ -630,7 +831,7 @@ POWER=Yes
 CONDITIN=Yes
 PIN=Yes
 CONNWARN=Yes
-CROSS=Yes
+CROSS=No
 GRID=Yes
 BORDER=Yes
 BORDERONE=Yes
@@ -650,21 +851,21 @@ FIND=Yes
 REPEAT=No
 REPLACE=No
 MODEL=Yes
-CIR2CKT=Yes
-ATTDISP=Yes
+CIR2CKT=No
+ATTDISP=No
 ENABLE=Yes
 DISABLE=Yes
 TOFRONT=Yes
 TOBACK=Yes
-SELNEXT=Yes
-PAGEADD=Yes
+SELNEXT=No
+PAGEADD=No
 PAGEADDTEXT=No
 ADDSECTION=No
-PAGEDEL=Yes
+PAGEDEL=No
 ZOOMIN=Yes
 ZOOMOUT=Yes
 AUTOSCALECIR=Yes
-GOTOFLAG=Yes
+GOTOFLAG=No
 UPLEVEL=Yes
 COLOR=Yes
 FONT=Yes
@@ -693,14 +894,14 @@ TEXTINC=No
 TOGGLETEXT=No
 TOGGLEMODE=No
 TOLERANCE=No
-ALIGNLEFT=Yes
-ALIGNRIGHT=Yes
-ALIGNTOP=Yes
-ALIGNBOTTOM=Yes
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
 
 [Section]
 Index=0
-Name="power_supply_unit_regulator_pwm"
+Name="power_supply_unit_voltage_measure"
 Type=Main
 Enable=True
 CurrentPage 0=0
@@ -722,9 +923,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=140,36
-Scale 3=0.66666666666666663
-Px=283,343
+SB 3=73,4
+Scale 3=1
+Px=596,395
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -785,7 +986,6 @@ Type=Text
 Print=False
 Enable=True
 Name=Models
-SB 0=55,2
 Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
 Comment Color=#008000
 WinBackGround Color=#FFFFFF
@@ -816,18 +1016,89 @@ Page=1
 [Text Area]
 Section=0
 Page=2
-Text=*** From file D:\Vior\Electronic\PSpice Schem simulate\MC11\library\UTILITY.LBR
-Text=*** 5V Pulse Source
-Text=.MODEL PULSE PUL (P1=0 P2=0 P3=2u P4=2u P5=10u VONE=10)
-Text=*** From file D:\Vior\Electronic\PSpice Schem simulate\MC11\library\UTILITY.LBR
-Text=*** 5V Square Wave
-Text=.MODEL SQUARE PUL (P1=0 P2=1n P4=501n)
-Text=*** From file D:\Vior\Electronic\PSpice Schem simulate\MC11\library\UTILITY.LBR
-Text=*** 5V Sawtooth Wave
-Text=.MODEL SAWTOOTH PUL (P1=0 P2=500n P4=501n)
-Text=*** From file D:\Vior\Electronic\PSpice Schem simulate\MC11\library\UTILITY.LBR
-Text=*** 1ns Impulse Source
-Text=.MODEL IMPULSE PUL (P1=0 P2=0 P3=1n P4=1n VONE=1G)
+Text=.MODEL PULSE PUL (P1=0 P2=0 P3=1u P4=1u P5=5u VONE=4)
+Text=*** From file D:\YandexDisk\Work\MC11\library\UTILITY.LBR
+Text=*** NPN Generic
+Text=.MODEL $GENERIC_N NPN (BF=200 BR=2 CJC=30p CJE=40p IKF=100m IKR=35 IS=5p
+Text=+ ISC=10f ISE=2p ITF=10m MJC=500m MJE=500m NF=1.2 RC=1m RE=500m TF=400p TR=200n
+Text=+ VAF=100 VJC=700m VJE=700m VTF=10 XTF=500m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MSBJT.LBR
+Text=*** NPN Ampilifier transistors
+Text=.MODEL BC337_40 NPN (BF=482.265 BR=2.57752 CJC=11.5113p CJE=34.193p IKF=1.03038
+Text=+ IKR=999.665 IS=10.0039f ISC=47.6116f ISE=.000000121848f ITF=9.88943m
+Text=+ MJC=391.345m MJE=370.304m NE=2.99648 NF=988.174m RE=418.399m TF=500.788p
+Text=+ TR=10n VAF=100 VJC=700m VJE=752.182m VTF=10 XTF=500.013m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\UTILITY.LBR
+Text=*** PNP Generic
+Text=.MODEL $GENERIC_P PNP (BF=190 BR=2 CJC=7p CJE=6p IKF=30m IKR=10K IS=20f
+Text=+ ISC=500p ISE=25f ITF=10m MJC=350m MJE=300m NE=1.3 RC=1 RE=700m TF=1n TR=200n
+Text=+ VAF=90 VJC=690m VJE=690m VTF=10 XTF=500m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\UTILITY.LBR
+Text=*** Generic Diode
+Text=.MODEL $GENERIC D (BV=500 CJO=2.5p IS=8n M=100m N=2 RL=5G RS=400m TT=1n VJ=700m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\R-DIOD.LIB
+Text=.MODEL 2S133A D (BV=3.3 CJO=84.51P FC=0.5 IBV=5U IS=193.4E-15 M=0.38 N=1.85
+Text=+ RS=22 TT=46.61N VJ=0.73)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z150UFG D (BV=18.000E3 CJO=5.9900E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=3 RS=1.6 TT=100.0000E-9 VJ=21.33)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z10FF5 D (BV=1.1000E3 CJO=260.20E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=4 RS=.13 TT=50.0000E-9 VJ=.35)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z10SG D (BV=1.1000E3 CJO=158.10E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=2.0500 RS=15.000E-3 TT=3.0000E-6 VJ=.76)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z25S D (BV=3.6000E3 CJO=30.100E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=8.5000 RS=40.000E-3 TT=3.0000E-6 VJ=4.9200)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MICROSEM.LBR
+Text=*** 2Amp Super Fast Recovery Rectifier
+Text=.MODEL UTX220 D (BV=200 CJO=77.0247p IS=19.8414f M=602.211m N=993.152m
+Text=+ RL=560MEG RS=1.13008 TT=108.202n VJ=952.957m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z20FF3 D (BV=2.2000E3 CJO=57.790E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=10 RS=.36 TT=30.000E-9 VJ=2.16)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z25SG D (BV=3.6000E3 CJO=33.690E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=2.2000 RS=5.0000E-3 TT=3.0000E-6 VJ=4.4700)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z25UF D (BV=3.6000E3 CJO=29.260E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=11 RS=.12 TT=100.00E-9 VJ=2.5300)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z10FF3 D (BV=1.5000E3 CJO=74.770E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=7.6000 RS=.5 TT=100.00E-9 VJ=1.5300)
+Text=*** From file D:\YandexDisk\Work\MC11\library\VMI_DIODES.LIB
+Text=.MODEL Z50FF3 D (BV=6.0000E3 CJO=18.800E-12 IBV=100.00E-6 IS=500.00E-9
+Text=+ ISR=100.00E-12 N=35 RS=1.5000 TT=50.000E-9 VJ=8.7000)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MZENER.LBR
+Text=*** 6.2V 1W Zener Diode
+Text=.MODEL 1N4735 D (BV=6.2 CJO=168.199p IBV=41m IS=5.72393f M=501.257m RL=1G RS=2
+Text=+ VJ=750.121m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MZENER.LBR
+Text=*** 5.6V 1W Zener Diode
+Text=.MODEL 1N4734 D (BV=5.6 CJO=190.547p IBV=45m IS=5.72393f M=497.602m RL=1G RS=5
+Text=+ VJ=750.09m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MZENER.LBR
+Text=*** 12V 1W Zener Diode
+Text=.MODEL 1N4742 D (BV=12 CJO=91.7073p IBV=21m IS=5.72393f M=500.767m RL=1G RS=9
+Text=+ VJ=750.109m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MZENER.LBR
+Text=*** 5.1V 1W Zener Diode
+Text=.MODEL 1N4733 D (BV=5.1 CJO=198.56p IBV=49m IS=5.72393f M=499.941m RL=1G RS=7
+Text=+ VJ=750.115m)
+Text=*** From file D:\YandexDisk\Work\MC11\library\UTILITY.LBR
+Text=*** 60HZ Sinusoidal Source
+Text=.MODEL 60HZ SIN (A=7.5 DC=7.5 F=60)
+Text=*** From file D:\YandexDisk\Work\MC11\library\UTILITY.LBR
+Text=*** 5V Triangle Wave
+Text=.MODEL TRIANGLE PUL (P1=0 P2=5m P3=10m P4=10m P5=10m VONE=16)
+Text=*** From file D:\YandexDisk\Work\MC11\library\PH_DIODE.LIB
+Text=.MODEL BZX884-B4V7 D (BV=4.7 CJO=2.589E-10 FC=0.5 IBV=0.005 IS=7.066E-16
+Text=+ M=0.3636 N=0.9643 RS=0.2544 VJ=0.8029)
+Text=*** From file D:\YandexDisk\Work\MC11\library\MZENER.LBR
+Text=*** 4.7V 1W Zener Diode
+Text=.MODEL 1N4732 D (BV=4.7 CJO=229.008p IBV=53m IS=5.72393f M=499.425m RL=1G RS=8
+Text=+ VJ=750.104m)
 
 [InfoPage]
 InfoPage=True
@@ -843,13 +1114,13 @@ ComponentCounts=True
 
 [Transient]
 WinID=1
-Window Placement=0,1, -1,-1, -8,-31, 0,0,953,818
+Window Placement=0,1, -1,-1, -8,-31, 0,0,676,506
 Font=Height=-19,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
 Select Box Color=#000080
-Title=motor_regulator_pwm.cir
+Title
 AutoTitle=Yes
 Grid Color=#808080
 Grid Weight=1
@@ -884,7 +1155,7 @@ Tracker Mouse=True
 Tracker Cursor=True
 Tracker Cursor BranchInfo=False
 Horizontal Cursor=False
-Same Y Scales=No
+Same Y Scales=Yes
 Enable X Scaling=True
 Enable Y Scaling=True
 Keep X Scales The Same=True
@@ -908,13 +1179,13 @@ FFT_IncludeDCHarmonic=False
 FFT_AutoScale_Harmonics="10"
 PrinterAutoTile=No
 PrinterBlackBorder=No
-MonMaxShow=7
+MonMaxShow=4
 MonPageWidth=66
 MonPlotWidth=21
-MonExprXWidth=96
-MonExprYWidth=351
-MonRangeXWidth=123
-MonRangeYWidth=67
+MonExprXWidth=142
+MonExprYWidth=306
+MonRangeXWidth=90
+MonRangeYWidth=90
 AnimateWait=None
 AnimateWaitTime=500
 AnimatePressAfter=0
@@ -941,12 +1212,8 @@ Num Out Allow Dup Y Expr=False
 Num Out Low="TSTART"
 Num Out High="TMAX"
 Num Out Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
-Num Out Window Placement=0,1, -1,-1, -1,-1, 52,52,1699,610
 Num Out Format=3
 Num Out HideNonSelected=False
-UserFileName="Z:\PROJECTS\ViDi_Robot\Tripod_Manipulator\SCH_PCB\motor_regulator_pwm.USR"
-Wav SampleRate=11025
-Wav Nbits=16
 AutoSaveWave=False
 Wave Format=16E
 State Variables Format=5E
@@ -965,7 +1232,7 @@ PIE=No
 LEFTBRK=No
 RIGHTBRK=No
 BOTHBRK=No
-META=Yes
+META=No
 POLYCLOS=No
 SCALE=Yes
 CURSOR=Yes
@@ -1017,7 +1284,7 @@ AUTOSCALE=Yes
 RESTORESCALE=No
 COLOR=Yes
 FONT=Yes
-SELNEXT=Yes
+SELNEXT=No
 NORMALIZE=No
 NORMALIZE_MIN=No
 NORMALIZE_MAX=No
@@ -1051,10 +1318,10 @@ TOGGLEMODE=No
 REMOVEALLTEXT=No
 AUTOSCALEX=No
 LABELALLMINOR=No
-ALIGNLEFT=Yes
-ALIGNRIGHT=Yes
-ALIGNTOP=Yes
-ALIGNBOTTOM=Yes
+ALIGNLEFT=No
+ALIGNRIGHT=No
+ALIGNTOP=No
+ALIGNBOTTOM=No
 
 [APage]
 Analysis=Transient
@@ -1066,27 +1333,12 @@ Object=Tag
 Locked=True
 EndPoint=ArrowF
 CBorder=#000080
-w=2
-AliasID1=6
-Pos=0.075995000000000007,2.2790520443388331,0.075994960458126426,2.274027919295122
+w=0
+AliasID1=3
+Pos=0.0088999999999999999,1.9999965000061251,0.0080944350758853281,6.3513513513513509
 Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Format=3
 FormatY=3
-
-[AObject]
-Analysis=Transient
-Object=MeasureV
-Locked=True
-EndPoint=ArrowF
-CBorder=#000080
-w=2
-AliasID1=6
-w2=2
-AliasID2=6
-Pos=0.075985000000000011,2.2459391230341441,0.075990000000000016,0.029832338223982902
-Posm=0.075985396824939891
-Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
-Format=3
 
 [Monte Carlo Options]
 Analysis=Transient
@@ -1099,9 +1351,9 @@ Seed=0
 
 [Limits]
 Analysis=Transient
-TRange=100m
+TRange=10m
 TStep=0
-NPts=100
+NPts=51
 Temp=27
 RetraceRuns=1
 StateVar=Zero
@@ -1115,19 +1367,13 @@ Analysis=Transient
 Plt=1
 AliasID=3
 XExp=T
-YExp=v(Vout)
-XRng=0.1
-YRng=36,6
+YExp=v(R29)
+XRng=0.01
+YRng=20
 Options=LINEARX,LINEARY
-Range Grid X=0.02
-Range Grid Y=6
-WSP Title="v(Vout) vs T"
-WSP Checked=False
-WSP NOP=6681
-WSP Save Actual Data=True
-WSP Wav Order=0
-Enable=Enable
-CS=Normal
+Range Grid X=0.002
+Range Grid Y=4
+Enable=DontRun
 Line Color=#008000
 Text Color=#008000
 Rainbow=False
@@ -1147,21 +1393,15 @@ Analysis=Transient
 Plt=1
 AliasID=1
 XExp=T
-YExp=v(Vdrain)
-XRng=0.1
-YRng=48,-12
+YExp=v(v7)
+XRng=0.01
+YRng=20
 Options=LINEARX,LINEARY
-Range Grid X=0.02
-Range Grid Y=12
-WSP Title="v(Vdrain) vs T"
-WSP Checked=False
-WSP NOP=0
-WSP Save Actual Data=True
-WSP Wav Order=0
-Enable=Enable
-CS=Normal
-Line Color=#0000FF
-Text Color=#0000FF
+Range Grid X=0.002
+Range Grid Y=4
+Enable=DontRun
+Line Color=#FF0000
+Text Color=#FF0000
 Rainbow=False
 VFmtX=3
 VFmtY=3
@@ -1179,19 +1419,15 @@ Analysis=Transient
 Plt=2
 AliasID=2
 XExp=T
-YExp=v(in)
-XRng=Auto
-YRng=Auto
+YExp=v(out)
+XRng=0.01
+YRng=20
 Options=LINEARX,LINEARY
-WSP Title="v(in) vs T"
-WSP Checked=False
-WSP NOP=0
-WSP Save Actual Data=True
-WSP Wav Order=0
-Enable=DontRun
-CS=Normal
-Line Color=#FF0000
-Text Color=#FF0000
+Range Grid X=0.002
+Range Grid Y=4
+Enable=Enable
+Line Color=#008000
+Text Color=#008000
 Rainbow=False
 VFmtX=3
 VFmtY=3
@@ -1206,92 +1442,18 @@ NOFmtY=3E
 
 [WaveForm]
 Analysis=Transient
-Plt=4
+Plt=2
 AliasID=4
 XExp=T
-YExp=v(in) - v(in1)
-XRng=Auto
-YRng=Auto
+YExp=v(v6)
+XRng=0.01
+YRng=20
 Options=LINEARX,LINEARY
-Enable=DontRun
-Line Color=#008000
-Text Color=#008000
-Rainbow=False
-VFmtX=3
-VFmtY=3
-ScaleFactorX="None"
-ScaleFactorY="None"
-ScaleUnitsX="Auto"
-ScaleUnitsY="Auto"
-SFmtX=2
-SFmtY=2
-NOFmtX=3E
-NOFmtY=3E
-
-[WaveForm]
-Analysis=Transient
-Plt=3
-AliasID=5
-XExp=T
-YExp=v(Velocity)
-XRng=Auto
-YRng=Auto
-Options=LINEARX,LINEARY
-Enable=DontRun
-Line Color=#008000
-Text Color=#008000
-Rainbow=False
-VFmtX=3
-VFmtY=3
-ScaleFactorX="None"
-ScaleFactorY="None"
-ScaleUnitsX="Auto"
-ScaleUnitsY="Auto"
-SFmtX=2
-SFmtY=2
-NOFmtX=3E
-NOFmtY=3E
-
-[WaveForm]
-Analysis=Transient
-Plt=5
-AliasID=6
-XExp=T
-YExp=I(R3)
-XRng=0.1
-YRng=10,-1
-Options=LINEARX,LINEARY
-Range Grid X=0.02
-Range Grid Y=10
+Range Grid X=0.002
+Range Grid Y=4
 Enable=Enable
-Line Color=#0000FF
-Text Color=#0000FF
-Rainbow=False
-VFmtX=3
-VFmtY=3
-ScaleFactorX="None"
-ScaleFactorY="None"
-ScaleUnitsX="Auto"
-ScaleUnitsY="Auto"
-SFmtX=2
-SFmtY=2
-NOFmtX=3E
-NOFmtY=3E
-
-[WaveForm]
-Analysis=Transient
-Plt=5
-AliasID=7
-XExp=T
-YExp=I(R2)
-XRng=0.1
-YRng=10,-1
-Options=LINEARX,LINEARY
-Range Grid X=0.02
-Range Grid Y=10
-Enable=Enable
-Line Color=#FF0000
-Text Color=#FF0000
+Line Color=#800080
+Text Color=#800080
 Rainbow=False
 VFmtX=3
 VFmtY=3

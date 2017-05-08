@@ -7,7 +7,7 @@ Shape Version=11.00
 Screen=1366,768
 MCAPVersion=11.0.1.9
 Key ID=0
-NLCnt=55
+NLCnt=65
 TXCnt=3
 
 [shapedef]
@@ -17,6 +17,16 @@ Line=22,-3,22,3
 Line=26,-7,26,7
 Line=26,0,48,0
 Current=32,8,16,8
+
+[shapedef]
+Name=Capacitor
+Line=0,0,22,0
+Line=22,-8,22,8
+Line=26,-8,26,8
+Line=26,0,48,0
+Current=32,12,16,12
+Ellipse=29,-7,31,-5
+FColor=#0000FF
 
 [shapedef]
 Name=Diode.root
@@ -103,8 +113,8 @@ Rectangle=18,8,22,9
 Name=Ground
 Definition=Ground
 Shape=Ground
-Mask=769
-Used=730
+Mask=1
+Used=732
 memo=Ground
 Label Offset=0,0,0,0
 PinCnt=1
@@ -149,8 +159,8 @@ Pin="Cathode",0,0,-26,-2
 Name=Resistor
 Definition=Resistor
 Shape=Resistor_Euro
-Mask=6913
-Used=1877
+Mask=6401
+Used=1872
 memo=Resistor
 Label Offset=11,-36,10,10
 PinCnt=2
@@ -171,8 +181,20 @@ Pin="VEE",4,7,6,5
 Pin="Output",9,3,-13,-4
 Pin="VCC",4,-1,6,4
 
+[compdef]
+Name=Capacitor
+Definition=Capacitor
+Shape=Capacitor
+Mask=7681
+Used=1005
+memo=Capacitor
+Label Offset=4,-38,12,12
+PinCnt=2
+Pin="Plus",6,0,-3,-5
+Pin="Minus",0,0,-14,-5
+
 [Circuit]
-Window Placement=2,3, -1,-1, -8,-31, 26,26,957,417
+Window Placement=2,3, -1,-1, -8,-31, 0,0,1337,590
 Default Object=Color=#000080
 Default Object Font=Height=-15,FStyle=0,Color=#000080,Name=Arial
 Default Object Apply Border To Text=No
@@ -186,7 +208,7 @@ SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
 Show Nodes=False
-Show Voltages=True
+Show Voltages=False
 Show Current=False
 Show Power=False
 Show Condition=False
@@ -213,7 +235,7 @@ Style=8192
 
 [Attr]
 ON=-26,-41,VALUE
-V=15
+V=10
 Style=8192
 
 [Attr]
@@ -392,9 +414,6 @@ Pxs=216,272,216,304
 [Wire]
 Pxs=216,200,216,224
 
-[Wire]
-Pxs=216,200,648,200
-
 [Comp]
 Name=Pulse Source
 Enable=False
@@ -538,9 +557,6 @@ Pxs=704,272,760,272
 Pxs=456,360,456,408
 
 [Wire]
-Pxs=456,408,648,408
-
-[Wire]
 Pxs=504,248,584,248
 
 [Comp]
@@ -625,6 +641,108 @@ Pxs=808,272,832,272
 
 [Wire]
 Pxs=832,272,856,272
+
+[Comp]
+Name=Resistor
+Px=632,200
+Rot=2
+
+[Attr]
+ON=-35,-35,PART
+V=R21
+Style=8192
+
+[Attr]
+ON=-35,-22,RESISTANCE
+V=11
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=216,200,584,200
+
+[Wire]
+Pxs=632,200,648,200
+
+[Comp]
+Name=Resistor
+Px=632,408
+Rot=2
+
+[Attr]
+ON=-35,-35,PART
+V=R22
+Style=8192
+
+[Attr]
+ON=-35,-22,RESISTANCE
+V=11
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Wire]
+Pxs=456,408,584,408
+
+[Wire]
+Pxs=632,408,648,408
+
+[Comp]
+Name=Capacitor
+Px=712,200
+Rot=6
+
+[Attr]
+ON=-21,-38,PART
+V=C1
+Style=8192
+
+[Attr]
+ON=-35,-24,CAPACITANCE
+V=10uF
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Ground
+Px=712,200
+
+[Comp]
+Name=Capacitor
+Px=712,408
+Rot=6
+
+[Attr]
+ON=-21,-38,PART
+V=C2
+Style=8192
+
+[Attr]
+ON=-35,-24,CAPACITANCE
+V=10uF
+Style=8192
+
+[Attr]
+ON=0,0,PACKAGE
+V
+
+[Comp]
+Name=Ground
+Px=712,408
+
+[Wire]
+Pxs=648,200,664,200
+
+[Wire]
+Pxs=648,408,664,408
 
 [Grid Text]
 Text="out"
@@ -804,9 +922,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=73,94
+SB 3=23,83
 Scale 3=1
-Px=549,472
+Px=118,258
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -867,7 +985,6 @@ Type=Text
 Print=False
 Enable=True
 Name=Models
-SB 0=61,75
 Font=Height=-15,FStyle=0,Color=#000000,Name=Courier New
 Comment Color=#008000
 WinBackGround Color=#FFFFFF
