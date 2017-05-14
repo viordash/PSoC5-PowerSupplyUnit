@@ -1,5 +1,7 @@
-Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj|b1d0ee69-f41b-46ce-bde7-9ce35085e841
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|65940d85-ddff-455e-aa1b-5234dcda0d11
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c89b0563-3680-4b3e-b97d-be3a8e908948
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|3fef54b9-a772-4fe2-aa9f-c0dcad04befa
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|f792e54f-cb71-4b79-9b04-30d3c69dff3c
+Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\OneWire\OneWire.cydsn\OneWire.cyprj|1e410c78-e8f1-40db-a514-ce1fdde53c85
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|0e22fd9d-c75a-41d1-a324-eb058285563b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|525169ae-317c-4271-8391-bdfe00d1ac06
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|c96a5a98-f757-47a4-ae12-182984ddc849
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|66d26d86-d531-4eeb-ab33-d0a0cf4ec6d3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|c9b920ea-2492-4c71-8911-268065c89992
+Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj|f40ff940-e72c-46f7-8394-0485c7a48cdd

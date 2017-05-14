@@ -1,12 +1,12 @@
-Loading plugins phase: Elapsed time ==> 0s.948ms
+Loading plugins phase: Elapsed time ==> 0s.693ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -d CY8C5888LTI-LP097 -s Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 5s.706ms
+Elaboration phase: Elapsed time ==> 4s.562ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.310ms
+HDL generation phase: Elapsed time ==> 0s.259ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -40,7 +40,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Mon May 08 23:27:57 2017
+Sat May 13 23:03:12 2017
 
 
 ======================================================================
@@ -50,7 +50,7 @@ Options  :    -yv2 -q10 PowerSuplyUnit.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Mon May 08 23:27:57 2017
+Sat May 13 23:03:12 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -84,7 +84,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Using control file 'PowerSuplyUnit.ctl'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v (line 947, col 46):  Note: Substituting module 'sub_vi_vv' for '-'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v (line 977, col 46):  Note: Substituting module 'add_vi_vv' for '+'.
-PowerSuplyUnit.v (line 1512, col 77):  Note: Substituting module 'cmp_vv_vv' for '='.
+PowerSuplyUnit.v (line 1596, col 77):  Note: Substituting module 'cmp_vv_vv' for '='.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
@@ -98,7 +98,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Mon May 08 23:27:58 2017
+Sat May 13 23:03:12 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -138,7 +138,7 @@ Options  :    -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Mon May 08 23:28:00 2017
+Sat May 13 23:03:14 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -575,7 +575,7 @@ Aliasing \ADC_VoltageChanelA:vn_ctl_2\ to \ADC_VoltageChanelB:vp_ctl_0\
 Aliasing \ADC_VoltageChanelA:soc\ to \ADC_VoltageChanelB:vp_ctl_0\
 Aliasing \ADC_VoltageChanelA:tmpOE__Bypass_net_0\ to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing \ADC_VoltageChanelA:Net_381\ to \ADC_VoltageChanelB:vp_ctl_0\
-Aliasing tmpOE__MAIN_PWR_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__O_OUT_POLARITY_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing tmpOE__O_PwmChA_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing tmpOE__O_OnChA_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing tmpOE__O_PwmChB_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
@@ -681,6 +681,15 @@ Aliasing \PWM_1:PWMUDB:MODULE_2:g2:a0:a_4\ to \ADC_VoltageChanelB:vp_ctl_0\
 Aliasing \PWM_1:PWMUDB:MODULE_2:g2:a0:a_3\ to \ADC_VoltageChanelB:vp_ctl_0\
 Aliasing \PWM_1:PWMUDB:MODULE_2:g2:a0:a_2\ to \ADC_VoltageChanelB:vp_ctl_0\
 Aliasing \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\ to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_MultiJogA_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_MultiJogB_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_BtnBipolarMode_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_BtnOutOnSpeed_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_BtnChangePolarity_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__I_BtnOk_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__MouseClk_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__MouseData_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
+Aliasing tmpOE__OneWire_net_0 to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing \MODULE_3:g1:a0:gx:u0:aeqb_0\ to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
 Aliasing AMuxHw_1_Decoder_old_id_0D to \MODULE_3:g1:a0:newa_0\
 Aliasing \PWM_2:PWMUDB:min_kill_reg\\D\ to \ADC_VoltageChanelB:tmpOE__Bypass_net_0\
@@ -715,7 +724,7 @@ Removing Lhs of wire \PGA_1:Net_40\[128] = zero[23]
 Removing Lhs of wire \PGA_1:Net_38\[129] = zero[23]
 Removing Lhs of wire \PGA_1:Net_39\[130] = zero[23]
 Removing Lhs of wire AMuxHw_1_Decoder_enable[137] = one[45]
-Removing Lhs of wire cmp_vv_vv_MODGEN_1[139] = \MODULE_3:g1:a0:xeq\[1313]
+Removing Lhs of wire cmp_vv_vv_MODGEN_1[139] = \MODULE_3:g1:a0:xeq\[1487]
 Removing Rhs of wire Net_174[142] = \AdcCurrentChanel:control_out_0\[423]
 Removing Rhs of wire Net_174[142] = \AdcCurrentChanel:control_0\[446]
 Removing Lhs of wire \ADC_VoltageChanelA:vp_ctl_0\[156] = zero[23]
@@ -730,7 +739,7 @@ Removing Rhs of wire \ADC_VoltageChanelA:Net_188\[166] = \ADC_VoltageChanelA:Net
 Removing Lhs of wire \ADC_VoltageChanelA:soc\[172] = zero[23]
 Removing Lhs of wire \ADC_VoltageChanelA:tmpOE__Bypass_net_0\[190] = one[45]
 Removing Lhs of wire \ADC_VoltageChanelA:Net_381\[205] = zero[23]
-Removing Lhs of wire tmpOE__MAIN_PWR_net_0[245] = one[45]
+Removing Lhs of wire tmpOE__O_OUT_POLARITY_net_0[245] = one[45]
 Removing Lhs of wire tmpOE__O_PwmChA_net_0[278] = one[45]
 Removing Rhs of wire PwmChA[279] = \PWM_1:Net_96\[987]
 Removing Rhs of wire PwmChA[279] = \PWM_1:PWMUDB:pwm_i_reg\[979]
@@ -878,35 +887,44 @@ Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:a_0\[1057] = \PWM_1:PWMUDB:MOD
 Removing Lhs of wire \PWM_1:PWMUDB:MODIN2_0\[1058] = \PWM_1:PWMUDB:dith_count_0\[934]
 Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_0\[1190] = one[45]
 Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_0\[1191] = one[45]
-Removing Lhs of wire \MODULE_3:g1:a0:newa_0\[1293] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:newb_0\[1294] = MODIN3_0[1295]
-Removing Lhs of wire MODIN3_0[1295] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:dataa_0\[1296] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:datab_0\[1297] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:a_0\[1298] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:b_0\[1299] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:aeqb_0\[1301] = one[45]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eq_0\[1302] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1300]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eqi_0\[1303] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1300]
-Removing Rhs of wire \MODULE_3:g1:a0:xeq\[1313] = \MODULE_3:g1:a0:gx:u0:aeqb_1\[1304]
-Removing Lhs of wire AMuxHw_1_Decoder_old_id_0D[1324] = Net_174[142]
-Removing Lhs of wire \PWM_2:PWMUDB:min_kill_reg\\D\[1327] = one[45]
-Removing Lhs of wire \PWM_2:PWMUDB:prevCapture\\D\[1328] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:trig_last\\D\[1329] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:ltch_kill_reg\\D\[1332] = one[45]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm_i_reg\\D\[1335] = \PWM_2:PWMUDB:pwm_i\[637]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm1_i_reg\\D\[1336] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm2_i_reg\\D\[1337] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1339] = one[45]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1340] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1341] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1344] = one[45]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1347] = \PWM_1:PWMUDB:pwm_i\[980]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1348] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1349] = zero[23]
+Removing Lhs of wire tmpOE__I_MultiJogA_net_0[1339] = one[45]
+Removing Lhs of wire tmpOE__I_MultiJogB_net_0[1351] = one[45]
+Removing Lhs of wire tmpOE__I_BtnBipolarMode_net_0[1357] = one[45]
+Removing Lhs of wire tmpOE__I_BtnOutOnSpeed_net_0[1363] = one[45]
+Removing Lhs of wire tmpOE__I_BtnChangePolarity_net_0[1372] = one[45]
+Removing Lhs of wire tmpOE__I_BtnOk_net_0[1379] = one[45]
+Removing Lhs of wire tmpOE__MouseClk_net_0[1386] = one[45]
+Removing Lhs of wire tmpOE__MouseData_net_0[1414] = one[45]
+Removing Lhs of wire tmpOE__OneWire_net_0[1462] = one[45]
+Removing Lhs of wire \MODULE_3:g1:a0:newa_0\[1467] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:newb_0\[1468] = MODIN3_0[1469]
+Removing Lhs of wire MODIN3_0[1469] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:dataa_0\[1470] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:datab_0\[1471] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:a_0\[1472] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:b_0\[1473] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:aeqb_0\[1475] = one[45]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eq_0\[1476] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1474]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eqi_0\[1477] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1474]
+Removing Rhs of wire \MODULE_3:g1:a0:xeq\[1487] = \MODULE_3:g1:a0:gx:u0:aeqb_1\[1478]
+Removing Lhs of wire AMuxHw_1_Decoder_old_id_0D[1498] = Net_174[142]
+Removing Lhs of wire \PWM_2:PWMUDB:min_kill_reg\\D\[1501] = one[45]
+Removing Lhs of wire \PWM_2:PWMUDB:prevCapture\\D\[1502] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:trig_last\\D\[1503] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:ltch_kill_reg\\D\[1506] = one[45]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm_i_reg\\D\[1509] = \PWM_2:PWMUDB:pwm_i\[637]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm1_i_reg\\D\[1510] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm2_i_reg\\D\[1511] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:min_kill_reg\\D\[1513] = one[45]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1514] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1515] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:ltch_kill_reg\\D\[1518] = one[45]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1521] = \PWM_1:PWMUDB:pwm_i\[980]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1522] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1523] = zero[23]
 
 ------------------------------------------------------
-Aliased 0 equations, 213 wires.
+Aliased 0 equations, 222 wires.
 ------------------------------------------------------
 
 ----------------------------------------------------------
@@ -1130,8 +1148,8 @@ Removing Lhs of wire \PWM_1:PWMUDB:final_capture\[945] = zero[23]
 Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_24\[1161] = zero[23]
 Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_16\[1171] = zero[23]
 Removing Lhs of wire \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:b_8\[1181] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:runmode_enable\\D\[1330] = \PWM_2:PWMUDB:control_7\[548]
-Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1342] = \PWM_1:PWMUDB:control_7\[892]
+Removing Lhs of wire \PWM_2:PWMUDB:runmode_enable\\D\[1504] = \PWM_2:PWMUDB:control_7\[548]
+Removing Lhs of wire \PWM_1:PWMUDB:runmode_enable\\D\[1516] = \PWM_1:PWMUDB:control_7\[892]
 
 ------------------------------------------------------
 Aliased 0 equations, 12 wires.
@@ -1164,14 +1182,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -dcpsoc3 PowerSuplyUnit.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 3s.585ms
+Warp synthesis phase: Elapsed time ==> 3s.222ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Monday, 08 May 2017 23:28:00
+cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Saturday, 13 May 2017 23:03:15
 Options: -yv2 -q10 -ygs -o2 -v3 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -d CY8C5888LTI-LP097 PowerSuplyUnit.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.053ms
+Design parsing phase: Elapsed time ==> 0s.061ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -1393,7 +1411,7 @@ Design Equations
         {
         }
 
-    Pin : Name = MAIN_PWR(0)
+    Pin : Name = O_OUT_POLARITY(0)
         Attributes:
             In Group/Port: True
             In Sync Option: AUTO
@@ -1426,9 +1444,9 @@ Design Equations
             Initial Value: 0
             IO Voltage: 0
         PORT MAP (
-            pa_out => MAIN_PWR(0)__PA ,
-            annotation => Net_14594 ,
-            pad => MAIN_PWR(0)_PAD );
+            pa_out => O_OUT_POLARITY(0)__PA ,
+            annotation => Net_10201 ,
+            pad => O_OUT_POLARITY(0)_PAD );
         Properties:
         {
         }
@@ -2437,6 +2455,366 @@ Design Equations
         Properties:
         {
         }
+
+    Pin : Name = I_MultiJogA(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_MultiJogA(0)__PA ,
+            annotation => Net_10426 ,
+            pad => I_MultiJogA(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = I_MultiJogB(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_MultiJogB(0)__PA ,
+            annotation => Net_10425 ,
+            pad => I_MultiJogB(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = I_BtnBipolarMode(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_BtnBipolarMode(0)__PA ,
+            annotation => Net_10431 ,
+            pad => I_BtnBipolarMode(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = I_BtnOutOnSpeed(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_BtnOutOnSpeed(0)__PA ,
+            annotation => Net_10423 ,
+            pad => I_BtnOutOnSpeed(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = I_BtnChangePolarity(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_BtnChangePolarity(0)__PA ,
+            annotation => Net_10434 ,
+            pad => I_BtnChangePolarity(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = I_BtnOk(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: AUTO
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: RES_PULL_UP
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => I_BtnOk(0)__PA ,
+            annotation => Net_10365 ,
+            pad => I_BtnOk(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = MouseClk(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: SYNC
+            Out Sync Option: NOSYNC
+            Interrupt generated: True
+            Interrupt mode: FALLING
+            Drive mode: OPEN_DRAIN_LO
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: True
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: False
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE, PORT_INTERRUPT
+            Initial Value: 1
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => MouseClk(0)__PA ,
+            annotation => Net_925 ,
+            pad => MouseClk(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = MouseData(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: SYNC
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: OPEN_DRAIN_LO
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: True
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL, ROUTABLE
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => MouseData(0)__PA ,
+            annotation => Net_916 ,
+            pad => MouseData(0)_PAD );
+        Properties:
+        {
+        }
+
+    Pin : Name = OneWire(0)
+        Attributes:
+            In Group/Port: True
+            In Sync Option: NOSYNC
+            Out Sync Option: NOSYNC
+            Interrupt generated: False
+            Interrupt mode: NONE
+            Drive mode: CMOS_OUT
+            VTrip: CMOS
+            Slew: FAST
+            Input Sync needed: False
+            Output Sync needed: False
+            SC shield enabled: False
+            POR State: ANY
+            LCD Mode: COMMON
+            Register Mode: RegComb
+            CaSense Mode: NEITHER
+            Treat as pin: True
+            Is OE Registered: False
+            Uses Analog: False
+            Can contain Digital: True
+            Is SIO: False
+            SIO Output Buf: NONREGULATED
+            SIO Input Buf: SINGLE_ENDED
+            SIO HiFreq: LOW
+            SIO Hyst: DISABLED
+            SIO Vtrip: MULTIPLIER_0_5
+            SIO Multiplier Index: 0
+            SIO RefSel: VCC_IO
+            Required Capabilitites: DIGITAL
+            Initial Value: 0
+            IO Voltage: 0
+        PORT MAP (
+            pa_out => OneWire(0)__PA ,
+            annotation => Net_290 ,
+            pad => OneWire(0)_PAD );
+        Properties:
+        {
+        }
     </CYPRESSTAG>
     <CYPRESSTAG name="Macrocell listing" icon="FILE_RPT_EQUATION">
 
@@ -2748,6 +3126,15 @@ Design Equations
             int_type = "10"
             is_nmi = 0
         }
+
+    interrupt: Name =MouseISR
+        PORT MAP (
+            interrupt => Net_10498 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
     </CYPRESSTAG>
 </CYPRESSTAG>
 <CYPRESSTAG name="Technology mapping summary" expanded>
@@ -2762,8 +3149,8 @@ Digital Clocks                :    3 :    5 :    8 : 37.50 %
 Analog Clocks                 :    1 :    3 :    4 : 25.00 %
 CapSense Buffers              :    0 :    2 :    2 :  0.00 %
 Digital Filter Block          :    0 :    1 :    1 :  0.00 %
-Interrupts                    :    3 :   29 :   32 :  9.38 %
-IO                            :   33 :   15 :   48 : 68.75 %
+Interrupts                    :    4 :   28 :   32 : 12.50 %
+IO                            :   42 :    6 :   48 : 87.50 %
 Segment LCD                   :    0 :    1 :    1 :  0.00 %
 CAN 2.0b                      :    0 :    1 :    1 :  0.00 %
 I2C                           :    0 :    1 :    1 :  0.00 %
@@ -2787,12 +3174,18 @@ Analog (SC/CT) Blocks         :    1 :    3 :    4 : 25.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.090ms
-Tech Mapping phase: Elapsed time ==> 0s.321ms
+Technology Mapping: Elapsed time ==> 0s.088ms
+Tech Mapping phase: Elapsed time ==> 0s.273ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
 IO_1@[IOP=(3)][IoId=(1)] : AGND(0) (fixed)
+IO_5@[IOP=(12)][IoId=(5)] : I_BtnBipolarMode(0) (fixed)
+IO_6@[IOP=(12)][IoId=(6)] : I_BtnChangePolarity(0) (fixed)
+IO_3@[IOP=(12)][IoId=(3)] : I_BtnOk(0) (fixed)
+IO_4@[IOP=(12)][IoId=(4)] : I_BtnOutOnSpeed(0) (fixed)
+IO_1@[IOP=(12)][IoId=(1)] : I_MultiJogA(0) (fixed)
+IO_2@[IOP=(12)][IoId=(2)] : I_MultiJogB(0) (fixed)
 IO_5@[IOP=(0)][IoId=(5)] : I_NegCurChA(0) (fixed)
 IO_4@[IOP=(3)][IoId=(4)] : I_NegCurChB(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : I_NegVoltChA(0) (fixed)
@@ -2808,17 +3201,20 @@ IO_4@[IOP=(2)][IoId=(4)] : LCD_DB(4) (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : LCD_DB(5) (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : LCD_DB(6) (fixed)
 IO_7@[IOP=(2)][IoId=(7)] : LCD_DB(7) (fixed)
-IO_3@[IOP=(0)][IoId=(3)] : MAIN_PWR(0) (fixed)
+IO_6@[IOP=(15)][IoId=(6)] : MouseClk(0) (fixed)
+IO_7@[IOP=(15)][IoId=(7)] : MouseData(0) (fixed)
 IO_4@[IOP=(1)][IoId=(4)] : O_LCD_BKL(0) (fixed)
 IO_5@[IOP=(1)][IoId=(5)] : O_LCD_CD(0) (fixed)
 IO_6@[IOP=(1)][IoId=(6)] : O_LCD_RD(0) (fixed)
 IO_0@[IOP=(12)][IoId=(0)] : O_LCD_RES(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : O_LCD_WR(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : O_OUT_ON(0) (fixed)
+IO_3@[IOP=(0)][IoId=(3)] : O_OUT_POLARITY(0) (fixed)
 IO_6@[IOP=(3)][IoId=(6)] : O_OnChA(0) (fixed)
 IO_7@[IOP=(3)][IoId=(7)] : O_OnChB(0) (fixed)
 IO_4@[IOP=(15)][IoId=(4)] : O_PwmChA(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : O_PwmChB(0) (fixed)
+IO_2@[IOP=(1)][IoId=(2)] : OneWire(0) (fixed)
 IO_2@[IOP=(3)][IoId=(2)] : \ADC_Current:Bypass_P32(0)\ (fixed, DSM-ExtVrefR)
 IO_2@[IOP=(0)][IoId=(2)] : \ADC_VoltageChanelA:Bypass(0)\ (fixed, SAR-ExtVref)
 IO_4@[IOP=(0)][IoId=(4)] : \ADC_VoltageChanelB:Bypass(0)\ (fixed, SAR-ExtVref)
@@ -2831,6 +3227,12 @@ Log: apr.M0058: The analog placement iterative improvement is 27% done. (App=cyd
 Log: apr.M0058: The analog placement iterative improvement is 62% done. (App=cydsfit)
 Analog Placement Results:
 IO_1@[IOP=(3)][IoId=(1)] : AGND(0) (fixed)
+IO_5@[IOP=(12)][IoId=(5)] : I_BtnBipolarMode(0) (fixed)
+IO_6@[IOP=(12)][IoId=(6)] : I_BtnChangePolarity(0) (fixed)
+IO_3@[IOP=(12)][IoId=(3)] : I_BtnOk(0) (fixed)
+IO_4@[IOP=(12)][IoId=(4)] : I_BtnOutOnSpeed(0) (fixed)
+IO_1@[IOP=(12)][IoId=(1)] : I_MultiJogA(0) (fixed)
+IO_2@[IOP=(12)][IoId=(2)] : I_MultiJogB(0) (fixed)
 IO_5@[IOP=(0)][IoId=(5)] : I_NegCurChA(0) (fixed)
 IO_4@[IOP=(3)][IoId=(4)] : I_NegCurChB(0) (fixed)
 IO_7@[IOP=(0)][IoId=(7)] : I_NegVoltChA(0) (fixed)
@@ -2846,17 +3248,20 @@ IO_4@[IOP=(2)][IoId=(4)] : LCD_DB(4) (fixed)
 IO_5@[IOP=(2)][IoId=(5)] : LCD_DB(5) (fixed)
 IO_6@[IOP=(2)][IoId=(6)] : LCD_DB(6) (fixed)
 IO_7@[IOP=(2)][IoId=(7)] : LCD_DB(7) (fixed)
-IO_3@[IOP=(0)][IoId=(3)] : MAIN_PWR(0) (fixed)
+IO_6@[IOP=(15)][IoId=(6)] : MouseClk(0) (fixed)
+IO_7@[IOP=(15)][IoId=(7)] : MouseData(0) (fixed)
 IO_4@[IOP=(1)][IoId=(4)] : O_LCD_BKL(0) (fixed)
 IO_5@[IOP=(1)][IoId=(5)] : O_LCD_CD(0) (fixed)
 IO_6@[IOP=(1)][IoId=(6)] : O_LCD_RD(0) (fixed)
 IO_0@[IOP=(12)][IoId=(0)] : O_LCD_RES(0) (fixed)
 IO_7@[IOP=(1)][IoId=(7)] : O_LCD_WR(0) (fixed)
 IO_0@[IOP=(0)][IoId=(0)] : O_OUT_ON(0) (fixed)
+IO_3@[IOP=(0)][IoId=(3)] : O_OUT_POLARITY(0) (fixed)
 IO_6@[IOP=(3)][IoId=(6)] : O_OnChA(0) (fixed)
 IO_7@[IOP=(3)][IoId=(7)] : O_OnChB(0) (fixed)
 IO_4@[IOP=(15)][IoId=(4)] : O_PwmChA(0) (fixed)
 IO_5@[IOP=(15)][IoId=(5)] : O_PwmChB(0) (fixed)
+IO_2@[IOP=(1)][IoId=(2)] : OneWire(0) (fixed)
 IO_2@[IOP=(3)][IoId=(2)] : \ADC_Current:Bypass_P32(0)\ (fixed, DSM-ExtVrefR)
 IO_2@[IOP=(0)][IoId=(2)] : \ADC_VoltageChanelA:Bypass(0)\ (fixed, SAR-ExtVref)
 IO_4@[IOP=(0)][IoId=(4)] : \ADC_VoltageChanelB:Bypass(0)\ (fixed, SAR-ExtVref)
@@ -2866,7 +3271,7 @@ SAR[0]@[FFB(SAR,0)] : \ADC_VoltageChanelB:ADC_SAR\ (fixed, SAR-ExtVref)
 Vref[3]@[FFB(Vref,3)] : \ADC_VoltageChanelA:vRef_1024\
 SC[2]@[FFB(SC,2)] : \PGA_1:SC\
 
-Analog Placement phase: Elapsed time ==> 6s.022ms
+Analog Placement phase: Elapsed time ==> 4s.381ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Net "Net_12" overuses wire "AGL[6]"
@@ -2946,7 +3351,7 @@ Net "NegVoltChA" overuses wire "SAR vplus wire L"
 Net "VoltChB" overuses wire "SAR vplus wire L"
 Net "NegVoltChA" overuses wire "AGL[5]"
 Net "PosVoltChA" overuses wire "AGL[5]"
-Analog Routing phase: Elapsed time ==> 0s.328ms
+Analog Routing phase: Elapsed time ==> 0s.230ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -3243,11 +3648,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.664ms
+Analog Code Generation phase: Elapsed time ==> 0s.597ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 1.3 sec.
+I2076: Total run-time: 1.2 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -3258,27 +3663,27 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :    3 :   45 :   48 :   6.25%
+                     PLDs :    4 :   44 :   48 :   8.33%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            3.33
-                   Pterms :            2.33
-               Macrocells :            2.67
+                   Inputs :            2.00
+                   Pterms :            1.75
+               Macrocells :            2.00
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.001ms
+PLD Packing: Elapsed time ==> 0s.002ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.168ms
+Partitioning: Elapsed time ==> 0s.109ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -3288,7 +3693,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :          4 :       2.00 :       2.00
+                 UDB :          5 :       1.60 :       1.60
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -3332,7 +3737,7 @@ controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
     Clock Enable: True
 
 UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=3, #inputs=3, #pterms=2
+LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=3, #pterms=2
 {
     [McSlotId=0]:     MacroCell: Name=PwmChA, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=0]
         Total # of inputs        : 2
@@ -3365,19 +3770,7 @@ LAB@[UDB=(2,2)][LB=0] #macrocells=3, #inputs=3, #pterms=2
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=2]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=1)
-        Properties               : 
-        {
-        }
-
+    [McSlotId=2]: (empty)
     [McSlotId=3]: (empty)
 }
 
@@ -3437,7 +3830,27 @@ controlcell: Name =\Control_Reg_1:Sync:ctrl_reg\
     Clock Enable: True
 
 UDB [UDB=(2,3)] is empty.
-UDB [UDB=(2,4)] is empty.
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=1, #inputs=0, #pterms=0
+{
+    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
+        Total # of inputs        : 0
+        Total # of product terms : 0
+            Clock Enable: True
+        Main Equation            : 0 pterms
+        !(
+            0
+        );
+        Output = __ONE__ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
 UDB [UDB=(2,5)] is empty.
 UDB [UDB=(3,0)] is empty.
 UDB [UDB=(3,1)] contents:
@@ -3464,40 +3877,9 @@ controlcell: Name =\PWM_2:PWMUDB:genblk1:ctrlreg\
     Clock Enable: True
 
 UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=5, #pterms=4
+LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=4, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=PwmChB, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:cmp1_less\
-        );
-        Output = PwmChB (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_949)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:control_7\
-        );
-        Output = \PWM_2:PWMUDB:runmode_enable\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=2]
+    [McSlotId=0]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -3512,7 +3894,7 @@ LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=5, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=AMuxHw_1_Decoder_old_id_0, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=3]
+    [McSlotId=1]:     MacroCell: Name=AMuxHw_1_Decoder_old_id_0, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -3526,11 +3908,8 @@ LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=5, #pterms=4
         Properties               : 
         {
         }
-}
 
-LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=2, #pterms=1
-{
-    [McSlotId=0]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=0]
+    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
         List of special equations: 
@@ -3541,6 +3920,40 @@ LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=2, #pterms=1
               !AMuxHw_1_Decoder_old_id_0 * !Net_174
         );
         Output = AMuxHw_1_Decoder_one_hot_0 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=PwmChB, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:cmp1_less\
+        );
+        Output = PwmChB (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,2)][LB=1] #macrocells=1, #inputs=1, #pterms=1
+{
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_949)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:control_7\
+        );
+        Output = \PWM_2:PWMUDB:runmode_enable\ (fanout=2)
         Properties               : 
         {
         }
@@ -3622,6 +4035,15 @@ Intr container @ [IntrContainer=(0)]:
     interrupt: Name =\ADC_VoltageChanelB:IRQ\
         PORT MAP (
             interrupt => Net_518 );
+        Properties:
+        {
+            int_type = "10"
+            is_nmi = 0
+        }
+  Intr@ [IntrContainer=(0)][IntrId=(12)] 
+    interrupt: Name =MouseISR
+        PORT MAP (
+            interrupt => Net_10498 );
         Properties:
         {
             int_type = "10"
@@ -3763,7 +4185,7 @@ Pin : Name = \ADC_VoltageChanelA:Bypass(0)\
     }
 
 [IoId=3]: 
-Pin : Name = MAIN_PWR(0)
+Pin : Name = O_OUT_POLARITY(0)
     Attributes:
         In Group/Port: True
         In Sync Option: AUTO
@@ -3796,9 +4218,9 @@ Pin : Name = MAIN_PWR(0)
         Initial Value: 0
         IO Voltage: 0
     PORT MAP (
-        pa_out => MAIN_PWR(0)__PA ,
-        annotation => Net_14594 ,
-        pad => MAIN_PWR(0)_PAD );
+        pa_out => O_OUT_POLARITY(0)__PA ,
+        annotation => Net_10201 ,
+        pad => O_OUT_POLARITY(0)_PAD );
     Properties:
     {
     }
@@ -3973,6 +4395,47 @@ Pin : Name = I_NegVoltChA(0)
     }
 
 Port 1 contains the following IO cells:
+[IoId=2]: 
+Pin : Name = OneWire(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: CMOS_OUT
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => OneWire(0)__PA ,
+        annotation => Net_290 ,
+        pad => OneWire(0)_PAD );
+    Properties:
+    {
+    }
+
 [IoId=4]: 
 Pin : Name = O_LCD_BKL(0)
     Attributes:
@@ -4793,7 +5256,320 @@ Pin : Name = O_LCD_RES(0)
     {
     }
 
-Port 15 contains the following IO cells:
+[IoId=1]: 
+Pin : Name = I_MultiJogA(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_MultiJogA(0)__PA ,
+        annotation => Net_10426 ,
+        pad => I_MultiJogA(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=2]: 
+Pin : Name = I_MultiJogB(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_MultiJogB(0)__PA ,
+        annotation => Net_10425 ,
+        pad => I_MultiJogB(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=3]: 
+Pin : Name = I_BtnOk(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_BtnOk(0)__PA ,
+        annotation => Net_10365 ,
+        pad => I_BtnOk(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=4]: 
+Pin : Name = I_BtnOutOnSpeed(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_BtnOutOnSpeed(0)__PA ,
+        annotation => Net_10423 ,
+        pad => I_BtnOutOnSpeed(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=5]: 
+Pin : Name = I_BtnBipolarMode(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_BtnBipolarMode(0)__PA ,
+        annotation => Net_10431 ,
+        pad => I_BtnBipolarMode(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=6]: 
+Pin : Name = I_BtnChangePolarity(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: NOSYNC
+        Out Sync Option: AUTO
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: RES_PULL_UP
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: False
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => I_BtnChangePolarity(0)__PA ,
+        annotation => Net_10434 ,
+        pad => I_BtnChangePolarity(0)_PAD );
+    Properties:
+    {
+    }
+
+Port 15 generates interrupt for logical port:
+    logicalport: Name =MouseClk
+        PORT MAP (
+            in_clock_en => one ,
+            in_reset => zero ,
+            out_clock_en => one ,
+            out_reset => zero ,
+            interrupt => Net_10498 ,
+            in_clock => ClockBlock_BUS_CLK );
+        Properties:
+        {
+            drive_mode = "100"
+            ibuf_enabled = "1"
+            id = "44906eef-7414-4079-8114-eb0c25d01ec7"
+            init_dr_st = "1"
+            input_buffer_sel = "00"
+            input_clk_en = 0
+            input_sync = "1"
+            input_sync_mode = "0"
+            intr_mode = "10"
+            invert_in_clock = 0
+            invert_in_clock_en = 0
+            invert_in_reset = 0
+            invert_out_clock = 0
+            invert_out_clock_en = 0
+            invert_out_reset = 0
+            io_voltage = ""
+            layout_mode = "CONTIGUOUS"
+            oe_conn = "0"
+            oe_reset = 0
+            oe_sync = "0"
+            output_clk_en = 0
+            output_clock_mode = "0"
+            output_conn = "0"
+            output_mode = "0"
+            output_reset = 0
+            output_sync = "0"
+            ovt_hyst_trim = "0"
+            ovt_needed = "0"
+            ovt_slew_control = "00"
+            pa_in_clock = -1
+            pa_in_clock_en = -1
+            pa_in_reset = -1
+            pa_out_clock = -1
+            pa_out_clock_en = -1
+            pa_out_reset = -1
+            pin_aliases = ""
+            pin_mode = "B"
+            por_state = 4
+            port_alias_group = ""
+            port_alias_required = 0
+            sio_group_cnt = 0
+            sio_hifreq = "00000000"
+            sio_hyst = "1"
+            sio_ibuf = "00000000"
+            sio_info = "00"
+            sio_obuf = "00000000"
+            sio_refsel = "00000000"
+            sio_vohsel = "00000000"
+            sio_vtrip = "00000000"
+            slew_rate = "0"
+            spanning = 0
+            sw_only = 0
+            use_annotation = "1"
+            vtrip = "00"
+            width = 1
+        }
+    and contains the following IO cells:
 [IoId=4]: 
 Pin : Name = O_PwmChA(0)
     Attributes:
@@ -4874,6 +5650,88 @@ Pin : Name = O_PwmChB(0)
         input => PwmChB ,
         annotation => Net_388 ,
         pad => O_PwmChB(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=6]: 
+Pin : Name = MouseClk(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: SYNC
+        Out Sync Option: NOSYNC
+        Interrupt generated: True
+        Interrupt mode: FALLING
+        Drive mode: OPEN_DRAIN_LO
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: True
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: False
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE, PORT_INTERRUPT
+        Initial Value: 1
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => MouseClk(0)__PA ,
+        annotation => Net_925 ,
+        pad => MouseClk(0)_PAD );
+    Properties:
+    {
+    }
+
+[IoId=7]: 
+Pin : Name = MouseData(0)
+    Attributes:
+        In Group/Port: True
+        In Sync Option: SYNC
+        Out Sync Option: NOSYNC
+        Interrupt generated: False
+        Interrupt mode: NONE
+        Drive mode: OPEN_DRAIN_LO
+        VTrip: CMOS
+        Slew: FAST
+        Input Sync needed: True
+        Output Sync needed: False
+        SC shield enabled: False
+        POR State: ANY
+        LCD Mode: COMMON
+        Register Mode: RegComb
+        CaSense Mode: NEITHER
+        Treat as pin: True
+        Is OE Registered: False
+        Uses Analog: False
+        Can contain Digital: True
+        Is SIO: False
+        SIO Output Buf: NONREGULATED
+        SIO Input Buf: SINGLE_ENDED
+        SIO HiFreq: LOW
+        SIO Hyst: DISABLED
+        SIO Vtrip: MULTIPLIER_0_5
+        SIO Multiplier Index: 0
+        SIO RefSel: VCC_IO
+        Required Capabilitites: DIGITAL, ROUTABLE
+        Initial Value: 0
+        IO Voltage: 0
+    PORT MAP (
+        pa_out => MouseData(0)__PA ,
+        annotation => Net_916 ,
+        pad => MouseData(0)_PAD );
     Properties:
     {
     }
@@ -5098,13 +5956,14 @@ Port | Pin | Fixed |      Type |       Drive Mode |                           Na
    0 |   0 |     * |      NONE |         CMOS_OUT |                    O_OUT_ON(0) | 
      |   1 |     * |      NONE |      HI_Z_ANALOG |                I_PosVoltChA(0) | Analog(PosVoltChA)
      |   2 |     * |      NONE |      HI_Z_ANALOG | \ADC_VoltageChanelA:Bypass(0)\ | Analog(\ADC_VoltageChanelA:Net_210\)
-     |   3 |     * |      NONE |         CMOS_OUT |                    MAIN_PWR(0) | 
+     |   3 |     * |      NONE |         CMOS_OUT |              O_OUT_POLARITY(0) | 
      |   4 |     * |      NONE |      HI_Z_ANALOG | \ADC_VoltageChanelB:Bypass(0)\ | Analog(\ADC_VoltageChanelB:Net_210\)
      |   5 |     * |      NONE |      HI_Z_ANALOG |                 I_NegCurChA(0) | In(AMuxHw_1_Decoder_one_hot_1), Analog(NegCurChA)
      |   6 |     * |      NONE |      HI_Z_ANALOG |                 I_PosCurChA(0) | In(AMuxHw_1_Decoder_one_hot_0), Analog(PosCurChA)
      |   7 |     * |      NONE |      HI_Z_ANALOG |                I_NegVoltChA(0) | Analog(NegVoltChA)
 -----+-----+-------+-----------+------------------+--------------------------------+--------------------------------------------------
-   1 |   4 |     * |      NONE |         CMOS_OUT |                   O_LCD_BKL(0) | 
+   1 |   2 |     * |      NONE |         CMOS_OUT |                     OneWire(0) | 
+     |   4 |     * |      NONE |         CMOS_OUT |                   O_LCD_BKL(0) | 
      |   5 |     * |      NONE |         CMOS_OUT |                    O_LCD_CD(0) | 
      |   6 |     * |      NONE |         CMOS_OUT |                    O_LCD_RD(0) | 
      |   7 |     * |      NONE |         CMOS_OUT |                    O_LCD_WR(0) | 
@@ -5127,39 +5986,47 @@ Port | Pin | Fixed |      Type |       Drive Mode |                           Na
      |   7 |     * |      NONE |         CMOS_OUT |                     O_OnChB(0) | In(OnChB)
 -----+-----+-------+-----------+------------------+--------------------------------+--------------------------------------------------
   12 |   0 |     * |      NONE |         CMOS_OUT |                   O_LCD_RES(0) | 
+     |   1 |     * |      NONE |      RES_PULL_UP |                 I_MultiJogA(0) | 
+     |   2 |     * |      NONE |      RES_PULL_UP |                 I_MultiJogB(0) | 
+     |   3 |     * |      NONE |      RES_PULL_UP |                     I_BtnOk(0) | 
+     |   4 |     * |      NONE |      RES_PULL_UP |             I_BtnOutOnSpeed(0) | 
+     |   5 |     * |      NONE |      RES_PULL_UP |            I_BtnBipolarMode(0) | 
+     |   6 |     * |      NONE |      RES_PULL_UP |         I_BtnChangePolarity(0) | 
 -----+-----+-------+-----------+------------------+--------------------------------+--------------------------------------------------
   15 |   4 |     * |      NONE |         CMOS_OUT |                    O_PwmChA(0) | In(PwmChA)
      |   5 |     * |      NONE |         CMOS_OUT |                    O_PwmChB(0) | In(PwmChB)
+     |   6 |     * |   FALLING |    OPEN_DRAIN_LO |                    MouseClk(0) | 
+     |   7 |     * |      NONE |    OPEN_DRAIN_LO |                   MouseData(0) | 
 --------------------------------------------------------------------------------------------------------------------------------------
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.004ms
-Digital Placement phase: Elapsed time ==> 2s.040ms
+Digital component placer commit/Report: Elapsed time ==> 0s.007ms
+Digital Placement phase: Elapsed time ==> 1s.780ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 2s.797ms
+Digital Routing phase: Elapsed time ==> 2s.509ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.517ms
+Bitstream Generation phase: Elapsed time ==> 0s.409ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.084ms
+Bitstream Verification phase: Elapsed time ==> 0s.072ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Timing report is in PowerSuplyUnit_timing.html.
-Static timing analysis phase: Elapsed time ==> 0s.579ms
+Static timing analysis phase: Elapsed time ==> 0s.552ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.416ms
+Design database save phase: Elapsed time ==> 0s.434ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 13s.904ms
+cydsfit: Elapsed time ==> 11s.377ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 13s.905ms
-API generation phase: Elapsed time ==> 3s.462ms
-Dependency generation phase: Elapsed time ==> 0s.062ms
-Cleanup phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 11s.378ms
+API generation phase: Elapsed time ==> 3s.941ms
+Dependency generation phase: Elapsed time ==> 0s.061ms
+Cleanup phase: Elapsed time ==> 0s.001ms
