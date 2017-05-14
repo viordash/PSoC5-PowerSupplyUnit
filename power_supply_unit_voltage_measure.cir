@@ -7,7 +7,7 @@ Shape Version=11.00
 Screen=1366,768
 MCAPVersion=11.0.1.9
 Key ID=0
-NLCnt=68
+NLCnt=63
 TXCnt=3
 
 [shapedef]
@@ -97,7 +97,7 @@ Name=Ground
 Definition=Ground
 Shape=Ground
 Mask=1793
-Used=737
+Used=731
 memo=Ground
 Label Offset=0,0,0,0
 PinCnt=1
@@ -107,8 +107,8 @@ Pin="PinA",0,0,-3,-7
 Name=Battery
 Definition=Battery
 Shape=Battery
-Mask=4097
-Used=50
+Mask=4865
+Used=48
 memo=Battery
 Label Offset=19,7,10,13
 PinCnt=2
@@ -120,7 +120,7 @@ Name=Pulse Source
 Definition=Pulse source
 Shape=Pulse_Source
 Mask=4865
-Used=11
+Used=10
 memo=Pulse Source
 Label Offset=18,13,15,9
 PinCnt=2
@@ -145,8 +145,8 @@ Pin="VCC",4,-1,6,4
 Name=Resistor
 Definition=Resistor
 Shape=Resistor_Euro
-Mask=6913
-Used=1879
+Mask=6401
+Used=1869
 memo=Resistor
 Label Offset=11,-36,10,10
 PinCnt=2
@@ -253,6 +253,7 @@ Pxs=216,200,216,224
 
 [Comp]
 Name=Pulse Source
+Enable=False
 Px=384,296
 Rot=3
 
@@ -318,7 +319,7 @@ Pxs=544,368,704,368
 Pxs=648,200,648,240
 
 [Wire]
-Pxs=648,304,648,408
+Pxs=648,304,648,320
 
 [Comp]
 Name=Resistor
@@ -453,31 +454,6 @@ Pxs=216,200,584,200
 Pxs=632,200,648,200
 
 [Comp]
-Name=Resistor
-Px=632,408
-Rot=2
-
-[Attr]
-ON=-35,-35,PART
-V=R22
-Style=8192
-
-[Attr]
-ON=-35,-22,RESISTANCE
-V=11
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Wire]
-Pxs=384,408,584,408
-
-[Wire]
-Pxs=632,408,648,408
-
-[Comp]
 Name=Capacitor
 Px=712,200
 Rot=6
@@ -500,34 +476,8 @@ V
 Name=Ground
 Px=712,200
 
-[Comp]
-Name=Capacitor
-Px=712,408
-Rot=6
-
-[Attr]
-ON=-21,-38,PART
-V=C2
-Style=8192
-
-[Attr]
-ON=-35,-24,CAPACITANCE
-V=10uF
-Style=8192
-
-[Attr]
-ON=0,0,PACKAGE
-V
-
-[Comp]
-Name=Ground
-Px=712,408
-
 [Wire]
 Pxs=648,200,664,200
-
-[Wire]
-Pxs=648,408,664,408
 
 [Comp]
 Name=Resistor
@@ -562,7 +512,6 @@ Pxs=544,296,584,296
 
 [Comp]
 Name=Pulse Source
-Enable=False
 Px=256,112
 Rot=3
 
@@ -738,12 +687,17 @@ Style=8192
 
 [Attr]
 ON=-26,-41,VALUE
-V=1
+V=0
 Style=8192
 
 [Attr]
 ON=0,0,PACKAGE
 V
+
+[Comp]
+Name=Ground
+Px=648,320
+Rot=7
 
 [Grid Text]
 Text="out"
@@ -923,9 +877,8 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-SB 3=73,4
 Scale 3=1
-Px=596,395
+Px=779,213
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -1186,7 +1139,7 @@ MonExprXWidth=142
 MonExprYWidth=306
 MonRangeXWidth=90
 MonRangeYWidth=90
-AnimateWait=None
+AnimateWait=Key
 AnimateWaitTime=500
 AnimatePressAfter=0
 Save_For_Future=No
@@ -1373,7 +1326,7 @@ YRng=20
 Options=LINEARX,LINEARY
 Range Grid X=0.002
 Range Grid Y=4
-Enable=DontRun
+Enable=Enable
 Line Color=#008000
 Text Color=#008000
 Rainbow=False
@@ -1399,7 +1352,7 @@ YRng=20
 Options=LINEARX,LINEARY
 Range Grid X=0.002
 Range Grid Y=4
-Enable=DontRun
+Enable=Enable
 Line Color=#FF0000
 Text Color=#FF0000
 Rainbow=False
@@ -1425,7 +1378,7 @@ YRng=20
 Options=LINEARX,LINEARY
 Range Grid X=0.002
 Range Grid Y=4
-Enable=Enable
+Enable=DontRun
 Line Color=#008000
 Text Color=#008000
 Rainbow=False
@@ -1451,7 +1404,7 @@ YRng=20
 Options=LINEARX,LINEARY
 Range Grid X=0.002
 Range Grid Y=4
-Enable=Enable
+Enable=DontRun
 Line Color=#800080
 Text Color=#800080
 Rainbow=False
