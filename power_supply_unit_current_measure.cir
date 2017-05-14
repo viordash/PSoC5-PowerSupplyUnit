@@ -175,7 +175,7 @@ NodeVoltageFormat=3
 PathDelayFormat=3
 WarningFormat=3
 GridTextFormulaFormat=3
-Window Placement in Transient Analysis=0,1, -1,-1, -8,-31, 542,0,1341,546
+Window Placement in Transient Analysis=0,1, -1,-1, -8,-31, 668,0,1336,542
 SpiceType=AMBIGUOUS
 Title_Block_Border=None
 Title_Block=False
@@ -202,7 +202,7 @@ Style=8192
 
 [Attr]
 ON=-35,8,RESISTANCE
-V=0.2
+V=0.05
 Style=8192
 
 [Attr]
@@ -240,7 +240,7 @@ Style=8192
 
 [Attr]
 ON=-26,-41,VALUE
-V=3
+V=15
 Style=8192
 
 [Attr]
@@ -291,7 +291,7 @@ Style=8192
 
 [Attr]
 ON=-34,-38,RESISTANCE
-V=2.8
+V=2.95
 Style=8192
 
 [Attr]
@@ -640,7 +640,7 @@ CurrentSection 3=0
 Splitter.xs=0
 Splitter.ys=0
 TextQuad=4099
-Scale=1.3333333333333333
+Scale=0.66666666666666663
 GridUser=10
 ShapeGroups="Main","Euro","Polarity","Main1","Main2","Electrolytic","GroundArrow","DeMorgan"
 CalcRMS=False
@@ -786,8 +786,9 @@ PrinterScale=1
 Scale 0=1
 Scale 1=1
 Scale 2=1
-Scale 3=1.3333333333333333
-Px=452,420
+SB 3=174,111
+Scale 3=0.66666666666666663
+Px=539,390
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
 Anchor Color=#000000
@@ -897,7 +898,7 @@ ComponentCounts=True
 
 [Transient]
 WinID=1
-Window Placement=0,1, -1,-1, -8,-31, 0,0,551,542
+Window Placement=0,1, -1,-1, -8,-31, 0,0,668,542
 Font=Height=-19,FStyle=0,Color=#0000FF,Name=Arial
 WinBackGround Color=#FFFFFF
 Select Color=#FF0000
