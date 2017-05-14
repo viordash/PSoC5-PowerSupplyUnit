@@ -568,7 +568,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="954, 500" SelectedTabbedMdiWindow="985e6a8e-4226-4d08-b0e8-88d1c4014886"><DocumentWindow Key="2545aa7b-cc26-4d09-bbfc-293da1dfb919" Guid="985e6a8e-4226-4d08-b0e8-88d1c4014886" /><DocumentWindow Key="a5a7c5ff-c2f4-4c8d-8ef1-35a9d4dcbccf" Guid="b00a7a92-272f-46ff-af76-2245b7f3c3be" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="991, 500" SelectedTabbedMdiWindow="fa99d547-77fa-46ac-b107-995819f2f171"><DocumentWindow Key="021ad7b7-7405-45e1-98ec-ede7e05371be" Guid="fa99d547-77fa-46ac-b107-995819f2f171" /><DocumentWindow Key="5853756d-f24d-48e7-a8c4-2e789829d3db" Guid="a819ea3d-a99f-43cd-8420-4b9a3fcd2457" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
