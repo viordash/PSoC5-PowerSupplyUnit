@@ -2,7 +2,7 @@
 --	Conversion of PowerSuplyUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat May 13 23:03:15 2017
+--	Sun May 14 11:41:55 2017
 --
 
 USE cypress.cypress.all;
@@ -216,7 +216,6 @@ TERMINAL tmpSIOVREF__O_OnChA_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__O_OnChA_net_0 : bit;
 TERMINAL Net_4555 : bit;
 TERMINAL Net_4570 : bit;
-TERMINAL Net_10205 : bit;
 SIGNAL tmpOE__O_PwmChB_net_0 : bit;
 SIGNAL PwmChB : bit;
 SIGNAL tmpFB_0__O_PwmChB_net_0 : bit;
@@ -269,6 +268,7 @@ TERMINAL Net_410 : bit;
 TERMINAL Net_413 : bit;
 TERMINAL Net_412 : bit;
 TERMINAL Net_1410 : bit;
+TERMINAL Net_10506 : bit;
 TERMINAL Net_1237 : bit;
 TERMINAL Net_440 : bit;
 SIGNAL tmpOE__I_VoltChB_net_0 : bit;
@@ -1112,9 +1112,6 @@ TERMINAL Net_10168 : bit;
 TERMINAL Net_10169 : bit;
 TERMINAL Net_10170 : bit;
 TERMINAL Net_10171 : bit;
-TERMINAL Net_10206 : bit;
-TERMINAL Net_10212 : bit;
-TERMINAL Net_10211 : bit;
 TERMINAL Net_14686 : bit;
 TERMINAL Net_10274 : bit;
 TERMINAL Net_10275 : bit;
@@ -1146,12 +1143,6 @@ TERMINAL Net_7493 : bit;
 TERMINAL Net_10196 : bit;
 TERMINAL Net_10200 : bit;
 TERMINAL Net_10199 : bit;
-TERMINAL Net_10213 : bit;
-TERMINAL Net_10214 : bit;
-TERMINAL Net_10215 : bit;
-TERMINAL Net_10292 : bit;
-TERMINAL Net_10293 : bit;
-TERMINAL Net_14646 : bit;
 TERMINAL Net_10285 : bit;
 TERMINAL Net_10289 : bit;
 TERMINAL Net_10288 : bit;
@@ -1242,68 +1233,425 @@ SIGNAL tmpINTERRUPT_0__MouseData_net_0 : bit;
 TERMINAL Net_14740 : bit;
 TERMINAL Net_10476 : bit;
 TERMINAL Net_10472 : bit;
-TERMINAL Net_290 : bit;
-TERMINAL Net_2891 : bit;
-TERMINAL Net_317 : bit;
-TERMINAL Net_10484 : bit;
-TERMINAL Net_10485 : bit;
-TERMINAL Net_10486 : bit;
-TERMINAL Net_10487 : bit;
-TERMINAL Net_10488 : bit;
-TERMINAL Net_10489 : bit;
-TERMINAL Net_10490 : bit;
-TERMINAL Net_10491 : bit;
-TERMINAL Net_10492 : bit;
-TERMINAL Net_10493 : bit;
-TERMINAL Net_10494 : bit;
-TERMINAL Net_2761 : bit;
-TERMINAL Net_10478 : bit;
-TERMINAL Net_10479 : bit;
-TERMINAL Net_10480 : bit;
-TERMINAL Net_10481 : bit;
-TERMINAL Net_10482 : bit;
-TERMINAL Net_10483 : bit;
 SIGNAL tmpOE__OneWire_net_0 : bit;
 SIGNAL tmpFB_0__OneWire_net_0 : bit;
 SIGNAL tmpIO_0__OneWire_net_0 : bit;
 TERMINAL tmpSIOVREF__OneWire_net_0 : bit;
+TERMINAL Net_290 : bit;
 SIGNAL tmpINTERRUPT_0__OneWire_net_0 : bit;
-SIGNAL \MODULE_3:g1:a0:newa_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:newb_0\ : bit;
-SIGNAL MODIN3_0 : bit;
-SIGNAL \MODULE_3:g1:a0:dataa_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:datab_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:a_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:b_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:xnor_array_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:aeqb_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:eq_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:eqi_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:aeqb_1\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:albi_1\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:agbi_1\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:lt_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:gt_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:lti_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:gti_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:albi_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:gx:u0:agbi_0\ : bit;
-SIGNAL \MODULE_3:g1:a0:xeq\ : bit;
-SIGNAL \MODULE_3:g1:a0:xneq\ : bit;
-SIGNAL \MODULE_3:g1:a0:xlt\ : bit;
-SIGNAL \MODULE_3:g1:a0:xlte\ : bit;
-SIGNAL \MODULE_3:g1:a0:xgt\ : bit;
-SIGNAL \MODULE_3:g1:a0:xgte\ : bit;
-SIGNAL \MODULE_3:lt\ : bit;
-ATTRIBUTE port_state_att of \MODULE_3:lt\:SIGNAL IS 2;
-SIGNAL \MODULE_3:gt\ : bit;
-ATTRIBUTE port_state_att of \MODULE_3:gt\:SIGNAL IS 2;
-SIGNAL \MODULE_3:gte\ : bit;
-ATTRIBUTE port_state_att of \MODULE_3:gte\:SIGNAL IS 2;
-SIGNAL \MODULE_3:lte\ : bit;
-ATTRIBUTE port_state_att of \MODULE_3:lte\:SIGNAL IS 2;
-SIGNAL \MODULE_3:neq\ : bit;
-ATTRIBUTE port_state_att of \MODULE_3:neq\:SIGNAL IS 2;
+TERMINAL Net_2891 : bit;
+TERMINAL Net_2761 : bit;
+TERMINAL Net_317 : bit;
+TERMINAL Net_10513 : bit;
+TERMINAL Net_10514 : bit;
+TERMINAL Net_10515 : bit;
+TERMINAL Net_10516 : bit;
+TERMINAL Net_10517 : bit;
+TERMINAL Net_10518 : bit;
+TERMINAL Net_10519 : bit;
+TERMINAL Net_10520 : bit;
+TERMINAL Net_10521 : bit;
+TERMINAL Net_10522 : bit;
+TERMINAL Net_10523 : bit;
+TERMINAL Net_10507 : bit;
+TERMINAL Net_10508 : bit;
+TERMINAL Net_10509 : bit;
+TERMINAL Net_10510 : bit;
+TERMINAL Net_10511 : bit;
+TERMINAL Net_10512 : bit;
+SIGNAL tmpOE__FAN_CTRL_net_0 : bit;
+SIGNAL Net_10524 : bit;
+SIGNAL tmpFB_0__FAN_CTRL_net_0 : bit;
+SIGNAL tmpIO_0__FAN_CTRL_net_0 : bit;
+TERMINAL tmpSIOVREF__FAN_CTRL_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__FAN_CTRL_net_0 : bit;
+SIGNAL \FanCtrl:PWMUDB:km_run\ : bit;
+SIGNAL \FanCtrl:PWMUDB:min_kill_reg\ : bit;
+SIGNAL Net_10540 : bit;
+SIGNAL \FanCtrl:PWMUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:control_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_enable\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode2_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode2_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode2_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode1_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode1_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ctrl_cmpmode1_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:prevCapture\ : bit;
+SIGNAL \FanCtrl:PWMUDB:capt_rising\ : bit;
+SIGNAL \FanCtrl:PWMUDB:capt_falling\ : bit;
+SIGNAL \FanCtrl:PWMUDB:hwCapture\ : bit;
+SIGNAL \FanCtrl:PWMUDB:hwEnable\ : bit;
+SIGNAL \FanCtrl:PWMUDB:trig_last\ : bit;
+SIGNAL \FanCtrl:PWMUDB:trig_rise\ : bit;
+SIGNAL \FanCtrl:PWMUDB:trig_fall\ : bit;
+SIGNAL \FanCtrl:PWMUDB:trig_out\ : bit;
+SIGNAL \FanCtrl:PWMUDB:runmode_enable\ : bit;
+SIGNAL \FanCtrl:PWMUDB:runmode_enable\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:runmode_enable\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_enable\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sc_kill_tmp\ : bit;
+SIGNAL \FanCtrl:PWMUDB:tc_i\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ltch_kill_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ltch_kill_reg\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ltch_kill_reg\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:min_kill_reg\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:min_kill_reg\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sc_kill\ : bit;
+SIGNAL \FanCtrl:PWMUDB:min_kill\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_kill\ : bit;
+SIGNAL \FanCtrl:PWMUDB:km_tc\ : bit;
+SIGNAL \FanCtrl:PWMUDB:db_tc\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_1\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_1\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_0\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_0\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_sel\ : bit;
+SIGNAL \FanCtrl:PWMUDB:reset\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:status_0\ : bit;
+SIGNAL \FanCtrl:Net_55\ : bit;
+SIGNAL \FanCtrl:PWMUDB:prevCompare1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_status\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_status\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_status_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_status_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_kill_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_status_reg\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_status_reg\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_status_reg\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_status_reg\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_kill_reg\\R\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_kill_reg\\S\ : bit;
+SIGNAL \FanCtrl:PWMUDB:fifo_full\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cs_addr_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cs_addr_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cs_addr_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_capture\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_eq\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_less\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ff0\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ff0\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:cmp2_eq\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_less\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:z1\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:z1\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ff1\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:co_msb\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:cmsb\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:so\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:so\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f0_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f0_bus_stat\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f0_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f0_blk_stat\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:fifo_nempty\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:so_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \FanCtrl:PWMUDB:sP8:pwmdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \FanCtrl:PWMUDB:compare1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:compare2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm_i_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm_i\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm1_i_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm1_i\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm2_i_reg\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm2_i\ : bit;
+SIGNAL \FanCtrl:PWMUDB:tc_i_reg\ : bit;
+SIGNAL \FanCtrl:Net_101\ : bit;
+SIGNAL \FanCtrl:Net_96\ : bit;
+SIGNAL Net_10542 : bit;
+SIGNAL Net_10543 : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm_temp\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:b_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODIN3_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:a_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODIN3_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:b_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:add_vi_vv_MODGEN_4_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_31\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_30\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_29\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_28\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_27\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_26\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_25\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_24\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_23\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_22\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_21\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_20\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_19\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_18\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_17\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_16\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_15\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_14\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_13\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_12\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_11\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_10\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_9\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_8\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_7\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_6\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_5\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_4\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_3\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_2\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_1\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_0\ : bit;
+SIGNAL \FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:b_0\ : bit;
+SIGNAL Net_10544 : bit;
+SIGNAL Net_10541 : bit;
+SIGNAL \FanCtrl:Net_113\ : bit;
+SIGNAL \FanCtrl:Net_107\ : bit;
+SIGNAL \FanCtrl:Net_114\ : bit;
+SIGNAL \MODULE_4:g1:a0:newa_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:newb_0\ : bit;
+SIGNAL MODIN4_0 : bit;
+SIGNAL \MODULE_4:g1:a0:dataa_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:datab_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:a_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:b_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:xnor_array_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:aeqb_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:eq_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:eqi_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:aeqb_1\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:albi_1\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:agbi_1\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:lt_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:gt_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:lti_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:gti_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:albi_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:gx:u0:agbi_0\ : bit;
+SIGNAL \MODULE_4:g1:a0:xeq\ : bit;
+SIGNAL \MODULE_4:g1:a0:xneq\ : bit;
+SIGNAL \MODULE_4:g1:a0:xlt\ : bit;
+SIGNAL \MODULE_4:g1:a0:xlte\ : bit;
+SIGNAL \MODULE_4:g1:a0:xgt\ : bit;
+SIGNAL \MODULE_4:g1:a0:xgte\ : bit;
+SIGNAL \MODULE_4:lt\ : bit;
+ATTRIBUTE port_state_att of \MODULE_4:lt\:SIGNAL IS 2;
+SIGNAL \MODULE_4:gt\ : bit;
+ATTRIBUTE port_state_att of \MODULE_4:gt\:SIGNAL IS 2;
+SIGNAL \MODULE_4:gte\ : bit;
+ATTRIBUTE port_state_att of \MODULE_4:gte\:SIGNAL IS 2;
+SIGNAL \MODULE_4:lte\ : bit;
+ATTRIBUTE port_state_att of \MODULE_4:lte\:SIGNAL IS 2;
+SIGNAL \MODULE_4:neq\ : bit;
+ATTRIBUTE port_state_att of \MODULE_4:neq\:SIGNAL IS 2;
 SIGNAL AMuxHw_1_Decoder_old_id_0D : bit;
 SIGNAL AMuxHw_1_Decoder_one_hot_0D : bit;
 SIGNAL AMuxHw_1_Decoder_one_hot_1D : bit;
@@ -1331,6 +1679,22 @@ SIGNAL \PWM_1:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \PWM_1:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:min_kill_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:prevCapture\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:trig_last\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:runmode_enable\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:sc_kill_tmp\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:ltch_kill_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_1\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:dith_count_0\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:prevCompare1\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp1_status_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:cmp2_status_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:final_kill_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm_i_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm1_i_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:pwm2_i_reg\\D\ : bit;
+SIGNAL \FanCtrl:PWMUDB:tc_i_reg\\D\ : bit;
 BEGIN
 
 zero <=  ('0') ;
@@ -1366,6 +1730,21 @@ AMuxHw_1_Decoder_one_hot_1D <= ((AMuxHw_1_Decoder_old_id_0 and Net_174));
 \PWM_1:PWMUDB:tc_i_reg\\D\ <= ((\PWM_1:PWMUDB:runmode_enable\ and \PWM_1:PWMUDB:tc_i\));
 
 \PWM_1:PWMUDB:pwm_i\ <= ((\PWM_1:PWMUDB:runmode_enable\ and \PWM_1:PWMUDB:cmp1_less\));
+
+\FanCtrl:PWMUDB:sc_kill_tmp\\D\ <= (not \FanCtrl:PWMUDB:tc_i\);
+
+\FanCtrl:PWMUDB:dith_count_1\\D\ <= ((not \FanCtrl:PWMUDB:dith_count_1\ and \FanCtrl:PWMUDB:tc_i\ and \FanCtrl:PWMUDB:dith_count_0\)
+	OR (not \FanCtrl:PWMUDB:dith_count_0\ and \FanCtrl:PWMUDB:dith_count_1\)
+	OR (not \FanCtrl:PWMUDB:tc_i\ and \FanCtrl:PWMUDB:dith_count_1\));
+
+\FanCtrl:PWMUDB:dith_count_0\\D\ <= ((not \FanCtrl:PWMUDB:dith_count_0\ and \FanCtrl:PWMUDB:tc_i\)
+	OR (not \FanCtrl:PWMUDB:tc_i\ and \FanCtrl:PWMUDB:dith_count_0\));
+
+\FanCtrl:PWMUDB:cmp1_status\ <= ((not \FanCtrl:PWMUDB:prevCompare1\ and \FanCtrl:PWMUDB:cmp1_less\));
+
+\FanCtrl:PWMUDB:status_2\ <= ((\FanCtrl:PWMUDB:runmode_enable\ and \FanCtrl:PWMUDB:tc_i\));
+
+\FanCtrl:PWMUDB:pwm_i\ <= ((\FanCtrl:PWMUDB:runmode_enable\ and \FanCtrl:PWMUDB:cmp1_less\));
 
 \ADC_VoltageChanelB:cy_analog_virtualmux_3_connect\:cy_connect_v1_0
 	GENERIC MAP(sig_width=>1,
@@ -2329,11 +2708,6 @@ PWR_5:cy_annotation_universal_v1_0
 		port_names=>"T1",
 		width=>1)
 	PORT MAP(connect=>Net_283);
-PWR_3:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10205);
 O_PwmChB:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"96f32218-8078-40a2-b48b-bec8d7063ffb",
 		drive_mode=>"110",
@@ -2875,13 +3249,13 @@ R_18:cy_annotation_universal_v1_0
 		port_names=>"T1, T2",
 		width=>2)
 	PORT MAP(connect=>(Net_410, Net_1410));
-PWR_9:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_412);
-PWR_10:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
+R_43:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_412, Net_10506));
+GND_23:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
 		port_names=>"T1",
 		width=>1)
 	PORT MAP(connect=>Net_413);
@@ -4001,31 +4375,11 @@ Clock_3:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_779,
 		dig_domain_out=>open);
-GND_13:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Gnd_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10206);
-C_29:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Capacitor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10205, Net_10206));
 PWR_14:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Power_v1_0",
 		port_names=>"T1",
 		width=>1)
 	PORT MAP(connect=>Net_658);
-R_34:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Resistor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10206, Net_10212));
-R_33:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Resistor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10205, Net_10211));
 P_3:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Connector20_v1_0",
 		port_names=>"T1, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T2, T20, T3, T4, T5, T6, T7, T8, T9",
@@ -4176,67 +4530,12 @@ GND_15:cy_annotation_universal_v1_0
 		port_names=>"T1",
 		width=>1)
 	PORT MAP(connect=>Net_10199);
-C_30:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Capacitor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10211, Net_10212));
-C_31:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Capacitor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10213, Net_10214));
-GND_16:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Gnd_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10215);
-R_35:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Resistor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10213, Net_10292));
-R_36:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Resistor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10214, Net_10293));
-C_32:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Capacitor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_10292, Net_14646));
-C_33:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Capacitor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_14646, Net_10293));
-GND_17:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Gnd_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_14646);
-PWR_23:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10292);
-PWR_24:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10293);
 U_8:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"ExtOpAmp_v1_0",
 		port_names=>"N, O, P, VN, VP",
 		width=>5)
 	PORT MAP(connect=>(Net_10285, Net_10289, Net_10285, Net_10288,
 			Net_10287));
-GND_18:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Gnd_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_10285);
 R_37:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Resistor_v1_0",
 		port_names=>"T1, T2",
@@ -4913,35 +5212,6 @@ MouseISR:cy_isr_v1_0
 	GENERIC MAP(int_type=>"10",
 		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_10498);
-R_42:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Resistor_v1_0",
-		port_names=>"T1, T2",
-		width=>2)
-	PORT MAP(connect=>(Net_290, Net_2891));
-P_6:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Connector20_v1_0",
-		port_names=>"T1, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T2, T20, T3, T4, T5, T6, T7, T8, T9",
-		width=>20)
-	PORT MAP(connect=>(Net_317, Net_10484, Net_10485, Net_10486,
-			Net_10487, Net_10488, Net_10489, Net_10490,
-			Net_10491, Net_10492, Net_10493, Net_290,
-			Net_10494, Net_2761, Net_10478, Net_10479,
-			Net_10480, Net_10481, Net_10482, Net_10483));
-GND_22:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Gnd_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_317);
-Vdd_1:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_2761);
-Vdd_2:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"Power_v1_0",
-		port_names=>"T1",
-		width=>1)
-	PORT MAP(connect=>Net_2891);
 OneWire:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"1cd16c5b-3c8b-4dfc-962f-fd21697d79bf",
 		drive_mode=>"110",
@@ -5012,6 +5282,249 @@ OneWire:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__OneWire_net_0);
+Vdd_2:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_2891);
+Vdd_1:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_2761);
+GND_22:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_317);
+P_6:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Connector20_v1_0",
+		port_names=>"T1, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T2, T20, T3, T4, T5, T6, T7, T8, T9",
+		width=>20)
+	PORT MAP(connect=>(Net_317, Net_10513, Net_10514, Net_10515,
+			Net_10516, Net_10517, Net_10518, Net_10519,
+			Net_10520, Net_10521, Net_10522, Net_290,
+			Net_10523, Net_2761, Net_10507, Net_10508,
+			Net_10509, Net_10510, Net_10511, Net_10512));
+R_42:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Resistor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_290, Net_2891));
+C_34:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Capacitor_v1_0",
+		port_names=>"T1, T2",
+		width=>2)
+	PORT MAP(connect=>(Net_412, Net_10285));
+GND_24:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Gnd_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_10285);
+PWR_9:cy_annotation_universal_v1_0
+	GENERIC MAP(comp_name=>"Power_v1_0",
+		port_names=>"T1",
+		width=>1)
+	PORT MAP(connect=>Net_10506);
+FAN_CTRL:cy_psoc3_pins_v1_10
+	GENERIC MAP(id=>"098539c6-72fc-445a-bbee-de8d2c7bc6b8",
+		drive_mode=>"110",
+		ibuf_enabled=>"1",
+		init_dr_st=>"0",
+		input_sync=>"1",
+		input_clk_en=>'0',
+		input_sync_mode=>"0",
+		intr_mode=>"00",
+		invert_in_clock=>'0',
+		invert_in_clock_en=>'0',
+		invert_in_reset=>'0',
+		invert_out_clock=>'0',
+		invert_out_clock_en=>'0',
+		invert_out_reset=>'0',
+		io_voltage=>"",
+		layout_mode=>"CONTIGUOUS",
+		output_conn=>"1",
+		output_sync=>"0",
+		output_clk_en=>'0',
+		output_mode=>"0",
+		output_reset=>'0',
+		output_clock_mode=>"0",
+		oe_sync=>"0",
+		oe_conn=>"0",
+		oe_reset=>'0',
+		pin_aliases=>"",
+		pin_mode=>"O",
+		por_state=>4,
+		sio_group_cnt=>0,
+		sio_hifreq=>"00000000",
+		sio_hyst=>"1",
+		sio_ibuf=>"00000000",
+		sio_info=>"00",
+		sio_obuf=>"00000000",
+		sio_refsel=>"00000000",
+		sio_vtrip=>"00000000",
+		sio_vohsel=>"00000000",
+		slew_rate=>"0",
+		spanning=>'0',
+		sw_only=>'0',
+		vtrip=>"10",
+		width=>1,
+		port_alias_required=>'0',
+		port_alias_group=>"",
+		use_annotation=>"0",
+		pa_in_clock=>-1,
+		pa_in_clock_en=>-1,
+		pa_in_reset=>-1,
+		pa_out_clock=>-1,
+		pa_out_clock_en=>-1,
+		pa_out_reset=>-1,
+		ovt_needed=>"0",
+		ovt_slew_control=>"00",
+		ovt_hyst_trim=>"0",
+		input_buffer_sel=>"00")
+	PORT MAP(oe=>(one),
+		y=>Net_10524,
+		fb=>(tmpFB_0__FAN_CTRL_net_0),
+		analog=>(open),
+		io=>(tmpIO_0__FAN_CTRL_net_0),
+		siovref=>(tmpSIOVREF__FAN_CTRL_net_0),
+		annotation=>(open),
+		in_clock=>zero,
+		in_clock_en=>one,
+		in_reset=>zero,
+		out_clock=>zero,
+		out_clock_en=>one,
+		out_reset=>zero,
+		interrupt=>tmpINTERRUPT_0__FAN_CTRL_net_0);
+\FanCtrl:PWMUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_10540,
+		enable=>one,
+		clock_out=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\);
+\FanCtrl:PWMUDB:genblk1:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		control=>(\FanCtrl:PWMUDB:control_7\, \FanCtrl:PWMUDB:control_6\, \FanCtrl:PWMUDB:control_5\, \FanCtrl:PWMUDB:control_4\,
+			\FanCtrl:PWMUDB:control_3\, \FanCtrl:PWMUDB:control_2\, \FanCtrl:PWMUDB:control_1\, \FanCtrl:PWMUDB:control_0\));
+\FanCtrl:PWMUDB:genblk8:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0100111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>zero,
+		clock=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		status=>(zero, \FanCtrl:PWMUDB:status_5\, zero, \FanCtrl:PWMUDB:status_3\,
+			\FanCtrl:PWMUDB:status_2\, \FanCtrl:PWMUDB:status_1\, \FanCtrl:PWMUDB:status_0\),
+		interrupt=>\FanCtrl:Net_55\);
+\FanCtrl:PWMUDB:sP8:pwmdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		cs_addr=>(\FanCtrl:PWMUDB:tc_i\, \FanCtrl:PWMUDB:runmode_enable\, zero),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>zero,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>\FanCtrl:PWMUDB:cmp1_eq\,
+		cl0=>\FanCtrl:PWMUDB:cmp1_less\,
+		z0=>\FanCtrl:PWMUDB:tc_i\,
+		ff0=>open,
+		ce1=>\FanCtrl:PWMUDB:cmp2_eq\,
+		cl1=>\FanCtrl:PWMUDB:cmp2_less\,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>open,
+		f0_blk_stat=>open,
+		f1_bus_stat=>\FanCtrl:PWMUDB:fifo_nempty\,
+		f1_blk_stat=>\FanCtrl:PWMUDB:status_3\,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(24):g2:g3:ub\:cy_buf
+	PORT MAP(x=>zero,
+		y=>\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_24\);
+\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(16):g2:g3:ub\:cy_buf
+	PORT MAP(x=>zero,
+		y=>\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_16\);
+\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:gs(8):g2:g3:ub\:cy_buf
+	PORT MAP(x=>zero,
+		y=>\FanCtrl:PWMUDB:MODULE_3:g2:a0:g1:z1:s0:g1:u0:c_8\);
+Clock_4:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"638a4f95-3769-4114-8fce-0b10871cd95a",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_10540,
+		dig_domain_out=>open);
 AMuxHw_1_Decoder_old_id_0:cy_dff
 	PORT MAP(d=>Net_174,
 		clk=>Net_168,
@@ -5140,5 +5653,85 @@ AMuxHw_1_Decoder_one_hot_1:cy_dff
 	PORT MAP(d=>\PWM_1:PWMUDB:tc_i_reg\\D\,
 		clk=>\PWM_1:PWMUDB:ClockOutFromEnBlock\,
 		q=>\PWM_1:PWMUDB:tc_i_reg\);
+\FanCtrl:PWMUDB:min_kill_reg\:cy_dsrff
+	PORT MAP(d=>one,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:min_kill_reg\);
+\FanCtrl:PWMUDB:prevCapture\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:prevCapture\);
+\FanCtrl:PWMUDB:trig_last\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:trig_last\);
+\FanCtrl:PWMUDB:runmode_enable\:cy_dsrff
+	PORT MAP(d=>\FanCtrl:PWMUDB:control_7\,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:runmode_enable\);
+\FanCtrl:PWMUDB:sc_kill_tmp\:cy_dff
+	PORT MAP(d=>\FanCtrl:PWMUDB:sc_kill_tmp\\D\,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:sc_kill_tmp\);
+\FanCtrl:PWMUDB:ltch_kill_reg\:cy_dsrff
+	PORT MAP(d=>one,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:ltch_kill_reg\);
+\FanCtrl:PWMUDB:dith_count_1\:cy_dsrff
+	PORT MAP(d=>\FanCtrl:PWMUDB:dith_count_1\\D\,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:dith_count_1\);
+\FanCtrl:PWMUDB:dith_count_0\:cy_dsrff
+	PORT MAP(d=>\FanCtrl:PWMUDB:dith_count_0\\D\,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:dith_count_0\);
+\FanCtrl:PWMUDB:prevCompare1\:cy_dff
+	PORT MAP(d=>\FanCtrl:PWMUDB:cmp1_less\,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:prevCompare1\);
+\FanCtrl:PWMUDB:cmp1_status_reg\:cy_dsrff
+	PORT MAP(d=>\FanCtrl:PWMUDB:cmp1_status\,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:status_0\);
+\FanCtrl:PWMUDB:cmp2_status_reg\:cy_dsrff
+	PORT MAP(d=>zero,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:status_1\);
+\FanCtrl:PWMUDB:final_kill_reg\:cy_dsrff
+	PORT MAP(d=>zero,
+		s=>zero,
+		r=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:status_5\);
+\FanCtrl:PWMUDB:pwm_i_reg\:cy_dff
+	PORT MAP(d=>\FanCtrl:PWMUDB:pwm_i\,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>Net_10524);
+\FanCtrl:PWMUDB:pwm1_i_reg\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:pwm1_i_reg\);
+\FanCtrl:PWMUDB:pwm2_i_reg\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:pwm2_i_reg\);
+\FanCtrl:PWMUDB:tc_i_reg\:cy_dff
+	PORT MAP(d=>\FanCtrl:PWMUDB:status_2\,
+		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
+		q=>\FanCtrl:PWMUDB:tc_i_reg\);
 
 END R_T_L;

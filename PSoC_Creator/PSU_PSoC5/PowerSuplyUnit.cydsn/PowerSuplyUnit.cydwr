@@ -259,8 +259,10 @@
       <Data key="1cd16c5b-3c8b-4dfc-962f-fd21697d79bf" value="OneWire" />
       <Data key="2c96cbc0-bb62-4679-a9ea-dced38ba4eac/20681f4c-d171-47ae-a1cb-d832cd711191" value="ADC_DelSig_1_Bypass_P03" />
       <Data key="2c96cbc0-bb62-4679-a9ea-dced38ba4eac/93327f79-f616-44c2-ae10-d5db5cc52542" value="ADC_Current_Bypass_P32" />
+      <Data key="2e17ee68-151c-48fd-a0e4-0e54129c9311" value="O_Led1_2" />
       <Data key="3bf04d40-a28f-4a0d-8c41-b0c3bda75d0f" value="Pin_3" />
       <Data key="4a70367c-d65b-4b20-9eca-2d1b35eceea8" value="MouseData" />
+      <Data key="5d571a5c-28da-4d3e-b644-98a38b81e072" value="O_Led1" />
       <Data key="05f78e28-f059-4c27-b1c7-4396f26f8b4a" value="O_OUT_ON" />
       <Data key="8c479f88-b6dd-4c6f-887d-62a221637cf3" value="O_OnChA" />
       <Data key="8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba" value="I_MultiJogA" />
@@ -268,6 +270,7 @@
       <Data key="32fa1dd9-a04c-4828-a353-ce0f3fc17b02/16a808f6-2e13-45b9-bce0-b001c8655113" value="ADC_VoltageChanelB_Bypass" />
       <Data key="57dbffdf-2e0b-49a0-9f5d-9f2c5d9ff632" value="I_NegVoltChA" />
       <Data key="077f9da7-9d68-4d3e-84cd-408709ee22cf" value="O_LCD_CD" />
+      <Data key="85a06cca-64b1-4fc2-9c88-11848c06c9de" value="O_Led1_1" />
       <Data key="96f32218-8078-40a2-b48b-bec8d7063ffb" value="O_PwmChB" />
       <Data key="264be2d3-9481-494b-8d9c-c1905a45e9cc" value="LCD_DB" />
       <Data key="0753eaa2-82d3-4f73-a322-ca027780335a" value="I_BtnBipolarMode" />
@@ -278,6 +281,7 @@
       <Data key="16933cd3-07f1-4401-aada-624a61fc0d48" value="I_PosCurChB" />
       <Data key="44906eef-7414-4079-8114-eb0c25d01ec7" value="MouseClk" />
       <Data key="83791a4a-92fc-42c2-a75f-a9487b4cf1cd" value="O_LCD_WR" />
+      <Data key="098539c6-72fc-445a-bbee-de8d2c7bc6b8" value="FAN_CTRL" />
       <Data key="25429233-d711-4cec-b6dc-13028ae3d6d7" value="I_VoltChB" />
       <Data key="62478934-1833-4365-9269-5f010bd33840" value="O_OUT_POLARITY" />
       <Data key="77715107-f8d5-47e5-a629-0fb83101ac6b" value="Pin_1" />
@@ -3398,6 +3402,11 @@
         <Data key="Port Format" value="3,2" />
       </Group>
     </Group>
+    <Group key="2e17ee68-151c-48fd-a0e4-0e54129c9311">
+      <Group key="0">
+        <Data key="Port Format" value="15,3" />
+      </Group>
+    </Group>
     <Group key="3bf04d40-a28f-4a0d-8c41-b0c3bda75d0f">
       <Group key="0">
         <Data key="Port Format" value="2,0" />
@@ -3406,6 +3415,11 @@
     <Group key="4a70367c-d65b-4b20-9eca-2d1b35eceea8">
       <Group key="0">
         <Data key="Port Format" value="15,7" />
+      </Group>
+    </Group>
+    <Group key="5d571a5c-28da-4d3e-b644-98a38b81e072">
+      <Group key="0">
+        <Data key="Port Format" value="15,1" />
       </Group>
     </Group>
     <Group key="05f78e28-f059-4c27-b1c7-4396f26f8b4a">
@@ -3441,6 +3455,11 @@
     <Group key="077f9da7-9d68-4d3e-84cd-408709ee22cf">
       <Group key="0">
         <Data key="Port Format" value="1,5" />
+      </Group>
+    </Group>
+    <Group key="85a06cca-64b1-4fc2-9c88-11848c06c9de">
+      <Group key="0">
+        <Data key="Port Format" value="15,2" />
       </Group>
     </Group>
     <Group key="96f32218-8078-40a2-b48b-bec8d7063ffb">
@@ -3512,6 +3531,11 @@
     <Group key="83791a4a-92fc-42c2-a75f-a9487b4cf1cd">
       <Group key="0">
         <Data key="Port Format" value="1,7" />
+      </Group>
+    </Group>
+    <Group key="098539c6-72fc-445a-bbee-de8d2c7bc6b8">
+      <Group key="0">
+        <Data key="Port Format" value="15,0" />
       </Group>
     </Group>
     <Group key="25429233-d711-4cec-b6dc-13028ae3d6d7">

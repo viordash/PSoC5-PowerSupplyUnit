@@ -1,6 +1,6 @@
 // ======================================================================
 // PowerSuplyUnit.v generated from TopDesign.cysch
-// 05/13/2017 at 23:03
+// 05/14/2017 at 11:41
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1165,28 +1165,136 @@ module PWM_v3_30_5 (
 
 endmodule
 
+// PWM_v3_30(CaptureMode=0, Clock_CheckTolerance=true, Clock_desired_freq=12, Clock_desired_freq_unit=6, Clock_divisor=1, Clock_FractDividerDenominator=0, Clock_FractDividerNumerator=0, Clock_FractDividerUsed=false, Clock_is_direct=false, Clock_is_divider=false, Clock_is_freq=true, Clock_minus_tolerance=5, Clock_ph_align_clock_id=, Clock_ph_align_clock_name=, Clock_plus_tolerance=5, Clock_source_clock_id=, Clock_source_clock_name=, Compare1_16=false, Compare1_8=true, Compare2_16=false, Compare2_8=false, CompareStatusEdgeSense=true, CompareType1=1, CompareType1Software=0, CompareType2=1, CompareType2Software=0, CompareValue1=127, CompareValue2=63, CONTROL3=0, ControlReg=true, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeadBand=0, DeadBand2_4=0, DeadBand256=0, DeadBandUsed=0, DeadTime=1, DitherOffset=0, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, InterruptOnCMP1=false, InterruptOnCMP2=false, InterruptOnKill=false, InterruptOnTC=false, IntOnCMP1=0, IntOnCMP2=0, IntOnKill=0, IntOnTC=0, KillMode=0, KillModeMinTime=0, MinimumKillTime=1, OneCompare=true, Period=255, PWMMode=0, PWMModeCenterAligned=0, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=sSTSReg_rstSts, RunMode=0, Status=true, TermMode_capture=0, TermMode_clock=0, TermMode_cmp_sel=0, TermMode_enable=0, TermMode_interrupt=0, TermMode_kill=0, TermMode_ph1=0, TermMode_ph2=0, TermMode_pwm=0, TermMode_pwm1=0, TermMode_pwm2=0, TermMode_reset=0, TermMode_tc=0, TermMode_trigger=0, TermVisibility_capture=false, TermVisibility_clock=true, TermVisibility_cmp_sel=false, TermVisibility_enable=false, TermVisibility_interrupt=true, TermVisibility_kill=false, TermVisibility_ph1=false, TermVisibility_ph2=false, TermVisibility_pwm=true, TermVisibility_pwm1=false, TermVisibility_pwm2=false, TermVisibility_reset=true, TermVisibility_tc=true, TermVisibility_trigger=false, TriggerMode=0, UDB16=false, UDB8=true, UseControl=true, UseInterrupt=true, UseStatus=true, VerilogSectionReplacementString=sP8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=PWM_v3_30, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=FanCtrl, CY_INSTANCE_SHORT_NAME=FanCtrl, CY_MAJOR_VERSION=3, CY_MINOR_VERSION=30, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.0 Update 1, INSTANCE_NAME=FanCtrl, )
+module PWM_v3_30_6 (
+    reset,
+    clock,
+    tc,
+    pwm1,
+    pwm2,
+    interrupt,
+    capture,
+    kill,
+    enable,
+    trigger,
+    cmp_sel,
+    pwm,
+    ph1,
+    ph2);
+    input       reset;
+    input       clock;
+    output      tc;
+    output      pwm1;
+    output      pwm2;
+    output      interrupt;
+    input       capture;
+    input       kill;
+    input       enable;
+    input       trigger;
+    input       cmp_sel;
+    output      pwm;
+    output      ph1;
+    output      ph2;
+
+    parameter Resolution = 8;
+
+          wire  Net_114;
+          wire  Net_113;
+          wire  Net_107;
+          wire  Net_96;
+          wire  Net_55;
+          wire  Net_57;
+          wire  Net_101;
+          wire  Net_54;
+          wire  Net_63;
+
+    B_PWM_v3_30 PWMUDB (
+        .reset(reset),
+        .clock(clock),
+        .tc(Net_101),
+        .pwm1(pwm1),
+        .pwm2(pwm2),
+        .interrupt(Net_55),
+        .kill(kill),
+        .capture(capture),
+        .enable(enable),
+        .cmp_sel(cmp_sel),
+        .trigger(trigger),
+        .pwm(Net_96),
+        .ph1(ph1),
+        .ph2(ph2));
+    defparam PWMUDB.CaptureMode = 0;
+    defparam PWMUDB.CompareStatusEdgeSense = 1;
+    defparam PWMUDB.CompareType1 = 1;
+    defparam PWMUDB.CompareType2 = 1;
+    defparam PWMUDB.DeadBand = 0;
+    defparam PWMUDB.DitherOffset = 0;
+    defparam PWMUDB.EnableMode = 0;
+    defparam PWMUDB.KillMode = 0;
+    defparam PWMUDB.PWMMode = 0;
+    defparam PWMUDB.Resolution = 8;
+    defparam PWMUDB.RunMode = 0;
+    defparam PWMUDB.TriggerMode = 0;
+    defparam PWMUDB.UseStatus = 1;
+
+	// vmCompare (cy_virtualmux_v1_0)
+	assign pwm = Net_96;
+
+	// vmIRQ (cy_virtualmux_v1_0)
+	assign interrupt = Net_55;
+
+	// vmTC (cy_virtualmux_v1_0)
+	assign tc = Net_101;
+
+    OneTerminal OneTerminal_1 (
+        .o(Net_113));
+
+	// FFKillMux (cy_virtualmux_v1_0)
+	assign Net_107 = Net_114;
+
+    ZeroTerminal ZeroTerminal_1 (
+        .z(Net_114));
+
+
+
+endmodule
+
 // top
 module top ;
 
     electrical  VoltChB;
-    electrical  Net_10494;
-    electrical  Net_10493;
-    electrical  Net_10492;
-    electrical  Net_10491;
-    electrical  Net_10490;
-    electrical  Net_10489;
-    electrical  Net_10488;
-    electrical  Net_10487;
-    electrical  Net_10486;
-    electrical  Net_10485;
-    electrical  Net_10484;
-    electrical  Net_10483;
-    electrical  Net_10482;
-    electrical  Net_10481;
-    electrical  Net_10480;
-    electrical  Net_10479;
-    electrical  Net_10478;
+          wire  Net_10556;
+          wire  Net_10552;
+          wire  Net_10551;
+          wire  Net_10549;
+          wire  Net_10548;
+          wire  Net_10547;
+          wire  Net_10546;
+          wire  Net_10545;
+          wire  Net_10544;
+          wire  Net_10543;
+          wire  Net_10542;
+          wire  Net_10541;
+          wire  Net_10540;
+          wire  Net_10539;
+    electrical  Net_10523;
+    electrical  Net_10522;
+    electrical  Net_10521;
     electrical  NegVoltChA;
+    electrical  Net_10520;
+    electrical  Net_10519;
+    electrical  Net_10518;
+    electrical  Net_10517;
+    electrical  Net_10516;
+    electrical  Net_10515;
+    electrical  Net_10514;
+    electrical  Net_10513;
+    electrical  Net_10512;
+    electrical  Net_10511;
+    electrical  Net_10510;
+    electrical  Net_10509;
+    electrical  Net_10508;
+    electrical  Net_10507;
     electrical  Net_10472;
     electrical  Net_10476;
     electrical  Net_10455;
@@ -1195,6 +1303,7 @@ module top ;
     electrical  Net_10452;
     electrical  Net_10451;
     electrical  Net_10450;
+          wire  PwmChA;
     electrical  Net_10449;
     electrical  Net_10448;
     electrical  Net_10447;
@@ -1209,7 +1318,6 @@ module top ;
     electrical  Net_10438;
           wire  Net_10366;
           wire  Net_10435;
-          wire  PwmChA;
           wire  Net_10424;
           wire  Net_10432;
           wire  Net_10353;
@@ -1230,12 +1338,19 @@ module top ;
     electrical  Net_10306;
     electrical  Net_10289;
     electrical  Net_10288;
+          wire  OnChA;
     electrical  Net_10287;
     electrical  Net_10199;
+    electrical  PosCurChB;
     electrical  Net_10200;
     electrical  Net_10296;
+          wire  PwmChB;
+          wire  OnChB;
     electrical  Net_10284;
+    electrical  PosCurChA;
+    electrical  NegCurChA;
     electrical  Net_10283;
+    electrical  NegCurChB;
     electrical  Net_10282;
     electrical  Net_10281;
     electrical  Net_10280;
@@ -1244,19 +1359,12 @@ module top ;
     electrical  Net_10277;
     electrical  Net_10276;
     electrical  Net_10275;
-          wire  OnChA;
     electrical  Net_10274;
     electrical  Net_10273;
-    electrical  PosCurChB;
     electrical  Net_10272;
     electrical  Net_10271;
-          wire  PwmChB;
-          wire  OnChB;
     electrical  Net_10270;
-    electrical  PosCurChA;
-    electrical  NegCurChA;
     electrical  Net_10269;
-    electrical  NegCurChB;
     electrical  Net_10268;
     electrical  Net_10267;
           wire  Net_10165;
@@ -1268,6 +1376,7 @@ module top ;
     electrical  Net_10178;
     electrical  Net_10177;
     electrical  Net_10176;
+    electrical  PosVoltChA;
     electrical  Net_10175;
     electrical  Net_10174;
     electrical  Net_10173;
@@ -1282,7 +1391,6 @@ module top ;
     electrical  Net_10193;
           wire  Net_746;
           wire  Net_745;
-    electrical  PosVoltChA;
           wire  Net_743;
           wire  Net_742;
           wire  Net_741;
@@ -1336,7 +1444,6 @@ module top ;
     electrical  Net_440;
     electrical  Net_1410;
     electrical  Net_413;
-    electrical  Net_412;
     electrical  Net_246;
     electrical  Net_415;
           wire  Net_161;
@@ -1356,6 +1463,13 @@ module top ;
           wire  Net_518;
           wire  Net_517;
     electrical  Net_516;
+          wire  Net_10524;
+    electrical  Net_2761;
+    electrical  Net_317;
+    electrical  Net_290;
+    electrical  Net_2891;
+    electrical  Net_10506;
+    electrical  Net_412;
     electrical  Net_10495;
     electrical  Net_10266;
           wire  Net_10498;
@@ -1364,10 +1478,6 @@ module top ;
     electrical  Net_14740;
     electrical  Net_925;
     electrical  Net_916;
-    electrical  Net_2761;
-    electrical  Net_317;
-    electrical  Net_290;
-    electrical  Net_2891;
     electrical  Net_10434;
     electrical  Net_10431;
     electrical  Net_10423;
@@ -1378,17 +1488,7 @@ module top ;
     electrical  Net_10298;
     electrical  Net_336;
     electrical  Net_14686;
-    electrical  Net_14646;
     electrical  Net_10285;
-    electrical  Net_10293;
-    electrical  Net_10292;
-    electrical  Net_10215;
-    electrical  Net_10214;
-    electrical  Net_10213;
-    electrical  Net_10212;
-    electrical  Net_10211;
-    electrical  Net_10206;
-    electrical  Net_10205;
     electrical  Net_10196;
     electrical  Net_14565;
     electrical  Net_10201;
@@ -2313,15 +2413,6 @@ module top ;
     defparam PWR_5.port_names = "T1";
     defparam PWR_5.width = 1;
 
-    cy_annotation_universal_v1_0 PWR_3 (
-        .connect({
-            Net_10205
-        })
-    );
-    defparam PWR_3.comp_name = "Power_v1_0";
-    defparam PWR_3.port_names = "T1";
-    defparam PWR_3.width = 1;
-
 	wire [0:0] tmpOE__O_PwmChB_net;
 	wire [0:0] tmpFB_0__O_PwmChB_net;
 	wire [0:0] tmpIO_0__O_PwmChB_net;
@@ -3018,23 +3109,24 @@ module top ;
     defparam R_18.port_names = "T1, T2";
     defparam R_18.width = 2;
 
-    cy_annotation_universal_v1_0 PWR_9 (
+    cy_annotation_universal_v1_0 R_43 (
         .connect({
-            Net_412
+            Net_412,
+            Net_10506
         })
     );
-    defparam PWR_9.comp_name = "Power_v1_0";
-    defparam PWR_9.port_names = "T1";
-    defparam PWR_9.width = 1;
+    defparam R_43.comp_name = "Resistor_v1_0";
+    defparam R_43.port_names = "T1, T2";
+    defparam R_43.width = 2;
 
-    cy_annotation_universal_v1_0 PWR_10 (
+    cy_annotation_universal_v1_0 GND_23 (
         .connect({
             Net_413
         })
     );
-    defparam PWR_10.comp_name = "Power_v1_0";
-    defparam PWR_10.port_names = "T1";
-    defparam PWR_10.width = 1;
+    defparam GND_23.comp_name = "Gnd_v1_0";
+    defparam GND_23.port_names = "T1";
+    defparam GND_23.width = 1;
 
     cy_annotation_universal_v1_0 R_19 (
         .connect({
@@ -4202,25 +4294,6 @@ module top ;
 		 (.clock_out(Net_779));
 
 
-    cy_annotation_universal_v1_0 GND_13 (
-        .connect({
-            Net_10206
-        })
-    );
-    defparam GND_13.comp_name = "Gnd_v1_0";
-    defparam GND_13.port_names = "T1";
-    defparam GND_13.width = 1;
-
-    cy_annotation_universal_v1_0 C_29 (
-        .connect({
-            Net_10205,
-            Net_10206
-        })
-    );
-    defparam C_29.comp_name = "Capacitor_v1_0";
-    defparam C_29.port_names = "T1, T2";
-    defparam C_29.width = 2;
-
     cy_annotation_universal_v1_0 PWR_14 (
         .connect({
             Net_658
@@ -4229,26 +4302,6 @@ module top ;
     defparam PWR_14.comp_name = "Power_v1_0";
     defparam PWR_14.port_names = "T1";
     defparam PWR_14.width = 1;
-
-    cy_annotation_universal_v1_0 R_34 (
-        .connect({
-            Net_10206,
-            Net_10212
-        })
-    );
-    defparam R_34.comp_name = "Resistor_v1_0";
-    defparam R_34.port_names = "T1, T2";
-    defparam R_34.width = 2;
-
-    cy_annotation_universal_v1_0 R_33 (
-        .connect({
-            Net_10205,
-            Net_10211
-        })
-    );
-    defparam R_33.comp_name = "Resistor_v1_0";
-    defparam R_33.port_names = "T1, T2";
-    defparam R_33.width = 2;
 
     cy_annotation_universal_v1_0 P_3 (
         .connect({
@@ -4558,102 +4611,6 @@ module top ;
     defparam GND_15.port_names = "T1";
     defparam GND_15.width = 1;
 
-    cy_annotation_universal_v1_0 C_30 (
-        .connect({
-            Net_10211,
-            Net_10212
-        })
-    );
-    defparam C_30.comp_name = "Capacitor_v1_0";
-    defparam C_30.port_names = "T1, T2";
-    defparam C_30.width = 2;
-
-    cy_annotation_universal_v1_0 C_31 (
-        .connect({
-            Net_10213,
-            Net_10214
-        })
-    );
-    defparam C_31.comp_name = "Capacitor_v1_0";
-    defparam C_31.port_names = "T1, T2";
-    defparam C_31.width = 2;
-
-    cy_annotation_universal_v1_0 GND_16 (
-        .connect({
-            Net_10215
-        })
-    );
-    defparam GND_16.comp_name = "Gnd_v1_0";
-    defparam GND_16.port_names = "T1";
-    defparam GND_16.width = 1;
-
-    cy_annotation_universal_v1_0 R_35 (
-        .connect({
-            Net_10213,
-            Net_10292
-        })
-    );
-    defparam R_35.comp_name = "Resistor_v1_0";
-    defparam R_35.port_names = "T1, T2";
-    defparam R_35.width = 2;
-
-    cy_annotation_universal_v1_0 R_36 (
-        .connect({
-            Net_10214,
-            Net_10293
-        })
-    );
-    defparam R_36.comp_name = "Resistor_v1_0";
-    defparam R_36.port_names = "T1, T2";
-    defparam R_36.width = 2;
-
-    cy_annotation_universal_v1_0 C_32 (
-        .connect({
-            Net_10292,
-            Net_14646
-        })
-    );
-    defparam C_32.comp_name = "Capacitor_v1_0";
-    defparam C_32.port_names = "T1, T2";
-    defparam C_32.width = 2;
-
-    cy_annotation_universal_v1_0 C_33 (
-        .connect({
-            Net_14646,
-            Net_10293
-        })
-    );
-    defparam C_33.comp_name = "Capacitor_v1_0";
-    defparam C_33.port_names = "T1, T2";
-    defparam C_33.width = 2;
-
-    cy_annotation_universal_v1_0 GND_17 (
-        .connect({
-            Net_14646
-        })
-    );
-    defparam GND_17.comp_name = "Gnd_v1_0";
-    defparam GND_17.port_names = "T1";
-    defparam GND_17.width = 1;
-
-    cy_annotation_universal_v1_0 PWR_23 (
-        .connect({
-            Net_10292
-        })
-    );
-    defparam PWR_23.comp_name = "Power_v1_0";
-    defparam PWR_23.port_names = "T1";
-    defparam PWR_23.width = 1;
-
-    cy_annotation_universal_v1_0 PWR_24 (
-        .connect({
-            Net_10293
-        })
-    );
-    defparam PWR_24.comp_name = "Power_v1_0";
-    defparam PWR_24.port_names = "T1";
-    defparam PWR_24.width = 1;
-
     cy_annotation_universal_v1_0 U_8 (
         .connect({
             Net_10285,
@@ -4666,15 +4623,6 @@ module top ;
     defparam U_8.comp_name = "ExtOpAmp_v1_0";
     defparam U_8.port_names = "N, O, P, VN, VP";
     defparam U_8.width = 5;
-
-    cy_annotation_universal_v1_0 GND_18 (
-        .connect({
-            Net_10285
-        })
-    );
-    defparam GND_18.comp_name = "Gnd_v1_0";
-    defparam GND_18.port_names = "T1";
-    defparam GND_18.width = 1;
 
     cy_annotation_universal_v1_0 R_37 (
         .connect({
@@ -5518,71 +5466,6 @@ module top ;
 		 (.int_signal(Net_10498));
 
 
-    cy_annotation_universal_v1_0 R_42 (
-        .connect({
-            Net_290,
-            Net_2891
-        })
-    );
-    defparam R_42.comp_name = "Resistor_v1_0";
-    defparam R_42.port_names = "T1, T2";
-    defparam R_42.width = 2;
-
-    cy_annotation_universal_v1_0 P_6 (
-        .connect({
-            Net_317,
-            Net_10484,
-            Net_10485,
-            Net_10486,
-            Net_10487,
-            Net_10488,
-            Net_10489,
-            Net_10490,
-            Net_10491,
-            Net_10492,
-            Net_10493,
-            Net_290,
-            Net_10494,
-            Net_2761,
-            Net_10478,
-            Net_10479,
-            Net_10480,
-            Net_10481,
-            Net_10482,
-            Net_10483
-        })
-    );
-    defparam P_6.comp_name = "Connector20_v1_0";
-    defparam P_6.port_names = "T1, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T2, T20, T3, T4, T5, T6, T7, T8, T9";
-    defparam P_6.width = 20;
-
-    cy_annotation_universal_v1_0 GND_22 (
-        .connect({
-            Net_317
-        })
-    );
-    defparam GND_22.comp_name = "Gnd_v1_0";
-    defparam GND_22.port_names = "T1";
-    defparam GND_22.width = 1;
-
-    cy_annotation_universal_v1_0 Vdd_1 (
-        .connect({
-            Net_2761
-        })
-    );
-    defparam Vdd_1.comp_name = "Power_v1_0";
-    defparam Vdd_1.port_names = "T1";
-    defparam Vdd_1.width = 1;
-
-    cy_annotation_universal_v1_0 Vdd_2 (
-        .connect({
-            Net_2891
-        })
-    );
-    defparam Vdd_2.comp_name = "Power_v1_0";
-    defparam Vdd_2.port_names = "T1";
-    defparam Vdd_2.width = 1;
-
 	wire [0:0] tmpOE__OneWire_net;
 	wire [0:0] tmpFB_0__OneWire_net;
 	wire [0:0] tmpIO_0__OneWire_net;
@@ -5658,6 +5541,203 @@ module top ;
 		  .out_reset({1'b0}));
 
 	assign tmpOE__OneWire_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    cy_annotation_universal_v1_0 Vdd_2 (
+        .connect({
+            Net_2891
+        })
+    );
+    defparam Vdd_2.comp_name = "Power_v1_0";
+    defparam Vdd_2.port_names = "T1";
+    defparam Vdd_2.width = 1;
+
+    cy_annotation_universal_v1_0 Vdd_1 (
+        .connect({
+            Net_2761
+        })
+    );
+    defparam Vdd_1.comp_name = "Power_v1_0";
+    defparam Vdd_1.port_names = "T1";
+    defparam Vdd_1.width = 1;
+
+    cy_annotation_universal_v1_0 GND_22 (
+        .connect({
+            Net_317
+        })
+    );
+    defparam GND_22.comp_name = "Gnd_v1_0";
+    defparam GND_22.port_names = "T1";
+    defparam GND_22.width = 1;
+
+    cy_annotation_universal_v1_0 P_6 (
+        .connect({
+            Net_317,
+            Net_10513,
+            Net_10514,
+            Net_10515,
+            Net_10516,
+            Net_10517,
+            Net_10518,
+            Net_10519,
+            Net_10520,
+            Net_10521,
+            Net_10522,
+            Net_290,
+            Net_10523,
+            Net_2761,
+            Net_10507,
+            Net_10508,
+            Net_10509,
+            Net_10510,
+            Net_10511,
+            Net_10512
+        })
+    );
+    defparam P_6.comp_name = "Connector20_v1_0";
+    defparam P_6.port_names = "T1, T10, T11, T12, T13, T14, T15, T16, T17, T18, T19, T2, T20, T3, T4, T5, T6, T7, T8, T9";
+    defparam P_6.width = 20;
+
+    cy_annotation_universal_v1_0 R_42 (
+        .connect({
+            Net_290,
+            Net_2891
+        })
+    );
+    defparam R_42.comp_name = "Resistor_v1_0";
+    defparam R_42.port_names = "T1, T2";
+    defparam R_42.width = 2;
+
+    cy_annotation_universal_v1_0 C_34 (
+        .connect({
+            Net_412,
+            Net_10285
+        })
+    );
+    defparam C_34.comp_name = "Capacitor_v1_0";
+    defparam C_34.port_names = "T1, T2";
+    defparam C_34.width = 2;
+
+    cy_annotation_universal_v1_0 GND_24 (
+        .connect({
+            Net_10285
+        })
+    );
+    defparam GND_24.comp_name = "Gnd_v1_0";
+    defparam GND_24.port_names = "T1";
+    defparam GND_24.width = 1;
+
+    cy_annotation_universal_v1_0 PWR_9 (
+        .connect({
+            Net_10506
+        })
+    );
+    defparam PWR_9.comp_name = "Power_v1_0";
+    defparam PWR_9.port_names = "T1";
+    defparam PWR_9.width = 1;
+
+	wire [0:0] tmpOE__FAN_CTRL_net;
+	wire [0:0] tmpFB_0__FAN_CTRL_net;
+	wire [0:0] tmpIO_0__FAN_CTRL_net;
+	wire [0:0] tmpINTERRUPT_0__FAN_CTRL_net;
+	electrical [0:0] tmpSIOVREF__FAN_CTRL_net;
+
+	cy_psoc3_pins_v1_10
+		#(.id("098539c6-72fc-445a-bbee-de8d2c7bc6b8"),
+		  .drive_mode(3'b110),
+		  .ibuf_enabled(1'b1),
+		  .init_dr_st(1'b0),
+		  .input_clk_en(0),
+		  .input_sync(1'b1),
+		  .input_sync_mode(1'b0),
+		  .intr_mode(2'b00),
+		  .invert_in_clock(0),
+		  .invert_in_clock_en(0),
+		  .invert_in_reset(0),
+		  .invert_out_clock(0),
+		  .invert_out_clock_en(0),
+		  .invert_out_reset(0),
+		  .io_voltage(""),
+		  .layout_mode("CONTIGUOUS"),
+		  .oe_conn(1'b0),
+		  .oe_reset(0),
+		  .oe_sync(1'b0),
+		  .output_clk_en(0),
+		  .output_clock_mode(1'b0),
+		  .output_conn(1'b1),
+		  .output_mode(1'b0),
+		  .output_reset(0),
+		  .output_sync(1'b0),
+		  .pa_in_clock(-1),
+		  .pa_in_clock_en(-1),
+		  .pa_in_reset(-1),
+		  .pa_out_clock(-1),
+		  .pa_out_clock_en(-1),
+		  .pa_out_reset(-1),
+		  .pin_aliases(""),
+		  .pin_mode("O"),
+		  .por_state(4),
+		  .sio_group_cnt(0),
+		  .sio_hyst(1'b1),
+		  .sio_ibuf(""),
+		  .sio_info(2'b00),
+		  .sio_obuf(""),
+		  .sio_refsel(""),
+		  .sio_vtrip(""),
+		  .sio_hifreq(""),
+		  .sio_vohsel(""),
+		  .slew_rate(1'b0),
+		  .spanning(0),
+		  .use_annotation(1'b0),
+		  .vtrip(2'b10),
+		  .width(1),
+		  .ovt_hyst_trim(1'b0),
+		  .ovt_needed(1'b0),
+		  .ovt_slew_control(2'b00),
+		  .input_buffer_sel(2'b00))
+		FAN_CTRL
+		 (.oe(tmpOE__FAN_CTRL_net),
+		  .y({Net_10524}),
+		  .fb({tmpFB_0__FAN_CTRL_net[0:0]}),
+		  .io({tmpIO_0__FAN_CTRL_net[0:0]}),
+		  .siovref(tmpSIOVREF__FAN_CTRL_net),
+		  .interrupt({tmpINTERRUPT_0__FAN_CTRL_net[0:0]}),
+		  .in_clock({1'b0}),
+		  .in_clock_en({1'b1}),
+		  .in_reset({1'b0}),
+		  .out_clock({1'b0}),
+		  .out_clock_en({1'b1}),
+		  .out_reset({1'b0}));
+
+	assign tmpOE__FAN_CTRL_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{1'b1} : {1'b1};
+
+    PWM_v3_30_6 FanCtrl (
+        .reset(1'b0),
+        .clock(Net_10540),
+        .tc(Net_10541),
+        .pwm1(Net_10542),
+        .pwm2(Net_10543),
+        .interrupt(Net_10544),
+        .capture(1'b0),
+        .kill(1'b1),
+        .enable(1'b1),
+        .trigger(1'b0),
+        .cmp_sel(1'b0),
+        .pwm(Net_10524),
+        .ph1(Net_10551),
+        .ph2(Net_10552));
+    defparam FanCtrl.Resolution = 8;
+
+
+	cy_clock_v1_0
+		#(.id("638a4f95-3769-4114-8fce-0b10871cd95a"),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
+		  .divisor(0),
+		  .period("0"),
+		  .is_direct(1),
+		  .is_digital(1))
+		Clock_4
+		 (.clock_out(Net_10540));
+
 
 
 
