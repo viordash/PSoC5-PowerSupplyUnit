@@ -1270,33 +1270,35 @@
 <v>Cypress Component Catalog\System</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>Cypress Component Catalog</v>
+<v>Cypress Component Catalog\Analog</v>
+<v>Cypress Component Catalog\CapSense</v>
+<v>Cypress Component Catalog\Communications</v>
+<v>Cypress Component Catalog\Digital</v>
+<v>Cypress Component Catalog\Digital\Functions</v>
+<v>Cypress Component Catalog\Digital\Functions\Counter [v3.0]</v>
+<v>Cypress Component Catalog\Digital\Functions\CRC [v2.40]</v>
+<v>Cypress Component Catalog\Digital\Functions\PrISM [v2.20]</v>
+<v>Cypress Component Catalog\Digital\Functions\PRS [v2.40]</v>
+<v>Cypress Component Catalog\Digital\Functions\PWM [v3.30]</v>
+<v>Cypress Component Catalog\Digital\Functions\Quadrature Decoder [v3.0]</v>
+<v>Cypress Component Catalog\Digital\Functions\Shift Register [v2.30]</v>
+<v>Cypress Component Catalog\Digital\Functions\Timer [v2.70]</v>
+<v>Cypress Component Catalog\Digital\Logic</v>
+<v>Cypress Component Catalog\Digital\Registers</v>
+<v>Cypress Component Catalog\Digital\Utility</v>
+<v>Cypress Component Catalog\Display</v>
 <v>Cypress Component Catalog\Filters</v>
 <v>Cypress Component Catalog\Ports and Pins</v>
 <v>Cypress Component Catalog\Ports and Pins\Analog Pin [v2.20]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Bidirectional Pin [v2.20]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Input Pin [v2.20]</v>
-<v>Cypress Component Catalog\Ports and Pins\Digital Output Pin [v2.20]</v>
-<v>Cypress Component Catalog\Power Supervision</v>
-<v>Cypress Component Catalog\System</v>
-<v>Cypress Component Catalog\System\Boost Converter [v5.0]</v>
-<v>Cypress Component Catalog\System\Bootloadable [v1.50]</v>
-<v>Cypress Component Catalog\System\Bootloader [v1.50]</v>
-<v>Cypress Component Catalog\System\Clock [v2.20]</v>
-<v>Cypress Component Catalog\System\Die Temperature [v2.0]</v>
-<v>Cypress Component Catalog\System\DMA [v1.70]</v>
-<v>Cypress Component Catalog\System\EEPROM [v3.0]</v>
-<v>Cypress Component Catalog\System\Emulated EEPROM [v1.20]</v>
-<v>Cypress Component Catalog\System\External Memory Interface</v>
-<v>Cypress Component Catalog\System\Global Signal Reference [v2.0]</v>
-<v>Cypress Component Catalog\System\ILO Trim [v2.0]</v>
-<v>Cypress Component Catalog\System\Interrupt [v1.70]</v>
-<v>Cypress Component Catalog\System\RTC [v2.0]</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Off-Chip Component Catalog\Diodes\LED [v1.0]">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Off-Chip Component Catalog\Electro-Mechanical\Connector (1-20 Pins) [v1.0]">
 <ExpandedNodeIds>
 <v>Off-Chip Component Catalog</v>
 <v>Off-Chip Component Catalog\Diodes</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical</v>
+<v>Off-Chip Component Catalog\Passive</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>Off-Chip Component Catalog</v>
@@ -1312,10 +1314,14 @@
 <v>Off-Chip Component Catalog\Diodes\Varactor Diode [v1.0]</v>
 <v>Off-Chip Component Catalog\Diodes\Zener Diode [v1.0]</v>
 <v>Off-Chip Component Catalog\Electro-Mechanical</v>
-<v>Off-Chip Component Catalog\Passive</v>
-<v>Off-Chip Component Catalog\Power</v>
-<v>Off-Chip Component Catalog\Sensors</v>
-<v>Off-Chip Component Catalog\Transistors</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Connector (1-20 Pins) [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Motor (3 Phase) [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Motor (DC) [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Relay [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Speaker [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Switch (SPDT- DPDT) [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Switch (SPST) [v1.0]</v>
+<v>Off-Chip Component Catalog\Electro-Mechanical\Test Point [v1.0]</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </tree_states>
