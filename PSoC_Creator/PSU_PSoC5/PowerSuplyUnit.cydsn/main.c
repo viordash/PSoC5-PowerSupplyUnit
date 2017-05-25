@@ -1,26 +1,69 @@
 /* ========================================
- *
- * Copyright YOUR COMPANY, THE YEAR
- * All Rights Reserved
- * UNPUBLISHED, LICENSED SOFTWARE.
- *
- * CONFIDENTIAL AND PROPRIETARY INFORMATION
- * WHICH IS THE PROPERTY OF your company.
- *
- * ========================================
+*
+* Copyright YOUR COMPANY, THE YEAR
+* All Rights Reserved
+* UNPUBLISHED, LICENSED SOFTWARE.
+*
+* CONFIDENTIAL AND PROPRIETARY INFORMATION
+* WHICH IS THE PROPERTY OF your company.
+*
+* ========================================
 */
-#include "project.h"
+#include <device.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include "LCD_Display.h"
+#include "MainWork.h"
 
-int main(void)
-{
-    CyGlobalIntEnable; /* Enable global interrupts. */
-
-    /* Place your initialization/startup code here (e.g. MyInst_Start()) */
-
-    for(;;)
-    {
-        /* Place your application code here. */
-    }
+void TestPrintString(PCHAR prefix, INT row, INT val, INT font) {
+	CHAR buffer[32];
+	sprintf(buffer, "%s %u ", prefix, val);
+	Display_SetFont(font);
+	Display_SetCursorPos(row, 0);
+	Display_Print(buffer, -1);
 }
+
+DWORD SysTickCountWDG = 0;
+void TaskShedul(void) {
+	while (TRUE) {//Функция расположенная выше имеет больший приоритет
+		if (SysTickCountWDG < SysTickCount) {
+			SysTickCountWDG = SysTickCount + SYSTICK_mS(100); /*100 mS, CYWDT_128_TICKS   -   256 - 384   ms*/
+#ifdef WDT_ENABLE
+			CyWdtClear();
+#endif  
+		}
+		TaskResume(&MainWorkFunction, NULL);
+		TaskResume(&DisplayFunction, NULL);
+	}
+}
+
+void TasksInit(void) {
+	DWORD stack = __get_MSP();
+	stack -= 0x500; //стек для основного цикла
+
+	TaskExecInit(&DisplayFunction, (POINTER)Display_Task, stack);
+	stack -= 0x700;
+
+	TaskExecInit(&MainWorkFunction, (POINTER)MainWork_Task, stack);
+	stack -= 0x500;
+}
+
+int main() {
+	/* Place your initialization/startup code here (e.g. MyInst_Start()) */
+	__disable_irq();
+	SystemOS_Init();
+#ifdef WDT_ENABLE
+	CyWdtStart(CYWDT_128_TICKS, CYWDT_LPMODE_MAXINTER);
+#endif 
+
+	Display_Init();
+	MainWork_Init();
+	TasksInit();
+	//  __enable_irq();
+	CyGlobalIntEnable;
+	TaskShedul();
+	return 0;
+}
+
 
 /* [] END OF FILE */
