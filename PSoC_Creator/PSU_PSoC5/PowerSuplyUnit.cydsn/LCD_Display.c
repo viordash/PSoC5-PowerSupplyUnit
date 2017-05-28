@@ -21,23 +21,24 @@ void Display_Init() {
 }
 
 void Display_Task() {	
-BYTE minute, second;
-CHAR buffer[40];
+//BYTE minute, second;
+//CHAR buffer[40];
     _LCD_Init();
     _LCD_WaitReady();
-	_LCD_SetCursorPos(1, 22);
-	_LCD_SetFont(3);
-	minute = 0;
-	second = 0;
+	_LCD_SetCursorPos(0, 0);
+	_LCD_SetFont(2);
+//	minute = 0;
+//	second = 0;
 	while (TRUE) {
-        sprintf(buffer, "%02u:%02u", minute, second);
-		_LCD_Print(buffer, -1);
-		if (++second >= 60) {
-			second = 0;
-			if (++minute >= 60) {
-				minute= 0;
-			}
-		}
+        _LCD_Print("!\" %", -1);
+//        sprintf(buffer, "%02u:%02u", minute, second);
+//		_LCD_Print(buffer, -1);
+//		if (++second >= 60) {
+//			second = 0;
+//			if (++minute >= 60) {
+//				minute= 0;
+//			}
+//		}
 		TaskSleep(&DisplayFunction, SYSTICK_mS(1000));		
 	}
 }

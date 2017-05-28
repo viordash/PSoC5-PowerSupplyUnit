@@ -12,10 +12,10 @@
     <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
     <paddingRemovalVertical>Tighest</paddingRemovalVertical>
     <lineWrap>AtColumn</lineWrap>
-    <bitLayout>ColumnMajor</bitLayout>
+    <bitLayout>RowMajor</bitLayout>
     <byteOrder>MsbFirst</byteOrder>
-    <byteFormat>Hex</byteFormat>
-    <byteLeadingString>0x</byteLeadingString>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>
@@ -45,10 +45,10 @@
     <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
     <paddingRemovalVertical>Tighest</paddingRemovalVertical>
     <lineWrap>AtColumn</lineWrap>
-    <bitLayout>ColumnMajor</bitLayout>
+    <bitLayout>RowMajor</bitLayout>
     <byteOrder>MsbFirst</byteOrder>
-    <byteFormat>Hex</byteFormat>
-    <byteLeadingString>0x</byteLeadingString>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>
@@ -78,10 +78,10 @@
     <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
     <paddingRemovalVertical>Fixed</paddingRemovalVertical>
     <lineWrap>AtColumn</lineWrap>
-    <bitLayout>ColumnMajor</bitLayout>
+    <bitLayout>RowMajor</bitLayout>
     <byteOrder>MsbFirst</byteOrder>
-    <byteFormat>Hex</byteFormat>
-    <byteLeadingString>0x</byteLeadingString>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>

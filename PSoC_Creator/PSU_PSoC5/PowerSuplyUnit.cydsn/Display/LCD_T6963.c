@@ -16,8 +16,6 @@
 #include "Display\LCD_T6963.h"
 #include "LCD_Display.h"
 
-#define T6963_HOR_DOTS 240
-#define T6963_VER_DOTS 128
 
 #define T6963_TIME_ACCESS (150 - 50)  /*время ожидания при чтении данных, мкС*/
 #define T6963_TIME_WRITE (80 - 0)   /*время ожидания при записи данных, мкС*/
@@ -46,11 +44,6 @@
 #define T6963_CMD__DSPL_MODE_GRPH 0x98		
 #define T6963_CMD__DSPL_OFF 0x90
 
-#define T6963_FONT_WIDTH 8	/*ширина символа в битах у выбранного шрифта*/
-#define T6963_GRPHIC_HOME 0x0000 /*((T6963_RAM_END / 2) + 1)	*/
-#define T6963_GRPHIC_AREA ((T6963_HOR_DOTS / T6963_FONT_WIDTH) + 0)	/*(240 hor. dot / T6963_FONT_WIDTH) + 1 = 40 char per line*/
-
-#define T6963_LCD_MAX_ROW (T6963_VER_DOTS / 8)	//максимум рядов по вертикали
 
 #define T6963_DataPortToInput() {LCD_DB_OutEnable_Write(FALSE);}/*T6963_Write_DB(0xFF)*/
 #define T6963_DataPortToOutput() {LCD_DB_OutEnable_Write(TRUE);}/**/
@@ -70,24 +63,25 @@
 
 typedef enum {
     dtData = FALSE,
-	  dtCommand = TRUE
+	dtCommand = TRUE
 } DataType;	 
 
 TDisplay Display;
 BOOL initialized = FALSE;
 
-void  Delay_nS(x) { 
-    DWORD i = x / (1000 / BCLK__BUS_CLK__MHZ );  
-    CyDelayCycles(i); 
+
+#define Delay_nS(x) { \
+    DWORD i = x / (1000 / BCLK__BUS_CLK__MHZ );  \
+    CyDelayCycles(i); \
 } //задержка в nS
 
 BYTE T6963_Read(DataType dataType) { 
-	  T6963_DataPortToInput(); 
+	T6963_DataPortToInput(); 
     T6963_Write_CD(dataType); 
     T6963_Write_RD(FALSE); 
-	  Delay_nS(T6963_TIME_ACCESS); 
+	Delay_nS(T6963_TIME_ACCESS); 
     T6963_Write_RD(TRUE); 
-	  return(T6963_Read_DB()); 
+	return(T6963_Read_DB()); 
 }
 
 void T6963_Write(BYTE value, DataType dataType, BYTE statusMask) { 
@@ -99,7 +93,7 @@ void T6963_Write(BYTE value, DataType dataType, BYTE statusMask) {
     T6963_Write_DB(value);
     T6963_Write_CD(dataType); 
     T6963_Write_WR(FALSE); 
-	  Delay_nS(T6963_TIME_WRITE); 
+	Delay_nS(T6963_TIME_WRITE); 
     T6963_Write_WR(TRUE); 
 }
 
@@ -120,6 +114,8 @@ void _LCD_Init() {
 	T6963_Write(0, dtData, STATUS_BUSY);
 	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand, STATUS_BUSY);	//graphic area command  
 
+    Display.GraphicBuffer = malloc(T6963_GRPHIC_AREA * T6963_VER_DOTS);    
+    memset(Display.GraphicBuffer, 0, T6963_GRPHIC_AREA * T6963_VER_DOTS);
 	_LCD_SetFont(1);
 	_LCD_SetCursorPos(0, 0);
 	_LCD_Clear();
@@ -134,7 +130,7 @@ void _LCD_WaitReady() {
 
 void _LCD_Reset(void) {
     O_LCD_RES_Write(FALSE);
-	Display_TaskSleep(5);
+	  Display_TaskSleep(5);
     O_LCD_RES_Write(TRUE);
 }
 
@@ -149,6 +145,21 @@ void _LCD_Clear(void) {
 
 	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
 		T6963_Write(0x00, dtData, STATUS_AUTO_WRITE);
+	}
+	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
+}
+
+
+void CopyGraphicBufferToDisplay(void) {
+	//Set adress pointer     
+	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY);       //Low adress
+	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);       //High adress
+	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Поместить в указатель адреса значение 0
+
+	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
+    DWORD i;
+	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
+		T6963_Write(Display.GraphicBuffer[i], dtData, STATUS_AUTO_WRITE);
 	}
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
@@ -271,22 +282,56 @@ void _LCD_PrintChar(CHAR ch) {
 	_LCD_Print(data, 1);
 }
 
+BYTE CreateShiftMask (BYTE pos){
+    BYTE res = 0;
+    while (pos--) {
+        res = res >> 1;
+        res |= 0x80;
+    }
+    return res;
+}
+
+void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT posX, INT posShift, BYTE shiftMask) {
+    BYTE remain = 0;
+    BYTE charPosX = 0;
+	while (width > 0) {
+        union uWORD data;
+        data.asWORD = 0;
+        data.asBYTE[1] = *pCharBitmap;                
+        data.asWORD = data.asWORD >> posShift;
+        data.asBYTE[1] += remain;
+        remain = data.asBYTE[0];
+        PBYTE pGraphicBuffer = &(Display.GraphicBuffer[posY + (posX / 8) + charPosX]);
+		BYTE bt = *pGraphicBuffer & shiftMask;
+        *pGraphicBuffer = bt | data.asBYTE[1];
+        if (width > 8) {
+            width -= 8;  
+            pCharBitmap++;
+        } else {
+            width = 0;
+        }
+        charPosX++;
+	}
+}
+
 void _LCD_Print(PCHAR buffer, INT size) {
 	INT height;
-	WORD coordY = Display.coordY;
+	INT posY = Display.coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
 	if (size == 0) {
 		return;
 	}
 	if (size < 0) {
 		size = strlen(buffer);
-	}
-	PCHAR pStringEnd = buffer + size;
-	for (height = 0; height < Display.font->height; height++) {
-		PCHAR pString = buffer;
-		CHAR ch;
-		WORD coordX = Display.coordX;
-		while (pString < pStringEnd) {
-			ch = *pString++;
+	}  
+	PCHAR pStringEnd = buffer + size;  
+    for (height = 0; height < Display.font->height * 8; height++) {
+        BYTE posX = Display.coordX / 8;
+        BYTE shift = Display.coordX % 8;
+        BYTE shiftMask = CreateShiftMask(shift); 
+        PCHAR pString = buffer;
+        CHAR ch;
+        while (pString < pStringEnd) {
+            ch = *pString++;
 			if (ch == 0x0D || ch == 0x0A) {
 				pStringEnd = pString;
 				ch = *pString;
@@ -301,24 +346,23 @@ void _LCD_Print(PCHAR buffer, INT size) {
 			}
 			if ((ch < Display.font->start_char) || (ch > Display.font->end_char)) {
 				return;
-			}
-			PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
+			}    
+            
+            PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
 			INT width = p_character_descriptor->width; // Character width in bits.
-			PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * width));
-
-			while (width-- > 0) {
-				T6963_DrawVertPixels(coordX++, coordY, *(pBuffer++));
-			}
-
+            PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * ((width / 8) + 1)));
+            PutDataInGraphicBuffer(pBuffer, width, posY, posX, shift, shiftMask);
+            posX += width;
 			if (ch > ' ') {
-				width = Display.font->separatorWidth; //space between chars		  
-				while (width-- > 0) {
-					T6963_DrawVertPixels(coordX++, coordY, 0x00);
-				}
-			}
-		}
-		coordY += 8;
-	};
+                width = Display.font->separatorWidth; //space between chars	
+                BYTE spaceChars[8] = {0};
+                PutDataInGraphicBuffer(spaceChars, width, posY, posX, shift, shiftMask);
+                posX += width;
+			}         
+        }
+        posY += (T6963_HOR_DOTS / T6963_FONT_WIDTH);
+    }
+    CopyGraphicBufferToDisplay();
 }
 
 void _LCD_SetFont(INT size) {
