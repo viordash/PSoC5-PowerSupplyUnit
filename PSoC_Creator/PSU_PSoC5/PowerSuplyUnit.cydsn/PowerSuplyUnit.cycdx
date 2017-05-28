@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
+  <block name="PWR_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="U_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="U_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="U_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_MultiJogA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="U_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="K_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="K_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Control_Reg_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="Control_Reg_1_CONTROL_REG" address="0x40006577" bitWidth="8" desc="" hidden="false" />
@@ -39,12 +40,12 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_2_COMPARE_Reg_" address="0x40006526" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="PWM_2_Control_Reg" address="0x40006575" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="PWM_2_Control_Reg" address="0x40006476" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
     </register>
+    <register name="PWM_2_COMPARE_Reg_" address="0x40006526" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
     <register name="PWM_2_STATUS_AUX_CTRL" address="0x40006596" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
@@ -90,12 +91,12 @@
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_1_COMPARE_Reg_" address="0x40006527" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="PWM_1_Control_Reg" address="0x40006574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="PWM_1_Control_Reg" address="0x40006477" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
     </register>
+    <register name="PWM_1_COMPARE_Reg_" address="0x40006527" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
     <register name="PWM_1_STATUS_AUX_CTRL" address="0x40006597" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
@@ -136,13 +137,16 @@
   <block name="P_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_MultiJogA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_Led1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_Led1_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="FanCtrl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -151,20 +155,20 @@
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="FanCtrl_COMPARE_Reg_" address="0x40006426" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="FanCtrl_Control_Reg" address="0x40006476" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="FanCtrl_COMPARE_Reg_" address="0x40006524" bitWidth="8" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
+    <register name="FanCtrl_Control_Reg" address="0x40006574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
     </register>
-    <register name="FanCtrl_STATUS_MASK" address="0x40006486" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+    <register name="FanCtrl_STATUS_MASK" address="0x40006584" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
       <field name="PWM_STS_CMP1" from="0" to="0" access="R" resetVal="" desc="Enables the Interrupt on Compare 1" hidden="false" />
       <field name="PWM_STS_CMP2" from="1" to="1" access="R" resetVal="" desc="Enables the Interrupt on Compare 2" hidden="false" />
       <field name="PWM_STS_TC" from="2" to="2" access="R" resetVal="" desc="Enables the Interrupt on Terminal Count" hidden="false" />
       <field name="PWM_STS_FIFO_FULL" from="3" to="3" access="R" resetVal="" desc="FIFO Full Status Mask " hidden="false" />
       <field name="PWM_STS_KILL" from="5" to="5" access="R" resetVal="" desc="Enables the Interrupt on Kill" hidden="false" />
     </register>
-    <register name="FanCtrl_STATUS_AUX_CTRL" address="0x40006496" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+    <register name="FanCtrl_STATUS_AUX_CTRL" address="0x40006594" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -191,26 +195,25 @@
       </field>
     </register>
   </block>
-  <block name="C_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="FAN_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LCD_DB_OutEnable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="LCD_DB_OutEnable_CONTROL_REG" address="0x4000647C" bitWidth="8" desc="" hidden="false" />
+  </block>
   <block name="GND_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_Led1_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MouseClk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_BtnOk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -238,34 +241,34 @@
   <block name="PWR_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_LCD_RD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Q_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_OUT_POLARITY" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="L_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Q_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_OnChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_OnChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_PwmChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_PwmChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_OnChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="U_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_PwmChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="U_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1324,36 +1327,36 @@
   <block name="C_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="L_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_PosVoltChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_NegVoltChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_PosVoltChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_VoltChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_LCD_RD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_LCD_WR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="AdcCurrentChanel" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="AdcCurrentChanel_CONTROL_REG" address="0x40006576" bitWidth="8" desc="" hidden="false" />
   </block>
+  <block name="PWR_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />

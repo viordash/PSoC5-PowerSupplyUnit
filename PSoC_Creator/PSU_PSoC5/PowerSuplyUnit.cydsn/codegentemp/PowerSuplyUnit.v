@@ -1,6 +1,6 @@
 // ======================================================================
 // PowerSuplyUnit.v generated from TopDesign.cysch
-// 05/26/2017 at 02:20
+// 05/28/2017 at 16:25
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1263,6 +1263,15 @@ endmodule
 module top ;
 
     electrical  VoltChB;
+          wire  Net_10693;
+          wire  Net_10692;
+          wire  Net_10712;
+          wire  Net_10711;
+          wire  Net_10710;
+          wire  Net_10717;
+          wire  Net_10716;
+          wire  Net_10715;
+          wire  Net_10714;
     electrical  Net_10606;
     electrical  Net_10605;
     electrical  Net_10604;
@@ -1271,6 +1280,7 @@ module top ;
     electrical  Net_10601;
     electrical  Net_10600;
     electrical  Net_10599;
+    electrical  NegVoltChA;
     electrical  Net_10598;
     electrical  Net_10597;
     electrical  Net_10596;
@@ -1280,10 +1290,10 @@ module top ;
     electrical  Net_10592;
     electrical  Net_10591;
     electrical  Net_10590;
-    electrical  NegVoltChA;
     electrical  Net_10569;
     electrical  Net_10566;
     electrical  Net_10559;
+          wire  PwmChA;
           wire  Net_10556;
           wire  Net_10552;
           wire  Net_10551;
@@ -1300,7 +1310,6 @@ module top ;
           wire  Net_10539;
     electrical  Net_10523;
     electrical  Net_10522;
-          wire  PwmChA;
     electrical  Net_10521;
     electrical  Net_10520;
     electrical  Net_10519;
@@ -1319,9 +1328,16 @@ module top ;
     electrical  Net_317;
     electrical  Net_10613;
     electrical  Net_10472;
+          wire  OnChA;
     electrical  Net_10476;
     electrical  Net_10455;
+    electrical  PosCurChB;
     electrical  Net_10454;
+          wire  PwmChB;
+          wire  OnChB;
+    electrical  PosCurChA;
+    electrical  NegCurChA;
+    electrical  NegCurChB;
     electrical  Net_10453;
     electrical  Net_10452;
     electrical  Net_10451;
@@ -1335,22 +1351,16 @@ module top ;
     electrical  Net_10443;
     electrical  Net_10442;
     electrical  Net_10441;
-          wire  OnChA;
     electrical  Net_10440;
     electrical  Net_10439;
-    electrical  PosCurChB;
     electrical  Net_10438;
-          wire  PwmChB;
-          wire  OnChB;
-    electrical  PosCurChA;
-    electrical  NegCurChA;
-    electrical  NegCurChB;
     electrical  Net_10430;
     electrical  Net_10429;
     electrical  Net_10428;
     electrical  Net_10427;
     electrical  Net_10420;
     electrical  Net_10419;
+    electrical  PosVoltChA;
     electrical  Net_10418;
     electrical  Net_10417;
     electrical  Net_10311;
@@ -1367,7 +1377,6 @@ module top ;
     electrical  Net_10296;
     electrical  Net_10284;
     electrical  Net_10283;
-    electrical  PosVoltChA;
     electrical  Net_10282;
     electrical  Net_10281;
     electrical  Net_10280;
@@ -1436,14 +1445,6 @@ module top ;
           wire  Net_10155;
           wire  Net_10154;
           wire  Net_10153;
-          wire  Net_9605;
-          wire  Net_9612;
-          wire  Net_9611;
-          wire  Net_9610;
-          wire  Net_9609;
-          wire  Net_9608;
-          wire  Net_9607;
-          wire  Net_9606;
     electrical  Net_591;
     electrical  Net_587;
           wire  Net_9072;
@@ -1479,6 +1480,9 @@ module top ;
           wire  Net_518;
           wire  Net_517;
     electrical  Net_516;
+    electrical [7:0] Net_10724;
+          wire  Net_10708;
+    electrical  Net_10696;
     electrical  Net_2761;
     electrical  Net_10609;
     electrical  Net_10607;
@@ -1561,16 +1565,7 @@ module top ;
     electrical  Net_654;
     electrical  Net_651;
     electrical  Net_590;
-    electrical  Net_588;
-    electrical  Net_649;
-    electrical  Net_645;
-    electrical  Net_648;
-    electrical  Net_641;
-    electrical  Net_639;
-    electrical  Net_637;
-    electrical  Net_635;
-    electrical  Net_633;
-    electrical  Net_632;
+    electrical  Net_10695;
     electrical  Net_586;
     electrical  Net_608;
     electrical  Net_578;
@@ -3554,7 +3549,7 @@ module top ;
     cy_annotation_universal_v1_0 R_27 (
         .connect({
             Net_587,
-            Net_588
+            Net_10695
         })
     );
     defparam R_27.comp_name = "Resistor_v1_0";
@@ -3906,14 +3901,15 @@ module top ;
 
 	wire [7:0] tmpOE__LCD_DB_net;
 	wire [7:0] tmpFB_7__LCD_DB_net;
+	wire [7:0] tmpIO_7__LCD_DB_net;
 	wire [0:0] tmpINTERRUPT_0__LCD_DB_net;
 	electrical [0:0] tmpSIOVREF__LCD_DB_net;
 
 	cy_psoc3_pins_v1_10
 		#(.id("264be2d3-9481-494b-8d9c-c1905a45e9cc"),
-		  .drive_mode(24'b010_010_010_010_010_010_010_010),
+		  .drive_mode(24'b110_110_110_110_110_110_110_110),
 		  .ibuf_enabled(8'b1_1_1_1_1_1_1_1),
-		  .init_dr_st(8'b1_1_1_1_1_1_1_1),
+		  .init_dr_st(8'b0_0_0_0_0_0_0_0),
 		  .input_clk_en(0),
 		  .input_sync(8'b0_0_0_0_0_0_0_0),
 		  .input_sync_mode(8'b0_0_0_0_0_0_0_0),
@@ -3926,7 +3922,7 @@ module top ;
 		  .invert_out_reset(0),
 		  .io_voltage(",,,,,,,"),
 		  .layout_mode("CONTIGUOUS"),
-		  .oe_conn(8'b0_0_0_0_0_0_0_0),
+		  .oe_conn(8'b1_1_1_1_1_1_1_1),
 		  .oe_reset(0),
 		  .oe_sync(8'b0_0_0_0_0_0_0_0),
 		  .output_clk_en(0),
@@ -3966,10 +3962,10 @@ module top ;
 		 (.oe(tmpOE__LCD_DB_net),
 		  .y({8'b0}),
 		  .fb({tmpFB_7__LCD_DB_net[7:0]}),
-		  .io({Net_9605, Net_9612, Net_9611, Net_9610, Net_9609, Net_9608, Net_9607, Net_9606}),
+		  .io({tmpIO_7__LCD_DB_net[7:0]}),
 		  .siovref(tmpSIOVREF__LCD_DB_net),
 		  .interrupt({tmpINTERRUPT_0__LCD_DB_net[0:0]}),
-		  .annotation({Net_645, Net_648, Net_641, Net_639, Net_637, Net_635, Net_633, Net_632}),
+		  .annotation({Net_10724[7:0]}),
 		  .in_clock({1'b0}),
 		  .in_clock_en({1'b1}),
 		  .in_reset({1'b0}),
@@ -3977,11 +3973,11 @@ module top ;
 		  .out_clock_en({1'b1}),
 		  .out_reset({1'b0}));
 
-	assign tmpOE__LCD_DB_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{8'b11111111} : {8'b11111111};
+	assign tmpOE__LCD_DB_net = (`CYDEV_CHIP_MEMBER_USED == `CYDEV_CHIP_MEMBER_3A && `CYDEV_CHIP_REVISION_USED < `CYDEV_CHIP_REVISION_3A_ES3) ? ~{Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708} : {Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708, Net_10708};
 
     cy_annotation_universal_v1_0 TP_2 (
         .connect({
-            Net_649
+            Net_10696
         })
     );
     defparam TP_2.comp_name = "TestPoint_v1_0";
@@ -6152,6 +6148,30 @@ module top ;
     defparam GND_17.comp_name = "Gnd_v1_0";
     defparam GND_17.port_names = "T1";
     defparam GND_17.width = 1;
+
+    CyControlReg_v1_80 LCD_DB_OutEnable (
+        .control_1(Net_10714),
+        .control_2(Net_10715),
+        .control_3(Net_10716),
+        .control_0(Net_10708),
+        .control_4(Net_10717),
+        .control_5(Net_10710),
+        .control_6(Net_10711),
+        .control_7(Net_10712),
+        .clock(1'b0),
+        .reset(1'b0));
+    defparam LCD_DB_OutEnable.Bit0Mode = 0;
+    defparam LCD_DB_OutEnable.Bit1Mode = 0;
+    defparam LCD_DB_OutEnable.Bit2Mode = 0;
+    defparam LCD_DB_OutEnable.Bit3Mode = 0;
+    defparam LCD_DB_OutEnable.Bit4Mode = 0;
+    defparam LCD_DB_OutEnable.Bit5Mode = 0;
+    defparam LCD_DB_OutEnable.Bit6Mode = 0;
+    defparam LCD_DB_OutEnable.Bit7Mode = 0;
+    defparam LCD_DB_OutEnable.BitValue = 0;
+    defparam LCD_DB_OutEnable.BusDisplay = 0;
+    defparam LCD_DB_OutEnable.ExtrReset = 0;
+    defparam LCD_DB_OutEnable.NumOutputs = 1;
 
 
 

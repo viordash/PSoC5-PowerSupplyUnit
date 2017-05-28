@@ -1,6 +1,5 @@
-Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj|bbce34c5-a9eb-415b-af35-cfb70fb1edf9
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|43fa7bda-38a4-4c72-ade3-2ce7c55f0182
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|ab637780-8b0e-4bc8-a7f3-65fb24f5e97c
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|3c90e56a-fab8-4f84-b020-760eeb10aa1e
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|eeda527a-1678-40a1-9c95-bf595bc4aaab
-C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|7479c3f0-a1bf-4750-acae-ea1c637ba0ba
+Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj|3a9b226a-c9ac-4f3b-af28-591b602de4c3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|35d860ee-b4d0-472e-af17-06624615d15b
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3cd9f524-ce59-449e-a89c-1aee07629993
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|c232ca95-2cff-4413-9033-0759ceb3e0a3
+C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|44a0d587-62fa-4aa6-95e0-e51e1f0818d8

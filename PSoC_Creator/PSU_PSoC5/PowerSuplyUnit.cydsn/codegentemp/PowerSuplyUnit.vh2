@@ -2,7 +2,7 @@
 --	Conversion of PowerSuplyUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri May 26 02:20:31 2017
+--	Sun May 28 16:25:30 2017
 --
 
 USE cypress.cypress.all;
@@ -322,7 +322,7 @@ TERMINAL Net_579 : bit;
 TERMINAL Net_578 : bit;
 TERMINAL Net_582 : bit;
 TERMINAL Net_587 : bit;
-TERMINAL Net_588 : bit;
+TERMINAL Net_10695 : bit;
 TERMINAL Net_651 : bit;
 TERMINAL Net_590 : bit;
 TERMINAL Net_591 : bit;
@@ -365,25 +365,26 @@ SIGNAL tmpFB_7__LCD_DB_net_3 : bit;
 SIGNAL tmpFB_7__LCD_DB_net_2 : bit;
 SIGNAL tmpFB_7__LCD_DB_net_1 : bit;
 SIGNAL tmpFB_7__LCD_DB_net_0 : bit;
-SIGNAL Net_9605 : bit;
-SIGNAL Net_9612 : bit;
-SIGNAL Net_9611 : bit;
-SIGNAL Net_9610 : bit;
-SIGNAL Net_9609 : bit;
-SIGNAL Net_9608 : bit;
-SIGNAL Net_9607 : bit;
-SIGNAL Net_9606 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_7 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_6 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_5 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_4 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_3 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_2 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_1 : bit;
+SIGNAL tmpIO_7__LCD_DB_net_0 : bit;
 TERMINAL tmpSIOVREF__LCD_DB_net_0 : bit;
-TERMINAL Net_645 : bit;
-TERMINAL Net_648 : bit;
-TERMINAL Net_641 : bit;
-TERMINAL Net_639 : bit;
-TERMINAL Net_637 : bit;
-TERMINAL Net_635 : bit;
-TERMINAL Net_633 : bit;
-TERMINAL Net_632 : bit;
+TERMINAL Net_10724_7 : bit;
+TERMINAL Net_10724_6 : bit;
+TERMINAL Net_10724_5 : bit;
+TERMINAL Net_10724_4 : bit;
+TERMINAL Net_10724_3 : bit;
+TERMINAL Net_10724_2 : bit;
+TERMINAL Net_10724_1 : bit;
+TERMINAL Net_10724_0 : bit;
 SIGNAL tmpINTERRUPT_0__LCD_DB_net_0 : bit;
-TERMINAL Net_649 : bit;
+SIGNAL Net_10708 : bit;
+TERMINAL Net_10696 : bit;
 TERMINAL Net_310 : bit;
 SIGNAL tmpOE__O_OUT_ON_net_0 : bit;
 SIGNAL tmpFB_0__O_OUT_ON_net_0 : bit;
@@ -1660,6 +1661,31 @@ TERMINAL Net_10592 : bit;
 TERMINAL Net_10593 : bit;
 TERMINAL Net_10594 : bit;
 TERMINAL Net_10595 : bit;
+SIGNAL \LCD_DB_OutEnable:clk\ : bit;
+SIGNAL \LCD_DB_OutEnable:rst\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_0\ : bit;
+SIGNAL Net_10714 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_1\ : bit;
+SIGNAL Net_10715 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_2\ : bit;
+SIGNAL Net_10716 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_3\ : bit;
+SIGNAL Net_10717 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_4\ : bit;
+SIGNAL Net_10710 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_5\ : bit;
+SIGNAL Net_10711 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_6\ : bit;
+SIGNAL Net_10712 : bit;
+SIGNAL \LCD_DB_OutEnable:control_out_7\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_7\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_6\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_5\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_4\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_3\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_2\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_1\ : bit;
+SIGNAL \LCD_DB_OutEnable:control_0\ : bit;
 SIGNAL \MODULE_4:g1:a0:newa_0\ : bit;
 SIGNAL \MODULE_4:g1:a0:newb_0\ : bit;
 SIGNAL MODIN4_0 : bit;
@@ -3602,7 +3628,7 @@ R_27:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Resistor_v1_0",
 		port_names=>"T1, T2",
 		width=>2)
-	PORT MAP(connect=>(Net_587, Net_588));
+	PORT MAP(connect=>(Net_587, Net_10695));
 Q_5:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"NPN_v1_0",
 		port_names=>"B, C, E",
@@ -3905,9 +3931,9 @@ O_LCD_RES:cy_psoc3_pins_v1_10
 		interrupt=>tmpINTERRUPT_0__O_LCD_RES_net_0);
 LCD_DB:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"264be2d3-9481-494b-8d9c-c1905a45e9cc",
-		drive_mode=>"010010010010010010010010",
+		drive_mode=>"110110110110110110110110",
 		ibuf_enabled=>"11111111",
-		init_dr_st=>"11111111",
+		init_dr_st=>"00000000",
 		input_sync=>"00000000",
 		input_clk_en=>'0',
 		input_sync_mode=>"00000000",
@@ -3927,7 +3953,7 @@ LCD_DB:cy_psoc3_pins_v1_10
 		output_reset=>'0',
 		output_clock_mode=>"00000000",
 		oe_sync=>"00000000",
-		oe_conn=>"00000000",
+		oe_conn=>"11111111",
 		oe_reset=>'0',
 		pin_aliases=>",,,,,,,",
 		pin_mode=>"BBBBBBBB",
@@ -3959,19 +3985,19 @@ LCD_DB:cy_psoc3_pins_v1_10
 		ovt_slew_control=>"0000000000000000",
 		ovt_hyst_trim=>"00000000",
 		input_buffer_sel=>"0000000000000000")
-	PORT MAP(oe=>(one, one, one, one,
-			one, one, one, one),
+	PORT MAP(oe=>(tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7,
+			tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7, tmpOE__LCD_DB_net_7),
 		y=>(zero, zero, zero, zero,
 			zero, zero, zero, zero),
 		fb=>(tmpFB_7__LCD_DB_net_7, tmpFB_7__LCD_DB_net_6, tmpFB_7__LCD_DB_net_5, tmpFB_7__LCD_DB_net_4,
 			tmpFB_7__LCD_DB_net_3, tmpFB_7__LCD_DB_net_2, tmpFB_7__LCD_DB_net_1, tmpFB_7__LCD_DB_net_0),
 		analog=>(open, open, open, open,
 			open, open, open, open),
-		io=>(Net_9605, Net_9612, Net_9611, Net_9610,
-			Net_9609, Net_9608, Net_9607, Net_9606),
+		io=>(tmpIO_7__LCD_DB_net_7, tmpIO_7__LCD_DB_net_6, tmpIO_7__LCD_DB_net_5, tmpIO_7__LCD_DB_net_4,
+			tmpIO_7__LCD_DB_net_3, tmpIO_7__LCD_DB_net_2, tmpIO_7__LCD_DB_net_1, tmpIO_7__LCD_DB_net_0),
 		siovref=>(tmpSIOVREF__LCD_DB_net_0),
-		annotation=>(Net_645, Net_648, Net_641, Net_639,
-			Net_637, Net_635, Net_633, Net_632),
+		annotation=>(Net_10724_7, Net_10724_6, Net_10724_5, Net_10724_4,
+			Net_10724_3, Net_10724_2, Net_10724_1, Net_10724_0),
 		in_clock=>zero,
 		in_clock_en=>one,
 		in_reset=>zero,
@@ -3983,7 +4009,7 @@ TP_2:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"TestPoint_v1_0",
 		port_names=>"T1",
 		width=>1)
-	PORT MAP(connect=>Net_649);
+	PORT MAP(connect=>Net_10696);
 PWR_13:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Power_v1_0",
 		port_names=>"T1",
@@ -5853,6 +5879,16 @@ GND_17:cy_annotation_universal_v1_0
 		port_names=>"T1",
 		width=>1)
 	PORT MAP(connect=>Net_317);
+\LCD_DB_OutEnable:Sync:ctrl_reg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"00000000",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>zero,
+		control=>(\LCD_DB_OutEnable:control_7\, \LCD_DB_OutEnable:control_6\, \LCD_DB_OutEnable:control_5\, \LCD_DB_OutEnable:control_4\,
+			\LCD_DB_OutEnable:control_3\, \LCD_DB_OutEnable:control_2\, \LCD_DB_OutEnable:control_1\, tmpOE__LCD_DB_net_7));
 AMuxHw_1_Decoder_old_id_0:cy_dff
 	PORT MAP(d=>Net_174,
 		clk=>Net_168,

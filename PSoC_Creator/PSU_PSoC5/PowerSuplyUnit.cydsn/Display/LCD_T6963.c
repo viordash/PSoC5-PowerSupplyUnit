@@ -19,8 +19,8 @@
 #define T6963_HOR_DOTS 240
 #define T6963_VER_DOTS 128
 
-#define T6963_TIME_ACCESS (150 - 100)  /*время ожидания при чтении данных, мкС*/
-#define T6963_TIME_WRITE (80 - 50)   /*время ожидания при записи данных, мкС*/
+#define T6963_TIME_ACCESS (150 - 50)  /*время ожидания при чтении данных, мкС*/
+#define T6963_TIME_WRITE (80 - 0)   /*время ожидания при записи данных, мкС*/
 #define T6963_TIMEOUT_MS 100  /*таймаут ожидания статуса*/
 
 #define T6963_CMD__SET_CURSOR_POS 0x21
@@ -52,74 +52,55 @@
 
 #define T6963_LCD_MAX_ROW (T6963_VER_DOTS / 8)	//максимум рядов по вертикали
 
-#define T6963_DataPortToInput() LCD_DB_Write(0xFF)
-#define T6963_DataPortToOutput() /*LCD_T6963_DB_PORT->MODER  |= (GPIO_MODER_MODER8_0 | GPIO_MODER_MODER9_0 | GPIO_MODER_MODER10_0 | GPIO_MODER_MODER11_0 | GPIO_MODER_MODER12_0 | \
-	GPIO_MODER_MODER13_0 | GPIO_MODER_MODER14_0 | GPIO_MODER_MODER15_0);*/
+#define T6963_DataPortToInput() {LCD_DB_OutEnable_Write(FALSE);}/*T6963_Write_DB(0xFF)*/
+#define T6963_DataPortToOutput() {LCD_DB_OutEnable_Write(TRUE);}/**/
 
-#define T6963_RD  LCD_T6963_RD_GPIO_PIN
-#define T6963_WR  LCD_T6963_WR_GPIO_PIN
-#define T6963_CD  LCD_T6963_CD_GPIO_PIN
+#define T6963_Write_DB(x) {LCD_DB_DR = x;}	
+#define T6963_Read_DB() ((BYTE)LCD_DB_PS)	
 
-#define T6963_Write_DB(AValue) {LCD_T6963_DB_PORT->ODR = (LCD_T6963_DB_PORT->ODR & 0x00FF | ((BYTE)AValue << 8) & 0xFF00);}		
+#define T6963_Write_WR(x) {if (x) {O_LCD_WR_DR |= O_LCD_WR_MASK;} else {O_LCD_WR_DR &= ~O_LCD_WR_MASK;}}	
+#define T6963_Write_RD(x) {if (x) {O_LCD_RD_DR |= O_LCD_RD_MASK;} else {O_LCD_RD_DR &= ~O_LCD_RD_MASK;}}	
+#define T6963_Write_CD(x) {if (x) {O_LCD_CD_DR |= O_LCD_CD_MASK;} else {O_LCD_CD_DR &= ~O_LCD_CD_MASK;}}	
 
-#define T6963_Write_WR_RD_CD(AValue) {LCD_T6963_WR_RD_CD_PORT->ODR = (LCD_T6963_WR_RD_CD_PORT->ODR & 0x1FFF) | (AValue & (T6963_WR|T6963_RD|T6963_CD));}	
-
-#define T6963_DefaultPinState(AValue) {LCD_DB_Write(0xFF); O_LCD_RD_Write(TRUE); O_LCD_WR_Write(TRUE);}
+#define T6963_DefaultPinState(AValue) {T6963_DataPortToInput(); T6963_Write_WR(TRUE); T6963_Write_RD(TRUE);}
 #define COMMAND TRUE
 #define DATA FALSE
+#define STATUS_BUSY 0x03
+#define STATUS_AUTO_WRITE 0x08
 
 typedef enum {
     dtData = FALSE,
-	dtCommand = TRUE
+	  dtCommand = TRUE
 } DataType;	 
 
 TDisplay Display;
 BOOL initialized = FALSE;
 
-void Delay_nS(x) {
-    DWORD i = ((1000 / BCLK__BUS_CLK__MHZ ) * (x / 10));  
-    CyDelayCycles(i);
+void  Delay_nS(x) { 
+    DWORD i = x / (1000 / BCLK__BUS_CLK__MHZ );  
+    CyDelayCycles(i); 
 } //задержка в nS
 
 BYTE T6963_Read(DataType dataType) { 
-	T6963_DataPortToInput(); 
-    O_LCD_CD_Write(dataType); 
-    O_LCD_RD_Write(FALSE); 
-	Delay_nS(T6963_TIME_ACCESS); 
-    O_LCD_RD_Write(TRUE); 
-	return((BYTE)LCD_DB_Read()); 
+	  T6963_DataPortToInput(); 
+    T6963_Write_CD(dataType); 
+    T6963_Write_RD(FALSE); 
+	  Delay_nS(T6963_TIME_ACCESS); 
+    T6963_Write_RD(TRUE); 
+	  return(T6963_Read_DB()); 
 }
 
-void T6963_Write(BYTE value, DataType dataType) { 
-	T6963_DataPortToOutput(); 
-    LCD_DB_Write(value);
-    O_LCD_CD_Write(dataType); 
-    O_LCD_WR_Write(FALSE); 
-	Delay_nS(T6963_TIME_WRITE); 
-    O_LCD_WR_Write(TRUE); 
-}
-
-
-BOOL T6963_Busy(void) {
-	BYTE bt;
+void T6963_Write(BYTE value, DataType dataType, BYTE statusMask) { 
 	DWORD T6963_Timeout = GetTickCount() + T6963_TIMEOUT_MS;
-	while (TRUE) {
-		bt = T6963_Read(dtCommand);
-		if ((bt & 0x03) == 0x03) return (TRUE);  //STA0 и STA1
-		if (GetTickCount() > T6963_Timeout) return (FALSE);
-	}
-}
-
-BOOL T6963_StatusAutoWrite(void) {
-	BYTE bt;
-	DWORD T6963_Timeout = GetTickCount() + T6963_TIMEOUT_MS;
-	while (TRUE) {
-		bt = T6963_Read(dtCommand);
-		if ((bt & 0x08) == 0x08) return (TRUE);  //STA3
-		if (GetTickCount() > T6963_Timeout) return (FALSE);
-		//	Delay_uS(10);
-			Display_TaskSleepZero();
-	}
+  	while ((T6963_Read(dtCommand) & statusMask) != statusMask) {
+  		if (GetTickCount() > T6963_Timeout) return;
+  	}
+    T6963_DataPortToOutput();
+    T6963_Write_DB(value);
+    T6963_Write_CD(dataType); 
+    T6963_Write_WR(FALSE); 
+	  Delay_nS(T6963_TIME_WRITE); 
+    T6963_Write_WR(TRUE); 
 }
 
 void _LCD_Init() {
@@ -129,22 +110,15 @@ void _LCD_Init() {
 	_LCD_Reset();
 	Display_TaskSleep(100);        //задержка в 100mS
 
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__SET_MODE_XOR, dtCommand);	// "OR" mode			
+	T6963_Write(T6963_CMD__SET_MODE_XOR, dtCommand, STATUS_BUSY);	// "OR" mode			
 
-	if (!T6963_Busy()) return;
-	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData); 	//graphic home low adres
-	if (!T6963_Busy()) return;
-	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData);	//graphic home high adres
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__SET_GRPH_HOME_ADR, dtCommand);	//graphic home command
+	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY); 	//graphic home low adres
+	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);	//graphic home high adres
+	T6963_Write(T6963_CMD__SET_GRPH_HOME_ADR, dtCommand, STATUS_BUSY);	//graphic home command
 
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_GRPHIC_AREA, dtData); 	//graphic area
-	if (!T6963_Busy()) return;
-	T6963_Write(0, dtData);
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand);	//graphic area command  
+	T6963_Write(T6963_GRPHIC_AREA, dtData, STATUS_BUSY); 	//graphic area
+	T6963_Write(0, dtData, STATUS_BUSY);
+	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand, STATUS_BUSY);	//graphic area command  
 
 	_LCD_SetFont(1);
 	_LCD_SetCursorPos(0, 0);
@@ -167,22 +141,16 @@ void _LCD_Reset(void) {
 void _LCD_Clear(void) {
 	INT i;
 	//Set adress pointer     
-	if (!T6963_Busy()) return;
-	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData);       //Low adress
-	if (!T6963_Busy()) return;
-	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData);       //High adress
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand);   //Поместить в указатель адреса значение 0
-	if (!T6963_Busy()) return;
+	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY);       //Low adress
+	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);       //High adress
+	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Поместить в указатель адреса значение 0
 
-	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand);   //Включение режима автозаписи
+	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
 
 	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
-		if (!T6963_StatusAutoWrite()) return;
-		T6963_Write(0x00, dtData);
+		T6963_Write(0x00, dtData, STATUS_AUTO_WRITE);
 	}
-	if (!T6963_StatusAutoWrite()) return;
-	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand);   //Выключение режима автозаписи
+	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
 
 BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
@@ -195,15 +163,11 @@ BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
 	ch |= 0xF8;
 	if (!APixelVal) ch &= 0xF7;	//установить или сбросить бит
 
-	if (!T6963_Busy()) return(FALSE);
-	T6963_Write(i, dtData);
-	if (!T6963_Busy()) return(FALSE);
-	T6963_Write((i >> 8), dtData);
-	if (!T6963_Busy()) return(FALSE);
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand);	//Поместить в указатель адреса значение
+	T6963_Write(i, dtData, STATUS_BUSY);
+	T6963_Write((i >> 8), dtData, STATUS_BUSY);
+	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);	//Поместить в указатель адреса значение
 
-	if (!T6963_Busy()) return(FALSE);
-	T6963_Write(ch, dtCommand);	//Изменить бит
+	T6963_Write(ch, dtCommand, STATUS_BUSY);	//Изменить бит
 	return (TRUE);
 }
 
@@ -275,14 +239,12 @@ BOOL T6963_FillRectangle(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoor
 
 void _LCD_Enable(void) {
     O_LCD_BKL_Write(TRUE);
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__DSPL_MODE_GRPH, dtCommand);	//Text off, graphic on
+	T6963_Write(T6963_CMD__DSPL_MODE_GRPH, dtCommand, STATUS_BUSY);	//Text off, graphic on
 }
 
 void _LCD_Sleep(void) {
     O_LCD_BKL_Write(FALSE);
-	if (!T6963_Busy()) return;
-	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand);	//Text off, graphic off
+	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand, STATUS_BUSY);	//Text off, graphic off
 }
 
 void _LCD_ClearLine(BYTE Line) {
