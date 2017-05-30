@@ -29,8 +29,22 @@ void Display_Task() {
 	_LCD_SetFont(2);
 //	minute = 0;
 //	second = 0;
+    BYTE x = 5;
+    BYTE y = 0;
 	while (TRUE) {
-        _LCD_Print("!\" %", -1);
+        
+	    _LCD_SetCursorPos(x, y);
+        _LCD_Print("  A 1 2 @6l", -1);
+        x += 2;
+        if (x >= 200) {
+            x = 0;
+            y += 3;
+            if(y > 120) {
+                y = 0;
+            }
+        }
+        
+        
 //        sprintf(buffer, "%02u:%02u", minute, second);
 //		_LCD_Print(buffer, -1);
 //		if (++second >= 60) {
@@ -39,7 +53,7 @@ void Display_Task() {
 //				minute= 0;
 //			}
 //		}
-		TaskSleep(&DisplayFunction, SYSTICK_mS(1000));		
+		TaskSleep(&DisplayFunction, SYSTICK_mS(500));		
 	}
 }
 

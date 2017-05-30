@@ -115,7 +115,7 @@ void _LCD_Init() {
 	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand, STATUS_BUSY);	//graphic area command  
 
     Display.GraphicBuffer = malloc(T6963_GRPHIC_AREA * T6963_VER_DOTS);    
-    memset(Display.GraphicBuffer, 0, T6963_GRPHIC_AREA * T6963_VER_DOTS);
+    memset(Display.GraphicBuffer, 0xFF, T6963_GRPHIC_AREA * T6963_VER_DOTS);
 	_LCD_SetFont(1);
 	_LCD_SetCursorPos(0, 0);
 	_LCD_Clear();
@@ -144,7 +144,7 @@ void _LCD_Clear(void) {
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
 
 	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
-		T6963_Write(0x00, dtData, STATUS_AUTO_WRITE);
+		T6963_Write(0xFF, dtData, STATUS_AUTO_WRITE);
 	}
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
@@ -291,43 +291,87 @@ BYTE CreateShiftMask (BYTE pos){
     return res;
 }
 
-void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT posX, INT posShift, BYTE shiftMask) {
+//BYTE CreateShiftMaskBack (BYTE pos){
+//    BYTE res = 0;
+//    while (pos--) {
+//        res = res << 1;
+//        res |= 0x01;
+//    }
+//    return res;
+//}
+
+BYTE CreateHeaderMask (BYTE pos){
+    BYTE res = 0;
+    while (pos--) {
+        res = res >> 1;
+        res |= 0x80;
+    }
+    return res;
+}
+
+BYTE CreateTaleMask (BYTE pos){
+    BYTE res = 0;
+    while (pos--) {
+        res = res << 1;
+        res |= 0x01;
+    }
+    return res;
+}
+
+void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) {
+    BYTE posX = shiftX / 8;
+    BYTE posShift = shiftX % 8;
+    BYTE posShiftBack = 8 - posShift;
+    BYTE headerMask = 0xFF << posShiftBack;
+    BYTE bt = width + shiftX;
+    BYTE taleMask = 0xFF >> (bt % 8);
+    if (taleMask == 0xFF) {
+        taleMask = 0;
+    }
+    BOOL addByteInGraphicBuffer =  ((posShift + width - 1) / 8) > (width / 8);
     BYTE remain = 0;
     BYTE charPosX = 0;
+    PBYTE pGraphicBuffer = NULL;
 	while (width > 0) {
-        union uWORD data;
-        data.asWORD = 0;
-        data.asBYTE[1] = *pCharBitmap;                
-        data.asWORD = data.asWORD >> posShift;
-        data.asBYTE[1] += remain;
-        remain = data.asBYTE[0];
-        PBYTE pGraphicBuffer = &(Display.GraphicBuffer[posY + (posX / 8) + charPosX]);
-		BYTE bt = *pGraphicBuffer & shiftMask;
-        *pGraphicBuffer = bt | data.asBYTE[1];
-        if (width > 8) {
-            width -= 8;  
-            pCharBitmap++;
-        } else {
+        DWORD data = *pCharBitmap << 8;  
+        data |= (remain << 16);
+        data = data >> posShift;        
+        remain = (data & 0x000000FF) >> posShiftBack;
+        pGraphicBuffer = &(Display.GraphicBuffer[posY + posX + charPosX]);
+		bt = headerMask;
+        headerMask = 0;    
+        charPosX++;    
+        if (width <= 8) {
+            if (!addByteInGraphicBuffer) {
+                bt |= taleMask;
+            }
             width = 0;
+        } else {
+           width -= 8;  
         }
-        charPosX++;
+        bt = *pGraphicBuffer & bt;
+        *pGraphicBuffer = bt | ((data >> 8) & 0x000000FF);
+        pCharBitmap++;
 	}
+    if (addByteInGraphicBuffer) {
+        pGraphicBuffer = &(Display.GraphicBuffer[posY + posX + charPosX]);
+        bt = taleMask;
+        *pGraphicBuffer = bt | (remain << posShiftBack);
+    }
 }
 
 void _LCD_Print(PCHAR buffer, INT size) {
 	INT height;
-	INT posY = Display.coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
 	if (size == 0) {
 		return;
 	}
 	if (size < 0) {
 		size = strlen(buffer);
 	}  
+	INT posY = Display.coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
 	PCHAR pStringEnd = buffer + size;  
-    for (height = 0; height < Display.font->height * 8; height++) {
-        BYTE posX = Display.coordX / 8;
-        BYTE shift = Display.coordX % 8;
-        BYTE shiftMask = CreateShiftMask(shift); 
+    for (height = 0; height < Display.font->height; height++) {
+        INT shiftX = Display.coordX;
         PCHAR pString = buffer;
         CHAR ch;
         while (pString < pStringEnd) {
@@ -351,13 +395,13 @@ void _LCD_Print(PCHAR buffer, INT size) {
             PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
 			INT width = p_character_descriptor->width; // Character width in bits.
             PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * ((width / 8) + 1)));
-            PutDataInGraphicBuffer(pBuffer, width, posY, posX, shift, shiftMask);
-            posX += width;
+            PutDataInGraphicBuffer(pBuffer, width, posY, shiftX);
+            shiftX += width;
 			if (ch > ' ') {
                 width = Display.font->separatorWidth; //space between chars	
                 BYTE spaceChars[8] = {0};
-                PutDataInGraphicBuffer(spaceChars, width, posY, posX, shift, shiftMask);
-                posX += width;
+                PutDataInGraphicBuffer(spaceChars, width, posY, shiftX);
+                shiftX += width;
 			}         
         }
         posY += (T6963_HOR_DOTS / T6963_FONT_WIDTH);

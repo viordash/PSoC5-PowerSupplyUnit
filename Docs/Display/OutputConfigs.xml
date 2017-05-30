@@ -19,13 +19,13 @@
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>
-    <descFontHeight>DisplayInBytes</descFontHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
     <generateLookupBlocks>false</generateLookupBlocks>
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
     <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>4</spaceGenerationPixels>
+    <spaceGenerationPixels>6</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_2Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_2Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_2FontInfo</varNfFontInfo>

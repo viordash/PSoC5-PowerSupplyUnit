@@ -19,35 +19,35 @@
 // Character bitmaps for Arial 20pt
 const uint_8 font_2Bitmaps[] = 
 {
-	// @0 ' ' (4 pixels wide)
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
-	0b00000000, //     
+	// @0 ' ' (6 pixels wide)
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
+	0b00000000, //       
 
 	// @28 '!' (4 pixels wide)
 	0b00000000, //     
@@ -2874,7 +2874,7 @@ const uint_8 font_2Bitmaps[] =
 // { [Char width in bits], [Offset into arial_20ptCharBitmaps in bytes] }
 const FONT_CHAR_INFO font_2Descriptors[] = 
 {
-	{4, 0}, 		//   
+	{6, 0}, 		//   
 	{4, 28}, 		// ! 
 	{10, 56}, 		// " 
 	{15, 112}, 		// # 
@@ -2971,13 +2971,14 @@ const FONT_CHAR_INFO font_2Descriptors[] =
 	{14, 5264}, 		// ~ 
 };
 
+
 // Font information for Arial Narrow 14pt
 const FONT_INFO font_2FontInfo =
 {
-	4, //  Character height
+	28, //  Character height
 	' ', //  Start character
 	'~', //  End character
-	4,	/*spaceWidth*/
+	6,	/*spaceWidth*/
 	2, /*separatorWidth*/
 	font_2Descriptors, //  Character descriptor array
 	font_2Bitmaps, //  Character bitmap array
