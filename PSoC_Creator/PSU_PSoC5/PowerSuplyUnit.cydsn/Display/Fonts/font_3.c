@@ -927,17 +927,13 @@ const FONT_CHAR_INFO font_3Descriptors[] =
 	{44, 4740}, 		// : 
 };
 
+
 // Font information for Bernard MT Condensed 72pt
 const FONT_INFO font_3FontInfo =
 {
-	10, //  Character height
+	79, //  Character height
 	'0', //  Start character
 	':', //  End character
-
-
-
-
-
 
 	8,	/*spaceWidth*/
 	2, /*separatorWidth*/

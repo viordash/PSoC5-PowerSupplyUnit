@@ -1060,10 +1060,11 @@ const FONT_CHAR_INFO font_0Descriptors[] =
 	{5, 752}, 		// ~ 
 };
 
+
 // Font information for Lucida Console 6pt
 const FONT_INFO font_0FontInfo =
 {
-	1, //  Character height
+	8, //  Character height
 	' ', //  Start character
 	'~', //  End character
 	3,	/*spaceWidth*/

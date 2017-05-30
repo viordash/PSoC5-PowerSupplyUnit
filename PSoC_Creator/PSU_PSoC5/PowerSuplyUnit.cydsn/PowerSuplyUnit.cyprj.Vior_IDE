@@ -2838,13 +2838,6 @@
 <file name=".\OS\SystemOS.h" />
 <file name=".\device.h" />
 <file name=".\type.h" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\font_2.o">
-<dep name=".\Display\Fonts\font.h" />
-<dep name=".\Display\Fonts\font_2.c" />
-<dep name=".\Display\Fonts\font_2.h" />
-</file>
-<file name=".\Display\Fonts\font.h" />
-<file name=".\Display\Fonts\font_2.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\LCD_T6963.o">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
@@ -2973,13 +2966,26 @@
 <dep name=".\Display\Fonts\font_0.c" />
 <dep name=".\Display\Fonts\font_0.h" />
 </file>
+<file name=".\Display\Fonts\font.h" />
 <file name=".\Display\Fonts\font_0.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_1.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_1.c" />
+<dep name=".\Display\Fonts\font_1.h" />
+</file>
+<file name=".\Display\Fonts\font_1.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\font_3.o">
 <dep name=".\Display\Fonts\font.h" />
 <dep name=".\Display\Fonts\font_3.c" />
 <dep name=".\Display\Fonts\font_3.h" />
 </file>
 <file name=".\Display\Fonts\font_3.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_2.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_2.c" />
+<dep name=".\Display\Fonts\font_2.h" />
+</file>
+<file name=".\Display\Fonts\font_2.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\ADC_Current.o">
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
@@ -4210,12 +4216,6 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\font_1.o">
-<dep name=".\Display\Fonts\font.h" />
-<dep name=".\Display\Fonts\font_1.c" />
-<dep name=".\Display\Fonts\font_1.h" />
-</file>
-<file name=".\Display\Fonts\font_1.c" />
 <file name=".\SystemOS.c" />
 <file name=".\SystemOS.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\portasm.o">
@@ -4428,14 +4428,12 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131406598439240738" />
+<deps_time v="131406607798088093" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
 <CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469 type_name="CyDesigner.Common.Debugger.CyBreakpointList" version="1">
-<debugger_breakpoint_list>
-<CyGuid_76464711-0ae1-4583-b869-f07a0403fc6e type_name="CyDesigner.Common.Debugger.CyFileLineBreakpoint" version="1" hitcount="0" condition="" enabled="True" hardware="True" temparary="False" filename=".\Display\LCD_T6963.c" linenumber="400" />
-</debugger_breakpoint_list>
+<debugger_breakpoint_list />
 </CyGuid_504337dd-7d07-4bc7-9057-90e60cf6c469>
 </dataGuid>
 <dataGuid v="bf610382-39c6-441f-80b8-b04622ea7845">

@@ -115,7 +115,7 @@ void _LCD_Init() {
 	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand, STATUS_BUSY);	//graphic area command  
 
     Display.GraphicBuffer = malloc(T6963_GRPHIC_AREA * T6963_VER_DOTS);    
-    memset(Display.GraphicBuffer, 0xFF, T6963_GRPHIC_AREA * T6963_VER_DOTS);
+    memset(Display.GraphicBuffer, 0x00, T6963_GRPHIC_AREA * T6963_VER_DOTS);
 	_LCD_SetFont(1);
 	_LCD_SetCursorPos(0, 0);
 	_LCD_Clear();
@@ -144,7 +144,7 @@ void _LCD_Clear(void) {
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
 
 	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
-		T6963_Write(0xFF, dtData, STATUS_AUTO_WRITE);
+		T6963_Write(0x00, dtData, STATUS_AUTO_WRITE);
 	}
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
@@ -287,33 +287,6 @@ BYTE CreateShiftMask (BYTE pos){
     while (pos--) {
         res = res >> 1;
         res |= 0x80;
-    }
-    return res;
-}
-
-//BYTE CreateShiftMaskBack (BYTE pos){
-//    BYTE res = 0;
-//    while (pos--) {
-//        res = res << 1;
-//        res |= 0x01;
-//    }
-//    return res;
-//}
-
-BYTE CreateHeaderMask (BYTE pos){
-    BYTE res = 0;
-    while (pos--) {
-        res = res >> 1;
-        res |= 0x80;
-    }
-    return res;
-}
-
-BYTE CreateTaleMask (BYTE pos){
-    BYTE res = 0;
-    while (pos--) {
-        res = res << 1;
-        res |= 0x01;
     }
     return res;
 }

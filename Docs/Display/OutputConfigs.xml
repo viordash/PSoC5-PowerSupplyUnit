@@ -52,7 +52,7 @@
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>
-    <descFontHeight>DisplayInBytes</descFontHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
     <generateLookupBlocks>false</generateLookupBlocks>
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
@@ -85,18 +85,51 @@
     <generateLookupArray>true</generateLookupArray>
     <descCharWidth>DisplayInBits</descCharWidth>
     <descCharHeight>DontDisplay</descCharHeight>
-    <descFontHeight>DisplayInBytes</descFontHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
     <generateLookupBlocks>false</generateLookupBlocks>
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
     <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>6</spaceGenerationPixels>
+    <spaceGenerationPixels>8</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_3Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_3Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_3FontInfo</varNfFontInfo>
     <varNfWidth>const uint_8 font_3Width</varNfWidth>
     <varNfHeight>const uint_8 font_3Height</varNfHeight>
     <displayName>font_3</displayName>
+  </OutputConfiguration>
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>RowMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>3</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_1Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_1Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_1FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_1Width</varNfWidth>
+    <varNfHeight>const uint_8 font_1Height</varNfHeight>
+    <displayName>font_1</displayName>
   </OutputConfiguration>
 </ArrayOfOutputConfiguration>
