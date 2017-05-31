@@ -332,7 +332,7 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) 
 	}
     if (addByteInGraphicBuffer) {
         pGraphicBuffer = &(Display.GraphicBuffer[posY + posX + charPosX]);
-        bt = taleMask;
+        bt = *pGraphicBuffer & taleMask;
         *pGraphicBuffer = bt | (remain << posShiftBack);
     }
 }
