@@ -33,9 +33,9 @@ typedef struct {
     BYTE GraphicHome;
 } TDisplay, *PTDisplay;
 
-extern BOOL T6963_DrawLine(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal);
-extern BOOL T6963_DrawRectangle(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal);
-extern BOOL T6963_FillRectangle(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal);
+extern void T6963_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void T6963_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void T6963_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
   
 extern void _LCD_Init(void);
 extern void _LCD_WaitReady();
@@ -44,7 +44,7 @@ extern void _LCD_Sleep(void);
 extern void _LCD_Reset(void);
 extern void _LCD_Clear(void);
 extern void _LCD_ClearLine(BYTE Line);
-extern BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal);
+extern void _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal);
 extern void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY);
 extern void _LCD_PrintChar(CHAR ch);
 extern void _LCD_Print(PCHAR buffer, INT size);

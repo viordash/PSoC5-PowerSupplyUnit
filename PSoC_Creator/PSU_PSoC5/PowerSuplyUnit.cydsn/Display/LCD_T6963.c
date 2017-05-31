@@ -156,30 +156,24 @@ void _LCD_Clear(void) {
     CopyGraphicBufferToDisplay();
 }
 
-BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
-	INT i;
-	BYTE ch;
-	ch = ACoordX / T6963_FONT_WIDTH;
-	i = T6963_GRPHIC_HOME + (T6963_GRPHIC_AREA * ACoordY) + ch;
-	ch = ACoordX - (ch * T6963_FONT_WIDTH);  //остаток от деления ACoordX / T6963_FONT_WIDTH. Номер бита
-	ch = (T6963_FONT_WIDTH - 1) - ch;//номер бита перевернуть с начала на конец. И ch привести к виду комманды BOOL SET/RESET
-	ch |= 0xF8;
-	if (!APixelVal) ch &= 0xF7;	//установить или сбросить бит
-
-	T6963_Write(i, dtData, STATUS_BUSY);
-	T6963_Write((i >> 8), dtData, STATUS_BUSY);
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);	//Поместить в указатель адреса значение
-
-	T6963_Write(ch, dtCommand, STATUS_BUSY);	//Изменить бит
-	return (TRUE);
+void _LCD_DrawPixel(BYTE coordX, BYTE coordY, BOOL value) {
+    INT posX = coordX / 8;
+    INT posY = coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
+    PBYTE pGraphicBuffer = &(Display.GraphicBuffer[posY + posX]);
+	BYTE bt = 0x80 >> (coordX % 8);
+    if (value) {
+        *pGraphicBuffer |= bt;
+    } else {
+        *pGraphicBuffer &= ~bt;
+    }
 }
 
-BOOL T6963_DrawLine(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal) {
-	WORD ishf;
+void T6963_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+    WORD ishf;
 	BYTE i;
 	BYTE shf;
-	SHORT delX = ACoordX2 - ACoordX1;
-	SHORT delY = ACoordY2 - ACoordY1;
+	SHORT delX = coordX2 - coordX1;
+	SHORT delY = coordY2 - coordY1;
 	SHORT dirX = 0;
 	SHORT dirY = 0;
 
@@ -191,39 +185,45 @@ BOOL T6963_DrawLine(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, 
 		do {
 			ishf = (BYTE)delX * (BYTE)(i - 1);
 			shf = (ishf + (delY / 2)) / delY;
-			_LCD_DrawPixel((char)ACoordX1 + (shf * dirX), (char)ACoordY1 + ((i - 1) * dirY), APixelVal);
+			_LCD_DrawPixel((char)coordX1 + (shf * dirX), (char)coordY1 + ((i - 1) * dirY), value);
 		} while (--i != 0);
 	} else {
 		i = delX + 1;
 		do {
 			ishf = (BYTE)delY * (BYTE)(i - 1);
 			shf = (ishf + (delX / 2)) / delX;
-			_LCD_DrawPixel((char)ACoordX1 + ((i - 1) * dirX), (char)ACoordY1 + (shf * dirY), APixelVal);
+			_LCD_DrawPixel((char)coordX1 + ((i - 1) * dirX), (char)coordY1 + (shf * dirY), value);
 		} while (--i != 0);
 	}
-	return (TRUE);
+    if (flush) {
+        CopyGraphicBufferToDisplay();
+    }
 }
 
-BOOL T6963_DrawRectangle(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal) {
-	if (!T6963_DrawLine(ACoordX1, ACoordY1, ACoordX2, ACoordY1, APixelVal)) return(FALSE);
-	if (!T6963_DrawLine(ACoordX2, ACoordY1, ACoordX2, ACoordY2, APixelVal)) return(FALSE);
-	if (!T6963_DrawLine(ACoordX2, ACoordY2, ACoordX1, ACoordY2, APixelVal)) return(FALSE);
-	if (!T6963_DrawLine(ACoordX1, ACoordY2, ACoordX1, ACoordY1, APixelVal)) return(FALSE);
-	return (TRUE);
+void T6963_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+	T6963_DrawLine(coordX1, coordY1, coordX2, coordY1, value, FALSE);
+	T6963_DrawLine(coordX2, coordY1, coordX2, coordY2, value, FALSE);
+	T6963_DrawLine(coordX2, coordY2, coordX1, coordY2, value, FALSE);
+	T6963_DrawLine(coordX1, coordY2, coordX1, coordY1, value, FALSE);    
+    if (flush) {
+        CopyGraphicBufferToDisplay();
+    }
 }
 
-BOOL T6963_FillRectangle(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal) {
+void T6963_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
 	BYTE i;
-	SHORT delX = (CHAR)ACoordX2 - (CHAR)ACoordX1;
+	SHORT delX = (CHAR)coordX2 - (CHAR)coordX1;
 	CHAR dirX;
 	if (delX < 0) dirX = -1; else dirX = 1;
 	delX = delX * dirX;
 	i = delX + 1;
 	do {
-		T6963_DrawLine(ACoordX1, ACoordY1, ACoordX1, ACoordY2, APixelVal);
-		ACoordX1 += dirX;
-	} while (--i != 0);
-	return (TRUE);
+		T6963_DrawLine(coordX1, coordY1, coordX1, coordY2, value, FALSE);
+		coordX1 += dirX;
+	} while (--i != 0);    
+    if (flush) {
+        CopyGraphicBufferToDisplay();
+    }
 }
 
 void _LCD_Enable(void) {
