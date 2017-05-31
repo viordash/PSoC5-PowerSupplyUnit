@@ -270,7 +270,7 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) 
     if (taleMask == 0xFF) {
         taleMask = 0;
     }
-    BOOL addByteInGraphicBuffer =  ((posShift + width - 1) / 8) > (width / 8);
+    BOOL addByteInGraphicBuffer =  ((posShift + width - 1) / 8) > ((width - 1) / 8);
     BYTE remain = 0;
     BYTE charPosX = 0;
     PBYTE pGraphicBuffer = NULL;
@@ -336,7 +336,7 @@ void _LCD_Print(PCHAR buffer, INT size) {
             
             PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
 			INT width = p_character_descriptor->width; // Character width in bits.
-            PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * ((width / 8) + 1)));
+            PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * (((width - 1) / 8) + 1)));
             PutDataInGraphicBuffer(pBuffer, width, posY, shiftX);
             shiftX += width;
 			if (ch > ' ') {
