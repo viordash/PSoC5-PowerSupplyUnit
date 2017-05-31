@@ -69,17 +69,11 @@ typedef enum {
 TDisplay Display;
 BOOL initialized = FALSE;
 
-
-#define Delay_nS(x) { \
-    DWORD i = x / (1000 / BCLK__BUS_CLK__MHZ );  \
-    CyDelayCycles(i); \
-} //задержка в nS
-
 BYTE T6963_Read(DataType dataType) { 
 	T6963_DataPortToInput(); 
     T6963_Write_CD(dataType); 
     T6963_Write_RD(FALSE); 
-	Delay_nS(T6963_TIME_ACCESS); 
+	Display_TaskSleepZero(); 
     T6963_Write_RD(TRUE); 
 	return(T6963_Read_DB()); 
 }
@@ -88,12 +82,13 @@ void T6963_Write(BYTE value, DataType dataType, BYTE statusMask) {
 	DWORD T6963_Timeout = GetTickCount() + T6963_TIMEOUT_MS;
   	while ((T6963_Read(dtCommand) & statusMask) != statusMask) {
   		if (GetTickCount() > T6963_Timeout) return;
+        Display_TaskSleepZero();
   	}
     T6963_DataPortToOutput();
     T6963_Write_DB(value);
     T6963_Write_CD(dataType); 
     T6963_Write_WR(FALSE); 
-	Delay_nS(T6963_TIME_WRITE); 
+	Display_TaskSleepZero(); 
     T6963_Write_WR(TRUE); 
 }
 

@@ -18,7 +18,7 @@ extern void Display_Init();
 extern void Display_Task();
 
 #define Display_TaskSleep(x) TaskSleep(&DisplayFunction, x)			
-#define Display_TaskSleepZero() /*TaskSleep(DisplayFunction, 0)*/
+#define Display_TaskSleepZero() TaskSleep(&DisplayFunction, 0)
 
 	//LCD driver hardware
 #ifdef DISPLAY_LCD_T6963
