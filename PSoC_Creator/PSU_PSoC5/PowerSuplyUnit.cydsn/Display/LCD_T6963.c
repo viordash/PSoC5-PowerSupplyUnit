@@ -110,7 +110,6 @@ void _LCD_Init() {
 	T6963_Write(T6963_CMD__SET_GRPH_AREA, dtCommand, STATUS_BUSY);	//graphic area command  
 
     Display.GraphicBuffer = malloc(T6963_GRPHIC_AREA * T6963_VER_DOTS);    
-    memset(Display.GraphicBuffer, 0x00, T6963_GRPHIC_AREA * T6963_VER_DOTS);
 	_LCD_SetFont(1);
 	_LCD_SetCursorPos(0, 0);
 	_LCD_Clear();
@@ -127,20 +126,6 @@ void _LCD_Reset(void) {
     O_LCD_RES_Write(FALSE);
 	  Display_TaskSleep(5);
     O_LCD_RES_Write(TRUE);
-}
-
-void _LCD_Clear(void) {
-	INT i;	     
-	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY);       //Low adress
-	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);       //High adress
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Set adress pointer
-
-	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
-
-	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
-		T6963_Write(0x00, dtData, STATUS_AUTO_WRITE);
-	}
-	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
 
 void CopyGraphicBufferToDisplay(void) { 
@@ -164,6 +149,11 @@ void CopyGraphicBufferToDisplay(void) {
 	T6963_Write((BYTE)graphicHome, dtData, STATUS_BUSY); 	//graphic home low adres
 	T6963_Write((graphicHome >> 8), dtData, STATUS_BUSY);	//graphic home high adres
 	T6963_Write(T6963_CMD__SET_GRPH_HOME_ADR, dtCommand, STATUS_BUSY);	//graphic home command
+}
+
+void _LCD_Clear(void) {
+    memset(Display.GraphicBuffer, 0x00, T6963_GRPHIC_AREA * T6963_VER_DOTS);
+    CopyGraphicBufferToDisplay();
 }
 
 BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
