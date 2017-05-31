@@ -130,11 +130,10 @@ void _LCD_Reset(void) {
 }
 
 void _LCD_Clear(void) {
-	INT i;
-	//Set adress pointer     
+	INT i;	     
 	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY);       //Low adress
 	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);       //High adress
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Поместить в указатель адреса значение 0
+	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Set adress pointer
 
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
 
@@ -144,17 +143,16 @@ void _LCD_Clear(void) {
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
 }
 
-
-void CopyGraphicBufferToDisplay(void) {
-	//Set adress pointer  
+void CopyGraphicBufferToDisplay(void) { 
     Display.GraphicHome++;
     if (Display.GraphicHome > (19200 / (T6963_GRPHIC_AREA * T6963_VER_DOTS))) {
         Display.GraphicHome = 0;
     }
     WORD graphicHome = Display.GraphicHome * (T6963_GRPHIC_AREA * T6963_VER_DOTS);
+	 
 	T6963_Write((BYTE)graphicHome, dtData, STATUS_BUSY);       //Low adress
 	T6963_Write((graphicHome >> 8), dtData, STATUS_BUSY);       //High adress
-	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Поместить в указатель адреса значение 0
+	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Set adress pointer
 
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
     DWORD i;
@@ -184,20 +182,6 @@ BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
 
 	T6963_Write(ch, dtCommand, STATUS_BUSY);	//Изменить бит
 	return (TRUE);
-}
-
-void T6963_DrawVertPixels(WORD ACoordX, WORD ACoordY, BYTE APixelVal) {
-	if (ACoordX >= T6963_HOR_DOTS) {
-		return;
-	}
-	_LCD_DrawPixel(ACoordX, ACoordY + 0, APixelVal & 0x01);
-	_LCD_DrawPixel(ACoordX, ACoordY + 1, APixelVal & 0x02);
-	_LCD_DrawPixel(ACoordX, ACoordY + 2, APixelVal & 0x04);
-	_LCD_DrawPixel(ACoordX, ACoordY + 3, APixelVal & 0x08);
-	_LCD_DrawPixel(ACoordX, ACoordY + 4, APixelVal & 0x10);
-	_LCD_DrawPixel(ACoordX, ACoordY + 5, APixelVal & 0x20);
-	_LCD_DrawPixel(ACoordX, ACoordY + 6, APixelVal & 0x40);
-	_LCD_DrawPixel(ACoordX, ACoordY + 7, APixelVal & 0x80);
 }
 
 BOOL T6963_DrawLine(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal) {
@@ -284,15 +268,6 @@ void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY) {
 void _LCD_PrintChar(CHAR ch) {
 	CHAR data[] = {ch, 0};
 	_LCD_Print(data, 1);
-}
-
-BYTE CreateShiftMask (BYTE pos){
-    BYTE res = 0;
-    while (pos--) {
-        res = res >> 1;
-        res |= 0x80;
-    }
-    return res;
 }
 
 void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) {

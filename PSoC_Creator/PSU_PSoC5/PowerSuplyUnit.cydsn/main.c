@@ -15,14 +15,6 @@
 #include "LCD_Display.h"
 #include "MainWork.h"
 
-void TestPrintString(PCHAR prefix, INT row, INT val, INT font) {
-	CHAR buffer[32];
-	sprintf(buffer, "%s %u ", prefix, val);
-	Display_SetFont(font);
-	Display_SetCursorPos(row, 0);
-	Display_Print(buffer, -1);
-}
-
 DWORD SysTickCountWDG = 0;
 void TaskShedul(void) {
 	while (TRUE) {//Функция расположенная выше имеет больший приоритет
