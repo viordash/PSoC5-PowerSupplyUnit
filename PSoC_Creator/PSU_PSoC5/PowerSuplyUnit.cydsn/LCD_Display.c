@@ -41,7 +41,7 @@ CHAR buffer[40];
 			}
 		}
         
-        T6963_FillRectangle(x + 0, y + 32, x + 64, y + 64 + 32, FALSE, TRUE);
+        T6963_DrawRectangle(x + 0, y + 32, x + 64, y + 64 + 32, FALSE, TRUE);
         x += 2;
         if (x >= 240 - 64) {
             x = 0;
@@ -50,7 +50,7 @@ CHAR buffer[40];
                 y = 0;
             }
         }
-        T6963_FillRectangle(x + 0, y + 32, x + 64, y + 64 + 32, TRUE, TRUE);
+        T6963_DrawRectangle(x + 0, y + 32, x + 64, y + 64 + 32, TRUE, TRUE);
         
         
 		TaskSleep(&DisplayFunction, SYSTICK_mS(300));		
