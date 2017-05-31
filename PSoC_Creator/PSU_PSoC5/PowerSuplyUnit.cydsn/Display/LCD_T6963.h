@@ -30,6 +30,7 @@ typedef struct {
 	WORD coordX;
 	PFONT_INFO font;
     PBYTE GraphicBuffer;//[T6963_GRPHIC_AREA * T6963_VER_DOTS];
+    BYTE GraphicHome;
 } TDisplay, *PTDisplay;
 
 extern BOOL T6963_DrawLine(BYTE ACoordX1, BYTE ACoordY1, BYTE ACoordX2, BYTE ACoordY2, BOOL APixelVal);

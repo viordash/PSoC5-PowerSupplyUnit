@@ -103,9 +103,9 @@ void _LCD_Init() {
 	T6963_DefaultPinState(0xFF);
 	_LCD_Reset();
 	Display_TaskSleep(100);        //задержка в 100mS
-
+    Display.GraphicHome = 0x0000;
 	T6963_Write(T6963_CMD__SET_MODE_XOR, dtCommand, STATUS_BUSY);	// "OR" mode			
-
+    
 	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY); 	//graphic home low adres
 	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);	//graphic home high adres
 	T6963_Write(T6963_CMD__SET_GRPH_HOME_ADR, dtCommand, STATUS_BUSY);	//graphic home command
@@ -151,9 +151,14 @@ void _LCD_Clear(void) {
 
 
 void CopyGraphicBufferToDisplay(void) {
-	//Set adress pointer     
-	T6963_Write((BYTE)T6963_GRPHIC_HOME, dtData, STATUS_BUSY);       //Low adress
-	T6963_Write((T6963_GRPHIC_HOME >> 8), dtData, STATUS_BUSY);       //High adress
+	//Set adress pointer  
+    Display.GraphicHome++;
+    if (Display.GraphicHome > (19200 / (T6963_GRPHIC_AREA * T6963_VER_DOTS))) {
+        Display.GraphicHome = 0;
+    }
+    WORD graphicHome = Display.GraphicHome * (T6963_GRPHIC_AREA * T6963_VER_DOTS);
+	T6963_Write((BYTE)graphicHome, dtData, STATUS_BUSY);       //Low adress
+	T6963_Write((graphicHome >> 8), dtData, STATUS_BUSY);       //High adress
 	T6963_Write(T6963_CMD__SET_ADRESS_PTR, dtCommand, STATUS_BUSY);   //Поместить в указатель адреса значение 0
 
 	T6963_Write(T6963_CMD__SET_DATA_AUTO_WRITE, dtCommand, STATUS_BUSY);   //Включение режима автозаписи
@@ -161,7 +166,11 @@ void CopyGraphicBufferToDisplay(void) {
 	for (i = 0; i < (T6963_GRPHIC_AREA * T6963_VER_DOTS); i++) {
 		T6963_Write(Display.GraphicBuffer[i], dtData, STATUS_AUTO_WRITE);
 	}
-	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи
+	T6963_Write(T6963_CMD__SET_DATA_AUTO_RESET, dtCommand, STATUS_AUTO_WRITE);   //Выключение режима автозаписи    
+    
+	T6963_Write((BYTE)graphicHome, dtData, STATUS_BUSY); 	//graphic home low adres
+	T6963_Write((graphicHome >> 8), dtData, STATUS_BUSY);	//graphic home high adres
+	T6963_Write(T6963_CMD__SET_GRPH_HOME_ADR, dtCommand, STATUS_BUSY);	//graphic home command
 }
 
 BOOL _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal) {
