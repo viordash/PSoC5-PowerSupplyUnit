@@ -46,8 +46,7 @@ extern void _LCD_Clear(void);
 extern void _LCD_ClearLine(BYTE Line);
 extern void _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal);
 extern void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY);
-extern void _LCD_PrintChar(CHAR ch);
-extern void _LCD_Print(PCHAR buffer, INT size);
+extern void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor);
 extern void _LCD_SetFont(INT size);	 
 
 #endif /* __LCD_T6963_H */

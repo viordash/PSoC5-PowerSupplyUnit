@@ -246,7 +246,7 @@ void _LCD_ClearLine(BYTE Line) {
 		return;
 	}
 	memset(data, ' ', width);
-	_LCD_Print(data, width);
+	_LCD_Print(data, width, FALSE);
 	free(data);
 }
 
@@ -255,12 +255,7 @@ void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY) {
 	Display.coordX = ACoordX;
 }
 
-void _LCD_PrintChar(CHAR ch) {
-	CHAR data[] = {ch, 0};
-	_LCD_Print(data, 1);
-}
-
-void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) {
+void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, BOOL invertColor) {
     BYTE posX = shiftX / 8;
     BYTE posShift = shiftX % 8;
     BYTE posShiftBack = 8 - posShift;
@@ -275,7 +270,11 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) 
     BYTE charPosX = 0;
     PBYTE pGraphicBuffer = NULL;
 	while (width > 0) {
-        DWORD data = *pCharBitmap << 8;  
+        bt = *pCharBitmap;
+        if (invertColor) {
+            bt = ~bt;
+        }
+        DWORD data = bt << 8;  
         data |= (remain << 16);
         data = data >> posShift;        
         remain = (data & 0x000000FF) >> posShiftBack;
@@ -302,7 +301,7 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX) 
     }
 }
 
-void _LCD_Print(PCHAR buffer, INT size) {
+void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor) {
 	INT height;
 	if (size == 0) {
 		return;
@@ -326,7 +325,7 @@ void _LCD_Print(PCHAR buffer, INT size) {
 				}
 				if (height == 0) {
 					Display.coordY += (8 * Display.font->height);
-					_LCD_Print(pString, size - (pString - buffer));
+					_LCD_Print(pString, size - (pString - buffer), invertColor);
 				}
 				break;
 			}
@@ -337,12 +336,12 @@ void _LCD_Print(PCHAR buffer, INT size) {
             PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
 			INT width = p_character_descriptor->width; // Character width in bits.
             PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * (((width - 1) / 8) + 1)));
-            PutDataInGraphicBuffer(pBuffer, width, posY, shiftX);
+            PutDataInGraphicBuffer(pBuffer, width, posY, shiftX, invertColor);
             shiftX += width;
 			if (ch > ' ') {
                 width = Display.font->separatorWidth; //space between chars	
                 BYTE spaceChars[8] = {0};
-                PutDataInGraphicBuffer(spaceChars, width, posY, shiftX);
+                PutDataInGraphicBuffer(spaceChars, width, posY, shiftX, invertColor);
                 shiftX += width;
 			}         
         }
