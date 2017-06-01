@@ -26,16 +26,10 @@
 #define T6963_GRPHIC_AREA ((T6963_HOR_DOTS / T6963_FONT_WIDTH) + 0)	/*(240 hor. dot / T6963_FONT_WIDTH) + 1 = 40 char per line*/
     
 typedef struct {
-	WORD coordY;
-	WORD coordX;
 	PFONT_INFO font;
     PBYTE GraphicBuffer;//[T6963_GRPHIC_AREA * T6963_VER_DOTS];
     BYTE GraphicHome;
 } TDisplay, *PTDisplay;
-
-extern void T6963_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
-extern void T6963_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
-extern void T6963_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
   
 extern void _LCD_Init(void);
 extern void _LCD_WaitReady();
@@ -43,11 +37,13 @@ extern void _LCD_Enable(void);
 extern void _LCD_Sleep(void);
 extern void _LCD_Reset(void);
 extern void _LCD_Clear(void);
-extern void _LCD_ClearLine(BYTE Line);
 extern void _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal);
-extern void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY);
-extern void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor);
+extern void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor, BYTE coordX, BYTE coordY, BOOL flush);
 extern void _LCD_SetFont(INT size);	 
+extern void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void _LCD_Flush();
 
 #endif /* __LCD_T6963_H */
 

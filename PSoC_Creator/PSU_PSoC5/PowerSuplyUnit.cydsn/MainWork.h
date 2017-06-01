@@ -35,7 +35,7 @@ typedef struct {
 } TMainWork_Property, * PTMainWork_Property;
 
 typedef struct {
-  PTMainWork_Property pProperty; 
+    PTMainWork_Property pProperty; 
 	TMainWorkState State;
 	TMainWorkResult Result;
 } TMainWork_Object, * PTMainWork_Object;

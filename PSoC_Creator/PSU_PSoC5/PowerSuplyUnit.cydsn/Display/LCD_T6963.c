@@ -111,7 +111,6 @@ void _LCD_Init() {
 
     Display.GraphicBuffer = malloc(T6963_GRPHIC_AREA * T6963_VER_DOTS);    
 	_LCD_SetFont(1);
-	_LCD_SetCursorPos(0, 0);
 	_LCD_Clear();
 	_LCD_Enable();
     
@@ -128,7 +127,7 @@ void _LCD_Reset(void) {
     O_LCD_RES_Write(TRUE);
 }
 
-void CopyGraphicBufferToDisplay(void) { 
+void _LCD_Flush(void) { 
     Display.GraphicHome++;
     if (Display.GraphicHome > (19200 / (T6963_GRPHIC_AREA * T6963_VER_DOTS))) {
         Display.GraphicHome = 0;
@@ -153,7 +152,7 @@ void CopyGraphicBufferToDisplay(void) {
 
 void _LCD_Clear(void) {
     memset(Display.GraphicBuffer, 0x00, T6963_GRPHIC_AREA * T6963_VER_DOTS);
-    CopyGraphicBufferToDisplay();
+    _LCD_Flush();
 }
 
 void _LCD_DrawPixel(BYTE coordX, BYTE coordY, BOOL value) {
@@ -168,7 +167,7 @@ void _LCD_DrawPixel(BYTE coordX, BYTE coordY, BOOL value) {
     }
 }
 
-void T6963_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
     WORD ishf;
 	BYTE i;
 	BYTE shf;
@@ -196,21 +195,21 @@ void T6963_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL
 		} while (--i != 0);
 	}
     if (flush) {
-        CopyGraphicBufferToDisplay();
+        _LCD_Flush();
     }
 }
 
-void T6963_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
-	T6963_DrawLine(coordX1, coordY1, coordX2, coordY1, value, FALSE);
-	T6963_DrawLine(coordX2, coordY1, coordX2, coordY2, value, FALSE);
-	T6963_DrawLine(coordX2, coordY2, coordX1, coordY2, value, FALSE);
-	T6963_DrawLine(coordX1, coordY2, coordX1, coordY1, value, FALSE);    
+void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+	_LCD_DrawLine(coordX1, coordY1, coordX2, coordY1, value, FALSE);
+	_LCD_DrawLine(coordX2, coordY1, coordX2, coordY2, value, FALSE);
+	_LCD_DrawLine(coordX2, coordY2, coordX1, coordY2, value, FALSE);
+	_LCD_DrawLine(coordX1, coordY2, coordX1, coordY1, value, FALSE);    
     if (flush) {
-        CopyGraphicBufferToDisplay();
+        _LCD_Flush();
     }
 }
 
-void T6963_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
 	BYTE i;
 	SHORT delX = (CHAR)coordX2 - (CHAR)coordX1;
 	CHAR dirX;
@@ -218,11 +217,11 @@ void T6963_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2,
 	delX = delX * dirX;
 	i = delX + 1;
 	do {
-		T6963_DrawLine(coordX1, coordY1, coordX1, coordY2, value, FALSE);
+		_LCD_DrawLine(coordX1, coordY1, coordX1, coordY2, value, FALSE);
 		coordX1 += dirX;
 	} while (--i != 0);    
     if (flush) {
-        CopyGraphicBufferToDisplay();
+        _LCD_Flush();
     }
 }
 
@@ -234,25 +233,6 @@ void _LCD_Enable(void) {
 void _LCD_Sleep(void) {
     O_LCD_BKL_Write(FALSE);
 	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand, STATUS_BUSY);	//Text off, graphic off
-}
-
-void _LCD_ClearLine(BYTE Line) {
-	PCHAR data;
-	_LCD_SetCursorPos(Line * (8 * Display.font->height), 0);
-	PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[' ' - Display.font->start_char]);
-	INT width = (T6963_HOR_DOTS / (p_character_descriptor->width + Display.font->separatorWidth));
-	data = malloc(width + 1);
-	if (data == NULL) {
-		return;
-	}
-	memset(data, ' ', width);
-	_LCD_Print(data, width, FALSE);
-	free(data);
-}
-
-void _LCD_SetCursorPos(WORD ACoordX, WORD ACoordY) {
-	Display.coordY = ACoordY;
-	Display.coordX = ACoordX;
 }
 
 void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, BOOL invertColor) {
@@ -301,7 +281,7 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, 
     }
 }
 
-void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor) {
+void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor, BYTE coordX, BYTE coordY, BOOL flush) {
 	INT height;
 	if (size == 0) {
 		return;
@@ -309,26 +289,14 @@ void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor) {
 	if (size < 0) {
 		size = strlen(buffer);
 	}  
-	INT posY = Display.coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
+	INT posY = coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
 	PCHAR pStringEnd = buffer + size;  
     for (height = 0; height < Display.font->height; height++) {
-        INT shiftX = Display.coordX;
+        INT shiftX = coordX;
         PCHAR pString = buffer;
         CHAR ch;
         while (pString < pStringEnd) {
             ch = *pString++;
-			if (ch == 0x0D || ch == 0x0A) {
-				pStringEnd = pString;
-				ch = *pString;
-				if (ch == 0x0D || ch == 0x0A) {
-					pString++;
-				}
-				if (height == 0) {
-					Display.coordY += (8 * Display.font->height);
-					_LCD_Print(pString, size - (pString - buffer), invertColor);
-				}
-				break;
-			}
 			if ((ch < Display.font->start_char) || (ch > Display.font->end_char)) {
 				return;
 			}    
@@ -346,8 +314,10 @@ void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor) {
 			}         
         }
         posY += (T6963_HOR_DOTS / T6963_FONT_WIDTH);
+    }  
+    if (flush) {
+        _LCD_Flush();
     }
-    CopyGraphicBufferToDisplay();
 }
 
 void _LCD_SetFont(INT size) {

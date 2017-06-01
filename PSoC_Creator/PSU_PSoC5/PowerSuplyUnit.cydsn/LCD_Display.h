@@ -9,7 +9,8 @@
  *
  * ========================================
 */
-
+#ifndef __LCD_DISPLAY_H__
+#define __LCD_DISPLAY_H__
 
 #include <device.h>
 
@@ -39,7 +40,37 @@ extern void Display_Task();
 #define Display_PrintChar _LCD_PrintChar
 #define Display_SetFont _LCD_SetFont
 #define Display_SetContrast _LCD_SetContrast
+#define Display_DrawLine _LCD_DrawLine
+#define Display_DrawRectangle _LCD_DrawRectangle
+#define Display_FillRectangle _LCD_FillRectangle
+#define Display_Flush _LCD_Flush
 
 #endif
 
+
+typedef enum {
+	dsInit = 0,
+	dsStart,
+	dsBipolar,
+	dsUnipolar,
+	dsError
+} TDisplayScreen;
+
+typedef struct {
+    TDisplayScreen Screen; 
+    BOOL Request;
+} TDisplayRequests, * PTDisplayRequests;
+
+typedef struct {
+    TDisplayScreen Screen; 
+} TDisplayProperties, * PTDisplayProperties;
+
+typedef struct {
+    TDisplayProperties Properties; 
+    TDisplayRequests Requests;
+} TDisplayObject, * PTDisplayObject;
+
+extern void RequestToChangeScreen(TDisplayScreen newValue);
+
+#endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */
