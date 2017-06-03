@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Header Files\device.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -438,36 +438,6 @@
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Bypass_P32.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Ext_CP_Clk.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AGND.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -587,13 +557,15 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
-<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_2.c" />
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
-<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.h" />
-<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_0.c" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
-<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\cyfitter_cfg.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
+<name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_3.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_2.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.h" />
+<name v=".\PowerSuplyUnit.cydsn\device.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -601,7 +573,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="959, 470" SelectedTabbedMdiWindow="7241143d-a818-4ab8-863c-512f5d59fb66"><DocumentWindow Key="efac19b5-fe80-47b5-8d12-69204304f72e" Guid="7241143d-a818-4ab8-863c-512f5d59fb66" /><DocumentWindow Key="2d02e512-bf49-48b1-b849-f4d0cd7ab5af" Guid="7f16f4ff-7dd8-4739-820a-658e8658a915" /><DocumentWindow Key="8526d4fb-acb8-44fe-9aed-e03158126c38" Guid="5314d5f8-1bc2-4698-b1fb-8b476f849e49" /><DocumentWindow Key="0fd7b439-3100-482c-8467-e5b70d7ef4a1" Guid="71ca0a28-50a8-4970-af04-1139e79398b8" /><DocumentWindow Key="7d938b38-ea7a-4314-9b85-5b489ec0e43b" Guid="a6034c6c-a221-44b3-8ba3-5945b4747d34" /><DocumentWindow Key="7596d317-cd50-414d-a9d3-b8872ad5fd75" Guid="b8ac1b6c-4dea-4568-81be-1776c417e1d6" /><DocumentWindow Key="5999a049-6cbc-4537-86d8-edd84ebbafbf" Guid="57037e31-ce29-46c2-8824-30e3d3ffd916" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1125, 470" SelectedTabbedMdiWindow="05b62e7f-2559-4571-b18e-d9191df5089e"><DocumentWindow Key="3a65bc54-98c8-4455-bd10-0eecb1444efc" Guid="35589e36-0054-46b1-9e07-334569ac4c52" /><DocumentWindow Key="ee82b573-525a-4509-973e-25621aa1e82c" Guid="05b62e7f-2559-4571-b18e-d9191df5089e" /><DocumentWindow Key="48c0d7c0-8ecc-4d97-aada-13c0ae67bd87" Guid="9411193f-1815-42df-b917-42944343d219" /><DocumentWindow Key="7ac15087-a35f-4b21-8499-c2ca7f4ef958" Guid="85d279bc-64dd-4a13-9128-db01359d1611" /><DocumentWindow Key="71aa7d02-8fee-442b-996b-b59a67d0271e" Guid="26120188-f61d-4fa2-bbbf-163d99f1c8fc" /><DocumentWindow Key="38da355d-b877-4671-a463-0a36086854d4" Guid="73940e06-94ab-4551-81f0-b63b31091cbe" /><DocumentWindow Key="b09dd0bb-7c60-4089-8082-8de95a2dd4d6" Guid="17151b57-4d12-41f3-b0a9-0b5e86ca2e43" /><DocumentWindow Key="1db0e066-b5b2-40f3-833d-77c57b1ca586" Guid="2f1ac993-a898-4ad3-b5df-6d8cf146d584" /><DocumentWindow Key="835056d4-34b1-44ae-bb4f-a1b867aac880" Guid="fabca5da-b329-4eaa-8d56-75f3cbbf46cc" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

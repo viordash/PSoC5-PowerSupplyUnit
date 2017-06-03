@@ -27,5 +27,12 @@ typedef enum {
 	smAmperageStab,
 } TStabilizeMode;
 
+
+typedef enum {
+	tcNorm = 0,
+	tcInvisible,
+	tcInvert
+} TTextColor;
+
 #endif  /* __DEVICE_H__ */
 /*[]*/

@@ -150,33 +150,33 @@ void SetScreen_Bipolar() {
     Display_DrawLine(0, 110, 239, 110, TRUE, FALSE);
 
     Display_SetFont(3);
-    Display_Print("  .  ", -1, FALSE, 30, 0, FALSE);        
+    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
     Display_SetFont(2);
-    Display_Print("v", -1, FALSE, 100, 4, FALSE);  
+    Display_Print("v", -1, tcNorm, 100, 4, FALSE);  
     Display_DrawRectangle(12, 28, 118, 54, TRUE, FALSE);    
     Display_DrawLine(12, 32, 40, 38, TRUE, FALSE);  
     Display_DrawLine(40, 38, 80, 30, TRUE, FALSE);
     
     Display_SetFont(3);
-    Display_Print("  .  ", -1, FALSE, 30 + 120, 0, FALSE);        
+    Display_Print("  .  ", -1, tcNorm, 30 + 120, 0, FALSE);        
     Display_SetFont(2);
-    Display_Print("v", -1, FALSE, 100 + 120, 4, FALSE);  
+    Display_Print("v", -1, tcNorm, 100 + 120, 4, FALSE);  
     Display_DrawRectangle(12 + 120, 28, 118 + 120, 54, TRUE, FALSE);    
     Display_DrawLine(12 + 120, 36, 40 + 120, 42, TRUE, FALSE);  
     Display_DrawLine(40 + 120, 42, 80 + 120, 38, TRUE, FALSE);
 
     Display_SetFont(2);
-    Display_Print(" .   ", -1, FALSE, 30, 4 + 56, FALSE);        
+    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
     Display_SetFont(2);
-    Display_Print("a", -1, FALSE, 104, 4 + 56, FALSE);  
+    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
     Display_DrawRectangle(12, 28 + 56, 118, 54 + 56, TRUE, FALSE);    
     Display_DrawLine(12, 36 + 56, 40, 44 + 56, TRUE, FALSE);  
     Display_DrawLine(40, 44 + 56, 80, 42 + 56, TRUE, FALSE);
 
     Display_SetFont(2);
-    Display_Print(" .   ", -1, FALSE, 30 + 120, 4 + 56, FALSE);        
+    Display_Print(" .   ", -1, tcNorm, 30 + 120, 4 + 56, FALSE);        
     Display_SetFont(2);
-    Display_Print("a", -1, FALSE, 104 + 120, 4 + 56, FALSE);  
+    Display_Print("a", -1, tcNorm, 104 + 120, 4 + 56, FALSE);  
     Display_DrawRectangle(12 + 120, 28 + 56, 118 + 120, 54 + 56, TRUE, FALSE);    
     Display_DrawLine(12 + 120, 30 + 56, 40 + 120, 32 + 56, TRUE, FALSE);  
     Display_DrawLine(40 + 120, 32 + 56, 80 + 120, 37 + 56, TRUE, FALSE);
@@ -205,22 +205,22 @@ void ChangeScreen() {
     }
 }
 
-void UpdateChannelVoltage(WORD voltage, BOOL invertColor, BYTE coordX, BYTE coordY) {
+void UpdateChannelVoltage(WORD voltage, TTextColor color, BYTE coordX, BYTE coordY) {
 CHAR buffer[10];
     WORD valueMajor = voltage / 100;
     WORD valueMinor = voltage % 100;
     sprintf(buffer, "%2u.%02u ", valueMajor, valueMinor);
     Display_SetFont(3);
-    Display_Print(buffer, -1, invertColor, coordX, coordY, FALSE);
+    Display_Print(buffer, -1, color, coordX, coordY, FALSE);
 }
 
-void UpdateChannelAmperage(WORD amperage, BOOL invertColor, BYTE coordX, BYTE coordY) {
+void UpdateChannelAmperage(WORD amperage, TTextColor color, BYTE coordX, BYTE coordY) {
 CHAR buffer[10];
     WORD valueMajor = amperage / 1000;
     WORD valueMinor = amperage % 1000;
     sprintf(buffer, "%1u.%03u ", valueMajor, valueMinor);
     Display_SetFont(2);
-    Display_Print(buffer, -1, invertColor, coordX, coordY, FALSE);
+    Display_Print(buffer, -1, color, coordX, coordY, FALSE);
 }
 
 #define VoltageACoordX 30
@@ -235,31 +235,31 @@ CHAR buffer[10];
 
 void UpdateChannelA() {         
     DisplayObj.Properties.ChannelA = DisplayObj.Requests.ChannelA; 
-    UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, DisplayObj.Properties.Selected == dslVoltageA, 
+    UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, DisplayObj.Properties.Selected == dslVoltageA ? tcInvert : tcNorm, 
             VoltageACoordX, VoltageACoordY);
-    UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, DisplayObj.Properties.Selected == dslAmperageA, 
+    UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, DisplayObj.Properties.Selected == dslAmperageA ? tcInvert : tcNorm, 
             AmperageACoordX, AmperageACoordY);
     Display_Flush();
 }
 
 void UpdateChannelB() {   
     DisplayObj.Properties.ChannelB = DisplayObj.Requests.ChannelB;   
-    UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, DisplayObj.Properties.Selected == dslVoltageB, 
+    UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, DisplayObj.Properties.Selected == dslVoltageB ? tcInvert : tcNorm, 
             VoltageBCoordX, VoltageBCoordY);
-    UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, DisplayObj.Properties.Selected == dslAmperageB, 
+    UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, DisplayObj.Properties.Selected == dslAmperageB ? tcInvert : tcNorm, 
             AmperageBCoordX, AmperageBCoordY);
     Display_Flush();
 }
 
 void UpdateSelect(BOOL selected) {    
     if (DisplayObj.Properties.Selected == dslVoltageA) {
-        UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, selected, VoltageACoordX, VoltageACoordY);;
+        UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, selected ? tcInvert : tcNorm, VoltageACoordX, VoltageACoordY);;
     } else if (DisplayObj.Properties.Selected == dslAmperageA) {
-        UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, selected, AmperageACoordX, AmperageACoordY);
+        UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, selected ? tcInvert : tcNorm, AmperageACoordX, AmperageACoordY);
     } else if (DisplayObj.Properties.Selected == dslVoltageB) {
-        UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, selected, VoltageBCoordX, VoltageBCoordY);;
+        UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, selected ? tcInvert : tcNorm, VoltageBCoordX, VoltageBCoordY);;
     } else if (DisplayObj.Properties.Selected == dslAmperageB) {
-        UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, selected, AmperageBCoordX, AmperageBCoordY);
+        UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, selected ? tcInvert : tcNorm, AmperageBCoordX, AmperageBCoordY);
     }
 }
 
@@ -270,31 +270,31 @@ void ChangeSelected() {
     Display_Flush();
 }
 
-void ChangeStabilizeMode(PCHAR symbols, TStabilizeMode stabilizeMode, 
+void ChangeStabilizeMode(BOOL show, TStabilizeMode stabilizeMode, 
         BYTE voltCoordX, BYTE voltCoordY, BYTE amperCoordX, BYTE amperCoordY) {   
     if (stabilizeMode == smVoltageStab) {
         Display_SetFont(3);
-        Display_Print(symbols, -1, FALSE, voltCoordX, voltCoordY, FALSE);
+        Display_Print("#", -1, show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
     } else if (stabilizeMode == smAmperageStab) {
         Display_SetFont(2);
-        Display_Print(symbols, -1, FALSE, amperCoordX, amperCoordY, FALSE);
+        Display_Print("#", -1, show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
     }    
 }
 
 void ChangeStabilizeModeA() {   
-    ChangeStabilizeMode("   ", DisplayObj.Properties.StabilizeModeA, 
-            VoltageACoordX - 27, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
+    ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeA, 
+            VoltageACoordX - 25, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
     DisplayObj.Properties.StabilizeModeA = DisplayObj.Requests.StabilizeModeA; 
-    ChangeStabilizeMode("#", DisplayObj.Properties.StabilizeModeA, 
-            VoltageACoordX - 27, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
+    ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeA, 
+            VoltageACoordX - 25, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
     Display_Flush();
 }
 
 void ChangeStabilizeModeB() {  
-    ChangeStabilizeMode("   ", DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 27, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
+    ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeB, 
+            VoltageBCoordX - 25, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
     DisplayObj.Properties.StabilizeModeB = DisplayObj.Requests.StabilizeModeB; 
-    ChangeStabilizeMode("#", DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 27, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
+    ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeB, 
+            VoltageBCoordX - 25, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
     Display_Flush();
 }

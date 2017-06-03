@@ -235,7 +235,7 @@ void _LCD_Sleep(void) {
 	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand, STATUS_BUSY);	//Text off, graphic off
 }
 
-void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, BOOL invertColor) {
+void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, TTextColor color) {
     BYTE posX = shiftX / 8;
     BYTE posShift = shiftX % 8;
     BYTE posShiftBack = 8 - posShift;
@@ -251,8 +251,10 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, 
     PBYTE pGraphicBuffer = NULL;
 	while (width > 0) {
         bt = *pCharBitmap;
-        if (invertColor) {
+        if (color == tcInvert) {
             bt = ~bt;
+        } else if (color == tcInvisible) {
+            bt = 0;
         }
         DWORD data = bt << 8;  
         data |= (remain << 16);
@@ -281,7 +283,7 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, 
     }
 }
 
-void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor, BYTE coordX, BYTE coordY, BOOL flush) {
+void _LCD_Print(PCHAR buffer, INT size, TTextColor color, BYTE coordX, BYTE coordY, BOOL flush) {
 	INT height;
 	if (size == 0) {
 		return;
@@ -304,12 +306,12 @@ void _LCD_Print(PCHAR buffer, INT size, BOOL invertColor, BYTE coordX, BYTE coor
             PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
 			INT width = p_character_descriptor->width; // Character width in bits.
             PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * (((width - 1) / 8) + 1)));
-            PutDataInGraphicBuffer(pBuffer, width, posY, shiftX, invertColor);
+            PutDataInGraphicBuffer(pBuffer, width, posY, shiftX, color);
             shiftX += width;
 			if (ch > ' ') {
                 width = Display.font->separatorWidth; //space between chars	
                 BYTE spaceChars[8] = {0};
-                PutDataInGraphicBuffer(spaceChars, width, posY, shiftX, invertColor);
+                PutDataInGraphicBuffer(spaceChars, width, posY, shiftX, color);
                 shiftX += width;
 			}         
         }
