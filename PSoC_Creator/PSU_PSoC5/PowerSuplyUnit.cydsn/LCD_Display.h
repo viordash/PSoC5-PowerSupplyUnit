@@ -56,13 +56,45 @@ typedef enum {
 	dsError
 } TDisplayScreen;
 
+typedef enum {
+	dslNone = 0,
+	dslVoltageA,
+	dslAmperageA,
+	dslVoltageB,
+	dslAmperageB,
+} TDisplaySelected;
+
+typedef struct {
+    WORD Voltage;   /*voltage * 100*/
+    WORD Amperage;   /*amperage * 1000*/
+} TDisplayChannelData, * PTDisplayChannelData;
+
 typedef struct {
     TDisplayScreen Screen; 
-    BOOL Request;
+    BOOL ScreenRequest;
+    
+    TDisplayChannelData ChannelA;
+    TDisplayChannelData ChannelB;
+    BOOL ChannelARequest;
+    BOOL ChannelBRequest;
+    
+    TDisplaySelected Selected;
+    BOOL SelectedRequest;
+    
+    TStabilizeMode StabilizeModeA;
+    BOOL StabilizeModeARequest;
+    
+    TStabilizeMode StabilizeModeB;
+    BOOL StabilizeModeBRequest;
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
     TDisplayScreen Screen; 
+    TDisplayChannelData ChannelA;
+    TDisplayChannelData ChannelB;
+    TDisplaySelected Selected;
+    TStabilizeMode StabilizeModeA;
+    TStabilizeMode StabilizeModeB;
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {
@@ -71,6 +103,11 @@ typedef struct {
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
+extern void RequestToChannelA(TDisplayChannelData newValue);
+extern void RequestToChannelB(TDisplayChannelData newValue);
+extern void RequestToSelected(TDisplaySelected newValue);
+extern void RequestToStabilizeModeA(TStabilizeMode newValue);
+extern void RequestToStabilizeModeB(TStabilizeMode newValue);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

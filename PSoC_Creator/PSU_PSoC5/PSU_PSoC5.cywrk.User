@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Header Files\device.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -36,9 +36,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
@@ -311,14 +311,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\type.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
+<v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\OS</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">

@@ -15,8 +15,17 @@
  * ========================================
 */
 
+#ifndef __DEVICE_H__
+#define __DEVICE_H__
+    
 #include <project.h>
 #include "type.h"
 #include "OS\SystemOS.h"
 
+typedef enum {
+	smVoltageStab = 0,
+	smAmperageStab,
+} TStabilizeMode;
+
+#endif  /* __DEVICE_H__ */
 /*[]*/

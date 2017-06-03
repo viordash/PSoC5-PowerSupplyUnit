@@ -16,25 +16,58 @@
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
+BOOL ProcessRequests();
 void ChangeScreen();
+void UpdateChannelA();
+void UpdateChannelB();
+void ChangeSelected();
+void ChangeStabilizeModeA();
+void ChangeStabilizeModeB();
 
-void Display_Init() {
-    DisplayObj.Properties.Screen = dsInit;
-    
-    DisplayObj.Requests.Request = FALSE;    
-    DisplayObj.Requests.Screen = dsInit;
+void Display_Init() {    
+    DisplayObj.Requests.ScreenRequest = FALSE;    
+    DisplayObj.Requests.Screen = dsInit;    
+    DisplayObj.Requests.ChannelARequest = FALSE;    
+    DisplayObj.Requests.ChannelA.Voltage = 0; 
+    DisplayObj.Requests.ChannelA.Amperage = 0;
+    DisplayObj.Requests.ChannelBRequest = FALSE;   
+    DisplayObj.Requests.ChannelB.Voltage = 0; 
+    DisplayObj.Requests.ChannelB.Amperage = 0;
+    DisplayObj.Requests.SelectedRequest = FALSE;    
+    DisplayObj.Requests.Selected = dslNone;    
+    DisplayObj.Requests.StabilizeModeARequest = FALSE;    
+    DisplayObj.Requests.StabilizeModeA = smVoltageStab;    
+    DisplayObj.Requests.StabilizeModeBRequest = FALSE;    
+    DisplayObj.Requests.StabilizeModeB = smVoltageStab; 
 }
 
 void Display_Task() {	
     _LCD_Init();
     _LCD_WaitReady();
     RequestToChangeScreen(dsStart);
+    {
+        TDisplayChannelData newValueA = {1210, 561};
+        RequestToChannelA(newValueA);
+        TDisplayChannelData newValueB = {0, 0};
+        RequestToChannelB(newValueB);
+        TDisplaySelected selected = dslVoltageB;
+        RequestToSelected(selected);
+        
+        TStabilizeMode stabilizeModeA = smVoltageStab;
+        RequestToStabilizeModeA(stabilizeModeA);
+        TStabilizeMode stabilizeModeB = smAmperageStab;
+        RequestToStabilizeModeB(stabilizeModeB);
+    }
+    INT yyy = 100;
 	while (TRUE) {  
-        if (DisplayObj.Requests.Request) {
-            if (DisplayObj.Properties.Screen != DisplayObj.Requests.Screen) {
-                ChangeScreen();
-            }
-            DisplayObj.Requests.Request = FALSE;
+        ProcessRequests();
+        if (yyy-- <= 50) {
+            TStabilizeMode stabilizeModeB = smVoltageStab;
+            RequestToStabilizeModeB(stabilizeModeB);            
+        }
+        if (yyy <= 0) {
+            TStabilizeMode stabilizeModeA = smAmperageStab;
+            RequestToStabilizeModeA(stabilizeModeA);           
         }
 		TaskSleep(&DisplayFunction, SYSTICK_mS(100));		
 	}
@@ -42,7 +75,67 @@ void Display_Task() {
 
 void RequestToChangeScreen(TDisplayScreen newValue) { 
     DisplayObj.Requests.Screen = newValue;
-    DisplayObj.Requests.Request = TRUE;
+    DisplayObj.Requests.ScreenRequest = TRUE;
+}
+
+void RequestToChannelA(TDisplayChannelData newValue) { 
+    DisplayObj.Requests.ChannelA = newValue;
+    DisplayObj.Requests.ChannelARequest = TRUE;
+}
+
+void RequestToChannelB(TDisplayChannelData newValue) { 
+    DisplayObj.Requests.ChannelB = newValue;
+    DisplayObj.Requests.ChannelBRequest = TRUE;
+}
+
+void RequestToSelected(TDisplaySelected newValue) { 
+    DisplayObj.Requests.Selected = newValue;
+    DisplayObj.Requests.SelectedRequest = TRUE;
+}
+
+void RequestToStabilizeModeA(TStabilizeMode newValue) { 
+    DisplayObj.Requests.StabilizeModeA = newValue;
+    DisplayObj.Requests.StabilizeModeARequest = TRUE;
+}
+
+void RequestToStabilizeModeB(TStabilizeMode newValue) { 
+    DisplayObj.Requests.StabilizeModeB = newValue;
+    DisplayObj.Requests.StabilizeModeBRequest = TRUE;
+}
+
+BOOL ProcessRequests () {
+BOOL res = FALSE;    
+    if (DisplayObj.Requests.ScreenRequest) {
+        ChangeScreen();
+        DisplayObj.Requests.ScreenRequest = FALSE;
+        res = TRUE;  
+    } 
+    if (DisplayObj.Requests.ChannelARequest) {
+        UpdateChannelA();
+        DisplayObj.Requests.ChannelARequest = FALSE;
+        res = TRUE;  
+    }
+    if (DisplayObj.Requests.ChannelBRequest) {
+        UpdateChannelB();
+        DisplayObj.Requests.ChannelBRequest = FALSE;
+        res = TRUE;  
+    }
+    if (DisplayObj.Requests.SelectedRequest) {
+        ChangeSelected();
+        DisplayObj.Requests.SelectedRequest = FALSE;
+        res = TRUE;  
+    } 
+    if (DisplayObj.Requests.StabilizeModeARequest) {
+        ChangeStabilizeModeA();
+        DisplayObj.Requests.StabilizeModeARequest = FALSE;
+        res = TRUE;  
+    } 
+    if (DisplayObj.Requests.StabilizeModeBRequest) {
+        ChangeStabilizeModeB();
+        DisplayObj.Requests.StabilizeModeBRequest = FALSE;
+        res = TRUE;  
+    } 
+    return res;
 }
 
 void SetScreen_Bipolar();
@@ -57,7 +150,7 @@ void SetScreen_Bipolar() {
     Display_DrawLine(0, 110, 239, 110, TRUE, FALSE);
 
     Display_SetFont(3);
-    Display_Print("12.62", -1, FALSE, 30, 0, FALSE);        
+    Display_Print("  .  ", -1, FALSE, 30, 0, FALSE);        
     Display_SetFont(2);
     Display_Print("v", -1, FALSE, 100, 4, FALSE);  
     Display_DrawRectangle(12, 28, 118, 54, TRUE, FALSE);    
@@ -65,7 +158,7 @@ void SetScreen_Bipolar() {
     Display_DrawLine(40, 38, 80, 30, TRUE, FALSE);
     
     Display_SetFont(3);
-    Display_Print("08.10", -1, FALSE, 30 + 120, 0, FALSE);        
+    Display_Print("  .  ", -1, FALSE, 30 + 120, 0, FALSE);        
     Display_SetFont(2);
     Display_Print("v", -1, FALSE, 100 + 120, 4, FALSE);  
     Display_DrawRectangle(12 + 120, 28, 118 + 120, 54, TRUE, FALSE);    
@@ -73,7 +166,7 @@ void SetScreen_Bipolar() {
     Display_DrawLine(40 + 120, 42, 80 + 120, 38, TRUE, FALSE);
 
     Display_SetFont(2);
-    Display_Print("2.503", -1, FALSE, 34, 4 + 56, FALSE);        
+    Display_Print(" .   ", -1, FALSE, 30, 4 + 56, FALSE);        
     Display_SetFont(2);
     Display_Print("a", -1, FALSE, 104, 4 + 56, FALSE);  
     Display_DrawRectangle(12, 28 + 56, 118, 54 + 56, TRUE, FALSE);    
@@ -81,7 +174,7 @@ void SetScreen_Bipolar() {
     Display_DrawLine(40, 44 + 56, 80, 42 + 56, TRUE, FALSE);
 
     Display_SetFont(2);
-    Display_Print("4.815", -1, FALSE, 34 + 120, 4 + 56, FALSE);        
+    Display_Print(" .   ", -1, FALSE, 30 + 120, 4 + 56, FALSE);        
     Display_SetFont(2);
     Display_Print("a", -1, FALSE, 104 + 120, 4 + 56, FALSE);  
     Display_DrawRectangle(12 + 120, 28 + 56, 118 + 120, 54 + 56, TRUE, FALSE);    
@@ -99,9 +192,8 @@ void SetScreen_Error() {
 
 }
 
-
-void ChangeScreen() {    
-    DisplayObj.Properties.Screen = DisplayObj.Requests.Screen;    
+void ChangeScreen() {  
+    DisplayObj.Properties.Screen = DisplayObj.Requests.Screen;          
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();
     } else if (DisplayObj.Properties.Screen == dsBipolar) {
@@ -111,4 +203,98 @@ void ChangeScreen() {
     } else if (DisplayObj.Properties.Screen == dsError) {
         SetScreen_Error();
     }
+}
+
+void UpdateChannelVoltage(WORD voltage, BOOL invertColor, BYTE coordX, BYTE coordY) {
+CHAR buffer[10];
+    WORD valueMajor = voltage / 100;
+    WORD valueMinor = voltage % 100;
+    sprintf(buffer, "%2u.%02u ", valueMajor, valueMinor);
+    Display_SetFont(3);
+    Display_Print(buffer, -1, invertColor, coordX, coordY, FALSE);
+}
+
+void UpdateChannelAmperage(WORD amperage, BOOL invertColor, BYTE coordX, BYTE coordY) {
+CHAR buffer[10];
+    WORD valueMajor = amperage / 1000;
+    WORD valueMinor = amperage % 1000;
+    sprintf(buffer, "%1u.%03u ", valueMajor, valueMinor);
+    Display_SetFont(2);
+    Display_Print(buffer, -1, invertColor, coordX, coordY, FALSE);
+}
+
+#define VoltageACoordX 30
+#define VoltageACoordY 0
+#define AmperageACoordX 30
+#define AmperageACoordY 4 + 56
+
+#define VoltageBCoordX 30 + 120
+#define VoltageBCoordY 0
+#define AmperageBCoordX 30 + 120
+#define AmperageBCoordY 4 + 56
+
+void UpdateChannelA() {         
+    DisplayObj.Properties.ChannelA = DisplayObj.Requests.ChannelA; 
+    UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, DisplayObj.Properties.Selected == dslVoltageA, 
+            VoltageACoordX, VoltageACoordY);
+    UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, DisplayObj.Properties.Selected == dslAmperageA, 
+            AmperageACoordX, AmperageACoordY);
+    Display_Flush();
+}
+
+void UpdateChannelB() {   
+    DisplayObj.Properties.ChannelB = DisplayObj.Requests.ChannelB;   
+    UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, DisplayObj.Properties.Selected == dslVoltageB, 
+            VoltageBCoordX, VoltageBCoordY);
+    UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, DisplayObj.Properties.Selected == dslAmperageB, 
+            AmperageBCoordX, AmperageBCoordY);
+    Display_Flush();
+}
+
+void UpdateSelect(BOOL selected) {    
+    if (DisplayObj.Properties.Selected == dslVoltageA) {
+        UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, selected, VoltageACoordX, VoltageACoordY);;
+    } else if (DisplayObj.Properties.Selected == dslAmperageA) {
+        UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, selected, AmperageACoordX, AmperageACoordY);
+    } else if (DisplayObj.Properties.Selected == dslVoltageB) {
+        UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, selected, VoltageBCoordX, VoltageBCoordY);;
+    } else if (DisplayObj.Properties.Selected == dslAmperageB) {
+        UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, selected, AmperageBCoordX, AmperageBCoordY);
+    }
+}
+
+void ChangeSelected() {  
+    UpdateSelect(FALSE);
+    DisplayObj.Properties.Selected = DisplayObj.Requests.Selected;      
+    UpdateSelect(TRUE);
+    Display_Flush();
+}
+
+void ChangeStabilizeMode(PCHAR symbols, TStabilizeMode stabilizeMode, 
+        BYTE voltCoordX, BYTE voltCoordY, BYTE amperCoordX, BYTE amperCoordY) {   
+    if (stabilizeMode == smVoltageStab) {
+        Display_SetFont(3);
+        Display_Print(symbols, -1, FALSE, voltCoordX, voltCoordY, FALSE);
+    } else if (stabilizeMode == smAmperageStab) {
+        Display_SetFont(2);
+        Display_Print(symbols, -1, FALSE, amperCoordX, amperCoordY, FALSE);
+    }    
+}
+
+void ChangeStabilizeModeA() {   
+    ChangeStabilizeMode("   ", DisplayObj.Properties.StabilizeModeA, 
+            VoltageACoordX - 27, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
+    DisplayObj.Properties.StabilizeModeA = DisplayObj.Requests.StabilizeModeA; 
+    ChangeStabilizeMode("#", DisplayObj.Properties.StabilizeModeA, 
+            VoltageACoordX - 27, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
+    Display_Flush();
+}
+
+void ChangeStabilizeModeB() {  
+    ChangeStabilizeMode("   ", DisplayObj.Properties.StabilizeModeB, 
+            VoltageBCoordX - 27, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
+    DisplayObj.Properties.StabilizeModeB = DisplayObj.Requests.StabilizeModeB; 
+    ChangeStabilizeMode("#", DisplayObj.Properties.StabilizeModeB, 
+            VoltageBCoordX - 27, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
+    Display_Flush();
 }
