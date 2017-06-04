@@ -20,8 +20,12 @@
     
 #include <project.h>
 #include "type.h"
-#include "OS\SystemOS.h"
+#include "OS\SystemOS.h"    
+#include "Utils\GeneralUtils.h"
 
+#define PROGRAM_VERSION_MAJOR 1
+#define PROGRAM_VERSION_MINOR 0
+    
 typedef enum {
 	smVoltageStab = 0,
 	smAmperageStab,

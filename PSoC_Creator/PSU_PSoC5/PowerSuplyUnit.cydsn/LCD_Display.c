@@ -45,30 +45,8 @@ void Display_Task() {
     _LCD_Init();
     _LCD_WaitReady();
     RequestToChangeScreen(dsStart);
-    {
-        TDisplayChannelData newValueA = {1210, 561};
-        RequestToChannelA(newValueA);
-        TDisplayChannelData newValueB = {0, 0};
-        RequestToChannelB(newValueB);
-        TDisplaySelected selected = dslVoltageB;
-        RequestToSelected(selected);
-        
-        TStabilizeMode stabilizeModeA = smVoltageStab;
-        RequestToStabilizeModeA(stabilizeModeA);
-        TStabilizeMode stabilizeModeB = smAmperageStab;
-        RequestToStabilizeModeB(stabilizeModeB);
-    }
-    INT yyy = 100;
 	while (TRUE) {  
         ProcessRequests();
-        if (yyy-- <= 50) {
-            TStabilizeMode stabilizeModeB = smVoltageStab;
-            RequestToStabilizeModeB(stabilizeModeB);            
-        }
-        if (yyy <= 0) {
-            TStabilizeMode stabilizeModeA = smAmperageStab;
-            RequestToStabilizeModeA(stabilizeModeA);           
-        }
 		TaskSleep(&DisplayFunction, SYSTICK_mS(100));		
 	}
 }
@@ -138,9 +116,20 @@ BOOL res = FALSE;
     return res;
 }
 
-void SetScreen_Bipolar();
 void SetScreen_Start() {   
-    SetScreen_Bipolar();
+CHAR buffer[20];    
+    Display_DrawRectangle(3, 3, 237, 125, ltSolid, FALSE); 
+    Display_DrawRectangle(4, 4, 236, 124, ltSolid, FALSE); 
+    Display_DrawRectangle(6, 6, 234, 122, ltDoted, FALSE); 
+    Display_DrawRectangle(7, 7, 234, 121, ltDoted, FALSE); 
+    
+    Display_SetFont(1);
+    Display_Print("Power Supply", -1, tcNorm, 75, 35 + 10, FALSE);  
+    Display_Print("PSoC-5. Viordash", -1, tcNorm, 60, 55 + 10, FALSE);   
+    Display_SetFont(0);   
+    ProgramVersion(buffer);
+    Display_Print(buffer, -1, tcNorm, 87, 110, FALSE);      
+    Display_Flush();
 }
 
 void SetScreen_Bipolar() {    

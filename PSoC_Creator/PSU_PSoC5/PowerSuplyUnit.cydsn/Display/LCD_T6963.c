@@ -176,12 +176,12 @@ void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLine
 	SHORT dirX = 0;
 	SHORT dirY = 0;
     BYTE lineValue;
-    if (lineType == ltSolid) {
-        lineValue = 0xFF;
-    } else if (lineType == ltDoted) {
+    if (lineType == ltDoted) {
         lineValue = 1;
     } else if (lineType == ltDashed) {
         lineValue = 8;
+    } else {
+        lineValue = 0xFF;
     }
 
 	if (delX < 0) { dirX = -1; delX = delX * dirX; } else if ((BYTE)delX != 0) dirX = 1;
