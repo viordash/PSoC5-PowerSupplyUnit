@@ -2,7 +2,7 @@
 --	Conversion of PowerSuplyUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sat Jun 03 14:29:59 2017
+--	Sun Jun 04 23:12:03 2017
 --
 
 USE cypress.cypress.all;
@@ -1151,19 +1151,27 @@ TERMINAL Net_10287 : bit;
 TERMINAL Net_10357 : bit;
 TERMINAL Net_10426 : bit;
 TERMINAL Net_10425 : bit;
-TERMINAL Net_10310 : bit;
-TERMINAL Net_10306 : bit;
-TERMINAL Net_10309 : bit;
-TERMINAL Net_10307 : bit;
-TERMINAL Net_10311 : bit;
-TERMINAL Net_10308 : bit;
+SIGNAL \Buttons:status_0\ : bit;
+SIGNAL Net_10739 : bit;
+SIGNAL \Buttons:status_1\ : bit;
+SIGNAL Net_10736 : bit;
+SIGNAL \Buttons:status_2\ : bit;
+SIGNAL Net_10727 : bit;
+SIGNAL \Buttons:status_3\ : bit;
+SIGNAL Net_10728 : bit;
+SIGNAL \Buttons:status_4\ : bit;
+SIGNAL Net_10747 : bit;
+SIGNAL \Buttons:status_5\ : bit;
+SIGNAL Net_10748 : bit;
+SIGNAL \Buttons:status_6\ : bit;
+SIGNAL \Buttons:status_7\ : bit;
+SIGNAL Net_10744 : bit;
 TERMINAL Net_10417 : bit;
 TERMINAL Net_10420 : bit;
 TERMINAL Net_10418 : bit;
 TERMINAL Net_10423 : bit;
 TERMINAL Net_10419 : bit;
 SIGNAL tmpOE__I_MultiJogA_net_0 : bit;
-SIGNAL tmpFB_0__I_MultiJogA_net_0 : bit;
 SIGNAL tmpIO_0__I_MultiJogA_net_0 : bit;
 TERMINAL tmpSIOVREF__I_MultiJogA_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__I_MultiJogA_net_0 : bit;
@@ -1173,29 +1181,24 @@ TERMINAL Net_10428 : bit;
 TERMINAL Net_10431 : bit;
 TERMINAL Net_10429 : bit;
 SIGNAL tmpOE__I_MultiJogB_net_0 : bit;
-SIGNAL tmpFB_0__I_MultiJogB_net_0 : bit;
 SIGNAL tmpIO_0__I_MultiJogB_net_0 : bit;
 TERMINAL tmpSIOVREF__I_MultiJogB_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__I_MultiJogB_net_0 : bit;
 SIGNAL tmpOE__I_BtnBipolarMode_net_0 : bit;
-SIGNAL tmpFB_0__I_BtnBipolarMode_net_0 : bit;
 SIGNAL tmpIO_0__I_BtnBipolarMode_net_0 : bit;
 TERMINAL tmpSIOVREF__I_BtnBipolarMode_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__I_BtnBipolarMode_net_0 : bit;
-SIGNAL tmpOE__I_BtnOutOnSpeed_net_0 : bit;
-SIGNAL tmpFB_0__I_BtnOutOnSpeed_net_0 : bit;
-SIGNAL tmpIO_0__I_BtnOutOnSpeed_net_0 : bit;
-TERMINAL tmpSIOVREF__I_BtnOutOnSpeed_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__I_BtnOutOnSpeed_net_0 : bit;
+SIGNAL tmpOE__I_BtnRiseRatePowerUp_net_0 : bit;
+SIGNAL tmpIO_0__I_BtnRiseRatePowerUp_net_0 : bit;
+TERMINAL tmpSIOVREF__I_BtnRiseRatePowerUp_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__I_BtnRiseRatePowerUp_net_0 : bit;
 TERMINAL Net_10365 : bit;
 SIGNAL tmpOE__I_BtnChangePolarity_net_0 : bit;
-SIGNAL tmpFB_0__I_BtnChangePolarity_net_0 : bit;
 SIGNAL tmpIO_0__I_BtnChangePolarity_net_0 : bit;
 TERMINAL tmpSIOVREF__I_BtnChangePolarity_net_0 : bit;
 TERMINAL Net_10434 : bit;
 SIGNAL tmpINTERRUPT_0__I_BtnChangePolarity_net_0 : bit;
 SIGNAL tmpOE__I_BtnOk_net_0 : bit;
-SIGNAL tmpFB_0__I_BtnOk_net_0 : bit;
 SIGNAL tmpIO_0__I_BtnOk_net_0 : bit;
 TERMINAL tmpSIOVREF__I_BtnOk_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__I_BtnOk_net_0 : bit;
@@ -1620,26 +1623,26 @@ SIGNAL \FanCtrl:Net_113\ : bit;
 SIGNAL \FanCtrl:Net_107\ : bit;
 SIGNAL \FanCtrl:Net_114\ : bit;
 TERMINAL Net_10559 : bit;
-TERMINAL Net_10574 : bit;
-SIGNAL tmpOE__O_Led1_net_0 : bit;
-SIGNAL tmpFB_0__O_Led1_net_0 : bit;
-SIGNAL tmpIO_0__O_Led1_net_0 : bit;
-TERMINAL tmpSIOVREF__O_Led1_net_0 : bit;
+TERMINAL Net_10746 : bit;
+SIGNAL tmpOE__O_Led_RiseRatePowerUp_net_0 : bit;
+SIGNAL tmpFB_0__O_Led_RiseRatePowerUp_net_0 : bit;
+SIGNAL tmpIO_0__O_Led_RiseRatePowerUp_net_0 : bit;
+TERMINAL tmpSIOVREF__O_Led_RiseRatePowerUp_net_0 : bit;
 TERMINAL Net_10575 : bit;
-SIGNAL tmpINTERRUPT_0__O_Led1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__O_Led_RiseRatePowerUp_net_0 : bit;
 TERMINAL Net_10566 : bit;
-SIGNAL tmpOE__O_Led1_1_net_0 : bit;
-SIGNAL tmpFB_0__O_Led1_1_net_0 : bit;
-SIGNAL tmpIO_0__O_Led1_1_net_0 : bit;
-TERMINAL tmpSIOVREF__O_Led1_1_net_0 : bit;
+SIGNAL tmpOE__O_Led_Polar_net_0 : bit;
+SIGNAL tmpFB_0__O_Led_Polar_net_0 : bit;
+SIGNAL tmpIO_0__O_Led_Polar_net_0 : bit;
+TERMINAL tmpSIOVREF__O_Led_Polar_net_0 : bit;
 TERMINAL Net_10576 : bit;
-SIGNAL tmpINTERRUPT_0__O_Led1_1_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__O_Led_Polar_net_0 : bit;
 TERMINAL Net_10569 : bit;
-SIGNAL tmpOE__O_Led1_2_net_0 : bit;
-SIGNAL tmpFB_0__O_Led1_2_net_0 : bit;
-SIGNAL tmpIO_0__O_Led1_2_net_0 : bit;
-TERMINAL tmpSIOVREF__O_Led1_2_net_0 : bit;
-SIGNAL tmpINTERRUPT_0__O_Led1_2_net_0 : bit;
+SIGNAL tmpOE__O_Led_Error_net_0 : bit;
+SIGNAL tmpFB_0__O_Led_Error_net_0 : bit;
+SIGNAL tmpIO_0__O_Led_Error_net_0 : bit;
+TERMINAL tmpSIOVREF__O_Led_Error_net_0 : bit;
+SIGNAL tmpINTERRUPT_0__O_Led_Error_net_0 : bit;
 TERMINAL Net_10588 : bit;
 TERMINAL Net_10585 : bit;
 TERMINAL Net_10609 : bit;
@@ -1686,6 +1689,162 @@ SIGNAL \LCD_DB_OutEnable:control_3\ : bit;
 SIGNAL \LCD_DB_OutEnable:control_2\ : bit;
 SIGNAL \LCD_DB_OutEnable:control_1\ : bit;
 SIGNAL \LCD_DB_OutEnable:control_0\ : bit;
+SIGNAL \MultiJog:Net_1123\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_43\ : bit;
+SIGNAL \MultiJog:Net_1276\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_49\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_82\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_89\ : bit;
+SIGNAL \MultiJog:Net_1251\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_95\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_91\ : bit;
+SIGNAL \MultiJog:Cnt8:Net_102\ : bit;
+SIGNAL Net_10753 : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_cmod_2\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_cmod_1\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_cmod_0\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_capmode_1\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_capmode_0\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:Clk_Ctl_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_7\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_6\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_5\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_4\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_3\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_2\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_1\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:control_0\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:ctrl_enable\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:prevCapture\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:capt_rising\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:capt_falling\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:capt_either_edge\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:hwCapture\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:reload\ : bit;
+SIGNAL \MultiJog:Net_1260\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:reload_tc\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:final_enable\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:counter_enable\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_0\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_out_status\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_1\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:per_zero\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_2\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:overflow_status\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_3\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:underflow_status\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_4\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_5\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:fifo_full\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:status_6\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:fifo_nempty\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:overflow\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:per_FF\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:underflow\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:overflow_reg_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:underflow_reg_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:tc_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:tc_reg_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_out_i\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_equal\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:prevCompare\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_out_reg_i\ : bit;
+SIGNAL \MultiJog:Net_1269\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:count_stored_i\ : bit;
+SIGNAL \MultiJog:Net_1203\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:count_enable\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:dp_dir\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cs_addr_2\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cs_addr_1\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cs_addr_0\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:per_equal\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:nc42\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_less\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z1\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z1\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff1\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff1\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ov_msb\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ov_msb\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:co_msb\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:co_msb\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cmsb\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cmsb\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:so\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:so\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_bus_stat\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_bus_stat\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_blk_stat\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_blk_stat\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ce0_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ce0_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cl0_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cl0_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z0_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z0_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff0_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff0_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ce1_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ce1_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cl1_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cl1_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z1_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:z1_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff1_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ff1_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ov_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:ov_msb_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:co_msb_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:co_msb_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cmsb_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:cmsb_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:so_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:so_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f0_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f0_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f0_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f0_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_bus_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_bus_stat_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_blk_stat_reg\ : bit;
+ATTRIBUTE port_state_att of \MultiJog:Cnt8:CounterUDB:sC8:counterdp:f1_blk_stat_reg\:SIGNAL IS 2;
+SIGNAL \MultiJog:Net_1290\ : bit;
+SIGNAL \MultiJog:bQuadDec:sync_clock\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_A_delayed_0\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_A_delayed_1\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_A_delayed_2\ : bit;
+SIGNAL \MultiJog:bQuadDec:A_j\ : bit;
+SIGNAL \MultiJog:bQuadDec:A_k\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_A_filt\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_B_delayed_0\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_B_delayed_1\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_B_delayed_2\ : bit;
+SIGNAL \MultiJog:bQuadDec:B_j\ : bit;
+SIGNAL \MultiJog:bQuadDec:B_k\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_B_filt\ : bit;
+SIGNAL \MultiJog:bQuadDec:index_filt\ : bit;
+SIGNAL \MultiJog:Net_1232\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_2\ : bit;
+SIGNAL \MultiJog:bQuadDec:error\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_3\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_1\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_0\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_0\ : bit;
+SIGNAL \MultiJog:Net_530\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_1\ : bit;
+SIGNAL \MultiJog:Net_611\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_2\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_3\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_4\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_5\ : bit;
+SIGNAL \MultiJog:bQuadDec:status_6\ : bit;
+SIGNAL Net_10751 : bit;
+SIGNAL \MultiJog:Net_1151\ : bit;
+SIGNAL \MultiJog:Net_1248\ : bit;
+SIGNAL \MultiJog:Net_1229\ : bit;
+SIGNAL \MultiJog:Net_1272\ : bit;
+SIGNAL \MultiJog:Net_1287\ : bit;
 SIGNAL \MODULE_4:g1:a0:newa_0\ : bit;
 SIGNAL \MODULE_4:g1:a0:newb_0\ : bit;
 SIGNAL MODIN4_0 : bit;
@@ -1765,6 +1924,21 @@ SIGNAL \FanCtrl:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:tc_i_reg\\D\ : bit;
+SIGNAL \MultiJog:Net_1251\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:prevCapture\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:overflow_reg_i\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:underflow_reg_i\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:tc_reg_i\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:prevCompare\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:cmp_out_reg_i\\D\ : bit;
+SIGNAL \MultiJog:Cnt8:CounterUDB:count_stored_i\\D\ : bit;
+SIGNAL \MultiJog:Net_1203\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_A_filt\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:quad_B_filt\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_2\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_3\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_1\\D\ : bit;
+SIGNAL \MultiJog:bQuadDec:state_0\\D\ : bit;
 BEGIN
 
 \ADC_VoltageChanelB:Net_188\ <= (zero
@@ -2026,6 +2200,117 @@ AMuxHw_1_Decoder_one_hot_1D <= ((AMuxHw_1_Decoder_is_active and AMuxHw_1_Decoder
 
 \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_0\ <= ((not \FanCtrl:PWMUDB:dith_count_0\ and one)
 	OR (not one and \FanCtrl:PWMUDB:dith_count_0\));
+
+\MultiJog:Cnt8:CounterUDB:capt_either_edge\ <= (zero
+	OR \MultiJog:Cnt8:CounterUDB:prevCapture\);
+
+\MultiJog:Cnt8:CounterUDB:hwCapture\ <= ((zero and \MultiJog:Cnt8:CounterUDB:capt_either_edge\)
+	OR (zero and \MultiJog:Cnt8:CounterUDB:capt_either_edge\));
+
+\MultiJog:Cnt8:CounterUDB:reload\ <= (\MultiJog:Net_1260\
+	OR \MultiJog:Cnt8:CounterUDB:reload_tc\);
+
+\MultiJog:Cnt8:CounterUDB:status_0\ <= ((not \MultiJog:Cnt8:CounterUDB:prevCompare\ and \MultiJog:Cnt8:CounterUDB:cmp_out_i\));
+
+\MultiJog:Cnt8:CounterUDB:status_2\ <= ((not \MultiJog:Cnt8:CounterUDB:overflow_reg_i\ and \MultiJog:Cnt8:CounterUDB:overflow\));
+
+\MultiJog:Cnt8:CounterUDB:status_3\ <= ((not \MultiJog:Cnt8:CounterUDB:underflow_reg_i\ and \MultiJog:Cnt8:CounterUDB:status_1\));
+
+\MultiJog:Cnt8:CounterUDB:count_enable\ <= ((not \MultiJog:Cnt8:CounterUDB:count_stored_i\ and \MultiJog:Cnt8:CounterUDB:control_7\ and \MultiJog:Net_1203\));
+
+\MultiJog:Cnt8:CounterUDB:reload_tc\ <= (\MultiJog:Cnt8:CounterUDB:overflow\
+	OR \MultiJog:Cnt8:CounterUDB:status_1\);
+
+\MultiJog:bQuadDec:A_j\ <= ((\MultiJog:bQuadDec:quad_A_delayed_0\ and \MultiJog:bQuadDec:quad_A_delayed_1\ and \MultiJog:bQuadDec:quad_A_delayed_2\));
+
+\MultiJog:bQuadDec:A_k\ <= ((not \MultiJog:bQuadDec:quad_A_delayed_0\ and not \MultiJog:bQuadDec:quad_A_delayed_1\ and not \MultiJog:bQuadDec:quad_A_delayed_2\));
+
+\MultiJog:bQuadDec:quad_A_filt\\D\ <= ((not \MultiJog:bQuadDec:A_k\ and \MultiJog:bQuadDec:A_j\)
+	OR (not \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:A_j\ and \MultiJog:bQuadDec:A_k\)
+	OR (not \MultiJog:bQuadDec:A_j\ and not \MultiJog:bQuadDec:A_k\ and \MultiJog:bQuadDec:quad_A_filt\)
+	OR (not \MultiJog:bQuadDec:A_j\ and not \MultiJog:bQuadDec:A_k\ and \MultiJog:bQuadDec:quad_A_filt\));
+
+\MultiJog:bQuadDec:B_j\ <= ((\MultiJog:bQuadDec:quad_B_delayed_0\ and \MultiJog:bQuadDec:quad_B_delayed_1\ and \MultiJog:bQuadDec:quad_B_delayed_2\));
+
+\MultiJog:bQuadDec:B_k\ <= ((not \MultiJog:bQuadDec:quad_B_delayed_0\ and not \MultiJog:bQuadDec:quad_B_delayed_1\ and not \MultiJog:bQuadDec:quad_B_delayed_2\));
+
+\MultiJog:bQuadDec:quad_B_filt\\D\ <= ((not \MultiJog:bQuadDec:B_k\ and \MultiJog:bQuadDec:B_j\)
+	OR (not \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:B_j\ and \MultiJog:bQuadDec:B_k\)
+	OR (not \MultiJog:bQuadDec:B_j\ and not \MultiJog:bQuadDec:B_k\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:bQuadDec:B_j\ and not \MultiJog:bQuadDec:B_k\ and \MultiJog:bQuadDec:quad_B_filt\));
+
+\MultiJog:bQuadDec:state_3\\D\ <= ((not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\));
+
+\MultiJog:bQuadDec:state_2\\D\ <= ((not one and not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\)
+	OR (not one and not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\)
+	OR (not one and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\)
+	OR (not one and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\)
+	OR (not one and not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:error\)
+	OR (\MultiJog:Net_1260\ and \MultiJog:bQuadDec:error\)
+	OR (\MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:state_1\)
+	OR (\MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:error\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:bQuadDec:error\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:state_0\));
+
+\MultiJog:bQuadDec:state_1\\D\ <= ((not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_A_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:error\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:error\));
+
+\MultiJog:bQuadDec:state_0\\D\ <= ((not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:error\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:error\));
+
+\MultiJog:Net_1251\\D\ <= ((not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:Net_1260\)
+	OR (not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1251\ and \MultiJog:bQuadDec:error\));
+
+\MultiJog:Net_1203\\D\ <= ((not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:quad_B_filt\ and \MultiJog:bQuadDec:state_1\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and \MultiJog:bQuadDec:quad_A_filt\ and \MultiJog:bQuadDec:state_1\ and \MultiJog:bQuadDec:state_0\)
+	OR (not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:bQuadDec:quad_B_filt\)
+	OR (not one and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:Net_1203\)
+	OR (not one and not \MultiJog:bQuadDec:quad_A_filt\ and not \MultiJog:bQuadDec:quad_B_filt\ and not \MultiJog:bQuadDec:error\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1260\ and \MultiJog:Net_1203\)
+	OR (not \MultiJog:Net_1260\ and not \MultiJog:bQuadDec:state_1\ and not \MultiJog:bQuadDec:state_0\ and \MultiJog:Net_1203\ and \MultiJog:bQuadDec:error\));
+
+\MultiJog:Net_1151\ <= (not \MultiJog:Net_1251\);
+
+\MultiJog:Net_530\ <= ((\MultiJog:Net_1251\ and \MultiJog:Net_1248\));
+
+\MultiJog:Net_611\ <= ((\MultiJog:Net_1151\ and \MultiJog:Net_1248\));
+
+\MultiJog:Net_1287\ <= (not \MultiJog:Net_1269\);
+
+\MultiJog:Net_1248\ <= ((\MultiJog:Net_1276\ and \MultiJog:Net_1287\));
 
 \MODULE_4:g1:a0:gx:u0:xnor_array_0\ <= ((AMuxHw_1_Decoder_old_id_0 and Net_174)
 	OR (not AMuxHw_1_Decoder_old_id_0 and not Net_174));
@@ -4837,12 +5122,13 @@ SW_2:cy_annotation_universal_v1_0
 		port_names=>"T1, T2",
 		width=>2)
 	PORT MAP(connect=>(Net_10357, Net_10425));
-SW_3:cy_annotation_universal_v1_0
-	GENERIC MAP(comp_name=>"SwitchDT_v1_0",
-		port_names=>"C1, C2, NC1, NC2, NO1, NO2",
-		width=>6)
-	PORT MAP(connect=>(Net_10310, Net_10306, Net_10309, Net_10307,
-			Net_10311, Net_10308));
+\Buttons:sts:sts_reg\:cy_psoc3_status
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"00000000")
+	PORT MAP(reset=>zero,
+		clock=>Net_10744,
+		status=>(zero, zero, Net_10748, Net_10747,
+			Net_10728, Net_10727, Net_10736, Net_10739));
 SW_5:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"SwitchDT_v1_0",
 		port_names=>"C1, C2, NC1, NC2, NO1, NO2",
@@ -4853,7 +5139,7 @@ I_MultiJogA:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"8d318d8b-cf7b-4b6b-b02c-ab1c5c49d0ba",
 		drive_mode=>"010",
 		ibuf_enabled=>"1",
-		init_dr_st=>"0",
+		init_dr_st=>"1",
 		input_sync=>"0",
 		input_clk_en=>'0',
 		input_sync_mode=>"0",
@@ -4907,7 +5193,7 @@ I_MultiJogA:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_MultiJogA_net_0),
+		fb=>Net_10747,
 		analog=>(open),
 		io=>(tmpIO_0__I_MultiJogA_net_0),
 		siovref=>(tmpSIOVREF__I_MultiJogA_net_0),
@@ -4983,7 +5269,7 @@ I_MultiJogB:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_MultiJogB_net_0),
+		fb=>Net_10748,
 		analog=>(open),
 		io=>(tmpIO_0__I_MultiJogB_net_0),
 		siovref=>(tmpSIOVREF__I_MultiJogB_net_0),
@@ -5053,7 +5339,7 @@ I_BtnBipolarMode:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_BtnBipolarMode_net_0),
+		fb=>Net_10727,
 		analog=>(open),
 		io=>(tmpIO_0__I_BtnBipolarMode_net_0),
 		siovref=>(tmpSIOVREF__I_BtnBipolarMode_net_0),
@@ -5065,7 +5351,7 @@ I_BtnBipolarMode:cy_psoc3_pins_v1_10
 		out_clock_en=>one,
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__I_BtnBipolarMode_net_0);
-I_BtnOutOnSpeed:cy_psoc3_pins_v1_10
+I_BtnRiseRatePowerUp:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"981dc9b9-9823-4052-9711-be2dabcfdf26",
 		drive_mode=>"010",
 		ibuf_enabled=>"1",
@@ -5123,10 +5409,10 @@ I_BtnOutOnSpeed:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_BtnOutOnSpeed_net_0),
+		fb=>Net_10736,
 		analog=>(open),
-		io=>(tmpIO_0__I_BtnOutOnSpeed_net_0),
-		siovref=>(tmpSIOVREF__I_BtnOutOnSpeed_net_0),
+		io=>(tmpIO_0__I_BtnRiseRatePowerUp_net_0),
+		siovref=>(tmpSIOVREF__I_BtnRiseRatePowerUp_net_0),
 		annotation=>Net_10423,
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -5134,7 +5420,7 @@ I_BtnOutOnSpeed:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__I_BtnOutOnSpeed_net_0);
+		interrupt=>tmpINTERRUPT_0__I_BtnRiseRatePowerUp_net_0);
 SW_4:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"SwitchSPST_v1_0",
 		port_names=>"T1, T2",
@@ -5203,7 +5489,7 @@ I_BtnChangePolarity:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_BtnChangePolarity_net_0),
+		fb=>Net_10728,
 		analog=>(open),
 		io=>(tmpIO_0__I_BtnChangePolarity_net_0),
 		siovref=>(tmpSIOVREF__I_BtnChangePolarity_net_0),
@@ -5273,7 +5559,7 @@ I_BtnOk:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__I_BtnOk_net_0),
+		fb=>Net_10739,
 		analog=>(open),
 		io=>(tmpIO_0__I_BtnOk_net_0),
 		siovref=>(tmpSIOVREF__I_BtnOk_net_0),
@@ -5810,8 +6096,8 @@ R_33:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"Resistor_v1_0",
 		port_names=>"T1, T2",
 		width=>2)
-	PORT MAP(connect=>(Net_10559, Net_10574));
-O_Led1:cy_psoc3_pins_v1_10
+	PORT MAP(connect=>(Net_10559, Net_10746));
+O_Led_RiseRatePowerUp:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"5d571a5c-28da-4d3e-b644-98a38b81e072",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -5869,10 +6155,10 @@ O_Led1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__O_Led1_net_0),
+		fb=>(tmpFB_0__O_Led_RiseRatePowerUp_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__O_Led1_net_0),
-		siovref=>(tmpSIOVREF__O_Led1_net_0),
+		io=>(tmpIO_0__O_Led_RiseRatePowerUp_net_0),
+		siovref=>(tmpSIOVREF__O_Led_RiseRatePowerUp_net_0),
 		annotation=>Net_10575,
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -5880,7 +6166,7 @@ O_Led1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__O_Led1_net_0);
+		interrupt=>tmpINTERRUPT_0__O_Led_RiseRatePowerUp_net_0);
 D_11:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"LED_v1_0",
 		port_names=>"A, K",
@@ -5891,7 +6177,7 @@ R_34:cy_annotation_universal_v1_0
 		port_names=>"T1, T2",
 		width=>2)
 	PORT MAP(connect=>(Net_10566, Net_10575));
-O_Led1_1:cy_psoc3_pins_v1_10
+O_Led_Polar:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"85a06cca-64b1-4fc2-9c88-11848c06c9de",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -5949,10 +6235,10 @@ O_Led1_1:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__O_Led1_1_net_0),
+		fb=>(tmpFB_0__O_Led_Polar_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__O_Led1_1_net_0),
-		siovref=>(tmpSIOVREF__O_Led1_1_net_0),
+		io=>(tmpIO_0__O_Led_Polar_net_0),
+		siovref=>(tmpSIOVREF__O_Led_Polar_net_0),
 		annotation=>Net_10576,
 		in_clock=>zero,
 		in_clock_en=>one,
@@ -5960,7 +6246,7 @@ O_Led1_1:cy_psoc3_pins_v1_10
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__O_Led1_1_net_0);
+		interrupt=>tmpINTERRUPT_0__O_Led_Polar_net_0);
 D_12:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"LED_v1_0",
 		port_names=>"A, K",
@@ -5971,7 +6257,7 @@ R_35:cy_annotation_universal_v1_0
 		port_names=>"T1, T2",
 		width=>2)
 	PORT MAP(connect=>(Net_10569, Net_10576));
-O_Led1_2:cy_psoc3_pins_v1_10
+O_Led_Error:cy_psoc3_pins_v1_10
 	GENERIC MAP(id=>"2e17ee68-151c-48fd-a0e4-0e54129c9311",
 		drive_mode=>"110",
 		ibuf_enabled=>"1",
@@ -6029,18 +6315,18 @@ O_Led1_2:cy_psoc3_pins_v1_10
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
 		y=>(zero),
-		fb=>(tmpFB_0__O_Led1_2_net_0),
+		fb=>(tmpFB_0__O_Led_Error_net_0),
 		analog=>(open),
-		io=>(tmpIO_0__O_Led1_2_net_0),
-		siovref=>(tmpSIOVREF__O_Led1_2_net_0),
-		annotation=>Net_10574,
+		io=>(tmpIO_0__O_Led_Error_net_0),
+		siovref=>(tmpSIOVREF__O_Led_Error_net_0),
+		annotation=>Net_10746,
 		in_clock=>zero,
 		in_clock_en=>one,
 		in_reset=>zero,
 		out_clock=>zero,
 		out_clock_en=>one,
 		out_reset=>zero,
-		interrupt=>tmpINTERRUPT_0__O_Led1_2_net_0);
+		interrupt=>tmpINTERRUPT_0__O_Led_Error_net_0);
 D_13:cy_annotation_universal_v1_0
 	GENERIC MAP(comp_name=>"LED_v1_0",
 		port_names=>"A, K",
@@ -6105,6 +6391,179 @@ GND_17:cy_annotation_universal_v1_0
 		clock=>zero,
 		control=>(\LCD_DB_OutEnable:control_7\, \LCD_DB_OutEnable:control_6\, \LCD_DB_OutEnable:control_5\, \LCD_DB_OutEnable:control_4\,
 			\LCD_DB_OutEnable:control_3\, \LCD_DB_OutEnable:control_2\, \LCD_DB_OutEnable:control_1\, tmpOE__LCD_DB_net_7));
+Clock_5:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"9515cede-bc4c-4d33-9190-7eb2fa81fe4c",
+		source_clock_id=>"75C2148C-3656-4d8a-846D-0CAE99AB6FF7",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_10744,
+		dig_domain_out=>open);
+\MultiJog:Cnt8:CounterUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_10753,
+		enable=>one,
+		clock_out=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\);
+\MultiJog:Cnt8:CounterUDB:sCTRLReg:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_10753,
+		enable=>one,
+		clock_out=>\MultiJog:Cnt8:CounterUDB:Clk_Ctl_i\);
+\MultiJog:Cnt8:CounterUDB:sCTRLReg:ctrlreg\:cy_psoc3_control
+	GENERIC MAP(cy_init_value=>"00000000",
+		cy_force_order=>'1',
+		cy_ctrl_mode_1=>"00000000",
+		cy_ctrl_mode_0=>"11111111",
+		cy_ext_reset=>'0')
+	PORT MAP(reset=>zero,
+		clock=>\MultiJog:Cnt8:CounterUDB:Clk_Ctl_i\,
+		control=>(\MultiJog:Cnt8:CounterUDB:control_7\, \MultiJog:Cnt8:CounterUDB:control_6\, \MultiJog:Cnt8:CounterUDB:control_5\, \MultiJog:Cnt8:CounterUDB:control_4\,
+			\MultiJog:Cnt8:CounterUDB:control_3\, \MultiJog:Cnt8:CounterUDB:control_2\, \MultiJog:Cnt8:CounterUDB:control_1\, \MultiJog:Cnt8:CounterUDB:control_0\));
+\MultiJog:Cnt8:CounterUDB:sSTSReg:stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0011111",
+		cy_int_mask=>"1111111")
+	PORT MAP(reset=>\MultiJog:Net_1260\,
+		clock=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		status=>(\MultiJog:Cnt8:CounterUDB:status_6\, \MultiJog:Cnt8:CounterUDB:status_5\, \MultiJog:Cnt8:CounterUDB:hwCapture\, \MultiJog:Cnt8:CounterUDB:status_3\,
+			\MultiJog:Cnt8:CounterUDB:status_2\, \MultiJog:Cnt8:CounterUDB:status_1\, \MultiJog:Cnt8:CounterUDB:status_0\),
+		interrupt=>\MultiJog:Cnt8:Net_43\);
+\MultiJog:Cnt8:CounterUDB:sC8:counterdp:u0\:cy_psoc3_dp
+	GENERIC MAP(cy_dpconfig=>"0000000001000000000000001000000001000000010000000000000010000000000000000100000000000000100000000010000001000000000000001000000011111111000000001111111111111111101000000000000000000001000000000000000000011000",
+		d0_init=>"00000000",
+		d1_init=>"00000000",
+		a0_init=>"00000000",
+		a1_init=>"00000000",
+		ce0_sync=>'1',
+		cl0_sync=>'1',
+		z0_sync=>'1',
+		ff0_sync=>'1',
+		ce1_sync=>'1',
+		cl1_sync=>'1',
+		z1_sync=>'1',
+		ff1_sync=>'1',
+		ov_msb_sync=>'1',
+		co_msb_sync=>'1',
+		cmsb_sync=>'1',
+		so_sync=>'1',
+		f0_bus_sync=>'1',
+		f0_blk_sync=>'1',
+		f1_bus_sync=>'1',
+		f1_blk_sync=>'1')
+	PORT MAP(reset=>zero,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		cs_addr=>(\MultiJog:Net_1251\, \MultiJog:Cnt8:CounterUDB:count_enable\, \MultiJog:Cnt8:CounterUDB:reload\),
+		route_si=>zero,
+		route_ci=>zero,
+		f0_load=>\MultiJog:Cnt8:CounterUDB:hwCapture\,
+		f1_load=>zero,
+		d0_load=>zero,
+		d1_load=>zero,
+		ce0=>\MultiJog:Cnt8:CounterUDB:per_equal\,
+		cl0=>\MultiJog:Cnt8:CounterUDB:nc42\,
+		z0=>\MultiJog:Cnt8:CounterUDB:status_1\,
+		ff0=>\MultiJog:Cnt8:CounterUDB:overflow\,
+		ce1=>\MultiJog:Cnt8:CounterUDB:cmp_out_i\,
+		cl1=>\MultiJog:Cnt8:CounterUDB:cmp_less\,
+		z1=>open,
+		ff1=>open,
+		ov_msb=>open,
+		co_msb=>open,
+		cmsb=>open,
+		so=>open,
+		f0_bus_stat=>\MultiJog:Cnt8:CounterUDB:status_6\,
+		f0_blk_stat=>\MultiJog:Cnt8:CounterUDB:status_5\,
+		f1_bus_stat=>open,
+		f1_blk_stat=>open,
+		ce0_reg=>open,
+		cl0_reg=>open,
+		z0_reg=>open,
+		ff0_reg=>open,
+		ce1_reg=>open,
+		cl1_reg=>open,
+		z1_reg=>open,
+		ff1_reg=>open,
+		ov_msb_reg=>open,
+		co_msb_reg=>open,
+		cmsb_reg=>open,
+		so_reg=>open,
+		f0_bus_stat_reg=>open,
+		f0_blk_stat_reg=>open,
+		f1_bus_stat_reg=>open,
+		f1_blk_stat_reg=>open,
+		ci=>zero,
+		co=>open,
+		sir=>zero,
+		sor=>open,
+		sil=>zero,
+		sol=>open,
+		msbi=>zero,
+		msbo=>open,
+		cei=>(zero, zero),
+		ceo=>open,
+		cli=>(zero, zero),
+		clo=>open,
+		zi=>(zero, zero),
+		zo=>open,
+		fi=>(zero, zero),
+		fo=>open,
+		capi=>(zero, zero),
+		capo=>open,
+		cfbi=>zero,
+		cfbo=>open,
+		pi=>(zero, zero, zero, zero,
+			zero, zero, zero, zero),
+		po=>open);
+\MultiJog:bQuadDec:CtrlClkEn\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_10753,
+		enable=>one,
+		clock_out=>\MultiJog:bQuadDec:sync_clock\);
+\MultiJog:bQuadDec:genblk1:DelayA1\:cy_dff
+	PORT MAP(d=>Net_10747,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_A_delayed_0\);
+\MultiJog:bQuadDec:genblk1:DelayA2\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_A_delayed_0\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_A_delayed_1\);
+\MultiJog:bQuadDec:genblk1:DelayA3\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_A_delayed_1\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_A_delayed_2\);
+\MultiJog:bQuadDec:genblk1:DelayB1\:cy_dff
+	PORT MAP(d=>Net_10748,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_B_delayed_0\);
+\MultiJog:bQuadDec:genblk1:DelayB2\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_B_delayed_0\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_B_delayed_1\);
+\MultiJog:bQuadDec:genblk1:DelayB3\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_B_delayed_1\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_B_delayed_2\);
+\MultiJog:bQuadDec:Stsreg\:cy_psoc3_statusi
+	GENERIC MAP(cy_force_order=>'1',
+		cy_md_select=>"0001111",
+		cy_int_mask=>"0001111")
+	PORT MAP(reset=>zero,
+		clock=>\MultiJog:bQuadDec:sync_clock\,
+		status=>(zero, zero, zero, \MultiJog:bQuadDec:error\,
+			\MultiJog:Net_1260\, \MultiJog:Net_611\, \MultiJog:Net_530\),
+		interrupt=>Net_10751);
+Clock_6:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"5abab193-a23f-479f-a84f-c0cb6b6c3ca6",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_10753,
+		dig_domain_out=>open);
 AMuxHw_1_Decoder_old_id_0:cy_dff
 	PORT MAP(d=>Net_174,
 		clk=>Net_168,
@@ -6313,5 +6772,65 @@ AMuxHw_1_Decoder_one_hot_1:cy_dff
 	PORT MAP(d=>\FanCtrl:PWMUDB:status_2\,
 		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
 		q=>\FanCtrl:PWMUDB:tc_i_reg\);
+\MultiJog:Net_1251\:cy_dff
+	PORT MAP(d=>\MultiJog:Net_1251\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:Net_1251\);
+\MultiJog:Cnt8:CounterUDB:prevCapture\:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Cnt8:CounterUDB:prevCapture\);
+\MultiJog:Cnt8:CounterUDB:overflow_reg_i\:cy_dff
+	PORT MAP(d=>\MultiJog:Cnt8:CounterUDB:overflow\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Cnt8:CounterUDB:overflow_reg_i\);
+\MultiJog:Cnt8:CounterUDB:underflow_reg_i\:cy_dff
+	PORT MAP(d=>\MultiJog:Cnt8:CounterUDB:status_1\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Cnt8:CounterUDB:underflow_reg_i\);
+\MultiJog:Cnt8:CounterUDB:tc_reg_i\:cy_dff
+	PORT MAP(d=>\MultiJog:Cnt8:CounterUDB:reload_tc\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Net_1276\);
+\MultiJog:Cnt8:CounterUDB:prevCompare\:cy_dff
+	PORT MAP(d=>\MultiJog:Cnt8:CounterUDB:cmp_out_i\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Cnt8:CounterUDB:prevCompare\);
+\MultiJog:Cnt8:CounterUDB:cmp_out_reg_i\:cy_dff
+	PORT MAP(d=>\MultiJog:Cnt8:CounterUDB:cmp_out_i\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Net_1269\);
+\MultiJog:Cnt8:CounterUDB:count_stored_i\:cy_dff
+	PORT MAP(d=>\MultiJog:Net_1203\,
+		clk=>\MultiJog:Cnt8:CounterUDB:ClockOutFromEnBlock\,
+		q=>\MultiJog:Cnt8:CounterUDB:count_stored_i\);
+\MultiJog:Net_1203\:cy_dff
+	PORT MAP(d=>\MultiJog:Net_1203\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:Net_1203\);
+\MultiJog:bQuadDec:quad_A_filt\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_A_filt\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_A_filt\);
+\MultiJog:bQuadDec:quad_B_filt\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:quad_B_filt\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:quad_B_filt\);
+\MultiJog:bQuadDec:state_2\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:state_2\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:Net_1260\);
+\MultiJog:bQuadDec:state_3\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:state_3\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:error\);
+\MultiJog:bQuadDec:state_1\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:state_1\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:state_1\);
+\MultiJog:bQuadDec:state_0\:cy_dff
+	PORT MAP(d=>\MultiJog:bQuadDec:state_0\\D\,
+		clk=>\MultiJog:bQuadDec:sync_clock\,
+		q=>\MultiJog:bQuadDec:state_0\);
 
 END R_T_L;

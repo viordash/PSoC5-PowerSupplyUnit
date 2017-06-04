@@ -105,6 +105,8 @@ typedef struct {
 extern void RequestToChangeScreen(TDisplayScreen newValue);
 extern void RequestToChannelA(TDisplayChannelData newValue);
 extern void RequestToChannelB(TDisplayChannelData newValue);
+extern void RequestToNextSelect();
+extern void RequestToPrevSelect();
 extern void RequestToSelected(TDisplaySelected newValue);
 extern void RequestToStabilizeModeA(TStabilizeMode newValue);
 extern void RequestToStabilizeModeB(TStabilizeMode newValue);

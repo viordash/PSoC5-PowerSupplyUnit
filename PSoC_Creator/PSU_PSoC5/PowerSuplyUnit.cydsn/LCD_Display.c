@@ -25,20 +25,8 @@ void ChangeStabilizeModeA();
 void ChangeStabilizeModeB();
 
 void Display_Init() {    
-    DisplayObj.Requests.ScreenRequest = FALSE;    
-    DisplayObj.Requests.Screen = dsInit;    
-    DisplayObj.Requests.ChannelARequest = FALSE;    
-    DisplayObj.Requests.ChannelA.Voltage = 0; 
-    DisplayObj.Requests.ChannelA.Amperage = 0;
-    DisplayObj.Requests.ChannelBRequest = FALSE;   
-    DisplayObj.Requests.ChannelB.Voltage = 0; 
-    DisplayObj.Requests.ChannelB.Amperage = 0;
-    DisplayObj.Requests.SelectedRequest = FALSE;    
-    DisplayObj.Requests.Selected = dslNone;    
-    DisplayObj.Requests.StabilizeModeARequest = FALSE;    
-    DisplayObj.Requests.StabilizeModeA = smVoltageStab;    
-    DisplayObj.Requests.StabilizeModeBRequest = FALSE;    
-    DisplayObj.Requests.StabilizeModeB = smVoltageStab; 
+    memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
+    memset(&DisplayObj.Requests, 0, sizeof(TDisplayRequests));
 }
 
 void Display_Task() {	
@@ -69,6 +57,34 @@ void RequestToChannelB(TDisplayChannelData newValue) {
 void RequestToSelected(TDisplaySelected newValue) { 
     DisplayObj.Requests.Selected = newValue;
     DisplayObj.Requests.SelectedRequest = TRUE;
+}
+
+void RequestToNextSelect() { 
+    if (DisplayObj.Properties.Screen == dsBipolar) {
+        if (DisplayObj.Properties.Selected == dslVoltageA) {
+            RequestToSelected(dslAmperageA);
+        } else if (DisplayObj.Properties.Selected == dslAmperageA) {
+            RequestToSelected(dslVoltageB);
+        } else if (DisplayObj.Properties.Selected == dslVoltageB) {
+            RequestToSelected(dslAmperageB);
+        } else  {
+            RequestToSelected(dslVoltageA);
+        }
+    }
+}
+
+void RequestToPrevSelect() { 
+    if (DisplayObj.Properties.Screen == dsBipolar) {
+        if (DisplayObj.Properties.Selected == dslVoltageA) {
+            RequestToSelected(dslAmperageB);
+        } else if (DisplayObj.Properties.Selected == dslAmperageB) {
+            RequestToSelected(dslVoltageB);
+        } else if (DisplayObj.Properties.Selected == dslVoltageB) {
+            RequestToSelected(dslAmperageA);
+        } else  {
+            RequestToSelected(dslVoltageA);
+        }
+    }
 }
 
 void RequestToStabilizeModeA(TStabilizeMode newValue) { 
@@ -185,8 +201,35 @@ void SetScreen_Bipolar() {
     Display_Flush();
 }
 
-void SetScreen_Unipolar() {    
+void SetScreen_Unipolar() {  
+    Display_DrawLine(119, 0, 119, 110, ltSolid, FALSE);
+    Display_DrawLine(120, 0, 120, 110, ltSolid, FALSE);
+    Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
+    Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE);
 
+    Display_SetFont(3);
+    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
+    Display_SetFont(2);
+    Display_Print("v", -1, tcNorm, 100, 4, FALSE); 
+    
+    Display_DrawLine(12, 28, 119, 28, ltDoted, FALSE);  
+    Display_DrawLine(12, 28, 12, 54, ltDoted, FALSE); 
+    Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
+    Display_DrawLine(12, 32, 40, 38, ltSolid, FALSE);  
+    Display_DrawLine(40, 38, 80, 30, ltSolid, FALSE);
+
+    Display_SetFont(2);
+    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
+    Display_SetFont(2);
+    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
+    
+    Display_DrawLine(12, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(12, 28 + 56, 12, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
+    Display_DrawLine(12, 36 + 56, 40, 44 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40, 44 + 56, 80, 42 + 56, ltSolid, FALSE);
+    
+    Display_Flush();  
 }
 
 void SetScreen_Error() {    
@@ -194,7 +237,8 @@ void SetScreen_Error() {
 }
 
 void ChangeScreen() {  
-    DisplayObj.Properties.Screen = DisplayObj.Requests.Screen;          
+    DisplayObj.Properties.Screen = DisplayObj.Requests.Screen;    
+    Display_ClearScreen();
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();
     } else if (DisplayObj.Properties.Screen == dsBipolar) {

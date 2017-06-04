@@ -31,6 +31,12 @@ typedef enum {
 	smAmperageStab,
 } TStabilizeMode;
 
+typedef enum {
+	pmInit = 0,
+	pmBipolar,
+    pmUnipolar
+} TPolarMode;
+
 
 typedef enum {
 	tcNorm = 0,

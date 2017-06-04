@@ -31,13 +31,12 @@ typedef enum {
 } TMainWorkState;
 
 typedef struct {
-  DWORD Dummy; 
+  TMainWorkState State;
+  TPolarMode PolarMode;
 } TMainWork_Property, * PTMainWork_Property;
 
 typedef struct {
-    PTMainWork_Property pProperty; 
-	TMainWorkState State;
-	TMainWorkResult Result;
+    TMainWork_Property Properties; 	
 } TMainWork_Object, * PTMainWork_Object;
 
 extern TFunction MainWorkFunction;

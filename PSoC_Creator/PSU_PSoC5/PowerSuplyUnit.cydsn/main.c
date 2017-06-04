@@ -40,9 +40,15 @@ void TasksInit(void) {
 	stack -= 0x500;
 }
 
+void DeviceInit() {
+    MultiJog_Start();       
+    MultiJog_SetCounter(0);
+}
+
 int main() {
 	/* Place your initialization/startup code here (e.g. MyInst_Start()) */
 	__disable_irq();
+    DeviceInit();
 	SystemOS_Init();
 #ifdef WDT_ENABLE
 	CyWdtStart(CYWDT_128_TICKS, CYWDT_LPMODE_MAXINTER);
