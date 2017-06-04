@@ -34,5 +34,11 @@ typedef enum {
 	tcInvert
 } TTextColor;
 
+typedef enum {
+	ltSolid = 0,
+	ltDashed,
+	ltDoted
+} TLineType;
+
 #endif  /* __DEVICE_H__ */
 /*[]*/

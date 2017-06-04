@@ -40,9 +40,9 @@ extern void _LCD_Clear(void);
 extern void _LCD_DrawPixel(BYTE ACoordX, BYTE ACoordY, BOOL APixelVal);
 extern void _LCD_Print(PCHAR buffer, INT size, TTextColor color, BYTE coordX, BYTE coordY, BOOL flush);
 extern void _LCD_SetFont(INT size);	 
-extern void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
-extern void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
-extern void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush);
+extern void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush);
+extern void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush);
+extern void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush);
 extern void _LCD_Flush();
 
 #endif /* __LCD_T6963_H */

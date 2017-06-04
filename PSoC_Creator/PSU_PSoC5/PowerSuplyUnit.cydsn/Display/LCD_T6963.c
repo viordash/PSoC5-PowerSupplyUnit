@@ -167,7 +167,7 @@ void _LCD_DrawPixel(BYTE coordX, BYTE coordY, BOOL value) {
     }
 }
 
-void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush) {
     WORD ishf;
 	BYTE i;
 	BYTE shf;
@@ -175,6 +175,14 @@ void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL 
 	SHORT delY = coordY2 - coordY1;
 	SHORT dirX = 0;
 	SHORT dirY = 0;
+    BYTE lineValue;
+    if (lineType == ltSolid) {
+        lineValue = 0xFF;
+    } else if (lineType == ltDoted) {
+        lineValue = 1;
+    } else if (lineType == ltDashed) {
+        lineValue = 8;
+    }
 
 	if (delX < 0) { dirX = -1; delX = delX * dirX; } else if ((BYTE)delX != 0) dirX = 1;
 	if (delY < 0) { dirY = -1; delY = delY * dirY; } else if ((BYTE)delY != 0) dirY = 1;
@@ -184,14 +192,14 @@ void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL 
 		do {
 			ishf = (BYTE)delX * (BYTE)(i - 1);
 			shf = (ishf + (delY / 2)) / delY;
-			_LCD_DrawPixel((char)coordX1 + (shf * dirX), (char)coordY1 + ((i - 1) * dirY), value);
+			_LCD_DrawPixel((char)coordX1 + (shf * dirX), (char)coordY1 + ((i - 1) * dirY), i & lineValue);
 		} while (--i != 0);
 	} else {
 		i = delX + 1;
 		do {
 			ishf = (BYTE)delY * (BYTE)(i - 1);
 			shf = (ishf + (delX / 2)) / delX;
-			_LCD_DrawPixel((char)coordX1 + ((i - 1) * dirX), (char)coordY1 + (shf * dirY), value);
+			_LCD_DrawPixel((char)coordX1 + ((i - 1) * dirX), (char)coordY1 + (shf * dirY), i & lineValue);
 		} while (--i != 0);
 	}
     if (flush) {
@@ -199,17 +207,17 @@ void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL 
     }
 }
 
-void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
-	_LCD_DrawLine(coordX1, coordY1, coordX2, coordY1, value, FALSE);
-	_LCD_DrawLine(coordX2, coordY1, coordX2, coordY2, value, FALSE);
-	_LCD_DrawLine(coordX2, coordY2, coordX1, coordY2, value, FALSE);
-	_LCD_DrawLine(coordX1, coordY2, coordX1, coordY1, value, FALSE);    
+void _LCD_DrawRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush) {
+	_LCD_DrawLine(coordX1, coordY1, coordX2, coordY1, lineType, FALSE);
+	_LCD_DrawLine(coordX2, coordY1, coordX2, coordY2, lineType, FALSE);
+	_LCD_DrawLine(coordX2, coordY2, coordX1, coordY2, lineType, FALSE);
+	_LCD_DrawLine(coordX1, coordY2, coordX1, coordY1, lineType, FALSE);    
     if (flush) {
         _LCD_Flush();
     }
 }
 
-void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, BOOL value, BOOL flush) {
+void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLineType lineType, BOOL flush) {
 	BYTE i;
 	SHORT delX = (CHAR)coordX2 - (CHAR)coordX1;
 	CHAR dirX;
@@ -217,7 +225,7 @@ void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, 
 	delX = delX * dirX;
 	i = delX + 1;
 	do {
-		_LCD_DrawLine(coordX1, coordY1, coordX1, coordY2, value, FALSE);
+		_LCD_DrawLine(coordX1, coordY1, coordX1, coordY2, lineType, FALSE);
 		coordX1 += dirX;
 	} while (--i != 0);    
     if (flush) {

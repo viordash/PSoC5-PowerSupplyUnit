@@ -144,42 +144,54 @@ void SetScreen_Start() {
 }
 
 void SetScreen_Bipolar() {    
-    Display_DrawLine(119, 0, 119, 110, TRUE, FALSE);
-    Display_DrawLine(120, 0, 120, 110, TRUE, FALSE);
-    Display_DrawLine(0, 55, 239, 55, TRUE, FALSE);
-    Display_DrawLine(0, 110, 239, 110, TRUE, FALSE);
+    Display_DrawLine(119, 0, 119, 110, ltSolid, FALSE);
+    Display_DrawLine(120, 0, 120, 110, ltSolid, FALSE);
+    Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
+    Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE);
 
     Display_SetFont(3);
     Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
     Display_SetFont(2);
-    Display_Print("v", -1, tcNorm, 100, 4, FALSE);  
-    Display_DrawRectangle(12, 28, 118, 54, TRUE, FALSE);    
-    Display_DrawLine(12, 32, 40, 38, TRUE, FALSE);  
-    Display_DrawLine(40, 38, 80, 30, TRUE, FALSE);
+    Display_Print("v", -1, tcNorm, 100, 4, FALSE); 
+    
+    Display_DrawLine(12, 28, 119, 28, ltDoted, FALSE);  
+    Display_DrawLine(12, 28, 12, 54, ltDoted, FALSE); 
+    Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
+    Display_DrawLine(12, 32, 40, 38, ltSolid, FALSE);  
+    Display_DrawLine(40, 38, 80, 30, ltSolid, FALSE);
     
     Display_SetFont(3);
     Display_Print("  .  ", -1, tcNorm, 30 + 120, 0, FALSE);        
     Display_SetFont(2);
     Display_Print("v", -1, tcNorm, 100 + 120, 4, FALSE);  
-    Display_DrawRectangle(12 + 120, 28, 118 + 120, 54, TRUE, FALSE);    
-    Display_DrawLine(12 + 120, 36, 40 + 120, 42, TRUE, FALSE);  
-    Display_DrawLine(40 + 120, 42, 80 + 120, 38, TRUE, FALSE);
+          
+    Display_DrawLine(12 + 120, 28, 119 + 120, 28, ltDoted, FALSE);  
+    Display_DrawLine(12 + 120, 28, 12 + 120, 54, ltDoted, FALSE); 
+    Display_DrawLine(119 + 120, 28, 119 + 120, 54, ltDoted, FALSE); 
+    Display_DrawLine(12 + 120, 36, 40 + 120, 42, ltSolid, FALSE);  
+    Display_DrawLine(40 + 120, 42, 80 + 120, 38, ltSolid, FALSE);
 
     Display_SetFont(2);
     Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
     Display_SetFont(2);
     Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
-    Display_DrawRectangle(12, 28 + 56, 118, 54 + 56, TRUE, FALSE);    
-    Display_DrawLine(12, 36 + 56, 40, 44 + 56, TRUE, FALSE);  
-    Display_DrawLine(40, 44 + 56, 80, 42 + 56, TRUE, FALSE);
+    
+    Display_DrawLine(12, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(12, 28 + 56, 12, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
+    Display_DrawLine(12, 36 + 56, 40, 44 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40, 44 + 56, 80, 42 + 56, ltSolid, FALSE);
 
     Display_SetFont(2);
     Display_Print(" .   ", -1, tcNorm, 30 + 120, 4 + 56, FALSE);        
     Display_SetFont(2);
     Display_Print("a", -1, tcNorm, 104 + 120, 4 + 56, FALSE);  
-    Display_DrawRectangle(12 + 120, 28 + 56, 118 + 120, 54 + 56, TRUE, FALSE);    
-    Display_DrawLine(12 + 120, 30 + 56, 40 + 120, 32 + 56, TRUE, FALSE);  
-    Display_DrawLine(40 + 120, 32 + 56, 80 + 120, 37 + 56, TRUE, FALSE);
+    
+    Display_DrawLine(12 + 120, 28 + 56, 119 + 120, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(12 + 120, 28 + 56, 12 + 120, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(119 + 120, 28 + 56, 119 + 120, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(12 + 120, 30 + 56, 40 + 120, 32 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40 + 120, 32 + 56, 80 + 120, 37 + 56, ltSolid, FALSE);
     
     Display_Flush();
 }
