@@ -291,24 +291,20 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, 
     }
 }
 
-void _LCD_Print(PCHAR buffer, INT size, TTextColor color, BYTE coordX, BYTE coordY, BOOL flush) {
+BYTE _LCD_Print(PCHAR buffer, TTextColor color, BYTE coordX, BYTE coordY, BOOL flush) { //return shift X coord
 	INT height;
-	if (size == 0) {
-		return;
-	}
-	if (size < 0) {
-		size = strlen(buffer);
-	}  
+    INT size = strlen(buffer);
 	INT posY = coordY * (T6963_HOR_DOTS / T6963_FONT_WIDTH);
-	PCHAR pStringEnd = buffer + size;  
+	PCHAR pStringEnd = buffer + size; 
+    INT shiftX = 0;
     for (height = 0; height < Display.font->height; height++) {
-        INT shiftX = coordX;
+        shiftX = coordX;
         PCHAR pString = buffer;
         CHAR ch;
         while (pString < pStringEnd) {
             ch = *pString++;
 			if ((ch < Display.font->start_char) || (ch > Display.font->end_char)) {
-				return;
+				return 0;
 			}    
             
             PFONT_CHAR_INFO p_character_descriptor = (PFONT_CHAR_INFO)&(Display.font->p_character_descriptor[ch - Display.font->start_char]);
@@ -328,6 +324,7 @@ void _LCD_Print(PCHAR buffer, INT size, TTextColor color, BYTE coordX, BYTE coor
     if (flush) {
         _LCD_Flush();
     }
+    return shiftX;
 }
 
 void _LCD_SetFont(INT size) {

@@ -140,11 +140,11 @@ CHAR buffer[20];
     Display_DrawRectangle(7, 7, 234, 121, ltDoted, FALSE); 
     
     Display_SetFont(1);
-    Display_Print("Power Supply", -1, tcNorm, 75, 35 + 10, FALSE);  
-    Display_Print("PSoC-5. Viordash", -1, tcNorm, 60, 55 + 10, FALSE);   
+    Display_Print("Power Supply", tcNorm, 75, 35 + 10, FALSE);  
+    Display_Print("PSoC-5. Viordash", tcNorm, 60, 55 + 10, FALSE);   
     Display_SetFont(0);   
     ProgramVersion(buffer);
-    Display_Print(buffer, -1, tcNorm, 87, 110, FALSE);      
+    Display_Print(buffer, tcNorm, 87, 110, FALSE);      
     Display_Flush();
 }
 
@@ -154,49 +154,57 @@ void SetScreen_Bipolar() {
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
     Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE);
 
-    Display_SetFont(3);
-    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
-    Display_SetFont(2);
-    Display_Print("v", -1, tcNorm, 100, 4, FALSE); 
+//    Display_SetFont(3);
+//    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("v", -1, tcNorm, 100 + 4, 5, FALSE);   
     
-    Display_DrawLine(12, 28, 119, 28, ltDoted, FALSE);  
-    Display_DrawLine(12, 28, 12, 54, ltDoted, FALSE); 
+    Display_DrawLine(35, 28, 119, 28, ltDoted, FALSE);  
+    Display_DrawLine(35, 28, 35, 54, ltDoted, FALSE); 
     Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
-    Display_DrawLine(12, 32, 40, 38, ltSolid, FALSE);  
-    Display_DrawLine(40, 38, 80, 30, ltSolid, FALSE);
+    Display_DrawLine(12 + 23, 32, 40 + 23, 38, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23, 38, 80 + 23, 30, ltSolid, FALSE);    
+    Display_SetFont(0); 
+    Display_Print("44.44v ", tcNorm, 4, 37, FALSE); 
     
-    Display_SetFont(3);
-    Display_Print("  .  ", -1, tcNorm, 30 + 120, 0, FALSE);        
-    Display_SetFont(2);
-    Display_Print("v", -1, tcNorm, 100 + 120, 4, FALSE);  
+//    Display_SetFont(3);
+//    Display_Print("  .  ", -1, tcNorm, 30 + 120, 0, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("v", -1, tcNorm, 100 + 120 + 4, 5, FALSE);  
           
-    Display_DrawLine(12 + 120, 28, 119 + 120, 28, ltDoted, FALSE);  
-    Display_DrawLine(12 + 120, 28, 12 + 120, 54, ltDoted, FALSE); 
+    Display_DrawLine(35 + 120, 28, 119 + 120, 28, ltDoted, FALSE);  
+    Display_DrawLine(35 + 120, 28, 35 + 120, 54, ltDoted, FALSE); 
     Display_DrawLine(119 + 120, 28, 119 + 120, 54, ltDoted, FALSE); 
-    Display_DrawLine(12 + 120, 36, 40 + 120, 42, ltSolid, FALSE);  
-    Display_DrawLine(40 + 120, 42, 80 + 120, 38, ltSolid, FALSE);
+    Display_DrawLine(12 + 23 + 120, 36, 40 + 23 + 120, 42, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23 + 120, 42, 80 + 23 + 120, 38, ltSolid, FALSE);
+    Display_SetFont(0); 
+    Display_Print("11.11v ", tcNorm, 4 + 120, 37, FALSE); 
 
-    Display_SetFont(2);
-    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
-    Display_SetFont(2);
-    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
+//    Display_SetFont(2);
+//    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
     
-    Display_DrawLine(12, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12, 28 + 56, 12, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(35, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(35, 28 + 56, 35, 54 + 56, ltDoted, FALSE); 
     Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12, 36 + 56, 40, 44 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40, 44 + 56, 80, 42 + 56, ltSolid, FALSE);
+    Display_DrawLine(12 + 23, 36 + 56, 40 + 23, 44 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23, 44 + 56, 80 + 23, 42 + 56, ltSolid, FALSE);
+    Display_SetFont(0); 
+    Display_Print("3.250a ", tcNorm, 4, 37 + 56, FALSE); 
 
-    Display_SetFont(2);
-    Display_Print(" .   ", -1, tcNorm, 30 + 120, 4 + 56, FALSE);        
-    Display_SetFont(2);
-    Display_Print("a", -1, tcNorm, 104 + 120, 4 + 56, FALSE);  
+//    Display_SetFont(2);
+//    Display_Print(" .   ", -1, tcNorm, 30 + 120, 4 + 56, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("a", -1, tcNorm, 104 + 120, 4 + 56, FALSE);  
     
-    Display_DrawLine(12 + 120, 28 + 56, 119 + 120, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12 + 120, 28 + 56, 12 + 120, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(35 + 120, 28 + 56, 119 + 120, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(35 + 120, 28 + 56, 35 + 120, 54 + 56, ltDoted, FALSE); 
     Display_DrawLine(119 + 120, 28 + 56, 119 + 120, 54 + 56, ltDoted, FALSE); 
-    Display_DrawLine(12 + 120, 30 + 56, 40 + 120, 32 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40 + 120, 32 + 56, 80 + 120, 37 + 56, ltSolid, FALSE);
+    Display_DrawLine(12 + 23 + 120, 30 + 56, 40 + 23 + 120, 32 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23 + 120, 32 + 56, 80 + 23 + 120, 37 + 56, ltSolid, FALSE);
+    Display_SetFont(0); 
+    Display_Print("0.754a ", tcNorm, 4 + 120, 37 + 56, FALSE);
     
     Display_Flush();
 }
@@ -207,27 +215,31 @@ void SetScreen_Unipolar() {
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
     Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE);
 
-    Display_SetFont(3);
-    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
-    Display_SetFont(2);
-    Display_Print("v", -1, tcNorm, 100, 4, FALSE); 
+//    Display_SetFont(3);
+//    Display_Print("  .  ", -1, tcNorm, 30, 0, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("v", -1, tcNorm, 100, 4, FALSE);   
     
-    Display_DrawLine(12, 28, 119, 28, ltDoted, FALSE);  
-    Display_DrawLine(12, 28, 12, 54, ltDoted, FALSE); 
+    Display_DrawLine(35, 28, 119, 28, ltDoted, FALSE);  
+    Display_DrawLine(35, 28, 35, 54, ltDoted, FALSE); 
     Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
-    Display_DrawLine(12, 32, 40, 38, ltSolid, FALSE);  
-    Display_DrawLine(40, 38, 80, 30, ltSolid, FALSE);
+    Display_DrawLine(12 + 23, 32, 40 + 23, 38, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23, 38, 80 + 23, 30, ltSolid, FALSE);    
+    Display_SetFont(0); 
+    Display_Print("11.11v ", tcNorm, 4, 37, FALSE); 
 
-    Display_SetFont(2);
-    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
-    Display_SetFont(2);
-    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
+//    Display_SetFont(2);
+//    Display_Print(" .   ", -1, tcNorm, 30, 4 + 56, FALSE);        
+//    Display_SetFont(2);
+//    Display_Print("a", -1, tcNorm, 104, 4 + 56, FALSE);  
     
-    Display_DrawLine(12, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12, 28 + 56, 12, 54 + 56, ltDoted, FALSE); 
+    Display_DrawLine(35, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
+    Display_DrawLine(35, 28 + 56, 35, 54 + 56, ltDoted, FALSE); 
     Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12, 36 + 56, 40, 44 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40, 44 + 56, 80, 42 + 56, ltSolid, FALSE);
+    Display_DrawLine(12 + 23, 36 + 56, 40 + 23, 44 + 56, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23, 44 + 56, 80 + 23, 42 + 56, ltSolid, FALSE);
+    Display_SetFont(0); 
+    Display_Print("7.000a ", tcNorm, 4, 37 + 56, FALSE); 
     
     Display_Flush();  
 }
@@ -254,18 +266,23 @@ void UpdateChannelVoltage(WORD voltage, TTextColor color, BYTE coordX, BYTE coor
 CHAR buffer[10];
     WORD valueMajor = voltage / 100;
     WORD valueMinor = voltage % 100;
-    sprintf(buffer, "%2u.%02u ", valueMajor, valueMinor);
+    sprintf(buffer, "%2u.%02u", valueMajor, valueMinor);
     Display_SetFont(3);
-    Display_Print(buffer, -1, color, coordX, coordY, FALSE);
+    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE);   
+    Display_Print(" ", tcNorm, shiftX, coordY, FALSE); 
+    Display_SetFont(2);
+    Display_Print("v", tcNorm, coordX + 74, coordY + 5, FALSE); 
 }
 
 void UpdateChannelAmperage(WORD amperage, TTextColor color, BYTE coordX, BYTE coordY) {
 CHAR buffer[10];
     WORD valueMajor = amperage / 1000;
     WORD valueMinor = amperage % 1000;
-    sprintf(buffer, "%1u.%03u ", valueMajor, valueMinor);
+    sprintf(buffer, "%1u.%03u", valueMajor, valueMinor);
     Display_SetFont(2);
-    Display_Print(buffer, -1, color, coordX, coordY, FALSE);
+    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE);  
+    Display_Print(" ", tcNorm, shiftX, coordY, FALSE); 
+    Display_Print("a", tcNorm, coordX + 74, coordY, FALSE);   
 }
 
 #define VoltageACoordX 30
@@ -319,10 +336,10 @@ void ChangeStabilizeMode(BOOL show, TStabilizeMode stabilizeMode,
         BYTE voltCoordX, BYTE voltCoordY, BYTE amperCoordX, BYTE amperCoordY) {   
     if (stabilizeMode == smVoltageStab) {
         Display_SetFont(3);
-        Display_Print("#", -1, show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
+        Display_Print("#", show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
     } else if (stabilizeMode == smAmperageStab) {
         Display_SetFont(2);
-        Display_Print("#", -1, show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
+        Display_Print("#", show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
     }    
 }
 
