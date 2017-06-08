@@ -30,26 +30,23 @@ void MainWork_Init() {
 
 void MainWork_Task(){	
     BYTE prevButtons = 0x00;   
-    BYTE prevMultiJog_Status = 0x00;  
     MainWorkObj.Properties.State = mwsStart;
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     MainWorkObj.Properties.State = mwsWork;  
 	while (TRUE) {
         {
             BYTE bt = Buttons_Read();
-//            if (prevButtons != bt) {
-//                prevButtons = bt;
-//                PolarModeChanged(bt & 0x04);
-//                RiseRatePowerUpChanged(bt & 0x02);    
-//                ButtonOkPressed(bt & 0x01); 
-//            } 
+            if (prevButtons != bt) {
+                prevButtons = bt;
+                PolarModeChanged(bt & 0x04);
+                RiseRatePowerUpChanged(bt & 0x02);    
+                ButtonOkPressed(bt & 0x01); 
+            } 
             bt = MultiJog_Status_Read();
-//            if (prevMultiJog_Status != bt) {
-//                prevMultiJog_Status = bt;
+            if (bt & 0x01) {
                 MultiJogChangingValue(bt);
-//            }
-		}
-        
+            }
+		}        
         
         if (MainWorkObj.Properties.State != mwsWork) {
             
@@ -146,12 +143,8 @@ BOOL res = FALSE;
 
 /*>>>-------------- MultiJog Changing Value -----------------*/
 void MultiJogChangingValue (BYTE value) {
-    if (!(value & 0x01)) {
-        return;    
-    }    
 static DWORD prevTick = 0;  
-static DWORD sumCount = 0;
-    if (GetElapsedPeriod(prevTick) < SYSTICK_mS(200)) {
+    if (GetElapsedPeriod(prevTick) < SYSTICK_mS(100)) {
         return;
     }
     prevTick = GetTickCount();
@@ -162,27 +155,8 @@ static DWORD sumCount = 0;
     if (value & 0x02) {        
         mult = 10;
     }
-//    BYTE bt = Status_Reg_1_Read();
-//    if (bt == 25) {
-//        i = 55 * sign;
-//    }
-    
-
-//    INT i = MultiJog_GetCounter();
-//    MultiJog_SetCounter(0);
-//    if (i == 0) {
-//        return;    
-//    }
-//     if (sumCount > 15) {
-//        i = 100;
-//    } else if (sumCount > 10) {
-//        i = 50;
-//    } else if (sumCount > 5) {
-//        i = 10;
-//    }
-        newValueA.Voltage += (i * mult);
-        RequestToChannelA(newValueA);
- 
+    newValueA.Voltage += (i * mult);
+    RequestToChannelA(newValueA); 
 }
 /*----------------- MultiJog Changing Value --------------<<<*/
 
