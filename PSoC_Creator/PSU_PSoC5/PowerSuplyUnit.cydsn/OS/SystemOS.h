@@ -17,13 +17,16 @@ typedef struct _TFunction{
 #define SYSTICK_PERIOD_uS (100)
 #define SYSTICK_mS(x) (x * (1000 / SYSTICK_PERIOD_uS))
 #define GetTickCount() SysTickCount
-//#define Delay_nS(x) CyDelayCycles((uint32)x * BCLK__BUS_CLK__MHZ);/*CyDelayUs(x)*/
-//#define Delay_nS(x) {DWORD i = (BCLK__BUS_CLK__HZ / 100000000) * (x / 10); CyDelayCycles(i);} //задержка в nS
+#define GetElapsedPeriod(fromTickCount) ((GetTickCount() > fromTickCount) ? GetTickCount() - fromTickCount : fromTickCount - GetTickCount())
+
 
 extern volatile DWORD SysTickCount;
 extern void TaskSleep(PTFunction AFunction, DWORD ADelayTicks);
 extern void TaskResume(PTFunction AFunction, void *);
 extern void SystemOS_Init(void);
 extern void TaskExecInit(PTFunction AFunction, POINTER AGoAdress, DWORD AStackStrt);
+
+
+
 
 #endif /*__SYSTEM_OS_H__*/
