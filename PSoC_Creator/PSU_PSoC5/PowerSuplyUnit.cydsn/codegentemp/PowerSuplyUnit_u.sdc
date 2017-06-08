@@ -1,3 +1,3 @@
 # Component constraints for Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch
 # Project: Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj
-# Date: Wed, 07 Jun 2017 23:53:58 GMT
+# Date: Thu, 08 Jun 2017 19:53:33 GMT

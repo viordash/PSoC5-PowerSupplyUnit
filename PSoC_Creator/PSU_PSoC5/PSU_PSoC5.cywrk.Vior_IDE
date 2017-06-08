@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\OS\portasm.s">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -120,6 +120,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_6</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_6\Clock_6.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_6\Clock_6.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_8</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_8\Clock_8.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Clock_8\Clock_8.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Control_Reg_1</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Control_Reg_1\Control_Reg_1.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Control_Reg_1\Control_Reg_1.h</v>
@@ -414,6 +417,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Buttons.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_11.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_6.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_8.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1_PM.lst</v>
@@ -499,6 +503,54 @@
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Bypass_P32.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Ext_CP_Clk.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_INT.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_IRQ.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_theACLK.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_Bypass.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_INT.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_IRQ.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_theACLK.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_Bypass.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_INT.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_IRQ.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_theACLK.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AGND.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Buttons.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_11.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_6.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_8.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CyBootAsmGnu.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CyDmac.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyfitter_cfg.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CyFlash.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CyLib.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cymetadata.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FAN_CTRL.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_0.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_1.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_2.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -518,15 +570,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0\ADC_SAR_v3_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\BasicCounter_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
-<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
@@ -536,7 +585,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\DigitalComp_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0</v>
@@ -550,7 +598,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0\Inductor_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0\LED_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\mux_v1_10.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0\NFET_En_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\not_v1_0.pdf</v>
@@ -562,7 +609,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PGA_v2_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0\Power_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PulseConvert_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PulseConvert_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PulseConvert_v1_0\PulseConvert_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PWM_v3_30</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PWM_v3_30\PWM_v3_30.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\QuadDec_v3_0.pdf</v>
@@ -595,15 +643,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0\ADC_SAR_v3_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\BasicCounter_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
-<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
@@ -613,7 +658,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\DigitalComp_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0</v>
@@ -627,7 +671,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0\Inductor_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0\LED_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\mux_v1_10.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0\NFET_En_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\not_v1_0.pdf</v>
@@ -635,6 +678,11 @@
 <v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0\NPN_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\or_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0\PFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PGA_v2_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PulseConvert_v1_0</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -665,7 +713,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1346, 747" SelectedTabbedMdiWindow="b94bd7c1-e5b0-41fe-8a8e-dd1bffdc6508"><DocumentWindow Key="c35149e0-480e-4e2d-b392-01fe3b5524ee" Guid="9bbb9481-499a-4be7-9991-91ecfd948797" /><DocumentWindow Key="1e6dfa0d-6f96-4ee3-9bc8-aac6713f3432" Guid="8579cda8-ad64-4ac8-a624-d0638d0a4795" /><DocumentWindow Key="c2064855-5eb7-45b9-863f-1ea47b1ce221" Guid="efe3d80a-f08c-4767-8b0b-eb13560d6a55" /><DocumentWindow Key="3021bf3a-f085-47b8-a189-a0576dcbc04c" Guid="3055ecfd-f4c3-4826-a2e8-2641972959e1" /><DocumentWindow Key="2bb3b23c-2ed2-48f1-be9e-ce56f420484d" Guid="60d70da5-a39c-4302-81fe-47dc8dcabbf6" /><DocumentWindow Key="3ff5da2d-01a9-4fdc-8ea7-bb603e9bb308" Guid="52ab5336-e4eb-4017-b73f-d9dc67c70a6b" /><DocumentWindow Key="69ed9ef4-de6f-47ce-b0c2-c9f0dfcc9261" Guid="9394bf8a-ef86-4dae-b90d-31f5c2b25265" /><DocumentWindow Key="dcb85c07-17ab-478b-9391-9133acf3ed21" Guid="b94bd7c1-e5b0-41fe-8a8e-dd1bffdc6508" /><DocumentWindow Key="eb147ed7-93aa-42e2-bf6a-f3a808b9a877" Guid="63aff177-09da-4201-8dd5-3a361959d0c6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1346, 747" SelectedTabbedMdiWindow="b12b9765-a5cc-497e-a361-837ba2dca863"><DocumentWindow Key="ffd03712-b273-4b23-8061-1d27d45824cd" Guid="d858727d-75f0-4f19-9bda-0514dd72ac74" /><DocumentWindow Key="5473d78d-9e79-4fb9-9b42-c3f0ebab0df6" Guid="d3f51eb4-8304-419b-a0ad-25c3200a0131" /><DocumentWindow Key="3a098858-2cb2-4aa0-9ec3-e05c483da416" Guid="a74bc348-7425-43d7-b378-f4983189a257" /><DocumentWindow Key="f61bbef4-9849-4f49-8ec9-96d4b7bd7667" Guid="6d1a7d77-97d3-408d-ad76-5717dbc04e65" /><DocumentWindow Key="f0daa840-c35d-4705-8704-90f946731f67" Guid="cf6d83b1-634d-4036-8ea5-eac3a1883987" /><DocumentWindow Key="1282ed50-a315-435d-8602-6eda38eaf7d0" Guid="7e725085-d4b4-4063-84b1-16bd1b309cdb" /><DocumentWindow Key="96204f49-e8e1-4fbe-a86e-6599f7503529" Guid="b3669c2d-840c-42ad-b2e8-5a6e0afe64cb" /><DocumentWindow Key="8e8b4b30-8de7-451e-9da9-2e40949ca856" Guid="b12b9765-a5cc-497e-a361-837ba2dca863" /><DocumentWindow Key="f46023ec-2435-4729-b41c-a2e74e6efe0b" Guid="5211a07d-9007-4407-896e-5f931598dd14" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

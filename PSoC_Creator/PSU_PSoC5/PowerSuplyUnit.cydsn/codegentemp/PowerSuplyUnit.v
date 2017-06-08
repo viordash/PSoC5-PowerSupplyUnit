@@ -1,6 +1,6 @@
 // ======================================================================
 // PowerSuplyUnit.v generated from TopDesign.cysch
-// 06/08/2017 at 02:53
+// 06/08/2017 at 22:53
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1629,46 +1629,20 @@ module Timer_v2_70_9 (
 
 endmodule
 
-// Component: mux_v1_10
+// Component: B_Timer_v2_70
 `ifdef CY_BLK_DIR
 `undef CY_BLK_DIR
 `endif
 
 `ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\mux_v1_10"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\mux_v1_10\mux_v1_10.v"
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v"
 `else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\mux_v1_10"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\mux_v1_10\mux_v1_10.v"
+`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70"
+`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_Timer_v2_70\B_Timer_v2_70.v"
 `endif
 
-// Component: BasicCounter_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\BasicCounter_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\BasicCounter_v1_0\BasicCounter_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\BasicCounter_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\BasicCounter_v1_0\BasicCounter_v1_0.v"
-`endif
-
-// Component: DigitalComp_v1_0
-`ifdef CY_BLK_DIR
-`undef CY_BLK_DIR
-`endif
-
-`ifdef WARP
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DigitalComp_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DigitalComp_v1_0\DigitalComp_v1_0.v"
-`else
-`define CY_BLK_DIR "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DigitalComp_v1_0"
-`include "C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DigitalComp_v1_0\DigitalComp_v1_0.v"
-`endif
-
-// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=1, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=true, FixedFunction=true, FixedFunctionUsed=1, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=19, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=0, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=false, UDBControlReg=false, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Timer_v2_70, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=MultiJog_FreqMeter, CY_INSTANCE_SHORT_NAME=MultiJog_FreqMeter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.0 Update 1, INSTANCE_NAME=MultiJog_FreqMeter, )
+// Timer_v2_70(CaptureAlternatingFall=false, CaptureAlternatingRise=false, CaptureCount=2, CaptureCounterEnabled=false, CaptureInputEnabled=false, CaptureMode=0, CONTROL3=0, ControlRegRemoved=0, CtlModeReplacementString=SyncCtl, CyGetRegReplacementString=CY_GET_REG8, CySetRegReplacementString=CY_SET_REG8, DeviceFamily=PSoC5, EnableMode=0, FF16=false, FF8=false, FixedFunction=false, FixedFunctionUsed=0, HWCaptureCounterEnabled=false, InterruptOnCapture=false, InterruptOnFIFOFull=false, InterruptOnTC=false, IntOnCapture=0, IntOnFIFOFull=0, IntOnTC=0, NumberOfCaptures=1, param45=1, Period=39, RegDefReplacementString=reg8, RegSizeReplacementString=uint8, Resolution=8, RstStatusReplacementString=rstSts, RunMode=1, SiliconRevision=0, SoftwareCaptureModeEnabled=false, SoftwareTriggerModeEnabled=false, TriggerInputEnabled=false, TriggerMode=0, UDB16=false, UDB24=false, UDB32=false, UDB8=true, UDBControlReg=true, UsesHWEnable=0, VerilogSectionReplacementString=sT8, CY_API_CALLBACK_HEADER_INCLUDE=#include "cyapicallbacks.h", CY_COMPONENT_NAME=Timer_v2_70, CY_CONST_CONFIG=true, CY_CONTROL_FILE=<:default:>, CY_DATASHEET_FILE=<:default:>, CY_FITTER_NAME=MultiJog_FreqMeter, CY_INSTANCE_SHORT_NAME=MultiJog_FreqMeter, CY_MAJOR_VERSION=2, CY_MINOR_VERSION=70, CY_PDL_DRIVER_NAME=, CY_PDL_DRIVER_REQ_VERSION=, CY_PDL_DRIVER_SUBGROUP=, CY_PDL_DRIVER_VARIANT=, CY_REMOVE=false, CY_SUPPRESS_API_GEN=false, CY_VERSION=PSoC Creator  4.0 Update 1, INSTANCE_NAME=MultiJog_FreqMeter, )
 module Timer_v2_70_10 (
     reset,
     interrupt,
@@ -1704,24 +1678,32 @@ module Timer_v2_70_10 (
           wire  Net_53;
           wire  Net_51;
 
-    cy_psoc3_timer_v1_0 TimerHW (
-        .timer_reset(reset),
-        .capture(capture),
-        .enable(Net_266),
-        .kill(Net_260),
-        .clock(clock),
-        .tc(Net_51),
-        .compare(Net_261),
-        .interrupt(Net_57));
-
     ZeroTerminal ZeroTerminal_1 (
         .z(Net_260));
 
 	// VirtualMux_2 (cy_virtualmux_v1_0)
-	assign interrupt = Net_57;
+	assign interrupt = Net_55;
 
 	// VirtualMux_3 (cy_virtualmux_v1_0)
-	assign tc = Net_51;
+	assign tc = Net_53;
+
+    B_Timer_v2_70 TimerUDB (
+        .reset(reset),
+        .interrupt(Net_55),
+        .enable(enable),
+        .trigger(trigger),
+        .capture_in(capture),
+        .capture_out(capture_out),
+        .tc(Net_53),
+        .clock(clock));
+    defparam TimerUDB.Capture_Count = 2;
+    defparam TimerUDB.CaptureCounterEnabled = 0;
+    defparam TimerUDB.CaptureMode = 0;
+    defparam TimerUDB.EnableMode = 0;
+    defparam TimerUDB.InterruptOnCapture = 0;
+    defparam TimerUDB.Resolution = 8;
+    defparam TimerUDB.RunMode = 1;
+    defparam TimerUDB.TriggerMode = 0;
 
     OneTerminal OneTerminal_1 (
         .o(Net_102));
@@ -1737,13 +1719,13 @@ endmodule
 module top ;
 
     electrical  VoltChB;
-          wire  Net_12928;
+          wire  Net_13761;
           wire  Net_13042;
           wire  Net_13041;
           wire  Net_13040;
           wire  Net_13039;
           wire  Net_13038;
-          wire [5:0] Net_13043;
+          wire  Net_13733;
           wire  Net_11747;
           wire  Net_11746;
           wire  Net_11745;
@@ -1751,21 +1733,22 @@ module top ;
           wire  Net_11743;
           wire [7:0] Net_13055;
           wire  Net_13054;
-          wire  Net_13053;
     electrical  NegVoltChA;
+          wire  Net_13053;
           wire  Net_13052;
           wire  Net_13051;
           wire  Net_13137;
           wire  Net_13401;
+          wire  Net_13710;
           wire  Net_12791;
           wire  Net_10693;
           wire  Net_10692;
           wire  Net_10712;
           wire  Net_10711;
           wire  Net_10710;
+          wire  PwmChA;
           wire  Net_10717;
           wire  Net_10716;
-          wire  PwmChA;
           wire  Net_10715;
           wire  Net_10714;
     electrical  Net_10606;
@@ -1794,19 +1777,19 @@ module top ;
     electrical  Net_10798;
     electrical  Net_10797;
           wire  Net_10556;
+          wire  OnChA;
           wire  Net_10552;
           wire  Net_10551;
-          wire  Net_10549;
-          wire  OnChA;
-          wire  Net_10548;
-          wire  Net_10547;
     electrical  PosCurChB;
-          wire  Net_10546;
+          wire  Net_10549;
           wire  PwmChB;
           wire  OnChB;
     electrical  PosCurChA;
     electrical  NegCurChA;
     electrical  NegCurChB;
+          wire  Net_10548;
+          wire  Net_10547;
+          wire  Net_10546;
           wire  Net_10545;
           wire  Net_10544;
           wire  Net_10543;
@@ -1826,10 +1809,10 @@ module top ;
     electrical  Net_10514;
     electrical  Net_10513;
     electrical  Net_10512;
+    electrical  PosVoltChA;
     electrical  Net_10511;
     electrical  Net_10510;
     electrical  Net_10509;
-    electrical  PosVoltChA;
     electrical  Net_10508;
     electrical  Net_10507;
     electrical  Net_317;
@@ -1862,7 +1845,7 @@ module top ;
           wire  Net_12101;
           wire  Net_12100;
           wire  Net_12099;
-          wire  Net_13687;
+          wire  Net_13693;
           wire  Net_12098;
     electrical  Net_10802;
           wire  Net_10812;
@@ -1979,18 +1962,16 @@ module top ;
           wire  Net_518;
           wire  Net_517;
     electrical  Net_516;
+          wire  Net_13752;
+          wire  Net_13755;
+          wire  Net_13742;
+          wire  Net_13715;
+          wire  Net_13753;
           wire  Net_13661;
-          wire [0:0] Net_13662;
-          wire  Net_13287;
-          wire  Net_13666;
-          wire  Net_13301;
           wire  Net_12021;
-          wire  Net_12337;
-          wire [5:0] Net_11965;
-          wire  Net_13044;
-          wire  Net_13396;
+          wire  Net_13740;
           wire  Net_12888;
-          wire  Net_13248;
+          wire  Net_13698;
           wire  Net_13591;
           wire  Net_10728;
           wire  Net_10739;
@@ -1998,7 +1979,7 @@ module top ;
           wire  Net_10727;
           wire  Net_11179;
           wire  Net_11749;
-          wire  Net_11617;
+          wire  Net_13744;
     electrical  Net_10746;
     electrical  Net_10576;
     electrical  Net_10575;
@@ -5185,7 +5166,7 @@ module top ;
 
 
     QuadDec_v3_0_7 MultiJog (
-        .quad_A(Net_13248),
+        .quad_A(Net_13698),
         .quad_B(Net_11179),
         .index(1'b0),
         .clock(Net_12021),
@@ -5397,7 +5378,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		O_Led_Polar
 		 (.oe(tmpOE__O_Led_Polar_net),
-		  .y({Net_13661}),
+		  .y({Net_13744}),
 		  .fb({tmpFB_0__O_Led_Polar_net[0:0]}),
 		  .io({tmpIO_0__O_Led_Polar_net[0:0]}),
 		  .siovref(tmpSIOVREF__O_Led_Polar_net),
@@ -5483,7 +5464,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		O_Led_Error
 		 (.oe(tmpOE__O_Led_Error_net),
-		  .y({Net_12337}),
+		  .y({Net_13742}),
 		  .fb({tmpFB_0__O_Led_Error_net[0:0]}),
 		  .io({tmpIO_0__O_Led_Error_net[0:0]}),
 		  .siovref(tmpSIOVREF__O_Led_Error_net),
@@ -5579,7 +5560,7 @@ module top ;
 		  .input_buffer_sel(2'b00))
 		O_Led_RiseRatePowerUp
 		 (.oe(tmpOE__O_Led_RiseRatePowerUp_net),
-		  .y({Net_13248}),
+		  .y({Net_13661}),
 		  .fb({tmpFB_0__O_Led_RiseRatePowerUp_net[0:0]}),
 		  .io({tmpIO_0__O_Led_RiseRatePowerUp_net[0:0]}),
 		  .siovref(tmpSIOVREF__O_Led_RiseRatePowerUp_net),
@@ -6697,7 +6678,7 @@ module top ;
 		I_MultiJogA
 		 (.oe(tmpOE__I_MultiJogA_net),
 		  .y({1'b0}),
-		  .fb({Net_13248}),
+		  .fb({Net_13698}),
 		  .io({tmpIO_0__I_MultiJogA_net[0:0]}),
 		  .siovref(tmpSIOVREF__I_MultiJogA_net),
 		  .interrupt({tmpINTERRUPT_0__I_MultiJogA_net[0:0]}),
@@ -6740,21 +6721,21 @@ module top ;
 		  .is_direct(1),
 		  .is_digital(1))
 		Clock_7
-		 (.clock_out(Net_13396));
+		 (.clock_out(Net_13740));
 
 
     PulseConvert_v1_0 PulseConvert_1 (
-        .p_in(Net_13248),
-        .p_out(Net_11617),
-        .sample_clk(Net_13396),
+        .p_in(Net_13698),
+        .p_out(Net_13744),
+        .sample_clk(Net_13740),
         .out_clk(Net_12888));
 
     CyStatusReg_v1_90 MultiJog_Status (
         .status_0(Net_13591),
         .status_1(Net_13661),
-        .status_2(Net_13248),
+        .status_2(1'b0),
         .status_3(1'b0),
-        .clock(Net_13396),
+        .clock(Net_13740),
         .status_4(1'b0),
         .status_5(1'b0),
         .status_6(1'b0),
@@ -6772,19 +6753,19 @@ module top ;
     defparam MultiJog_Status.BusDisplay = 0;
     defparam MultiJog_Status.Interrupt = 0;
     defparam MultiJog_Status.MaskValue = 0;
-    defparam MultiJog_Status.NumInputs = 3;
+    defparam MultiJog_Status.NumInputs = 2;
 
     // -- SRFF Start --
     reg  cy_srff_1;
-    always @(posedge Net_13396)
+    always @(posedge Net_13740)
     begin
-        cy_srff_1 <= (Net_11617 | Net_13591) & ~Net_11749;
+        cy_srff_1 <= (Net_13744 | Net_13591) & ~Net_11749;
     end
     assign Net_13591 = cy_srff_1;
     // -- SRFF End --
 
     Timer_v2_70_9 MultiJog_Timer (
-        .reset(Net_11617),
+        .reset(Net_13744),
         .interrupt(Net_11743),
         .enable(1'b1),
         .trigger(1'b1),
@@ -6800,58 +6781,48 @@ module top ;
     defparam MultiJog_Timer.Resolution = 16;
     defparam MultiJog_Timer.SiliconRevision = "0";
 
-    // -- Mux start --
-    if (1)
-    begin : mux_1
-        reg  tmp__mux_1_reg;
-        always @(Net_13248 or Net_13396 or Net_12337)
-        begin
-            case (Net_12337)
-                1'b0 :  tmp__mux_1_reg = Net_13248;
-                1'b1 :  tmp__mux_1_reg = Net_13396;
-            endcase
-        end
-        assign Net_13287 = tmp__mux_1_reg;
-    end
-    // -- Mux end --
 
-    BasicCounter_v1_0 MultiJog_Counter (
-        .en(Net_13044),
-        .cnt(Net_11965[5:0]),
-        .reset(Net_12337),
-        .clock(Net_13287));
-    defparam MultiJog_Counter.Width = 6;
-
-    assign Net_13044 = 1'h1;
+    assign Net_13753 = ~Net_13591;
 
 
-    assign Net_13666 = ~Net_13591;
+	cy_clock_v1_0
+		#(.id("58f0f612-373f-432d-b80a-0897e0b73be4"),
+		  .source_clock_id("315365C3-2E3E-4f04-84A2-BB564A173261"),
+		  .divisor(0),
+		  .period("1E+15"),
+		  .is_direct(0),
+		  .is_digital(1))
+		Clock_8
+		 (.clock_out(Net_13752));
 
-    assign Net_13662[0] = (Net_11965[5:0] >= Net_13043[5:0]);
 
-    assign Net_13043[5:0] = 6'h1E;
+    PulseConvert_v1_0 PulseConvert_2 (
+        .p_in(Net_13752),
+        .p_out(Net_13755),
+        .sample_clk(Net_13740),
+        .out_clk(Net_13744));
 
     // -- SRFF Start --
     reg  cy_srff_2;
-    always @(posedge Net_13396)
+    always @(posedge Net_13740)
     begin
-        cy_srff_2 <= (Net_13662[0] | Net_13661) & ~Net_13666;
+        cy_srff_2 <= (Net_13715 | Net_13661) & ~Net_13753;
     end
     assign Net_13661 = cy_srff_2;
     // -- SRFF End --
 
 
-    assign Net_12337 = Net_13666 | Net_13301;
+    assign Net_13742 = Net_13753 | Net_13755;
 
     Timer_v2_70_10 MultiJog_FreqMeter (
-        .reset(Net_12337),
+        .reset(Net_13742),
         .interrupt(Net_13038),
         .enable(1'b1),
         .trigger(1'b1),
         .capture(1'b0),
         .capture_out(Net_13042),
-        .tc(Net_13301),
-        .clock(Net_12888));
+        .tc(Net_13715),
+        .clock(Net_13744));
     defparam MultiJog_FreqMeter.CaptureCount = 2;
     defparam MultiJog_FreqMeter.CaptureCounterEnabled = 0;
     defparam MultiJog_FreqMeter.DeviceFamily = "PSoC5";
