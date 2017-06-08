@@ -76,7 +76,7 @@
     <flipHorizontal>false</flipHorizontal>
     <flipVertical>false</flipVertical>
     <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
-    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <paddingRemovalVertical>Fixed</paddingRemovalVertical>
     <lineWrap>AtColumn</lineWrap>
     <bitLayout>RowMajor</bitLayout>
     <byteOrder>MsbFirst</byteOrder>

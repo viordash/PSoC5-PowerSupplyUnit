@@ -266,12 +266,17 @@ void UpdateChannelVoltage(WORD voltage, TTextColor color, BYTE coordX, BYTE coor
 CHAR buffer[10];
     WORD valueMajor = voltage / 100;
     WORD valueMinor = voltage % 100;
-    sprintf(buffer, "%2u.%02u", valueMajor, valueMinor);
+
     Display_SetFont(3);
-    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE);   
-    Display_Print(" ", tcNorm, shiftX, coordY, FALSE); 
+    sprintf(buffer, "%02u", valueMajor);
+    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE); 
     Display_SetFont(2);
-    Display_Print("v", tcNorm, coordX + 74, coordY + 5, FALSE); 
+    shiftX = Display_Print(".", color, shiftX, coordY + 5, FALSE); 
+    Display_SetFont(3);
+    sprintf(buffer, "%02u", valueMinor);
+    shiftX = Display_Print(buffer, color, shiftX, coordY, FALSE);
+    Display_SetFont(2);
+    Display_Print("v", tcNorm, shiftX, coordY + 5, FALSE); 
 }
 
 void UpdateChannelAmperage(WORD amperage, TTextColor color, BYTE coordX, BYTE coordY) {
@@ -285,12 +290,12 @@ CHAR buffer[10];
     Display_Print("a", tcNorm, coordX + 74, coordY, FALSE);   
 }
 
-#define VoltageACoordX 30
+#define VoltageACoordX 25
 #define VoltageACoordY 0
 #define AmperageACoordX 30
 #define AmperageACoordY 4 + 56
 
-#define VoltageBCoordX 30 + 120
+#define VoltageBCoordX 25 + 120
 #define VoltageBCoordY 0
 #define AmperageBCoordX 30 + 120
 #define AmperageBCoordY 4 + 56
@@ -345,18 +350,18 @@ void ChangeStabilizeMode(BOOL show, TStabilizeMode stabilizeMode,
 
 void ChangeStabilizeModeA() {   
     ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeA, 
-            VoltageACoordX - 25, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
+            VoltageACoordX - 20, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
     DisplayObj.Properties.StabilizeModeA = DisplayObj.Requests.StabilizeModeA; 
     ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeA, 
-            VoltageACoordX - 25, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
+            VoltageACoordX - 20, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
     Display_Flush();
 }
 
 void ChangeStabilizeModeB() {  
     ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 25, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
+            VoltageBCoordX - 20, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
     DisplayObj.Properties.StabilizeModeB = DisplayObj.Requests.StabilizeModeB; 
     ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 25, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
+            VoltageBCoordX - 20, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
     Display_Flush();
 }
