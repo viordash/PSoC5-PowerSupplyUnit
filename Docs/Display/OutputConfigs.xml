@@ -91,7 +91,7 @@
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
     <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>8</spaceGenerationPixels>
+    <spaceGenerationPixels>4</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_3Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_3Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_3FontInfo</varNfFontInfo>

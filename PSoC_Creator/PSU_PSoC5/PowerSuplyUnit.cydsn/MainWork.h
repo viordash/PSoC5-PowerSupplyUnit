@@ -17,16 +17,11 @@
 #define NETWORK_BUFFER_SIZE 4096
 	
 typedef enum {
-	mwrOk, 
-	mwrIdle, 
-	mwrNotInit,
-	mwrErrNoMemory_Syst
-} TMainWorkResult;
-	
-typedef enum {
 	mwsInit = 0,
 	mwsStart,
 	mwsWork,
+	mwsChangeSetPoint,
+	mwsChangeStabilize,
 	mwsErrGlb
 } TMainWorkState;
 
