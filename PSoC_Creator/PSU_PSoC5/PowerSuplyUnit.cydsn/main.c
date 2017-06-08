@@ -43,8 +43,8 @@ void TasksInit(void) {
 void DeviceInit() {
     MultiJog_Start();       
     MultiJog_SetCounter(0);
-    MultiJog_Timer_Start();
     MultiJog_FreqMeter_Start();
+    MultiJog_Reset_Start();
 }
 
 int main() {

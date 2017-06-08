@@ -2,7 +2,7 @@
 --	Conversion of PowerSuplyUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Thu Jun 08 22:53:37 2017
+--	Fri Jun 09 00:23:43 2017
 --
 
 USE cypress.cypress.all;
@@ -1473,7 +1473,7 @@ SIGNAL \Buttons:status_6\ : bit;
 SIGNAL \Buttons:status_7\ : bit;
 TERMINAL Net_10801 : bit;
 SIGNAL tmpOE__O_Led_Polar_net_0 : bit;
-SIGNAL Net_13744 : bit;
+SIGNAL Net_14049 : bit;
 SIGNAL tmpFB_0__O_Led_Polar_net_0 : bit;
 SIGNAL tmpIO_0__O_Led_Polar_net_0 : bit;
 TERMINAL tmpSIOVREF__O_Led_Polar_net_0 : bit;
@@ -1481,7 +1481,7 @@ TERMINAL Net_10576 : bit;
 SIGNAL tmpINTERRUPT_0__O_Led_Polar_net_0 : bit;
 TERMINAL Net_10803 : bit;
 SIGNAL tmpOE__O_Led_Error_net_0 : bit;
-SIGNAL Net_13742 : bit;
+SIGNAL Net_13894 : bit;
 SIGNAL tmpFB_0__O_Led_Error_net_0 : bit;
 SIGNAL tmpIO_0__O_Led_Error_net_0 : bit;
 TERMINAL tmpSIOVREF__O_Led_Error_net_0 : bit;
@@ -1993,10 +1993,7 @@ TERMINAL tmpSIOVREF__I_MultiJogA_net_0 : bit;
 TERMINAL Net_10426 : bit;
 SIGNAL tmpINTERRUPT_0__I_MultiJogA_net_0 : bit;
 SIGNAL Net_13740 : bit;
-SIGNAL \PulseConvert_1:out_pulse\ : bit;
-SIGNAL \PulseConvert_1:in_sample\ : bit;
-SIGNAL \PulseConvert_1:out_sample\ : bit;
-SIGNAL Net_12888 : bit;
+SIGNAL Net_13821 : bit;
 SIGNAL \MultiJog_Status:status_0\ : bit;
 SIGNAL Net_13591 : bit;
 SIGNAL \MultiJog_Status:status_1\ : bit;
@@ -2007,15 +2004,21 @@ SIGNAL \MultiJog_Status:status_5\ : bit;
 SIGNAL \MultiJog_Status:status_6\ : bit;
 SIGNAL \MultiJog_Status:status_7\ : bit;
 SIGNAL cy_srff_1 : bit;
-SIGNAL Net_11749 : bit;
-SIGNAL \MultiJog_Timer:Net_260\ : bit;
-SIGNAL \MultiJog_Timer:Net_266\ : bit;
-SIGNAL \MultiJog_Timer:Net_51\ : bit;
-SIGNAL \MultiJog_Timer:Net_261\ : bit;
-SIGNAL \MultiJog_Timer:Net_57\ : bit;
-SIGNAL Net_11743 : bit;
-SIGNAL \MultiJog_Timer:Net_102\ : bit;
-SIGNAL Net_13753 : bit;
+SIGNAL Net_13983 : bit;
+SIGNAL Net_13965 : bit;
+SIGNAL Net_14045_6 : bit;
+SIGNAL Net_14045_5 : bit;
+SIGNAL Net_14045_4 : bit;
+SIGNAL Net_14045_3 : bit;
+SIGNAL Net_14045_2 : bit;
+SIGNAL Net_14045_1 : bit;
+SIGNAL Net_14045_0 : bit;
+SIGNAL \Debouncer_1:op_clk\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\ : bit;
+SIGNAL Net_13744 : bit;
+SIGNAL Net_13770 : bit;
+SIGNAL Net_13769 : bit;
 SIGNAL Net_13752 : bit;
 SIGNAL Net_13755 : bit;
 SIGNAL \PulseConvert_2:out_pulse\ : bit;
@@ -2023,6 +2026,7 @@ SIGNAL \PulseConvert_2:in_sample\ : bit;
 SIGNAL \PulseConvert_2:out_sample\ : bit;
 SIGNAL cy_srff_2 : bit;
 SIGNAL Net_13715 : bit;
+SIGNAL Net_14048 : bit;
 SIGNAL \MultiJog_FreqMeter:Net_260\ : bit;
 SIGNAL Net_13038 : bit;
 SIGNAL \MultiJog_FreqMeter:Net_55\ : bit;
@@ -2213,6 +2217,7 @@ SIGNAL \MultiJog:bQuadDec:state_2\\D\ : bit;
 SIGNAL \MultiJog:bQuadDec:state_3\\D\ : bit;
 SIGNAL \MultiJog:bQuadDec:state_1\\D\ : bit;
 SIGNAL \MultiJog:bQuadDec:state_0\\D\ : bit;
+SIGNAL Net_14049D : bit;
 SIGNAL \FanCtrl:PWMUDB:min_kill_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:prevCapture\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:trig_last\\D\ : bit;
@@ -2229,10 +2234,11 @@ SIGNAL \FanCtrl:PWMUDB:pwm_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:pwm1_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:pwm2_i_reg\\D\ : bit;
 SIGNAL \FanCtrl:PWMUDB:tc_i_reg\\D\ : bit;
-SIGNAL \PulseConvert_1:out_pulse\\D\ : bit;
-SIGNAL \PulseConvert_1:in_sample\\D\ : bit;
-SIGNAL \PulseConvert_1:out_sample\\D\ : bit;
 SIGNAL cy_srff_1D : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\ : bit;
+SIGNAL \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\ : bit;
+SIGNAL Net_13770D : bit;
+SIGNAL Net_13769D : bit;
 SIGNAL \PulseConvert_2:out_pulse\\D\ : bit;
 SIGNAL \PulseConvert_2:in_sample\\D\ : bit;
 SIGNAL \PulseConvert_2:out_sample\\D\ : bit;
@@ -2614,19 +2620,12 @@ AMuxHw_1_Decoder_one_hot_1D <= ((AMuxHw_1_Decoder_is_active and AMuxHw_1_Decoder
 \FanCtrl:PWMUDB:MODULE_3:g2:a0:s_0\ <= ((not \FanCtrl:PWMUDB:dith_count_0\ and one)
 	OR (not one and \FanCtrl:PWMUDB:dith_count_0\));
 
-\PulseConvert_1:in_sample\\D\ <= (Net_13698
-	OR (not \PulseConvert_1:out_sample\ and \PulseConvert_1:in_sample\));
+cy_srff_1D <= ((not Net_13983 and Net_14049)
+	OR (not Net_13983 and Net_13591));
 
-\PulseConvert_1:out_sample\\D\ <= (Net_13698
-	OR (not Net_13744 and not \PulseConvert_1:out_sample\ and \PulseConvert_1:in_sample\));
+Net_14049D <= ((not \Debouncer_1:DEBOUNCER[0]:d_sync_0\ and \Debouncer_1:DEBOUNCER[0]:d_sync_1\));
 
-\PulseConvert_1:out_pulse\\D\ <= ((not \PulseConvert_1:out_sample\ and Net_13698)
-	OR (not \PulseConvert_1:out_sample\ and \PulseConvert_1:in_sample\));
-
-cy_srff_1D <= ((not Net_11749 and Net_13744)
-	OR (not Net_11749 and Net_13591));
-
-Net_13753 <= (not Net_13591);
+Net_13894 <= (not Net_13591);
 
 \PulseConvert_2:in_sample\\D\ <= (Net_13752
 	OR (not \PulseConvert_2:out_sample\ and \PulseConvert_2:in_sample\));
@@ -2637,10 +2636,10 @@ Net_13753 <= (not Net_13591);
 \PulseConvert_2:out_pulse\\D\ <= ((not \PulseConvert_2:out_sample\ and Net_13752)
 	OR (not \PulseConvert_2:out_sample\ and \PulseConvert_2:in_sample\));
 
-cy_srff_2D <= ((not Net_13753 and Net_13715)
-	OR (not Net_13753 and Net_13661));
+cy_srff_2D <= ((not Net_13894 and Net_13715)
+	OR (not Net_13894 and Net_13661));
 
-Net_13742 <= (Net_13753
+Net_14048 <= (Net_13894
 	OR Net_13755);
 
 \MultiJog_FreqMeter:TimerUDB:fifo_load_polarized\ <= ((zero and \MultiJog_FreqMeter:TimerUDB:capture_last\));
@@ -2649,13 +2648,13 @@ Net_13742 <= (Net_13753
 
 \MultiJog_FreqMeter:TimerUDB:status_tc\ <= ((one and \MultiJog_FreqMeter:TimerUDB:run_mode\ and \MultiJog_FreqMeter:TimerUDB:per_zero\));
 
-\MultiJog_FreqMeter:TimerUDB:runmode_enable\\D\ <= ((not Net_13742 and not \MultiJog_FreqMeter:TimerUDB:timer_enable\ and not \MultiJog_FreqMeter:TimerUDB:trig_disable\ and one and \MultiJog_FreqMeter:TimerUDB:control_7\)
-	OR (not Net_13742 and not \MultiJog_FreqMeter:TimerUDB:status_tc\ and not \MultiJog_FreqMeter:TimerUDB:trig_disable\ and one and \MultiJog_FreqMeter:TimerUDB:control_7\));
+\MultiJog_FreqMeter:TimerUDB:runmode_enable\\D\ <= ((not Net_14048 and not \MultiJog_FreqMeter:TimerUDB:timer_enable\ and not \MultiJog_FreqMeter:TimerUDB:trig_disable\ and one and \MultiJog_FreqMeter:TimerUDB:control_7\)
+	OR (not Net_14048 and not \MultiJog_FreqMeter:TimerUDB:status_tc\ and not \MultiJog_FreqMeter:TimerUDB:trig_disable\ and one and \MultiJog_FreqMeter:TimerUDB:control_7\));
 
-\MultiJog_FreqMeter:TimerUDB:trig_disable\\D\ <= ((not Net_13742 and one and \MultiJog_FreqMeter:TimerUDB:timer_enable\ and \MultiJog_FreqMeter:TimerUDB:status_tc\)
-	OR (not Net_13742 and not \MultiJog_FreqMeter:TimerUDB:timer_enable\ and \MultiJog_FreqMeter:TimerUDB:trig_disable\)
-	OR (not one and not Net_13742 and \MultiJog_FreqMeter:TimerUDB:trig_disable\)
-	OR (not Net_13742 and not \MultiJog_FreqMeter:TimerUDB:status_tc\ and \MultiJog_FreqMeter:TimerUDB:trig_disable\));
+\MultiJog_FreqMeter:TimerUDB:trig_disable\\D\ <= ((not Net_14048 and one and \MultiJog_FreqMeter:TimerUDB:timer_enable\ and \MultiJog_FreqMeter:TimerUDB:status_tc\)
+	OR (not Net_14048 and not \MultiJog_FreqMeter:TimerUDB:timer_enable\ and \MultiJog_FreqMeter:TimerUDB:trig_disable\)
+	OR (not one and not Net_14048 and \MultiJog_FreqMeter:TimerUDB:trig_disable\)
+	OR (not Net_14048 and not \MultiJog_FreqMeter:TimerUDB:status_tc\ and \MultiJog_FreqMeter:TimerUDB:trig_disable\));
 
 \MultiJog_FreqMeter:TimerUDB:trig_reg\ <= ((one and \MultiJog_FreqMeter:TimerUDB:timer_enable\));
 
@@ -5953,7 +5952,7 @@ O_Led_Polar:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
-		y=>Net_13744,
+		y=>Net_14049,
 		fb=>(tmpFB_0__O_Led_Polar_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__O_Led_Polar_net_0),
@@ -6028,7 +6027,7 @@ O_Led_Error:cy_psoc3_pins_v1_10
 		ovt_hyst_trim=>"0",
 		input_buffer_sel=>"00")
 	PORT MAP(oe=>(one),
-		y=>Net_13742,
+		y=>Net_13894,
 		fb=>(tmpFB_0__O_Led_Error_net_0),
 		analog=>(open),
 		io=>(tmpIO_0__O_Led_Error_net_0),
@@ -7093,6 +7092,16 @@ Clock_7:cy_clock_v1_0
 		is_digital=>'1')
 	PORT MAP(clock_out=>Net_13740,
 		dig_domain_out=>open);
+Clock_9:cy_clock_v1_0
+	GENERIC MAP(cy_registers=>"",
+		id=>"d4a71bbd-7f91-4cbb-a209-a40e1b9c57b1",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
+		divisor=>0,
+		period=>"0",
+		is_direct=>'1',
+		is_digital=>'1')
+	PORT MAP(clock_out=>Net_13821,
+		dig_domain_out=>open);
 \MultiJog_Status:sts:sts_reg\:cy_psoc3_status
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"00000000")
@@ -7100,16 +7109,24 @@ Clock_7:cy_clock_v1_0
 		clock=>Net_13740,
 		status=>(zero, zero, zero, zero,
 			zero, zero, Net_13661, Net_13591));
-\MultiJog_Timer:TimerHW\:cy_psoc3_timer_v1_0
-	GENERIC MAP(cy_registers=>"")
-	PORT MAP(clock=>Net_12888,
-		kill=>zero,
+\MultiJog_Reset:Counter7\:cy_psoc3_count7
+	GENERIC MAP(cy_period=>"1111111",
+		cy_init_value=>"0000000",
+		cy_route_ld=>'0',
+		cy_route_en=>'0',
+		cy_alt_mode=>'0')
+	PORT MAP(clock=>Net_13965,
+		reset=>Net_14049,
+		load=>zero,
 		enable=>one,
-		capture=>zero,
-		timer_reset=>Net_13744,
-		tc=>Net_11749,
-		compare=>\MultiJog_Timer:Net_261\,
-		interrupt=>\MultiJog_Timer:Net_57\);
+		count=>(Net_14045_6, Net_14045_5, Net_14045_4, Net_14045_3,
+			Net_14045_2, Net_14045_1, Net_14045_0),
+		tc=>Net_13983);
+\Debouncer_1:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
+	GENERIC MAP(sync_mode=>'1')
+	PORT MAP(clock_in=>Net_13821,
+		enable=>one,
+		clock_out=>\Debouncer_1:op_clk\);
 Clock_8:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"58f0f612-373f-432d-b80a-0897e0b73be4",
@@ -7122,12 +7139,12 @@ Clock_8:cy_clock_v1_0
 		dig_domain_out=>open);
 \MultiJog_FreqMeter:TimerUDB:clock_enable_block\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
-	PORT MAP(clock_in=>Net_13744,
+	PORT MAP(clock_in=>Net_14049,
 		enable=>one,
 		clock_out=>\MultiJog_FreqMeter:TimerUDB:ClockOutFromEnBlock\);
 \MultiJog_FreqMeter:TimerUDB:sCTRLReg:SyncCtl:cy_psoc3_udb_Ctl_Clk_Sync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
-	PORT MAP(clock_in=>Net_13744,
+	PORT MAP(clock_in=>Net_14049,
 		enable=>one,
 		clock_out=>\MultiJog_FreqMeter:TimerUDB:Clk_Ctl_i\);
 \MultiJog_FreqMeter:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\:cy_psoc3_control
@@ -7144,7 +7161,7 @@ Clock_8:cy_clock_v1_0
 	GENERIC MAP(cy_force_order=>'1',
 		cy_md_select=>"0000011",
 		cy_int_mask=>"1111111")
-	PORT MAP(reset=>Net_13742,
+	PORT MAP(reset=>Net_14048,
 		clock=>\MultiJog_FreqMeter:TimerUDB:ClockOutFromEnBlock\,
 		status=>(zero, zero, zero, \MultiJog_FreqMeter:TimerUDB:status_3\,
 			\MultiJog_FreqMeter:TimerUDB:status_2\, \MultiJog_FreqMeter:TimerUDB:capt_fifo_load\, \MultiJog_FreqMeter:TimerUDB:status_tc\),
@@ -7173,7 +7190,7 @@ Clock_8:cy_clock_v1_0
 		f1_blk_sync=>'1')
 	PORT MAP(reset=>zero,
 		clk=>\MultiJog_FreqMeter:TimerUDB:ClockOutFromEnBlock\,
-		cs_addr=>(Net_13742, \MultiJog_FreqMeter:TimerUDB:trig_reg\, \MultiJog_FreqMeter:TimerUDB:per_zero\),
+		cs_addr=>(Net_14048, \MultiJog_FreqMeter:TimerUDB:trig_reg\, \MultiJog_FreqMeter:TimerUDB:per_zero\),
 		route_si=>zero,
 		route_ci=>zero,
 		f0_load=>\MultiJog_FreqMeter:TimerUDB:capt_fifo_load\,
@@ -7238,12 +7255,12 @@ Clock_8:cy_clock_v1_0
 Clock_11:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"228eccd9-1807-45d0-8510-b7bb37cac343",
-		source_clock_id=>"61737EF6-3B74-48f9-8B91-F7473A442AE7",
+		source_clock_id=>"315365C3-2E3E-4f04-84A2-BB564A173261",
 		divisor=>0,
-		period=>"1000000000000",
+		period=>"20000000000000",
 		is_direct=>'0',
 		is_digital=>'1')
-	PORT MAP(clock_out=>Net_12888,
+	PORT MAP(clock_out=>Net_13965,
 		dig_domain_out=>open);
 AMuxHw_1_Decoder_old_id_0:cy_dff
 	PORT MAP(d=>Net_174,
@@ -7433,6 +7450,10 @@ AMuxHw_1_Decoder_one_hot_1:cy_dff
 	PORT MAP(d=>\MultiJog:bQuadDec:state_0\\D\,
 		clk=>\MultiJog:bQuadDec:sync_clock\,
 		q=>\MultiJog:bQuadDec:state_0\);
+Net_14049:cy_dff
+	PORT MAP(d=>Net_14049D,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_14049);
 \FanCtrl:PWMUDB:min_kill_reg\:cy_dsrff
 	PORT MAP(d=>\FanCtrl:PWMUDB:min_kill_reg\\D\,
 		s=>zero,
@@ -7513,25 +7534,29 @@ AMuxHw_1_Decoder_one_hot_1:cy_dff
 	PORT MAP(d=>\FanCtrl:PWMUDB:status_2\,
 		clk=>\FanCtrl:PWMUDB:ClockOutFromEnBlock\,
 		q=>\FanCtrl:PWMUDB:tc_i_reg\);
-\PulseConvert_1:out_pulse\:cy_dff
-	PORT MAP(d=>\PulseConvert_1:out_pulse\\D\,
-		clk=>Net_12888,
-		q=>Net_13744);
-\PulseConvert_1:in_sample\:cy_dff
-	PORT MAP(d=>\PulseConvert_1:in_sample\\D\,
-		clk=>Net_13740,
-		q=>\PulseConvert_1:in_sample\);
-\PulseConvert_1:out_sample\:cy_dff
-	PORT MAP(d=>\PulseConvert_1:out_sample\\D\,
-		clk=>Net_12888,
-		q=>\PulseConvert_1:out_sample\);
 cy_srff_1:cy_dff
 	PORT MAP(d=>cy_srff_1D,
 		clk=>Net_13740,
 		q=>Net_13591);
+\Debouncer_1:DEBOUNCER[0]:d_sync_0\:cy_dff
+	PORT MAP(d=>Net_13698,
+		clk=>\Debouncer_1:op_clk\,
+		q=>\Debouncer_1:DEBOUNCER[0]:d_sync_0\);
+\Debouncer_1:DEBOUNCER[0]:d_sync_1\:cy_dff
+	PORT MAP(d=>\Debouncer_1:DEBOUNCER[0]:d_sync_0\,
+		clk=>\Debouncer_1:op_clk\,
+		q=>\Debouncer_1:DEBOUNCER[0]:d_sync_1\);
+Net_13770:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_13770);
+Net_13769:cy_dff
+	PORT MAP(d=>zero,
+		clk=>\Debouncer_1:op_clk\,
+		q=>Net_13769);
 \PulseConvert_2:out_pulse\:cy_dff
 	PORT MAP(d=>\PulseConvert_2:out_pulse\\D\,
-		clk=>Net_13744,
+		clk=>Net_14049,
 		q=>Net_13755);
 \PulseConvert_2:in_sample\:cy_dff
 	PORT MAP(d=>\PulseConvert_2:in_sample\\D\,
@@ -7539,7 +7564,7 @@ cy_srff_1:cy_dff
 		q=>\PulseConvert_2:in_sample\);
 \PulseConvert_2:out_sample\:cy_dff
 	PORT MAP(d=>\PulseConvert_2:out_sample\\D\,
-		clk=>Net_13744,
+		clk=>Net_14049,
 		q=>\PulseConvert_2:out_sample\);
 cy_srff_2:cy_dff
 	PORT MAP(d=>cy_srff_2D,
