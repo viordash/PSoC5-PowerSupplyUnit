@@ -1,12 +1,12 @@
-Loading plugins phase: Elapsed time ==> 0s.692ms
+Loading plugins phase: Elapsed time ==> 0s.672ms
 <CYPRESSTAG name="CyDsfit arguments...">
 cydsfit arguments: -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -d CY8C5888LTI-LP097 -s Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE</CYPRESSTAG>
 <CYPRESSTAG name="Design elaboration results...">
 </CYPRESSTAG>
-Elaboration phase: Elapsed time ==> 5s.441ms
+Elaboration phase: Elapsed time ==> 5s.300ms
 <CYPRESSTAG name="HDL generation results...">
 </CYPRESSTAG>
-HDL generation phase: Elapsed time ==> 0s.293ms
+HDL generation phase: Elapsed time ==> 0s.307ms
 <CYPRESSTAG name="Synthesis results...">
 
      | | | | | | |
@@ -40,7 +40,7 @@ Options  :    -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 vlogfe V6.3 IR 41:  Verilog parser
-Sun Jun 11 17:48:53 2017
+Mon Jun 12 23:12:57 2017
 
 
 ======================================================================
@@ -50,7 +50,7 @@ Options  :    -yv2 -q10 PowerSuplyUnit.v
 ======================================================================
 
 vpp V6.3 IR 41:  Verilog Pre-Processor
-Sun Jun 11 17:48:53 2017
+Mon Jun 12 23:12:57 2017
 
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v'
 Flattening file 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v'
@@ -99,7 +99,7 @@ Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\c
 Using control file 'PowerSuplyUnit.ctl'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v (line 947, col 46):  Note: Substituting module 'sub_vi_vv' for '-'.
 C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\B_PWM_v3_30\B_PWM_v3_30.v (line 977, col 46):  Note: Substituting module 'add_vi_vv' for '+'.
-PowerSuplyUnit.v (line 2083, col 77):  Note: Substituting module 'cmp_vv_vv' for '='.
+PowerSuplyUnit.v (line 2084, col 77):  Note: Substituting module 'cmp_vv_vv' for '='.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3pkg.vif'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif'.
 
@@ -113,7 +113,7 @@ Options  :    -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 tovif V6.3 IR 41:  High-level synthesis
-Sun Jun 11 17:48:55 2017
+Mon Jun 12 23:12:59 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -162,7 +162,7 @@ Options  :    -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\Po
 ======================================================================
 
 topld V6.3 IR 41:  Synthesis and optimization
-Sun Jun 11 17:48:57 2017
+Mon Jun 12 23:13:02 2017
 
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\std.vhd'.
 Linking 'C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\cypress.vhd'.
@@ -808,7 +808,7 @@ Removing Lhs of wire \PGA_1:Net_40\[128] = zero[23]
 Removing Lhs of wire \PGA_1:Net_38\[129] = zero[23]
 Removing Lhs of wire \PGA_1:Net_39\[130] = zero[23]
 Removing Lhs of wire AMuxHw_1_Decoder_enable[137] = one[45]
-Removing Lhs of wire cmp_vv_vv_MODGEN_1[139] = \MODULE_3:g1:a0:xeq\[1897]
+Removing Lhs of wire cmp_vv_vv_MODGEN_1[139] = \MODULE_3:g1:a0:xeq\[1899]
 Removing Rhs of wire Net_174[142] = \AdcCurrentChanel:control_out_0\[422]
 Removing Rhs of wire Net_174[142] = \AdcCurrentChanel:control_0\[445]
 Removing Lhs of wire \ADC_VoltageChanelA:vp_ctl_0\[156] = zero[23]
@@ -1029,12 +1029,13 @@ Removing Lhs of wire \FanCtrl:Net_113\[1690] = one[45]
 Removing Lhs of wire Net_10539[1691] = zero[23]
 Removing Lhs of wire Net_10546[1697] = zero[23]
 Removing Lhs of wire tmpOE__O_Led_Error_net_0[1702] = one[45]
-Removing Lhs of wire \Buttons:status_0\[1708] = Net_15333[1709]
+Removing Lhs of wire \Buttons:status_0\[1708] = Net_15364[1709]
+Removing Rhs of wire Net_15364[1709] = cy_srff_1[1878]
 Removing Lhs of wire \Buttons:status_1\[1710] = Net_15332[1711]
 Removing Lhs of wire \Buttons:status_2\[1712] = Net_15319[1551]
 Removing Lhs of wire \Buttons:status_3\[1713] = Net_15329[1575]
 Removing Lhs of wire \Buttons:status_4\[1714] = Net_15349[1715]
-Removing Rhs of wire Net_15349[1715] = \Debouncer_3:DEBOUNCER[0]:d_sync_0\[1872]
+Removing Rhs of wire Net_15349[1715] = \Debouncer_3:DEBOUNCER[0]:d_sync_0\[1873]
 Removing Lhs of wire \Buttons:status_5\[1716] = zero[23]
 Removing Lhs of wire \Buttons:status_6\[1717] = zero[23]
 Removing Lhs of wire \Buttons:status_7\[1718] = zero[23]
@@ -1053,51 +1054,51 @@ Removing Lhs of wire \MultiJog_Status:status_5\[1810] = zero[23]
 Removing Lhs of wire \MultiJog_Status:status_6\[1811] = zero[23]
 Removing Lhs of wire \MultiJog_Status:status_7\[1812] = zero[23]
 Removing Rhs of wire Net_14914[1858] = \Debouncer_2:DEBOUNCER[0]:d_sync_0\[1856]
-Removing Lhs of wire \MODULE_3:g1:a0:newa_0\[1877] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:newb_0\[1878] = MODIN3_0[1879]
-Removing Lhs of wire MODIN3_0[1879] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:dataa_0\[1880] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:datab_0\[1881] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:a_0\[1882] = Net_174[142]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:b_0\[1883] = AMuxHw_1_Decoder_old_id_0[141]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:aeqb_0\[1885] = one[45]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eq_0\[1886] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1884]
-Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eqi_0\[1887] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1884]
-Removing Rhs of wire \MODULE_3:g1:a0:xeq\[1897] = \MODULE_3:g1:a0:gx:u0:aeqb_1\[1888]
-Removing Lhs of wire AMuxHw_1_Decoder_old_id_0D[1908] = Net_174[142]
-Removing Lhs of wire \PWM_2:PWMUDB:prevCapture\\D\[1912] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:trig_last\\D\[1913] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm_i_reg\\D\[1919] = \PWM_2:PWMUDB:pwm_i\[685]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm1_i_reg\\D\[1920] = zero[23]
-Removing Lhs of wire \PWM_2:PWMUDB:pwm2_i_reg\\D\[1921] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1924] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1925] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1931] = \PWM_1:PWMUDB:pwm_i\[1076]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1932] = zero[23]
-Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1933] = zero[23]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:prevCapture\\D\[1936] = zero[23]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:overflow_reg_i\\D\[1937] = \MultiJog:Cnt8:CounterUDB:overflow\[1447]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:underflow_reg_i\\D\[1938] = \MultiJog:Cnt8:CounterUDB:status_1\[1435]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:tc_reg_i\\D\[1939] = \MultiJog:Cnt8:CounterUDB:reload_tc\[1430]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:prevCompare\\D\[1940] = \MultiJog:Cnt8:CounterUDB:cmp_out_i\[1454]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:cmp_out_reg_i\\D\[1941] = \MultiJog:Cnt8:CounterUDB:cmp_out_i\[1454]
-Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:count_stored_i\\D\[1942] = \MultiJog:Net_1203\[1460]
-Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\[1952] = Net_13698[1498]
-Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\[1953] = \Debouncer_1:DEBOUNCER[0]:d_sync_0\[1831]
-Removing Lhs of wire Net_14065D[1954] = zero[23]
-Removing Lhs of wire Net_14064D[1955] = zero[23]
-Removing Lhs of wire \EdgeDetect_1:last\\D\[1956] = Net_14170[1837]
-Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\[1959] = Net_10739[1724]
-Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\[1960] = Net_14914[1858]
-Removing Lhs of wire Net_14869D[1961] = zero[23]
-Removing Lhs of wire Net_14870D[1962] = zero[23]
-Removing Lhs of wire \Debouncer_3:DEBOUNCER[0]:d_sync_0\\D\[1963] = Net_15347[1584]
-Removing Lhs of wire \Debouncer_3:DEBOUNCER[0]:d_sync_1\\D\[1964] = Net_15349[1715]
-Removing Lhs of wire Net_15267D[1966] = zero[23]
-Removing Lhs of wire Net_15268D[1967] = zero[23]
+Removing Lhs of wire \MODULE_3:g1:a0:newa_0\[1879] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:newb_0\[1880] = MODIN3_0[1881]
+Removing Lhs of wire MODIN3_0[1881] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:dataa_0\[1882] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:datab_0\[1883] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:a_0\[1884] = Net_174[142]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:b_0\[1885] = AMuxHw_1_Decoder_old_id_0[141]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:aeqb_0\[1887] = one[45]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eq_0\[1888] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1886]
+Removing Lhs of wire \MODULE_3:g1:a0:gx:u0:eqi_0\[1889] = \MODULE_3:g1:a0:gx:u0:xnor_array_0\[1886]
+Removing Rhs of wire \MODULE_3:g1:a0:xeq\[1899] = \MODULE_3:g1:a0:gx:u0:aeqb_1\[1890]
+Removing Lhs of wire AMuxHw_1_Decoder_old_id_0D[1910] = Net_174[142]
+Removing Lhs of wire \PWM_2:PWMUDB:prevCapture\\D\[1914] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:trig_last\\D\[1915] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm_i_reg\\D\[1921] = \PWM_2:PWMUDB:pwm_i\[685]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm1_i_reg\\D\[1922] = zero[23]
+Removing Lhs of wire \PWM_2:PWMUDB:pwm2_i_reg\\D\[1923] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:prevCapture\\D\[1926] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:trig_last\\D\[1927] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm_i_reg\\D\[1933] = \PWM_1:PWMUDB:pwm_i\[1076]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm1_i_reg\\D\[1934] = zero[23]
+Removing Lhs of wire \PWM_1:PWMUDB:pwm2_i_reg\\D\[1935] = zero[23]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:prevCapture\\D\[1938] = zero[23]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:overflow_reg_i\\D\[1939] = \MultiJog:Cnt8:CounterUDB:overflow\[1447]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:underflow_reg_i\\D\[1940] = \MultiJog:Cnt8:CounterUDB:status_1\[1435]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:tc_reg_i\\D\[1941] = \MultiJog:Cnt8:CounterUDB:reload_tc\[1430]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:prevCompare\\D\[1942] = \MultiJog:Cnt8:CounterUDB:cmp_out_i\[1454]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:cmp_out_reg_i\\D\[1943] = \MultiJog:Cnt8:CounterUDB:cmp_out_i\[1454]
+Removing Lhs of wire \MultiJog:Cnt8:CounterUDB:count_stored_i\\D\[1944] = \MultiJog:Net_1203\[1460]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_0\\D\[1954] = Net_13698[1498]
+Removing Lhs of wire \Debouncer_1:DEBOUNCER[0]:d_sync_1\\D\[1955] = \Debouncer_1:DEBOUNCER[0]:d_sync_0\[1831]
+Removing Lhs of wire Net_14065D[1956] = zero[23]
+Removing Lhs of wire Net_14064D[1957] = zero[23]
+Removing Lhs of wire \EdgeDetect_1:last\\D\[1958] = Net_14170[1837]
+Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_0\\D\[1961] = Net_10739[1724]
+Removing Lhs of wire \Debouncer_2:DEBOUNCER[0]:d_sync_1\\D\[1962] = Net_14914[1858]
+Removing Lhs of wire Net_14869D[1963] = zero[23]
+Removing Lhs of wire Net_14870D[1964] = zero[23]
+Removing Lhs of wire \Debouncer_3:DEBOUNCER[0]:d_sync_0\\D\[1965] = Net_15347[1584]
+Removing Lhs of wire \Debouncer_3:DEBOUNCER[0]:d_sync_1\\D\[1966] = Net_15349[1715]
+Removing Lhs of wire Net_15267D[1968] = zero[23]
+Removing Lhs of wire Net_15268D[1969] = zero[23]
 
 ------------------------------------------------------
-Aliased 0 equations, 311 wires.
+Aliased 0 equations, 312 wires.
 ------------------------------------------------------
 
 topld:  No errors.
@@ -1106,14 +1107,14 @@ CYPRESS_DIR    : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\wa
 Warp Program   : C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\bin\warp.exe
 Warp Arguments : -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -dcpsoc3 PowerSuplyUnit.v -verilog
 </CYPRESSTAG>
-Warp synthesis phase: Elapsed time ==> 4s.747ms
+Warp synthesis phase: Elapsed time ==> 5s.946ms
 <CYPRESSTAG name="Fitter results...">
 <CYPRESSTAG name="Fitter startup details...">
-cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Sunday, 11 June 2017 17:48:58
+cyp3fit: V4.0.0.432, Family: PSoC3, Started at: Monday, 12 June 2017 23:13:03
 Options: -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE -ya -.fftprj=Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -d CY8C5888LTI-LP097 PowerSuplyUnit.v -verilog
 </CYPRESSTAG>
 <CYPRESSTAG name="Design parsing">
-Design parsing phase: Elapsed time ==> 0s.062ms
+Design parsing phase: Elapsed time ==> 0s.073ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Tech Mapping">
 <CYPRESSTAG name="Initial Mapping" icon="FILE_RPT_TECHM">
@@ -3989,6 +3990,17 @@ Design Equations
         );
         Output = Net_15269D (fanout=1)
 
+    MacroCell: Name=cy_srff_1D, Mode=(Combinatorial)
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_15364 * !Net_15332
+            + !Net_15332 * Net_15363
+        );
+        Output = cy_srff_1D (fanout=1)
+
     MacroCell: Name=\MODULE_3:g1:a0:gx:u0:xnor_array_0\, Mode=(Combinatorial)
         Total # of inputs        : 2
         Total # of product terms : 2
@@ -4515,7 +4527,7 @@ Design Equations
         (
               Net_15332D
         );
-        Output = Net_15332 (fanout=1)
+        Output = Net_15332 (fanout=2)
 
     MacroCell: Name=Net_14820, Mode=(D-Register)
         Total # of inputs        : 1
@@ -4648,6 +4660,18 @@ Design Equations
               Net_15269D
         );
         Output = Net_15269 (fanout=0)
+
+    MacroCell: Name=Net_15364, Mode=(D-Register)
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              cy_srff_1D
+        );
+        Output = Net_15364 (fanout=2)
     </CYPRESSTAG>
     <CYPRESSTAG name="Datapath listing">
 
@@ -4853,7 +4877,7 @@ Design Equations
             status_3 => Net_15329 ,
             status_2 => Net_15319 ,
             status_1 => Net_15332 ,
-            status_0 => Net_15333 );
+            status_0 => Net_15364 );
         Properties:
         {
             cy_force_order = 1
@@ -5153,7 +5177,7 @@ Design Equations
             count_2 => Net_14915_2 ,
             count_1 => Net_14915_1 ,
             count_0 => Net_14915_0 ,
-            tc => Net_15333 );
+            tc => Net_15363 );
         Properties:
         {
             cy_alt_mode = 0
@@ -5231,9 +5255,9 @@ USB                           :    0 :    1 :    1 :  0.00 %
 DMA Channels                  :    0 :   24 :   24 :  0.00 %
 Timer                         :    1 :    3 :    4 : 25.00 %
 UDB                           :      :      :      :        
-  Macrocells                  :  112 :   80 :  192 : 58.33 %
-  Unique P-terms              :  155 :  229 :  384 : 40.36 %
-  Total P-terms               :  160 :      :      :        
+  Macrocells                  :  114 :   78 :  192 : 59.38 %
+  Unique P-terms              :  158 :  226 :  384 : 41.15 %
+  Total P-terms               :  163 :      :      :        
   Datapath Cells              :    5 :   19 :   24 : 20.83 %
   Status Cells                :    8 :   16 :   24 : 33.33 %
     Status Registers          :    2 :      :      :        
@@ -5252,8 +5276,8 @@ Analog (SC/CT) Blocks         :    1 :    3 :    4 : 25.00 %
 DAC                           :      :      :      :        
   VIDAC                       :    0 :    4 :    4 :  0.00 %
 </CYPRESSTAG>
-Technology Mapping: Elapsed time ==> 0s.130ms
-Tech Mapping phase: Elapsed time ==> 0s.301ms
+Technology Mapping: Elapsed time ==> 0s.202ms
+Tech Mapping phase: Elapsed time ==> 0s.354ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Placement">
 Initial Analog Placement Results:
@@ -5357,7 +5381,7 @@ SAR[0]@[FFB(SAR,0)] : \ADC_VoltageChanelB:ADC_SAR\ (fixed, SAR-ExtVref)
 Vref[3]@[FFB(Vref,3)] : \ADC_VoltageChanelA:vRef_1024\
 SC[2]@[FFB(SC,2)] : \PGA_1:SC\
 
-Analog Placement phase: Elapsed time ==> 3s.974ms
+Analog Placement phase: Elapsed time ==> 4s.080ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Routing">
 Net "Net_12" overuses wire "AGL[6]"
@@ -5437,7 +5461,7 @@ Net "NegVoltChA" overuses wire "SAR vplus wire L"
 Net "VoltChB" overuses wire "SAR vplus wire L"
 Net "NegVoltChA" overuses wire "AGL[5]"
 Net "PosVoltChA" overuses wire "AGL[5]"
-Analog Routing phase: Elapsed time ==> 0s.235ms
+Analog Routing phase: Elapsed time ==> 0s.237ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Analog Code Generation">
 ============ Analog Final Answer Routes ============
@@ -5734,11 +5758,11 @@ Dump of CyP35AnalogRoutingResultsDB
 IsVddaHalfUsedForComp = False
 IsVddaHalfUsedForSar0 = False
 IsVddaHalfUsedForSar1 = False
-Analog Code Generation phase: Elapsed time ==> 0s.482ms
+Analog Code Generation phase: Elapsed time ==> 0s.496ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Placement">
 <CYPRESSTAG name="Detailed placement messages">
-I2076: Total run-time: 3.4 sec.
+I2076: Total run-time: 6.3 sec.
 
 </CYPRESSTAG>
 <CYPRESSTAG name="PLD Packing">
@@ -5749,27 +5773,27 @@ PLD Packing Summary
 ------------------------------------------------------------
             Resource Type : Used : Free :  Max :  % Used
     ====================================================
-                     PLDs :   41 :    7 :   48 :  85.42%
+                     PLDs :   38 :   10 :   48 :  79.17%
 
 <CYPRESSTAG name="PLD Statistics">
 
         PLD Resource Type :     Average/LAB
     =======================================
-                   Inputs :            4.68
-                   Pterms :            3.90
-               Macrocells :            2.73
+                   Inputs :            5.21
+                   Pterms :            4.29
+               Macrocells :            3.00
 </CYPRESSTAG>
 <CYPRESSTAG name="Packed PLD Contents">
 Packed PLD Contents not displayed at this verbose level.</CYPRESSTAG>
 </CYPRESSTAG>
-PLD Packing: Elapsed time ==> 0s.004ms
+PLD Packing: Elapsed time ==> 0s.007ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Partitioning">
 <CYPRESSTAG name="Initial Partitioning Summary">
 Initial Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
 <CYPRESSTAG name="Final Partitioning Summary">
 Final Partitioning Summary not displayed at this verbose level.</CYPRESSTAG>
-Partitioning: Elapsed time ==> 0s.436ms
+Partitioning: Elapsed time ==> 0s.470ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Final Placement Summary">
 
@@ -5779,7 +5803,7 @@ Final Placement Summary
 
        Resource Type :      Count : Avg Inputs : Avg Outputs
     ========================================================
-                 UDB :         21 :       7.76 :       5.33
+                 UDB :         19 :       8.89 :       6.00
 <CYPRESSTAG name="Final Placement Details">
 <CYPRESSTAG name="Component Details">
 
@@ -5787,23 +5811,100 @@ Final Placement Summary
 Component Placement Details
 ------------------------------------------------------------
 UDB [UDB=(0,0)] contents:
-LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=4, #pterms=4
+LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=5, #pterms=4
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:sc_kill_tmp\\D\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
+    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_0\\D\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
             Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              \PWM_2:PWMUDB:tc_i\
+        Main Equation            : 2 pterms
+        (
+              !\PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:dith_count_0\
+            + \PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\
         );
-        Output = \PWM_2:PWMUDB:sc_kill_tmp\\D\ (fanout=1)
+        Output = \PWM_1:PWMUDB:dith_count_0\\D\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:s_1\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_0\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_733)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:dith_count_0\\D\
+        );
+        Output = \PWM_1:PWMUDB:dith_count_0\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\\D\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:control_7\
+        );
+        Output = \PWM_1:PWMUDB:runmode_enable\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(0,0)][LB=1] #macrocells=1, #inputs=1, #pterms=1
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\PWM_1:PWMUDB:dith_count_0\
+        );
+        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        control_7 => \PWM_1:PWMUDB:control_7\ ,
+        control_6 => \PWM_1:PWMUDB:control_6\ ,
+        control_5 => \PWM_1:PWMUDB:control_5\ ,
+        control_4 => \PWM_1:PWMUDB:control_4\ ,
+        control_3 => \PWM_1:PWMUDB:control_3\ ,
+        control_2 => \PWM_1:PWMUDB:control_2\ ,
+        control_1 => \PWM_1:PWMUDB:control_1\ ,
+        control_0 => \PWM_1:PWMUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(0,1)] contents:
+LAB@[UDB=(0,1)][LB=0] #macrocells=4, #inputs=6, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:s_1\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 2
             Clock Enable: True
@@ -5819,7 +5920,36 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:sc_kill_tmp\, Mode=(D-Register) @ [UDB=(0,0)][LB=0][MC=3]
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:pwm_i\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:pwm_temp\
+        );
+        Output = \PWM_1:PWMUDB:pwm_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_733)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:runmode_enable\\D\
+        );
+        Output = \PWM_1:PWMUDB:runmode_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:sc_kill_tmp\, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -5827,163 +5957,18 @@ LAB@[UDB=(0,0)][LB=0] #macrocells=3, #inputs=4, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_2:PWMUDB:sc_kill_tmp\\D\
+              \PWM_1:PWMUDB:sc_kill_tmp\\D\
         );
-        Output = \PWM_2:PWMUDB:sc_kill_tmp\ (fanout=0)
+        Output = \PWM_1:PWMUDB:sc_kill_tmp\ (fanout=0)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(0,0)][LB=1] #macrocells=2, #inputs=4, #pterms=3
+LAB@[UDB=(0,1)][LB=1] #macrocells=2, #inputs=3, #pterms=2
 {
     [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_1\\D\, Mode=(Combinatorial) @ [UDB=(0,0)][LB=1][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:dith_count_1\
-            + \PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:MODULE_1:g2:a0:s_1\
-        );
-        Output = \PWM_2:PWMUDB:dith_count_1\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_1\, Mode=(D-Register) @ [UDB=(0,0)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_949)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:dith_count_1\\D\
-        );
-        Output = \PWM_2:PWMUDB:dith_count_1\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-datapathcell: Name =\PWM_2:PWMUDB:sP16:pwmdp:u0\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_2 => \PWM_2:PWMUDB:tc_i\ ,
-        cs_addr_1 => \PWM_2:PWMUDB:runmode_enable\ ,
-        cs_addr_0 => Net_949 ,
-        chain_out => \PWM_2:PWMUDB:sP16:pwmdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \PWM_2:PWMUDB:sP16:pwmdp:u1\
-
-UDB [UDB=(0,1)] contents:
-LAB@[UDB=(0,1)][LB=0] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\ADC_VoltageChanelB:Net_188\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_VoltageChanelB:Net_376_local\
-        );
-        Output = \ADC_VoltageChanelB:Net_188\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_15349, Mode=(D-Register) @ [UDB=(0,1)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              Net_15347
-        );
-        Output = Net_15349 (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:dith_count_0\
-        );
-        Output = \PWM_2:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ (fanout=2)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(0,1)][LB=1] #macrocells=4, #inputs=7, #pterms=5
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_0\, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_949)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:dith_count_0\\D\
-        );
-        Output = \PWM_2:PWMUDB:dith_count_0\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_0\\D\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:dith_count_0\
-            + \PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\
-        );
-        Output = \PWM_2:PWMUDB:dith_count_0\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
+    [McSlotId=1]: (empty)
     [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_2\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
@@ -5998,7 +5983,58 @@ LAB@[UDB=(0,1)][LB=1] #macrocells=4, #inputs=7, #pterms=5
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=PwmChB, Mode=(D-Register) @ [UDB=(0,1)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:sc_kill_tmp\\D\, Mode=(Combinatorial) @ [UDB=(0,1)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              \PWM_1:PWMUDB:tc_i\
+        );
+        Output = \PWM_1:PWMUDB:sc_kill_tmp\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(0,2)] contents:
+LAB@[UDB=(0,2)][LB=0] #macrocells=2, #inputs=1, #pterms=2
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:pwm_temp\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:cmp1_less\
+        );
+        Output = \PWM_1:PWMUDB:pwm_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:min_kill_reg\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=3]
+        Total # of inputs        : 0
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_949)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+            1
+        );
+        Output = \PWM_2:PWMUDB:min_kill_reg\ (fanout=0)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(0,2)][LB=1] #macrocells=4, #inputs=5, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=PwmChB, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6012,360 +6048,60 @@ LAB@[UDB=(0,1)][LB=1] #macrocells=4, #inputs=7, #pterms=5
         Properties               : 
         {
         }
-}
 
-UDB [UDB=(0,2)] contents:
-LAB@[UDB=(0,2)][LB=0] #macrocells=3, #inputs=4, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1151\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=0]
+    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:tc_i_reg\, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\MultiJog:Net_1251\
+              \PWM_1:PWMUDB:tc_i_reg\\D\
         );
-        Output = \MultiJog:Net_1151\ (fanout=1)
+        Output = \PWM_1:PWMUDB:tc_i_reg\ (fanout=0)
         Properties               : 
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Net_611\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=0][MC=2]
+    [McSlotId=2]:     MacroCell: Name=PwmChA, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:pwm_i\
+        );
+        Output = PwmChA (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:tc_i_reg\\D\, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=3]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:Net_1151\ * \MultiJog:Net_1248\
+              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:tc_i\
         );
-        Output = \MultiJog:Net_611\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\Debouncer_3:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(0,2)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              Net_15349
-        );
-        Output = \Debouncer_3:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Output = \PWM_1:PWMUDB:tc_i_reg\\D\ (fanout=1)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(0,2)][LB=1] #macrocells=2, #inputs=3, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=Net_15269D, Mode=(Combinatorial) @ [UDB=(0,2)][LB=1][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_15349 * !\Debouncer_3:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_15269D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=Net_15269, Mode=(D-Register) @ [UDB=(0,2)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
-        Main Equation            : 1 pterm
-        (
-              Net_15269D
-        );
-        Output = Net_15269 (fanout=0)
-        Properties               : 
-        {
-        }
-}
-
-controlcell: Name =\LCD_DB_OutEnable:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \LCD_DB_OutEnable:control_7\ ,
-        control_6 => \LCD_DB_OutEnable:control_6\ ,
-        control_5 => \LCD_DB_OutEnable:control_5\ ,
-        control_4 => \LCD_DB_OutEnable:control_4\ ,
-        control_3 => \LCD_DB_OutEnable:control_3\ ,
-        control_2 => \LCD_DB_OutEnable:control_2\ ,
-        control_1 => \LCD_DB_OutEnable:control_1\ ,
-        control_0 => tmpOE__LCD_DB_net_7 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
-synccell: Name =ClockBlock_1k__SYNC_2
-    PORT MAP (
-        in => ClockBlock_1k ,
-        out => ClockBlock_1k__SYNC_OUT_2 ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-synccell: Name =ClockBlock_1k__SYNC_1
-    PORT MAP (
-        in => ClockBlock_1k ,
-        out => ClockBlock_1k__SYNC_OUT_1 ,
-        clock => ClockBlock_BUS_CLK );
-    Properties:
-    {
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,3)] is empty.
-UDB [UDB=(0,4)] contents:
-LAB@[UDB=(0,4)][LB=0] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              Net_14914
-        );
-        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=Net_14914, Mode=(D-Register) @ [UDB=(0,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              Net_10739
-        );
-        Output = Net_14914 (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=Net_15332D, Mode=(Combinatorial) @ [UDB=(0,4)][LB=0][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\Debouncer_2:DEBOUNCER[0]:d_sync_1\ * Net_14914
-        );
-        Output = Net_15332D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(0,4)][LB=1] #macrocells=1, #inputs=1, #pterms=1
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=Net_15332, Mode=(D-Register) @ [UDB=(0,4)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
-        Main Equation            : 1 pterm
-        (
-              Net_15332D
-        );
-        Output = Net_15332 (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-count7cell: Name =\BtnOk_Reset:Counter7\
-    PORT MAP (
-        clock => freq_50Hz ,
-        reset => Net_14914 ,
-        load => __ZERO__ ,
-        count_6 => Net_14915_6 ,
-        count_5 => Net_14915_5 ,
-        count_4 => Net_14915_4 ,
-        count_3 => Net_14915_3 ,
-        count_2 => Net_14915_2 ,
-        count_1 => Net_14915_1 ,
-        count_0 => Net_14915_0 ,
-        tc => Net_15333 );
-    Properties:
-    {
-        cy_alt_mode = 0
-        cy_init_value = "0000000"
-        cy_period = "1111111"
-        cy_route_en = 0
-        cy_route_ld = 0
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(0,5)] contents:
-LAB@[UDB=(0,5)][LB=0] #macrocells=1, #inputs=0, #pterms=0
-{
-    [McSlotId=0]:     MacroCell: Name=__ZERO__, Mode=(Combinatorial) @ [UDB=(0,5)][LB=0][MC=0]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        (
-            0
-        );
-        Output = __ZERO__ (fanout=43)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(1,0)] contents:
-LAB@[UDB=(1,0)][LB=0] #macrocells=3, #inputs=4, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_949)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:runmode_enable\\D\
-        );
-        Output = \PWM_2:PWMUDB:runmode_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:pwm_i\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:pwm_temp\
-        );
-        Output = \PWM_2:PWMUDB:pwm_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:pwm_temp\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:cmp1_less\
-        );
-        Output = \PWM_2:PWMUDB:pwm_temp\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(1,0)][LB=1] #macrocells=4, #inputs=5, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:sc_kill_tmp\\D\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              \PWM_1:PWMUDB:tc_i\
-        );
-        Output = \PWM_1:PWMUDB:sc_kill_tmp\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:tc_i_reg\\D\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:tc_i\
-        );
-        Output = \PWM_2:PWMUDB:tc_i_reg\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:sc_kill_tmp\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:sc_kill_tmp\\D\
-        );
-        Output = \PWM_1:PWMUDB:sc_kill_tmp\ (fanout=0)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:tc_i_reg\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_2:PWMUDB:tc_i_reg\\D\
-        );
-        Output = \PWM_2:PWMUDB:tc_i_reg\ (fanout=0)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\PWM_2:PWMUDB:sP16:pwmdp:u1\
+datapathcell: Name =\PWM_1:PWMUDB:sP16:pwmdp:u1\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
-        cs_addr_2 => \PWM_2:PWMUDB:tc_i\ ,
-        cs_addr_1 => \PWM_2:PWMUDB:runmode_enable\ ,
-        cs_addr_0 => Net_949 ,
-        cl0_comb => \PWM_2:PWMUDB:cmp1_less\ ,
-        z0_comb => \PWM_2:PWMUDB:tc_i\ ,
-        chain_in => \PWM_2:PWMUDB:sP16:pwmdp:carry\ );
+        cs_addr_2 => \PWM_1:PWMUDB:tc_i\ ,
+        cs_addr_1 => \PWM_1:PWMUDB:runmode_enable\ ,
+        cs_addr_0 => Net_733 ,
+        cl0_comb => \PWM_1:PWMUDB:cmp1_less\ ,
+        z0_comb => \PWM_1:PWMUDB:tc_i\ ,
+        chain_in => \PWM_1:PWMUDB:sP16:pwmdp:carry\ );
     Properties:
     {
         a0_init = "00000000"
@@ -6392,71 +6128,121 @@ datapathcell: Name =\PWM_2:PWMUDB:sP16:pwmdp:u1\
     }
     Clock Polarity: Active High
     Clock Enable: True
-    Previous in chain : \PWM_2:PWMUDB:sP16:pwmdp:u0\
+    Previous in chain : \PWM_1:PWMUDB:sP16:pwmdp:u0\
 
-UDB [UDB=(1,1)] contents:
-LAB@[UDB=(1,1)][LB=0] #macrocells=4, #inputs=8, #pterms=6
+controlcell: Name =\LCD_DB_OutEnable:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \LCD_DB_OutEnable:control_7\ ,
+        control_6 => \LCD_DB_OutEnable:control_6\ ,
+        control_5 => \LCD_DB_OutEnable:control_5\ ,
+        control_4 => \LCD_DB_OutEnable:control_4\ ,
+        control_3 => \LCD_DB_OutEnable:control_3\ ,
+        control_2 => \LCD_DB_OutEnable:control_2\ ,
+        control_1 => \LCD_DB_OutEnable:control_1\ ,
+        control_0 => tmpOE__LCD_DB_net_7 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(0,3)] is empty.
+UDB [UDB=(0,4)] is empty.
+UDB [UDB=(0,5)] is empty.
+UDB [UDB=(1,0)] contents:
+LAB@[UDB=(1,0)][LB=0] #macrocells=4, #inputs=7, #pterms=5
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1287\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_0\\D\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:dith_count_0\
+            + \PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\
+        );
+        Output = \PWM_2:PWMUDB:dith_count_0\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_0\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_949)
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\MultiJog:Cnt8:CounterUDB:prevCompare\
+              \PWM_2:PWMUDB:dith_count_0\\D\
         );
-        Output = \MultiJog:Net_1287\ (fanout=1)
+        Output = \PWM_2:PWMUDB:dith_count_0\ (fanout=3)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:state_2\\D\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=1]
-        Total # of inputs        : 4
-        Total # of product terms : 3
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        !(
-              !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:error\
-            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:state_1\ * 
-              !\MultiJog:bQuadDec:state_0\
-            + !\MultiJog:bQuadDec:error\ * !\MultiJog:bQuadDec:state_1\ * 
-              !\MultiJog:bQuadDec:state_0\
-        );
-        Output = \MultiJog:bQuadDec:state_2\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\PWM_2:PWMUDB:dith_count_0\
-        );
-        Output = \PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1248\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=0][MC=2]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:Net_1276\ * \MultiJog:Net_1287\
+              \PWM_1:PWMUDB:dith_count_1\ * 
+              \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
         );
-        Output = \MultiJog:Net_1248\ (fanout=2)
+        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\ (fanout=0)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:tc_i_reg\, Mode=(D-Register) @ [UDB=(1,0)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:tc_i_reg\\D\
+        );
+        Output = \PWM_2:PWMUDB:tc_i_reg\ (fanout=0)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(1,1)][LB=1] #macrocells=2, #inputs=2, #pterms=2
+LAB@[UDB=(1,0)][LB=1] #macrocells=4, #inputs=11, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1276\, Mode=(D-Register) @ [UDB=(1,1)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1203\\D\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=0]
+        Total # of inputs        : 7
+        Total # of product terms : 4
+            Clock Enable: True
+        Main Equation            : 4 pterms
+        (
+              !\MultiJog:Net_1260\ * \MultiJog:Net_1203\ * 
+              \MultiJog:bQuadDec:error\ * !\MultiJog:bQuadDec:state_1\ * 
+              !\MultiJog:bQuadDec:state_0\
+            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
+              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
+            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
+              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+            + \MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
+              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+        );
+        Output = \MultiJog:Net_1203\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:Net_1251\, Mode=(D-Register) @ [UDB=(1,0)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6464,56 +6250,106 @@ LAB@[UDB=(1,1)][LB=1] #macrocells=2, #inputs=2, #pterms=2
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:Cnt8:CounterUDB:reload_tc\
+              \MultiJog:Net_1251\\D\
         );
-        Output = \MultiJog:Net_1276\ (fanout=1)
+        Output = \MultiJog:Net_1251\ (fanout=5)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\\D\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=1]
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\PWM_1:PWMUDB:dith_count_1\ * 
+              \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
+            + \PWM_1:PWMUDB:dith_count_1\ * 
+              !\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
+        );
+        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\, Mode=(Combinatorial) @ [UDB=(1,0)][LB=1][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_2:PWMUDB:control_7\
+              \PWM_1:PWMUDB:dith_count_0\
         );
-        Output = \PWM_2:PWMUDB:runmode_enable\\D\ (fanout=1)
+        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\ (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(1,1)] contents:
+LAB@[UDB=(1,1)][LB=0] #macrocells=4, #inputs=7, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1251\\D\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !\MultiJog:Net_1251\\D_split\ * !\MultiJog:Net_1251\\D_split_1\
+        );
+        Output = \MultiJog:Net_1251\\D\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_1\\D\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=1]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:dith_count_1\
+            + \PWM_2:PWMUDB:tc_i\ * \PWM_2:PWMUDB:MODULE_1:g2:a0:s_1\
+        );
+        Output = \PWM_2:PWMUDB:dith_count_1\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:dith_count_1\, Mode=(D-Register) @ [UDB=(1,1)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_949)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:dith_count_1\\D\
+        );
+        Output = \PWM_2:PWMUDB:dith_count_1\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:dith_count_0\
+        );
+        Output = \PWM_2:PWMUDB:MODULE_1:g2:a0:g1:z1:s0:g1:u0:c_1\ (fanout=2)
+        Properties               : 
+        {
+        }
 }
 
-controlcell: Name =\PWM_2:PWMUDB:genblk1:ctrlreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        control_7 => \PWM_2:PWMUDB:control_7\ ,
-        control_6 => \PWM_2:PWMUDB:control_6\ ,
-        control_5 => \PWM_2:PWMUDB:control_5\ ,
-        control_4 => \PWM_2:PWMUDB:control_4\ ,
-        control_3 => \PWM_2:PWMUDB:control_3\ ,
-        control_2 => \PWM_2:PWMUDB:control_2\ ,
-        control_1 => \PWM_2:PWMUDB:control_1\ ,
-        control_0 => \PWM_2:PWMUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(1,2)] contents:
-LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=7, #pterms=8
+LAB@[UDB=(1,1)][LB=1] #macrocells=1, #inputs=7, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1251\\D_split_1\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1251\\D_split_1\, Mode=(Combinatorial) @ [UDB=(1,1)][LB=1][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 8
             Clock Enable: True
@@ -6556,93 +6392,29 @@ LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=7, #pterms=8
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(1,2)][LB=1] #macrocells=3, #inputs=4, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1251\\D\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !\MultiJog:Net_1251\\D_split\ * !\MultiJog:Net_1251\\D_split_1\
-        );
-        Output = \MultiJog:Net_1251\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:Net_1251\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Net_1251\\D\
-        );
-        Output = \MultiJog:Net_1251\ (fanout=5)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_filt\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_B_filt\\D\
-        );
-        Output = \MultiJog:bQuadDec:quad_B_filt\ (fanout=7)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-statusicell: Name =\MultiJog:bQuadDec:Stsreg\
+statuscell: Name =\Buttons:sts:sts_reg\
     PORT MAP (
-        clock => freq_50kHz ,
+        clock => ClockBlock_BUS_CLK ,
+        status_7 => __ZERO__ ,
         status_6 => __ZERO__ ,
         status_5 => __ZERO__ ,
-        status_4 => __ZERO__ ,
-        status_3 => \MultiJog:bQuadDec:error\ ,
-        status_2 => \MultiJog:Net_1260\ ,
-        status_1 => \MultiJog:Net_611\ ,
-        status_0 => \MultiJog:Net_530\ );
+        status_4 => Net_15349 ,
+        status_3 => Net_15329 ,
+        status_2 => Net_15319 ,
+        status_1 => Net_15332 ,
+        status_0 => Net_15364 );
     Properties:
     {
         cy_force_order = 1
-        cy_int_mask = "0001111"
-        cy_md_select = "0001111"
+        cy_md_select = "00000011"
     }
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(1,3)] is empty.
-UDB [UDB=(1,4)] contents:
-LAB@[UDB=(1,4)][LB=0] #macrocells=2, #inputs=7, #pterms=8
+UDB [UDB=(1,2)] contents:
+LAB@[UDB=(1,2)][LB=0] #macrocells=1, #inputs=7, #pterms=8
 {
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=2]
-        Total # of inputs        : 0
-        Total # of product terms : 0
-            Clock Enable: True
-        Main Equation            : 0 pterms
-        !(
-            0
-        );
-        Output = __ONE__ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1251\\D_split\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=0][MC=3]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1251\\D_split\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=0][MC=0]
         Total # of inputs        : 7
         Total # of product terms : 8
             Clock Enable: True
@@ -6685,117 +6457,142 @@ LAB@[UDB=(1,4)][LB=0] #macrocells=2, #inputs=7, #pterms=8
         Properties               : 
         {
         }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(1,4)][LB=1] #macrocells=3, #inputs=9, #pterms=7
+LAB@[UDB=(1,2)][LB=1] #macrocells=4, #inputs=7, #pterms=5
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_3\\D\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=0]
-        Total # of inputs        : 6
-        Total # of product terms : 5
-            Clock Enable: True
-        Main Equation            : 5 pterms
-        (
-              !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
-              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              \MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
-            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
-              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              \MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-            + !\MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
-              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
-            + !\MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
-              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
-              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-        );
-        Output = \MultiJog:bQuadDec:state_3\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:error\, Mode=(D-Register) @ [UDB=(1,4)][LB=1][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:bQuadDec:state_3\\D\
+              !\PWM_2:PWMUDB:dith_count_0\
         );
-        Output = \MultiJog:bQuadDec:error\ (fanout=8)
+        Output = \PWM_2:PWMUDB:MODULE_1:g2:a0:s_0\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_530\, Mode=(Combinatorial) @ [UDB=(1,4)][LB=1][MC=3]
+    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:pwm_i\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=1]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:Net_1251\ * \MultiJog:Net_1248\
+              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:pwm_temp\
         );
-        Output = \MultiJog:Net_530\ (fanout=1)
+        Output = \PWM_2:PWMUDB:pwm_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_1\\D\, Mode=(Combinatorial) @ [UDB=(1,2)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !\PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:dith_count_1\
+            + \PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\
+        );
+        Output = \PWM_1:PWMUDB:dith_count_1\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_1\, Mode=(D-Register) @ [UDB=(1,2)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_733)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_1:PWMUDB:dith_count_1\\D\
+        );
+        Output = \PWM_1:PWMUDB:dith_count_1\ (fanout=3)
         Properties               : 
         {
         }
 }
 
-statuscell: Name =\Buttons:sts:sts_reg\
+datapathcell: Name =\PWM_1:PWMUDB:sP16:pwmdp:u0\
     PORT MAP (
         clock => ClockBlock_BUS_CLK ,
-        status_7 => __ZERO__ ,
-        status_6 => __ZERO__ ,
-        status_5 => __ZERO__ ,
-        status_4 => Net_15349 ,
-        status_3 => Net_15329 ,
-        status_2 => Net_15319 ,
-        status_1 => Net_15332 ,
-        status_0 => Net_15333 );
+        cs_addr_2 => \PWM_1:PWMUDB:tc_i\ ,
+        cs_addr_1 => \PWM_1:PWMUDB:runmode_enable\ ,
+        cs_addr_0 => Net_733 ,
+        chain_out => \PWM_1:PWMUDB:sP16:pwmdp:carry\ );
     Properties:
     {
-        cy_force_order = 1
-        cy_md_select = "00000011"
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
     }
     Clock Polarity: Active High
     Clock Enable: True
+    Next in chain : \PWM_1:PWMUDB:sP16:pwmdp:u1\
 
-UDB [UDB=(1,5)] is empty.
-UDB [UDB=(2,0)] contents:
-LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=2, #pterms=2
+UDB [UDB=(1,3)] is empty.
+UDB [UDB=(1,4)] is empty.
+UDB [UDB=(1,5)] contents:
+LAB@[UDB=(1,5)][LB=0] #macrocells=1, #inputs=0, #pterms=0
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:underflow_reg_i\, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
+    [McSlotId=0]:     MacroCell: Name=__ONE__, Mode=(Combinatorial) @ [UDB=(1,5)][LB=0][MC=0]
+        Total # of inputs        : 0
+        Total # of product terms : 0
             Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Cnt8:CounterUDB:status_1\
+        Main Equation            : 0 pterms
+        !(
+            0
         );
-        Output = \MultiJog:Cnt8:CounterUDB:underflow_reg_i\ (fanout=1)
+        Output = __ONE__ (fanout=2)
         Properties               : 
         {
         }
 
     [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Net_1260\, Mode=(D-Register) @ [UDB=(2,0)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(1,5)][LB=1] #macrocells=1, #inputs=0, #pterms=0
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=__ZERO__, Mode=(Combinatorial) @ [UDB=(1,5)][LB=1][MC=2]
+        Total # of inputs        : 0
+        Total # of product terms : 0
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 0 pterms
         (
-              \MultiJog:bQuadDec:state_2\\D\
+            0
         );
-        Output = \MultiJog:Net_1260\ (fanout=10)
+        Output = __ZERO__ (fanout=43)
         Properties               : 
         {
         }
@@ -6803,67 +6600,10 @@ LAB@[UDB=(2,0)][LB=0] #macrocells=2, #inputs=2, #pterms=2
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(2,0)][LB=1] #macrocells=4, #inputs=6, #pterms=4
+UDB [UDB=(2,0)] contents:
+LAB@[UDB=(2,0)][LB=0] #macrocells=1, #inputs=6, #pterms=8
 {
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:dith_count_1\ * 
-              \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
-        );
-        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_2\ (fanout=0)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:dith_count_0\
-        );
-        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_3\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Cnt8:CounterUDB:status_1\ * 
-              !\MultiJog:Cnt8:CounterUDB:underflow_reg_i\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:status_3\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\ADC_VoltageChanelA:Net_188\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \ADC_VoltageChanelA:Net_376_local\
-        );
-        Output = \ADC_VoltageChanelA:Net_188\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-UDB [UDB=(2,1)] contents:
-LAB@[UDB=(2,1)][LB=0] #macrocells=1, #inputs=6, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_1\\D\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_1\\D\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=0][MC=0]
         Total # of inputs        : 6
         Total # of product terms : 8
             Clock Enable: True
@@ -6891,9 +6631,247 @@ LAB@[UDB=(2,1)][LB=0] #macrocells=1, #inputs=6, #pterms=8
     [McSlotId=3]: (empty)
 }
 
-LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
+LAB@[UDB=(2,0)][LB=1] #macrocells=4, #inputs=8, #pterms=6
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_1\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_2\\D\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=0]
+        Total # of inputs        : 4
+        Total # of product terms : 3
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        !(
+              !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:error\
+            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:state_1\ * 
+              !\MultiJog:bQuadDec:state_0\
+            + !\MultiJog:bQuadDec:error\ * !\MultiJog:bQuadDec:state_1\ * 
+              !\MultiJog:bQuadDec:state_0\
+        );
+        Output = \MultiJog:bQuadDec:state_2\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:Net_1260\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:state_2\\D\
+        );
+        Output = \MultiJog:Net_1260\ (fanout=10)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:tc_i_reg\\D\, Mode=(Combinatorial) @ [UDB=(2,0)][LB=1][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:runmode_enable\ * \PWM_2:PWMUDB:tc_i\
+        );
+        Output = \PWM_2:PWMUDB:tc_i_reg\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(2,0)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:overflow\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:overflow_reg_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+controlcell: Name =\AdcCurrentChanel:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \AdcCurrentChanel:control_7\ ,
+        control_6 => \AdcCurrentChanel:control_6\ ,
+        control_5 => \AdcCurrentChanel:control_5\ ,
+        control_4 => \AdcCurrentChanel:control_4\ ,
+        control_3 => \AdcCurrentChanel:control_3\ ,
+        control_2 => \AdcCurrentChanel:control_2\ ,
+        control_1 => \AdcCurrentChanel:control_1\ ,
+        control_0 => Net_174 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+synccell: Name =ClockBlock_1k__SYNC_2
+    PORT MAP (
+        in => ClockBlock_1k ,
+        out => ClockBlock_1k__SYNC_OUT_2 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,1)] contents:
+LAB@[UDB=(2,1)][LB=0] #macrocells=3, #inputs=4, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(2,1)][LB=0][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_949)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:runmode_enable\\D\
+        );
+        Output = \PWM_2:PWMUDB:runmode_enable\ (fanout=4)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\PWM_2:PWMUDB:runmode_enable\\D\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:control_7\
+        );
+        Output = \PWM_2:PWMUDB:runmode_enable\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:overflow\ * 
+              !\MultiJog:Cnt8:CounterUDB:overflow_reg_i\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:status_2\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=4, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=Net_15332D, Mode=(Combinatorial) @ [UDB=(2,1)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\Debouncer_2:DEBOUNCER[0]:d_sync_1\ * Net_14914
+        );
+        Output = Net_15332D (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\Debouncer_2:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              Net_14914
+        );
+        Output = \Debouncer_2:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_15332, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              Net_15332D
+        );
+        Output = Net_15332 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=Net_14914, Mode=(D-Register) @ [UDB=(2,1)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_1)
+        Main Equation            : 1 pterm
+        (
+              Net_10739
+        );
+        Output = Net_14914 (fanout=3)
+        Properties               : 
+        {
+        }
+}
+
+controlcell: Name =\PWM_2:PWMUDB:genblk1:ctrlreg\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        control_7 => \PWM_2:PWMUDB:control_7\ ,
+        control_6 => \PWM_2:PWMUDB:control_6\ ,
+        control_5 => \PWM_2:PWMUDB:control_5\ ,
+        control_4 => \PWM_2:PWMUDB:control_4\ ,
+        control_3 => \PWM_2:PWMUDB:control_3\ ,
+        control_2 => \PWM_2:PWMUDB:control_2\ ,
+        control_1 => \PWM_2:PWMUDB:control_1\ ,
+        control_0 => \PWM_2:PWMUDB:control_0\ );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "11111111"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+synccell: Name =ClockBlock_1k__SYNC_1
+    PORT MAP (
+        in => ClockBlock_1k ,
+        out => ClockBlock_1k__SYNC_OUT_1 ,
+        clock => ClockBlock_BUS_CLK );
+    Properties:
+    {
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,2)] contents:
+LAB@[UDB=(2,2)][LB=0] #macrocells=4, #inputs=6, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -6908,7 +6886,354 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:reload\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=Net_14509, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \EdgeDetect_1:last\ * !Net_14170_local
+        );
+        Output = Net_14509 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Net_1203\, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Net_1203\\D\
+        );
+        Output = \MultiJog:Net_1203\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_611\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Net_1151\ * \MultiJog:Net_1248\
+        );
+        Output = \MultiJog:Net_611\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,2)][LB=1] #macrocells=4, #inputs=5, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\PWM_2:PWMUDB:pwm_temp\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \PWM_2:PWMUDB:cmp1_less\
+        );
+        Output = \PWM_2:PWMUDB:pwm_temp\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_14484, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !Net_14509 * !Net_14689
+        );
+        Output = Net_14484 (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\EdgeDetect_1:last\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_14170_local
+        );
+        Output = \EdgeDetect_1:last\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1151\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\MultiJog:Net_1251\
+        );
+        Output = \MultiJog:Net_1151\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+datapathcell: Name =\PWM_2:PWMUDB:sP16:pwmdp:u1\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_2 => \PWM_2:PWMUDB:tc_i\ ,
+        cs_addr_1 => \PWM_2:PWMUDB:runmode_enable\ ,
+        cs_addr_0 => Net_949 ,
+        cl0_comb => \PWM_2:PWMUDB:cmp1_less\ ,
+        z0_comb => \PWM_2:PWMUDB:tc_i\ ,
+        chain_in => \PWM_2:PWMUDB:sP16:pwmdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101011110000000000000100000011110000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Previous in chain : \PWM_2:PWMUDB:sP16:pwmdp:u0\
+
+count7cell: Name =\MultiJog_FreqMeter:Counter7\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        reset => Net_14484 ,
+        load => __ZERO__ ,
+        count_6 => Net_14086_6 ,
+        count_5 => Net_14086_5 ,
+        count_4 => Net_14086_4 ,
+        count_3 => Net_14086_3 ,
+        count_2 => Net_14086_2 ,
+        count_1 => Net_14086_1 ,
+        count_0 => Net_14086_0 ,
+        tc => Net_14089 ,
+        clk_en => Net_14820 );
+    Properties:
+    {
+        cy_alt_mode = 0
+        cy_init_value = "0000000"
+        cy_period = "1111111"
+        cy_route_en = 0
+        cy_route_ld = 0
+    }
+    Clock Polarity: Active High
+    Clock Enable: PosEdge(Net_14820)
+
+UDB [UDB=(2,3)] contents:
+LAB@[UDB=(2,3)][LB=0] #macrocells=4, #inputs=10, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:error\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:state_3\\D\
+        );
+        Output = \MultiJog:bQuadDec:error\ (fanout=8)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:state_3\\D\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=1]
+        Total # of inputs        : 6
+        Total # of product terms : 5
+            Clock Enable: True
+        Main Equation            : 5 pterms
+        (
+              !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
+              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              \MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
+            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
+              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              \MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+            + !\MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
+              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
+            + !\MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
+              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\ * 
+              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+        );
+        Output = \MultiJog:bQuadDec:state_3\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Net_530\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Net_1251\ * \MultiJog:Net_1248\
+        );
+        Output = \MultiJog:Net_530\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:state_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:state_0\\D\
+        );
+        Output = \MultiJog:bQuadDec:state_0\ (fanout=7)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,3)][LB=1] #macrocells=1, #inputs=6, #pterms=8
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_0\\D\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=0]
+        Total # of inputs        : 6
+        Total # of product terms : 8
+            Clock Enable: True
+        Main Equation            : 8 pterms
+        !(
+              \MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\
+            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:error\
+            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:state_0\
+            + !\MultiJog:bQuadDec:quad_A_filt\ * \MultiJog:bQuadDec:state_1\ * 
+              !\MultiJog:bQuadDec:state_0\
+            + \MultiJog:bQuadDec:quad_A_filt\ * !\MultiJog:bQuadDec:error\ * 
+              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
+            + \MultiJog:bQuadDec:quad_A_filt\ * \MultiJog:bQuadDec:error\ * 
+              \MultiJog:bQuadDec:state_1\
+            + !\MultiJog:bQuadDec:quad_B_filt\
+            + \MultiJog:bQuadDec:error\ * \MultiJog:bQuadDec:state_0\
+        );
+        Output = \MultiJog:bQuadDec:state_0\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]: (empty)
+}
+
+statusicell: Name =\MultiJog:bQuadDec:Stsreg\
+    PORT MAP (
+        clock => freq_50kHz ,
+        status_6 => __ZERO__ ,
+        status_5 => __ZERO__ ,
+        status_4 => __ZERO__ ,
+        status_3 => \MultiJog:bQuadDec:error\ ,
+        status_2 => \MultiJog:Net_1260\ ,
+        status_1 => \MultiJog:Net_611\ ,
+        status_0 => \MultiJog:Net_530\ );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_int_mask = "0001111"
+        cy_md_select = "0001111"
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(2,4)] contents:
+LAB@[UDB=(2,4)][LB=0] #macrocells=4, #inputs=5, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:reload_tc\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              !\MultiJog:Cnt8:CounterUDB:status_1\ * 
+              !\MultiJog:Cnt8:CounterUDB:overflow\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:reload_tc\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_filt\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:quad_B_filt\\D\
+        );
+        Output = \MultiJog:bQuadDec:quad_B_filt\ (fanout=7)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Net_1287\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\MultiJog:Cnt8:CounterUDB:prevCompare\
+        );
+        Output = \MultiJog:Net_1287\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1276\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:reload_tc\
+        );
+        Output = \MultiJog:Net_1276\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,4)][LB=1] #macrocells=4, #inputs=8, #pterms=6
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:reload\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=0]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -6921,7 +7246,135 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_2\, Mode=(D-Register) @ [UDB=(2,4)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:quad_A_delayed_1\
+        );
+        Output = \MultiJog:bQuadDec:quad_A_delayed_2\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_filt\\D\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=2]
+        Total # of inputs        : 3
+        Total # of product terms : 3
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\MultiJog:bQuadDec:B_j\ * !\MultiJog:bQuadDec:B_k\ * 
+              \MultiJog:bQuadDec:quad_B_filt\
+            + \MultiJog:bQuadDec:B_j\ * !\MultiJog:bQuadDec:B_k\
+            + \MultiJog:bQuadDec:B_j\ * \MultiJog:bQuadDec:B_k\ * 
+              !\MultiJog:bQuadDec:quad_B_filt\
+        );
+        Output = \MultiJog:bQuadDec:quad_B_filt\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1248\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Net_1276\ * \MultiJog:Net_1287\
+        );
+        Output = \MultiJog:Net_1248\ (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+UDB [UDB=(2,5)] contents:
+LAB@[UDB=(2,5)][LB=0] #macrocells=3, #inputs=6, #pterms=3
+{
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:control_7\ * 
+              !\MultiJog:Cnt8:CounterUDB:count_stored_i\ * 
+              \MultiJog:Net_1203\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:count_enable\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:cmp_out_i\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:prevCompare\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_3\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=0][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:status_1\ * 
+              !\MultiJog:Cnt8:CounterUDB:underflow_reg_i\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:status_3\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(2,5)][LB=1] #macrocells=3, #inputs=4, #pterms=3
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Net_1203\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:count_stored_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:underflow_reg_i\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:Cnt8:CounterUDB:status_1\
+        );
+        Output = \MultiJog:Cnt8:CounterUDB:underflow_reg_i\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_0\, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=3]
         Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
@@ -6931,20 +7384,6 @@ LAB@[UDB=(2,1)][LB=1] #macrocells=4, #inputs=7, #pterms=4
               !\MultiJog:Cnt8:CounterUDB:prevCompare\
         );
         Output = \MultiJog:Cnt8:CounterUDB:status_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:reload_tc\, Mode=(Combinatorial) @ [UDB=(2,1)][LB=1][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !\MultiJog:Cnt8:CounterUDB:status_1\ * 
-              !\MultiJog:Cnt8:CounterUDB:overflow\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:reload_tc\ (fanout=2)
         Properties               : 
         {
         }
@@ -7008,124 +7447,6 @@ statusicell: Name =\MultiJog:Cnt8:CounterUDB:sSTSReg:stsreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,2)] contents:
-LAB@[UDB=(2,2)][LB=0] #macrocells=2, #inputs=3, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:pwm_i\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:pwm_temp\
-        );
-        Output = \PWM_1:PWMUDB:pwm_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=PwmChA, Mode=(D-Register) @ [UDB=(2,2)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:pwm_i\
-        );
-        Output = PwmChA (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,2)][LB=1] #macrocells=3, #inputs=3, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:pwm_temp\, Mode=(Combinatorial) @ [UDB=(2,2)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:cmp1_less\
-        );
-        Output = \PWM_1:PWMUDB:pwm_temp\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_1\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_B_delayed_0\
-        );
-        Output = \MultiJog:bQuadDec:quad_B_delayed_1\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_2\, Mode=(D-Register) @ [UDB=(2,2)][LB=1][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_B_delayed_1\
-        );
-        Output = \MultiJog:bQuadDec:quad_B_delayed_2\ (fanout=2)
-        Properties               : 
-        {
-        }
-}
-
-datapathcell: Name =\PWM_1:PWMUDB:sP16:pwmdp:u1\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_2 => \PWM_1:PWMUDB:tc_i\ ,
-        cs_addr_1 => \PWM_1:PWMUDB:runmode_enable\ ,
-        cs_addr_0 => Net_733 ,
-        cl0_comb => \PWM_1:PWMUDB:cmp1_less\ ,
-        z0_comb => \PWM_1:PWMUDB:tc_i\ ,
-        chain_in => \PWM_1:PWMUDB:sP16:pwmdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101011110000000000000100000011110000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Previous in chain : \PWM_1:PWMUDB:sP16:pwmdp:u0\
-
 controlcell: Name =\MultiJog:Cnt8:CounterUDB:sCTRLReg:ctrlreg\
     PORT MAP (
         clock => freq_50kHz ,
@@ -7148,25 +7469,310 @@ controlcell: Name =\MultiJog:Cnt8:CounterUDB:sCTRLReg:ctrlreg\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,3)] contents:
-LAB@[UDB=(2,3)][LB=0] #macrocells=3, #inputs=5, #pterms=3
+UDB [UDB=(3,0)] contents:
+LAB@[UDB=(3,0)][LB=0] #macrocells=4, #inputs=4, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MODULE_3:g1:a0:xeq\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_13698
+              \MODULE_3:g1:a0:gx:u0:xnor_array_0\
         );
-        Output = \MultiJog:bQuadDec:quad_A_delayed_0\ (fanout=3)
+        Output = \MODULE_3:g1:a0:xeq\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_0\, Mode=(D-Register) @ [UDB=(2,3)][LB=0][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\Debouncer_3:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              Net_15349
+        );
+        Output = \Debouncer_3:DEBOUNCER[0]:d_sync_1\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_15269, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              Net_15269D
+        );
+        Output = Net_15269 (fanout=0)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=Net_15349, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT_2)
+        Main Equation            : 1 pterm
+        (
+              Net_15347
+        );
+        Output = Net_15349 (fanout=3)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,0)][LB=1] #macrocells=3, #inputs=5, #pterms=4
+{
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\MODULE_3:g1:a0:gx:u0:xnor_array_0\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=1]
+        Total # of inputs        : 2
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              !AMuxHw_1_Decoder_old_id_0 * !Net_174
+            + AMuxHw_1_Decoder_old_id_0 * Net_174
+        );
+        Output = \MODULE_3:g1:a0:gx:u0:xnor_array_0\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\ADC_VoltageChanelA:Net_188\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \ADC_VoltageChanelA:Net_376_local\
+        );
+        Output = \ADC_VoltageChanelA:Net_188\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=Net_15269D, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_15349 * !\Debouncer_3:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_15269D (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+statuscell: Name =\MultiJog_Status:sts:sts_reg\
+    PORT MAP (
+        status_7 => __ZERO__ ,
+        status_6 => __ZERO__ ,
+        status_5 => __ZERO__ ,
+        status_4 => __ZERO__ ,
+        status_3 => __ZERO__ ,
+        status_2 => __ZERO__ ,
+        status_1 => Net_13661 ,
+        status_0 => Net_13591 );
+    Properties:
+    {
+        cy_force_order = 1
+        cy_md_select = "00000000"
+    }
+    Clock Enable: True
+
+controlcell: Name =\Control_Reg_1:Sync:ctrl_reg\
+    PORT MAP (
+        control_7 => \Control_Reg_1:control_7\ ,
+        control_6 => \Control_Reg_1:control_6\ ,
+        control_5 => \Control_Reg_1:control_5\ ,
+        control_4 => \Control_Reg_1:control_4\ ,
+        control_3 => Net_949 ,
+        control_2 => OnChB ,
+        control_1 => OnChA ,
+        control_0 => Net_733 );
+    Properties:
+    {
+        cy_ctrl_mode_0 = "00000000"
+        cy_ctrl_mode_1 = "00000000"
+        cy_ext_reset = 0
+        cy_force_order = 1
+        cy_init_value = "00000000"
+    }
+    Clock Enable: True
+
+UDB [UDB=(3,1)] contents:
+LAB@[UDB=(3,1)][LB=0] #macrocells=4, #inputs=7, #pterms=5
+{
+    [McSlotId=0]:     MacroCell: Name=cy_srff_1D, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=0]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_15364 * !Net_15332
+            + !Net_15332 * Net_15363
+        );
+        Output = cy_srff_1D (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=AMuxHw_1_Decoder_old_id_0, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_174
+        );
+        Output = AMuxHw_1_Decoder_old_id_0 (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0D, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=2]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              AMuxHw_1_Decoder_is_active * !AMuxHw_1_Decoder_old_id_0
+        );
+        Output = AMuxHw_1_Decoder_one_hot_0D (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=AMuxHw_1_Decoder_is_active, Mode=(Combinatorial) @ [UDB=(3,1)][LB=0][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MODULE_3:g1:a0:xeq\
+        );
+        Output = AMuxHw_1_Decoder_is_active (fanout=2)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,1)][LB=1] #macrocells=4, #inputs=5, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              AMuxHw_1_Decoder_one_hot_1D
+        );
+        Output = AMuxHw_1_Decoder_one_hot_1 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=Net_15364, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              cy_srff_1D
+        );
+        Output = Net_15364 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              AMuxHw_1_Decoder_one_hot_0D
+        );
+        Output = AMuxHw_1_Decoder_one_hot_0 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1D, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=3]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              AMuxHw_1_Decoder_is_active * AMuxHw_1_Decoder_old_id_0
+        );
+        Output = AMuxHw_1_Decoder_one_hot_1D (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+count7cell: Name =\BtnOk_Reset:Counter7\
+    PORT MAP (
+        clock => freq_50Hz ,
+        reset => Net_14914 ,
+        load => __ZERO__ ,
+        count_6 => Net_14915_6 ,
+        count_5 => Net_14915_5 ,
+        count_4 => Net_14915_4 ,
+        count_3 => Net_14915_3 ,
+        count_2 => Net_14915_2 ,
+        count_1 => Net_14915_1 ,
+        count_0 => Net_14915_0 ,
+        tc => Net_15363 );
+    Properties:
+    {
+        cy_alt_mode = 0
+        cy_init_value = "0000000"
+        cy_period = "1111111"
+        cy_route_en = 0
+        cy_route_ld = 0
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+
+UDB [UDB=(3,2)] contents:
+LAB@[UDB=(3,2)][LB=0] #macrocells=3, #inputs=5, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=Net_14689, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=0]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !Net_13591
+        );
+        Output = Net_14689 (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_filt\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7174,94 +7780,97 @@ LAB@[UDB=(2,3)][LB=0] #macrocells=3, #inputs=5, #pterms=3
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_11179
+              \MultiJog:bQuadDec:quad_A_filt\\D\
         );
-        Output = \MultiJog:bQuadDec:quad_B_delayed_0\ (fanout=3)
+        Output = \MultiJog:bQuadDec:quad_A_filt\ (fanout=7)
         Properties               : 
         {
         }
 
     [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:B_k\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=0][MC=3]
+    [McSlotId=3]:     MacroCell: Name=cy_srff_2D, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=3]
         Total # of inputs        : 3
-        Total # of product terms : 1
+        Total # of product terms : 2
             Clock Enable: True
-        Main Equation            : 1 pterm
+        Main Equation            : 2 pterms
         (
-              !\MultiJog:bQuadDec:quad_B_delayed_0\ * 
-              !\MultiJog:bQuadDec:quad_B_delayed_1\ * 
-              !\MultiJog:bQuadDec:quad_B_delayed_2\
+              Net_13661 * !Net_14689
+            + !Net_14689 * Net_14089
         );
-        Output = \MultiJog:bQuadDec:B_k\ (fanout=1)
+        Output = cy_srff_2D (fanout=1)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(2,3)][LB=1] #macrocells=4, #inputs=10, #pterms=6
+LAB@[UDB=(3,2)][LB=1] #macrocells=2, #inputs=2, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:B_j\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_B_delayed_0\ * 
-              \MultiJog:bQuadDec:quad_B_delayed_1\ * 
-              \MultiJog:bQuadDec:quad_B_delayed_2\
-        );
-        Output = \MultiJog:bQuadDec:B_j\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_filt\\D\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=1]
-        Total # of inputs        : 3
-        Total # of product terms : 3
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\MultiJog:bQuadDec:B_j\ * !\MultiJog:bQuadDec:B_k\ * 
-              \MultiJog:bQuadDec:quad_B_filt\
-            + \MultiJog:bQuadDec:B_j\ * !\MultiJog:bQuadDec:B_k\
-            + \MultiJog:bQuadDec:B_j\ * \MultiJog:bQuadDec:B_k\ * 
-              !\MultiJog:bQuadDec:quad_B_filt\
-        );
-        Output = \MultiJog:bQuadDec:quad_B_filt\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:count_enable\, Mode=(Combinatorial) @ [UDB=(2,3)][LB=1][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Cnt8:CounterUDB:control_7\ * 
-              !\MultiJog:Cnt8:CounterUDB:count_stored_i\ * 
-              \MultiJog:Net_1203\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:count_enable\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_2\, Mode=(D-Register) @ [UDB=(2,3)][LB=1][MC=3]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=Net_13661, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (freq_50kHz) => Global
+            Clock  = (ClockBlock_BUS_CLK) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:bQuadDec:quad_A_delayed_1\
+              cy_srff_2D
         );
-        Output = \MultiJog:bQuadDec:quad_A_delayed_2\ (fanout=2)
+        Output = Net_13661 (fanout=2)
         Properties               : 
         {
         }
+
+    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:sc_kill_tmp\\D\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        !(
+              \PWM_2:PWMUDB:tc_i\
+        );
+        Output = \PWM_2:PWMUDB:sc_kill_tmp\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]: (empty)
 }
+
+datapathcell: Name =\PWM_2:PWMUDB:sP16:pwmdp:u0\
+    PORT MAP (
+        clock => ClockBlock_BUS_CLK ,
+        cs_addr_2 => \PWM_2:PWMUDB:tc_i\ ,
+        cs_addr_1 => \PWM_2:PWMUDB:runmode_enable\ ,
+        cs_addr_0 => Net_949 ,
+        chain_out => \PWM_2:PWMUDB:sP16:pwmdp:carry\ );
+    Properties:
+    {
+        a0_init = "00000000"
+        a1_init = "00000000"
+        ce0_sync = 1
+        ce1_sync = 1
+        cl0_sync = 1
+        cl1_sync = 1
+        cmsb_sync = 1
+        co_msb_sync = 1
+        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000"
+        d0_init = "00000000"
+        d1_init = "00000000"
+        f0_blk_sync = 1
+        f0_bus_sync = 1
+        f1_blk_sync = 1
+        f1_bus_sync = 1
+        ff0_sync = 1
+        ff1_sync = 1
+        ov_msb_sync = 1
+        so_sync = 1
+        z0_sync = 1
+        z1_sync = 1
+    }
+    Clock Polarity: Active High
+    Clock Enable: True
+    Next in chain : \PWM_2:PWMUDB:sP16:pwmdp:u1\
 
 synccell: Name =ClockBlock_1k__SYNC
     PORT MAP (
@@ -7274,148 +7883,10 @@ synccell: Name =ClockBlock_1k__SYNC
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(2,4)] contents:
-LAB@[UDB=(2,4)][LB=0] #macrocells=3, #inputs=9, #pterms=6
+UDB [UDB=(3,3)] contents:
+LAB@[UDB=(3,3)][LB=0] #macrocells=4, #inputs=6, #pterms=6
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Net_1203\\D\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=0][MC=0]
-        Total # of inputs        : 7
-        Total # of product terms : 4
-            Clock Enable: True
-        Main Equation            : 4 pterms
-        (
-              !\MultiJog:Net_1260\ * \MultiJog:Net_1203\ * 
-              \MultiJog:bQuadDec:error\ * !\MultiJog:bQuadDec:state_1\ * 
-              !\MultiJog:bQuadDec:state_0\
-            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
-              !\MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * \MultiJog:bQuadDec:state_0\
-            + !\MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
-              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-            + \MultiJog:Net_1260\ * !\MultiJog:bQuadDec:quad_A_filt\ * 
-              \MultiJog:bQuadDec:quad_B_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-        );
-        Output = \MultiJog:Net_1203\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_1\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_A_delayed_0\
-        );
-        Output = \MultiJog:bQuadDec:quad_A_delayed_1\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:state_0\, Mode=(D-Register) @ [UDB=(2,4)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:state_0\\D\
-        );
-        Output = \MultiJog:bQuadDec:state_0\ (fanout=7)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,4)][LB=1] #macrocells=1, #inputs=6, #pterms=8
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:state_0\\D\, Mode=(Combinatorial) @ [UDB=(2,4)][LB=1][MC=0]
-        Total # of inputs        : 6
-        Total # of product terms : 8
-            Clock Enable: True
-        Main Equation            : 8 pterms
-        !(
-              \MultiJog:Net_1260\ * \MultiJog:bQuadDec:quad_A_filt\
-            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:error\
-            + \MultiJog:Net_1260\ * \MultiJog:bQuadDec:state_0\
-            + !\MultiJog:bQuadDec:quad_A_filt\ * \MultiJog:bQuadDec:state_1\ * 
-              !\MultiJog:bQuadDec:state_0\
-            + \MultiJog:bQuadDec:quad_A_filt\ * !\MultiJog:bQuadDec:error\ * 
-              !\MultiJog:bQuadDec:state_1\ * !\MultiJog:bQuadDec:state_0\
-            + \MultiJog:bQuadDec:quad_A_filt\ * \MultiJog:bQuadDec:error\ * 
-              \MultiJog:bQuadDec:state_1\
-            + !\MultiJog:bQuadDec:quad_B_filt\
-            + \MultiJog:bQuadDec:error\ * \MultiJog:bQuadDec:state_0\
-        );
-        Output = \MultiJog:bQuadDec:state_0\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(2,5)] contents:
-LAB@[UDB=(2,5)][LB=0] #macrocells=2, #inputs=2, #pterms=2
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:count_stored_i\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Net_1203\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:count_stored_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:Net_1203\, Mode=(D-Register) @ [UDB=(2,5)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Net_1203\\D\
-        );
-        Output = \MultiJog:Net_1203\ (fanout=3)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(2,5)][LB=1] #macrocells=4, #inputs=4, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=Net_14820D, Mode=(Combinatorial) @ [UDB=(2,5)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              !\Debouncer_1:DEBOUNCER[0]:d_sync_0\ * 
-              \Debouncer_1:DEBOUNCER[0]:d_sync_1\
-        );
-        Output = Net_14820D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=1]
+    [McSlotId=0]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_1\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=0]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7430,7 +7901,22 @@ LAB@[UDB=(2,5)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=Net_14820, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=2]
+    [McSlotId=1]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=1]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT)
+        Main Equation            : 1 pterm
+        (
+              Net_13698
+        );
+        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=Net_14820, Mode=(D-Register) @ [UDB=(3,3)][LB=0][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7445,17 +7931,66 @@ LAB@[UDB=(2,5)][LB=1] #macrocells=4, #inputs=4, #pterms=4
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=\Debouncer_1:DEBOUNCER[0]:d_sync_0\, Mode=(D-Register) @ [UDB=(2,5)][LB=1][MC=3]
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_filt\\D\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 3
+            Clock Enable: True
+        Main Equation            : 3 pterms
+        (
+              !\MultiJog:bQuadDec:A_j\ * !\MultiJog:bQuadDec:A_k\ * 
+              \MultiJog:bQuadDec:quad_A_filt\
+            + \MultiJog:bQuadDec:A_j\ * !\MultiJog:bQuadDec:A_k\
+            + \MultiJog:bQuadDec:A_j\ * \MultiJog:bQuadDec:A_k\ * 
+              !\MultiJog:bQuadDec:quad_A_filt\
+        );
+        Output = \MultiJog:bQuadDec:quad_A_filt\\D\ (fanout=1)
+        Properties               : 
+        {
+        }
+}
+
+LAB@[UDB=(3,3)][LB=1] #macrocells=3, #inputs=6, #pterms=4
+{
+    [McSlotId=0]:     MacroCell: Name=Net_14820D, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=0]
+        Total # of inputs        : 2
+        Total # of product terms : 1
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              !\Debouncer_1:DEBOUNCER[0]:d_sync_0\ * 
+              \Debouncer_1:DEBOUNCER[0]:d_sync_1\
+        );
+        Output = Net_14820D (fanout=1)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]:     MacroCell: Name=Net_13591, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
             Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: PosEdge(ClockBlock_1k__SYNC_OUT)
+            Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_13698
+              cy_srff_3D
         );
-        Output = \Debouncer_1:DEBOUNCER[0]:d_sync_0\ (fanout=2)
+        Output = Net_13591 (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=cy_srff_3D, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=3]
+        Total # of inputs        : 3
+        Total # of product terms : 2
+            Clock Enable: True
+        Main Equation            : 2 pterms
+        (
+              Net_13591 * !Net_14272
+            + Net_14820 * !Net_14272
+        );
+        Output = cy_srff_3D (fanout=1)
         Properties               : 
         {
         }
@@ -7485,245 +8020,53 @@ count7cell: Name =\MultiJog_Reset:Counter7\
     Clock Polarity: Active High
     Clock Enable: True
 
-UDB [UDB=(3,0)] contents:
-LAB@[UDB=(3,0)][LB=0] #macrocells=3, #inputs=6, #pterms=5
+UDB [UDB=(3,4)] contents:
+LAB@[UDB=(3,4)][LB=0] #macrocells=4, #inputs=8, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\PWM_1:PWMUDB:dith_count_1\ * 
-              \PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
-            + \PWM_1:PWMUDB:dith_count_1\ * 
-              !\PWM_1:PWMUDB:MODULE_2:g2:a0:g1:z1:s0:g1:u0:c_1\
-        );
-        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_0\, Mode=(D-Register) @ [UDB=(3,0)][LB=0][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_733)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:dith_count_0\\D\
-        );
-        Output = \PWM_1:PWMUDB:dith_count_0\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_0\\D\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=0][MC=2]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:A_j\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=0]
         Total # of inputs        : 3
-        Total # of product terms : 2
+        Total # of product terms : 1
             Clock Enable: True
-        Main Equation            : 2 pterms
+        Main Equation            : 1 pterm
         (
-              !\PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:dith_count_0\
-            + \PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\
+              \MultiJog:bQuadDec:quad_A_delayed_0\ * 
+              \MultiJog:bQuadDec:quad_A_delayed_1\ * 
+              \MultiJog:bQuadDec:quad_A_delayed_2\
         );
-        Output = \PWM_1:PWMUDB:dith_count_0\\D\ (fanout=1)
+        Output = \MultiJog:bQuadDec:A_j\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,0)][LB=1] #macrocells=3, #inputs=5, #pterms=4
-{
-    [McSlotId=0]: (empty)
-    [McSlotId=1]:     MacroCell: Name=\PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=1]
+    [McSlotId=1]:     MacroCell: Name=\ADC_VoltageChanelB:Net_188\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !\PWM_1:PWMUDB:dith_count_0\
+              \ADC_VoltageChanelB:Net_376_local\
         );
-        Output = \PWM_1:PWMUDB:MODULE_2:g2:a0:s_0\ (fanout=1)
+        Output = \ADC_VoltageChanelB:Net_188\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_1\, Mode=(D-Register) @ [UDB=(3,0)][LB=1][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_733)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:dith_count_1\\D\
-        );
-        Output = \PWM_1:PWMUDB:dith_count_1\ (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:dith_count_1\\D\, Mode=(Combinatorial) @ [UDB=(3,0)][LB=1][MC=3]
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:B_j\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=2]
         Total # of inputs        : 3
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !\PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:dith_count_1\
-            + \PWM_1:PWMUDB:tc_i\ * \PWM_1:PWMUDB:MODULE_2:g2:a0:s_1\
-        );
-        Output = \PWM_1:PWMUDB:dith_count_1\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-controlcell: Name =\Control_Reg_1:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \Control_Reg_1:control_7\ ,
-        control_6 => \Control_Reg_1:control_6\ ,
-        control_5 => \Control_Reg_1:control_5\ ,
-        control_4 => \Control_Reg_1:control_4\ ,
-        control_3 => Net_949 ,
-        control_2 => OnChB ,
-        control_1 => OnChA ,
-        control_0 => Net_733 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,1)] contents:
-LAB@[UDB=(3,1)][LB=0] #macrocells=1, #inputs=1, #pterms=1
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:prevCompare\, Mode=(D-Register) @ [UDB=(3,1)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Cnt8:CounterUDB:cmp_out_i\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:prevCompare\ (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]: (empty)
-    [McSlotId=3]: (empty)
-}
-
-LAB@[UDB=(3,1)][LB=1] #macrocells=2, #inputs=2, #pterms=2
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:overflow_reg_i\, Mode=(D-Register) @ [UDB=(3,1)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (freq_50kHz) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:Cnt8:CounterUDB:overflow\
-        );
-        Output = \MultiJog:Cnt8:CounterUDB:overflow_reg_i\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=\MultiJog:Cnt8:CounterUDB:status_2\, Mode=(Combinatorial) @ [UDB=(3,1)][LB=1][MC=2]
-        Total # of inputs        : 2
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:Cnt8:CounterUDB:overflow\ * 
-              !\MultiJog:Cnt8:CounterUDB:overflow_reg_i\
+              \MultiJog:bQuadDec:quad_B_delayed_0\ * 
+              \MultiJog:bQuadDec:quad_B_delayed_1\ * 
+              \MultiJog:bQuadDec:quad_B_delayed_2\
         );
-        Output = \MultiJog:Cnt8:CounterUDB:status_2\ (fanout=1)
+        Output = \MultiJog:bQuadDec:B_j\ (fanout=1)
         Properties               : 
         {
         }
 
-    [McSlotId=3]: (empty)
-}
-
-UDB [UDB=(3,2)] contents:
-LAB@[UDB=(3,2)][LB=0] #macrocells=4, #inputs=6, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\\D\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:control_7\
-        );
-        Output = \PWM_1:PWMUDB:runmode_enable\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1D, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=1]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              AMuxHw_1_Decoder_is_active * AMuxHw_1_Decoder_old_id_0
-        );
-        Output = AMuxHw_1_Decoder_one_hot_1D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_1:PWMUDB:runmode_enable\, Mode=(D-Register) @ [UDB=(3,2)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_733)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:runmode_enable\\D\
-        );
-        Output = \PWM_1:PWMUDB:runmode_enable\ (fanout=4)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:tc_i_reg\\D\, Mode=(Combinatorial) @ [UDB=(3,2)][LB=0][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \PWM_1:PWMUDB:runmode_enable\ * \PWM_1:PWMUDB:tc_i\
-        );
-        Output = \PWM_1:PWMUDB:tc_i_reg\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,2)][LB=1] #macrocells=3, #inputs=2, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:tc_i_reg\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=0]
+    [McSlotId=3]:     MacroCell: Name=\PWM_2:PWMUDB:sc_kill_tmp\, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=3]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -7731,107 +8074,17 @@ LAB@[UDB=(3,2)][LB=1] #macrocells=3, #inputs=2, #pterms=3
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \PWM_1:PWMUDB:tc_i_reg\\D\
+              \PWM_2:PWMUDB:sc_kill_tmp\\D\
         );
-        Output = \PWM_1:PWMUDB:tc_i_reg\ (fanout=0)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_1, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              AMuxHw_1_Decoder_one_hot_1D
-        );
-        Output = AMuxHw_1_Decoder_one_hot_1 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]: (empty)
-    [McSlotId=3]:     MacroCell: Name=\PWM_1:PWMUDB:min_kill_reg\, Mode=(D-Register) @ [UDB=(3,2)][LB=1][MC=3]
-        Total # of inputs        : 0
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_733)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-            1
-        );
-        Output = \PWM_1:PWMUDB:min_kill_reg\ (fanout=0)
+        Output = \PWM_2:PWMUDB:sc_kill_tmp\ (fanout=0)
         Properties               : 
         {
         }
 }
 
-datapathcell: Name =\PWM_1:PWMUDB:sP16:pwmdp:u0\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        cs_addr_2 => \PWM_1:PWMUDB:tc_i\ ,
-        cs_addr_1 => \PWM_1:PWMUDB:runmode_enable\ ,
-        cs_addr_0 => Net_733 ,
-        chain_out => \PWM_1:PWMUDB:sP16:pwmdp:carry\ );
-    Properties:
-    {
-        a0_init = "00000000"
-        a1_init = "00000000"
-        ce0_sync = 1
-        ce1_sync = 1
-        cl0_sync = 1
-        cl1_sync = 1
-        cmsb_sync = 1
-        co_msb_sync = 1
-        cy_dpconfig = "0000000001000000000000001100000001000000010000000000000011000000000000001100000000000000110000000000000011000000000000001100000011111111000000001111111111111111101000000000000000000100000000000000000000011000"
-        d0_init = "00000000"
-        d1_init = "00000000"
-        f0_blk_sync = 1
-        f0_bus_sync = 1
-        f1_blk_sync = 1
-        f1_bus_sync = 1
-        ff0_sync = 1
-        ff1_sync = 1
-        ov_msb_sync = 1
-        so_sync = 1
-        z0_sync = 1
-        z1_sync = 1
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-    Next in chain : \PWM_1:PWMUDB:sP16:pwmdp:u1\
-
-controlcell: Name =\PWM_1:PWMUDB:genblk1:ctrlreg\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        control_7 => \PWM_1:PWMUDB:control_7\ ,
-        control_6 => \PWM_1:PWMUDB:control_6\ ,
-        control_5 => \PWM_1:PWMUDB:control_5\ ,
-        control_4 => \PWM_1:PWMUDB:control_4\ ,
-        control_3 => \PWM_1:PWMUDB:control_3\ ,
-        control_2 => \PWM_1:PWMUDB:control_2\ ,
-        control_1 => \PWM_1:PWMUDB:control_1\ ,
-        control_0 => \PWM_1:PWMUDB:control_0\ );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "11111111"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Polarity: Active High
-    Clock Enable: True
-
-UDB [UDB=(3,3)] contents:
-LAB@[UDB=(3,3)][LB=0] #macrocells=3, #inputs=6, #pterms=4
+LAB@[UDB=(3,4)][LB=1] #macrocells=4, #inputs=6, #pterms=4
 {
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:A_k\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=0]
+    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:A_k\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=0]
         Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
@@ -7846,251 +8099,7 @@ LAB@[UDB=(3,3)][LB=0] #macrocells=3, #inputs=6, #pterms=4
         {
         }
 
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_is_active, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=2]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MODULE_3:g1:a0:xeq\
-        );
-        Output = AMuxHw_1_Decoder_is_active (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MODULE_3:g1:a0:gx:u0:xnor_array_0\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=0][MC=3]
-        Total # of inputs        : 2
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              !AMuxHw_1_Decoder_old_id_0 * !Net_174
-            + AMuxHw_1_Decoder_old_id_0 * Net_174
-        );
-        Output = \MODULE_3:g1:a0:gx:u0:xnor_array_0\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,3)][LB=1] #macrocells=3, #inputs=2, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=\MODULE_3:g1:a0:xeq\, Mode=(Combinatorial) @ [UDB=(3,3)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MODULE_3:g1:a0:gx:u0:xnor_array_0\
-        );
-        Output = \MODULE_3:g1:a0:xeq\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=AMuxHw_1_Decoder_old_id_0, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=1]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              Net_174
-        );
-        Output = AMuxHw_1_Decoder_old_id_0 (fanout=3)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=2]:     MacroCell: Name=\PWM_2:PWMUDB:min_kill_reg\, Mode=(D-Register) @ [UDB=(3,3)][LB=1][MC=2]
-        Total # of inputs        : 0
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Reset  = (Net_949)
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-            1
-        );
-        Output = \PWM_2:PWMUDB:min_kill_reg\ (fanout=0)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]: (empty)
-}
-
-controlcell: Name =\AdcCurrentChanel:Sync:ctrl_reg\
-    PORT MAP (
-        control_7 => \AdcCurrentChanel:control_7\ ,
-        control_6 => \AdcCurrentChanel:control_6\ ,
-        control_5 => \AdcCurrentChanel:control_5\ ,
-        control_4 => \AdcCurrentChanel:control_4\ ,
-        control_3 => \AdcCurrentChanel:control_3\ ,
-        control_2 => \AdcCurrentChanel:control_2\ ,
-        control_1 => \AdcCurrentChanel:control_1\ ,
-        control_0 => Net_174 );
-    Properties:
-    {
-        cy_ctrl_mode_0 = "00000000"
-        cy_ctrl_mode_1 = "00000000"
-        cy_ext_reset = 0
-        cy_force_order = 1
-        cy_init_value = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,4)] contents:
-LAB@[UDB=(3,4)][LB=0] #macrocells=3, #inputs=7, #pterms=6
-{
-    [McSlotId=0]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_filt\\D\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=0]
-        Total # of inputs        : 3
-        Total # of product terms : 3
-            Clock Enable: True
-        Main Equation            : 3 pterms
-        (
-              !\MultiJog:bQuadDec:A_j\ * !\MultiJog:bQuadDec:A_k\ * 
-              \MultiJog:bQuadDec:quad_A_filt\
-            + \MultiJog:bQuadDec:A_j\ * !\MultiJog:bQuadDec:A_k\
-            + \MultiJog:bQuadDec:A_j\ * \MultiJog:bQuadDec:A_k\ * 
-              !\MultiJog:bQuadDec:quad_A_filt\
-        );
-        Output = \MultiJog:bQuadDec:quad_A_filt\\D\ (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=cy_srff_2D, Mode=(Combinatorial) @ [UDB=(3,4)][LB=0][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              Net_13661 * !Net_14689
-            + !Net_14689 * Net_14089
-        );
-        Output = cy_srff_2D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0, Mode=(D-Register) @ [UDB=(3,4)][LB=0][MC=3]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              AMuxHw_1_Decoder_one_hot_0D
-        );
-        Output = AMuxHw_1_Decoder_one_hot_0 (fanout=2)
-        Properties               : 
-        {
-        }
-}
-
-LAB@[UDB=(3,4)][LB=1] #macrocells=3, #inputs=6, #pterms=3
-{
-    [McSlotId=0]:     MacroCell: Name=Net_13661, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=0]
-        Total # of inputs        : 1
-        Total # of product terms : 1
-        List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              cy_srff_2D
-        );
-        Output = Net_13661 (fanout=2)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=AMuxHw_1_Decoder_one_hot_0D, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=2]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              AMuxHw_1_Decoder_is_active * !AMuxHw_1_Decoder_old_id_0
-        );
-        Output = AMuxHw_1_Decoder_one_hot_0D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:A_j\, Mode=(Combinatorial) @ [UDB=(3,4)][LB=1][MC=3]
-        Total # of inputs        : 3
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \MultiJog:bQuadDec:quad_A_delayed_0\ * 
-              \MultiJog:bQuadDec:quad_A_delayed_1\ * 
-              \MultiJog:bQuadDec:quad_A_delayed_2\
-        );
-        Output = \MultiJog:bQuadDec:A_j\ (fanout=1)
-        Properties               : 
-        {
-        }
-}
-
-statuscell: Name =\MultiJog_Status:sts:sts_reg\
-    PORT MAP (
-        status_7 => __ZERO__ ,
-        status_6 => __ZERO__ ,
-        status_5 => __ZERO__ ,
-        status_4 => __ZERO__ ,
-        status_3 => __ZERO__ ,
-        status_2 => __ZERO__ ,
-        status_1 => Net_13661 ,
-        status_0 => Net_13591 );
-    Properties:
-    {
-        cy_force_order = 1
-        cy_md_select = "00000000"
-    }
-    Clock Enable: True
-
-UDB [UDB=(3,5)] contents:
-LAB@[UDB=(3,5)][LB=0] #macrocells=3, #inputs=6, #pterms=4
-{
-    [McSlotId=0]:     MacroCell: Name=Net_14509, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        (
-              \EdgeDetect_1:last\ * !Net_14170_local
-        );
-        Output = Net_14509 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]: (empty)
-    [McSlotId=2]:     MacroCell: Name=cy_srff_3D, Mode=(Combinatorial) @ [UDB=(3,5)][LB=0][MC=2]
-        Total # of inputs        : 3
-        Total # of product terms : 2
-            Clock Enable: True
-        Main Equation            : 2 pterms
-        (
-              Net_13591 * !Net_14272
-            + Net_14820 * !Net_14272
-        );
-        Output = cy_srff_3D (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_filt\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=3]
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_0\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
@@ -8098,97 +8107,116 @@ LAB@[UDB=(3,5)][LB=0] #macrocells=3, #inputs=6, #pterms=4
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              \MultiJog:bQuadDec:quad_A_filt\\D\
+              Net_11179
         );
-        Output = \MultiJog:bQuadDec:quad_A_filt\ (fanout=7)
+        Output = \MultiJog:bQuadDec:quad_B_delayed_0\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_1\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=2]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              \MultiJog:bQuadDec:quad_B_delayed_0\
+        );
+        Output = \MultiJog:bQuadDec:quad_B_delayed_1\ (fanout=3)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_0\, Mode=(D-Register) @ [UDB=(3,4)][LB=1][MC=3]
+        Total # of inputs        : 1
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (freq_50kHz) => Global
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+              Net_13698
+        );
+        Output = \MultiJog:bQuadDec:quad_A_delayed_0\ (fanout=3)
         Properties               : 
         {
         }
 }
 
-LAB@[UDB=(3,5)][LB=1] #macrocells=4, #inputs=5, #pterms=4
+UDB [UDB=(3,5)] contents:
+LAB@[UDB=(3,5)][LB=0] #macrocells=2, #inputs=2, #pterms=2
 {
-    [McSlotId=0]:     MacroCell: Name=Net_14484, Mode=(Combinatorial) @ [UDB=(3,5)][LB=1][MC=0]
-        Total # of inputs        : 2
-        Total # of product terms : 1
-            Clock Enable: True
-        Main Equation            : 1 pterm
-        !(
-              !Net_14509 * !Net_14689
-        );
-        Output = Net_14484 (fanout=1)
-        Properties               : 
-        {
-        }
-
-    [McSlotId=1]:     MacroCell: Name=\EdgeDetect_1:last\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=1]
+    [McSlotId=0]: (empty)
+    [McSlotId=1]:     MacroCell: Name=\MultiJog:bQuadDec:quad_A_delayed_1\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=1]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock  = (freq_50kHz) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              Net_14170_local
+              \MultiJog:bQuadDec:quad_A_delayed_0\
         );
-        Output = \EdgeDetect_1:last\ (fanout=1)
+        Output = \MultiJog:bQuadDec:quad_A_delayed_1\ (fanout=3)
         Properties               : 
         {
         }
 
-    [McSlotId=2]:     MacroCell: Name=Net_13591, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=2]
+    [McSlotId=2]:     MacroCell: Name=\MultiJog:bQuadDec:quad_B_delayed_2\, Mode=(D-Register) @ [UDB=(3,5)][LB=0][MC=2]
         Total # of inputs        : 1
         Total # of product terms : 1
         List of special equations: 
-            Clock  = (ClockBlock_BUS_CLK) => Global
+            Clock  = (freq_50kHz) => Global
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              cy_srff_3D
+              \MultiJog:bQuadDec:quad_B_delayed_1\
         );
-        Output = Net_13591 (fanout=3)
+        Output = \MultiJog:bQuadDec:quad_B_delayed_2\ (fanout=2)
         Properties               : 
         {
         }
 
-    [McSlotId=3]:     MacroCell: Name=Net_14689, Mode=(Combinatorial) @ [UDB=(3,5)][LB=1][MC=3]
-        Total # of inputs        : 1
+    [McSlotId=3]: (empty)
+}
+
+LAB@[UDB=(3,5)][LB=1] #macrocells=2, #inputs=3, #pterms=2
+{
+    [McSlotId=0]:     MacroCell: Name=\PWM_1:PWMUDB:min_kill_reg\, Mode=(D-Register) @ [UDB=(3,5)][LB=1][MC=0]
+        Total # of inputs        : 0
+        Total # of product terms : 1
+        List of special equations: 
+            Clock  = (ClockBlock_BUS_CLK) => Global
+            Reset  = (Net_733)
+            Clock Enable: True
+        Main Equation            : 1 pterm
+        (
+            1
+        );
+        Output = \PWM_1:PWMUDB:min_kill_reg\ (fanout=0)
+        Properties               : 
+        {
+        }
+
+    [McSlotId=1]: (empty)
+    [McSlotId=2]: (empty)
+    [McSlotId=3]:     MacroCell: Name=\MultiJog:bQuadDec:B_k\, Mode=(Combinatorial) @ [UDB=(3,5)][LB=1][MC=3]
+        Total # of inputs        : 3
         Total # of product terms : 1
             Clock Enable: True
         Main Equation            : 1 pterm
         (
-              !Net_13591
+              !\MultiJog:bQuadDec:quad_B_delayed_0\ * 
+              !\MultiJog:bQuadDec:quad_B_delayed_1\ * 
+              !\MultiJog:bQuadDec:quad_B_delayed_2\
         );
-        Output = Net_14689 (fanout=2)
+        Output = \MultiJog:bQuadDec:B_k\ (fanout=1)
         Properties               : 
         {
         }
 }
-
-count7cell: Name =\MultiJog_FreqMeter:Counter7\
-    PORT MAP (
-        clock => ClockBlock_BUS_CLK ,
-        reset => Net_14484 ,
-        load => __ZERO__ ,
-        count_6 => Net_14086_6 ,
-        count_5 => Net_14086_5 ,
-        count_4 => Net_14086_4 ,
-        count_3 => Net_14086_3 ,
-        count_2 => Net_14086_2 ,
-        count_1 => Net_14086_1 ,
-        count_0 => Net_14086_0 ,
-        tc => Net_14089 ,
-        clk_en => Net_14820 );
-    Properties:
-    {
-        cy_alt_mode = 0
-        cy_init_value = "0000000"
-        cy_period = "1111111"
-        cy_route_en = 0
-        cy_route_ld = 0
-    }
-    Clock Polarity: Active High
-    Clock Enable: PosEdge(Net_14820)
 
 Intr container @ [IntrContainer=(0)]: 
   Intr@ [IntrContainer=(0)][IntrId=(0)] 
@@ -10395,33 +10423,33 @@ Port | Pin | Fixed |      Type |       Drive Mode |                           Na
 </CYPRESSTAG>
 </CYPRESSTAG>
 </CYPRESSTAG>
-Digital component placer commit/Report: Elapsed time ==> 0s.009ms
-Digital Placement phase: Elapsed time ==> 4s.434ms
+Digital component placer commit/Report: Elapsed time ==> 0s.011ms
+Digital Placement phase: Elapsed time ==> 7s.522ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Digital Routing">
 Routing successful.
-Digital Routing phase: Elapsed time ==> 5s.683ms
+Digital Routing phase: Elapsed time ==> 9s.801ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Generation">
-Bitstream Generation phase: Elapsed time ==> 0s.432ms
+Bitstream Generation phase: Elapsed time ==> 0s.677ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Bitstream Verification">
-Bitstream Verification phase: Elapsed time ==> 0s.093ms
+Bitstream Verification phase: Elapsed time ==> 0s.132ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Static timing analysis">
 Warning: sta.M0021: PowerSuplyUnit_timing.html: Warning-1350: Asynchronous path(s) exist from "Clock_8(routed)" to "CyBUS_CLK". See the timing report for details. (File=Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit_timing.html)
 Timing report is in PowerSuplyUnit_timing.html.
-Static timing analysis phase: Elapsed time ==> 1s.260ms
+Static timing analysis phase: Elapsed time ==> 2s.171ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Data reporting">
 Data reporting phase: Elapsed time ==> 0s.000ms
 </CYPRESSTAG>
 <CYPRESSTAG name="Database update...">
-Design database save phase: Elapsed time ==> 0s.528ms
+Design database save phase: Elapsed time ==> 0s.730ms
 </CYPRESSTAG>
-cydsfit: Elapsed time ==> 17s.563ms
+cydsfit: Elapsed time ==> 26s.395ms
 </CYPRESSTAG>
-Fitter phase: Elapsed time ==> 17s.565ms
-API generation phase: Elapsed time ==> 4s.553ms
-Dependency generation phase: Elapsed time ==> 0s.060ms
-Cleanup phase: Elapsed time ==> 0s.000ms
+Fitter phase: Elapsed time ==> 26s.398ms
+API generation phase: Elapsed time ==> 6s.859ms
+Dependency generation phase: Elapsed time ==> 0s.073ms
+Cleanup phase: Elapsed time ==> 0s.001ms

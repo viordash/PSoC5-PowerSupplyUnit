@@ -2,7 +2,7 @@
 --	Conversion of PowerSuplyUnit.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Sun Jun 11 17:48:58 2017
+--	Mon Jun 12 23:13:03 2017
 --
 
 USE cypress.cypress.all;
@@ -1579,7 +1579,7 @@ SIGNAL tmpIO_0__O_Led_Error_net_0 : bit;
 TERMINAL tmpSIOVREF__O_Led_Error_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__O_Led_Error_net_0 : bit;
 SIGNAL \Buttons:status_0\ : bit;
-SIGNAL Net_15333 : bit;
+SIGNAL Net_15364 : bit;
 SIGNAL \Buttons:status_1\ : bit;
 SIGNAL Net_15332 : bit;
 SIGNAL \Buttons:status_2\ : bit;
@@ -1709,12 +1709,14 @@ SIGNAL Net_14915_3 : bit;
 SIGNAL Net_14915_2 : bit;
 SIGNAL Net_14915_1 : bit;
 SIGNAL Net_14915_0 : bit;
+SIGNAL Net_15363 : bit;
 SIGNAL \Debouncer_3:op_clk\ : bit;
 SIGNAL \Debouncer_3:DEBOUNCER[0]:d_sync_0\ : bit;
 SIGNAL \Debouncer_3:DEBOUNCER[0]:d_sync_1\ : bit;
 SIGNAL Net_15269 : bit;
 SIGNAL Net_15267 : bit;
 SIGNAL Net_15268 : bit;
+SIGNAL cy_srff_1 : bit;
 SIGNAL \MODULE_3:g1:a0:newa_0\ : bit;
 SIGNAL \MODULE_3:g1:a0:newb_0\ : bit;
 SIGNAL MODIN3_0 : bit;
@@ -1811,6 +1813,7 @@ SIGNAL \Debouncer_3:DEBOUNCER[0]:d_sync_1\\D\ : bit;
 SIGNAL Net_15269D : bit;
 SIGNAL Net_15267D : bit;
 SIGNAL Net_15268D : bit;
+SIGNAL cy_srff_1D : bit;
 BEGIN
 
 \ADC_VoltageChanelB:Net_188\ <= (zero
@@ -2116,6 +2119,9 @@ cy_srff_3D <= ((not Net_14272 and Net_14820)
 Net_15332D <= ((not \Debouncer_2:DEBOUNCER[0]:d_sync_1\ and Net_14914));
 
 Net_15269D <= ((not \Debouncer_3:DEBOUNCER[0]:d_sync_1\ and Net_15349));
+
+cy_srff_1D <= ((not Net_15332 and Net_15363)
+	OR (not Net_15332 and Net_15364));
 
 \MODULE_3:g1:a0:gx:u0:xnor_array_0\ <= ((AMuxHw_1_Decoder_old_id_0 and Net_174)
 	OR (not AMuxHw_1_Decoder_old_id_0 and not Net_174));
@@ -6186,7 +6192,7 @@ D_13:cy_annotation_universal_v1_0
 	PORT MAP(reset=>zero,
 		clock=>Net_14846,
 		status=>(zero, zero, zero, Net_15349,
-			Net_15329, Net_15319, Net_15332, Net_15333));
+			Net_15329, Net_15319, Net_15332, Net_15364));
 Clock_5:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
 		id=>"9515cede-bc4c-4d33-9190-7eb2fa81fe4c",
@@ -6532,7 +6538,7 @@ Clock_7:cy_clock_v1_0
 		enable=>one,
 		count=>(Net_14915_6, Net_14915_5, Net_14915_4, Net_14915_3,
 			Net_14915_2, Net_14915_1, Net_14915_0),
-		tc=>Net_15333);
+		tc=>Net_15363);
 \Debouncer_3:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
 	PORT MAP(clock_in=>Net_14867,
@@ -6798,5 +6804,9 @@ Net_15268:cy_dff
 	PORT MAP(d=>zero,
 		clk=>\Debouncer_3:op_clk\,
 		q=>Net_15268);
+cy_srff_1:cy_dff
+	PORT MAP(d=>cy_srff_1D,
+		clk=>Net_14846,
+		q=>Net_15364);
 
 END R_T_L;

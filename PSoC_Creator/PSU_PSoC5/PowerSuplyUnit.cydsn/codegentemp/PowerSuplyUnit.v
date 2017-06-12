@@ -1,6 +1,6 @@
 // ======================================================================
 // PowerSuplyUnit.v generated from TopDesign.cysch
-// 06/11/2017 at 17:48
+// 06/12/2017 at 23:12
 // This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 // ======================================================================
 
@@ -1824,12 +1824,13 @@ module top ;
           wire  Net_518;
           wire  Net_517;
     electrical  Net_516;
+          wire  Net_15364;
+          wire  Net_14846;
+          wire  Net_15363;
           wire  Net_15349;
           wire  Net_15347;
           wire  Net_15319;
           wire  Net_15332;
-          wire  Net_14846;
-          wire  Net_15333;
           wire  Net_14867;
           wire  Net_10739;
           wire  Net_15329;
@@ -1945,9 +1946,9 @@ module top ;
     electrical  Net_392;
     electrical  Net_342;
     electrical  Net_340;
+          wire  freq_50Hz;
     electrical  Net_339;
     electrical  Net_414;
-          wire  freq_50Hz;
     electrical  Net_313;
     electrical  Net_311;
     electrical  Net_310;
@@ -1964,9 +1965,9 @@ module top ;
     electrical  Net_228;
     electrical  Net_510;
     electrical  Net_227;
+          wire  freq_50kHz;
     electrical  Net_8;
     electrical  Net_7;
-          wire  freq_50kHz;
 
     ADC_SAR_v3_0_0 ADC_VoltageChanelB (
         .vplus(VoltChB),
@@ -6201,7 +6202,7 @@ module top ;
     defparam D_13.width = 2;
 
     CyStatusReg_v1_90 Buttons (
-        .status_0(Net_15333),
+        .status_0(Net_15364),
         .status_1(Net_15332),
         .status_2(Net_15319),
         .status_3(Net_15329),
@@ -6743,7 +6744,7 @@ module top ;
         .clock(freq_50Hz),
         .reset(Net_14914),
         .cnt(Net_14915[6:0]),
-        .tc(Net_15333));
+        .tc(Net_15363));
     defparam BtnOk_Reset.EnableSignal = 0;
     defparam BtnOk_Reset.LoadSignal = 0;
 
@@ -6762,6 +6763,15 @@ module top ;
     assign Net_10546 = 1'h0;
 
     assign Net_10539 = 1'h0;
+
+    // -- SRFF Start --
+    reg  cy_srff_1;
+    always @(posedge Net_14846)
+    begin
+        cy_srff_1 <= (Net_15363 | Net_15364) & ~Net_15332;
+    end
+    assign Net_15364 = cy_srff_1;
+    // -- SRFF End --
 
 
 

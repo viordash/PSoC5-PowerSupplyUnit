@@ -47,7 +47,6 @@ extern void Display_Task();
 
 #endif
 
-
 typedef enum {
 	dsInit = 0,
 	dsStart,
@@ -69,6 +68,16 @@ typedef struct {
     WORD Amperage;   /*amperage * 1000*/
 } TDisplayChannelData, * PTDisplayChannelData;
 
+typedef enum {
+	scmNone = 0,
+	scmVoltageAStab,
+	scmAmperageAStab,
+	scmVoltageBStab,
+	scmAmperageBStab,
+} TStabilizeChangingMode;
+
+typedef BOOL(*TEventSetPointChanged) (TDisplaySelected changedType, WORD newValue);
+
 typedef struct {
     TDisplayScreen Screen; 
     BOOL ScreenRequest;
@@ -80,26 +89,39 @@ typedef struct {
     
     TDisplaySelected Selected;
     BOOL SelectedRequest;
+    TDisplaySelected Focused;
+    BOOL FocusedRequest;
     
-    TStabilizeMode StabilizeModeA;
-    BOOL StabilizeModeARequest;
+    TStabilizeChangingMode ChangingStabilizeMode;
+    BOOL ChangingStabilizeModeRequest;
     
-    TStabilizeMode StabilizeModeB;
-    BOOL StabilizeModeBRequest;
+    BOOL ConfirmStabilizeModeRequest;
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
     TDisplayScreen Screen; 
     TDisplayChannelData ChannelA;
     TDisplayChannelData ChannelB;
+    DWORD SelectedTimeout;
+    DWORD SelectedFlashingTick;
     TDisplaySelected Selected;
+    TDisplaySelected Focused;
+    
+    TStabilizeChangingMode ChangingStabilizeMode;
+    DWORD ChangingStabilizeModeTimeout;
+    DWORD ChangingStabilizeModeFlashingTick;
     TStabilizeMode StabilizeModeA;
     TStabilizeMode StabilizeModeB;
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {
+    TEventSetPointChanged OnSetPointChanged; 
+} TDisplayEvents, * PTDisplayEvents;
+
+typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
+    TDisplayEvents Events;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
@@ -107,9 +129,19 @@ extern void RequestToChannelA(TDisplayChannelData newValue);
 extern void RequestToChannelB(TDisplayChannelData newValue);
 extern void RequestToNextSelect();
 extern void RequestToPrevSelect();
+extern void RequestToSetSelection();
+extern void RequestToConfirmSelection();
 extern void RequestToSelected(TDisplaySelected newValue);
-extern void RequestToStabilizeModeA(TStabilizeMode newValue);
-extern void RequestToStabilizeModeB(TStabilizeMode newValue);
+extern BOOL IsDisplayInSelectionMode();
+//extern void RequestToFocused(TDisplaySelected newValue);
+//extern void RequestToStabilizeModeA(TStabilizeMode newValue);
+//extern void RequestToStabilizeModeB(TStabilizeMode newValue);
+extern void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue);
+extern void RequestToConfirmStabilizeMode();
+extern void RequestToNextStabilizeMode();
+extern void RequestToPrevStabilizeMode();
+extern void RequestToSetChangingStabilizeMode();
+extern BOOL IsDisplayInChangingStabilizeMode();
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

@@ -47,7 +47,8 @@ typedef enum {
 typedef enum {
 	ltSolid = 0,
 	ltDashed,
-	ltDoted
+	ltDoted,
+	ltInvisible
 } TLineType;
 
 #endif  /* __DEVICE_H__ */

@@ -96,18 +96,22 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangeScreen(dsBipolar);
         RequestToChannelA(newValueA);
         RequestToChannelB(newValueB);
-        TStabilizeMode stabilizeModeA = smVoltageStab;
-        RequestToStabilizeModeA(stabilizeModeA);
-        TStabilizeMode stabilizeModeB = smAmperageStab;
-        RequestToStabilizeModeB(stabilizeModeB);
-
+        
+        RequestToChangingStabilizeMode(scmVoltageAStab);
+        RequestToConfirmStabilizeMode();
+        
+		TaskSleep(&MainWorkFunction, SYSTICK_mS(300));	
+        RequestToChangingStabilizeMode(scmAmperageBStab);
+        RequestToConfirmStabilizeMode();
+        
+        
         O_Led_Polar_Write(0);
     } else if (polarMode == pmUnipolar) {
         RequestToChangeScreen(dsUnipolar);
         TDisplayChannelData newValueA = {332, 6950};
-        RequestToChannelA(newValueA);
-        TStabilizeMode stabilizeModeA = smAmperageStab;
-        RequestToStabilizeModeA(stabilizeModeA);        
+        RequestToChannelA(newValueA);        
+        RequestToChangingStabilizeMode(scmAmperageAStab);
+        RequestToConfirmStabilizeMode();       
         O_Led_Polar_Write(0xFF);
     }
 }
@@ -128,14 +132,24 @@ void ButtonOkPressed (BYTE value) {
     if (!value) {
         return;            
     }
-    if (MainWorkObj.Properties.State == mwsStandBy) {
+    if (MainWorkObj.Properties.State == mwsStandBy || MainWorkObj.Properties.State == mwsWork) {
         if (!(value & BtnOk_LongPress)) {
-            RequestToNextSelect();
+            if(MainWorkObj.Properties.State == mwsStandBy && IsDisplayInChangingStabilizeMode()) {
+                RequestToConfirmStabilizeMode();
+            } else if(!IsDisplayInSelectionMode()) {
+                RequestToSetSelection();
+            } else {
+                RequestToConfirmSelection();
+            }
+        } else if (MainWorkObj.Properties.State == mwsStandBy) {
+            if(!IsDisplayInChangingStabilizeMode()) {
+                RequestToSetChangingStabilizeMode();
+            }
         }
         
     }
 }
-/*----------------- Changing the focused editor --------------<<<*/
+/*----------------- Button Ok pressed --------------<<<*/
 
 /*>>>-------------- MultiJog Changing Value -----------------*/
 void MultiJogChangingValue (BYTE value) {
@@ -147,12 +161,26 @@ static DWORD prevTick = 0;
     
     INT i = MultiJog_GetCounter();
     MultiJog_SetCounter(0);
-    INT mult = 1;
-    if (value & MultiJog_FastRotate) {        
-        mult = 10;
-    }
-    newValueA.Voltage += (i * mult);
-    RequestToChannelA(newValueA); 
+    if(IsDisplayInSelectionMode()) {
+        if (i > 0) {
+            RequestToNextSelect();    
+        } else if (i < 0) {
+            RequestToPrevSelect();    
+        }
+    } else if(IsDisplayInChangingStabilizeMode()) {
+        if (i > 0) {
+            RequestToNextStabilizeMode();    
+        } else if (i < 0) {
+            RequestToPrevStabilizeMode();    
+        }
+    } else {
+        INT mult = 1;
+        if (value & MultiJog_FastRotate) {        
+            mult = 10;
+        }
+        newValueA.Voltage += (i * mult);
+        RequestToChannelA(newValueA); 
+    }    
 }
 /*----------------- MultiJog Changing Value --------------<<<*/
 

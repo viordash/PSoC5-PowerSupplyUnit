@@ -180,6 +180,8 @@ void _LCD_DrawLine(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, TLine
         lineValue = 1;
     } else if (lineType == ltDashed) {
         lineValue = 8;
+    } else if (lineType == ltInvisible) {
+        lineValue = 0;
     } else {
         lineValue = 0xFF;
     }

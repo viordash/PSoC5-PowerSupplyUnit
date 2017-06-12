@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\TopDesign">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -321,6 +321,18 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>PSU_PSoC5</v>
+<v>PSU_PSoC5\PowerSuplyUnit</v>
+<v>PSU_PSoC5\PowerSuplyUnit\TopDesign</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Pins</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Analog</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Clocks</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Interrupts</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\DMA</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\System</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Directives</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Flash Security</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\EEPROM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
@@ -341,18 +353,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Header Files\type.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\OS</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -491,36 +491,6 @@
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Bypass_P32.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_Ext_CP_Clk.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_Current_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelA_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ADC_VoltageChanelB_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AGND.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Buttons.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_11.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -673,7 +643,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1125, 495" SelectedTabbedMdiWindow="f435dcff-6da3-41d1-855f-26e4ff5798af"><DocumentWindow Key="65b50ff8-6038-4ee1-bcf4-ed31d29dcb96" Guid="f96b9c10-8541-4722-856a-2c1144a6e8d8" /><DocumentWindow Key="c436b895-0910-4bfc-9834-05d0f79e437c" Guid="f435dcff-6da3-41d1-855f-26e4ff5798af" /><DocumentWindow Key="9ace61fc-0a02-453b-9620-efdef085948f" Guid="aafaf19a-57b2-4056-baf2-e267a8a45f17" /><DocumentWindow Key="576bc1c6-2195-41da-90bf-f17c03ae412f" Guid="048c3f8c-6f41-4589-8b6e-6eb0918682aa" /><DocumentWindow Key="a23f5feb-c84e-4711-bfc1-7b1d82d3dad9" Guid="3370b108-7abd-422e-8719-8a484dd2f116" /><DocumentWindow Key="0db9c2e3-91a1-466b-b9fd-8e6dbdd61f0e" Guid="3d20c54b-b48f-4594-9ef1-e5514e227076" /><DocumentWindow Key="4934cffb-7767-465b-97a0-fd6f35ddcc73" Guid="0acfc499-8874-4e94-ad3f-e06e9dfbbe15" /><DocumentWindow Key="adbbcbeb-7d25-410f-aa8f-b7ec4a91ba89" Guid="97fd3e4d-2bc6-43b9-bd45-a9f447eae7c1" /><DocumentWindow Key="c590a8cf-672c-4c08-bab9-4304210afbd1" Guid="a1384376-cc7a-46c1-96c6-b1d1403ec826" /><DocumentWindow Key="7e0e09cb-bc29-44c9-8aae-0b8d62c9d559" Guid="b27152c3-e404-4daf-ba99-7eb947391ceb" /><DocumentWindow Key="ee4c88b6-dc9e-43bf-aae0-0a113e6cd220" Guid="c06fdf6a-8b2b-4902-9fd3-766519a1bb69" /><DocumentWindow Key="574324a7-d0c2-4bdb-b2c9-0846e13cf0fb" Guid="2a4d7d7d-e0cb-4e89-8a31-ad670a4f1b17" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1125, 444" SelectedTabbedMdiWindow="0866735b-4ebe-47e0-871d-e31587e35b38"><DocumentWindow Key="970f95c1-b7aa-4062-b3c2-f16901502930" Guid="8dc6c08c-02f4-42dc-adc3-649143d8d3db" /><DocumentWindow Key="3be2f342-6478-4819-8430-2a9916703746" Guid="0866735b-4ebe-47e0-871d-e31587e35b38" /><DocumentWindow Key="73c9ec34-6fba-4aa6-a57f-a7c69837a250" Guid="0740ee79-ed5b-46dd-9062-33ba2fc8c59d" /><DocumentWindow Key="eb0a118d-1b7c-4ab7-93ca-d8ffbb2ff5e7" Guid="bf835ffc-10f4-4cbf-8011-91ecbc43b227" /><DocumentWindow Key="d1d33d4f-1d7b-4edc-830e-e0700cdca976" Guid="fab398db-ab86-4ae9-a86d-4a8a3171c6ad" /><DocumentWindow Key="9417d470-e44a-4f77-b9b8-3e9b3c2cb680" Guid="ca98ad1c-1e79-4e51-945a-27948c54e97d" /><DocumentWindow Key="1470b62b-2780-4c4e-b8e9-66a3b1403179" Guid="813d9eee-0765-42d7-b0b7-9c8ab8076a70" /><DocumentWindow Key="66f05b03-d066-463c-8574-92e54a881b97" Guid="6a190204-2f56-4708-a9aa-cf9c5e9558e4" /><DocumentWindow Key="1b1be06e-5788-44a6-ae9b-56ac67403c22" Guid="13d6c1cc-2986-401d-87d8-634c56251b97" /><DocumentWindow Key="240c14c5-1c39-4b21-868c-57d4f1449c61" Guid="9f329e4a-a0a5-453f-b282-5c348b069ad1" /><DocumentWindow Key="a8e22283-6880-43a0-8fc1-4e402243a2be" Guid="79bff116-a685-4f3d-b5be-023b2c511267" /><DocumentWindow Key="8e51907c-bb08-452e-ac4b-6a723848f811" Guid="baefeb87-84cf-4d91-9a6a-931a97555f70" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
