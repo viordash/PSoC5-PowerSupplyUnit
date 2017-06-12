@@ -10,7 +10,7 @@
     <flipHorizontal>false</flipHorizontal>
     <flipVertical>false</flipVertical>
     <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
-    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <paddingRemovalVertical>Fixed</paddingRemovalVertical>
     <lineWrap>AtColumn</lineWrap>
     <bitLayout>RowMajor</bitLayout>
     <byteOrder>MsbFirst</byteOrder>
@@ -24,7 +24,7 @@
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
-    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <generateSpaceCharacterBitmap>false</generateSpaceCharacterBitmap>
     <spaceGenerationPixels>6</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_2Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_2Descriptors</varNfCharInfo>
@@ -131,5 +131,38 @@
     <varNfWidth>const uint_8 font_1Width</varNfWidth>
     <varNfHeight>const uint_8 font_1Height</varNfHeight>
     <displayName>font_1</displayName>
+  </OutputConfiguration>
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Tighest</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>RowMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>false</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>4</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_4Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_4Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_4FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_4Width</varNfWidth>
+    <varNfHeight>const uint_8 font_4Height</varNfHeight>
+    <displayName>font_4</displayName>
   </OutputConfiguration>
 </ArrayOfOutputConfiguration>

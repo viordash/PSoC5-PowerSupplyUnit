@@ -45,6 +45,8 @@ void DeviceInit() {
     MultiJog_SetCounter(0);
     MultiJog_FreqMeter_Start();
     MultiJog_Reset_Start();
+    BtnOk_Reset_Start();
+    FanCtrl_Start();
 }
 
 int main() {

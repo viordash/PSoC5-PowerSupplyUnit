@@ -19,6 +19,7 @@
 typedef enum {
 	mwsInit = 0,
 	mwsStart,
+	mwsStandBy,
 	mwsWork,
 	mwsChangeSetPoint,
 	mwsChangeStabilize,

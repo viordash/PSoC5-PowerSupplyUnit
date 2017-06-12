@@ -18,7 +18,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Generated_Source">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -34,6 +34,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Flash Security</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\EEPROM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
@@ -100,6 +103,10 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\AGND\AGND.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\AGND\AGND.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\AGND\AGND_aliases.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\BtnOk_Reset</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\BtnOk_Reset\BtnOk_Reset.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\BtnOk_Reset\BtnOk_Reset.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\BtnOk_Reset\BtnOk_Reset_PM.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Buttons</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Buttons\Buttons.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\Buttons\Buttons.h</v>
@@ -314,20 +321,20 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\project.h</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>PSU_PSoC5\PowerSuplyUnit</v>
-<v>PSU_PSoC5\PowerSuplyUnit\TopDesign</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Pins</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Analog</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Clocks</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Interrupts</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\DMA</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\System</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Directives</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Flash Security</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\EEPROM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_1.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_1.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_2.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_2.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_3.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_3.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
@@ -392,7 +399,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AGND.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Buttons.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_11.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_6.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_8.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1_PM.lst</v>
@@ -412,6 +424,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_1.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_2.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_3.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_4.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\GeneralUtils.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\I_BtnBipolarMode.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\I_BtnChangePolarity.lst</v>
@@ -439,7 +452,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Cnt8.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Cnt8_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_FreqMeter.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_FreqMeter_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Reset.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Reset_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Status.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\O_LCD_BKL.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\O_LCD_CD.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\O_LCD_RD.lst</v>
@@ -499,10 +517,10 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\AGND.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\BtnOk_Reset_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Buttons.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Cm3Start.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Control_Reg_1_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\Clock_11.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -530,6 +548,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0\Count7_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
@@ -539,7 +559,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
@@ -603,6 +624,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0\Count7_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
@@ -612,11 +635,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -636,11 +657,15 @@
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
-<name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.h" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_3.c" />
+<name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_2.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_1.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\Fonts\font_4.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -648,7 +673,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="971, 494" SelectedTabbedMdiWindow="bcecad0a-9969-48ee-b795-c7adb1f57f4f"><DocumentWindow Key="8a4c7b67-fabe-43ce-baf0-585c9a2fabf7" Guid="4a719282-364b-498d-92cf-bd87bd8fb680" /><DocumentWindow Key="c6893dac-c10f-4158-8e1d-cb01877377d4" Guid="0abd35bc-8e7a-4858-98b8-69ce2b53734c" /><DocumentWindow Key="8ac30586-b494-4f4c-8c2c-5091a69bc3fa" Guid="36d10881-805c-4541-8aa1-ea23f34f51f8" /><DocumentWindow Key="da48d98e-3685-4583-a3ad-fcd434a7bde4" Guid="bcecad0a-9969-48ee-b795-c7adb1f57f4f" /><DocumentWindow Key="143c520c-1c38-4321-8e95-5cfb39112db0" Guid="9ffc6d34-ccd5-4026-891d-fa53bc317f77" /><DocumentWindow Key="4e15e013-c008-4c11-93ec-166856e17b12" Guid="ca433a20-ce38-442c-b877-2c7602bdda32" /><DocumentWindow Key="0b3f6031-ee81-4bad-b693-64def322f778" Guid="0afd708c-0906-497f-959c-610de55ca3c8" /><DocumentWindow Key="71aec7f7-ad5a-42e1-b62e-c1ec70e13a10" Guid="038748b1-78ce-43f4-957f-47c929600f3e" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1125, 495" SelectedTabbedMdiWindow="f435dcff-6da3-41d1-855f-26e4ff5798af"><DocumentWindow Key="65b50ff8-6038-4ee1-bcf4-ed31d29dcb96" Guid="f96b9c10-8541-4722-856a-2c1144a6e8d8" /><DocumentWindow Key="c436b895-0910-4bfc-9834-05d0f79e437c" Guid="f435dcff-6da3-41d1-855f-26e4ff5798af" /><DocumentWindow Key="9ace61fc-0a02-453b-9620-efdef085948f" Guid="aafaf19a-57b2-4056-baf2-e267a8a45f17" /><DocumentWindow Key="576bc1c6-2195-41da-90bf-f17c03ae412f" Guid="048c3f8c-6f41-4589-8b6e-6eb0918682aa" /><DocumentWindow Key="a23f5feb-c84e-4711-bfc1-7b1d82d3dad9" Guid="3370b108-7abd-422e-8719-8a484dd2f116" /><DocumentWindow Key="0db9c2e3-91a1-466b-b9fd-8e6dbdd61f0e" Guid="3d20c54b-b48f-4594-9ef1-e5514e227076" /><DocumentWindow Key="4934cffb-7767-465b-97a0-fd6f35ddcc73" Guid="0acfc499-8874-4e94-ad3f-e06e9dfbbe15" /><DocumentWindow Key="adbbcbeb-7d25-410f-aa8f-b7ec4a91ba89" Guid="97fd3e4d-2bc6-43b9-bd45-a9f447eae7c1" /><DocumentWindow Key="c590a8cf-672c-4c08-bab9-4304210afbd1" Guid="a1384376-cc7a-46c1-96c6-b1d1403ec826" /><DocumentWindow Key="7e0e09cb-bc29-44c9-8aae-0b8d62c9d559" Guid="b27152c3-e404-4daf-ba99-7eb947391ceb" /><DocumentWindow Key="ee4c88b6-dc9e-43bf-aae0-0a113e6cd220" Guid="c06fdf6a-8b2b-4902-9fd3-766519a1bb69" /><DocumentWindow Key="574324a7-d0c2-4bdb-b2c9-0846e13cf0fb" Guid="2a4d7d7d-e0cb-4e89-8a31-ad670a4f1b17" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

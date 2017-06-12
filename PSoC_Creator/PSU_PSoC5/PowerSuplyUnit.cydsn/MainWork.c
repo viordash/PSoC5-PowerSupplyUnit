@@ -15,12 +15,19 @@
 #include "MainWork.h"
 #include "LCD_Display.h"
 
+#define BtnOk_Pressed 0x02
+#define BtnOk_LongPress 0x01
+
+#define MultiJog_Rotated 0x01
+#define MultiJog_FastRotate 0x02
+
 TFunction MainWorkFunction;
 TMainWork_Object MainWorkObj;
+void ChangeState(TMainWorkState newState);
 BOOL PolarModeChanged(BOOL btnBipolarModePressed);
 void ChangePolarMode(TPolarMode polarMode);
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
-BOOL ButtonOkPressed(BOOL value);
+void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
 
 void MainWork_Init() {
@@ -30,20 +37,20 @@ void MainWork_Init() {
 
 void MainWork_Task(){	
     BYTE prevButtons = 0x00;   
-    MainWorkObj.Properties.State = mwsStart;
+    ChangeState(mwsStart);
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
-    MainWorkObj.Properties.State = mwsWork;  
+    ChangeState(mwsStandBy);  
 	while (TRUE) {
         {
             BYTE bt = Buttons_Read();
             if (prevButtons != bt) {
                 prevButtons = bt;
-                PolarModeChanged(bt & 0x04);
-                RiseRatePowerUpChanged(bt & 0x02);    
-                ButtonOkPressed(bt & 0x01); 
+                PolarModeChanged(bt & 0x08);
+                RiseRatePowerUpChanged(bt & 0x04);    
+                ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
             } 
             bt = MultiJog_Status_Read();
-            if (bt & 0x01) {
+            if (bt & MultiJog_Rotated) {
                 MultiJogChangingValue(bt);
             }
 		}        
@@ -54,6 +61,10 @@ void MainWork_Task(){
         
 		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));		
 	}
+}
+
+void ChangeState(TMainWorkState newState){
+    MainWorkObj.Properties.State = newState;    
 }
 
 /*>>>-------------- Polar Output mode -----------------*/
@@ -113,31 +124,16 @@ BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed) {
 /*----------------- Rise rate of voltage at power-up --------------<<<*/
 
 /*>>>-------------- Button Ok pressed -----------------*/
-BOOL ButtonOkPressed (BOOL value) {
-DWORD pressedDuration = 0;   
-BOOL res = FALSE;
+void ButtonOkPressed (BYTE value) {
     if (!value) {
-        if (pressedDuration == 0) {
-            pressedDuration = GetTickCount();    
-        } else if (MainWorkObj.Properties.State == mwsWork && GetElapsedPeriod(pressedDuration) > SYSTICK_mS(3000)) {
-            MainWorkObj.Properties.State = mwsChangeStabilize;
-        }
-        INT i = MultiJog_GetCounter();
-        if (i > 1) {
-            RequestToNextSelect();
-            MultiJog_SetCounter(0);
-            pressedDuration = 0;
-            res = TRUE;
-        } else if (i < -1) {
-            RequestToPrevSelect();
-            MultiJog_SetCounter(0);
-            pressedDuration = 0;
-            res = TRUE;
-        }
-    } else if (pressedDuration != 0) {
-        pressedDuration = 0;     
+        return;            
     }
-    return res;
+    if (MainWorkObj.Properties.State == mwsStandBy) {
+        if (!(value & BtnOk_LongPress)) {
+            RequestToNextSelect();
+        }
+        
+    }
 }
 /*----------------- Changing the focused editor --------------<<<*/
 
@@ -152,7 +148,7 @@ static DWORD prevTick = 0;
     INT i = MultiJog_GetCounter();
     MultiJog_SetCounter(0);
     INT mult = 1;
-    if (value & 0x02) {        
+    if (value & MultiJog_FastRotate) {        
         mult = 10;
     }
     newValueA.Voltage += (i * mult);

@@ -266,28 +266,33 @@ void UpdateChannelVoltage(WORD voltage, TTextColor color, BYTE coordX, BYTE coor
 CHAR buffer[10];
     WORD valueMajor = voltage / 100;
     WORD valueMinor = voltage % 100;
-
     Display_SetFont(3);
     sprintf(buffer, "%02u", valueMajor);
     BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE); 
-    Display_SetFont(2);
-    shiftX = Display_Print(".", color, shiftX, coordY + 5, FALSE); 
+    Display_SetFont(4);
+    shiftX = Display_Print(".", color, shiftX, coordY + 3, FALSE); 
     Display_SetFont(3);
     sprintf(buffer, "%02u", valueMinor);
     shiftX = Display_Print(buffer, color, shiftX, coordY, FALSE);
-    Display_SetFont(2);
-    Display_Print("v", tcNorm, shiftX, coordY + 5, FALSE); 
+    Display_SetFont(4);
+    Display_Print("v", tcNorm, shiftX + 3, coordY + 3, FALSE); 
 }
 
 void UpdateChannelAmperage(WORD amperage, TTextColor color, BYTE coordX, BYTE coordY) {
 CHAR buffer[10];
     WORD valueMajor = amperage / 1000;
     WORD valueMinor = amperage % 1000;
-    sprintf(buffer, "%1u.%03u", valueMajor, valueMinor);
     Display_SetFont(2);
-    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE);  
-    Display_Print(" ", tcNorm, shiftX, coordY, FALSE); 
-    Display_Print("a", tcNorm, coordX + 74, coordY, FALSE);   
+    sprintf(buffer, "%1u", valueMajor);
+    BYTE shiftX = Display_Print(buffer, color, coordX, coordY, FALSE);      
+    Display_SetFont(4);
+    shiftX = Display_Print(".", color, shiftX, coordY, FALSE);     
+    Display_SetFont(2);
+    sprintf(buffer, "%03u", valueMinor);
+    shiftX = Display_Print(buffer, color, shiftX, coordY, FALSE);  
+    
+    Display_SetFont(4);
+    Display_Print("a", tcNorm, shiftX + 3, coordY, FALSE);   
 }
 
 #define VoltageACoordX 25
@@ -339,18 +344,17 @@ void ChangeSelected() {
 
 void ChangeStabilizeMode(BOOL show, TStabilizeMode stabilizeMode, 
         BYTE voltCoordX, BYTE voltCoordY, BYTE amperCoordX, BYTE amperCoordY) {   
+    Display_SetFont(4);
     if (stabilizeMode == smVoltageStab) {
-        Display_SetFont(3);
-        Display_Print("#", show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
+        Display_Print("S", show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
     } else if (stabilizeMode == smAmperageStab) {
-        Display_SetFont(2);
-        Display_Print("#", show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
+        Display_Print("s", show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
     }    
 }
 
 void ChangeStabilizeModeA() {   
     ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeA, 
-            VoltageACoordX - 20, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY);   
+            VoltageACoordX - 20, VoltageACoordY + 3, AmperageACoordX - 27, AmperageACoordY);   
     DisplayObj.Properties.StabilizeModeA = DisplayObj.Requests.StabilizeModeA; 
     ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeA, 
             VoltageACoordX - 20, VoltageACoordY, AmperageACoordX - 27, AmperageACoordY); 
@@ -359,9 +363,9 @@ void ChangeStabilizeModeA() {
 
 void ChangeStabilizeModeB() {  
     ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 20, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY);   
+            VoltageBCoordX - 20, VoltageBCoordY + 3, AmperageBCoordX - 25, AmperageBCoordY);   
     DisplayObj.Properties.StabilizeModeB = DisplayObj.Requests.StabilizeModeB; 
     ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeB, 
-            VoltageBCoordX - 20, VoltageBCoordY, AmperageBCoordX - 27, AmperageBCoordY); 
+            VoltageBCoordX - 20, VoltageBCoordY, AmperageBCoordX - 25, AmperageBCoordY); 
     Display_Flush();
 }

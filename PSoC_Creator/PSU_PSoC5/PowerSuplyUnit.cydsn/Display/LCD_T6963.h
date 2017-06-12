@@ -17,7 +17,8 @@
 #include "Display\Fonts\font_0.h"
 #include "Display\Fonts\font_1.h"
 #include "Display\Fonts\font_2.h"		 
-#include "Display\Fonts\font_3.h"
+#include "Display\Fonts\font_3.h"	 
+#include "Display\Fonts\font_4.h"
   
 #define T6963_HOR_DOTS 240
 #define T6963_VER_DOTS 128
