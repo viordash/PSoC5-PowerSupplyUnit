@@ -261,6 +261,10 @@ void PutDataInGraphicBuffer(PBYTE pCharBitmap, INT width, INT posY, INT shiftX, 
         bt = *pCharBitmap;
         if (color == tcInvert) {
             bt = ~bt;
+            if (width < 8) {
+                BYTE mask = 0xFF >> width;
+                bt &= ~mask;
+            }
         } else if (color == tcInvisible) {
             bt = 0;
         }
