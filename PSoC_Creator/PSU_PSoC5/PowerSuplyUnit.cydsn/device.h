@@ -51,5 +51,9 @@ typedef enum {
 	ltInvisible
 } TLineType;
 
+typedef WORD TElectrValue;     
+//typedef TElectrValue TVoltage;      /*voltage * 100*/
+//typedef TElectrValue TAmperage;     /*amperage * 1000*/
+
 #endif  /* __DEVICE_H__ */
 /*[]*/

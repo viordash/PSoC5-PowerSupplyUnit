@@ -14,6 +14,26 @@
 #include <stdio.h>
 #include "LCD_Display.h"
 
+#define VoltageACoordX 25
+#define VoltageACoordY 3
+#define AmperageACoordX 30
+#define AmperageACoordY 4 + 56
+
+#define StabilizeModeVoltageACoordX (VoltageACoordX - 20)
+#define StabilizeModeVoltageACoordY (VoltageACoordY + 3)
+#define StabilizeModeAmperageACoordX (AmperageACoordX - 25)
+#define StabilizeModeAmperageACoordY (AmperageACoordY)
+
+#define VoltageBCoordX 25 + 120
+#define VoltageBCoordY 3
+#define AmperageBCoordX 30 + 120
+#define AmperageBCoordY 4 + 56
+
+#define StabilizeModeVoltageBCoordX (VoltageBCoordX - 20)
+#define StabilizeModeVoltageBCoordY (VoltageBCoordY + 3)
+#define StabilizeModeAmperageBCoordX (AmperageBCoordX - 25)
+#define StabilizeModeAmperageBCoordY (AmperageBCoordY)
+
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
 BOOL ProcessRequests();
@@ -23,17 +43,17 @@ void UpdateChannelB();
 void ChangeSelected();
 void ChangeFocused();
 BOOL FlashSelected();
-//void ChangeStabilizeModeA();
-//void ChangeStabilizeModeB();
 void ChangingStabilizeMode();
 void ConfirmStabilizeMode();
 BOOL FlashChangingStabilizeMode();
-void SetPointChanged(TDisplaySelected changedType, WORD newValue);
+void ChangeMeasuredVoltageA();
+void ChangeMeasuredAmperageA();
+void ChangeMeasuredVoltageB();
+void ChangeMeasuredAmperageB();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
     memset(&DisplayObj.Requests, 0, sizeof(TDisplayRequests));
-    memset(&DisplayObj.Events, 0, sizeof(TDisplayEvents));
 }
 
 void Display_Task() {	
@@ -54,16 +74,6 @@ void Display_Task() {
 void RequestToChangeScreen(TDisplayScreen newValue) { 
     DisplayObj.Requests.Screen = newValue;
     DisplayObj.Requests.ScreenRequest = TRUE;
-}
-
-void RequestToChannelA(TDisplayChannelData newValue) { 
-    DisplayObj.Requests.ChannelA = newValue;
-    DisplayObj.Requests.ChannelARequest = TRUE;
-}
-
-void RequestToChannelB(TDisplayChannelData newValue) { 
-    DisplayObj.Requests.ChannelB = newValue;
-    DisplayObj.Requests.ChannelBRequest = TRUE;
 }
 
 void RequestToSelected(TDisplaySelected newValue) { 
@@ -216,16 +226,6 @@ BOOL res = FALSE;
         DisplayObj.Requests.ScreenRequest = FALSE;
         res = TRUE;  
     } 
-    if (DisplayObj.Requests.ChannelARequest) {
-        UpdateChannelA();
-        DisplayObj.Requests.ChannelARequest = FALSE;
-        res = TRUE;  
-    }
-    if (DisplayObj.Requests.ChannelBRequest) {
-        UpdateChannelB();
-        DisplayObj.Requests.ChannelBRequest = FALSE;
-        res = TRUE;  
-    }
     if (DisplayObj.Requests.SelectedRequest) {
         ChangeSelected();
         DisplayObj.Requests.SelectedRequest = FALSE;
@@ -245,7 +245,27 @@ BOOL res = FALSE;
         ConfirmStabilizeMode();
         DisplayObj.Requests.ConfirmStabilizeModeRequest = FALSE;
         res = TRUE;  
-    } 
+    }  
+    if (DisplayObj.Requests.MeasuredVoltageA.Request) {
+        ChangeMeasuredVoltageA();
+        DisplayObj.Requests.MeasuredVoltageA.Request = FALSE;
+        res = TRUE;  
+    }
+    if (DisplayObj.Requests.MeasuredAmperageA.Request) {
+        ChangeMeasuredAmperageA();
+        DisplayObj.Requests.MeasuredAmperageA.Request = FALSE;
+        res = TRUE;  
+    }
+    if (DisplayObj.Requests.MeasuredVoltageB.Request) {
+        ChangeMeasuredVoltageB();
+        DisplayObj.Requests.MeasuredVoltageB.Request = FALSE;
+        res = TRUE;  
+    }
+    if (DisplayObj.Requests.MeasuredAmperageB.Request) {
+        ChangeMeasuredAmperageB();
+        DisplayObj.Requests.MeasuredAmperageB.Request = FALSE;
+        res = TRUE;  
+    }
     return res;
 }
 
@@ -412,43 +432,23 @@ CHAR buffer[10];
     Display_Print("a", tcNorm, shiftX + 3, coordY, FALSE);   
 }
 
-#define VoltageACoordX 25
-#define VoltageACoordY 3
-#define AmperageACoordX 30
-#define AmperageACoordY 4 + 56
-
-#define StabilizeModeVoltageACoordX (VoltageACoordX - 20)
-#define StabilizeModeVoltageACoordY (VoltageACoordY + 3)
-#define StabilizeModeAmperageACoordX (AmperageACoordX - 25)
-#define StabilizeModeAmperageACoordY (AmperageACoordY)
-
-#define VoltageBCoordX 25 + 120
-#define VoltageBCoordY 3
-#define AmperageBCoordX 30 + 120
-#define AmperageBCoordY 4 + 56
-
-#define StabilizeModeVoltageBCoordX (VoltageBCoordX - 20)
-#define StabilizeModeVoltageBCoordY (VoltageBCoordY + 3)
-#define StabilizeModeAmperageBCoordX (AmperageBCoordX - 25)
-#define StabilizeModeAmperageBCoordY (AmperageBCoordY)
-
-void UpdateChannelA() {         
-    DisplayObj.Properties.ChannelA = DisplayObj.Requests.ChannelA; 
-    UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, DisplayObj.Properties.Focused == dslVoltageA ? tcInvert : tcNorm, 
-            VoltageACoordX, VoltageACoordY);
-    UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, DisplayObj.Properties.Focused == dslAmperageA ? tcInvert : tcNorm, 
-            AmperageACoordX, AmperageACoordY);
-    Display_Flush();
-}
-
-void UpdateChannelB() {   
-    DisplayObj.Properties.ChannelB = DisplayObj.Requests.ChannelB;   
-    UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, DisplayObj.Properties.Focused == dslVoltageB ? tcInvert : tcNorm, 
-            VoltageBCoordX, VoltageBCoordY);
-    UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, DisplayObj.Properties.Focused == dslAmperageB ? tcInvert : tcNorm, 
-            AmperageBCoordX, AmperageBCoordY);
-    Display_Flush();
-}
+//void UpdateChannelA() {         
+//    DisplayObj.Properties.ChannelA = DisplayObj.Requests.ChannelA; 
+//    UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, DisplayObj.Properties.Focused == dslVoltageA ? tcInvert : tcNorm, 
+//            VoltageACoordX, VoltageACoordY);
+//    UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, DisplayObj.Properties.Focused == dslAmperageA ? tcInvert : tcNorm, 
+//            AmperageACoordX, AmperageACoordY);
+//    Display_Flush();
+//}
+//
+//void UpdateChannelB() {   
+//    DisplayObj.Properties.ChannelB = DisplayObj.Requests.ChannelB;   
+//    UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, DisplayObj.Properties.Focused == dslVoltageB ? tcInvert : tcNorm, 
+//            VoltageBCoordX, VoltageBCoordY);
+//    UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, DisplayObj.Properties.Focused == dslAmperageB ? tcInvert : tcNorm, 
+//            AmperageBCoordX, AmperageBCoordY);
+//    Display_Flush();
+//}
 
 void UpdateSelect(BOOL selected) {    
     if (DisplayObj.Properties.Selected == dslVoltageA) {
@@ -509,13 +509,13 @@ BOOL IsDisplayInSelectionMode() {
 
 void UpdateFocused(BOOL focused) {   
     if (DisplayObj.Properties.Focused == dslVoltageA) {
-        UpdateChannelVoltage(DisplayObj.Properties.ChannelA.Voltage, focused ? tcInvert : tcNorm, VoltageACoordX, VoltageACoordY);
+        UpdateChannelVoltage(DisplayObj.Properties.MeasuredVoltageA, focused ? tcInvert : tcNorm, VoltageACoordX, VoltageACoordY);
     } else if (DisplayObj.Properties.Focused == dslAmperageA) {
-        UpdateChannelAmperage(DisplayObj.Properties.ChannelA.Amperage, focused ? tcInvert : tcNorm, AmperageACoordX, AmperageACoordY);
+        UpdateChannelAmperage(DisplayObj.Properties.MeasuredAmperageA, focused ? tcInvert : tcNorm, AmperageACoordX, AmperageACoordY);
     } else if (DisplayObj.Properties.Focused == dslVoltageB) {
-        UpdateChannelVoltage(DisplayObj.Properties.ChannelB.Voltage, focused ? tcInvert : tcNorm, VoltageBCoordX, VoltageBCoordY);
+        UpdateChannelVoltage(DisplayObj.Properties.MeasuredVoltageB, focused ? tcInvert : tcNorm, VoltageBCoordX, VoltageBCoordY);
     } else if (DisplayObj.Properties.Focused == dslAmperageB) {
-        UpdateChannelAmperage(DisplayObj.Properties.ChannelB.Amperage, focused ? tcInvert : tcNorm, AmperageBCoordX, AmperageBCoordY);
+        UpdateChannelAmperage(DisplayObj.Properties.MeasuredAmperageB, focused ? tcInvert : tcNorm, AmperageBCoordX, AmperageBCoordY);
     }    
 }
 
@@ -632,13 +632,54 @@ BOOL IsDisplayInChangingStabilizeMode() {
 }
 /*----------------- StabilizeMode --------------<<<*/
 
-
-
-/*>>>-------------- Events -----------------*/
-void SetPointChanged(TDisplaySelected changedType, WORD newValue) {
-	if (DisplayObj.Events.OnSetPointChanged != NULL) {
-		DisplayObj.Events.OnSetPointChanged(changedType, newValue);	    
-	}
+/*>>>-------------- Change ElectrValue -----------------*/
+void RequestToChangeMeasuredVoltageA(TElectrValue value) {
+    DisplayObj.Requests.MeasuredVoltageA.Value = value;
+    DisplayObj.Requests.MeasuredVoltageA.Request = TRUE;
 }
 
-/*----------------- Events --------------<<<*/
+void ChangeMeasuredVoltageA() {
+    DisplayObj.Properties.MeasuredVoltageA = DisplayObj.Requests.MeasuredVoltageA.Value;
+    UpdateChannelVoltage(DisplayObj.Properties.MeasuredVoltageA, DisplayObj.Properties.Focused == dslVoltageA ? tcInvert : tcNorm, 
+            VoltageACoordX, VoltageACoordY);
+    Display_Flush();    
+}
+
+void RequestToChangeMeasuredAmperageA(TElectrValue value) {
+    DisplayObj.Requests.MeasuredAmperageA.Value = value;
+    DisplayObj.Requests.MeasuredAmperageA.Request = TRUE;
+}
+
+void ChangeMeasuredAmperageA() {
+    DisplayObj.Properties.MeasuredAmperageA = DisplayObj.Requests.MeasuredAmperageA.Value;
+    UpdateChannelAmperage(DisplayObj.Properties.MeasuredAmperageA, DisplayObj.Properties.Focused == dslAmperageA ? tcInvert : tcNorm, 
+            AmperageACoordX, AmperageACoordY);
+    Display_Flush();    
+}
+
+void RequestToChangeMeasuredVoltageB(TElectrValue value) {
+    DisplayObj.Requests.MeasuredVoltageB.Value = value;
+    DisplayObj.Requests.MeasuredVoltageB.Request = TRUE;
+}
+
+void ChangeMeasuredVoltageB() {
+    DisplayObj.Properties.MeasuredVoltageB = DisplayObj.Requests.MeasuredVoltageB.Value;
+    UpdateChannelVoltage(DisplayObj.Properties.MeasuredVoltageB, DisplayObj.Properties.Focused == dslVoltageB ? tcInvert : tcNorm, 
+            VoltageBCoordX, VoltageBCoordY);
+    Display_Flush();    
+}
+
+void RequestToChangeMeasuredAmperageB(TElectrValue value) {
+    DisplayObj.Requests.MeasuredAmperageB.Value = value;
+    DisplayObj.Requests.MeasuredAmperageB.Request = TRUE;
+}
+
+void ChangeMeasuredAmperageB() {
+    DisplayObj.Properties.MeasuredAmperageB = DisplayObj.Requests.MeasuredAmperageB.Value;
+    UpdateChannelAmperage(DisplayObj.Properties.MeasuredAmperageB, DisplayObj.Properties.Focused == dslAmperageB ? tcInvert : tcNorm, 
+            AmperageBCoordX, AmperageBCoordY);
+    Display_Flush();    
+}
+/*----------------- SetPoint --------------<<<*/
+
+

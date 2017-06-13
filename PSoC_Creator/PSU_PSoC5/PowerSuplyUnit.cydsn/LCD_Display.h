@@ -63,11 +63,6 @@ typedef enum {
 	dslAmperageB,
 } TDisplaySelected;
 
-typedef struct {
-    WORD Voltage;   /*voltage * 100*/
-    WORD Amperage;   /*amperage * 1000*/
-} TDisplayChannelData, * PTDisplayChannelData;
-
 typedef enum {
 	scmNone = 0,
 	scmVoltageAStab,
@@ -76,16 +71,16 @@ typedef enum {
 	scmAmperageBStab,
 } TStabilizeChangingMode;
 
-typedef BOOL(*TEventSetPointChanged) (TDisplaySelected changedType, WORD newValue);
+typedef struct {
+    TElectrValue Value;
+    BOOL Request;
+} TValueChangingRequest;
+
+//typedef BOOL(*TEventSetPointChanged) (TDisplaySelected changedType, WORD oldValue, WORD newValue);
 
 typedef struct {
     TDisplayScreen Screen; 
     BOOL ScreenRequest;
-    
-    TDisplayChannelData ChannelA;
-    TDisplayChannelData ChannelB;
-    BOOL ChannelARequest;
-    BOOL ChannelBRequest;
     
     TDisplaySelected Selected;
     BOOL SelectedRequest;
@@ -95,13 +90,20 @@ typedef struct {
     TStabilizeChangingMode ChangingStabilizeMode;
     BOOL ChangingStabilizeModeRequest;
     
-    BOOL ConfirmStabilizeModeRequest;
+    BOOL ConfirmStabilizeModeRequest; 
+    
+    TValueChangingRequest MeasuredVoltageA;
+    TValueChangingRequest MeasuredAmperageA;
+    TValueChangingRequest MeasuredVoltageB;
+    TValueChangingRequest MeasuredAmperageB;
+    TValueChangingRequest SetPointVoltageA;
+    TValueChangingRequest SetPointAmperageA;
+    TValueChangingRequest SetPointVoltageB;
+    TValueChangingRequest SetPointAmperageB;
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
     TDisplayScreen Screen; 
-    TDisplayChannelData ChannelA;
-    TDisplayChannelData ChannelB;
     DWORD SelectedTimeout;
     DWORD SelectedFlashingTick;
     TDisplaySelected Selected;
@@ -112,36 +114,35 @@ typedef struct {
     DWORD ChangingStabilizeModeFlashingTick;
     TStabilizeMode StabilizeModeA;
     TStabilizeMode StabilizeModeB;
+    
+    TElectrValue MeasuredVoltageA;
+    TElectrValue MeasuredAmperageA;
+    TElectrValue MeasuredVoltageB;
+    TElectrValue MeasuredAmperageB;
 } TDisplayProperties, * PTDisplayProperties;
-
-typedef struct {
-    TEventSetPointChanged OnSetPointChanged; 
-} TDisplayEvents, * PTDisplayEvents;
 
 typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
-    TDisplayEvents Events;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
-extern void RequestToChannelA(TDisplayChannelData newValue);
-extern void RequestToChannelB(TDisplayChannelData newValue);
 extern void RequestToNextSelect();
 extern void RequestToPrevSelect();
 extern void RequestToSetSelection();
 extern void RequestToConfirmSelection();
 extern void RequestToSelected(TDisplaySelected newValue);
 extern BOOL IsDisplayInSelectionMode();
-//extern void RequestToFocused(TDisplaySelected newValue);
-//extern void RequestToStabilizeModeA(TStabilizeMode newValue);
-//extern void RequestToStabilizeModeB(TStabilizeMode newValue);
 extern void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue);
 extern void RequestToConfirmStabilizeMode();
 extern void RequestToNextStabilizeMode();
 extern void RequestToPrevStabilizeMode();
 extern void RequestToSetChangingStabilizeMode();
 extern BOOL IsDisplayInChangingStabilizeMode();
+extern void RequestToChangeMeasuredVoltageA(TElectrValue value);
+extern void RequestToChangeMeasuredAmperageA(TElectrValue value);
+extern void RequestToChangeMeasuredVoltageB(TElectrValue value);
+extern void RequestToChangeMeasuredAmperageB(TElectrValue value);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

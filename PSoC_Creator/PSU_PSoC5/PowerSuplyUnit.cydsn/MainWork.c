@@ -100,7 +100,7 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangingStabilizeMode(scmVoltageAStab);
         RequestToConfirmStabilizeMode();
         
-		TaskSleep(&MainWorkFunction, SYSTICK_mS(300));	
+		TaskSleep(&MainWorkFunction, SYSTICK_mS(1000));	
         RequestToChangingStabilizeMode(scmAmperageBStab);
         RequestToConfirmStabilizeMode();
         
