@@ -13,6 +13,7 @@
 #define __LCD_DISPLAY_H__
 
 #include <device.h>
+#include "Display\ValueIndicator.h"
 
 extern TFunction DisplayFunction;
 extern void Display_Init();
@@ -55,13 +56,13 @@ typedef enum {
 	dsError
 } TDisplayScreen;
 
-typedef enum {
-	dslNone = 0,
-	dslVoltageA,
-	dslAmperageA,
-	dslVoltageB,
-	dslAmperageB,
-} TDisplaySelected;
+//typedef enum {
+//	dslNone = 0,
+//	dslVoltageA,
+//	dslAmperageA,
+//	dslVoltageB,
+//	dslAmperageB,
+//} TDisplaySelected;
 
 typedef enum {
 	scmNone = 0,
@@ -72,9 +73,12 @@ typedef enum {
 } TStabilizeChangingMode;
 
 typedef struct {
-    TElectrValue Value;
-    BOOL Request;
-} TValueChangingRequest;
+    TValueIndicator Indicator;
+    TElectrValue NewValue;
+    BOOL RequestToChangeValue;
+    BOOL RequestToSelect;
+    BOOL RequestToFocus;
+} TVariableValue, * PTVariableValue;
 
 //typedef BOOL(*TEventSetPointChanged) (TDisplaySelected changedType, WORD oldValue, WORD newValue);
 
@@ -82,48 +86,47 @@ typedef struct {
     TDisplayScreen Screen; 
     BOOL ScreenRequest;
     
-    TDisplaySelected Selected;
-    BOOL SelectedRequest;
-    TDisplaySelected Focused;
-    BOOL FocusedRequest;
+//    TDisplaySelected Selected;
+//    BOOL SelectedRequest;
+//    TDisplaySelected Focused;
+//    BOOL FocusedRequest;
     
     TStabilizeChangingMode ChangingStabilizeMode;
     BOOL ChangingStabilizeModeRequest;
     
     BOOL ConfirmStabilizeModeRequest; 
-    
-    TValueChangingRequest MeasuredVoltageA;
-    TValueChangingRequest MeasuredAmperageA;
-    TValueChangingRequest MeasuredVoltageB;
-    TValueChangingRequest MeasuredAmperageB;
-    TValueChangingRequest SetPointVoltageA;
-    TValueChangingRequest SetPointAmperageA;
-    TValueChangingRequest SetPointVoltageB;
-    TValueChangingRequest SetPointAmperageB;
+
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
     TDisplayScreen Screen; 
     DWORD SelectedTimeout;
     DWORD SelectedFlashingTick;
-    TDisplaySelected Selected;
-    TDisplaySelected Focused;
+//    TDisplaySelected Selected;
+//    TDisplaySelected Focused;
     
     TStabilizeChangingMode ChangingStabilizeMode;
     DWORD ChangingStabilizeModeTimeout;
     DWORD ChangingStabilizeModeFlashingTick;
     TStabilizeMode StabilizeModeA;
     TStabilizeMode StabilizeModeB;
-    
-    TElectrValue MeasuredVoltageA;
-    TElectrValue MeasuredAmperageA;
-    TElectrValue MeasuredVoltageB;
-    TElectrValue MeasuredAmperageB;
 } TDisplayProperties, * PTDisplayProperties;
+
+typedef struct {   
+    TVariableValue MeasuredVoltageA;
+    TVariableValue MeasuredAmperageA;
+    TVariableValue MeasuredVoltageB;
+    TVariableValue MeasuredAmperageB;
+    TVariableValue SetPointVoltageA;
+    TVariableValue SetPointAmperageA;
+    TVariableValue SetPointVoltageB;
+    TVariableValue SetPointAmperageB;
+} TDisplayValues, * PTDisplayValues;
 
 typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
+    TDisplayValues Values;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
@@ -131,7 +134,7 @@ extern void RequestToNextSelect();
 extern void RequestToPrevSelect();
 extern void RequestToSetSelection();
 extern void RequestToConfirmSelection();
-extern void RequestToSelected(TDisplaySelected newValue);
+//extern void RequestToSelected(TDisplaySelected newValue);
 extern BOOL IsDisplayInSelectionMode();
 extern void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue);
 extern void RequestToConfirmStabilizeMode();

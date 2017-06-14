@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Header Files\device.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -28,7 +28,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\Flash Security</v>
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr\EEPROM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.h</v>
@@ -44,6 +43,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
@@ -326,21 +327,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_0.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_1.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_1.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_2.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_2.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_3.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_3.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
@@ -370,6 +362,15 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32\ADC_Current_Bypass_P32_aliases.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk\ADC_Current_Ext_CP_Clk.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk\ADC_Current_Ext_CP_Clk.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ\ADC_Current_IRQ.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ\ADC_Current_IRQ.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK\ADC_Current_theACLK.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK\ADC_Current_theACLK.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_VoltageChanelA</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_VoltageChanelA\ADC_VoltageChanelA.c</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -570,6 +571,75 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PSoC 5LP Architecture TRM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CY8C58LP Family Datasheet</v>
 <v>PSU_PSoC5\PowerSuplyUnit\System Reference Guides</v>
+<v>PSU_PSoC5\PowerSuplyUnit\System Reference Guides\cy_boot_v5_50</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_DelSig_v3_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0\ADC_SAR_v3_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0\Count7_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_srff_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_srff_v1_0\cy_srff_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0\ExtBuffer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtOpAmp_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtOpAmp_v1_0\ExtOpAmp_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Fuse_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0\Inductor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0\LED_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0\NFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\not_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0\NPN_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\or_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PFET_En_v1_0\PFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PGA_v2_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Power_v1_0\Power_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PWM_v3_30</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PWM_v3_30\PWM_v3_30.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\QuadDec_v3_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Relay_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Relay_v1_0\Relay_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Resistor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Resistor_v1_0\Resistor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Schottky_v1_0\Schottky_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\SwitchDT_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\SwitchDT_v1_0\SwitchDT_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\SwitchSPST_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\SwitchSPST_v1_0\SwitchSPST_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\TestPoint_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\VREG_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\VREG_v1_0\VREG_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Zener_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Zener_v1_0\Zener_v1_0.pdf</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
@@ -577,6 +647,51 @@
 <v>PSU_PSoC5\PowerSuplyUnit\PSoC 5LP Architecture TRM</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CY8C58LP Family Datasheet</v>
 <v>PSU_PSoC5\PowerSuplyUnit\System Reference Guides</v>
+<v>PSU_PSoC5\PowerSuplyUnit\System Reference Guides\cy_boot_v5_50</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_DelSig_v3_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ADC_SAR_v3_0\ADC_SAR_v3_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\AMuxHw_v1_50.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Capacitor_v1_0\Capacitor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Connector20_v1_0\Connector20_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Count7_v1_0\Count7_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20\cy_pins_v2_20.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_srff_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_srff_v1_0\cy_srff_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyControlReg_v1_80\CyControlReg_v1_80.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtBuffer_v1_0\ExtBuffer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtOpAmp_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\ExtOpAmp_v1_0\ExtOpAmp_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Fuse_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Gnd_v1_0\Gnd_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0\Inductor_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0\LED_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0\NFET_En_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\not_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0</v>
+<v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0\NPN_v1_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -592,13 +707,15 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
-<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
-<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.c" />
-<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.h" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
+<name v=".\PowerSuplyUnit.cydsn\device.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -606,7 +723,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="cc1a9d73-4a5b-46ca-a4e9-b08e7b6a6ff6"><DocumentWindow Key="8dd03fc0-d40d-4ef3-85db-8b821d578ae0" Guid="baad6aaf-3241-40d8-90dc-c65ab927c478" /><DocumentWindow Key="ebdb87ad-b41c-4b0c-a991-515ac79aa724" Guid="cc1a9d73-4a5b-46ca-a4e9-b08e7b6a6ff6" /><DocumentWindow Key="c266883c-c673-494c-bec7-a16c70e60bc0" Guid="f47d47f1-c14b-42d1-8f74-87a9498bb369" /><DocumentWindow Key="4ae902ae-b338-47c8-a516-0c02fa7dd0a4" Guid="34217070-39d1-4539-a1fe-8607cdd159c4" /><DocumentWindow Key="7594f8ea-1b14-41fd-8047-4de353e92156" Guid="22abd6d5-6d42-4785-9e98-965099e4455c" /><DocumentWindow Key="629aab63-8b41-4bc5-9817-b9ee4c3955cb" Guid="64a6a199-f264-46cd-a048-fa3935e0231a" /><DocumentWindow Key="c6cedb02-a6f0-4277-b403-0a93c6307a65" Guid="500e6ba7-e199-4030-8595-fdb9f44f0342" /><DocumentWindow Key="54e4e1f7-fb97-4ea3-ace8-a8e6ec0c363e" Guid="b3eb1e55-96e3-43de-92db-b1931ffa40a9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="1eefb31a-cba9-4375-b771-89913f16bead"><DocumentWindow Key="00b9da0f-71fe-48e5-9c8b-88c0e6b12125" Guid="1eefb31a-cba9-4375-b771-89913f16bead" /><DocumentWindow Key="e4bfa3e9-c520-4576-b295-5893bd7ca689" Guid="4b60b0d8-830f-4ee6-99e2-4c4df11a3be9" /><DocumentWindow Key="b5836838-28af-4e3d-8e20-b423872d7f9b" Guid="1db2facf-5331-4c5f-b8d7-61e2e709fefb" /><DocumentWindow Key="10eff1e9-1d25-4118-bb32-b87694158fad" Guid="a2d81247-1a14-43ed-8117-8e0103c6f4e8" /><DocumentWindow Key="57541b2e-2842-4683-b545-90b66b986133" Guid="34d52778-ac6c-4e06-9e9d-9b6bd6980489" /><DocumentWindow Key="a23cad3b-fa11-486d-8f59-ffc9a66129f5" Guid="953f0be6-0996-4574-a262-a97568d743ae" /><DocumentWindow Key="120a0cea-17ac-419f-b3d4-c3850d5e3c95" Guid="de92958f-3e62-4c4b-b592-dc92bacd934a" /><DocumentWindow Key="5fb0a226-e5e4-44ec-9b3a-e592b05dccb7" Guid="beaec29d-44d0-40bf-81ed-04e36ece83a6" /><DocumentWindow Key="ac88a461-2057-4b40-9737-530f3bf6df1a" Guid="9818cb6e-bd30-43ac-9391-ada3e7f38341" /><DocumentWindow Key="90929aa2-5380-45a5-aa2c-895585cf05f2" Guid="a945ed9b-1f86-4201-a3e1-8f1be5b1a292" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
