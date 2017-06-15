@@ -29,6 +29,7 @@ typedef struct {
     BYTE Height;
     BOOL Selected;
     BOOL Focused;
+    BOOL Readonly;
 	INT UnitFont;
 	INT DecimalPointFont;    
     BYTE SecondaryTop;
@@ -37,7 +38,7 @@ typedef struct {
 } TValueIndicator, *PTValueIndicator;
   
 extern void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT font, BYTE left, BYTE top, BYTE width, BYTE height, INT unitFont, 
-        INT decimalPointFont, BYTE secondaryTop);
+        INT decimalPointFont, BYTE secondaryTop, BOOL readonly);
 extern void ValueIndicator_SetSelected(PTValueIndicator pValueIndicator, BOOL value);
 extern BOOL ValueIndicator_GetSelected(PTValueIndicator pValueIndicator);
 extern void ValueIndicator_SetFocused(PTValueIndicator pValueIndicator, BOOL value);

@@ -13,9 +13,7 @@
 #define __MAINWORK_H__
 	
 #include <device.h>
-	
-#define NETWORK_BUFFER_SIZE 4096
-	
+		
 typedef enum {
 	mwsInit = 0,
 	mwsStart,
@@ -25,8 +23,15 @@ typedef enum {
 } TMainWorkState;
 
 typedef struct {
-  TMainWorkState State;
-  TPolarMode PolarMode;
+    TMainWorkState State;
+    TPolarMode PolarMode;
+    TStabilizeMode StabilizeModeA;
+    TStabilizeMode StabilizeModeB;
+    TChangedValue ChangedValue;
+    TElectrValue SetPointVoltageA;
+    TElectrValue SetPointAmperageA;
+    TElectrValue SetPointVoltageB;
+    TElectrValue SetPointAmperageB;
 } TMainWork_Property, * PTMainWork_Property;
 
 typedef struct {

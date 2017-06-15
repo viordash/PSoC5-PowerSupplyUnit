@@ -56,14 +56,6 @@ typedef enum {
 	dsError
 } TDisplayScreen;
 
-//typedef enum {
-//	dslNone = 0,
-//	dslVoltageA,
-//	dslAmperageA,
-//	dslVoltageB,
-//	dslAmperageB,
-//} TDisplaySelected;
-
 typedef enum {
 	scmNone = 0,
 	scmVoltageAStab,
@@ -80,17 +72,9 @@ typedef struct {
     BOOL RequestToFocus;
 } TVariableValue, * PTVariableValue;
 
-//typedef BOOL(*TEventSetPointChanged) (TDisplaySelected changedType, WORD oldValue, WORD newValue);
-
 typedef struct {
     TDisplayScreen Screen; 
-    BOOL ScreenRequest;
-    
-//    TDisplaySelected Selected;
-//    BOOL SelectedRequest;
-//    TDisplaySelected Focused;
-//    BOOL FocusedRequest;
-    
+    BOOL ScreenRequest;    
     TStabilizeChangingMode ChangingStabilizeMode;
     BOOL ChangingStabilizeModeRequest;
     
@@ -102,8 +86,7 @@ typedef struct {
     TDisplayScreen Screen; 
     DWORD SelectedTimeout;
     DWORD SelectedFlashingTick;
-//    TDisplaySelected Selected;
-//    TDisplaySelected Focused;
+    PTValueIndicator SelectedIndicator;
     
     TStabilizeChangingMode ChangingStabilizeMode;
     DWORD ChangingStabilizeModeTimeout;
@@ -130,22 +113,20 @@ typedef struct {
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
-extern void RequestToNextSelect();
-extern void RequestToPrevSelect();
-extern void RequestToSetSelection();
-extern void RequestToConfirmSelection();
-//extern void RequestToSelected(TDisplaySelected newValue);
-extern BOOL IsDisplayInSelectionMode();
+
 extern void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue);
 extern void RequestToConfirmStabilizeMode();
 extern void RequestToNextStabilizeMode();
 extern void RequestToPrevStabilizeMode();
 extern void RequestToSetChangingStabilizeMode();
 extern BOOL IsDisplayInChangingStabilizeMode();
-extern void RequestToChangeMeasuredVoltageA(TElectrValue value);
-extern void RequestToChangeMeasuredAmperageA(TElectrValue value);
-extern void RequestToChangeMeasuredVoltageB(TElectrValue value);
-extern void RequestToChangeMeasuredAmperageB(TElectrValue value);
+extern void RequestToChangeValue(TSelectValue selectValue, TElectrValue value);
+
+extern void RequestToSelect(TSelectValue selectValue);
+extern TSelectValue GetCurrentSelectedValue();
+extern BOOL IsDisplayInSelectionMode();
+
+extern void RequestToFocusing(TSelectValue selectValue);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

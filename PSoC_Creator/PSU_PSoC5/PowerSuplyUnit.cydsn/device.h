@@ -37,6 +37,24 @@ typedef enum {
     pmUnipolar
 } TPolarMode;
 
+typedef enum {
+	svNone = 0,
+	svMeasuredVoltageA,
+	svMeasuredAmperageA,
+	svMeasuredVoltageB,
+	svMeasuredAmperageB,
+	svSetPointVoltageA,
+	svSetPointAmperageA,
+	svSetPointVoltageB,
+	svSetPointAmperageB,
+} TSelectValue;
+
+typedef enum {
+	cvVoltageA,
+	cvAmperageA,
+	cvVoltageB,
+	cvAmperageB
+} TChangedValue;
 
 typedef enum {
 	tcNorm = 0,
@@ -51,7 +69,7 @@ typedef enum {
 	ltInvisible
 } TLineType;
 
-typedef WORD TElectrValue;     
+typedef WORD TElectrValue, * PTElectrValue;     
 //typedef TElectrValue TVoltage;      /*voltage * 100*/
 //typedef TElectrValue TAmperage;     /*amperage * 1000*/
 

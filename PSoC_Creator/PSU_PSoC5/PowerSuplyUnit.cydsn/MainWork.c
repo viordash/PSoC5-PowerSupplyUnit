@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include "MainWork.h"
 #include "LCD_Display.h"
+#include "EditingValue.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -32,14 +33,17 @@ void MultiJogChangingValue(BYTE value);
 
 void MainWork_Init() {
   MainWorkObj.Properties.State = mwsInit;
-  MainWorkObj.Properties.PolarMode = pmInit;
+  MainWorkObj.Properties.PolarMode = pmInit;   
+  MainWorkObj.Properties.ChangedValue = cvVoltageA;  
+  MainWorkObj.Properties.StabilizeModeA = smVoltageStab;  
+  MainWorkObj.Properties.StabilizeModeB = smAmperageStab; 
 }
 
-void MainWork_Task(){	
-    BYTE prevButtons = 0x00;   
+void MainWork_Task(){	 
     ChangeState(mwsStart);
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
+    BYTE prevButtons = Buttons_Read();  
 	while (TRUE) {
         {
             BYTE bt = Buttons_Read();
@@ -87,15 +91,18 @@ BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
     return res;
 }
 
-TDisplayChannelData newValueA = {1210, 561};
-TDisplayChannelData newValueB = {515, 1300};
-
 void ChangePolarMode(TPolarMode polarMode) {
     MainWorkObj.Properties.PolarMode = polarMode;
     if (polarMode == pmBipolar) {
         RequestToChangeScreen(dsBipolar);
-        RequestToChannelA(newValueA);
-        RequestToChannelB(newValueB);
+        RequestToChangeValue(svMeasuredVoltageA, 1210);
+        RequestToChangeValue(svSetPointVoltageA, 1234);
+        RequestToChangeValue(svMeasuredAmperageA, 561);
+        RequestToChangeValue(svSetPointAmperageA, 1500);
+        RequestToChangeValue(svMeasuredVoltageB, 515);
+        RequestToChangeValue(svSetPointVoltageB, 520);
+        RequestToChangeValue(svMeasuredAmperageB, 1300);
+        RequestToChangeValue(svSetPointAmperageB, 3756);
         
         RequestToChangingStabilizeMode(scmVoltageAStab);
         RequestToConfirmStabilizeMode();
@@ -104,14 +111,18 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangingStabilizeMode(scmAmperageBStab);
         RequestToConfirmStabilizeMode();
         
+        RequestToFocusing(svMeasuredVoltageA);        
         
         O_Led_Polar_Write(0);
     } else if (polarMode == pmUnipolar) {
         RequestToChangeScreen(dsUnipolar);
-        TDisplayChannelData newValueA = {332, 6950};
-        RequestToChannelA(newValueA);        
+        RequestToChangeValue(svMeasuredVoltageA, 332);
+        RequestToChangeValue(svSetPointVoltageA, 334);
+        RequestToChangeValue(svMeasuredAmperageA, 6950);
+        RequestToChangeValue(svSetPointAmperageA, 7000);      
         RequestToChangingStabilizeMode(scmAmperageAStab);
-        RequestToConfirmStabilizeMode();       
+        RequestToConfirmStabilizeMode();    
+        RequestToFocusing(svMeasuredAmperageA);      
         O_Led_Polar_Write(0xFF);
     }
 }
@@ -137,9 +148,9 @@ void ButtonOkPressed (BYTE value) {
             if(MainWorkObj.Properties.State == mwsStandBy && IsDisplayInChangingStabilizeMode()) {
                 RequestToConfirmStabilizeMode();
             } else if(!IsDisplayInSelectionMode()) {
-                RequestToSetSelection();
+                SelectValue();
             } else {
-                RequestToConfirmSelection();
+                ConfirmSelection();
             }
         } else if (MainWorkObj.Properties.State == mwsStandBy) {
             if(!IsDisplayInChangingStabilizeMode()) {
@@ -152,6 +163,8 @@ void ButtonOkPressed (BYTE value) {
 /*----------------- Button Ok pressed --------------<<<*/
 
 /*>>>-------------- MultiJog Changing Value -----------------*/
+
+
 void MultiJogChangingValue (BYTE value) {
 static DWORD prevTick = 0;  
     if (GetElapsedPeriod(prevTick) < SYSTICK_mS(100)) {
@@ -163,9 +176,9 @@ static DWORD prevTick = 0;
     MultiJog_SetCounter(0);
     if(IsDisplayInSelectionMode()) {
         if (i > 0) {
-            RequestToNextSelect();    
+            SelectNextIndicator();    
         } else if (i < 0) {
-            RequestToPrevSelect();    
+            SelectPrevIndicator();    
         }
     } else if(IsDisplayInChangingStabilizeMode()) {
         if (i > 0) {
@@ -178,8 +191,7 @@ static DWORD prevTick = 0;
         if (value & MultiJog_FastRotate) {        
             mult = 10;
         }
-        newValueA.Voltage += (i * mult);
-        RequestToChannelA(newValueA); 
+        ChangeValue((i * mult));
     }    
 }
 /*----------------- MultiJog Changing Value --------------<<<*/

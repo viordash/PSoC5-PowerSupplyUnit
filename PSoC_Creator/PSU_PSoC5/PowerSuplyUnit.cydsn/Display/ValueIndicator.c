@@ -18,7 +18,7 @@
 #include "Display\ValueIndicator.h"
 
 void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT font, BYTE left, BYTE top, BYTE width, BYTE height, INT unitFont, 
-        INT decimalPointFont, BYTE secondaryTop) {
+        INT decimalPointFont, BYTE secondaryTop, BOOL readonly) {
     pValueIndicator->Mode = mode;
     pValueIndicator->Font = font;
     pValueIndicator->Left = left;
@@ -28,11 +28,15 @@ void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT
     pValueIndicator->UnitFont = unitFont;
     pValueIndicator->DecimalPointFont = decimalPointFont;
     pValueIndicator->SecondaryTop = secondaryTop;
+    pValueIndicator->Readonly = readonly;  
     pValueIndicator->Selected = FALSE;
     pValueIndicator->Focused = FALSE;    
 }
 
 void ValueIndicator_SetSelected(PTValueIndicator pValueIndicator, BOOL value) {
+    if (pValueIndicator->Readonly) {
+        return;    
+    }
     TLineType lineType = value ? ltDoted : ltInvisible;
     Display_DrawRectangle(pValueIndicator->Left - 1, pValueIndicator->Top - 1, pValueIndicator->Left + pValueIndicator->Width + 1, 
         pValueIndicator->Top + pValueIndicator->Height + 1, lineType, FALSE); 
@@ -45,6 +49,9 @@ BOOL ValueIndicator_GetSelected(PTValueIndicator pValueIndicator) {
 }
 
 void ValueIndicator_SetFocused(PTValueIndicator pValueIndicator, BOOL value) {
+    if (pValueIndicator->Readonly) {
+        return;    
+    }    
     pValueIndicator->Focused = value;
     if (value) {
         ValueIndicator_SetSelected(pValueIndicator, FALSE);    
