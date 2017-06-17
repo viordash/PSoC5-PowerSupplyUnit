@@ -8,3 +8,4 @@ PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/codegentemp/
 PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/PowerSuplyUnit_timing.html
 PSoC_Creator/PSU_PSoC5/Archive/
 *.rej
+*.User
