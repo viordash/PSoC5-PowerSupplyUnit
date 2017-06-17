@@ -57,7 +57,10 @@ void ValueIndicator_SetFocused(PTValueIndicator pValueIndicator, BOOL value) {
     pValueIndicator->Focused = value;
     if (value) {
         ValueIndicator_SetSelected(pValueIndicator, FALSE);    
-    }
+    }    
+    TLineType lineType = value ? ltSolid : ltInvisible;
+    Display_FillRectangle(pValueIndicator->Left - 1, pValueIndicator->Top - 1, pValueIndicator->Left + pValueIndicator->Width + 1, 
+        pValueIndicator->Top + pValueIndicator->Height + 1, lineType, FALSE);
     ValueIndicator_Repaint(pValueIndicator);
 }
 
@@ -86,9 +89,9 @@ void ValueIndicator_Repaint(PTValueIndicator pValueIndicator) {
     shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
     Display_SetFont(pValueIndicator->DecimalPointFont);
     if (pValueIndicator->Mode == omVoltage) {
-        Display_Print("v", tcNorm, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
+        Display_Print("v", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     } else if (pValueIndicator->Mode == omAmperage) {
-        Display_Print("a", tcNorm, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
+        Display_Print("a", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     }
 }
 
