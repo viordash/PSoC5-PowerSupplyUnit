@@ -34,14 +34,14 @@
 #define StabilizeModeAmperageBCoordX (AmperageBCoordX - 25)
 #define StabilizeModeAmperageBCoordY (AmperageBCoordY)
 
-#define SetPointVoltageACoordX 5
+#define SetPointVoltageACoordX 2
 #define SetPointVoltageACoordY 35
-#define SetPointAmperageACoordX 5
+#define SetPointAmperageACoordX 2
 #define SetPointAmperageACoordY 35 + 56
 
-#define SetPointVoltageBCoordX 5 + 120
+#define SetPointVoltageBCoordX 2 + 120
 #define SetPointVoltageBCoordY 35
-#define SetPointAmperageBCoordX 5 + 120
+#define SetPointAmperageBCoordX 2 + 120
 #define SetPointAmperageBCoordY 35 + 56
 
 TFunction DisplayFunction;
@@ -70,24 +70,24 @@ void Display_Init() {
     memset(&DisplayObj.Values, 0, sizeof(TDisplayValues));
     
     ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageA.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
-        88, 22, 4, 4, VoltageACoordY + 3, FALSE);
+        88, 22, 4, 4, VoltageACoordY + 3, 3, 0, FALSE);
     ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageA.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
-        81, 19, 4, 4, AmperageACoordY, FALSE);
+        81, 19, 4, 4, AmperageACoordY, 3, 0, FALSE);
     
     ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageB.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
-        88, 22, 4, 4, VoltageBCoordY + 3, FALSE);
+        88, 22, 4, 4, VoltageBCoordY + 3, 3, 0, FALSE);
     ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageB.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
-        81, 19, 4, 4, AmperageBCoordY, FALSE);    
+        81, 19, 4, 4, AmperageBCoordY, 3, 0, FALSE);    
         
-    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageA.Indicator, omVoltage, 0, SetPointVoltageACoordX, SetPointVoltageACoordY, 
-        15, 10, 0, 0, SetPointVoltageACoordY, TRUE);
-    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageA.Indicator, omAmperage, 0, SetPointAmperageACoordX, SetPointAmperageACoordY, 
-        15, 10, 0, 0, SetPointAmperageACoordY, TRUE);        
+    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
+        15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE);
+    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageA.Indicator, omAmperage, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
+        15, 10, 0, 0, SetPointAmperageACoordY + 2, 1, 1, TRUE);        
 
-    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageB.Indicator, omVoltage, 0, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
-        15, 10, 0, 0, SetPointVoltageBCoordY, TRUE);
-    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 0, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
-        15, 10, 0, 0, SetPointAmperageBCoordY, TRUE);   
+    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageB.Indicator, omVoltage, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
+        15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE);
+    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
+        15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
     DisplayObj.Properties.SelectedIndicator = NULL;
 }
 

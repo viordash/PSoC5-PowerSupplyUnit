@@ -18,7 +18,7 @@
 #include "Display\ValueIndicator.h"
 
 void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT font, BYTE left, BYTE top, BYTE width, BYTE height, INT unitFont, 
-        INT decimalPointFont, BYTE secondaryTop, BOOL readonly) {
+        INT decimalPointFont, BYTE secondaryTop, BYTE unitLeftSift, BYTE decimalPointLeftSift, BOOL readonly) {
     pValueIndicator->Mode = mode;
     pValueIndicator->Font = font;
     pValueIndicator->Left = left;
@@ -28,6 +28,8 @@ void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT
     pValueIndicator->UnitFont = unitFont;
     pValueIndicator->DecimalPointFont = decimalPointFont;
     pValueIndicator->SecondaryTop = secondaryTop;
+    pValueIndicator->UnitLeftSift = unitLeftSift;
+    pValueIndicator->DecimalPointLeftSift = decimalPointLeftSift;
     pValueIndicator->Readonly = readonly;  
     pValueIndicator->Selected = FALSE;
     pValueIndicator->Focused = FALSE;    
@@ -78,14 +80,15 @@ void ValueIndicator_Repaint(PTValueIndicator pValueIndicator) {
     Display_SetFont(pValueIndicator->Font);
     BYTE shiftX = Display_Print(pValueIndicator->TextMajor, color, pValueIndicator->Left, pValueIndicator->Top, FALSE); 
     Display_SetFont(pValueIndicator->DecimalPointFont);
-    shiftX = Display_Print(".", color, shiftX, pValueIndicator->SecondaryTop, FALSE); 
+    shiftX = Display_Print(".", color, shiftX + pValueIndicator->DecimalPointLeftSift, pValueIndicator->SecondaryTop, FALSE); 
+    shiftX += pValueIndicator->DecimalPointLeftSift;
     Display_SetFont(pValueIndicator->Font);
     shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
     Display_SetFont(pValueIndicator->DecimalPointFont);
     if (pValueIndicator->Mode == omVoltage) {
-        Display_Print("v", tcNorm, shiftX + 3, pValueIndicator->SecondaryTop, FALSE); 
+        Display_Print("v", tcNorm, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     } else if (pValueIndicator->Mode == omAmperage) {
-        Display_Print("a", tcNorm, shiftX + 3, pValueIndicator->SecondaryTop, FALSE); 
+        Display_Print("a", tcNorm, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     }
 }
 
