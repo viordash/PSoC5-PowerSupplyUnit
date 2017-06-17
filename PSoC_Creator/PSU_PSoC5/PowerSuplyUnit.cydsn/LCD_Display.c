@@ -70,14 +70,14 @@ void Display_Init() {
     memset(&DisplayObj.Values, 0, sizeof(TDisplayValues));
     
     ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageA.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
-        88, 22, 4, 4, VoltageACoordY + 3, 3, 0, FALSE);
+        89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE);
     ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageA.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
-        81, 19, 4, 4, AmperageACoordY, 3, 0, FALSE);
+        81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE);
     
     ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageB.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
-        88, 22, 4, 4, VoltageBCoordY + 3, 3, 0, FALSE);
+        89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE);
     ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageB.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
-        81, 19, 4, 4, AmperageBCoordY, 3, 0, FALSE);    
+        81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE);    
         
     ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
         15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE);
