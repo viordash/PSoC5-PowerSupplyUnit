@@ -191,7 +191,9 @@ static DWORD prevTick = 0;
         if (value & MultiJog_FastRotate) {        
             mult = 10;
         }
-        ChangeValue((i * mult));
+        if (i) {
+            ChangeValue((i * mult));
+        }
     }    
 }
 /*----------------- MultiJog Changing Value --------------<<<*/

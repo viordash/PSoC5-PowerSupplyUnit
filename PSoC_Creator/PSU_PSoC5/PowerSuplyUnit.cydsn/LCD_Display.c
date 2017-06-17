@@ -420,19 +420,18 @@ BOOL ChangeValues() {
     BOOL request = FALSE;
     while(size-- > 0){
         if (pVariableValue->RequestToChangeValue) {
+            ValueIndicator_SetValue(&(pVariableValue->Indicator), pVariableValue->NewValue);
+            pVariableValue->RequestToChangeValue = FALSE;
+            ValueIndicator_Repaint(&(pVariableValue->Indicator));
             request = TRUE;
-            break;    
         }  
         pVariableValue++;
     }
-    if (!request) {
-        return FALSE;    
+    if (request) {
+        Display_Flush();    
+        return TRUE;        
     }    
-    ValueIndicator_SetValue(&(pVariableValue->Indicator), pVariableValue->NewValue);
-    pVariableValue->RequestToChangeValue = FALSE;
-    ValueIndicator_Repaint(&(pVariableValue->Indicator));
-    Display_Flush();    
-    return TRUE;  
+    return FALSE;      
 }
 
 void RequestToChangeValue(TSelectValue selectValue, TElectrValue value) {

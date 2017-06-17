@@ -351,8 +351,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -417,6 +417,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\EditingValue.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FAN_CTRL.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl_PM.lst</v>
@@ -481,6 +482,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_2.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_2_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\SystemOS.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ValueIndicator.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.elf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.hex</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.map</v>
