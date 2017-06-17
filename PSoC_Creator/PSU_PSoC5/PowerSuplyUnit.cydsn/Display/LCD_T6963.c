@@ -342,7 +342,9 @@ void _LCD_SetFont(INT size) {
 		Display.font = (PFONT_INFO)&font_3FontInfo;
 	} else if (size == 4) {
 		Display.font = (PFONT_INFO)&font_4FontInfo;
-	}  else {
+	} else if (size == 5) {
+		Display.font = (PFONT_INFO)&font_5FontInfo;
+	} else {
 		Display.font = (PFONT_INFO)&font_0FontInfo;
 	}
 }
