@@ -57,6 +57,14 @@ typedef enum {
 } TChangedValue;
 
 typedef enum {
+	ssmNone = 0,
+	ssmVoltageA,
+	ssmAmperageA,
+	ssmVoltageB,
+	ssmAmperageB,
+} TSelectStabilizeMode;
+
+typedef enum {
 	tcNorm = 0,
 	tcInvisible,
 	tcInvert

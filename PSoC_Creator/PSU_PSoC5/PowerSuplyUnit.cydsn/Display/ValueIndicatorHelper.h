@@ -9,21 +9,14 @@
  *
  * ========================================
 */
-#ifndef __EditingValue_H__
-#define __EditingValue_H__
+#ifndef __ValueIndicatorHelper_H__
+#define __ValueIndicatorHelper_H__
 	
 #include <device.h>
-	
-
-
 void SelectValue();
 void SelectNextIndicator();
 void SelectPrevIndicator();
 void ConfirmSelection();
-
-void ChangeValue(INT shiftValue);
-//TChangedValue SelectedValueToChangedValue(TSelectValue selectedValue);
-//TSelectValue ChangedValueToSelectedValue(TChangedValue changedValue);
-	
-#endif  /* __EditingValue_H__ */
+void ChangeValue(INT shiftValue);	
+#endif  /* __ValueIndicatorHelper_H__ */
 /* [] END OF FILE */

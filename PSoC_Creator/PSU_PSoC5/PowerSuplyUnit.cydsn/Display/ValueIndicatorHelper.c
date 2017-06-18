@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "MainWork.h"
 #include "LCD_Display.h"
-#include "EditingValue.h"
+#include "Display\ValueIndicatorHelper.h"
 
 
 
@@ -165,30 +165,5 @@ void ChangeValue(INT shiftValue) {
 }
 /*----------------- Editing --------------<<<*/
 
-/*>>>-------------- Utils -----------------*/
-//TChangedValue SelectedValueToChangedValue(TSelectValue selectedValue) {
-//    if (selectedValue == svMeasuredAmperageA) {
-//        return cvAmperageA;    
-//    } else if (selectedValue == svMeasuredVoltageB) {
-//        return cvVoltageB;    
-//    } else if (selectedValue == svMeasuredAmperageB) {
-//        return cvAmperageB;    
-//    } else {
-//        return cvVoltageA;  
-//    }    
-//}
-//
-//TSelectValue ChangedValueToSelectedValue(TChangedValue changedValue) {
-//    if (changedValue == cvAmperageA) {
-//        return svMeasuredAmperageA;    
-//    } else if (changedValue == cvVoltageB) {
-//        return svMeasuredVoltageB;    
-//    } else if (changedValue == cvAmperageB) {
-//        return svMeasuredAmperageB;    
-//    } else {
-//        return svMeasuredVoltageA;  
-//    }    
-//}
-/*----------------- Utils --------------<<<*/
 
 /* [] END OF FILE */

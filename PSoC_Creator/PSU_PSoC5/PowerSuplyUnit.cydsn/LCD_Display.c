@@ -51,18 +51,15 @@ void ChangeScreen();
 void ChangeSelected();
 void ChangeFocused();
 BOOL FlashSelected();
-void ChangingStabilizeMode();
-void ConfirmStabilizeMode();
-BOOL FlashChangingStabilizeMode();
-void ChangeMeasuredVoltageA();
-void ChangeMeasuredAmperageA();
-void ChangeMeasuredVoltageB();
-void ChangeMeasuredAmperageB();
 
 BOOL ChangeValues();
 BOOL ChangeSelection();
 BOOL ChangeFocusing();
 PTVariableValue GetVariableValue(TSelectValue selectValue);
+
+BOOL ChangeStabilizeSelection();
+BOOL FlashSelectedStabilize();
+BOOL ChangeFocusingStabilize();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -89,6 +86,17 @@ void Display_Init() {
     ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
     DisplayObj.Properties.SelectedIndicator = NULL;
+    
+    
+    SymbolIndicator_Init(&DisplayObj.Symbols.VoltageStabA.Indicator, simStabilizeVoltage, 4, StabilizeModeVoltageACoordX, StabilizeModeVoltageACoordY, 
+        14, 19, FALSE);  
+    SymbolIndicator_Init(&DisplayObj.Symbols.AmperageStabA.Indicator, simStabilizeAmperage, 4, StabilizeModeAmperageACoordX, StabilizeModeAmperageACoordY, 
+        12, 19, FALSE);  
+    SymbolIndicator_Init(&DisplayObj.Symbols.VoltageStabB.Indicator, simStabilizeVoltage, 4, StabilizeModeVoltageBCoordX, StabilizeModeVoltageBCoordY, 
+        14, 19, FALSE);  
+    SymbolIndicator_Init(&DisplayObj.Symbols.AmperageStabB.Indicator, simStabilizeAmperage, 4, StabilizeModeAmperageBCoordX, StabilizeModeAmperageBCoordY, 
+        12, 19, FALSE); 
+    DisplayObj.Properties.SelectedSymbol = NULL;
 }
 
 void Display_Task() {	
@@ -98,7 +106,7 @@ void Display_Task() {
 	while (TRUE) {  
         if (!ProcessRequests()) {
             if (!FlashSelected()) {
-                FlashChangingStabilizeMode();    
+                FlashSelectedStabilize();    
             }
         }
         
@@ -126,62 +134,25 @@ INT GetValuesCount() {
     return ((INT)sizeof(DisplayObj.Values)) / ((INT)sizeof(TVariableValue));
 }
 
+PTSymbol GetStabilizeSymbol(TSelectStabilizeMode selectValue) {
+    PTSymbol pSymbol;
+    switch(selectValue) {
+        case ssmVoltageA : pSymbol = &DisplayObj.Symbols.VoltageStabA; break;
+        case ssmAmperageA : pSymbol = &DisplayObj.Symbols.AmperageStabA; break;
+        case ssmVoltageB : pSymbol = &DisplayObj.Symbols.VoltageStabB; break;
+        case ssmAmperageB : pSymbol = &DisplayObj.Symbols.AmperageStabB; break;
+        default : pSymbol = NULL; break;        
+    }
+    return pSymbol;
+}
+
+INT GetSymbolsCount() {
+    return ((INT)sizeof(DisplayObj.Symbols)) / ((INT)sizeof(TSymbol));
+}
+
 void RequestToChangeScreen(TDisplayScreen newValue) { 
     DisplayObj.Requests.Screen = newValue;
     DisplayObj.Requests.ScreenRequest = TRUE;
-}
-
-void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue) { 
-    DisplayObj.Requests.ChangingStabilizeMode = newValue;
-    DisplayObj.Requests.ChangingStabilizeModeRequest = TRUE;
-}
-
-void RequestToConfirmStabilizeMode() {     
-    DisplayObj.Requests.ConfirmStabilizeModeRequest = TRUE;
-}
-
-void RequestToNextStabilizeMode() { 
-    if (DisplayObj.Properties.Screen == dsBipolar) {
-        if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-            RequestToChangingStabilizeMode(scmAmperageAStab);
-        } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageAStab) {
-            RequestToChangingStabilizeMode(scmVoltageBStab);
-        } else if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageBStab) {
-            RequestToChangingStabilizeMode(scmAmperageBStab);
-        } else  {
-            RequestToChangingStabilizeMode(scmVoltageAStab);
-        }
-    } else if (DisplayObj.Properties.Screen == dsUnipolar) {
-        if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-            RequestToChangingStabilizeMode(scmAmperageAStab);
-        } else  {
-            RequestToChangingStabilizeMode(scmVoltageAStab);
-        }
-    }
-}
-
-void RequestToPrevStabilizeMode() { 
-    if (DisplayObj.Properties.Screen == dsBipolar) {
-        if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-            RequestToChangingStabilizeMode(scmAmperageBStab);
-        } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageBStab) {
-            RequestToChangingStabilizeMode(scmVoltageBStab);
-        } else if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageBStab) {
-            RequestToChangingStabilizeMode(scmAmperageAStab);
-        } else  {
-            RequestToChangingStabilizeMode(scmVoltageAStab);
-        }
-    } else if (DisplayObj.Properties.Screen == dsUnipolar) {
-        if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-            RequestToChangingStabilizeMode(scmAmperageAStab);
-        } else  {
-            RequestToChangingStabilizeMode(scmVoltageAStab);
-        }
-    }
-}
-
-void RequestToSetChangingStabilizeMode() {
-    RequestToChangingStabilizeMode(DisplayObj.Requests.ChangingStabilizeMode);    
 }
 
 BOOL ProcessRequests () {
@@ -191,16 +162,7 @@ BOOL res = FALSE;
         DisplayObj.Requests.ScreenRequest = FALSE;
         res = TRUE;  
     }   
-    if (DisplayObj.Requests.ChangingStabilizeModeRequest) {
-        ChangingStabilizeMode();
-        DisplayObj.Requests.ChangingStabilizeModeRequest = FALSE;
-        res = TRUE;  
-    }     
-    if (DisplayObj.Requests.ConfirmStabilizeModeRequest) {
-        ConfirmStabilizeMode();
-        DisplayObj.Requests.ConfirmStabilizeModeRequest = FALSE;
-        res = TRUE;  
-    }  
+
     if (ChangeValues()) {
         res = TRUE;  
     } 
@@ -208,6 +170,12 @@ BOOL res = FALSE;
         res = TRUE;  
     }
     if (ChangeFocusing()) {
+        res = TRUE;  
+    }
+    if (ChangeStabilizeSelection()) {
+        res = TRUE;  
+    }
+    if (ChangeFocusingStabilize()) {
         res = TRUE;  
     }
 
@@ -308,110 +276,6 @@ void ChangeScreen() {
         SetScreen_Error();
     }
 }
-
-/*>>>-------------- StabilizeMode -----------------*/
-
-void ChangeStabilizeMode(BOOL show, TStabilizeMode stabilizeMode, 
-        BYTE voltCoordX, BYTE voltCoordY, BYTE amperCoordX, BYTE amperCoordY) {   
-    Display_SetFont(4);
-    if (stabilizeMode == smVoltageStab) {
-        Display_Print("S", show ? tcNorm : tcInvisible, voltCoordX, voltCoordY, FALSE);
-    } else if (stabilizeMode == smAmperageStab) {
-        Display_Print("s", show ? tcNorm : tcInvisible, amperCoordX, amperCoordY, FALSE);
-    }    
-}
-        
-void ChangeStabilizeModeA(TStabilizeMode newValue) {   
-    ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeA, 
-            StabilizeModeVoltageACoordX, StabilizeModeVoltageACoordY, StabilizeModeAmperageACoordX, StabilizeModeAmperageACoordY);   
-    DisplayObj.Properties.StabilizeModeA = newValue; 
-    ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeA, 
-            StabilizeModeVoltageACoordX, StabilizeModeVoltageACoordY, StabilizeModeAmperageACoordX, StabilizeModeAmperageACoordY); 
-    Display_Flush();
-}
-
-void ChangeStabilizeModeB(TStabilizeMode newValue) {  
-    ChangeStabilizeMode(FALSE, DisplayObj.Properties.StabilizeModeB, 
-            StabilizeModeVoltageBCoordX, StabilizeModeVoltageBCoordY, StabilizeModeAmperageBCoordX, StabilizeModeAmperageBCoordY);   
-    DisplayObj.Properties.StabilizeModeB = newValue; 
-    ChangeStabilizeMode(TRUE, DisplayObj.Properties.StabilizeModeB, 
-            StabilizeModeVoltageBCoordX, StabilizeModeVoltageBCoordY, StabilizeModeAmperageBCoordX, StabilizeModeAmperageBCoordY); 
-    Display_Flush();
-}
-
-void UpdateSelectedStabilizeMode(BOOL selected) {    
-    if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-        Display_DrawRectangle(StabilizeModeVoltageACoordX - 1, StabilizeModeVoltageACoordY - 1, 
-            StabilizeModeVoltageACoordX + 16, StabilizeModeVoltageACoordY + 20, selected ? ltDoted : ltInvisible, FALSE); 
-        Display_DrawRectangle(StabilizeModeVoltageACoordX - 2, StabilizeModeVoltageACoordY - 2, 
-            StabilizeModeVoltageACoordX + 17, StabilizeModeVoltageACoordY + 21, selected ? ltDoted : ltInvisible, FALSE); 
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageAStab) {        
-        Display_DrawRectangle(StabilizeModeAmperageACoordX - 1, StabilizeModeAmperageACoordY - 1, 
-            StabilizeModeAmperageACoordX + 13, StabilizeModeAmperageACoordY + 20, selected ? ltDoted : ltInvisible, FALSE); 
-        Display_DrawRectangle(StabilizeModeAmperageACoordX - 2, StabilizeModeAmperageACoordY - 2, 
-            StabilizeModeAmperageACoordX + 14, StabilizeModeAmperageACoordY + 21, selected ? ltDoted : ltInvisible, FALSE);         
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageBStab) {
-        Display_DrawRectangle(StabilizeModeVoltageBCoordX - 1, StabilizeModeVoltageBCoordY - 1, 
-            StabilizeModeVoltageBCoordX + 16, StabilizeModeVoltageBCoordY + 20, selected ? ltDoted : ltInvisible, FALSE); 
-        Display_DrawRectangle(StabilizeModeVoltageBCoordX - 2, StabilizeModeVoltageBCoordY - 2, 
-            StabilizeModeVoltageBCoordX + 17, StabilizeModeVoltageBCoordY + 21, selected ? ltDoted : ltInvisible, FALSE); 
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageBStab) {        
-        Display_DrawRectangle(StabilizeModeAmperageBCoordX - 1, StabilizeModeAmperageBCoordY - 1, 
-            StabilizeModeAmperageBCoordX + 13, StabilizeModeAmperageBCoordY + 20, selected ? ltDoted : ltInvisible, FALSE); 
-        Display_DrawRectangle(StabilizeModeAmperageBCoordX - 2, StabilizeModeAmperageBCoordY - 2, 
-            StabilizeModeAmperageBCoordX + 14, StabilizeModeAmperageBCoordY + 21, selected ? ltDoted : ltInvisible, FALSE); 
-    } 
-}
-
-void ChangingStabilizeMode() {  
-    UpdateSelectedStabilizeMode(FALSE);
-    DisplayObj.Properties.ChangingStabilizeMode = DisplayObj.Requests.ChangingStabilizeMode; 
-    UpdateSelectedStabilizeMode(TRUE);
-    Display_Flush();
-    DisplayObj.Properties.ChangingStabilizeModeTimeout = GetTickCount();
-    DisplayObj.Properties.ChangingStabilizeModeFlashingTick = 0;
-}
-
-void ConfirmStabilizeMode() { 
-    if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageAStab) {
-        ChangeStabilizeModeA(smVoltageStab);
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageAStab) {
-        ChangeStabilizeModeA(smAmperageStab);
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmVoltageBStab) {
-        ChangeStabilizeModeB(smVoltageStab);
-    } else if (DisplayObj.Properties.ChangingStabilizeMode == scmAmperageBStab) {
-        ChangeStabilizeModeB(smAmperageStab);
-    }
-    UpdateSelectedStabilizeMode(FALSE);
-    Display_Flush();
-    DisplayObj.Properties.ChangingStabilizeMode = scmNone; 
-}
-
-BOOL FlashChangingStabilizeMode() {  
-static BOOL state = FALSE;    
-    if (DisplayObj.Properties.ChangingStabilizeMode == scmNone) {
-        return FALSE;    
-    } else if (GetElapsedPeriod(DisplayObj.Properties.ChangingStabilizeModeTimeout) >= SYSTICK_mS(5000)) {    
-        UpdateSelectedStabilizeMode(FALSE);
-        Display_Flush();
-        DisplayObj.Properties.ChangingStabilizeMode = scmNone; 
-        return FALSE;
-    } else if (GetElapsedPeriod(DisplayObj.Properties.ChangingStabilizeModeFlashingTick) < SYSTICK_mS(500)) {
-        return FALSE;
-    } else {    
-        DisplayObj.Properties.ChangingStabilizeModeFlashingTick = GetTickCount();   
-        UpdateSelectedStabilizeMode(state);
-        Display_Flush();
-        state = !state;  
-        return TRUE;
-    }
-}
-
-BOOL IsDisplayInChangingStabilizeMode() {    
-    return DisplayObj.Properties.ChangingStabilizeMode != scmNone;
-}
-/*----------------- StabilizeMode --------------<<<*/
-
 
 /*>>>-------------- Change ElectrValue -----------------*/
 BOOL ChangeValues() {
@@ -584,3 +448,141 @@ void RequestToFocusing(TSelectValue selectValue) {
     }
 }
 /*----------------- Focusing --------------<<<*/
+
+/*>>>-------------- Stabilize Selecting -----------------*/
+BOOL ChangeStabilizeSelection() {
+    INT size = GetSymbolsCount();
+    PTSymbol pSymbol = (PTSymbol)&DisplayObj.Symbols;
+    BOOL request = FALSE;
+    while(size-- > 0){
+        if (pSymbol->RequestToSelect) {
+            request = TRUE;
+            break;  
+        }  
+        pSymbol++;
+    }
+    if (!request) {
+        return FALSE;    
+    }   
+    
+    size = GetValuesCount();
+    PTSymbol pDeselectSymbol = (PTSymbol)&DisplayObj.Symbols;
+    while(size-- > 0){
+        if (pSymbol != pDeselectSymbol && SymbolIndicator_GetSelected(&(pDeselectSymbol->Indicator))) {
+            SymbolIndicator_SetSelected(&(pDeselectSymbol->Indicator), FALSE);   
+        }  
+        pDeselectSymbol++;
+    }    
+    SymbolIndicator_SetSelected(&(pSymbol->Indicator), TRUE);
+    pSymbol->RequestToSelect = FALSE;
+    DisplayObj.Properties.SelectedSymbolTimeout = GetTickCount();
+    DisplayObj.Properties.SelectedSymbolFlashingTick = 0;
+    DisplayObj.Properties.SelectedSymbol = &(pSymbol->Indicator);
+    Display_Flush();    
+    return TRUE;
+}
+
+void RequestToSelectStabilize(TSelectStabilizeMode selectValue) {
+    PTSymbol pSymbol = GetStabilizeSymbol(selectValue);
+    if (pSymbol != NULL) {
+        pSymbol->RequestToSelect = TRUE;
+    }
+}
+
+void InternalSelectStabilize(BOOL state) {
+    INT size = GetSymbolsCount();
+    PTSymbol pSymbol = (PTSymbol)&DisplayObj.Symbols;
+    while(size-- > 0) {
+        PTSymbolIndicator pSymbolIndicator = &(pSymbol->Indicator);
+        if (pSymbolIndicator == DisplayObj.Properties.SelectedSymbol) {
+            SymbolIndicator_SetSelected(pSymbolIndicator, state);
+        } else {
+            SymbolIndicator_SetSelected(pSymbolIndicator, FALSE);
+        }
+        pSymbol++;
+    }    
+}
+
+BOOL FlashSelectedStabilize() {  
+static BOOL state = FALSE;    
+    if (DisplayObj.Properties.SelectedSymbol == NULL) {
+        return FALSE;    
+    } else if (GetElapsedPeriod(DisplayObj.Properties.SelectedSymbolTimeout) >= SYSTICK_mS(5000)) {   
+        InternalSelectStabilize(FALSE);
+        Display_Flush();
+        DisplayObj.Properties.SelectedSymbol = NULL; 
+        return FALSE;
+    } else if (GetElapsedPeriod(DisplayObj.Properties.SelectedSymbolFlashingTick) < SYSTICK_mS(500)) {
+        return FALSE;
+    } else {    
+        DisplayObj.Properties.SelectedSymbolFlashingTick = GetTickCount();   
+        InternalSelectStabilize(state);
+        Display_Flush();
+        state = !state;  
+        return TRUE;
+    }
+}
+
+TSelectStabilizeMode GetCurrentSelectedStabilize() {
+    PTSymbolIndicator pSymbolIndicator = DisplayObj.Properties.SelectedSymbol;   
+    if (pSymbolIndicator == &DisplayObj.Symbols.VoltageStabA.Indicator) {
+        return ssmVoltageA;
+    } else if (pSymbolIndicator == &DisplayObj.Symbols.AmperageStabA.Indicator) {
+        return ssmAmperageA;
+    } else if (pSymbolIndicator == &DisplayObj.Symbols.VoltageStabB.Indicator) {
+        return ssmVoltageB;
+    } else if (pSymbolIndicator == &DisplayObj.Symbols.AmperageStabB.Indicator) {
+        return ssmAmperageB;
+    } else {
+        return ssmNone;    
+    }
+}
+
+BOOL IsDisplayInChangingStabilizeMode() {    
+    return DisplayObj.Properties.SelectedSymbol != NULL;
+}
+/*----------------- Stabilize Selecting --------------<<<*/
+
+/*>>>-------------- Stabilize Focusing -----------------*/
+BOOL ChangeFocusingStabilize() {
+    INT size = GetSymbolsCount();
+    PTSymbol pSymbol = (PTSymbol)&DisplayObj.Symbols;
+    BOOL request = FALSE;
+    while(size-- > 0){
+        if (pSymbol->RequestToFocus) {
+            request = TRUE;
+            break;    
+        }  
+        pSymbol++;
+    }
+    if (!request) {
+        return FALSE;    
+    }  
+    
+    size = GetValuesCount();
+    PTSymbol pDeselectSymbol = (PTSymbol)&DisplayObj.Symbols;
+    while(size-- > 0){
+        if (pSymbol != pDeselectSymbol && SymbolIndicator_GetFocused(&(pDeselectSymbol->Indicator))) {
+            if ((pSymbol == &DisplayObj.Symbols.VoltageStabA && pDeselectSymbol == &DisplayObj.Symbols.AmperageStabA) 
+            || (pSymbol == &DisplayObj.Symbols.AmperageStabA && pDeselectSymbol == &DisplayObj.Symbols.VoltageStabA) 
+            || (pSymbol == &DisplayObj.Symbols.VoltageStabB && pDeselectSymbol == &DisplayObj.Symbols.AmperageStabB) 
+            || (pSymbol == &DisplayObj.Symbols.AmperageStabB && pDeselectSymbol == &DisplayObj.Symbols.VoltageStabB)) {
+                SymbolIndicator_SetFocused(&(pDeselectSymbol->Indicator), FALSE);   
+            }
+        }  
+        pDeselectSymbol++;
+    }    
+    SymbolIndicator_SetFocused(&(pSymbol->Indicator), TRUE);
+    DisplayObj.Properties.SelectedSymbol = NULL;
+    pSymbol->RequestToFocus = FALSE;
+    Display_Flush();    
+    return TRUE;
+}
+
+void RequestToFocusingStabilize(TSelectStabilizeMode selectValue) {
+    PTSymbol pSymbol = GetStabilizeSymbol(selectValue);
+    if (pSymbol != NULL) {
+        pSymbol->RequestToFocus = TRUE;
+    }
+}
+/*----------------- Stabilize Focusing --------------<<<*/

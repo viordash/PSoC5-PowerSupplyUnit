@@ -14,6 +14,9 @@
 
 #include <device.h>
 #include "Display\ValueIndicator.h"
+#include "Display\ValueIndicatorHelper.h"
+#include "Display\SymbolIndicator.h"
+#include "Display\SymbolIndicatorHelper.h"
 
 extern TFunction DisplayFunction;
 extern void Display_Init();
@@ -56,14 +59,6 @@ typedef enum {
 	dsError
 } TDisplayScreen;
 
-typedef enum {
-	scmNone = 0,
-	scmVoltageAStab,
-	scmAmperageAStab,
-	scmVoltageBStab,
-	scmAmperageBStab,
-} TStabilizeChangingMode;
-
 typedef struct {
     TValueIndicator Indicator;
     TElectrValue NewValue;
@@ -73,13 +68,14 @@ typedef struct {
 } TVariableValue, * PTVariableValue;
 
 typedef struct {
+    TSymbolIndicator Indicator;
+    BOOL RequestToSelect;
+    BOOL RequestToFocus;
+} TSymbol, * PTSymbol;
+
+typedef struct {
     TDisplayScreen Screen; 
     BOOL ScreenRequest;    
-    TStabilizeChangingMode ChangingStabilizeMode;
-    BOOL ChangingStabilizeModeRequest;
-    
-    BOOL ConfirmStabilizeModeRequest; 
-
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
@@ -87,12 +83,9 @@ typedef struct {
     DWORD SelectedTimeout;
     DWORD SelectedFlashingTick;
     PTValueIndicator SelectedIndicator;
-    
-    TStabilizeChangingMode ChangingStabilizeMode;
-    DWORD ChangingStabilizeModeTimeout;
-    DWORD ChangingStabilizeModeFlashingTick;
-    TStabilizeMode StabilizeModeA;
-    TStabilizeMode StabilizeModeB;
+    DWORD SelectedSymbolTimeout;
+    DWORD SelectedSymbolFlashingTick;
+    PTSymbolIndicator SelectedSymbol;
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {   
@@ -106,27 +99,32 @@ typedef struct {
     TVariableValue SetPointAmperageB;
 } TDisplayValues, * PTDisplayValues;
 
+typedef struct {   
+    TSymbol VoltageStabA;
+    TSymbol AmperageStabA;
+    TSymbol VoltageStabB;
+    TSymbol AmperageStabB;
+} TDisplaySymbols, * PTDisplaySymbols;
+
 typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
     TDisplayValues Values;
+    TDisplaySymbols Symbols;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
 
-extern void RequestToChangingStabilizeMode(TStabilizeChangingMode newValue);
-extern void RequestToConfirmStabilizeMode();
-extern void RequestToNextStabilizeMode();
-extern void RequestToPrevStabilizeMode();
-extern void RequestToSetChangingStabilizeMode();
-extern BOOL IsDisplayInChangingStabilizeMode();
 extern void RequestToChangeValue(TSelectValue selectValue, TElectrValue value);
-
 extern void RequestToSelect(TSelectValue selectValue);
 extern TSelectValue GetCurrentSelectedValue();
 extern BOOL IsDisplayInSelectionMode();
-
 extern void RequestToFocusing(TSelectValue selectValue);
+
+extern void RequestToSelectStabilize(TSelectStabilizeMode selectValue);
+extern TSelectStabilizeMode GetCurrentSelectedStabilize();
+extern BOOL IsDisplayInChangingStabilizeMode();
+extern void RequestToFocusingStabilize(TSelectStabilizeMode selectValue);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

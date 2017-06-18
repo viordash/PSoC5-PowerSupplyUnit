@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include "MainWork.h"
 #include "LCD_Display.h"
-#include "EditingValue.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -104,14 +103,16 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangeValue(svMeasuredAmperageB, 1300);
         RequestToChangeValue(svSetPointAmperageB, 3756);
         
-        RequestToChangingStabilizeMode(scmVoltageAStab);
-        RequestToConfirmStabilizeMode();
+//        RequestToChangingStabilizeMode(scmVoltageAStab);
+//        RequestToConfirmStabilizeMode();
+//        
+//		TaskSleep(&MainWorkFunction, SYSTICK_mS(1000));	
+//        RequestToChangingStabilizeMode(scmAmperageBStab);
+//        RequestToConfirmStabilizeMode();
         
-		TaskSleep(&MainWorkFunction, SYSTICK_mS(1000));	
-        RequestToChangingStabilizeMode(scmAmperageBStab);
-        RequestToConfirmStabilizeMode();
-        
-        RequestToFocusing(svMeasuredVoltageA);        
+        RequestToFocusing(svMeasuredVoltageA);  
+        RequestToFocusingStabilize(ssmVoltageA);
+        RequestToFocusingStabilize(ssmAmperageB);
         
         O_Led_Polar_Write(0);
     } else if (polarMode == pmUnipolar) {
@@ -120,9 +121,10 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangeValue(svSetPointVoltageA, 334);
         RequestToChangeValue(svMeasuredAmperageA, 6950);
         RequestToChangeValue(svSetPointAmperageA, 7000);      
-        RequestToChangingStabilizeMode(scmAmperageAStab);
-        RequestToConfirmStabilizeMode();    
-        RequestToFocusing(svMeasuredAmperageA);      
+//        RequestToChangingStabilizeMode(scmAmperageAStab);
+//        RequestToConfirmStabilizeMode();    
+        RequestToFocusing(svMeasuredAmperageA);  
+        RequestToFocusingStabilize(ssmAmperageA);    
         O_Led_Polar_Write(0xFF);
     }
 }
@@ -146,7 +148,7 @@ void ButtonOkPressed (BYTE value) {
     if (MainWorkObj.Properties.State == mwsStandBy || MainWorkObj.Properties.State == mwsWork) {
         if (!(value & BtnOk_LongPress)) {
             if(MainWorkObj.Properties.State == mwsStandBy && IsDisplayInChangingStabilizeMode()) {
-                RequestToConfirmStabilizeMode();
+                ConfirmSelectionStabilize();
             } else if(!IsDisplayInSelectionMode()) {
                 SelectValue();
             } else {
@@ -154,7 +156,7 @@ void ButtonOkPressed (BYTE value) {
             }
         } else if (MainWorkObj.Properties.State == mwsStandBy) {
             if(!IsDisplayInChangingStabilizeMode()) {
-                RequestToSetChangingStabilizeMode();
+                SelectStabilizeMode();
             }
         }
         
@@ -182,9 +184,9 @@ static DWORD prevTick = 0;
         }
     } else if(IsDisplayInChangingStabilizeMode()) {
         if (i > 0) {
-            RequestToNextStabilizeMode();    
+            SelectNextStabilizeIndicator();    
         } else if (i < 0) {
-            RequestToPrevStabilizeMode();    
+            SelectPrevStabilizeIndicator();    
         }
     } else {
         INT mult = 1;
