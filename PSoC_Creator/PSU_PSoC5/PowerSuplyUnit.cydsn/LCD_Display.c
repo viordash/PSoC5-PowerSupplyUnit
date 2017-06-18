@@ -51,6 +51,7 @@ void ChangeScreen();
 void ChangeSelected();
 void ChangeFocused();
 BOOL FlashSelected();
+PTValueIndicator GetCurrentFocused();
 
 BOOL ChangeValues();
 BOOL ChangeSelection();
@@ -368,6 +369,10 @@ static BOOL state = FALSE;
         return FALSE;    
     } else if (GetElapsedPeriod(DisplayObj.Properties.SelectedTimeout) >= SYSTICK_mS(5000)) {   
         InternalSelect(FALSE);
+        PTValueIndicator pCurrentFocused = GetCurrentFocused();
+        if (pCurrentFocused != NULL) {
+            ValueIndicator_SetFocused(pCurrentFocused, TRUE);
+        }
         Display_Flush();
         DisplayObj.Properties.SelectedIndicator = NULL; 
         return FALSE;
@@ -446,6 +451,19 @@ void RequestToFocusing(TSelectValue selectValue) {
     if (pVariableValue != NULL) {
         pVariableValue->RequestToFocus = TRUE;
     }
+}
+
+PTValueIndicator GetCurrentFocused() {
+    INT size = GetValuesCount();
+    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+    while(size-- > 0) {
+        PTValueIndicator pValueIndicator = &(pVariableValue->Indicator);
+        if (ValueIndicator_GetFocused(pValueIndicator)) {
+            return pValueIndicator;
+        }
+        pVariableValue++;
+    }   
+    return NULL;
 }
 /*----------------- Focusing --------------<<<*/
 
