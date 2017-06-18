@@ -97,6 +97,7 @@ typedef struct {
     TVariableValue SetPointAmperageA;
     TVariableValue SetPointVoltageB;
     TVariableValue SetPointAmperageB;
+    TVariableValue Temperature;
 } TDisplayValues, * PTDisplayValues;
 
 typedef struct {   

@@ -70,28 +70,38 @@ BOOL ValueIndicator_GetFocused(PTValueIndicator pValueIndicator) {
 
 void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue value) {
     if (pValueIndicator->Mode == omVoltage) {
-        sprintf(pValueIndicator->TextMajor, "%02u", value / 100);
+        sprintf(pValueIndicator->TextMajor, "%2u", value / 100);
         sprintf(pValueIndicator->TextMinor, "%02u", value % 100);
     } else if (pValueIndicator->Mode == omAmperage) {
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
         sprintf(pValueIndicator->TextMinor, "%03u", value % 1000);
-    }    
+    }  else if (pValueIndicator->Mode == omTemperature) {
+        sprintf(pValueIndicator->TextMajor, "%2u", value / 10);
+        sprintf(pValueIndicator->TextMinor, "%1u", value % 10);
+    }   
 }
 
 void ValueIndicator_Repaint(PTValueIndicator pValueIndicator) {
     TTextColor color = pValueIndicator->Focused ? tcInvert : tcNorm;
+    BYTE shiftX = pValueIndicator->Left;
+    if (pValueIndicator->Mode == omTemperature) {
+        Display_SetFont(pValueIndicator->UnitFont);
+        shiftX = Display_Print("t: ", color, shiftX, pValueIndicator->SecondaryTop, FALSE); 
+    }
     Display_SetFont(pValueIndicator->Font);
-    BYTE shiftX = Display_Print(pValueIndicator->TextMajor, color, pValueIndicator->Left, pValueIndicator->Top, FALSE); 
+    shiftX = Display_Print(pValueIndicator->TextMajor, color, shiftX, pValueIndicator->Top, FALSE); 
     Display_SetFont(pValueIndicator->DecimalPointFont);
     shiftX = Display_Print(".", color, shiftX + pValueIndicator->DecimalPointLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     shiftX += pValueIndicator->DecimalPointLeftSift;
     Display_SetFont(pValueIndicator->Font);
     shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
-    Display_SetFont(pValueIndicator->DecimalPointFont);
+    Display_SetFont(pValueIndicator->UnitFont);
     if (pValueIndicator->Mode == omVoltage) {
         Display_Print("v", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     } else if (pValueIndicator->Mode == omAmperage) {
         Display_Print("a", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
+    } else if (pValueIndicator->Mode == omTemperature) {
+        Display_Print("C", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     }
 }
 

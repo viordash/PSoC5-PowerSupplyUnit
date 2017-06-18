@@ -24,8 +24,8 @@
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
-    <generateSpaceCharacterBitmap>false</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>6</spaceGenerationPixels>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>14</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_2Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_2Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_2FontInfo</varNfFontInfo>
@@ -91,7 +91,7 @@
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
     <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>4</spaceGenerationPixels>
+    <spaceGenerationPixels>16</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_3Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_3Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_3FontInfo</varNfFontInfo>
@@ -189,8 +189,8 @@
     <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
     <descImgWidth>DisplayInBytes</descImgWidth>
     <descImgHeight>DisplayInBits</descImgHeight>
-    <generateSpaceCharacterBitmap>false</generateSpaceCharacterBitmap>
-    <spaceGenerationPixels>3</spaceGenerationPixels>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>5</spaceGenerationPixels>
     <varNfBitmaps>const uint_8 font_5Bitmaps</varNfBitmaps>
     <varNfCharInfo>const FONT_CHAR_INFO font_5Descriptors</varNfCharInfo>
     <varNfFontInfo>const FONT_INFO font_5FontInfo</varNfFontInfo>

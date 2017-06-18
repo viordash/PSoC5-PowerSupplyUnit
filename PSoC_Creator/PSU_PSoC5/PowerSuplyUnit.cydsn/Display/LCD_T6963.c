@@ -318,7 +318,7 @@ BYTE _LCD_Print(PCHAR buffer, TTextColor color, BYTE coordX, BYTE coordY, BOOL f
             PBYTE pBuffer = (PBYTE)(Display.font->p_character_bitmaps + p_character_descriptor->offset + (height * (((width - 1) / 8) + 1)));
             PutDataInGraphicBuffer(pBuffer, width, posY, shiftX, color);
             shiftX += width;
-			if ((ch > ' ') && (pString < pStringEnd)) {
+			if (/*(ch > ' ') &&*/ (pString < pStringEnd)) {
                 width = Display.font->separatorWidth; //space between chars	
                 BYTE spaceChars[8] = {0};
                 PutDataInGraphicBuffer(spaceChars, width, posY, shiftX, color);

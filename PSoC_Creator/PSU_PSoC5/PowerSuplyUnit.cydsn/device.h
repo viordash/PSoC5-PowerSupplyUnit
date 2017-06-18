@@ -47,6 +47,7 @@ typedef enum {
 	svSetPointAmperageA,
 	svSetPointVoltageB,
 	svSetPointAmperageB,
+	svTemperature,
 } TSelectValue;
 
 typedef enum {

@@ -17,7 +17,8 @@
 
 typedef enum {
 	omVoltage,
-	omAmperage
+	omAmperage,
+	omTemperature
 } TOutputMode;
     
 typedef struct {

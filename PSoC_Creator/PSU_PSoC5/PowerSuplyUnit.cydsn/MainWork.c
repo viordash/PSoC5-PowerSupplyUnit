@@ -38,7 +38,8 @@ void MainWork_Init() {
   MainWorkObj.Properties.StabilizeModeB = smAmperageStab; 
 }
 
-void MainWork_Task(){	 
+void MainWork_Task(){	    
+    DWORD tick = GetTickCount();
     ChangeState(mwsStart);
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
@@ -62,7 +63,15 @@ void MainWork_Task(){
             
         }
         
-		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));		
+		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	
+        
+        {       
+        if (GetElapsedPeriod(tick) > SYSTICK_mS(3000)) {
+            WORD temper = rand() % 350;
+            RequestToChangeValue(svTemperature, temper);
+            tick = GetTickCount();
+        }
+        }
 	}
 }
 
@@ -102,13 +111,7 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangeValue(svSetPointVoltageB, 520);
         RequestToChangeValue(svMeasuredAmperageB, 1300);
         RequestToChangeValue(svSetPointAmperageB, 3756);
-        
-//        RequestToChangingStabilizeMode(scmVoltageAStab);
-//        RequestToConfirmStabilizeMode();
-//        
-//		TaskSleep(&MainWorkFunction, SYSTICK_mS(1000));	
-//        RequestToChangingStabilizeMode(scmAmperageBStab);
-//        RequestToConfirmStabilizeMode();
+        RequestToChangeValue(svTemperature, 251);
         
         RequestToFocusing(svMeasuredVoltageA);  
         RequestToFocusingStabilize(ssmVoltageA);

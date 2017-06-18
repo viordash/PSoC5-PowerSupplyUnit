@@ -44,6 +44,9 @@
 #define SetPointAmperageBCoordX 2 + 120
 #define SetPointAmperageBCoordY 35 + 56
 
+#define TemperatureCoordX 200
+#define TemperatureCoordY 115
+
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
 BOOL ProcessRequests();
@@ -86,7 +89,10 @@ void Display_Init() {
         15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE);
     ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
-    DisplayObj.Properties.SelectedIndicator = NULL;
+
+    ValueIndicator_Init(&DisplayObj.Values.Temperature.Indicator, omTemperature, 5, TemperatureCoordX, TemperatureCoordY, 
+        15, 10, 0, 0, TemperatureCoordY + 2, 1, 1, TRUE);   
+    DisplayObj.Properties.SelectedIndicator = NULL;    
     
     
     SymbolIndicator_Init(&DisplayObj.Symbols.VoltageStabA.Indicator, simStabilizeVoltage, 4, StabilizeModeVoltageACoordX, StabilizeModeVoltageACoordY, 
@@ -126,6 +132,7 @@ PTVariableValue GetVariableValue(TSelectValue selectValue) {
         case svSetPointAmperageA : pVariableValue = &DisplayObj.Values.SetPointAmperageA; break;
         case svSetPointVoltageB : pVariableValue = &DisplayObj.Values.SetPointVoltageB; break;
         case svSetPointAmperageB : pVariableValue = &DisplayObj.Values.SetPointAmperageB; break;
+        case svTemperature : pVariableValue = &DisplayObj.Values.Temperature; break;
         default : pVariableValue = NULL; break;        
     }
     return pVariableValue;

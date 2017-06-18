@@ -18,7 +18,17 @@
 // Character bitmaps for Calibri 10pt
 const uint_8 font_5Bitmaps[] = 
 {
-	// @0 '0' (5 pixels wide)
+	// @0 ' ' (5 pixels wide)
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+	0b00000000, //      
+
+	// @8 '0' (5 pixels wide)
 	0b01110000, //  ### 
 	0b10001000, // #   #
 	0b10001000, // #   #
@@ -28,7 +38,7 @@ const uint_8 font_5Bitmaps[] =
 	0b10001000, // #   #
 	0b01110000, //  ### 
 
-	// @8 '1' (5 pixels wide)
+	// @16 '1' (5 pixels wide)
 	0b01100000, //  ##  
 	0b10100000, // # #  
 	0b00100000, //   #  
@@ -38,7 +48,7 @@ const uint_8 font_5Bitmaps[] =
 	0b00100000, //   #  
 	0b11111000, // #####
 
-	// @16 '2' (5 pixels wide)
+	// @24 '2' (5 pixels wide)
 	0b01110000, //  ### 
 	0b10001000, // #   #
 	0b00001000, //     #
@@ -48,7 +58,7 @@ const uint_8 font_5Bitmaps[] =
 	0b01000000, //  #   
 	0b11111000, // #####
 
-	// @24 '3' (5 pixels wide)
+	// @32 '3' (5 pixels wide)
 	0b01110000, //  ### 
 	0b10001000, // #   #
 	0b00001000, //     #
@@ -58,7 +68,7 @@ const uint_8 font_5Bitmaps[] =
 	0b10001000, // #   #
 	0b01110000, //  ### 
 
-	// @32 '4' (5 pixels wide)
+	// @40 '4' (5 pixels wide)
 	0b00110000, //   ## 
 	0b00110000, //   ## 
 	0b01010000, //  # # 
@@ -68,7 +78,7 @@ const uint_8 font_5Bitmaps[] =
 	0b00010000, //    # 
 	0b00010000, //    # 
 
-	// @40 '5' (5 pixels wide)
+	// @48 '5' (5 pixels wide)
 	0b11111000, // #####
 	0b10000000, // #    
 	0b10000000, // #    
@@ -78,7 +88,7 @@ const uint_8 font_5Bitmaps[] =
 	0b10001000, // #   #
 	0b01110000, //  ### 
 
-	// @48 '6' (5 pixels wide)
+	// @56 '6' (5 pixels wide)
 	0b00111000, //   ###
 	0b01000000, //  #   
 	0b10000000, // #    
@@ -88,7 +98,7 @@ const uint_8 font_5Bitmaps[] =
 	0b10001000, // #   #
 	0b01110000, //  ### 
 
-	// @56 '7' (5 pixels wide)
+	// @64 '7' (5 pixels wide)
 	0b11111000, // #####
 	0b00001000, //     #
 	0b00010000, //    # 
@@ -98,7 +108,7 @@ const uint_8 font_5Bitmaps[] =
 	0b01000000, //  #   
 	0b01000000, //  #   
 
-	// @64 '8' (5 pixels wide)
+	// @72 '8' (5 pixels wide)
 	0b01110000, //  ### 
 	0b10001000, // #   #
 	0b10001000, // #   #
@@ -108,7 +118,7 @@ const uint_8 font_5Bitmaps[] =
 	0b10001000, // #   #
 	0b01110000, //  ### 
 
-	// @72 '9' (5 pixels wide)
+	// @80 '9' (5 pixels wide)
 	0b01110000, //  ### 
 	0b10001000, // #   #
 	0b10001000, // #   #
@@ -123,16 +133,32 @@ const uint_8 font_5Bitmaps[] =
 // { [Char width in bits], [Offset into calibri_10ptCharBitmaps in bytes] }
 const FONT_CHAR_INFO font_5Descriptors[] = 
 {
-	{5, 0}, 		// 0 
-	{5, 8}, 		// 1 
-	{5, 16}, 		// 2 
-	{5, 24}, 		// 3 
-	{5, 32}, 		// 4 
-	{5, 40}, 		// 5 
-	{5, 48}, 		// 6 
-	{5, 56}, 		// 7 
-	{5, 64}, 		// 8 
-	{5, 72}, 		// 9 
+	{5, 0}, 		//   
+	{0, 0}, 		// ! 
+	{0, 0}, 		// " 
+	{0, 0}, 		// # 
+	{0, 0}, 		// $ 
+	{0, 0}, 		// % 
+	{0, 0}, 		// & 
+	{0, 0}, 		// ' 
+	{0, 0}, 		// ( 
+	{0, 0}, 		// ) 
+	{0, 0}, 		// * 
+	{0, 0}, 		// + 
+	{0, 0}, 		// , 
+	{0, 0}, 		// - 
+	{0, 0}, 		// . 
+	{0, 0}, 		// / 
+	{5, 8}, 		// 0 
+	{5, 16}, 		// 1 
+	{5, 24}, 		// 2 
+	{5, 32}, 		// 3 
+	{5, 40}, 		// 4 
+	{5, 48}, 		// 5 
+	{5, 56}, 		// 6 
+	{5, 64}, 		// 7 
+	{5, 72}, 		// 8 
+	{5, 80}, 		// 9 
 };
 
 // Font information for Calibri 10pt
@@ -140,9 +166,9 @@ const FONT_CHAR_INFO font_5Descriptors[] =
 const FONT_INFO font_5FontInfo =
 {
 	8, //  Character height
-	'0', //  Start character
+	' ', //  Start character
 	'9', //  End character
-	3, //  Width, in pixels, of space character
+	5, //  Width, in pixels, of space character
 	2, /*separatorWidth*/
 	font_5Descriptors, //  Character descriptor array
 	font_5Bitmaps, //  Character bitmap array
