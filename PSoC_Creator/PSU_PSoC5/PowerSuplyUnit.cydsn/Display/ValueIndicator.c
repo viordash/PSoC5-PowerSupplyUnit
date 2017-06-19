@@ -75,9 +75,12 @@ void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue valu
     } else if (pValueIndicator->Mode == omAmperage) {
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
         sprintf(pValueIndicator->TextMinor, "%03u", value % 1000);
-    }  else if (pValueIndicator->Mode == omTemperature) {
-        sprintf(pValueIndicator->TextMajor, "%2u", value / 10);
-        sprintf(pValueIndicator->TextMinor, "%1u", value % 10);
+    }  else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
+        if (value != TEMPER_ERR) {
+            sprintf(pValueIndicator->TextMajor, "%2d", value);
+        } else {
+            sprintf(pValueIndicator->TextMajor, "--");
+        }
     }   
 }
 
@@ -86,21 +89,27 @@ void ValueIndicator_Repaint(PTValueIndicator pValueIndicator) {
     BYTE shiftX = pValueIndicator->Left;
     if (pValueIndicator->Mode == omTemperature) {
         Display_SetFont(pValueIndicator->UnitFont);
-        shiftX = Display_Print("t: ", color, shiftX, pValueIndicator->SecondaryTop, FALSE); 
+        shiftX = Display_Print("Trad: ", color, shiftX, pValueIndicator->SecondaryTop, FALSE); 
+    } else if (pValueIndicator->Mode == omTemperatureCpu) {
+        Display_SetFont(pValueIndicator->UnitFont);
+        shiftX = Display_Print("Tcpu: ", color, shiftX, pValueIndicator->SecondaryTop, FALSE); 
     }
     Display_SetFont(pValueIndicator->Font);
     shiftX = Display_Print(pValueIndicator->TextMajor, color, shiftX, pValueIndicator->Top, FALSE); 
-    Display_SetFont(pValueIndicator->DecimalPointFont);
-    shiftX = Display_Print(".", color, shiftX + pValueIndicator->DecimalPointLeftSift, pValueIndicator->SecondaryTop, FALSE); 
-    shiftX += pValueIndicator->DecimalPointLeftSift;
-    Display_SetFont(pValueIndicator->Font);
-    shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
+    
+    if (pValueIndicator->Mode != omTemperature && pValueIndicator->Mode != omTemperatureCpu) {
+        Display_SetFont(pValueIndicator->DecimalPointFont);
+        shiftX = Display_Print(".", color, shiftX + pValueIndicator->DecimalPointLeftSift, pValueIndicator->SecondaryTop, FALSE); 
+        shiftX += pValueIndicator->DecimalPointLeftSift;
+        Display_SetFont(pValueIndicator->Font);
+        shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
+    }
     Display_SetFont(pValueIndicator->UnitFont);
     if (pValueIndicator->Mode == omVoltage) {
         Display_Print("v", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     } else if (pValueIndicator->Mode == omAmperage) {
         Display_Print("a", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
-    } else if (pValueIndicator->Mode == omTemperature) {
+    } else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
         Display_Print("C", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     }
 }

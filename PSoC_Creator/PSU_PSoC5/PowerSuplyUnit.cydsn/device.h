@@ -26,6 +26,8 @@
 #define PROGRAM_VERSION_MAJOR 1
 #define PROGRAM_VERSION_MINOR 0
     
+#define TEMPER_ERR (127)
+    
 typedef enum {
 	smVoltageStab = 0,
 	smAmperageStab,
@@ -48,6 +50,7 @@ typedef enum {
 	svSetPointVoltageB,
 	svSetPointAmperageB,
 	svTemperature,
+	svTemperatureCpu,
 } TSelectValue;
 
 typedef enum {
@@ -81,6 +84,13 @@ typedef enum {
 typedef WORD TElectrValue, * PTElectrValue;     
 //typedef TElectrValue TVoltage;      /*voltage * 100*/
 //typedef TElectrValue TAmperage;     /*amperage * 1000*/
+
+
+typedef struct {
+	INT Radiator;
+    INT Cpu;
+    BOOL FanIsOn;
+} TTemperature, *PTTemperature;
 
 #endif  /* __DEVICE_H__ */
 /*[]*/

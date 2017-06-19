@@ -97,8 +97,12 @@ typedef struct {
     TVariableValue SetPointAmperageA;
     TVariableValue SetPointVoltageB;
     TVariableValue SetPointAmperageB;
-    TVariableValue Temperature;
 } TDisplayValues, * PTDisplayValues;
+
+typedef struct {   
+    TVariableValue Radiator;
+    TVariableValue Cpu;
+} TDisplayTemperature, * PTDisplayTemperature;
 
 typedef struct {   
     TSymbol VoltageStabA;
@@ -112,6 +116,7 @@ typedef struct {
     TDisplayRequests Requests;
     TDisplayValues Values;
     TDisplaySymbols Symbols;
+    TDisplayTemperature Temperatures;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
@@ -126,6 +131,8 @@ extern void RequestToSelectStabilize(TSelectStabilizeMode selectValue);
 extern TSelectStabilizeMode GetCurrentSelectedStabilize();
 extern BOOL IsDisplayInChangingStabilizeMode();
 extern void RequestToFocusingStabilize(TSelectStabilizeMode selectValue);
+
+extern void RequestToChangeTemperatures(TTemperature temperatures);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

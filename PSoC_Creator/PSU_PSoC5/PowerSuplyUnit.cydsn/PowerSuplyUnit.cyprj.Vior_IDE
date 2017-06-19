@@ -2612,6 +2612,11 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_srff_v1_0\cy_srff_v1_0.cystate</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_srff_v1_0\cy_srff_v1_0.pdf</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_srff_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DieTemp_v2_0\DieTemp_v2_0.cystate</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DieTemp_v2_0\DieTemp_v2_0.cysym</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DieTemp_v2_0\DieTemp_v2_0.pdf</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DieTemp_v2_0\API\DieTemp.c</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\DieTemp_v2_0\API\DieTemp.h</v>
 <v>.\PowerSuplyUnit.cydwr</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v5_50\PSoC5\API\cm3gcc.ld</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v5_50\PSoC5\API\Cm3RealView.scat</v>
@@ -2747,24 +2752,29 @@
 <v>Generated_Source\PSoC5\PWM_1.c</v>
 <v>Generated_Source\PSoC5\PWM_1.h</v>
 <v>Generated_Source\PSoC5\PWM_1_PM.c</v>
-<v>Generated_Source\PSoC5\I_MultiJogA_aliases.h</v>
-<v>Generated_Source\PSoC5\I_MultiJogA.c</v>
-<v>Generated_Source\PSoC5\I_MultiJogA.h</v>
+<v>Generated_Source\PSoC5\Clock_6.c</v>
+<v>Generated_Source\PSoC5\Clock_6.h</v>
+<v>Generated_Source\PSoC5\MultiJog.c</v>
+<v>Generated_Source\PSoC5\MultiJog.h</v>
+<v>Generated_Source\PSoC5\MultiJog_PM.c</v>
 <v>Generated_Source\PSoC5\I_MultiJogB_aliases.h</v>
 <v>Generated_Source\PSoC5\I_MultiJogB.c</v>
 <v>Generated_Source\PSoC5\I_MultiJogB.h</v>
+<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h</v>
+<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp.c</v>
+<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h</v>
+<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h</v>
+<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp.c</v>
+<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h</v>
 <v>Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h</v>
 <v>Generated_Source\PSoC5\I_BtnBipolarMode.c</v>
 <v>Generated_Source\PSoC5\I_BtnBipolarMode.h</v>
-<v>Generated_Source\PSoC5\I_BtnOutOnSpeed_aliases.h</v>
-<v>Generated_Source\PSoC5\I_BtnOutOnSpeed.c</v>
-<v>Generated_Source\PSoC5\I_BtnOutOnSpeed.h</v>
 <v>Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h</v>
 <v>Generated_Source\PSoC5\I_BtnChangePolarity.c</v>
 <v>Generated_Source\PSoC5\I_BtnChangePolarity.h</v>
-<v>Generated_Source\PSoC5\I_BtnOk_aliases.h</v>
-<v>Generated_Source\PSoC5\I_BtnOk.c</v>
-<v>Generated_Source\PSoC5\I_BtnOk.h</v>
+<v>Generated_Source\PSoC5\O_Led_Polar_aliases.h</v>
+<v>Generated_Source\PSoC5\O_Led_Polar.c</v>
+<v>Generated_Source\PSoC5\O_Led_Polar.h</v>
 <v>Generated_Source\PSoC5\MouseClk_aliases.h</v>
 <v>Generated_Source\PSoC5\MouseClk.c</v>
 <v>Generated_Source\PSoC5\MouseClk.h</v>
@@ -2782,15 +2792,35 @@
 <v>Generated_Source\PSoC5\FanCtrl.c</v>
 <v>Generated_Source\PSoC5\FanCtrl.h</v>
 <v>Generated_Source\PSoC5\FanCtrl_PM.c</v>
-<v>Generated_Source\PSoC5\O_Led1_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led1.c</v>
-<v>Generated_Source\PSoC5\O_Led1.h</v>
-<v>Generated_Source\PSoC5\O_Led1_1_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led1_1.c</v>
-<v>Generated_Source\PSoC5\O_Led1_1.h</v>
-<v>Generated_Source\PSoC5\O_Led1_2_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led1_2.c</v>
-<v>Generated_Source\PSoC5\O_Led1_2.h</v>
+<v>Generated_Source\PSoC5\O_Led_Error_aliases.h</v>
+<v>Generated_Source\PSoC5\O_Led_Error.c</v>
+<v>Generated_Source\PSoC5\O_Led_Error.h</v>
+<v>Generated_Source\PSoC5\Buttons.c</v>
+<v>Generated_Source\PSoC5\Buttons.h</v>
+<v>Generated_Source\PSoC5\I_BtnOk_aliases.h</v>
+<v>Generated_Source\PSoC5\I_BtnOk.c</v>
+<v>Generated_Source\PSoC5\I_BtnOk.h</v>
+<v>Generated_Source\PSoC5\LCD_DB_OutEnable.h</v>
+<v>Generated_Source\PSoC5\LCD_DB_OutEnable.c</v>
+<v>Generated_Source\PSoC5\LCD_DB_OutEnable_PM.c</v>
+<v>Generated_Source\PSoC5\I_MultiJogA_aliases.h</v>
+<v>Generated_Source\PSoC5\I_MultiJogA.c</v>
+<v>Generated_Source\PSoC5\I_MultiJogA.h</v>
+<v>Generated_Source\PSoC5\MultiJog_Status.c</v>
+<v>Generated_Source\PSoC5\MultiJog_Status.h</v>
+<v>Generated_Source\PSoC5\MultiJog_Reset.c</v>
+<v>Generated_Source\PSoC5\MultiJog_Reset.h</v>
+<v>Generated_Source\PSoC5\MultiJog_Reset_PM.c</v>
+<v>Generated_Source\PSoC5\Clock_8.c</v>
+<v>Generated_Source\PSoC5\Clock_8.h</v>
+<v>Generated_Source\PSoC5\MultiJog_FreqMeter.c</v>
+<v>Generated_Source\PSoC5\MultiJog_FreqMeter.h</v>
+<v>Generated_Source\PSoC5\MultiJog_FreqMeter_PM.c</v>
+<v>Generated_Source\PSoC5\Clock_11.c</v>
+<v>Generated_Source\PSoC5\Clock_11.h</v>
+<v>Generated_Source\PSoC5\BtnOk_Reset.c</v>
+<v>Generated_Source\PSoC5\BtnOk_Reset.h</v>
+<v>Generated_Source\PSoC5\BtnOk_Reset_PM.c</v>
 <v>Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.c</v>
 <v>Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h</v>
 <v>Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.c</v>
@@ -2814,6 +2844,9 @@
 <v>Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h</v>
 <v>Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.c</v>
 <v>Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h</v>
+<v>Generated_Source\PSoC5\MultiJog_Cnt8.c</v>
+<v>Generated_Source\PSoC5\MultiJog_Cnt8.h</v>
+<v>Generated_Source\PSoC5\MultiJog_Cnt8_PM.c</v>
 <v>Generated_Source\PSoC5\cm3gcc.ld</v>
 <v>Generated_Source\PSoC5\Cm3RealView.scat</v>
 <v>Generated_Source\PSoC5\Cm3Start.c</v>
@@ -2844,64 +2877,11 @@
 <v>Generated_Source\PSoC5\cycodeshareimport.ld</v>
 <v>Generated_Source\PSoC5\cycodeshareexport.ld</v>
 <v>Generated_Source\PSoC5\cycodeshareimport.scat</v>
-<v>Generated_Source\PSoC5\LCD_DB_OutEnable.h</v>
-<v>Generated_Source\PSoC5\LCD_DB_OutEnable.c</v>
-<v>Generated_Source\PSoC5\LCD_DB_OutEnable_PM.c</v>
-<v>Generated_Source\PSoC5\LCD_DB0_aliases.h</v>
-<v>Generated_Source\PSoC5\LCD_DB0.c</v>
-<v>Generated_Source\PSoC5\LCD_DB0.h</v>
-<v>Generated_Source\PSoC5\LCD_DB1_aliases.h</v>
-<v>Generated_Source\PSoC5\LCD_DB1.c</v>
-<v>Generated_Source\PSoC5\LCD_DB1.h</v>
-<v>Generated_Source\PSoC5\Buttons.c</v>
-<v>Generated_Source\PSoC5\Buttons.h</v>
-<v>Generated_Source\PSoC5\O_Led_Polar_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led_Polar.c</v>
-<v>Generated_Source\PSoC5\O_Led_Polar.h</v>
-<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h</v>
-<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp.c</v>
-<v>Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h</v>
-<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp.c</v>
-<v>Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h</v>
-<v>Generated_Source\PSoC5\O_Led_Error_aliases.h</v>
-<v>Generated_Source\PSoC5\O_Led_Error.c</v>
-<v>Generated_Source\PSoC5\O_Led_Error.h</v>
-<v>Generated_Source\PSoC5\MultiJog.c</v>
-<v>Generated_Source\PSoC5\MultiJog.h</v>
-<v>Generated_Source\PSoC5\MultiJog_PM.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Cnt8.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Cnt8.h</v>
-<v>Generated_Source\PSoC5\MultiJog_Cnt8_PM.c</v>
-<v>Generated_Source\PSoC5\Clock_6.c</v>
-<v>Generated_Source\PSoC5\Clock_6.h</v>
-<v>Generated_Source\PSoC5\MultiJog_Status.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Status.h</v>
-<v>Generated_Source\PSoC5\MultiJog_Timer.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Timer.h</v>
-<v>Generated_Source\PSoC5\MultiJog_Timer_PM.c</v>
-<v>Generated_Source\PSoC5\MultiJog_FreqMeter.c</v>
-<v>Generated_Source\PSoC5\MultiJog_FreqMeter.h</v>
-<v>Generated_Source\PSoC5\MultiJog_FreqMeter_PM.c</v>
-<v>Generated_Source\PSoC5\Clock_11.c</v>
-<v>Generated_Source\PSoC5\Clock_11.h</v>
-<v>Generated_Source\PSoC5\Clock_7.c</v>
-<v>Generated_Source\PSoC5\Clock_7.h</v>
-<v>Generated_Source\PSoC5\Clock_8.c</v>
-<v>Generated_Source\PSoC5\Clock_8.h</v>
-<v>Generated_Source\PSoC5\Status_Reg_1.c</v>
-<v>Generated_Source\PSoC5\Status_Reg_1.h</v>
-<v>Generated_Source\PSoC5\Count7_1.c</v>
-<v>Generated_Source\PSoC5\Count7_1.h</v>
-<v>Generated_Source\PSoC5\Count7_1_PM.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Reset.c</v>
-<v>Generated_Source\PSoC5\MultiJog_Reset.h</v>
-<v>Generated_Source\PSoC5\MultiJog_Reset_PM.c</v>
-<v>Generated_Source\PSoC5\BtnOk_Reset.c</v>
-<v>Generated_Source\PSoC5\BtnOk_Reset.h</v>
-<v>Generated_Source\PSoC5\BtnOk_Reset_PM.c</v>
-<v>Generated_Source\PSoC5\BtnOk.c</v>
-<v>Generated_Source\PSoC5\BtnOk.h</v>
+<v>Generated_Source\PSoC5\OneWire_OutEnable.h</v>
+<v>Generated_Source\PSoC5\OneWire_OutEnable.c</v>
+<v>Generated_Source\PSoC5\OneWire_OutEnable_PM.c</v>
+<v>Generated_Source\PSoC5\DieTemp.c</v>
+<v>Generated_Source\PSoC5\DieTemp.h</v>
 </gen_list>
 <warp_dep>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2911,9 +2891,9 @@
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>C:\Program Files (x86)\Cypress\PSoC Creator\4.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="131418515445817295" />
+<deps_time v="131423774070300192" />
 <top_block v="TopDesign" />
-<last_generation v="3" />
+<last_generation v="5" />
 <pdl_path v="" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
@@ -2923,7 +2903,7 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM3" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM3\ARM_GCC_493\Debug\LCD_T6963.o">
+<file name=".\CortexM3\ARM_GCC_493\Debug\LCD_Display.o">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
@@ -2954,6 +2934,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -3049,9 +3030,13 @@
 <dep name=".\Display\Fonts\font_2.h" />
 <dep name=".\Display\Fonts\font_3.h" />
 <dep name=".\Display\Fonts\font_4.h" />
-<dep name=".\Display\LCD_T6963.c" />
+<dep name=".\Display\Fonts\font_5.h" />
 <dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
 <dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
+<dep name=".\LCD_Display.c" />
 <dep name=".\LCD_Display.h" />
 <dep name=".\OS\SystemOS.h" />
 <dep name=".\Utils\GeneralUtils.h" />
@@ -3088,6 +3073,7 @@
 <file name=".\Generated_Source\PSoC5\CyFlash.h" />
 <file name=".\Generated_Source\PSoC5\CyLib.h" />
 <file name=".\Generated_Source\PSoC5\CySpc.h" />
+<file name=".\Generated_Source\PSoC5\DieTemp.h" />
 <file name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <file name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <file name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -3183,14 +3169,443 @@
 <file name=".\Display\Fonts\font_2.h" />
 <file name=".\Display\Fonts\font_3.h" />
 <file name=".\Display\Fonts\font_4.h" />
-<file name=".\Display\LCD_T6963.c" />
+<file name=".\Display\Fonts\font_5.h" />
 <file name=".\Display\LCD_T6963.h" />
+<file name=".\Display\SymbolIndicator.h" />
+<file name=".\Display\SymbolIndicatorHelper.h" />
 <file name=".\Display\ValueIndicator.h" />
+<file name=".\Display\ValueIndicatorHelper.h" />
+<file name=".\LCD_Display.c" />
 <file name=".\LCD_Display.h" />
 <file name=".\OS\SystemOS.h" />
 <file name=".\Utils\GeneralUtils.h" />
 <file name=".\device.h" />
 <file name=".\type.h" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\LCD_T6963.o">
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Display\Fonts\font_0.h" />
+<dep name=".\Display\Fonts\font_1.h" />
+<dep name=".\Display\Fonts\font_2.h" />
+<dep name=".\Display\Fonts\font_3.h" />
+<dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
+<dep name=".\Display\LCD_T6963.c" />
+<dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
+<dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
+<dep name=".\LCD_Display.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\Display\LCD_T6963.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\SymbolIndicator.o">
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Display\Fonts\font_0.h" />
+<dep name=".\Display\Fonts\font_1.h" />
+<dep name=".\Display\Fonts\font_2.h" />
+<dep name=".\Display\Fonts\font_3.h" />
+<dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
+<dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.c" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
+<dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
+<dep name=".\LCD_Display.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\Display\SymbolIndicator.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\SymbolIndicatorHelper.o">
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Display\Fonts\font_0.h" />
+<dep name=".\Display\Fonts\font_1.h" />
+<dep name=".\Display\Fonts\font_2.h" />
+<dep name=".\Display\Fonts\font_3.h" />
+<dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
+<dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.c" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
+<dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
+<dep name=".\LCD_Display.h" />
+<dep name=".\MainWork.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\Display\SymbolIndicatorHelper.c" />
+<file name=".\MainWork.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\ValueIndicator.o">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
@@ -3222,6 +3637,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -3317,9 +3733,13 @@
 <dep name=".\Display\Fonts\font_2.h" />
 <dep name=".\Display\Fonts\font_3.h" />
 <dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
 <dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
 <dep name=".\Display\ValueIndicator.c" />
 <dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
 <dep name=".\LCD_Display.h" />
 <dep name=".\OS\SystemOS.h" />
 <dep name=".\Utils\GeneralUtils.h" />
@@ -3327,7 +3747,7 @@
 <dep name=".\type.h" />
 </file>
 <file name=".\Display\ValueIndicator.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\EditingValue.o">
+<file name=".\CortexM3\ARM_GCC_493\Debug\ValueIndicatorHelper.o">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
@@ -3358,6 +3778,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -3453,10 +3874,13 @@
 <dep name=".\Display\Fonts\font_2.h" />
 <dep name=".\Display\Fonts\font_3.h" />
 <dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
 <dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
 <dep name=".\Display\ValueIndicator.h" />
-<dep name=".\EditingValue.c" />
-<dep name=".\EditingValue.h" />
+<dep name=".\Display\ValueIndicatorHelper.c" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
 <dep name=".\LCD_Display.h" />
 <dep name=".\MainWork.h" />
 <dep name=".\OS\SystemOS.h" />
@@ -3464,145 +3888,7 @@
 <dep name=".\device.h" />
 <dep name=".\type.h" />
 </file>
-<file name=".\EditingValue.c" />
-<file name=".\EditingValue.h" />
-<file name=".\MainWork.h" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\LCD_Display.o">
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\AGND.h" />
-<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
-<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
-<dep name=".\Generated_Source\PSoC5\Buttons.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
-<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
-<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
-<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
-<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseData.h" />
-<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\OneWire.h" />
-<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC5\cypins.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\Generated_Source\PSoC5\project.h" />
-<dep name=".\Display\Fonts\font_0.h" />
-<dep name=".\Display\Fonts\font_1.h" />
-<dep name=".\Display\Fonts\font_2.h" />
-<dep name=".\Display\Fonts\font_3.h" />
-<dep name=".\Display\Fonts\font_4.h" />
-<dep name=".\Display\LCD_T6963.h" />
-<dep name=".\Display\ValueIndicator.h" />
-<dep name=".\LCD_Display.c" />
-<dep name=".\LCD_Display.h" />
-<dep name=".\OS\SystemOS.h" />
-<dep name=".\Utils\GeneralUtils.h" />
-<dep name=".\device.h" />
-<dep name=".\type.h" />
-</file>
-<file name=".\LCD_Display.c" />
+<file name=".\Display\ValueIndicatorHelper.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\MainWork.o">
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
@@ -3634,6 +3920,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -3729,155 +4016,23 @@
 <dep name=".\Display\Fonts\font_2.h" />
 <dep name=".\Display\Fonts\font_3.h" />
 <dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
 <dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
 <dep name=".\Display\ValueIndicator.h" />
-<dep name=".\EditingValue.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
 <dep name=".\LCD_Display.h" />
 <dep name=".\MainWork.c" />
 <dep name=".\MainWork.h" />
 <dep name=".\OS\SystemOS.h" />
+<dep name=".\Temperature\TemperControl.h" />
 <dep name=".\Utils\GeneralUtils.h" />
 <dep name=".\device.h" />
 <dep name=".\type.h" />
 </file>
 <file name=".\MainWork.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\main.o">
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
-<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
-<dep name=".\Generated_Source\PSoC5\AGND.h" />
-<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
-<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
-<dep name=".\Generated_Source\PSoC5\Buttons.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
-<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
-<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
-<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
-<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
-<dep name=".\Generated_Source\PSoC5\CyLib.h" />
-<dep name=".\Generated_Source\PSoC5\CySpc.h" />
-<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
-<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
-<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
-<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
-<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
-<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
-<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
-<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseData.h" />
-<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
-<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
-<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
-<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
-<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
-<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
-<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\OneWire.h" />
-<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
-<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
-<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
-<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
-<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
-<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
-<dep name=".\Generated_Source\PSoC5\cyPm.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice.h" />
-<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
-<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
-<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
-<dep name=".\Generated_Source\PSoC5\cypins.h" />
-<dep name=".\Generated_Source\PSoC5\cytypes.h" />
-<dep name=".\Generated_Source\PSoC5\project.h" />
-<dep name=".\Display\Fonts\font_0.h" />
-<dep name=".\Display\Fonts\font_1.h" />
-<dep name=".\Display\Fonts\font_2.h" />
-<dep name=".\Display\Fonts\font_3.h" />
-<dep name=".\Display\Fonts\font_4.h" />
-<dep name=".\Display\LCD_T6963.h" />
-<dep name=".\Display\ValueIndicator.h" />
-<dep name=".\LCD_Display.h" />
-<dep name=".\MainWork.h" />
-<dep name=".\OS\SystemOS.h" />
-<dep name=".\Utils\GeneralUtils.h" />
-<dep name=".\device.h" />
-<dep name=".\main.c" />
-<dep name=".\type.h" />
-</file>
-<file name=".\main.c" />
+<file name=".\Temperature\TemperControl.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\SystemOS.o">
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
@@ -3908,6 +4063,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -4005,6 +4161,267 @@
 <dep name=".\type.h" />
 </file>
 <file name=".\OS\SystemOS.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\DS1821.o">
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Temperature\DS1821.c" />
+<dep name=".\Temperature\DS1821.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\Temperature\DS1821.c" />
+<file name=".\Temperature\DS1821.h" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\TemperControl.o">
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\MainWork.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Temperature\DS1821.h" />
+<dep name=".\Temperature\TemperControl.c" />
+<dep name=".\Temperature\TemperControl.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\Temperature\TemperControl.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\GeneralUtils.o">
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
@@ -4035,6 +4452,7 @@
 <dep name=".\Generated_Source\PSoC5\CyFlash.h" />
 <dep name=".\Generated_Source\PSoC5\CyLib.h" />
 <dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
 <dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
@@ -4132,25 +4550,155 @@
 <dep name=".\type.h" />
 </file>
 <file name=".\Utils\GeneralUtils.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\font_2.o">
-<dep name=".\Display\Fonts\font.h" />
-<dep name=".\Display\Fonts\font_2.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\main.o">
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Display\Fonts\font_0.h" />
+<dep name=".\Display\Fonts\font_1.h" />
 <dep name=".\Display\Fonts\font_2.h" />
+<dep name=".\Display\Fonts\font_3.h" />
+<dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\Fonts\font_5.h" />
+<dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\SymbolIndicator.h" />
+<dep name=".\Display\SymbolIndicatorHelper.h" />
+<dep name=".\Display\ValueIndicator.h" />
+<dep name=".\Display\ValueIndicatorHelper.h" />
+<dep name=".\LCD_Display.h" />
+<dep name=".\MainWork.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\main.c" />
+<dep name=".\type.h" />
+</file>
+<file name=".\main.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_5.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_5.c" />
+<dep name=".\Display\Fonts\font_5.h" />
 </file>
 <file name=".\Display\Fonts\font.h" />
-<file name=".\Display\Fonts\font_2.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\font_3.o">
-<dep name=".\Display\Fonts\font.h" />
-<dep name=".\Display\Fonts\font_3.c" />
-<dep name=".\Display\Fonts\font_3.h" />
-</file>
-<file name=".\Display\Fonts\font_3.c" />
-<file name=".\CortexM3\ARM_GCC_493\Debug\font_4.o">
-<dep name=".\Display\Fonts\font.h" />
-<dep name=".\Display\Fonts\font_4.c" />
-<dep name=".\Display\Fonts\font_4.h" />
-</file>
-<file name=".\Display\Fonts\font_4.c" />
+<file name=".\Display\Fonts\font_5.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\ADC_Current.o">
 <dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
 <dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
@@ -4544,6 +5092,20 @@
 <dep name=".\Generated_Source\PSoC5\CySpc.c" />
 </file>
 <file name=".\Generated_Source\PSoC5\CySpc.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\DieTemp.o">
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\DieTemp.c" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.H" />
+</file>
+<file name=".\Generated_Source\PSoC5\DieTemp.c" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\FAN_CTRL.o">
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
 <dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
@@ -5196,6 +5758,182 @@
 <file name=".\Generated_Source\PSoC5\cydevicegnu.inc" />
 <file name=".\Generated_Source\PSoC5\cydevicegnu_trm.inc" />
 <file name=".\Generated_Source\PSoC5\cyfittergnu.inc" />
+<file name=".\Generated_Source\PSoC5\OneWire_OutEnable.h" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\OneWire_OutEnable.o">
+<dep name=".\Generated_Source\PSoC5\OneWire_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_OutEnable.c" />
+</file>
+<file name=".\Generated_Source\PSoC5\OneWire_OutEnable.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\OneWire_OutEnable_PM.o">
+<dep name=".\Generated_Source\PSoC5\OneWire_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_OutEnable_PM.c" />
+</file>
+<file name=".\Generated_Source\PSoC5\OneWire_OutEnable_PM.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_2.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_2.c" />
+<dep name=".\Display\Fonts\font_2.h" />
+</file>
+<file name=".\Display\Fonts\font_2.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_3.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_3.c" />
+<dep name=".\Display\Fonts\font_3.h" />
+</file>
+<file name=".\Display\Fonts\font_3.c" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\EditingValue.o">
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Display\Fonts\font.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Bypass_P32_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_Current_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelA_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_Bypass_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_IRQ.h" />
+<dep name=".\Generated_Source\PSoC5\ADC_VoltageChanelB_theACLK.h" />
+<dep name=".\Generated_Source\PSoC5\AGND.h" />
+<dep name=".\Generated_Source\PSoC5\AGND_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\AdcCurrentChanel.h" />
+<dep name=".\Generated_Source\PSoC5\BtnOk_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\Buttons.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_11.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_6.h" />
+<dep name=".\Generated_Source\PSoC5\Clock_8.h" />
+<dep name=".\Generated_Source\PSoC5\Control_Reg_1.h" />
+<dep name=".\Generated_Source\PSoC5\CyDmac.h" />
+<dep name=".\Generated_Source\PSoC5\CyFlash.h" />
+<dep name=".\Generated_Source\PSoC5\CyLib.h" />
+<dep name=".\Generated_Source\PSoC5\CySpc.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL.h" />
+<dep name=".\Generated_Source\PSoC5\FAN_CTRL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\FanCtrl.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnBipolarMode_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnChangePolarity_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnOk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\I_BtnRiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB.h" />
+<dep name=".\Generated_Source\PSoC5\I_MultiJogB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_NegVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosCurChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA.h" />
+<dep name=".\Generated_Source\PSoC5\I_PosVoltChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB.h" />
+<dep name=".\Generated_Source\PSoC5\I_VoltChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_OutEnable.h" />
+<dep name=".\Generated_Source\PSoC5\LCD_DB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk.h" />
+<dep name=".\Generated_Source\PSoC5\MouseClk_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData.h" />
+<dep name=".\Generated_Source\PSoC5\MouseData_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\MouseISR.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Cnt8.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_FreqMeter.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Reset.h" />
+<dep name=".\Generated_Source\PSoC5\MultiJog_Status.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_BKL_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_CD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RD_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_RES_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR.h" />
+<dep name=".\Generated_Source\PSoC5\O_LCD_WR_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Error_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_Polar_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp.h" />
+<dep name=".\Generated_Source\PSoC5\O_Led_RiseRatePowerUp_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_ON_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY.h" />
+<dep name=".\Generated_Source\PSoC5\O_OUT_POLARITY_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_OnChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChA_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB.h" />
+<dep name=".\Generated_Source\PSoC5\O_PwmChB_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire.h" />
+<dep name=".\Generated_Source\PSoC5\OneWire_aliases.h" />
+<dep name=".\Generated_Source\PSoC5\PGA_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_1.h" />
+<dep name=".\Generated_Source\PSoC5\PWM_2.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_armcc.h" />
+<dep name=".\Generated_Source\PSoC5\cmsis_gcc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3.h" />
+<dep name=".\Generated_Source\PSoC5\core_cm3_psoc5.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmFunc.h" />
+<dep name=".\Generated_Source\PSoC5\core_cmInstr.h" />
+<dep name=".\Generated_Source\PSoC5\cyPm.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice.h" />
+<dep name=".\Generated_Source\PSoC5\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC5\cydisabledsheets.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC5\cyfitter_cfg.h" />
+<dep name=".\Generated_Source\PSoC5\cypins.h" />
+<dep name=".\Generated_Source\PSoC5\cytypes.h" />
+<dep name=".\Generated_Source\PSoC5\project.h" />
+<dep name=".\Display\Fonts\font_0.h" />
+<dep name=".\Display\Fonts\font_1.h" />
+<dep name=".\Display\Fonts\font_2.h" />
+<dep name=".\Display\Fonts\font_3.h" />
+<dep name=".\Display\Fonts\font_4.h" />
+<dep name=".\Display\LCD_T6963.h" />
+<dep name=".\Display\ValueIndicator.h" />
+<dep name=".\EditingValue.c" />
+<dep name=".\EditingValue.h" />
+<dep name=".\LCD_Display.h" />
+<dep name=".\MainWork.h" />
+<dep name=".\OS\SystemOS.h" />
+<dep name=".\Utils\GeneralUtils.h" />
+<dep name=".\device.h" />
+<dep name=".\type.h" />
+</file>
+<file name=".\EditingValue.c" />
+<file name=".\EditingValue.h" />
+<file name=".\CortexM3\ARM_GCC_493\Debug\font_4.o">
+<dep name=".\Display\Fonts\font.h" />
+<dep name=".\Display\Fonts\font_4.c" />
+<dep name=".\Display\Fonts\font_4.h" />
+</file>
+<file name=".\Display\Fonts\font_4.c" />
 <file name=".\Generated_Source\PSoC5\Count7_1.h" />
 <file name=".\CortexM3\ARM_GCC_493\Debug\Count7_1.o">
 <dep name=".\Generated_Source\PSoC5\Count7_1.h" />
@@ -5357,12 +6095,17 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\font_2.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\font_3.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\font_4.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\font_5.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_Display.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_T6963.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ValueIndicator.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\SymbolIndicator.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\ValueIndicatorHelper.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\SymbolIndicatorHelper.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\MainWork.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\EditingValue.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\GeneralUtils.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\DS1821.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\TemperControl.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cyfitter_cfg.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cymetadata.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelB.o" />
@@ -5404,11 +6147,15 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Control_Reg_1_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\PWM_1.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\PWM_1_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I_MultiJogA.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_6.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\I_MultiJogB.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnRiseRatePowerUp.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_RiseRatePowerUp.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnBipolarMode.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnChangePolarity.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnOk.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_Polar.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\MouseClk.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\MouseData.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\MouseISR.o" />
@@ -5416,6 +6163,21 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\FAN_CTRL.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\FanCtrl.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\FanCtrl_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_Error.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Buttons.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnOk.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_DB_OutEnable.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_DB_OutEnable_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\I_MultiJogA.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Status.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Reset.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Reset_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_8.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_FreqMeter.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_FreqMeter_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_11.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\BtnOk_Reset.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\BtnOk_Reset_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelB_IRQ.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelB_theACLK.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelB_Bypass.o" />
@@ -5426,6 +6188,8 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelA_IRQ.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelA_theACLK.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\ADC_VoltageChanelA_Bypass.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Cnt8.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Cnt8_PM.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\Cm3Start.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\CyBootAsmGnu.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\CyDmac.o" />
@@ -5434,27 +6198,7 @@
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cyPm.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\CySpc.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\cyutils.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_DB_OutEnable.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\LCD_DB_OutEnable_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Buttons.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_Polar.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\I_BtnRiseRatePowerUp.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_RiseRatePowerUp.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\O_Led_Error.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Cnt8.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Cnt8_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_6.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Status.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_FreqMeter.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_FreqMeter_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_11.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\Clock_8.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Reset.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\MultiJog_Reset_PM.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\BtnOk_Reset.o" />
-<dep name=".\CortexM3\ARM_GCC_493\Debug\BtnOk_Reset_PM.o" />
+<dep name=".\CortexM3\ARM_GCC_493\Debug\DieTemp.o" />
 <dep name=".\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM3\ARM_GCC_493\Debug\CyComponentLibrary.a" />
 </file>
@@ -5587,6 +6331,15 @@
 <name_val_pair name="Generated_Source\PSoC5\BtnOk_Reset_PM.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
 <name_val_pair name="Display\ValueIndicator.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
 <name_val_pair name="EditingValue.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Display\Fonts\font_5.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Display\SymbolIndicator.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Display\ValueIndicatorHelper.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Display\SymbolIndicatorHelper.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Temperature\DS1821.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC5\OneWire_OutEnable.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC5\OneWire_OutEnable_PM.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Temperature\TemperControl.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
+<name_val_pair name="Generated_Source\PSoC5\DieTemp.c" v="-mcpu=cortex-m3 -mthumb -I. -IGenerated_Source\PSoC5 -Wa,-alh=${OutputDir}/${CompileFile}.lst -g -D DEBUG -D DISPLAY_LCD_T6963 -Wall -ffunction-sections -Og -ffat-lto-objects" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="-.appdatapath &quot;C:\Users\Vior_IDE\AppData\Local\Cypress Semiconductor\PSoC Creator\4.0&quot; -.fdsnotice -.fdswarpdepfile=warp_dependencies.txt -.fdselabdepfile=elab_dependencies.txt -.fdsbldfile=generated_files.txt -.fdsreffile=referenced_files.txt -p Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cyprj -d CY8C5888LTI-LP097 -s Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5 -- -yv2 -q10 -ygs -o0 -v0 -.fftcfgtype=LE" />
@@ -5594,7 +6347,7 @@
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="131420409893315959" />
+<deps_time v="131423845121130206" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
@@ -5606,8 +6359,7 @@
 <CyGuid_bf610382-39c6-441f-80b8-b04622ea7845 type_name="CyDesigner.Common.Debugger.CyWatchedVariableList" version="1">
 <debugger_watch_list>
 <CyGuid_ccf7a56e-c00d-460c-82dd-56c8f54feb7f type_name="CyDesigner.Common.Debugger.CyWatchedVariableList+CyWatchedItem" version="1" window="0" name="SysTickCount" radix="Default" />
-<CyGuid_ccf7a56e-c00d-460c-82dd-56c8f54feb7f type_name="CyDesigner.Common.Debugger.CyWatchedVariableList+CyWatchedItem" version="1" window="0" name="pVariableValue" radix="hex" />
-<CyGuid_ccf7a56e-c00d-460c-82dd-56c8f54feb7f type_name="CyDesigner.Common.Debugger.CyWatchedVariableList+CyWatchedItem" version="1" window="0" name="pDeselectVariableValue" radix="hex" />
+<CyGuid_ccf7a56e-c00d-460c-82dd-56c8f54feb7f type_name="CyDesigner.Common.Debugger.CyWatchedVariableList+CyWatchedItem" version="1" window="0" name="shiftX" radix="Default" />
 </debugger_watch_list>
 </CyGuid_bf610382-39c6-441f-80b8-b04622ea7845>
 </dataGuid>
@@ -5618,7 +6370,7 @@
 <v>Off-Chip</v>
 </tree_states_tab_names>
 <tree_states>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\Digital\Utility\Pulse Converter [v1.0]">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="Cypress Component Catalog\System\Die Temperature [v2.0]">
 <ExpandedNodeIds>
 <v>Cypress Component Catalog</v>
 <v>Cypress Component Catalog\Digital</v>
@@ -5629,20 +6381,6 @@
 <v>Cypress Component Catalog\System</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>Cypress Component Catalog\Digital\Logic\And [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Bufoe [v1.10]</v>
-<v>Cypress Component Catalog\Digital\Logic\D Flip Flop [v1.30]</v>
-<v>Cypress Component Catalog\Digital\Logic\D Flip Flop w/ Enable [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\De-Multiplexer [v1.10]</v>
-<v>Cypress Component Catalog\Digital\Logic\Digital Constant [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Logic High '1' [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Logic Low '0' [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Lookup Table [v1.50]</v>
-<v>Cypress Component Catalog\Digital\Logic\Multiplexer [v1.10]</v>
-<v>Cypress Component Catalog\Digital\Logic\Nand [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Nor [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Not [v1.0]</v>
-<v>Cypress Component Catalog\Digital\Logic\Or [v1.0]</v>
 <v>Cypress Component Catalog\Digital\Logic\SR Flip Flop [v1.0]</v>
 <v>Cypress Component Catalog\Digital\Logic\Toggle Flip Flop [v1.0]</v>
 <v>Cypress Component Catalog\Digital\Logic\Virtual Mux [v1.0]</v>
@@ -5668,6 +6406,20 @@
 <v>Cypress Component Catalog\Power Supervision</v>
 <v>Cypress Component Catalog\System</v>
 <v>Cypress Component Catalog\System\Boost Converter [v5.0]</v>
+<v>Cypress Component Catalog\System\Bootloadable [v1.50]</v>
+<v>Cypress Component Catalog\System\Bootloader [v1.50]</v>
+<v>Cypress Component Catalog\System\Clock [v2.20]</v>
+<v>Cypress Component Catalog\System\Die Temperature [v2.0]</v>
+<v>Cypress Component Catalog\System\DMA [v1.70]</v>
+<v>Cypress Component Catalog\System\EEPROM [v3.0]</v>
+<v>Cypress Component Catalog\System\Emulated EEPROM [v1.20]</v>
+<v>Cypress Component Catalog\System\External Memory Interface</v>
+<v>Cypress Component Catalog\System\Global Signal Reference [v2.0]</v>
+<v>Cypress Component Catalog\System\ILO Trim [v2.0]</v>
+<v>Cypress Component Catalog\System\Interrupt [v1.70]</v>
+<v>Cypress Component Catalog\System\RTC [v2.0]</v>
+<v>Cypress Component Catalog\System\SleepTimer [v3.20]</v>
+<v>Cypress Component Catalog\Thermal Management</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">

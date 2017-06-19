@@ -44,8 +44,12 @@
 #define SetPointAmperageBCoordX 2 + 120
 #define SetPointAmperageBCoordY 35 + 56
 
-#define TemperatureCoordX 200
-#define TemperatureCoordY 115
+#define TemperatureCoordX 201
+#define TemperatureCoordY 112
+#define TemperatureCpuCoordX 201
+#define TemperatureCpuCoordY 121
+#define FanIsOnCoordX 170
+#define FanIsOnCoordY 114
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
@@ -64,6 +68,8 @@ PTVariableValue GetVariableValue(TSelectValue selectValue);
 BOOL ChangeStabilizeSelection();
 BOOL FlashSelectedStabilize();
 BOOL ChangeFocusingStabilize();
+
+BOOL ChangeTemperatures();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -90,8 +96,10 @@ void Display_Init() {
     ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
 
-    ValueIndicator_Init(&DisplayObj.Values.Temperature.Indicator, omTemperature, 5, TemperatureCoordX, TemperatureCoordY, 
-        15, 10, 0, 0, TemperatureCoordY + 2, 1, 1, TRUE);   
+    ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 0, TemperatureCoordX, TemperatureCoordY, 
+        37, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE);
+    ValueIndicator_Init(&DisplayObj.Temperatures.Cpu.Indicator, omTemperatureCpu, 0, TemperatureCpuCoordX, TemperatureCpuCoordY, 
+        37, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE);   
     DisplayObj.Properties.SelectedIndicator = NULL;    
     
     
@@ -132,7 +140,6 @@ PTVariableValue GetVariableValue(TSelectValue selectValue) {
         case svSetPointAmperageA : pVariableValue = &DisplayObj.Values.SetPointAmperageA; break;
         case svSetPointVoltageB : pVariableValue = &DisplayObj.Values.SetPointVoltageB; break;
         case svSetPointAmperageB : pVariableValue = &DisplayObj.Values.SetPointAmperageB; break;
-        case svTemperature : pVariableValue = &DisplayObj.Values.Temperature; break;
         default : pVariableValue = NULL; break;        
     }
     return pVariableValue;
@@ -186,6 +193,9 @@ BOOL res = FALSE;
     if (ChangeFocusingStabilize()) {
         res = TRUE;  
     }
+    if (ChangeTemperatures()) {
+        res = TRUE;  
+    }
 
     return res;
 }
@@ -207,38 +217,34 @@ CHAR buffer[20];
 }
 
 void SetScreen_Bipolar() {    
-    Display_DrawLine(119, 0, 119, 110, ltSolid, FALSE);
-    Display_DrawLine(120, 0, 120, 110, ltSolid, FALSE);
+    Display_DrawLine(119, 0, 119, 109, ltSolid, FALSE);
+    Display_DrawLine(120, 0, 120, 109, ltSolid, FALSE);
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
-    Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE);   
+    Display_DrawLine(0, 109, 239, 109, ltSolid, FALSE);   
     
     Display_DrawLine(35, 28, 119, 28, ltDoted, FALSE);  
     Display_DrawLine(35, 28, 35, 54, ltDoted, FALSE); 
     Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
     Display_DrawLine(12 + 23, 32, 40 + 23, 38, ltSolid, FALSE);  
     Display_DrawLine(40 + 23, 38, 80 + 23, 30, ltSolid, FALSE);    
-    Display_SetFont(0);  
           
     Display_DrawLine(35 + 120, 28, 119 + 120, 28, ltDoted, FALSE);  
     Display_DrawLine(35 + 120, 28, 35 + 120, 54, ltDoted, FALSE); 
     Display_DrawLine(119 + 120, 28, 119 + 120, 54, ltDoted, FALSE); 
     Display_DrawLine(12 + 23 + 120, 36, 40 + 23 + 120, 42, ltSolid, FALSE);  
     Display_DrawLine(40 + 23 + 120, 42, 80 + 23 + 120, 38, ltSolid, FALSE);
-    Display_SetFont(0);   
     
-    Display_DrawLine(35, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(35, 28 + 56, 35, 54 + 56, ltDoted, FALSE); 
-    Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12 + 23, 36 + 56, 40 + 23, 44 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23, 44 + 56, 80 + 23, 42 + 56, ltSolid, FALSE);
-    Display_SetFont(0);   
+    Display_DrawLine(35, 28 + 54, 119, 28 + 54, ltDoted, FALSE);  
+    Display_DrawLine(35, 28 + 54, 35, 54 + 54, ltDoted, FALSE); 
+    Display_DrawLine(119, 28 + 54, 119, 54 + 54, ltDoted, FALSE);  
+    Display_DrawLine(12 + 23, 36 + 54, 40 + 23, 44 + 54, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23, 44 + 54, 80 + 23, 42 + 54, ltSolid, FALSE);
     
-    Display_DrawLine(35 + 120, 28 + 56, 119 + 120, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(35 + 120, 28 + 56, 35 + 120, 54 + 56, ltDoted, FALSE); 
-    Display_DrawLine(119 + 120, 28 + 56, 119 + 120, 54 + 56, ltDoted, FALSE); 
-    Display_DrawLine(12 + 23 + 120, 30 + 56, 40 + 23 + 120, 32 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23 + 120, 32 + 56, 80 + 23 + 120, 37 + 56, ltSolid, FALSE);
-    Display_SetFont(0);     
+    Display_DrawLine(35 + 120, 28 + 54, 119 + 120, 28 + 54, ltDoted, FALSE);  
+    Display_DrawLine(35 + 120, 28 + 54, 35 + 120, 54 + 54, ltDoted, FALSE); 
+    Display_DrawLine(119 + 120, 28 + 54, 119 + 120, 54 + 54, ltDoted, FALSE); 
+    Display_DrawLine(12 + 23 + 120, 30 + 54, 40 + 23 + 120, 32 + 54, ltSolid, FALSE);  
+    Display_DrawLine(40 + 23 + 120, 32 + 54, 80 + 23 + 120, 37 + 54, ltSolid, FALSE);
     Display_Flush();
 }
 
@@ -611,3 +617,41 @@ void RequestToFocusingStabilize(TSelectStabilizeMode selectValue) {
     }
 }
 /*----------------- Stabilize Focusing --------------<<<*/
+
+/*>>>-------------- Change Temperature -----------------*/
+BOOL ChangeTemperatures() {
+    BOOL request = FALSE;
+    if (DisplayObj.Temperatures.Radiator.RequestToChangeValue || DisplayObj.Temperatures.Cpu.RequestToChangeValue) { 
+        if (DisplayObj.Temperatures.Radiator.RequestToFocus != ValueIndicator_GetFocused(&DisplayObj.Temperatures.Radiator.Indicator)) {
+            ValueIndicator_SetFocused(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.RequestToFocus);  
+            DisplayObj.Temperatures.Radiator.RequestToFocus = FALSE; 
+        }        
+        ValueIndicator_SetValue(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.NewValue);
+        DisplayObj.Temperatures.Radiator.RequestToChangeValue = FALSE;
+        ValueIndicator_Repaint(&DisplayObj.Temperatures.Radiator.Indicator);      
+        ValueIndicator_SetValue(&DisplayObj.Temperatures.Cpu.Indicator, DisplayObj.Temperatures.Cpu.NewValue);
+        DisplayObj.Temperatures.Cpu.RequestToChangeValue = FALSE;
+        ValueIndicator_Repaint(&DisplayObj.Temperatures.Cpu.Indicator);
+        request = TRUE;
+    }
+    if (request) {
+        Display_Flush();    
+        return TRUE;        
+    }    
+    return FALSE;      
+}
+
+void RequestToChangeTemperatures(TTemperature temperatures) {
+    if (temperatures.Radiator != DisplayObj.Temperatures.Radiator.NewValue) {
+        DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE;    
+        DisplayObj.Temperatures.Radiator.NewValue = temperatures.Radiator;  
+    }
+    if (temperatures.Cpu != DisplayObj.Temperatures.Cpu.NewValue) {
+        DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;    
+        DisplayObj.Temperatures.Cpu.NewValue = temperatures.Cpu;  
+    }
+    if (temperatures.FanIsOn) {
+        DisplayObj.Temperatures.Radiator.RequestToFocus = TRUE;     
+    }
+}
+/*----------------- Change ElectrValue --------------<<<*/

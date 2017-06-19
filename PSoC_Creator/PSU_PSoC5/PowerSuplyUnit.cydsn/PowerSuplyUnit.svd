@@ -626,6 +626,36 @@
       </registers>
     </peripheral>
     <peripheral>
+      <name>MultiJog_Reset</name>
+      <description>Count7 debug registers</description>
+      <baseAddress>0x40006475</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>COUNT</name>
+          <description>Count value register</description>
+          <addressOffset>0x0</addressOffset>
+          <size>7</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>PERIOD</name>
+          <description>Count7 period register</description>
+          <addressOffset>0x10</addressOffset>
+          <size>7</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>MultiJog_Status</name>
       <description>No description available</description>
       <baseAddress>0x40006565</baseAddress>
@@ -777,36 +807,6 @@
               </enumeratedValues>
             </field>
           </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>MultiJog_Reset</name>
-      <description>Count7 debug registers</description>
-      <baseAddress>0x40006475</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x0</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>COUNT</name>
-          <description>Count value register</description>
-          <addressOffset>0x0</addressOffset>
-          <size>7</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>PERIOD</name>
-          <description>Count7 period register</description>
-          <addressOffset>0x10</addressOffset>
-          <size>7</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
         </register>
       </registers>
     </peripheral>

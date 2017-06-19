@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\TopDesign">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\Fonts">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -50,8 +50,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\type.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\EditingValue.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\EditingValue.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\OS</v>
@@ -60,6 +58,11 @@
 <v>PSU_PSoC5\PowerSuplyUnit\OS\SystemOS.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\DS1821.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\DS1821.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
@@ -159,6 +162,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\cy_boot\CySpc.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\cy_boot\cytypes.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\cy_boot\cyutils.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\DieTemp</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\DieTemp\DieTemp.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\DieTemp\DieTemp.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\FAN_CTRL</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\FAN_CTRL\FAN_CTRL.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\FAN_CTRL\FAN_CTRL.h</v>
@@ -333,15 +339,19 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicator.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicator.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicatorHelper.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicatorHelper.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicatorHelper.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicatorHelper.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\cyapicallbacks.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\device.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Header Files\type.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\EditingValue.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\MainWork\EditingValue.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\OS</v>
@@ -350,6 +360,11 @@
 <v>PSU_PSoC5\PowerSuplyUnit\OS\SystemOS.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\DS1821.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\DS1821.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
@@ -364,15 +379,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32\ADC_Current_Bypass_P32.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32\ADC_Current_Bypass_P32.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32\ADC_Current_Bypass_P32_aliases.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk\ADC_Current_Ext_CP_Clk.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Ext_CP_Clk\ADC_Current_Ext_CP_Clk.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ\ADC_Current_IRQ.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_IRQ\ADC_Current_IRQ.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK\ADC_Current_theACLK.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_theACLK\ADC_Current_theACLK.h</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -437,7 +443,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyPm.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\CySpc.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\cyutils.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\EditingValue.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\DieTemp.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\DS1821.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FAN_CTRL.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\FanCtrl_PM.lst</v>
@@ -446,6 +453,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_2.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_3.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_4.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\font_5.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\GeneralUtils.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\I_BtnBipolarMode.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\I_BtnChangePolarity.lst</v>
@@ -501,8 +509,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_1_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_2.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\PWM_2_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\SymbolIndicator.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\SymbolIndicatorHelper.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\SystemOS.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\TemperControl.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ValueIndicator.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\ValueIndicatorHelper.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.elf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.hex</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\PowerSuplyUnit.map</v>
@@ -553,6 +565,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\DieTemp_v2_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
@@ -629,6 +642,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CyStatusReg_v1_90\CyStatusReg_v1_90.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Debouncer_v1_0\Debouncer_v1_0.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\DieTemp_v2_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Diode_v1_0\Diode_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\EdgeDetect_v1_0.pdf</v>
@@ -647,7 +661,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\NFET_En_v1_0\NFET_En_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\not_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0</v>
-<v>PSU_PSoC5\PowerSuplyUnit\NPN_v1_0\NPN_v1_0.pdf</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -666,13 +679,18 @@
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
-<name v=".\PowerSuplyUnit.cydsn\main.c" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.h" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
-<name v=".\PowerSuplyUnit.cydsn\EditingValue.h" />
-<name v=".\PowerSuplyUnit.cydsn\EditingValue.c" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
+<name v=".\PowerSuplyUnit.cydsn\Temperature\DS1821.c" />
+<name v=".\PowerSuplyUnit.cydsn\Temperature\DS1821.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
+<name v=".\PowerSuplyUnit.cydsn\Temperature\TemperControl.h" />
+<name v=".\PowerSuplyUnit.cydsn\Temperature\TemperControl.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicator.h" />
+<name v=".\PowerSuplyUnit.cydsn\main.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -680,7 +698,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="54f6b482-7d83-45fe-abea-993db6f3e39d"><DocumentWindow Key="f3ca53b4-5015-46bd-aa33-2242c5a4b114" Guid="039c0fb2-2e78-434b-9562-8b7d34f56694" /><DocumentWindow Key="400344f1-39df-4a67-9408-2ff03fc8c335" Guid="8f762522-9ee9-4679-9104-dfc60a8a4ef0" /><DocumentWindow Key="47a17c62-f006-4cdf-bbb8-4f6acb0999d9" Guid="ca21c5d6-93d2-4132-a56c-4dec180027ea" /><DocumentWindow Key="fabb5b67-6629-4e4d-aca7-1f7f9773ab43" Guid="3c59bfd1-deb8-42c7-bd53-86239e36a0cb" /><DocumentWindow Key="129c9205-52a7-4f3d-89c6-a5998fbd6266" Guid="330da7b2-81f4-4877-af14-7f974aa6e0ca" /><DocumentWindow Key="5d631936-d55a-4f05-be00-c482d08e953a" Guid="98b414b9-9ba3-4c80-b1a9-6cbe3ffdf116" /><DocumentWindow Key="ea148f94-1f96-4229-bd73-659a98882db1" Guid="7b050162-b533-49ca-9bf9-12f467392bf8" /><DocumentWindow Key="1c874cdd-9e3d-4a37-8ef1-4e142c5fcd5f" Guid="54f6b482-7d83-45fe-abea-993db6f3e39d" /><DocumentWindow Key="1c0e3b19-6a25-4245-9cd6-65fa9d7fb36b" Guid="8a7f8b74-21b7-483e-9391-68d93e369497" /><DocumentWindow Key="0c3215f2-86fd-4e7b-b619-80b71effe2b9" Guid="802a7d90-f70a-4d4a-aca6-da04d9937959" /><DocumentWindow Key="2c76ab51-aac1-42e4-8489-50706ef190f1" Guid="3789edba-9af2-4823-a14c-5456529b3572" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="2cdee5a5-2b80-45ec-bfdc-d15ee465a75a"><DocumentWindow Key="942656fe-8a80-4390-9f9b-e9539d6e850e" Guid="69c616c7-65af-47f0-b712-9f9a2889fbb2" /><DocumentWindow Key="7ee1ee8a-7520-4a69-81b4-7da3e374dc29" Guid="b0f85523-c670-4e8f-928b-db6d2ed96eae" /><DocumentWindow Key="a444173b-b059-45ac-951d-13d7ff7118ec" Guid="ea8f28c3-af9a-4e77-9fc4-8563d47d6f59" /><DocumentWindow Key="231317dc-7b18-4cf9-a809-e73f98f54ab6" Guid="f2ef6373-ff28-4ddf-b125-0e015dd45327" /><DocumentWindow Key="1987c837-4a87-4a4e-8078-b290e6efe181" Guid="3c44cba3-992f-4dc9-8c41-7cc693e142c9" /><DocumentWindow Key="aae90933-1501-4de9-815b-9e6792472978" Guid="90daafdf-8510-42ab-8cc2-814d4cf55f1e" /><DocumentWindow Key="27b7aaa2-7409-4874-a8b2-146799a7eee2" Guid="b3709502-7b7d-4e83-ab69-b80868912d2a" /><DocumentWindow Key="d333ed6a-9415-4c2b-b455-75e4cb277e33" Guid="d0092d61-4c7e-4aa7-84ae-ad1301625110" /><DocumentWindow Key="bf237a2d-aed1-4c00-8eb3-3f7aba6cdee5" Guid="2cdee5a5-2b80-45ec-bfdc-d15ee465a75a" /><DocumentWindow Key="3b03d3ff-bc26-41c3-9af8-180d3dd0450b" Guid="e357a23d-4b16-4f39-8500-c2358daa5a4b" /><DocumentWindow Key="808f6515-f06f-4d37-86c9-fd794e29e1bf" Guid="714e0d6a-f3ec-4795-8a7e-a8ffd50cf9e0" /><DocumentWindow Key="3cf69a42-950e-4434-a6fe-25f1c04ed9d8" Guid="9f8c28d3-1ad5-4b44-8bf7-4e21c9c23517" /><DocumentWindow Key="e8cddc9a-ca22-43ab-a23d-79412de2cf1f" Guid="3cb4ce77-54b9-4f5a-a37c-80d9bc7ada48" /><DocumentWindow Key="a15e106a-221c-41bc-b3d3-2d85a99d56b9" Guid="f8b047d2-ff1a-4b54-9ac2-5f4c44fe0ed3" /><DocumentWindow Key="301db995-9808-409c-b696-9d12e233a1f5" Guid="65d51cd3-7a17-4492-aa41-8aa2b192a47c" /><DocumentWindow Key="0ce34aae-a58e-42b1-82dd-3e6448239833" Guid="021450b0-28b5-4448-8a10-c77cae2fccf6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
