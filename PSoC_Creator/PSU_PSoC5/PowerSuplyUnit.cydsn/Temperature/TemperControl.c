@@ -16,37 +16,26 @@
 #include "MainWork.h"
 
 BOOL TemperInit = TRUE;
-WORD OneWireErrCnt = 0;
 
+WORD wrrr= 0;
 TTemperatureDeviceStatus BusReset(void) {
 	switch (DS1821_BusReset()) {
-		case 1:
-		{
-			if (OneWireErrCnt < 20) {
-				return tdsInit;
-			} else {
-				return tdsNoDevice;
-			}
-		}
-		case 255:
-		{
-			if (OneWireErrCnt < 20) {
-				return tdsInit;
-			} else {
-				return tdsBusShort;
-			}
-		}
-		default:
-		{
-			OneWireErrCnt = 0;
-			return tdsPresent;
-		}
+		case 1: return tdsNoDevice;
+		case 255: return tdsBusShort;
+		default: return tdsPresent;
 	}
 }
 
 INT ReadTemper(void) {
 	INT bt;
-	if (!BusReset()) return TEMPER_ERR;
+    TTemperatureDeviceStatus status = BusReset();
+	if (status == tdsNoDevice) {
+        return TEMPER_NO_DEVICE;
+    } else if (status == tdsBusShort) {
+        return TEMPER_BUS_SHORT;
+    } else if (status != tdsPresent) {
+        return TEMPER_ERR;
+    } 
 
 	DS1821_Write8(0xAC);  //READ STATUS
 	bt = DS1821_Read8();
@@ -72,8 +61,9 @@ INT ReadTemper(void) {
 }
 
 TTemperature CheckTemper(void) {
-    TTemperature res;
+    TTemperature res = {TEMPER_INIT, TEMPER_INIT, FALSE};
 	res.Radiator = ReadTemper();
+    
 	SHORT CPUTemperature;
 	cystatus st = DieTemp_Query(&CPUTemperature);
 	if (st == CYRET_SUCCESS) {
@@ -101,7 +91,7 @@ TTemperature CheckTemper(void) {
 		FanCtrl_WriteCompare(32);
 	} else if (res.Cpu >= 40) {
 		FanCtrl_WriteCompare(128);
-        res.FanIsOn = TRUE;
+        res.FanIsOn = TemperatureSensorIsNorm(res.Cpu);
 	} else {
 		FanCtrl_WriteCompare(0);
         res.FanIsOn = FALSE;

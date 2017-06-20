@@ -23,19 +23,7 @@ typedef enum {
 	tdsPresent
 } TTemperatureDeviceStatus;
 
-
 extern TTemperature CheckTemper(void);
 #endif  /* __TemperControl_H_ */
-
-
-
-
-
-
-
-
-
-
-
 
 //[] END OF FILE

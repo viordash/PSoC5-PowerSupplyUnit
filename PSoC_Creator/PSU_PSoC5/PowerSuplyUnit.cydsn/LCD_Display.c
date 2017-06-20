@@ -626,12 +626,16 @@ BOOL ChangeTemperatures() {
             ValueIndicator_SetFocused(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.RequestToFocus);  
             DisplayObj.Temperatures.Radiator.RequestToFocus = FALSE; 
         }        
-        ValueIndicator_SetValue(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.NewValue);
-        DisplayObj.Temperatures.Radiator.RequestToChangeValue = FALSE;
-        ValueIndicator_Repaint(&DisplayObj.Temperatures.Radiator.Indicator);      
-        ValueIndicator_SetValue(&DisplayObj.Temperatures.Cpu.Indicator, DisplayObj.Temperatures.Cpu.NewValue);
-        DisplayObj.Temperatures.Cpu.RequestToChangeValue = FALSE;
-        ValueIndicator_Repaint(&DisplayObj.Temperatures.Cpu.Indicator);
+        if (DisplayObj.Temperatures.Radiator.RequestToChangeValue) {
+            ValueIndicator_SetValue(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.NewValue);
+            DisplayObj.Temperatures.Radiator.RequestToChangeValue = FALSE;
+            ValueIndicator_Repaint(&DisplayObj.Temperatures.Radiator.Indicator); 
+        }     
+        if (DisplayObj.Temperatures.Cpu.RequestToChangeValue) {
+            ValueIndicator_SetValue(&DisplayObj.Temperatures.Cpu.Indicator, DisplayObj.Temperatures.Cpu.NewValue);
+            DisplayObj.Temperatures.Cpu.RequestToChangeValue = FALSE;
+            ValueIndicator_Repaint(&DisplayObj.Temperatures.Cpu.Indicator);
+        }
         request = TRUE;
     }
     if (request) {
@@ -642,12 +646,27 @@ BOOL ChangeTemperatures() {
 }
 
 void RequestToChangeTemperatures(TTemperature temperatures) {
-    if (temperatures.Radiator != DisplayObj.Temperatures.Radiator.NewValue) {
-        DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE;    
+static BYTE RadiatorErrCnt = 0;
+static BYTE CpuErrCnt = 0;
+BOOL isNorm = TemperatureSensorIsNorm(temperatures.Radiator);
+    if (temperatures.Radiator != DisplayObj.Temperatures.Radiator.NewValue || !isNorm) {
+        if (isNorm) {
+            RadiatorErrCnt = 0;  
+            DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE;              
+        } else if (RadiatorErrCnt++ >= 10) {
+            DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE;     
+        }
         DisplayObj.Temperatures.Radiator.NewValue = temperatures.Radiator;  
     }
-    if (temperatures.Cpu != DisplayObj.Temperatures.Cpu.NewValue) {
-        DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;    
+    
+    isNorm = TemperatureSensorIsNorm(temperatures.Cpu);
+    if (temperatures.Cpu != DisplayObj.Temperatures.Cpu.NewValue || !isNorm) {
+        if (isNorm) {
+            CpuErrCnt = 0;  
+            DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;              
+        } else if (CpuErrCnt++ >= 10) {
+            DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;     
+        }   
         DisplayObj.Temperatures.Cpu.NewValue = temperatures.Cpu;  
     }
     if (temperatures.FanIsOn) {

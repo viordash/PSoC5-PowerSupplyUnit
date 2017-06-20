@@ -27,6 +27,10 @@
 #define PROGRAM_VERSION_MINOR 0
     
 #define TEMPER_ERR (127)
+#define TEMPER_NO_DEVICE (TEMPER_ERR - 1)
+#define TEMPER_BUS_SHORT (TEMPER_NO_DEVICE - 1)
+#define TEMPER_INIT (TEMPER_BUS_SHORT - 1)
+#define TemperatureSensorIsNorm(value) (value != TEMPER_ERR && value != TEMPER_NO_DEVICE && value != TEMPER_BUS_SHORT && value != TEMPER_INIT)
     
 typedef enum {
 	smVoltageStab = 0,

@@ -76,10 +76,16 @@ void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue valu
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
         sprintf(pValueIndicator->TextMinor, "%03u", value % 1000);
     }  else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
-        if (value != TEMPER_ERR) {
-            sprintf(pValueIndicator->TextMajor, "%2d", value);
-        } else {
+        if (value == TEMPER_ERR) {
             sprintf(pValueIndicator->TextMajor, "--");
+        } else if (value == TEMPER_NO_DEVICE) {
+            sprintf(pValueIndicator->TextMajor, " -");
+        } else if (value == TEMPER_BUS_SHORT) {
+            sprintf(pValueIndicator->TextMajor, "- ");
+        } else if (value == TEMPER_INIT) {
+            sprintf(pValueIndicator->TextMajor, "  ");
+        } else {
+            sprintf(pValueIndicator->TextMajor, "%2d", value);
         }
     }   
 }
