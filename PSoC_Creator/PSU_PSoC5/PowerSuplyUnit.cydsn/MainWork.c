@@ -41,7 +41,6 @@ void MainWork_Init() {
 }
 
 void MainWork_Task(){	    
-//    DWORD tick = GetTickCount();
     ChangeState(mwsStart);
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
@@ -67,14 +66,6 @@ void MainWork_Task(){
         
         TemperatureControl();
 		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	
-        
-//        {       
-//        if (GetElapsedPeriod(tick) > SYSTICK_mS(3000)) {
-//            WORD temper = rand() % 350;
-//            RequestToChangeValue(svTemperature, temper);
-//            tick = GetTickCount();
-//        }
-//        }
 	}
 }
 
@@ -125,9 +116,7 @@ void ChangePolarMode(TPolarMode polarMode) {
         RequestToChangeValue(svMeasuredVoltageA, 332);
         RequestToChangeValue(svSetPointVoltageA, 334);
         RequestToChangeValue(svMeasuredAmperageA, 6950);
-        RequestToChangeValue(svSetPointAmperageA, 7000);      
-//        RequestToChangingStabilizeMode(scmAmperageAStab);
-//        RequestToConfirmStabilizeMode();    
+        RequestToChangeValue(svSetPointAmperageA, 7000);   
         RequestToFocusing(svMeasuredAmperageA);  
         RequestToFocusingStabilize(ssmAmperageA);    
         O_Led_Polar_Write(0xFF);
@@ -213,14 +202,6 @@ void TemperatureControl() {
     temperatureScanTick = GetTickCount(); 
     TTemperature temperatures = CheckTemper();
     RequestToChangeTemperatures(temperatures);
-//    RequestToChangeValue(svTemperature, temperatures.Radiator);
-//    RequestToChangeValue(svTemperatureCpu, temperatures.Cpu);
-//    if (temperatures.FanIsOn) {
-////        ValueIndicator_SetFocused(&(DisplayObj.Values.), FALSE); 
-////        RequestToFocusing(svTemperature);
-////        RequestToFocusing(svTemperature);
-//    }
-    
 }
 /*----------------- Temperature Control --------------<<<*/
 /* [] END OF FILE */
