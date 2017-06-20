@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\MousePS2\MousePS2.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\OS\SystemOS.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -69,7 +69,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
@@ -377,13 +376,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current_INT.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current_PM.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -484,6 +476,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MouseClk.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MouseData.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MouseISR.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MousePS2.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Cnt8.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_493\Debug\Listing Files\MultiJog_Cnt8_PM.lst</v>
@@ -737,14 +730,12 @@
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.h" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\Temperature\DS1821.c" />
-<name v=".\PowerSuplyUnit.cydsn\Temperature\DS1821.h" />
-<name v=".\PowerSuplyUnit.cydsn\Display\LCD_T6963.c" />
-<name v=".\PowerSuplyUnit.cydsn\Temperature\TemperControl.h" />
-<name v=".\PowerSuplyUnit.cydsn\Temperature\TemperControl.c" />
-<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.h" />
-<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicator.h" />
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
+<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.h" />
+<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
+<name v=".\PowerSuplyUnit.cydsn\OS\SystemOS.h" />
+<name v=".\PowerSuplyUnit.cydsn\OS\SystemOS.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -752,7 +743,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="2cdee5a5-2b80-45ec-bfdc-d15ee465a75a"><DocumentWindow Key="942656fe-8a80-4390-9f9b-e9539d6e850e" Guid="69c616c7-65af-47f0-b712-9f9a2889fbb2" /><DocumentWindow Key="7ee1ee8a-7520-4a69-81b4-7da3e374dc29" Guid="b0f85523-c670-4e8f-928b-db6d2ed96eae" /><DocumentWindow Key="a444173b-b059-45ac-951d-13d7ff7118ec" Guid="ea8f28c3-af9a-4e77-9fc4-8563d47d6f59" /><DocumentWindow Key="231317dc-7b18-4cf9-a809-e73f98f54ab6" Guid="f2ef6373-ff28-4ddf-b125-0e015dd45327" /><DocumentWindow Key="1987c837-4a87-4a4e-8078-b290e6efe181" Guid="3c44cba3-992f-4dc9-8c41-7cc693e142c9" /><DocumentWindow Key="aae90933-1501-4de9-815b-9e6792472978" Guid="90daafdf-8510-42ab-8cc2-814d4cf55f1e" /><DocumentWindow Key="27b7aaa2-7409-4874-a8b2-146799a7eee2" Guid="b3709502-7b7d-4e83-ab69-b80868912d2a" /><DocumentWindow Key="d333ed6a-9415-4c2b-b455-75e4cb277e33" Guid="d0092d61-4c7e-4aa7-84ae-ad1301625110" /><DocumentWindow Key="bf237a2d-aed1-4c00-8eb3-3f7aba6cdee5" Guid="2cdee5a5-2b80-45ec-bfdc-d15ee465a75a" /><DocumentWindow Key="3b03d3ff-bc26-41c3-9af8-180d3dd0450b" Guid="e357a23d-4b16-4f39-8500-c2358daa5a4b" /><DocumentWindow Key="808f6515-f06f-4d37-86c9-fd794e29e1bf" Guid="714e0d6a-f3ec-4795-8a7e-a8ffd50cf9e0" /><DocumentWindow Key="3cf69a42-950e-4434-a6fe-25f1c04ed9d8" Guid="9f8c28d3-1ad5-4b44-8bf7-4e21c9c23517" /><DocumentWindow Key="e8cddc9a-ca22-43ab-a23d-79412de2cf1f" Guid="3cb4ce77-54b9-4f5a-a37c-80d9bc7ada48" /><DocumentWindow Key="a15e106a-221c-41bc-b3d3-2d85a99d56b9" Guid="f8b047d2-ff1a-4b54-9ac2-5f4c44fe0ed3" /><DocumentWindow Key="301db995-9808-409c-b696-9d12e233a1f5" Guid="65d51cd3-7a17-4492-aa41-8aa2b192a47c" /><DocumentWindow Key="0ce34aae-a58e-42b1-82dd-3e6448239833" Guid="021450b0-28b5-4448-8a10-c77cae2fccf6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="33591469-b630-49af-857e-7e496a657593"><DocumentWindow Key="c9556a56-edec-4540-a564-e54858cd64ec" Guid="d91caf9e-4ccc-4a4c-abab-c18da3f41b12" /><DocumentWindow Key="3095070b-338b-4855-a31e-dce17b25c4ea" Guid="2ce2ac07-ef7f-4be0-b62d-dfe83de9831f" /><DocumentWindow Key="6a1f1e0e-f5f1-4f92-918b-089e65c31869" Guid="d5375381-9cb2-4be2-8153-b3cfa5eaa12c" /><DocumentWindow Key="246e550e-82bc-4d59-8494-96d628002cac" Guid="cf864dfd-7597-44a8-a807-0c8aa1b51b21" /><DocumentWindow Key="2c4f767e-1286-4410-823b-244c3a9a8dac" Guid="71527245-afb5-470f-8b95-79e253449471" /><DocumentWindow Key="eccd3e0e-a05c-41c5-a39d-590d25109b14" Guid="a11a002f-442f-4474-a535-535acca05c47" /><DocumentWindow Key="1147ab4e-5ec8-49d3-b407-73bb1c957111" Guid="afd7eeb0-6b10-4687-a005-29798b7cfaef" /><DocumentWindow Key="ee3cabf5-b59f-4471-b8e3-76b07dc1ab9a" Guid="2fd004ae-986f-4f0d-b879-b91c4746fb67" /><DocumentWindow Key="54222282-2fe3-4d18-9717-edcac4630b73" Guid="40eb5f5f-7035-4426-8d4e-74ea3f3aa043" /><DocumentWindow Key="a8ea1c7d-6b73-4c64-9cac-5ad1eba79ba3" Guid="69cb3acc-b050-4576-8dec-ae32fb355624" /><DocumentWindow Key="75e0c89d-c1e7-45cb-909b-38fd24b3b24d" Guid="33591469-b630-49af-857e-7e496a657593" /><DocumentWindow Key="f67e8339-40b4-4bda-b249-fb25d71a3af1" Guid="9054eee0-4c41-4206-8b65-d56b9c3f668b" /><DocumentWindow Key="8dc2c584-4df4-4522-9c5d-7ee270a92a6b" Guid="cba70bd1-10e5-4590-bec2-a62d27c83cd9" /><DocumentWindow Key="1bcbc3b7-9142-461b-b2fc-88681b688b95" Guid="dd21cbfc-51a1-4d09-97b4-c7e8f39d7a80" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

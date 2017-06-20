@@ -15,6 +15,7 @@
 #include "MainWork.h"
 #include "LCD_Display.h"
 #include "Temperature\TemperControl.h"
+#include "MousePS2\MousePS2.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -30,14 +31,15 @@ void ChangePolarMode(TPolarMode polarMode);
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
-void TemperatureControl();
+BOOL TemperatureControl();
 
 void MainWork_Init() {
-  MainWorkObj.Properties.State = mwsInit;
-  MainWorkObj.Properties.PolarMode = pmInit;   
-  MainWorkObj.Properties.ChangedValue = cvVoltageA;  
-  MainWorkObj.Properties.StabilizeModeA = smVoltageStab;  
-  MainWorkObj.Properties.StabilizeModeB = smAmperageStab; 
+    MainWorkObj.Properties.State = mwsInit;
+    MainWorkObj.Properties.PolarMode = pmInit;   
+    MainWorkObj.Properties.ChangedValue = cvVoltageA;  
+    MainWorkObj.Properties.StabilizeModeA = smVoltageStab;  
+    MainWorkObj.Properties.StabilizeModeB = smAmperageStab; 
+    InitMouse();
 }
 
 void MainWork_Task(){	    
@@ -63,14 +65,26 @@ void MainWork_Task(){
         if (MainWorkObj.Properties.State != mwsWork) {
             
         }
-        
-        TemperatureControl();
+        if (!MouseHandler()){
+            if(!TemperatureControl()) {
+                
+            }
+        }
 		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	
 	}
 }
 
 void ChangeState(TMainWorkState newState){
     MainWorkObj.Properties.State = newState;    
+}
+
+void ResetErrorState() {
+}
+
+void SuppressProtection(BOOL withOn) {
+}
+
+void ChangeOutputState() {
 }
 
 /*>>>-------------- Polar Output mode -----------------*/
@@ -193,15 +207,32 @@ static DWORD prevTick = 0;
 /*----------------- MultiJog Changing Value --------------<<<*/
 
 
+/*>>>-------------- Mouse Changing Value -----------------*/
+void MouseState(BOOL present) {
+    MainWorkObj.Properties.MousePresent = present;
+    
+        O_Led_Polar_Write(present);
+}
+
+void MouseChangingValue(INT value) {
+    if (value) {
+        ChangeValue(value);
+    }
+}
+
+/*----------------- Mouse Changing Value --------------<<<*/
+
+
 /*>>>-------------- Temperature Control -----------------*/
-void TemperatureControl() {
+BOOL TemperatureControl() {
 	static DWORD temperatureScanTick = 0;
 	if (GetElapsedPeriod(temperatureScanTick) < SYSTICK_mS(5000)) {   
-        return;
+        return FALSE;
     }
     temperatureScanTick = GetTickCount(); 
     TTemperature temperatures = CheckTemper();
     RequestToChangeTemperatures(temperatures);
+    return TRUE;
 }
 /*----------------- Temperature Control --------------<<<*/
 /* [] END OF FILE */
