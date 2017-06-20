@@ -198,4 +198,37 @@
     <varNfHeight>const uint_8 font_5Height</varNfHeight>
     <displayName>font_5</displayName>
   </OutputConfiguration>
+  <OutputConfiguration>
+    <commentVariableName>true</commentVariableName>
+    <commentCharVisualizer>true</commentCharVisualizer>
+    <commentCharDescriptor>true</commentCharDescriptor>
+    <commentStyle>Cpp</commentStyle>
+    <bmpVisualizerChar>#</bmpVisualizerChar>
+    <rotation>RotateZero</rotation>
+    <flipHorizontal>false</flipHorizontal>
+    <flipVertical>false</flipVertical>
+    <paddingRemovalHorizontal>Fixed</paddingRemovalHorizontal>
+    <paddingRemovalVertical>Fixed</paddingRemovalVertical>
+    <lineWrap>AtColumn</lineWrap>
+    <bitLayout>RowMajor</bitLayout>
+    <byteOrder>MsbFirst</byteOrder>
+    <byteFormat>Binary</byteFormat>
+    <byteLeadingString>0b</byteLeadingString>
+    <generateLookupArray>true</generateLookupArray>
+    <descCharWidth>DisplayInBits</descCharWidth>
+    <descCharHeight>DontDisplay</descCharHeight>
+    <descFontHeight>DisplayInBits</descFontHeight>
+    <generateLookupBlocks>false</generateLookupBlocks>
+    <lookupBlocksNewAfterCharCount>80</lookupBlocksNewAfterCharCount>
+    <descImgWidth>DisplayInBytes</descImgWidth>
+    <descImgHeight>DisplayInBits</descImgHeight>
+    <generateSpaceCharacterBitmap>true</generateSpaceCharacterBitmap>
+    <spaceGenerationPixels>5</spaceGenerationPixels>
+    <varNfBitmaps>const uint_8 font_5Bitmaps</varNfBitmaps>
+    <varNfCharInfo>const FONT_CHAR_INFO font_5Descriptors</varNfCharInfo>
+    <varNfFontInfo>const FONT_INFO font_5FontInfo</varNfFontInfo>
+    <varNfWidth>const uint_8 font_5Width</varNfWidth>
+    <varNfHeight>const uint_8 font_5Height</varNfHeight>
+    <displayName>font_6</displayName>
+  </OutputConfiguration>
 </ArrayOfOutputConfiguration>

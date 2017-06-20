@@ -20,6 +20,7 @@
 #include "Display\Fonts\font_3.h"	 
 #include "Display\Fonts\font_4.h" 
 #include "Display\Fonts\font_5.h"
+#include "Display\Fonts\font_6.h"
   
 #define T6963_HOR_DOTS 240
 #define T6963_VER_DOTS 128

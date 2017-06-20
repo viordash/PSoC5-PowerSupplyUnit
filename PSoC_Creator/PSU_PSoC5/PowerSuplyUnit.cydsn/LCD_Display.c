@@ -44,9 +44,9 @@
 #define SetPointAmperageBCoordX 2 + 120
 #define SetPointAmperageBCoordY 35 + 56
 
-#define TemperatureCoordX 201
+#define TemperatureCoordX 195
 #define TemperatureCoordY 112
-#define TemperatureCpuCoordX 201
+#define TemperatureCpuCoordX 195
 #define TemperatureCpuCoordY 121
 #define FanIsOnCoordX 170
 #define FanIsOnCoordY 114
@@ -96,10 +96,10 @@ void Display_Init() {
     ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
 
-    ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 0, TemperatureCoordX, TemperatureCoordY, 
-        37, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.Temperatures.Cpu.Indicator, omTemperatureCpu, 0, TemperatureCpuCoordX, TemperatureCpuCoordY, 
-        37, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE);   
+    ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 6, TemperatureCoordX, TemperatureCoordY, 
+        43, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE);
+    ValueIndicator_Init(&DisplayObj.Temperatures.Cpu.Indicator, omTemperatureCpu, 6, TemperatureCpuCoordX, TemperatureCpuCoordY, 
+        43, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE);   
     DisplayObj.Properties.SelectedIndicator = NULL;    
     
     
