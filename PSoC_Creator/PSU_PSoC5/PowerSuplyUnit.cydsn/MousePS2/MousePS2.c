@@ -62,7 +62,7 @@ BYTE MouseClk_ReadRee(void) {
 
 BOOL ParityCheckOdd(BOOL AParityBit) {
 	BYTE Data = MouseDataReg;
-	BYTE BitCnt = AParityBit;
+	BYTE BitCnt;
 	if (AParityBit) BitCnt = 1;
 	else BitCnt = 0;
 	while (Data != 0) {
@@ -77,30 +77,40 @@ void MSCommReset(void) {
 	MouseByteNum = 0;
 }
 
+BYTE Data[10] = {0};
+BYTE DataNum = 0;
+
 CY_ISR(MouseIrqHandler) {
 	if (MouseClk_ReadRee() == 0) {
+         
+        BOOL dataLine = MouseData_ReadRee();
+        
 		if (((MouseMode & MSMode_RXTXMask) == MSMode_RX) /*&& (MouseClk_Read() == 0)*/) {//from the device to the host is read on the falling edge
+            Data[DataNum++] = dataLine;
+            if (DataNum > sizeof(Data)) {
+                DataNum = 0;
+            }            
 			if (MouseBitNum != 0) {  //если не старт бит, то проверить последнюю активность сигнала на CLK, и если дольше MSFrame_DelayMs, то сбросить					
 				if (GetElapsedPeriod(MouseLastActTick) > SYSTICK_mS(MSFrame_DelayMs)) {
 					MSCommReset();
 				}
 			}
 			if (MouseBitNum == 0) {  //1 start bit.  This is always 0.
-				if (MouseData_ReadRee() == 0) {
+				if (dataLine == FALSE) {
 					MouseBitNum++;
 					MouseDataReg = 0;
 				}
 			} else if ((MouseBitNum >= 1) && (MouseBitNum <= 8)) { //8 data bits, least significant bit first.
 				MouseBitNum++;
 				MouseDataReg >>= 1;
-				if (MouseData_ReadRee()) MouseDataReg |= 0x80;
+				if (dataLine) MouseDataReg |= 0x80;
 			} else if (MouseBitNum == 9) { //1 parity bit (odd parity).
 				MouseBitNum++;
-				if (!ParityCheckOdd(MouseData_ReadRee())) {
+				if (!ParityCheckOdd(dataLine)) {
 					MSCommReset();
 				}
 			} else if (MouseBitNum == 10) { //1 stop bit.  This is always 1.
-				if (MouseData_ReadRee() != 0) { //данные получены
+				if (dataLine) { //данные получены
 					if (MouseByteNum < sizeof(MouseData)) {
 						MouseData[MouseByteNum] = MouseDataReg;
 						MouseByteNum++;
@@ -119,7 +129,7 @@ CY_ISR(MouseIrqHandler) {
 			} else  if (MouseBitNum == 10) {  //1 stop bit.  This is always 1.			
 				MouseData_WriteRee(0x01);
 			} else {			//check ACK
-				if (MouseData_ReadRee() == 1) { //нет ACK от устройства
+				if (dataLine) { //нет ACK от устройства
                     MouseState(FALSE);
 				}
 				MouseBitNum = 0xFF;
@@ -179,7 +189,7 @@ BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount
 			MouseLastActTick = GetTickCount();
 		}
 	} else {
-		if ((MouseByteNum >= ExpectRXMinCount) && (ActPeriod >= SYSTICK_mS(MSFrame_DelayMs))) {
+		if ((MouseByteNum >= ExpectRXMinCount) /*&& (ActPeriod >= SYSTICK_mS(MSFrame_DelayMs))*/) {
 			if (MouseData[0] == ExpectRXAnswer_0) {
 				MSMode_StateSET(NextState);
 				MouseMode |= MSMode_TX;
@@ -200,13 +210,12 @@ BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount
 
 BOOL MouseHandler() {
 	static DWORD mouseTick = 0;
-	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(50)){  //период опроса мыши 50мс
+	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(100)){  //период опроса мыши 50мс
         return FALSE; 
     }
     mouseTick = GetTickCount();
         
 	if (MSMode_StateGET == MSMode_StateReset) {
-		//		LED_MouseIsLost();
 		if (MouseStateMachine(0xFF, 0xFA, 3, MSMode_StateSetSampleRate0Cmd, 1000)) {
             MouseState(TRUE);
 		} else {
@@ -242,7 +251,7 @@ BOOL MouseHandler() {
 	} else if (MSMode_StateGET == MSMode_StateSetSampleRate3Cmd) {  //Установить частоту дискретизации =100
 		MouseStateMachine(0xF3, 0xFA, 1, MSMode_StateSetSampleRate3Val, 100);
 	} else if (MSMode_StateGET == MSMode_StateSetSampleRate3Val) {
-		/*if (*/MouseStateMachine(100, 0xFA, 1, MSMode_ReadData, 100);//) LED_MouseIsFound();
+		MouseStateMachine(100, 0xFA, 1, MSMode_ReadData, 100);
 	} else if (MSMode_StateGET == MSMode_ReadData) {
 
 		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 100)) {

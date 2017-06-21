@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\OS\SystemOS.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -69,6 +69,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
@@ -376,6 +377,13 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current_INT.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current\ADC_Current_PM.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5\ADC_Current_Bypass_P32</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -723,19 +731,17 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
-<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.h" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\main.c" />
-<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.h" />
 <name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
-<name v=".\PowerSuplyUnit.cydsn\OS\SystemOS.h" />
-<name v=".\PowerSuplyUnit.cydsn\OS\SystemOS.c" />
+<name v=".\PowerSuplyUnit.cydsn\type.h" />
+<name v=".\PowerSuplyUnit.cydsn\main.c" />
+<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\MouseClk.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -743,7 +749,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="33591469-b630-49af-857e-7e496a657593"><DocumentWindow Key="c9556a56-edec-4540-a564-e54858cd64ec" Guid="d91caf9e-4ccc-4a4c-abab-c18da3f41b12" /><DocumentWindow Key="3095070b-338b-4855-a31e-dce17b25c4ea" Guid="2ce2ac07-ef7f-4be0-b62d-dfe83de9831f" /><DocumentWindow Key="6a1f1e0e-f5f1-4f92-918b-089e65c31869" Guid="d5375381-9cb2-4be2-8153-b3cfa5eaa12c" /><DocumentWindow Key="246e550e-82bc-4d59-8494-96d628002cac" Guid="cf864dfd-7597-44a8-a807-0c8aa1b51b21" /><DocumentWindow Key="2c4f767e-1286-4410-823b-244c3a9a8dac" Guid="71527245-afb5-470f-8b95-79e253449471" /><DocumentWindow Key="eccd3e0e-a05c-41c5-a39d-590d25109b14" Guid="a11a002f-442f-4474-a535-535acca05c47" /><DocumentWindow Key="1147ab4e-5ec8-49d3-b407-73bb1c957111" Guid="afd7eeb0-6b10-4687-a005-29798b7cfaef" /><DocumentWindow Key="ee3cabf5-b59f-4471-b8e3-76b07dc1ab9a" Guid="2fd004ae-986f-4f0d-b879-b91c4746fb67" /><DocumentWindow Key="54222282-2fe3-4d18-9717-edcac4630b73" Guid="40eb5f5f-7035-4426-8d4e-74ea3f3aa043" /><DocumentWindow Key="a8ea1c7d-6b73-4c64-9cac-5ad1eba79ba3" Guid="69cb3acc-b050-4576-8dec-ae32fb355624" /><DocumentWindow Key="75e0c89d-c1e7-45cb-909b-38fd24b3b24d" Guid="33591469-b630-49af-857e-7e496a657593" /><DocumentWindow Key="f67e8339-40b4-4bda-b249-fb25d71a3af1" Guid="9054eee0-4c41-4206-8b65-d56b9c3f668b" /><DocumentWindow Key="8dc2c584-4df4-4522-9c5d-7ee270a92a6b" Guid="cba70bd1-10e5-4590-bec2-a62d27c83cd9" /><DocumentWindow Key="1bcbc3b7-9142-461b-b2fc-88681b688b95" Guid="dd21cbfc-51a1-4d09-97b4-c7e8f39d7a80" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="c20e1d34-92ae-4bd1-ba1c-9dab664b2ca5"><DocumentWindow Key="38f09ed5-3bea-4813-838b-b13ba2b16a80" Guid="e3da40ae-9cbe-48a7-b967-f8ff4c21b46e" /><DocumentWindow Key="4ac3c489-d637-4ea7-981a-1c366c9097c4" Guid="aa610055-77bf-4947-a7f9-0f38062b14cf" /><DocumentWindow Key="e1693a7f-8bfb-4392-a7b7-a6c5fd6e71da" Guid="60f4c14a-d573-496c-970f-21b75b2853e9" /><DocumentWindow Key="ab0414a8-af5a-4eb8-8c20-0266cd2dfc6d" Guid="4a33879e-d494-4642-9432-897c2ce41720" /><DocumentWindow Key="3a641ba5-3ce7-4221-a6cc-5862abcb2492" Guid="315af07e-4758-4d38-be0e-e9aa8ff5a252" /><DocumentWindow Key="7b7fa551-c587-497b-b5d0-ba1bafddd949" Guid="3d67d8da-9916-49de-a752-1beda5e95d5f" /><DocumentWindow Key="2b18187b-1464-40c7-89b3-1e5636c27938" Guid="8272dfd9-4f80-4567-9e49-78baa95578e2" /><DocumentWindow Key="bc88ee3a-e21a-448e-8ad1-c5c127a4e8a0" Guid="c20e1d34-92ae-4bd1-ba1c-9dab664b2ca5" /><DocumentWindow Key="a946a11c-b96b-4fe4-a1fa-8c2b8c2f9002" Guid="b60ecb79-aff9-4cdd-944c-e0fe761440e3" /><DocumentWindow Key="74fec76e-6419-4357-8eac-a8fa14894b57" Guid="029483c5-6525-475e-98fe-0c10e2b08e7f" /><DocumentWindow Key="c7e7bd7a-5664-4dd4-a98b-117bb7d4de11" Guid="16012371-d106-49b3-b942-441295fb94f3" /><DocumentWindow Key="b3bfa738-8a33-4631-b0fb-b1c7e398db67" Guid="d5710542-6d5d-42b5-914a-e1949d336aae" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
