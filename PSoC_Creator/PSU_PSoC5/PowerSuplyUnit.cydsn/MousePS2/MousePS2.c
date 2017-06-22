@@ -77,19 +77,12 @@ void MSCommReset(void) {
 	MouseByteNum = 0;
 }
 
-BYTE Data[10] = {0};
-BYTE DataNum = 0;
-
 CY_ISR(MouseIrqHandler) {
 	if (MouseClk_ReadRee() == 0) {
          
         BOOL dataLine = MouseData_ReadRee();
         
-		if (((MouseMode & MSMode_RXTXMask) == MSMode_RX) /*&& (MouseClk_Read() == 0)*/) {//from the device to the host is read on the falling edge
-            Data[DataNum++] = dataLine;
-            if (DataNum > sizeof(Data)) {
-                DataNum = 0;
-            }            
+		if (((MouseMode & MSMode_RXTXMask) == MSMode_RX) /*&& (MouseClk_Read() == 0)*/) {//from the device to the host is read on the falling edge           
 			if (MouseBitNum != 0) {  //если не старт бит, то проверить последнюю активность сигнала на CLK, и если дольше MSFrame_DelayMs, то сбросить					
 				if (GetElapsedPeriod(MouseLastActTick) > SYSTICK_mS(MSFrame_DelayMs)) {
 					MSCommReset();
@@ -169,12 +162,9 @@ void MouseTransmit(BYTE Data) {
 
 void InitMouse() {
 	MSMode_StateSET(MSMode_StateReset);
-	//	MouseMode = (MouseMode & ~MSMode_StateMask) | MSMode_StateReset;
 	MouseMode |= MSMode_TX;
 	MouseBitNum = 0x00;
 	MouseISR_StartEx(MouseIrqHandler);
-	//MouseMode = MSMode_Recieve;
-	//	MouseTransmit(0xFF);
 }
 
 BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount, BYTE NextState, DWORD ATimeOut) {
@@ -209,11 +199,11 @@ BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount
 }
 
 BOOL MouseHandler() {
-	static DWORD mouseTick = 0;
-	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(100)){  //период опроса мыши 50мс
-        return FALSE; 
-    }
-    mouseTick = GetTickCount();
+//	static DWORD mouseTick = 0;
+//	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(50)){  //период опроса мыши 50мс
+//        return FALSE; 
+//    }
+//    mouseTick = GetTickCount();
         
 	if (MSMode_StateGET == MSMode_StateReset) {
 		if (MouseStateMachine(0xFF, 0xFA, 3, MSMode_StateSetSampleRate0Cmd, 1000)) {
@@ -253,10 +243,9 @@ BOOL MouseHandler() {
 	} else if (MSMode_StateGET == MSMode_StateSetSampleRate3Val) {
 		MouseStateMachine(100, 0xFA, 1, MSMode_ReadData, 100);
 	} else if (MSMode_StateGET == MSMode_ReadData) {
-
 		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 100)) {
 			BYTE msDt = MouseData[1];
-			INT i8 = MouseData[4];
+			int8 i8 = (int8)MouseData[4];
 			if (MainWorkObj.Properties.State != mwsStart && MainWorkObj.Properties.State != mwsInit) {
                 if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
 				else if (msDt & 0x02) i8 =  i8 * 10; //MSS_MSBtnRight;

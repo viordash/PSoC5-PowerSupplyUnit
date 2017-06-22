@@ -211,7 +211,7 @@ static DWORD prevTick = 0;
 void MouseState(BOOL present) {
     MainWorkObj.Properties.MousePresent = present;
     
-        O_Led_Polar_Write(present);
+        O_Led_RiseRatePowerUp_Write(present);
 }
 
 void MouseChangingValue(INT value) {
