@@ -10,3 +10,6 @@ PSoC_Creator/PSU_PSoC5/Archive/
 *.rej
 *.User
 *.rpt
+*t.cyprj.Vior_IDE
+*1.zip
+*.cydsn/BUILD.log
