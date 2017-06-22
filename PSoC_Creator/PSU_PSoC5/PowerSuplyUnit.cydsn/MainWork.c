@@ -215,9 +215,7 @@ void MouseState(BOOL present) {
 }
 
 void MouseChangingValue(INT value) {
-    if (value) {
-        ChangeValue(value);
-    }
+    ChangeValue(value);
 }
 
 /*----------------- Mouse Changing Value --------------<<<*/

@@ -204,7 +204,7 @@ BOOL MouseHandler() {
 //        return FALSE; 
 //    }
 //    mouseTick = GetTickCount();
-        
+BOOL res = FALSE;        
 	if (MSMode_StateGET == MSMode_StateReset) {
 		if (MouseStateMachine(0xFF, 0xFA, 3, MSMode_StateSetSampleRate0Cmd, 1000)) {
             MouseState(TRUE);
@@ -247,10 +247,13 @@ BOOL MouseHandler() {
 			BYTE msDt = MouseData[1];
 			int8 i8 = (int8)MouseData[4];
 			if (MainWorkObj.Properties.State != mwsStart && MainWorkObj.Properties.State != mwsInit) {
-                if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
-				else if (msDt & 0x02) i8 =  i8 * 10; //MSS_MSBtnRight;
-                MouseChangingValue(i8);
-
+                if (i8 != 0) {
+                    if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
+    				else if (msDt & 0x02) i8 =  i8 * 10; //MSS_MSBtnRight;
+                    MouseChangingValue(i8);
+                    res = TRUE;
+                }
+                
 				if ((msDt & 0x04) != MouseMidBtn) {
 					MouseMidBtn = (msDt & 0x04);
 					if (MouseMidBtn) {
@@ -264,6 +267,7 @@ BOOL MouseHandler() {
 							}
 							ChangeOutputState();
 						}
+                        res = TRUE;
 					}
 				}
 				if (MainWorkObj.Properties.HwPrSupressed && ((msDt & 0x02) == 0) /*&& (OUT_ON_R_Read() != 0)*/) { //MSS_MSBtnRight; 
@@ -272,5 +276,5 @@ BOOL MouseHandler() {
 			}
 		}
 	}
-    return TRUE;
+    return res;
 }
