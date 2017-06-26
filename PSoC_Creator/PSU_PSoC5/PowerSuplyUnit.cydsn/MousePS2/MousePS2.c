@@ -243,7 +243,7 @@ BOOL res = FALSE;
 	} else if (MSMode_StateGET == MSMode_ReadData) {
 		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 200)) {
 			BYTE msDt = MouseData[1];
-			int8 i8 = (int8)MouseData[4];
+			INT i8 = (int8)MouseData[4];
 			if (MainWorkObj.Properties.State != mwsStart && MainWorkObj.Properties.State != mwsInit) {
                 if (i8 != 0) {
                     if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
