@@ -107,32 +107,52 @@ BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
     return res;
 }
 
-void ChangePolarMode(TPolarMode polarMode) {
-    MainWorkObj.Properties.PolarMode = polarMode;
+void RefreshDisplay(TPolarMode polarMode) {
     if (polarMode == pmBipolar) {
         RequestToChangeScreen(dsBipolar);
-        RequestToChangeValue(svMeasuredVoltageA, 1210);
-        RequestToChangeValue(svSetPointVoltageA, 1234);
-        RequestToChangeValue(svMeasuredAmperageA, 561);
-        RequestToChangeValue(svSetPointAmperageA, 1500);
-        RequestToChangeValue(svMeasuredVoltageB, 515);
-        RequestToChangeValue(svSetPointVoltageB, 520);
-        RequestToChangeValue(svMeasuredAmperageB, 1300);
-        RequestToChangeValue(svSetPointAmperageB, 3756);
+        RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.Properties.SetPointVoltageA);
+        RequestToChangeValue(svSetPointVoltageA, MainWorkObj.Properties.SetPointVoltageA);
+        RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.Properties.SetPointAmperageA);
+        RequestToChangeValue(svSetPointAmperageA, MainWorkObj.Properties.SetPointAmperageA);
+        RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.Properties.SetPointVoltageB);
+        RequestToChangeValue(svSetPointVoltageB, MainWorkObj.Properties.SetPointVoltageB);
+        RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.Properties.SetPointAmperageB);
+        RequestToChangeValue(svSetPointAmperageB, MainWorkObj.Properties.SetPointAmperageB);
         
         RequestToFocusing(svMeasuredVoltageA);  
-        RequestToFocusingStabilize(ssmVoltageA);
-        RequestToFocusingStabilize(ssmAmperageB);
-        
-        O_Led_Polar_Write(0);
+        if (MainWorkObj.Properties.StabilizeModeA == smAmperageStab) { 
+            RequestToFocusingStabilize(ssmAmperageA); 
+        } else {
+            RequestToFocusingStabilize(ssmVoltageA);
+        }
+        if (MainWorkObj.Properties.StabilizeModeB == smAmperageStab) { 
+            RequestToFocusingStabilize(ssmAmperageB); 
+        } else {
+            RequestToFocusingStabilize(ssmVoltageB);
+        }
     } else if (polarMode == pmUnipolar) {
         RequestToChangeScreen(dsUnipolar);
-        RequestToChangeValue(svMeasuredVoltageA, 332);
-        RequestToChangeValue(svSetPointVoltageA, 334);
-        RequestToChangeValue(svMeasuredAmperageA, 6950);
-        RequestToChangeValue(svSetPointAmperageA, 7000);   
-        RequestToFocusing(svMeasuredAmperageA);  
-        RequestToFocusingStabilize(ssmAmperageA);    
+        RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.Properties.SetPointVoltageA);
+        RequestToChangeValue(svSetPointVoltageA, MainWorkObj.Properties.SetPointVoltageA);
+        RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.Properties.SetPointAmperageA);
+        RequestToChangeValue(svSetPointAmperageA, MainWorkObj.Properties.SetPointAmperageA);   
+        RequestToFocusing(svMeasuredAmperageA);   
+        if (MainWorkObj.Properties.StabilizeModeA == smAmperageStab) { 
+            RequestToFocusingStabilize(ssmAmperageA); 
+        } else {
+            RequestToFocusingStabilize(ssmVoltageA);
+        }
+    }
+    RequestToRepaintTemperatures();
+    RequestToRepaintMousePresent();
+}
+
+void ChangePolarMode(TPolarMode polarMode) {
+    MainWorkObj.Properties.PolarMode = polarMode;
+    RefreshDisplay(polarMode);
+    if (polarMode == pmBipolar) {
+        O_Led_Polar_Write(0);
+    } else if (polarMode == pmUnipolar) {  
         O_Led_Polar_Write(0xFF);
     }
 }
@@ -209,7 +229,9 @@ static DWORD prevTick = 0;
 
 /*>>>-------------- Mouse Changing Value -----------------*/
 void MouseState(BOOL present) {
-    RequestToVisibileMousePresent(present);  
+    while (!RequestToVisibileMousePresent(present)) {
+        TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	    
+    }
 }
 
 void MouseChangingValue(INT value) {

@@ -101,7 +101,8 @@ typedef struct {
 
 typedef struct {   
     TVariableValue Radiator;
-    TVariableValue Cpu;
+    TVariableValue Cpu;    
+    BOOL Repaint;
 } TDisplayTemperature, * PTDisplayTemperature;
 
 typedef struct {   
@@ -114,6 +115,7 @@ typedef struct {
 typedef struct {   
     TSymbolIndicator MousePresent;
     BOOL MousePresentVisible;
+    BOOL MousePresentRepaint;
 } TDisplayStateSymbols, * PTDisplayStateSymbols;
 
 typedef struct {
@@ -139,7 +141,9 @@ extern BOOL IsDisplayInChangingStabilizeMode();
 extern void RequestToFocusingStabilize(TSelectStabilizeMode selectValue);
 
 extern void RequestToChangeTemperatures(TTemperature temperatures);
-extern void RequestToVisibileMousePresent(BOOL visible);
+extern void RequestToRepaintTemperatures();
+extern BOOL RequestToVisibileMousePresent(BOOL visible);
+extern void RequestToRepaintMousePresent();
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

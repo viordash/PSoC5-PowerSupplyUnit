@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\Fonts\font_4.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicatorHelper.c">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -221,54 +221,6 @@
 <VisibleNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_Bypass_P32.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_Ext_CP_Clk.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_Current_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelA_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB_Bypass.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB_INT.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB_IRQ.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\ADC_VoltageChanelB_theACLK.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\AdcCurrentChanel.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\AdcCurrentChanel_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\AGND.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\BtnOk_Reset.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\BtnOk_Reset_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Buttons.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_11.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_6.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Clock_8.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Cm3Start.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Control_Reg_1_PM.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyDmac.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyFlash.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\CyLib.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\cymetadata.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyPm.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\CySpc.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DieTemp.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DS1821.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FAN_CTRL.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FanCtrl.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -375,7 +327,14 @@
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicator.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicator.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicatorHelper.c" />
+<name v=".\PowerSuplyUnit.cydsn\device.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -383,7 +342,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="549bbd8a-6397-4580-ba27-2e074fe837b0"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" Guid="549bbd8a-6397-4580-ba27-2e074fe837b0" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="368913cf-50cb-4d1a-93da-508cc860f363" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.h" Guid="73afa58e-bde9-44fd-b469-e3bc4069ee9a" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="512e4581-8c50-4edc-9006-ab2cd4638eda" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 747" SelectedTabbedMdiWindow="edf8b598-efd1-4720-b962-c86b9953dd11"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" Guid="549bbd8a-6397-4580-ba27-2e074fe837b0" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="368913cf-50cb-4d1a-93da-508cc860f363" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" Guid="193fe236-a669-4646-97d3-6b555da4574f" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="cf980842-3ea6-43b5-8e0c-ab34dc12d4a9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="1486a32f-c52b-4918-9406-74b46b80446e" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicator.h" Guid="1754a7d9-ea9e-454c-8b01-518fe6830e45" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicator.c" Guid="b7543786-f6dc-4324-aac8-cdf2f224dd72" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="2ae126f4-b3d4-4b88-b214-581557e57e0b" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicatorHelper.c" Guid="3097a2af-64d2-409b-800b-4bd5aaeb840b" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="c14a85d8-d9e4-4340-85e9-df8902bc59df" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

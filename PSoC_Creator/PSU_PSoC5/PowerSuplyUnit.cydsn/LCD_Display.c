@@ -290,7 +290,7 @@ void ChangeScreen() {
     DisplayObj.Properties.Screen = DisplayObj.Requests.Screen;    
     Display_ClearScreen();
     if (DisplayObj.Properties.Screen == dsStart) {
-        SetScreen_Start();
+        SetScreen_Start();        
     } else if (DisplayObj.Properties.Screen == dsBipolar) {
         SetScreen_Bipolar();
     } else if (DisplayObj.Properties.Screen == dsUnipolar) {
@@ -629,8 +629,7 @@ void RequestToFocusingStabilize(TSelectStabilizeMode selectValue) {
 
 /*>>>-------------- Change Temperature -----------------*/
 BOOL ChangeTemperatures() {
-    BOOL request = FALSE;
-    if (DisplayObj.Temperatures.Radiator.RequestToChangeValue || DisplayObj.Temperatures.Cpu.RequestToChangeValue) { 
+    if (DisplayObj.Temperatures.Repaint) { 
         if (DisplayObj.Temperatures.Radiator.RequestToFocus != ValueIndicator_GetFocused(&DisplayObj.Temperatures.Radiator.Indicator)) {
             ValueIndicator_SetFocused(&DisplayObj.Temperatures.Radiator.Indicator, DisplayObj.Temperatures.Radiator.RequestToFocus);  
             DisplayObj.Temperatures.Radiator.RequestToFocus = FALSE; 
@@ -645,12 +644,10 @@ BOOL ChangeTemperatures() {
             DisplayObj.Temperatures.Cpu.RequestToChangeValue = FALSE;
             ValueIndicator_Repaint(&DisplayObj.Temperatures.Cpu.Indicator);
         }
-        request = TRUE;
-    }
-    if (request) {
+        DisplayObj.Temperatures.Repaint = FALSE;
         Display_Flush();    
-        return TRUE;        
-    }    
+        return TRUE;  
+    }  
     return FALSE;      
 }
 
@@ -666,6 +663,7 @@ BOOL isNorm = TemperatureSensorIsNorm(temperatures.Radiator);
             DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE;     
         }
         DisplayObj.Temperatures.Radiator.NewValue = temperatures.Radiator;  
+        DisplayObj.Temperatures.Repaint = TRUE;
     }
     
     isNorm = TemperatureSensorIsNorm(temperatures.Cpu);
@@ -677,16 +675,24 @@ BOOL isNorm = TemperatureSensorIsNorm(temperatures.Radiator);
             DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;     
         }   
         DisplayObj.Temperatures.Cpu.NewValue = temperatures.Cpu;  
+        DisplayObj.Temperatures.Repaint = TRUE;
     }
     if (temperatures.FanIsOn) {
         DisplayObj.Temperatures.Radiator.RequestToFocus = TRUE;     
     }
 }
+
+void RequestToRepaintTemperatures() {
+    DisplayObj.Temperatures.Repaint = TRUE;
+    DisplayObj.Temperatures.Radiator.RequestToChangeValue = TRUE; 
+    DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;
+    DisplayObj.Temperatures.Radiator.RequestToFocus = ValueIndicator_GetFocused(&DisplayObj.Temperatures.Radiator.Indicator); 
+}
 /*----------------- Change ElectrValue --------------<<<*/
 
 /*>>>-------------- MousePresent Visibility -----------------*/
 BOOL ChangeMousePresentVisibility() {    
-    if (DisplayObj.StateSymbols.MousePresentVisible != SymbolIndicator_GetFocused(&DisplayObj.StateSymbols.MousePresent)) {  
+    if (DisplayObj.StateSymbols.MousePresentRepaint) {  
         if (DisplayObj.StateSymbols.MousePresentVisible) { 
             SymbolIndicator_SetSelected(&DisplayObj.StateSymbols.MousePresent, FALSE);
             SymbolIndicator_SetFocused(&DisplayObj.StateSymbols.MousePresent, TRUE); 
@@ -694,14 +700,24 @@ BOOL ChangeMousePresentVisibility() {
             SymbolIndicator_SetFocused(&DisplayObj.StateSymbols.MousePresent, FALSE);
             SymbolIndicator_SetSelected(&DisplayObj.StateSymbols.MousePresent, TRUE); 
         }          
-        Display_Flush();    
+        Display_Flush();
+        DisplayObj.StateSymbols.MousePresentRepaint = FALSE;
         return TRUE;
     } else {
         return FALSE; 
     }    
 }
 
-void RequestToVisibileMousePresent(BOOL visible) {
+BOOL RequestToVisibileMousePresent(BOOL visible) {
+    if (DisplayObj.StateSymbols.MousePresentRepaint) {
+        return FALSE;
+    }
     DisplayObj.StateSymbols.MousePresentVisible = visible;
+    DisplayObj.StateSymbols.MousePresentRepaint = TRUE;
+    return TRUE;
+}
+
+void RequestToRepaintMousePresent() {
+    DisplayObj.StateSymbols.MousePresentRepaint = TRUE;
 }
 /*----------------- MousePresent Focusing --------------<<<*/
