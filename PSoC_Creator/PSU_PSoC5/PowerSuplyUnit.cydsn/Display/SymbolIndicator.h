@@ -17,7 +17,8 @@
 
 typedef enum {
 	simStabilizeVoltage,
-	simStabilizeAmperage
+	simStabilizeAmperage,
+	simMousePresent
 } TSymbolMode;
     
 typedef struct {

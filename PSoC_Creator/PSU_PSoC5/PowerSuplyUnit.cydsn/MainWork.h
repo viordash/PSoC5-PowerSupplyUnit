@@ -32,7 +32,6 @@ typedef struct {
     TElectrValue SetPointAmperageA;
     TElectrValue SetPointVoltageB;
     TElectrValue SetPointAmperageB;
-    BOOL MousePresent;
     BOOL HwPrSupressed;
 } TMainWork_Property, * PTMainWork_Property;
 

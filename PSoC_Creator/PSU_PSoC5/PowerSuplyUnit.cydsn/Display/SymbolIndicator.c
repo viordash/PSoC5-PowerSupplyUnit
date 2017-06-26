@@ -67,6 +67,8 @@ void SymbolIndicator_Repaint(PTSymbolIndicator pSymbolIndicator) {
         Display_Print("S", color, pSymbolIndicator->Left, pSymbolIndicator->Top, FALSE);
     } else if (pSymbolIndicator->Mode == simStabilizeAmperage) {
         Display_Print("s", color, pSymbolIndicator->Left, pSymbolIndicator->Top, FALSE);
+    } else if (pSymbolIndicator->Mode == simMousePresent) {
+        Display_Print("d", color, pSymbolIndicator->Left, pSymbolIndicator->Top, FALSE);
     }  
 }
 

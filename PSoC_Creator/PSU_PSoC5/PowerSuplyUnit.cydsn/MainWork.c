@@ -209,9 +209,7 @@ static DWORD prevTick = 0;
 
 /*>>>-------------- Mouse Changing Value -----------------*/
 void MouseState(BOOL present) {
-    MainWorkObj.Properties.MousePresent = present;
-    
-        O_Led_RiseRatePowerUp_Write(present);
+    RequestToVisibileMousePresent(present);  
 }
 
 void MouseChangingValue(INT value) {

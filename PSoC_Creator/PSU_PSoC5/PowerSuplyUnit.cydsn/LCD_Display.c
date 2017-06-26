@@ -48,8 +48,9 @@
 #define TemperatureCoordY 112
 #define TemperatureCpuCoordX 195
 #define TemperatureCpuCoordY 121
-#define FanIsOnCoordX 170
-#define FanIsOnCoordY 114
+
+#define MousePresentCoordX 175
+#define MousePresentCoordY 112
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
@@ -70,6 +71,7 @@ BOOL FlashSelectedStabilize();
 BOOL ChangeFocusingStabilize();
 
 BOOL ChangeTemperatures();
+BOOL ChangeMousePresentVisibility();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -112,6 +114,9 @@ void Display_Init() {
     SymbolIndicator_Init(&DisplayObj.Symbols.AmperageStabB.Indicator, simStabilizeAmperage, 4, StabilizeModeAmperageBCoordX, StabilizeModeAmperageBCoordY, 
         12, 19, FALSE); 
     DisplayObj.Properties.SelectedSymbol = NULL;
+    
+    SymbolIndicator_Init(&DisplayObj.StateSymbols.MousePresent, simMousePresent, 4, MousePresentCoordX, MousePresentCoordY, 
+        14, 13, FALSE);   
 }
 
 void Display_Task() {	
@@ -196,6 +201,9 @@ BOOL res = FALSE;
     if (ChangeTemperatures()) {
         res = TRUE;  
     }
+    if (ChangeMousePresentVisibility()) {
+        res = TRUE;  
+    }
 
     return res;
 }
@@ -244,9 +252,8 @@ void SetScreen_Bipolar() {
     Display_DrawLine(35 + 120, 28 + 54, 35 + 120, 54 + 54, ltDoted, FALSE); 
     Display_DrawLine(119 + 120, 28 + 54, 119 + 120, 54 + 54, ltDoted, FALSE); 
     Display_DrawLine(12 + 23 + 120, 30 + 54, 40 + 23 + 120, 32 + 54, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23 + 120, 32 + 54, 80 + 23 + 120, 37 + 54, ltSolid, FALSE);
-    
-    Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE); 
+    Display_DrawLine(40 + 23 + 120, 32 + 54, 80 + 23 + 120, 37 + 54, ltSolid, FALSE);    
+    Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE);     
     Display_Flush();
 }
 
@@ -270,8 +277,8 @@ void SetScreen_Unipolar() {
     Display_DrawLine(12 + 23, 36 + 56, 40 + 23, 44 + 56, ltSolid, FALSE);  
     Display_DrawLine(40 + 23, 44 + 56, 80 + 23, 42 + 56, ltSolid, FALSE);
     Display_SetFont(0); 
-    Display_Print("7.000a ", tcNorm, 4, 37 + 56, FALSE); 
-    
+    Display_Print("7.000a ", tcNorm, 4, 37 + 56, FALSE);   
+    Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE);   
     Display_Flush();  
 }
 
@@ -676,3 +683,25 @@ BOOL isNorm = TemperatureSensorIsNorm(temperatures.Radiator);
     }
 }
 /*----------------- Change ElectrValue --------------<<<*/
+
+/*>>>-------------- MousePresent Visibility -----------------*/
+BOOL ChangeMousePresentVisibility() {    
+    if (DisplayObj.StateSymbols.MousePresentVisible != SymbolIndicator_GetFocused(&DisplayObj.StateSymbols.MousePresent)) {  
+        if (DisplayObj.StateSymbols.MousePresentVisible) { 
+            SymbolIndicator_SetSelected(&DisplayObj.StateSymbols.MousePresent, FALSE);
+            SymbolIndicator_SetFocused(&DisplayObj.StateSymbols.MousePresent, TRUE); 
+        } else {
+            SymbolIndicator_SetFocused(&DisplayObj.StateSymbols.MousePresent, FALSE);
+            SymbolIndicator_SetSelected(&DisplayObj.StateSymbols.MousePresent, TRUE); 
+        }          
+        Display_Flush();    
+        return TRUE;
+    } else {
+        return FALSE; 
+    }    
+}
+
+void RequestToVisibileMousePresent(BOOL visible) {
+    DisplayObj.StateSymbols.MousePresentVisible = visible;
+}
+/*----------------- MousePresent Focusing --------------<<<*/

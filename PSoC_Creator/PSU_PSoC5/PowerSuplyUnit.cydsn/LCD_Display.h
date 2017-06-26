@@ -111,12 +111,18 @@ typedef struct {
     TSymbol AmperageStabB;
 } TDisplaySymbols, * PTDisplaySymbols;
 
+typedef struct {   
+    TSymbolIndicator MousePresent;
+    BOOL MousePresentVisible;
+} TDisplayStateSymbols, * PTDisplayStateSymbols;
+
 typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
     TDisplayValues Values;
     TDisplaySymbols Symbols;
     TDisplayTemperature Temperatures;
+    TDisplayStateSymbols StateSymbols;
 } TDisplayObject, * PTDisplayObject;
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
@@ -133,6 +139,7 @@ extern BOOL IsDisplayInChangingStabilizeMode();
 extern void RequestToFocusingStabilize(TSelectStabilizeMode selectValue);
 
 extern void RequestToChangeTemperatures(TTemperature temperatures);
+extern void RequestToVisibileMousePresent(BOOL visible);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */
