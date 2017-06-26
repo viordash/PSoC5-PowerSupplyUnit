@@ -79,8 +79,7 @@ void MSCommReset(void) {
 
 CY_ISR(MouseIrqHandler) {
 	if (MouseClk_ReadRee() == 0) {
-         
-        BOOL dataLine = MouseData_ReadRee();
+        BOOL dataLine = MouseData_ReadRee();        
         
 		if (((MouseMode & MSMode_RXTXMask) == MSMode_RX) /*&& (MouseClk_Read() == 0)*/) {//from the device to the host is read on the falling edge           
 			if (MouseBitNum != 0) {  //если не старт бит, то проверить последнюю активность сигнала на CLK, и если дольше MSFrame_DelayMs, то сбросить					
@@ -111,7 +110,7 @@ CY_ISR(MouseIrqHandler) {
 				}
 				MouseBitNum = 0;
 			}
-		} else  /*if (MouseMode == MSMode_Transmit)*/ {
+		} else {
 			if (MouseBitNum < 9) {  				//8 data bits, least significant bit first.
 				MouseData_WriteRee(MouseDataReg & 0x01);
 				MouseDataReg >>= 1;
@@ -130,7 +129,7 @@ CY_ISR(MouseIrqHandler) {
 			}
 			MouseBitNum++;
 		}
-		MouseLastActTick = GetTickCount();
+		MouseLastActTick = GetTickCount();        
 	}
 	MouseClk_ClearInterrupt();
 }
@@ -141,7 +140,6 @@ void MouseModeToRecieve(void) {
 }
 
 void MouseTransmit(BYTE Data) {
-	//	if ((MouseBitNum != 0) && (SysClk_GetPeriod(MouseLastAct) < MSFrame_DelayMs)) return;
 	MouseISR_Disable();
 	MouseData[0] = Data;
 	MouseDataReg = Data;
@@ -170,7 +168,7 @@ void InitMouse() {
 BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount, BYTE NextState, DWORD ATimeOut) {
 	DWORD ActPeriod = GetElapsedPeriod(MouseLastActTick);
 	if ((MouseMode & MSMode_RXTXMask) == MSMode_TX) {
-		if (MouseBitNum == 0 /*|| (ActPeriod > 100)*/) {
+		if (MouseBitNum == 0) {
 			MouseTransmit(TXData);
 		} else if (ActPeriod > SYSTICK_mS(1000)) {
 			MSMode_StateSET(MSMode_StateReset);
@@ -206,7 +204,7 @@ BOOL MouseHandler() {
 //    mouseTick = GetTickCount();
 BOOL res = FALSE;        
 	if (MSMode_StateGET == MSMode_StateReset) {
-		if (MouseStateMachine(0xFF, 0xFA, 3, MSMode_StateSetSampleRate0Cmd, 1000)) {
+		if (MouseStateMachine(0xFF, 0xFA, 1, MSMode_StateSetSampleRate0Cmd, 1000)) {
             MouseState(TRUE);
 		} else {
             MouseState(FALSE);
@@ -243,7 +241,7 @@ BOOL res = FALSE;
 	} else if (MSMode_StateGET == MSMode_StateSetSampleRate3Val) {
 		MouseStateMachine(100, 0xFA, 1, MSMode_ReadData, 100);
 	} else if (MSMode_StateGET == MSMode_ReadData) {
-		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 100)) {
+		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 200)) {
 			BYTE msDt = MouseData[1];
 			int8 i8 = (int8)MouseData[4];
 			if (MainWorkObj.Properties.State != mwsStart && MainWorkObj.Properties.State != mwsInit) {
