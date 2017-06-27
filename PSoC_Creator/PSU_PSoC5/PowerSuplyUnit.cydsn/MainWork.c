@@ -136,11 +136,13 @@ void RefreshDisplay(TPolarMode polarMode) {
         RequestToChangeValue(svSetPointVoltageA, MainWorkObj.Properties.SetPointVoltageA);
         RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.Properties.SetPointAmperageA);
         RequestToChangeValue(svSetPointAmperageA, MainWorkObj.Properties.SetPointAmperageA);   
-        RequestToFocusing(svMeasuredAmperageA);   
+           
         if (MainWorkObj.Properties.StabilizeModeA == smAmperageStab) { 
             RequestToFocusingStabilize(ssmAmperageA); 
+            RequestToFocusing(svMeasuredAmperageA);
         } else {
             RequestToFocusingStabilize(ssmVoltageA);
+            RequestToFocusing(svMeasuredVoltageA);
         }
     }
     RequestToRepaintTemperatures();

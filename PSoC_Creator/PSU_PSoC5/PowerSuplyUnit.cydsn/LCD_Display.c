@@ -292,8 +292,12 @@ void ChangeScreen() {
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();        
     } else if (DisplayObj.Properties.Screen == dsBipolar) {
+        DisplayObj.Values.MeasuredVoltageB.Indicator.Readonly = FALSE;
+        DisplayObj.Values.MeasuredAmperageB.Indicator.Readonly = FALSE;
         SetScreen_Bipolar();
     } else if (DisplayObj.Properties.Screen == dsUnipolar) {
+        DisplayObj.Values.MeasuredVoltageB.Indicator.Readonly = TRUE;
+        DisplayObj.Values.MeasuredAmperageB.Indicator.Readonly = TRUE;
         SetScreen_Unipolar();
     } else if (DisplayObj.Properties.Screen == dsError) {
         SetScreen_Error();
