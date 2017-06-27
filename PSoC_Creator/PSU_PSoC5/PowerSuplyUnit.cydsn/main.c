@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include "LCD_Display.h"
 #include "MainWork.h"
+#include "Regulator\RegulatorTask.h"
 
 DWORD SysTickCountWDG = 0;
 void TaskShedul(void) {
@@ -24,6 +25,7 @@ void TaskShedul(void) {
 			CyWdtClear();
 #endif  
 		}
+		TaskResume(&RegulatorFunction, NULL);
 		TaskResume(&MainWorkFunction, NULL);
 		TaskResume(&DisplayFunction, NULL);
 	}
@@ -37,6 +39,9 @@ void TasksInit(void) {
 	stack -= 0x700;
 
 	TaskExecInit(&MainWorkFunction, (POINTER)MainWork_Task, stack);
+	stack -= 0x800;
+    
+	TaskExecInit(&RegulatorFunction, (POINTER)Regulator_Task, stack);
 	stack -= 0x500;
 }
 
@@ -57,7 +62,7 @@ int main() {
 #ifdef WDT_ENABLE
 	CyWdtStart(CYWDT_128_TICKS, CYWDT_LPMODE_MAXINTER);
 #endif 
-
+    Regulator_Init();
 	Display_Init();
 	MainWork_Init();
 	TasksInit();

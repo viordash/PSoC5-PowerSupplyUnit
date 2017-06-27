@@ -13,3 +13,4 @@ PSoC_Creator/PSU_PSoC5/Archive/
 *t.cyprj.Vior_IDE
 *1.zip
 *.cydsn/BUILD.log
+PSoC_Creator/PSU_PSoC5/PowerSuplyUnit.cydsn/*.log
