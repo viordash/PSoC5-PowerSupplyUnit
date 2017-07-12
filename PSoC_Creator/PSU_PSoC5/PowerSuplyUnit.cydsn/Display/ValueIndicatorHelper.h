@@ -17,6 +17,5 @@ void SelectValue();
 void SelectNextIndicator();
 void SelectPrevIndicator();
 void ConfirmSelection();
-void ChangeValue(INT shiftValue);	
 #endif  /* __ValueIndicatorHelper_H__ */
 /* [] END OF FILE */

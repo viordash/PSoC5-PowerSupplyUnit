@@ -1,6 +1,3 @@
-
-
-#include <device.h>
 #include "Utils\GeneralUtils.h"
 #include <string.h>
 #include <stdio.h>

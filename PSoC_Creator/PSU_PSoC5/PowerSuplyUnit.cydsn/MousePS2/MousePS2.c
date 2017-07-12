@@ -244,7 +244,7 @@ BOOL res = FALSE;
 		if (MouseStateMachine(0xEB, 0xFA, 5, MSMode_ReadData, 200)) {
 			BYTE msDt = MouseData[1];
 			INT i8 = (int8)MouseData[4];
-			if (MainWorkObj.Properties.State != mwsStart && MainWorkObj.Properties.State != mwsInit) {
+			if (MainWorkObj.State != mwsStart && MainWorkObj.State != mwsInit) {
                 if (i8 != 0) {
                     if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
     				else if (msDt & 0x02) i8 =  i8 * 10; //MSS_MSBtnRight;
@@ -255,7 +255,7 @@ BOOL res = FALSE;
 				if ((msDt & 0x04) != MouseMidBtn) {
 					MouseMidBtn = (msDt & 0x04);
 					if (MouseMidBtn) {
-						if (MainWorkObj.Properties.State == mwsErrGlb) {
+						if (MainWorkObj.State == mwsErrGlb) {
 							ResetErrorState();
 						} else {
 							if ((O_OUT_ON_Read() == 0) && (msDt & 0x02)) { //MSS_MSBtnRight; при включении выхода, правой кнопкой блокировать защиту	
@@ -268,7 +268,7 @@ BOOL res = FALSE;
                         res = TRUE;
 					}
 				}
-				if (MainWorkObj.Properties.HwPrSupressed && ((msDt & 0x02) == 0) /*&& (OUT_ON_R_Read() != 0)*/) { //MSS_MSBtnRight; 
+				if (MainWorkObj.HwPrSupressed && ((msDt & 0x02) == 0) /*&& (OUT_ON_R_Read() != 0)*/) { //MSS_MSBtnRight; 
 					SuppressProtection(FALSE);
 				}
 			}

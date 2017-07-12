@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicatorHelper.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Utils\Filters.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -27,6 +27,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Regulator\RegulatorTask.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Regulator\RegulatorTask.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\Filters.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\Filters.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
@@ -69,6 +72,10 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Source Files\main.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\Filters.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\Filters.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
@@ -141,6 +148,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FAN_CTRL.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FanCtrl.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FanCtrl_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Filters.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\font_0.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\font_1.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\font_2.lst</v>
@@ -393,7 +401,6 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" />
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
@@ -403,8 +410,12 @@
 <name v=".\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
-<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
-<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.h" />
+<name v=".\PowerSuplyUnit.cydsn\device.h" />
+<name v=".\PowerSuplyUnit.cydsn\OS\SystemOS.h" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.c" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.h" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\Filters.c" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\Filters.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -412,7 +423,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 764" SelectedTabbedMdiWindow="f2bdc2a0-3bc5-4b5b-ba25-ee8153765b2f"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" Guid="549bbd8a-6397-4580-ba27-2e074fe837b0" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="368913cf-50cb-4d1a-93da-508cc860f363" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="391b5a68-7f61-402e-b877-ca0cd772ed22" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="2a9acd10-cce0-4b6c-967b-a64182d26130" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="893687ce-b6f5-4208-8a95-9780566ece3e" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="873a3a5b-700d-437e-a61d-2aa44f366046" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" Guid="f2bdc2a0-3bc5-4b5b-ba25-ee8153765b2f" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.h" Guid="42b7879b-eb91-4b50-884d-6f2320dd4a98" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 764" SelectedTabbedMdiWindow="edf8b598-efd1-4720-b962-c86b9953dd11"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="368913cf-50cb-4d1a-93da-508cc860f363" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="391b5a68-7f61-402e-b877-ca0cd772ed22" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="2a9acd10-cce0-4b6c-967b-a64182d26130" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="893687ce-b6f5-4208-8a95-9780566ece3e" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="873a3a5b-700d-437e-a61d-2aa44f366046" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="b1a4a740-8796-4c75-89eb-3e263f78bf8e" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\OS\SystemOS.h" Guid="717bcdb0-b49d-45a4-861c-50be7fa65eca" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\GeneralUtils.c" Guid="590b85d2-e71f-406b-824f-7ac522a6c254" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\GeneralUtils.h" Guid="e3e481c4-2661-4571-ba58-1d30ffd057b1" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\Filters.c" Guid="1b43c55d-3505-4fd6-bac2-9d8213e36edb" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\Filters.h" Guid="1d06ad73-acfb-48b7-89fc-a31a90cb9dd0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

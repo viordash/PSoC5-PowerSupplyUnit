@@ -16,6 +16,7 @@
 #include "LCD_Display.h"
 #include "Temperature\TemperControl.h"
 #include "MousePS2\MousePS2.h"
+#include "Regulator\RegulatorTask.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -32,13 +33,14 @@ BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
+void ChangeValue(INT shiftValue);
 
 void MainWork_Init() {
-    MainWorkObj.Properties.State = mwsInit;
-    MainWorkObj.Properties.PolarMode = pmInit;   
-    MainWorkObj.Properties.ChangedValue = cvVoltageA;  
-    MainWorkObj.Properties.StabilizeModeA = smVoltageStab;  
-    MainWorkObj.Properties.StabilizeModeB = smAmperageStab; 
+    MainWorkObj.State = mwsInit;
+    MainWorkObj.PolarMode = pmInit;   
+    MainWorkObj.ChangedValue = cvVoltageA;  
+    MainWorkObj.StabilizeModeA = smVoltageStab;  
+    MainWorkObj.StabilizeModeB = smAmperageStab; 
     InitMouse();
 }
 
@@ -62,9 +64,7 @@ void MainWork_Task(){
             }
 		}        
         
-        if (MainWorkObj.Properties.State != mwsWork) {
-            
-        }
+        
         if (!MouseHandler()){
             if(!TemperatureControl()) {
                 
@@ -75,7 +75,10 @@ void MainWork_Task(){
 }
 
 void ChangeState(TMainWorkState newState){
-    MainWorkObj.Properties.State = newState;    
+    MainWorkObj.State = newState;    
+    if (newState != mwsWork) {
+        
+    }
 }
 
 void ResetErrorState() {
@@ -85,22 +88,27 @@ void SuppressProtection(BOOL withOn) {
 }
 
 void ChangeOutputState() {
+    if (MainWorkObj.State == mwsWork || MainWorkObj.State == mwsErrGlb) {
+        ChangeState(mwsStandBy);    
+    } else if (MainWorkObj.State == mwsStandBy) { 
+        ChangeState(mwsWork);    
+    }
 }
 
 /*>>>-------------- Polar Output mode -----------------*/
 BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
     BOOL res = FALSE;
-    if (MainWorkObj.Properties.PolarMode == pmUnipolar) {
+    if (MainWorkObj.PolarMode == pmUnipolar) {
         if (btnBipolarModePressed) {
             ChangePolarMode(pmBipolar);
             res = TRUE;
         }
-    } else if (MainWorkObj.Properties.PolarMode == pmBipolar) {
+    } else if (MainWorkObj.PolarMode == pmBipolar) {
         if (!btnBipolarModePressed) {
             ChangePolarMode(pmUnipolar);
             res = TRUE;
         }
-    } else if (MainWorkObj.Properties.PolarMode == pmInit) {
+    } else if (MainWorkObj.PolarMode == pmInit) {
         ChangePolarMode(btnBipolarModePressed ? pmBipolar : pmUnipolar);
         res = TRUE;
     }
@@ -110,34 +118,34 @@ BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
 void RefreshDisplay(TPolarMode polarMode) {
     if (polarMode == pmBipolar) {
         RequestToChangeScreen(dsBipolar);
-        RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.Properties.SetPointVoltageA);
-        RequestToChangeValue(svSetPointVoltageA, MainWorkObj.Properties.SetPointVoltageA);
-        RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.Properties.SetPointAmperageA);
-        RequestToChangeValue(svSetPointAmperageA, MainWorkObj.Properties.SetPointAmperageA);
-        RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.Properties.SetPointVoltageB);
-        RequestToChangeValue(svSetPointVoltageB, MainWorkObj.Properties.SetPointVoltageB);
-        RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.Properties.SetPointAmperageB);
-        RequestToChangeValue(svSetPointAmperageB, MainWorkObj.Properties.SetPointAmperageB);
+        Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
+        Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
+        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
+        Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
+        Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
+        Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
+        Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
+        Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
         
         RequestToFocusing(svMeasuredVoltageA);  
-        if (MainWorkObj.Properties.StabilizeModeA == smAmperageStab) { 
+        if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
             RequestToFocusingStabilize(ssmAmperageA); 
         } else {
             RequestToFocusingStabilize(ssmVoltageA);
         }
-        if (MainWorkObj.Properties.StabilizeModeB == smAmperageStab) { 
+        if (MainWorkObj.StabilizeModeB == smAmperageStab) { 
             RequestToFocusingStabilize(ssmAmperageB); 
         } else {
             RequestToFocusingStabilize(ssmVoltageB);
         }
     } else if (polarMode == pmUnipolar) {
         RequestToChangeScreen(dsUnipolar);
-        RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.Properties.SetPointVoltageA);
-        RequestToChangeValue(svSetPointVoltageA, MainWorkObj.Properties.SetPointVoltageA);
-        RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.Properties.SetPointAmperageA);
-        RequestToChangeValue(svSetPointAmperageA, MainWorkObj.Properties.SetPointAmperageA);   
+        Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
+        Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
+        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
+        Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);   
            
-        if (MainWorkObj.Properties.StabilizeModeA == smAmperageStab) { 
+        if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
             RequestToFocusingStabilize(ssmAmperageA); 
             RequestToFocusing(svMeasuredAmperageA);
         } else {
@@ -150,7 +158,7 @@ void RefreshDisplay(TPolarMode polarMode) {
 }
 
 void ChangePolarMode(TPolarMode polarMode) {
-    MainWorkObj.Properties.PolarMode = polarMode;
+    MainWorkObj.PolarMode = polarMode;
     RefreshDisplay(polarMode);
     if (polarMode == pmBipolar) {
         O_Led_Polar_Write(0);
@@ -175,16 +183,16 @@ void ButtonOkPressed (BYTE value) {
     if (!value) {
         return;            
     }
-    if (MainWorkObj.Properties.State == mwsStandBy || MainWorkObj.Properties.State == mwsWork) {
+    if (MainWorkObj.State == mwsStandBy || MainWorkObj.State == mwsWork) {
         if (!(value & BtnOk_LongPress)) {
-            if(MainWorkObj.Properties.State == mwsStandBy && IsDisplayInChangingStabilizeMode()) {
+            if(MainWorkObj.State == mwsStandBy && IsDisplayInChangingStabilizeMode()) {
                 ConfirmSelectionStabilize();
             } else if(!IsDisplayInSelectionMode()) {
                 SelectValue();
             } else {
                 ConfirmSelection();
             }
-        } else if (MainWorkObj.Properties.State == mwsStandBy) {
+        } else if (MainWorkObj.State == mwsStandBy) {
             if(!IsDisplayInChangingStabilizeMode()) {
                 SelectStabilizeMode();
             }
@@ -255,4 +263,51 @@ BOOL TemperatureControl() {
     return TRUE;
 }
 /*----------------- Temperature Control --------------<<<*/
+
+/*>>>-------------- Change values -----------------*/
+void IncrementValue(PTElectrValue pElectrValue, INT shiftValue, TElectrValue max, TElectrValue min) {
+    TElectrValue electrValue  = *pElectrValue;
+    electrValue += shiftValue;
+    if (shiftValue < 0) {
+        if (electrValue < min || electrValue > max) {
+            electrValue = min;  
+        }       
+    } else if (electrValue < min) {
+        electrValue = min;  
+    } else if (electrValue > max) {
+        electrValue = max;  
+    }   
+    *pElectrValue = electrValue;
+}
+
+void ChangeValue(INT shiftValue) {
+    TChangedValue changedValue = MainWorkObj.ChangedValue;
+    if (changedValue == cvAmperageA) {
+        IncrementValue(&MainWorkObj.SetPointAmperageA, shiftValue, Amperage_MAX, Amperage_MIN);        
+        Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
+        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA); 
+        
+    } else if (changedValue == cvVoltageB) {
+        IncrementValue(&MainWorkObj.SetPointVoltageB, shiftValue, Voltage_MAX, Voltage_MIN);
+        Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
+        Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
+        
+    } else if (changedValue == cvAmperageB) {
+        IncrementValue(&MainWorkObj.SetPointAmperageB, shiftValue, Amperage_MAX, Amperage_MIN);
+        Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
+        Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
+        
+    } else {
+        IncrementValue(&MainWorkObj.SetPointVoltageA, shiftValue, Voltage_MAX, Voltage_MIN);
+        if (MainWorkObj.StabilizeModeA == smAmperageStab) {
+            Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);   
+            Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
+        } else {
+            Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA);   
+            Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);            
+        }
+    }   
+}
+
+/*----------------- Change values --------------<<<*/
 /* [] END OF FILE */

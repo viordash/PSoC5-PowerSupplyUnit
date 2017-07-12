@@ -68,6 +68,13 @@ typedef struct {
 } TVariableValue, * PTVariableValue;
 
 typedef struct {
+    TVariableValue Value;
+    DWORD UpdateTickCount;
+    TElectrValue PostponedValues[3];
+    BYTE PostponedIndex;
+} TMeasuredValue, * PTMeasuredValue;
+
+typedef struct {
     TSymbolIndicator Indicator;
     BOOL RequestToSelect;
     BOOL RequestToFocus;
@@ -89,10 +96,10 @@ typedef struct {
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {   
-    TVariableValue MeasuredVoltageA;
-    TVariableValue MeasuredAmperageA;
-    TVariableValue MeasuredVoltageB;
-    TVariableValue MeasuredAmperageB;
+    TMeasuredValue MeasuredVoltageA;
+    TMeasuredValue MeasuredAmperageA;
+    TMeasuredValue MeasuredVoltageB;
+    TMeasuredValue MeasuredAmperageB;
     TVariableValue SetPointVoltageA;
     TVariableValue SetPointAmperageA;
     TVariableValue SetPointVoltageB;
@@ -129,7 +136,12 @@ typedef struct {
 
 extern void RequestToChangeScreen(TDisplayScreen newValue);
 
-extern void RequestToChangeValue(TSelectValue selectValue, TElectrValue value);
+extern void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value);
+extern void Display_RequestToChangeVoltageA(TElectrValue value);
+extern void Display_RequestToChangeAmperageA(TElectrValue value);
+extern void Display_RequestToChangeVoltageB(TElectrValue value);
+extern void Display_RequestToChangeAmperageB(TElectrValue value);
+
 extern void RequestToSelect(TSelectValue selectValue);
 extern TSelectValue GetCurrentSelectedValue();
 extern BOOL IsDisplayInSelectionMode();

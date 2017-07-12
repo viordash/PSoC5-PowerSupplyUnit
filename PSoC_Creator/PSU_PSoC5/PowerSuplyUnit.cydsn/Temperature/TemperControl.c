@@ -87,7 +87,7 @@ TTemperature CheckTemper(void) {
 	} else if (res.Radiator >= 40) {
 		FanCtrl_WriteCompare(80);
         res.FanIsOn = TRUE;
-	} else if (MainWorkObj.Properties.State == mwsWork && res.Radiator >= 35) {
+	} else if (MainWorkObj.State == mwsWork && res.Radiator >= 35) {
 		FanCtrl_WriteCompare(32);
 	} else if (res.Cpu >= 40) {
 		FanCtrl_WriteCompare(128);

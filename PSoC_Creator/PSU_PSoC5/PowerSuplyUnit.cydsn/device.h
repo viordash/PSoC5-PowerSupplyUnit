@@ -32,6 +32,11 @@
 #define TEMPER_INIT (TEMPER_BUS_SHORT - 1)
 #define TemperatureSensorIsNorm(value) (value != TEMPER_ERR && value != TEMPER_NO_DEVICE && value != TEMPER_BUS_SHORT && value != TEMPER_INIT)
     
+#define Voltage_MAX 15 * 100
+#define Voltage_MIN 0
+#define Amperage_MAX 8 * 1000
+#define Amperage_MIN 5
+    
 typedef enum {
 	smVoltageStab = 0,
 	smAmperageStab,

@@ -13,6 +13,7 @@
 #include <device.h>
 #include <stdio.h>
 #include "LCD_Display.h"
+#include "Utils\Filters.h"
 
 #define VoltageACoordX 25
 #define VoltageACoordY 3
@@ -54,7 +55,7 @@
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
-BOOL ProcessRequests();
+static BOOL ProcessRequests();
 void ChangeScreen();
 void ChangeSelected();
 void ChangeFocused();
@@ -78,14 +79,14 @@ void Display_Init() {
     memset(&DisplayObj.Requests, 0, sizeof(TDisplayRequests));
     memset(&DisplayObj.Values, 0, sizeof(TDisplayValues));
     
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageA.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
+    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageA.Value.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
         89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageA.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
+    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageA.Value.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
         81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE);
     
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageB.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageB.Value.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
         89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageB.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageB.Value.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
         81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE);    
         
     ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
@@ -137,10 +138,10 @@ void Display_Task() {
 PTVariableValue GetVariableValue(TSelectValue selectValue) {
     PTVariableValue pVariableValue;
     switch(selectValue) {
-        case svMeasuredVoltageA : pVariableValue = &DisplayObj.Values.MeasuredVoltageA; break;
-        case svMeasuredAmperageA : pVariableValue = &DisplayObj.Values.MeasuredAmperageA; break;
-        case svMeasuredVoltageB : pVariableValue = &DisplayObj.Values.MeasuredVoltageB; break;
-        case svMeasuredAmperageB : pVariableValue = &DisplayObj.Values.MeasuredAmperageB; break;
+        case svMeasuredVoltageA : pVariableValue = &DisplayObj.Values.MeasuredVoltageA.Value; break;
+        case svMeasuredAmperageA : pVariableValue = &DisplayObj.Values.MeasuredAmperageA.Value; break;
+        case svMeasuredVoltageB : pVariableValue = &DisplayObj.Values.MeasuredVoltageB.Value; break;
+        case svMeasuredAmperageB : pVariableValue = &DisplayObj.Values.MeasuredAmperageB.Value; break;
         case svSetPointVoltageA : pVariableValue = &DisplayObj.Values.SetPointVoltageA; break;
         case svSetPointAmperageA : pVariableValue = &DisplayObj.Values.SetPointAmperageA; break;
         case svSetPointVoltageB : pVariableValue = &DisplayObj.Values.SetPointVoltageB; break;
@@ -175,7 +176,7 @@ void RequestToChangeScreen(TDisplayScreen newValue) {
     DisplayObj.Requests.ScreenRequest = TRUE;
 }
 
-BOOL ProcessRequests () {
+static BOOL ProcessRequests() {
 BOOL res = FALSE;    
     if (DisplayObj.Requests.ScreenRequest) {
         ChangeScreen();
@@ -292,12 +293,12 @@ void ChangeScreen() {
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();        
     } else if (DisplayObj.Properties.Screen == dsBipolar) {
-        DisplayObj.Values.MeasuredVoltageB.Indicator.Readonly = FALSE;
-        DisplayObj.Values.MeasuredAmperageB.Indicator.Readonly = FALSE;
+        DisplayObj.Values.MeasuredVoltageB.Value.Indicator.Readonly = FALSE;
+        DisplayObj.Values.MeasuredAmperageB.Value.Indicator.Readonly = FALSE;
         SetScreen_Bipolar();
     } else if (DisplayObj.Properties.Screen == dsUnipolar) {
-        DisplayObj.Values.MeasuredVoltageB.Indicator.Readonly = TRUE;
-        DisplayObj.Values.MeasuredAmperageB.Indicator.Readonly = TRUE;
+        DisplayObj.Values.MeasuredVoltageB.Value.Indicator.Readonly = TRUE;
+        DisplayObj.Values.MeasuredAmperageB.Value.Indicator.Readonly = TRUE;
         SetScreen_Unipolar();
     } else if (DisplayObj.Properties.Screen == dsError) {
         SetScreen_Error();
@@ -325,12 +326,41 @@ BOOL ChangeValues() {
     return FALSE;      
 }
 
-void RequestToChangeValue(TSelectValue selectValue, TElectrValue value) {
+void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value) {
     PTVariableValue pVariableValue = GetVariableValue(selectValue);
     if (pVariableValue != NULL) {
         pVariableValue->NewValue = value;
         pVariableValue->RequestToChangeValue = TRUE;
     }
+}
+
+void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value) {
+    if (pMeasuredValue->PostponedIndex >= sizeof(pMeasuredValue->PostponedValues) / (sizeof(TElectrValue))) {
+        pMeasuredValue->PostponedIndex = 0;    
+    }
+    pMeasuredValue->PostponedValues[pMeasuredValue->PostponedIndex++] = value;
+    if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(400)) {         
+        pMeasuredValue->Value.NewValue = GetMedianOf3Value(pMeasuredValue->PostponedValues);
+        pMeasuredValue->Value.RequestToChangeValue = TRUE;
+        pMeasuredValue->UpdateTickCount = GetTickCount();
+    }
+}
+
+
+void Display_RequestToChangeVoltageA(TElectrValue value) {
+    RequestToChangeMeasured(&DisplayObj.Values.MeasuredVoltageA, value);
+}
+
+void Display_RequestToChangeAmperageA(TElectrValue value) {
+    RequestToChangeMeasured(&DisplayObj.Values.MeasuredAmperageA, value);
+}
+
+void Display_RequestToChangeVoltageB(TElectrValue value) {
+    RequestToChangeMeasured(&DisplayObj.Values.MeasuredVoltageB, value);
+}
+
+void Display_RequestToChangeAmperageB(TElectrValue value) {
+    RequestToChangeMeasured(&DisplayObj.Values.MeasuredAmperageB, value);
 }
 /*----------------- Change ElectrValue --------------<<<*/
 
@@ -415,13 +445,13 @@ static BOOL state = FALSE;
 
 TSelectValue GetCurrentSelectedValue() {
     PTValueIndicator pValueIndicator = DisplayObj.Properties.SelectedIndicator;   
-    if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageA.Indicator) {
+    if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageA.Value.Indicator) {
         return svMeasuredVoltageA;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageA.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageA.Value.Indicator) {
         return svMeasuredAmperageA;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageB.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageB.Value.Indicator) {
         return svMeasuredVoltageB;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageB.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageB.Value.Indicator) {
         return svMeasuredAmperageB;
     } else if (pValueIndicator == &DisplayObj.Values.SetPointVoltageA.Indicator) {
         return svSetPointVoltageA;
@@ -692,7 +722,7 @@ void RequestToRepaintTemperatures() {
     DisplayObj.Temperatures.Cpu.RequestToChangeValue = TRUE;
     DisplayObj.Temperatures.Radiator.RequestToFocus = ValueIndicator_GetFocused(&DisplayObj.Temperatures.Radiator.Indicator); 
 }
-/*----------------- Change ElectrValue --------------<<<*/
+/*----------------- Change Temperature --------------<<<*/
 
 /*>>>-------------- MousePresent Visibility -----------------*/
 BOOL ChangeMousePresentVisibility() {    

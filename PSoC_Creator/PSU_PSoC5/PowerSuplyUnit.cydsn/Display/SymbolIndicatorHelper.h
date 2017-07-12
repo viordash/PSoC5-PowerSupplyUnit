@@ -17,6 +17,5 @@ void SelectStabilizeMode();
 void SelectNextStabilizeIndicator();
 void SelectPrevStabilizeIndicator();
 void ConfirmSelectionStabilize();
-//void ChangeValue(INT shiftValue);	
 #endif  /* __SymbolIndicatorHelper_H__ */
 /* [] END OF FILE */
