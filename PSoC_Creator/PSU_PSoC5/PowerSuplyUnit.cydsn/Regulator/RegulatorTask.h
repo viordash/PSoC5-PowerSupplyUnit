@@ -24,20 +24,34 @@ typedef struct {
     TRegulatorValue SetPoint;  
     TRegulatorValue CuttOff; 
     TElectrValue Measured; 
+    TElectrValue Expected; 
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
     TRegulatorValue SetPoint;  
     TRegulatorValue CuttOff; 
     TElectrValue Measured; 
+    TElectrValue Expected; 
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
+typedef struct { 
+    TRegulatorVoltage Voltage; 
+    TRegulatorAmperage Amperage; 
+} TRegulatorChannel, * PTRegulatorChannel;
+
 typedef struct {
-    TRegulatorVoltage VoltageA; 
-    TRegulatorAmperage AmperageA; 
-    TRegulatorVoltage VoltageB; 
-    TRegulatorAmperage AmperageB; 
+    TRegulatorChannel ChanelA; 
+    TRegulatorChannel ChanelB; 
+	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
+	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
 } TRegulatorObject, * PTRegulatorObject;
+
+
+typedef void(*TPWMWriteCompare) (uint16 compare);
+typedef void (*TDisplay_RequestToChangeValue)(TElectrValue value);
+typedef TElectrValue (*TMeasureAdc)();
+typedef void(*TWritePwm) (uint16 compare);
+typedef uint16(*TReadPwm) ();
 
 extern TFunction RegulatorFunction;
 extern TRegulatorObject RegulatorObj;

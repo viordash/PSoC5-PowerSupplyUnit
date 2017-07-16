@@ -49,6 +49,11 @@ typedef enum {
 } TPolarMode;
 
 typedef enum {
+	rrpuSlow = 0,
+	rrpuFast
+} TRiseRatePowerUp;
+
+typedef enum {
 	svNone = 0,
 	svMeasuredVoltageA,
 	svMeasuredAmperageA,
@@ -100,6 +105,15 @@ typedef struct {
     INT Cpu;
     BOOL FanIsOn;
 } TTemperature, *PTTemperature;
+
+#define VOLTAGE_CALIBRATE_POINT_COUNT 16
+#define AMPERAGE_CALIBRATE_POINT_COUNT 16
+
+typedef struct {
+	TElectrValue Adc;
+	TElectrValue Pwm;
+    BYTE Crc;
+} TCalibrateItem, *PTCalibrateItem;
 
 #endif  /* __DEVICE_H__ */
 /*[]*/

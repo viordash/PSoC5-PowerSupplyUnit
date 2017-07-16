@@ -172,7 +172,14 @@ void ChangePolarMode(TPolarMode polarMode) {
 /*>>>-------------- Rise rate of voltage at power-up -----------------*/
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed) {
     BOOL res = FALSE;
-    O_Led_RiseRatePowerUp_Write(btnRiseRatePowerUpPressed ? 0 : 0xFF);
+    if (btnRiseRatePowerUpPressed) {
+        O_Led_RiseRatePowerUp_Write(0);  
+        MainWorkObj.RiseRatePowerUp = rrpuFast;
+    } else {
+        O_Led_RiseRatePowerUp_Write(0xFF);
+        MainWorkObj.RiseRatePowerUp = rrpuSlow;
+    }    
+    
     res = TRUE;
     return res;
 }
@@ -283,29 +290,40 @@ void IncrementValue(PTElectrValue pElectrValue, INT shiftValue, TElectrValue max
 void ChangeValue(INT shiftValue) {
     TChangedValue changedValue = MainWorkObj.ChangedValue;
     if (changedValue == cvAmperageA) {
-        IncrementValue(&MainWorkObj.SetPointAmperageA, shiftValue, Amperage_MAX, Amperage_MIN);        
+        IncrementValue(&MainWorkObj.SetPointAmperageA, shiftValue, Amperage_MAX, Amperage_MIN); 
+        if (MainWorkObj.StabilizeModeA == smAmperageStab) {
+            Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);   
+        } else {  //smVoltageStab
+            Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointVoltageA);             
+        }
         Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
-        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA); 
         
     } else if (changedValue == cvVoltageB) {
         IncrementValue(&MainWorkObj.SetPointVoltageB, shiftValue, Voltage_MAX, Voltage_MIN);
+        if (MainWorkObj.StabilizeModeB == smVoltageStab) {
+            Regulator_RequestToChangeSetPointVoltageB(MainWorkObj.SetPointVoltageB);   
+        } else {  //smAmperageStab
+            Regulator_RequestToChangeCuttOffVoltageB(MainWorkObj.SetPointVoltageB);             
+        }
         Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
-        Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
         
     } else if (changedValue == cvAmperageB) {
         IncrementValue(&MainWorkObj.SetPointAmperageB, shiftValue, Amperage_MAX, Amperage_MIN);
-        Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
-        Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
-        
-    } else {
-        IncrementValue(&MainWorkObj.SetPointVoltageA, shiftValue, Voltage_MAX, Voltage_MIN);
-        if (MainWorkObj.StabilizeModeA == smAmperageStab) {
-            Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);   
-            Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
-        } else {
-            Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA);   
-            Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);            
+        if (MainWorkObj.StabilizeModeB == smAmperageStab) {
+            Regulator_RequestToChangeSetPointAmperageB(MainWorkObj.SetPointAmperageB);   
+        } else {  //smVoltageStab
+            Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointVoltageB);             
         }
+        Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
+        
+    } else { //cvVoltageA
+        IncrementValue(&MainWorkObj.SetPointVoltageA, shiftValue, Voltage_MAX, Voltage_MIN);
+        if (MainWorkObj.StabilizeModeA == smVoltageStab) {
+            Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA);   
+        } else {  //smAmperageStab
+            Regulator_RequestToChangeCuttOffVoltageA(MainWorkObj.SetPointVoltageA);             
+        }
+        Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);  
     }   
 }
 

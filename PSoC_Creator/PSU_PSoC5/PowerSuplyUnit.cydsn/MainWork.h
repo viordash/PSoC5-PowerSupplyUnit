@@ -25,6 +25,7 @@ typedef enum {
 typedef struct {
     TMainWorkState State;
     TPolarMode PolarMode;
+    TRiseRatePowerUp RiseRatePowerUp;
     TStabilizeMode StabilizeModeA;
     TStabilizeMode StabilizeModeB;
     TChangedValue ChangedValue;
