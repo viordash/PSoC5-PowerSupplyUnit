@@ -14,24 +14,16 @@
 	
 #include <device.h>
 
-    
 typedef struct { 
-    BOOL Changed;   
-    TElectrValue Value;  
-} TRegulatorValue, * PTRegulatorValue;
-
-typedef struct { 
-    TRegulatorValue SetPoint;  
-    TRegulatorValue CuttOff; 
+    TElectrValue SetPoint;  
+    TElectrValue CuttOff; 
     TElectrValue Measured; 
-    TElectrValue Expected; 
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
-    TRegulatorValue SetPoint;  
-    TRegulatorValue CuttOff; 
+    TElectrValue SetPoint;  
+    TElectrValue CuttOff; 
     TElectrValue Measured; 
-    TElectrValue Expected; 
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 

@@ -755,3 +755,10 @@ void RequestToRepaintMousePresent() {
     DisplayObj.StateSymbols.MousePresentRepaint = TRUE;
 }
 /*----------------- MousePresent Focusing --------------<<<*/
+
+/*>>>-------------- Show error -----------------*/
+BOOL RequestToShowError(PCHAR errorMessage) {
+
+    return TRUE;
+}
+/*----------------- Show error --------------<<<*/

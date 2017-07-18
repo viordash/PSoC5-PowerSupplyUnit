@@ -21,8 +21,8 @@
 TFunction RegulatorFunction;
 TRegulatorObject RegulatorObj;
 
-static BOOL ProcessRequests();
-void Measure();
+BOOL RegulatingChannelA();
+BOOL RegulatingChannelB();
 
 BOOL ReadCalibratedValues() {
     
@@ -44,12 +44,15 @@ void Regulator_Init() {
     Comp_OverAmperageB_Start();
     PGA_VoltageA_Start();
     ADC_VoltageA_Start();
+    ADC_VoltageA_SetPower(ADC_VoltageA__HIGHPOWER);
     VDAC8_OverVoltageA_Start();
     Comp_OverVoltageA_Start();
     VDAC8_OverVoltageB_Start();
     Comp_OverVoltageB_Start();
     ADC_VoltageB_Start();
+    ADC_VoltageB_SetPower(ADC_VoltageB__HIGHPOWER);
     AMuxChanelB_Start();
+    AMuxChanelB_Next(); 
     memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
     ReadCalibratedValues();
 }
@@ -57,127 +60,165 @@ void Regulator_Init() {
 void Regulator_Task(){	    
 
 	while (TRUE) {
-        if (!ProcessRequests()) {
-
-        }
-        Measure();
-		TaskSleep(&RegulatorFunction, SYSTICK_mS(100));	
+        RegulatingChannelA();
+		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	
+        RegulatingChannelB();
+		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	
 	}
 }
 
 
-BOOL IsFallingSetPoint(TElectrValue voltageMeasured, TElectrValue valueExpected) {
-    INT diffValue = voltageMeasured - valueExpected;
-    TElectrValue minValue = voltageMeasured / 16;     //минимальное значение для моментального сброса напряжения
-    return (diffValue > minValue);
-}
-
-
-BOOL RequestToChangeSetPointVoltage(PTRegulatorVoltage pRegulatorVoltage, TPWMWriteCompare PWMWriteCompare) {
-    if (!pRegulatorVoltage->SetPoint.Changed) {
-        return FALSE;
-    }
-    
-    pRegulatorVoltage->Expected = pRegulatorVoltage->SetPoint.Value; 
-    if (IsFallingSetPoint(pRegulatorVoltage->Measured, pRegulatorVoltage->Expected)) {//если новое значение меньше, то установить сразу
-        TElectrValue pwmNew = GetCalibratedPwmValue(pRegulatorVoltage->SetPoint.Value); 
-        PWMWriteCompare(pwmNew);    
-    }
-    pRegulatorVoltage->SetPoint.Changed = FALSE;
-    return TRUE;
-}
-
-BOOL RequestToChangeSetPointAmperage(PTRegulatorAmperage pRegulatorAmperage) {
-    if (!pRegulatorAmperage->SetPoint.Changed) {
-        return FALSE;
-    }    
-    pRegulatorAmperage->Expected = pRegulatorAmperage->SetPoint.Value; 
-    pRegulatorAmperage->SetPoint.Changed = FALSE;
-    return TRUE;
-}
-
-static BOOL ProcessRequests() {
-BOOL res = FALSE;    
-    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelA.Voltage, PWM_VoltageA_WriteCompare)) {
-        res = TRUE;    
-    }
-    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelB.Voltage, PWM_VoltageA_WriteCompare)) {
-        res = TRUE;    
-    } 
-    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelA.Amperage)) {
-        res = TRUE;    
-    }
-    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelB.Amperage)) {
-        res = TRUE;    
-    }
-    return res;
-}
+//BOOL IsFallingSetPoint(TElectrValue voltageMeasured, TElectrValue valueExpected) {
+//    INT diffValue = voltageMeasured - valueExpected;
+//    TElectrValue minValue = voltageMeasured / 16;     //минимальное значение для моментального сброса напряжения
+//    return (diffValue > minValue);
+//}
+//
+//
+//BOOL RequestToChangeSetPointVoltage(PTRegulatorVoltage pRegulatorVoltage, TPWMWriteCompare PWMWriteCompare) {
+//    if (!pRegulatorVoltage->SetPoint.Changed) {
+//        return FALSE;
+//    }
+//    
+//    pRegulatorVoltage->Expected = pRegulatorVoltage->SetPoint.Value; 
+//    if (IsFallingSetPoint(pRegulatorVoltage->Measured, pRegulatorVoltage->Expected)) {//если новое значение меньше, то установить сразу
+//        TElectrValue pwmNew = GetCalibratedPwmValue(pRegulatorVoltage->SetPoint.Value); 
+//        PWMWriteCompare(pwmNew);    
+//    }
+//    pRegulatorVoltage->SetPoint.Changed = FALSE;
+//    return TRUE;
+//}
+//
+//BOOL RequestToChangeSetPointAmperage(PTRegulatorAmperage pRegulatorAmperage) {
+//    if (!pRegulatorAmperage->SetPoint.Changed) {
+//        return FALSE;
+//    }    
+//    pRegulatorAmperage->Expected = pRegulatorAmperage->SetPoint.Value; 
+//    pRegulatorAmperage->SetPoint.Changed = FALSE;
+//    return TRUE;
+//}
+//
+//static BOOL ProcessRequests() {
+//BOOL res = FALSE;    
+//    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelA.Voltage, PWM_VoltageA_WriteCompare)) {
+//        res = TRUE;    
+//    }
+//    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelB.Voltage, PWM_VoltageA_WriteCompare)) {
+//        res = TRUE;    
+//    } 
+//    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelA.Amperage)) {
+//        res = TRUE;    
+//    }
+//    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelB.Amperage)) {
+//        res = TRUE;    
+//    }
+//    return res;
+//}
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
-    RegulatorObj.ChanelA.Voltage.SetPoint.Value = value;
-    RegulatorObj.ChanelA.Voltage.SetPoint.Changed = TRUE;
+    RegulatorObj.ChanelA.Voltage.SetPoint = value;
 }
 
 void Regulator_RequestToChangeCuttOffVoltageA(TElectrValue value) {
-    RegulatorObj.ChanelA.Voltage.CuttOff.Value = value;
-    RegulatorObj.ChanelA.Voltage.CuttOff.Changed = TRUE;
+    RegulatorObj.ChanelA.Voltage.CuttOff = value;
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
-    RegulatorObj.ChanelA.Amperage.SetPoint.Value = value;
-    RegulatorObj.ChanelA.Amperage.SetPoint.Changed = TRUE;
+    RegulatorObj.ChanelA.Amperage.SetPoint = value;
 }
 
 void Regulator_RequestToChangeCuttOffAmperageA(TElectrValue value) {
-    RegulatorObj.ChanelA.Amperage.CuttOff.Value = value;
-    RegulatorObj.ChanelA.Amperage.CuttOff.Changed = TRUE;
+    RegulatorObj.ChanelA.Amperage.CuttOff = value;
 }
 
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
-    RegulatorObj.ChanelB.Voltage.SetPoint.Value = value;
-    RegulatorObj.ChanelB.Voltage.SetPoint.Changed = TRUE;
+    RegulatorObj.ChanelB.Voltage.SetPoint = value;
 }
      
 void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
-    RegulatorObj.ChanelB.Voltage.CuttOff.Value = value;
-    RegulatorObj.ChanelB.Voltage.CuttOff.Changed = TRUE;
+    RegulatorObj.ChanelB.Voltage.CuttOff = value;
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
-    RegulatorObj.ChanelB.Amperage.SetPoint.Value = value;
-    RegulatorObj.ChanelB.Amperage.SetPoint.Changed = TRUE;
+    RegulatorObj.ChanelB.Amperage.SetPoint = value;
 }
 
 void Regulator_RequestToChangeCuttOffAmperageB(TElectrValue value) {
-    RegulatorObj.ChanelB.Amperage.CuttOff.Value = value;
-    RegulatorObj.ChanelB.Amperage.CuttOff.Changed = TRUE;
+    RegulatorObj.ChanelB.Amperage.CuttOff = value;
 }
 /*----------------- Requests --------------<<<*/
 
 /*>>>-------------- Measuring -----------------*/
-TElectrValue MeasureVoltageA() {
-    return 0;    
+BOOL MeasureVoltageA(PTElectrValue pValue) {
+    if (ADC_VoltageA_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+        return FALSE;    
+    }
+    *pValue = ADC_VoltageA_GetResult16();
+    return TRUE;    
 }
 
-TElectrValue MeasureAmperageA() {
-    return 0;    
+BOOL MeasureAmperageA(PTElectrValue pValue) {
+    if (ADC_AmperageA_IsEndConversion(ADC_AmperageA_RETURN_STATUS) == 0) {
+        return FALSE;    
+    }
+    *pValue = ADC_AmperageA_GetResult16();
+    return TRUE; 
 }
 
-TElectrValue MeasureVoltageB() {
-    return 0;    
+
+BOOL MeasureVoltageB(PTElectrValue pValue) {
+static BOOL waitingAdcVoltageB = FALSE;    
+    if (waitingAdcVoltageB) {
+        if (AMuxChanelB_GetChannel() != 0) {
+            return FALSE;      
+        }     
+    } else if (Status_VoltageB_Eos_Read() != 0) { //end of sampling
+        AMuxChanelB_Next();
+        waitingAdcVoltageB = TRUE; 
+    }
+    if (ADC_VoltageB_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+        return FALSE;    
+    }
+    *pValue = ADC_VoltageA_GetResult16();
+    waitingAdcVoltageB = FALSE;
+    ADC_VoltageA_StartConvert();
+    return TRUE;    
 }
 
-TElectrValue MeasureAmperageB() {
-    return 0;    
+BOOL MeasureAmperageB(PTElectrValue pValue) {
+static BOOL waitingAdcAmperageB = FALSE;    
+    if (waitingAdcAmperageB) {
+        if (AMuxChanelB_GetChannel() != 1) {
+            return FALSE;      
+        }     
+    } else if (Status_VoltageB_Eos_Read() != 0) { //end of sampling
+        AMuxChanelB_Next();
+        waitingAdcAmperageB = TRUE; 
+    }
+    if (ADC_VoltageB_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+        return FALSE;    
+    }
+    *pValue = ADC_VoltageA_GetResult16();
+    waitingAdcAmperageB = FALSE;
+    ADC_VoltageA_StartConvert();
+    return TRUE;    
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm) {
+//BOOL AmperageIsNearToMax (PTRegulatorAmperage pAmperage) { 
+//    TElectrValue amperageSetPoint = pAmperage->SetPoint;
+//    INT diffValue = amperageSetPoint - pAmperage->Measured;
+//    return (diffValue < amperageSetPoint / 5); //если Measured >= 20%
+//}
+
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
+    TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
+    TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.SetPoint;
         
-    INT diffValue = voltageMeasured - pRegulatorChannel->Voltage.SetPoint.Value;
-    BOOL isNegative = diffValue < 0;
-    if (isNegative) {
+    INT diffValue = voltageMeasured - voltageSetPoint;
+    BOOL isLessThanSetPoint = diffValue < 0;
+    if (isLessThanSetPoint) {
         diffValue *= -1;
     }
     if (diffValue < voltageMeasured / 1024) { //если несоответсвие менее 0.1% не регулировать
@@ -204,7 +245,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         } else {
             pwmDiff = 16;
         }
-    } else if (diffValue < voltageMeasured / 32) { //если разница менее 3.2%
+     } else if (diffValue < voltageMeasured / 32) { //если разница менее 3.2%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
             pwmDiff = 16;  
         } else {
@@ -216,22 +257,24 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         } else {
             pwmDiff = 64;
         }
+    } else if (!isLessThanSetPoint) { //если новое значение резко уменьшилось, то установить сразу
+        TElectrValue pwmNew = GetCalibratedPwmValue(voltageSetPoint); 
+        writePwm(pwmNew); 
+        return TRUE;
     } else {
-        if (!isNegative) { //если новое значение резко уменьшилось, то установить сразу
-            TElectrValue pwmNew = GetCalibratedPwmValue(pRegulatorChannel->Voltage.SetPoint.Value); 
-            writePwm(pwmNew); 
-            return TRUE;
+        if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
+            pwmDiff = 64;  
         } else {
-            if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-                pwmDiff = 64;  
-            } else {
-                pwmDiff = 128;
-            }            
-        }
+            pwmDiff = 128;
+        }            
     }
-
     TElectrValue pwmOld = readPwm();
-    if (!isNegative) {
+    if (!isLessThanSetPoint) { //если напряжение меньше SetPoint        
+    //если текущий ток еще замеряется, а предыдущее значение тока близко к максимуму, то pwmDiff установить на минимум. Чтобы не было скачка тока        
+        INT amperageDiffValue = amperageSetPoint - amperageMeasured;
+        if (bAmperageInConversion && (amperageDiffValue < amperageSetPoint / 5)) {  //если Measured >= 80%
+            pwmDiff = 1;    
+        }
         pwmDiff *= -1;     
     }
     writePwm(pwmOld + pwmDiff);     
@@ -239,24 +282,47 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
 }
 
 BOOL RegulatingChannelA() {
-    TElectrValue voltageMeasured = MeasureVoltageA();
-    if (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured) {
+    TElectrValue voltageMeasured, amperageMeasured;
+    BOOL bVoltageInConversion = !MeasureVoltageA(&voltageMeasured);
+    BOOL bAmperageInConversion = !MeasureAmperageA(&amperageMeasured);
+
+    if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageA(voltageMeasured);
+        if (RegulatorObj.ChanelA.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
+            ThrowException("A. OverVoltage");
+        }
     }
-    TElectrValue amperageMeasured = MeasureAmperageA();
-    if (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured) {
+    if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageA(amperageMeasured);
+        if (RegulatorObj.ChanelA.Amperage.Measured >= RegulatorObj.ChanelA.Amperage.CuttOff) {
+            ThrowException("A. OverCurrent");
+        }
     }  
-    return Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare);
+    return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
 }
 
-void Measure() {
-//    CheckMeasuredVoltageA();
-//    CheckMeasuredAmperageA();
-//    CheckMeasuredVoltageB();
-//    CheckMeasuredAmperageB();
+BOOL RegulatingChannelB() {
+    TElectrValue voltageMeasured, amperageMeasured;
+    BOOL bVoltageInConversion = !MeasureVoltageB(&voltageMeasured);
+    BOOL bAmperageInConversion = !MeasureAmperageB(&amperageMeasured);
+
+    if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
+        RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
+        Display_RequestToChangeVoltageB(voltageMeasured);
+        if (RegulatorObj.ChanelB.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
+            ThrowException("B. OverVoltage");
+        }
+    }
+    if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
+        RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
+        Display_RequestToChangeAmperageA(amperageMeasured);
+        if (RegulatorObj.ChanelB.Amperage.Measured >= RegulatorObj.ChanelB.Amperage.CuttOff) {
+            ThrowException("B. OverCurrent");
+        }
+    }  
+    return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
 }
 /*----------------- Measuring --------------<<<*/
 /* [] END OF FILE */

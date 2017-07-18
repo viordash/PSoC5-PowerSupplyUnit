@@ -81,9 +81,6 @@ void ChangeState(TMainWorkState newState){
     }
 }
 
-void ResetErrorState() {
-}
-
 void SuppressProtection(BOOL withOn) {
 }
 
@@ -328,4 +325,15 @@ void ChangeValue(INT shiftValue) {
 }
 
 /*----------------- Change values --------------<<<*/
+
+
+/*>>>-------------- Errors -----------------*/
+void ThrowException(PCHAR message) {
+    ChangeState(mwsErrGlb); 
+    RequestToShowError(message);
+}
+
+void ResetErrorState() {
+}
+/*----------------- Errors --------------<<<*/
 /* [] END OF FILE */

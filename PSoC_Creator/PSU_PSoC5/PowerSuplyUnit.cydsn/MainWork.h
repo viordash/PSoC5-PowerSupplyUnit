@@ -41,11 +41,12 @@ extern TMainWork_Object MainWorkObj;
 
 extern void MainWork_Init();
 extern void MainWork_Task();
-extern void ResetErrorState();
 extern void SuppressProtection(BOOL withOn);
 extern void ChangeOutputState();
 extern void MouseState(BOOL present); 
 extern void MouseChangingValue (INT value);
+extern void ResetErrorState();
+extern void ThrowException(PCHAR message);
 	
 #endif  /* __MAINWORK_H__ */
 /* [] END OF FILE */

@@ -156,6 +156,7 @@ extern void RequestToChangeTemperatures(TTemperature temperatures);
 extern void RequestToRepaintTemperatures();
 extern BOOL RequestToVisibileMousePresent(BOOL visible);
 extern void RequestToRepaintMousePresent();
+extern BOOL RequestToShowError(PCHAR errorMessage);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */
