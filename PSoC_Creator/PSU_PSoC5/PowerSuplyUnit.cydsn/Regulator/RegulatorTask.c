@@ -57,8 +57,7 @@ void Regulator_Init() {
     ReadCalibratedValues();
 }
 
-void Regulator_Task(){	    
-
+void Regulator_Task() {	 
 	while (TRUE) {
         RegulatingChannelA();
 		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	
@@ -67,53 +66,6 @@ void Regulator_Task(){
 	}
 }
 
-
-//BOOL IsFallingSetPoint(TElectrValue voltageMeasured, TElectrValue valueExpected) {
-//    INT diffValue = voltageMeasured - valueExpected;
-//    TElectrValue minValue = voltageMeasured / 16;     //минимальное значение для моментального сброса напряжения
-//    return (diffValue > minValue);
-//}
-//
-//
-//BOOL RequestToChangeSetPointVoltage(PTRegulatorVoltage pRegulatorVoltage, TPWMWriteCompare PWMWriteCompare) {
-//    if (!pRegulatorVoltage->SetPoint.Changed) {
-//        return FALSE;
-//    }
-//    
-//    pRegulatorVoltage->Expected = pRegulatorVoltage->SetPoint.Value; 
-//    if (IsFallingSetPoint(pRegulatorVoltage->Measured, pRegulatorVoltage->Expected)) {//если новое значение меньше, то установить сразу
-//        TElectrValue pwmNew = GetCalibratedPwmValue(pRegulatorVoltage->SetPoint.Value); 
-//        PWMWriteCompare(pwmNew);    
-//    }
-//    pRegulatorVoltage->SetPoint.Changed = FALSE;
-//    return TRUE;
-//}
-//
-//BOOL RequestToChangeSetPointAmperage(PTRegulatorAmperage pRegulatorAmperage) {
-//    if (!pRegulatorAmperage->SetPoint.Changed) {
-//        return FALSE;
-//    }    
-//    pRegulatorAmperage->Expected = pRegulatorAmperage->SetPoint.Value; 
-//    pRegulatorAmperage->SetPoint.Changed = FALSE;
-//    return TRUE;
-//}
-//
-//static BOOL ProcessRequests() {
-//BOOL res = FALSE;    
-//    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelA.Voltage, PWM_VoltageA_WriteCompare)) {
-//        res = TRUE;    
-//    }
-//    if (RequestToChangeSetPointVoltage(&RegulatorObj.ChanelB.Voltage, PWM_VoltageA_WriteCompare)) {
-//        res = TRUE;    
-//    } 
-//    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelA.Amperage)) {
-//        res = TRUE;    
-//    }
-//    if (RequestToChangeSetPointAmperage(&RegulatorObj.ChanelB.Amperage)) {
-//        res = TRUE;    
-//    }
-//    return res;
-//}
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     RegulatorObj.ChanelA.Voltage.SetPoint = value;
@@ -203,12 +155,6 @@ static BOOL waitingAdcAmperageB = FALSE;
     ADC_VoltageA_StartConvert();
     return TRUE;    
 }
-
-//BOOL AmperageIsNearToMax (PTRegulatorAmperage pAmperage) { 
-//    TElectrValue amperageSetPoint = pAmperage->SetPoint;
-//    INT diffValue = amperageSetPoint - pAmperage->Measured;
-//    return (diffValue < amperageSetPoint / 5); //если Measured >= 20%
-//}
 
 BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
