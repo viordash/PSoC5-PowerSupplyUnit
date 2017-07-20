@@ -27,8 +27,8 @@
 TFunction MainWorkFunction;
 TMainWork_Object MainWorkObj;
 void ChangeState(TMainWorkState newState);
-BOOL PolarModeChanged(BOOL btnBipolarModePressed);
-void ChangePolarMode(TPolarMode polarMode);
+//BOOL PolarModeChanged(BOOL btnBipolarModePressed);
+void RefreshDisplay();
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
@@ -41,7 +41,6 @@ void MainWork_Init() {
     EEPROMStorage_Start();
     RegulatorControl_Write(0x0A);
     MainWorkObj.State = mwsInit;
-    MainWorkObj.PolarMode = pmInit;   
     MainWorkObj.ChangedValue = cvVoltageA;  
     MainWorkObj.StabilizeModeA = smVoltageStab;  
     MainWorkObj.StabilizeModeB = smAmperageStab; 
@@ -59,9 +58,10 @@ void MainWork_Task(){
         BYTE bt = Buttons_Read();
         if (prevButtons != bt) {
             prevButtons = bt;
-            PolarModeChanged(bt & 0x08);
+           // PolarModeChanged(bt & 0x08);
             RiseRatePowerUpChanged(bt & 0x04);    
             ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
+            RefreshDisplay();
         } 
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
@@ -98,77 +98,62 @@ void ChangeOutputState() {
     }
 }
 
-/*>>>-------------- Polar Output mode -----------------*/
-BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
-    BOOL res = FALSE;
-    if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (btnBipolarModePressed) {
-            ChangePolarMode(pmBipolar);
-            res = TRUE;
-        }
-    } else if (MainWorkObj.PolarMode == pmBipolar) {
-        if (!btnBipolarModePressed) {
-            ChangePolarMode(pmUnipolar);
-            res = TRUE;
-        }
-    } else if (MainWorkObj.PolarMode == pmInit) {
-        ChangePolarMode(btnBipolarModePressed ? pmBipolar : pmUnipolar);
-        res = TRUE;
+///*>>>-------------- Polar Output mode -----------------*/
+//BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
+//    BOOL res = FALSE;
+//    if (MainWorkObj.PolarMode == pmUnipolar) {
+//        if (btnBipolarModePressed) {
+//            ChangePolarMode(pmBipolar);
+//            res = TRUE;
+//        }
+//    } else if (MainWorkObj.PolarMode == pmBipolar) {
+//        if (!btnBipolarModePressed) {
+//            ChangePolarMode(pmUnipolar);
+//            res = TRUE;
+//        }
+//    } else if (MainWorkObj.PolarMode == pmInit) {
+//        ChangePolarMode(btnBipolarModePressed ? pmBipolar : pmUnipolar);
+//        res = TRUE;
+//    }
+//    return res;
+//}
+//
+void RefreshDisplay() {
+    RequestToChangeScreen(dsWork);
+    Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
+    Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
+    Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
+    Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
+    Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
+    Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
+    Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
+    Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
+    
+    RequestToFocusing(svMeasuredVoltageA);  
+    if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
+        RequestToFocusingStabilize(ssmAmperageA); 
+    } else {
+        RequestToFocusingStabilize(ssmVoltageA);
     }
-    return res;
-}
+    if (MainWorkObj.StabilizeModeB == smAmperageStab) { 
+        RequestToFocusingStabilize(ssmAmperageB); 
+    } else {
+        RequestToFocusingStabilize(ssmVoltageB);
+    }
 
-void RefreshDisplay(TPolarMode polarMode) {
-    if (polarMode == pmBipolar) {
-        RequestToChangeScreen(dsBipolar);
-        Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
-        Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
-        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
-        Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
-        Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
-        Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
-        Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
-        Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
-        
-        RequestToFocusing(svMeasuredVoltageA);  
-        if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
-            RequestToFocusingStabilize(ssmAmperageA); 
-        } else {
-            RequestToFocusingStabilize(ssmVoltageA);
-        }
-        if (MainWorkObj.StabilizeModeB == smAmperageStab) { 
-            RequestToFocusingStabilize(ssmAmperageB); 
-        } else {
-            RequestToFocusingStabilize(ssmVoltageB);
-        }
-    } else if (polarMode == pmUnipolar) {
-        RequestToChangeScreen(dsUnipolar);
-        Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
-        Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
-        Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
-        Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);   
-           
-        if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
-            RequestToFocusingStabilize(ssmAmperageA); 
-            RequestToFocusing(svMeasuredAmperageA);
-        } else {
-            RequestToFocusingStabilize(ssmVoltageA);
-            RequestToFocusing(svMeasuredVoltageA);
-        }
-    }
     RequestToRepaintTemperatures();
     RequestToRepaintMousePresent();
 }
-
-void ChangePolarMode(TPolarMode polarMode) {
-    MainWorkObj.PolarMode = polarMode;
-    RefreshDisplay(polarMode);
-    if (polarMode == pmBipolar) {
-        O_Led_Polar_Write(0);
-    } else if (polarMode == pmUnipolar) {  
-        O_Led_Polar_Write(0xFF);
-    }
-}
+//
+//void ChangePolarMode(TPolarMode polarMode) {
+//    MainWorkObj.PolarMode = polarMode;
+//    RefreshDisplay(polarMode);
+//    if (polarMode == pmBipolar) {
+//        O_Led_Polar_Write(0);
+//    } else if (polarMode == pmUnipolar) {  
+//        O_Led_Polar_Write(0xFF);
+//    }
+//}
 /*----------------- Polar Output mode --------------<<<*/
 
 

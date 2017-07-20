@@ -225,7 +225,7 @@ CHAR buffer[20];
     Display_Flush();
 }
 
-void SetScreen_Bipolar() {    
+void SetScreen_WorkMode() {    
     Display_DrawLine(119, 0, 119, 109, ltSolid, FALSE);
     Display_DrawLine(120, 0, 120, 109, ltSolid, FALSE);
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
@@ -258,31 +258,6 @@ void SetScreen_Bipolar() {
     Display_Flush();
 }
 
-void SetScreen_Unipolar() {  
-    Display_DrawLine(119, 0, 119, 110, ltSolid, FALSE);
-    Display_DrawLine(120, 0, 120, 110, ltSolid, FALSE);
-    Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
-    Display_DrawLine(0, 110, 239, 110, ltSolid, FALSE); 
-    
-    Display_DrawLine(35, 28, 119, 28, ltDoted, FALSE);  
-    Display_DrawLine(35, 28, 35, 54, ltDoted, FALSE); 
-    Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
-    Display_DrawLine(12 + 23, 32, 40 + 23, 38, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23, 38, 80 + 23, 30, ltSolid, FALSE);    
-    Display_SetFont(0); 
-    Display_Print("11.11v ", tcNorm, 4, 37, FALSE);  
-    
-    Display_DrawLine(35, 28 + 56, 119, 28 + 56, ltDoted, FALSE);  
-    Display_DrawLine(35, 28 + 56, 35, 54 + 56, ltDoted, FALSE); 
-    Display_DrawLine(119, 28 + 56, 119, 54 + 56, ltDoted, FALSE);  
-    Display_DrawLine(12 + 23, 36 + 56, 40 + 23, 44 + 56, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23, 44 + 56, 80 + 23, 42 + 56, ltSolid, FALSE);
-    Display_SetFont(0); 
-    Display_Print("7.000a ", tcNorm, 4, 37 + 56, FALSE);   
-    Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE);   
-    Display_Flush();  
-}
-
 void SetScreen_Error() {    
 
 }
@@ -292,14 +267,10 @@ void ChangeScreen() {
     Display_ClearScreen();
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();        
-    } else if (DisplayObj.Properties.Screen == dsBipolar) {
+    } else if (DisplayObj.Properties.Screen == dsWork) {
         DisplayObj.Values.MeasuredVoltageB.Value.Indicator.Readonly = FALSE;
         DisplayObj.Values.MeasuredAmperageB.Value.Indicator.Readonly = FALSE;
-        SetScreen_Bipolar();
-    } else if (DisplayObj.Properties.Screen == dsUnipolar) {
-        DisplayObj.Values.MeasuredVoltageB.Value.Indicator.Readonly = TRUE;
-        DisplayObj.Values.MeasuredAmperageB.Value.Indicator.Readonly = TRUE;
-        SetScreen_Unipolar();
+        SetScreen_WorkMode();
     } else if (DisplayObj.Properties.Screen == dsError) {
         SetScreen_Error();
     }

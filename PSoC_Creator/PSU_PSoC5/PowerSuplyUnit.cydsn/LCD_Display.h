@@ -54,8 +54,7 @@ extern void Display_Task();
 typedef enum {
 	dsInit = 0,
 	dsStart,
-	dsBipolar,
-	dsUnipolar,
+	dsWork,
 	dsError
 } TDisplayScreen;
 

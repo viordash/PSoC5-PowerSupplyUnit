@@ -19,85 +19,61 @@
 
 
 /*>>>-------------- Selecting Value -----------------*/
-void SelectValue() {    
-    if (MainWorkObj.PolarMode == pmBipolar) {        
-        if (MainWorkObj.StabilizeModeA == smVoltageStab) {  
-            if (MainWorkObj.StabilizeModeB == smVoltageStab) {
-               if (MainWorkObj.ChangedValue == cvVoltageA) {
-                    RequestToSelect(svMeasuredVoltageB);
-                } else {
-                    RequestToSelect(svMeasuredVoltageA);
-                } 
-            } else if (MainWorkObj.StabilizeModeB == smAmperageStab) {
-               if (MainWorkObj.ChangedValue == cvVoltageA) {
-                    RequestToSelect(svMeasuredAmperageB);
-                } else {
-                    RequestToSelect(svMeasuredVoltageA);
-                } 
-            }
-        } else if (MainWorkObj.StabilizeModeA == smAmperageStab) {  
-            if (MainWorkObj.StabilizeModeB == smVoltageStab) {
-               if (MainWorkObj.ChangedValue == cvAmperageA) {
-                     RequestToSelect(svMeasuredVoltageB);
-                } else {
-                     RequestToSelect(svMeasuredAmperageA);
-                } 
-            } else if (MainWorkObj.StabilizeModeB == smAmperageStab) {
-               if (MainWorkObj.ChangedValue == cvAmperageA) {
-                     RequestToSelect(svMeasuredAmperageB);
-                } else {
-                     RequestToSelect(svMeasuredAmperageA);
-                } 
-            }
+void SelectValue() {           
+    if (MainWorkObj.StabilizeModeA == smVoltageStab) {  
+        if (MainWorkObj.StabilizeModeB == smVoltageStab) {
+           if (MainWorkObj.ChangedValue == cvVoltageA) {
+                RequestToSelect(svMeasuredVoltageB);
+            } else {
+                RequestToSelect(svMeasuredVoltageA);
+            } 
+        } else if (MainWorkObj.StabilizeModeB == smAmperageStab) {
+           if (MainWorkObj.ChangedValue == cvVoltageA) {
+                RequestToSelect(svMeasuredAmperageB);
+            } else {
+                RequestToSelect(svMeasuredVoltageA);
+            } 
         }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (MainWorkObj.ChangedValue == cvVoltageA) {
-            RequestToSelect(svMeasuredAmperageA);
-        } else {
-            RequestToSelect(svMeasuredVoltageA);
+    } else if (MainWorkObj.StabilizeModeA == smAmperageStab) {  
+        if (MainWorkObj.StabilizeModeB == smVoltageStab) {
+           if (MainWorkObj.ChangedValue == cvAmperageA) {
+                 RequestToSelect(svMeasuredVoltageB);
+            } else {
+                 RequestToSelect(svMeasuredAmperageA);
+            } 
+        } else if (MainWorkObj.StabilizeModeB == smAmperageStab) {
+           if (MainWorkObj.ChangedValue == cvAmperageA) {
+                 RequestToSelect(svMeasuredAmperageB);
+            } else {
+                 RequestToSelect(svMeasuredAmperageA);
+            } 
         }
     }
 } 
 
 void SelectNextIndicator() { 
     TSelectValue currentSelectedValue = GetCurrentSelectedValue();
-    if (MainWorkObj.PolarMode == pmBipolar) {
-        if (currentSelectedValue == svMeasuredVoltageA) {
-            RequestToSelect(svMeasuredAmperageA);
-        } else if (currentSelectedValue == svMeasuredAmperageA) {
-            RequestToSelect(svMeasuredVoltageB);
-        } else if (currentSelectedValue == svMeasuredVoltageB) {
-            RequestToSelect(svMeasuredAmperageB); 
-        } else  {
-            RequestToSelect(svMeasuredVoltageA); 
-        }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (currentSelectedValue == svMeasuredVoltageA) {
-            RequestToSelect(svMeasuredAmperageA);
-        } else  {
-            RequestToSelect(svMeasuredVoltageA);
-        }
+    if (currentSelectedValue == svMeasuredVoltageA) {
+        RequestToSelect(svMeasuredAmperageA);
+    } else if (currentSelectedValue == svMeasuredAmperageA) {
+        RequestToSelect(svMeasuredVoltageB);
+    } else if (currentSelectedValue == svMeasuredVoltageB) {
+        RequestToSelect(svMeasuredAmperageB); 
+    } else  {
+        RequestToSelect(svMeasuredVoltageA); 
     }
 }
 
 void SelectPrevIndicator() { 
     TSelectValue currentSelectedValue = GetCurrentSelectedValue();
-    if (MainWorkObj.PolarMode == pmBipolar) {
-        if (currentSelectedValue == svMeasuredVoltageA) {
-            RequestToSelect(svMeasuredAmperageB);
-        } else if (currentSelectedValue == svMeasuredAmperageB) {
-            RequestToSelect(svMeasuredVoltageB);
-        } else if (currentSelectedValue == svMeasuredVoltageB) {
-            RequestToSelect(svMeasuredAmperageA); 
-        } else  {
-            RequestToSelect(svMeasuredVoltageA); 
-        }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (currentSelectedValue == svMeasuredVoltageA) {
-            RequestToSelect(svMeasuredAmperageA);
-        } else  {
-            RequestToSelect(svMeasuredVoltageA);
-        }
+    if (currentSelectedValue == svMeasuredVoltageA) {
+        RequestToSelect(svMeasuredAmperageB);
+    } else if (currentSelectedValue == svMeasuredAmperageB) {
+        RequestToSelect(svMeasuredVoltageB);
+    } else if (currentSelectedValue == svMeasuredVoltageB) {
+        RequestToSelect(svMeasuredAmperageA); 
+    } else  {
+        RequestToSelect(svMeasuredVoltageA); 
     }
 }
 /*----------------- Selecting Value --------------<<<*/

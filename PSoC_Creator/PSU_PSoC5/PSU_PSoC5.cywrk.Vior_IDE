@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -411,19 +411,18 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\PowerSuplyUnit.cydsn\main.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.c" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
 <name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" />
 <name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" />
-<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.c" />
-<name v=".\PowerSuplyUnit.cydsn\Utils\GeneralUtils.h" />
-<name v=".\PowerSuplyUnit.cydsn\Utils\Calibrating.c" />
-<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" />
-<name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
 <name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
-<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" />
 <name v=".\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicatorHelper.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
+<name v=".\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -431,7 +430,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 764" SelectedTabbedMdiWindow="edf8b598-efd1-4720-b962-c86b9953dd11"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="391b5a68-7f61-402e-b877-ca0cd772ed22" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\GeneralUtils.c" Guid="590b85d2-e71f-406b-824f-7ac522a6c254" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\GeneralUtils.h" Guid="e3e481c4-2661-4571-ba58-1d30ffd057b1" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\Calibrating.c" Guid="7a05d518-3885-414b-b4ad-ece795f73087" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" Guid="74595bf7-a7b3-4bc1-96e8-73a66f56d1d2" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="c249cfb6-c41d-443a-84ba-d3796fa61d1a" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="20aace29-8ebd-4702-ae6e-2af0e2108221" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" Guid="3587b038-7a0e-4b09-a7bf-2a2fe9f9aa7f" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="0e864aa9-9d3e-40f7-a485-826b2eda0372" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 764" SelectedTabbedMdiWindow="edf8b598-efd1-4720-b962-c86b9953dd11"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="af3eaa59-61f8-4e09-98a7-9f8e371624d4" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="4c77d860-cd98-49b0-8e40-d25ede909e32" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="391b5a68-7f61-402e-b877-ca0cd772ed22" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="20aace29-8ebd-4702-ae6e-2af0e2108221" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="0e864aa9-9d3e-40f7-a485-826b2eda0372" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" Guid="ac8078aa-f4a6-41ac-818d-c936fefb7943" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicatorHelper.c" Guid="d4b0bdee-e0af-4768-a8da-3a4de6b8c9c3" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="f3568986-c523-4c22-9e6e-a5550a79068a" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MousePS2\MousePS2.c" Guid="cb2c9ea4-cfed-4913-b14b-12be855615f6" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

@@ -29,43 +29,27 @@ void SelectStabilizeMode() {
 
 void SelectNextStabilizeIndicator() { 
     TSelectStabilizeMode currentSelectedValue = GetCurrentSelectedStabilize();
-    if (MainWorkObj.PolarMode == pmBipolar) {
-        if (currentSelectedValue == ssmVoltageA) {
-            RequestToSelectStabilize(ssmAmperageA);
-        } else if (currentSelectedValue == ssmAmperageA) {
-            RequestToSelectStabilize(ssmVoltageB);
-        } else if (currentSelectedValue == ssmVoltageB) {
-            RequestToSelectStabilize(ssmAmperageB); 
-        } else  {
-            RequestToSelectStabilize(ssmVoltageA); 
-        }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (currentSelectedValue == ssmVoltageA) {
-            RequestToSelectStabilize(ssmAmperageA);
-        } else  {
-            RequestToSelectStabilize(ssmVoltageA);
-        }
+    if (currentSelectedValue == ssmVoltageA) {
+        RequestToSelectStabilize(ssmAmperageA);
+    } else if (currentSelectedValue == ssmAmperageA) {
+        RequestToSelectStabilize(ssmVoltageB);
+    } else if (currentSelectedValue == ssmVoltageB) {
+        RequestToSelectStabilize(ssmAmperageB); 
+    } else  {
+        RequestToSelectStabilize(ssmVoltageA); 
     }
 }
 
 void SelectPrevStabilizeIndicator() { 
     TSelectStabilizeMode currentSelectedValue = GetCurrentSelectedStabilize();
-    if (MainWorkObj.PolarMode == pmBipolar) {
-        if (currentSelectedValue == ssmVoltageA) {
-            RequestToSelectStabilize(ssmAmperageB);
-        } else if (currentSelectedValue == ssmAmperageB) {
-            RequestToSelectStabilize(ssmVoltageB);
-        } else if (currentSelectedValue == ssmVoltageB) {
-            RequestToSelectStabilize(ssmAmperageA); 
-        } else  {
-            RequestToSelectStabilize(ssmVoltageA); 
-        }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (currentSelectedValue == ssmVoltageA) {
-            RequestToSelectStabilize(ssmAmperageA);
-        } else  {
-            RequestToSelectStabilize(ssmVoltageA);
-        }
+    if (currentSelectedValue == ssmVoltageA) {
+        RequestToSelectStabilize(ssmAmperageB);
+    } else if (currentSelectedValue == ssmAmperageB) {
+        RequestToSelectStabilize(ssmVoltageB);
+    } else if (currentSelectedValue == ssmVoltageB) {
+        RequestToSelectStabilize(ssmAmperageA); 
+    } else  {
+        RequestToSelectStabilize(ssmVoltageA); 
     }
 }
 /*----------------- Selecting StabilizeMode --------------<<<*/
@@ -73,22 +57,14 @@ void SelectPrevStabilizeIndicator() {
 /*>>>-------------- Focusing -----------------*/
 void ConfirmSelectionStabilize() {
     TSelectStabilizeMode selectedValue = GetCurrentSelectedStabilize();
-    if (MainWorkObj.PolarMode == pmBipolar) {
-        if (selectedValue == ssmVoltageA) {
-            MainWorkObj.StabilizeModeA = smVoltageStab; 
-        } else if (selectedValue == ssmAmperageA) {
-            MainWorkObj.StabilizeModeA = smAmperageStab; 
-        } else if (selectedValue == ssmVoltageB) {
-            MainWorkObj.StabilizeModeB = smVoltageStab; 
-        } else if (selectedValue == ssmAmperageB) {
-            MainWorkObj.StabilizeModeB = smAmperageStab; 
-        }
-    } else if (MainWorkObj.PolarMode == pmUnipolar) {
-        if (selectedValue == ssmVoltageA) {
-            MainWorkObj.StabilizeModeA = smVoltageStab; 
-        } else if (selectedValue == ssmAmperageA) {
-            MainWorkObj.StabilizeModeA = smAmperageStab; 
-        }
+    if (selectedValue == ssmVoltageA) {
+        MainWorkObj.StabilizeModeA = smVoltageStab; 
+    } else if (selectedValue == ssmAmperageA) {
+        MainWorkObj.StabilizeModeA = smAmperageStab; 
+    } else if (selectedValue == ssmVoltageB) {
+        MainWorkObj.StabilizeModeB = smVoltageStab; 
+    } else if (selectedValue == ssmAmperageB) {
+        MainWorkObj.StabilizeModeB = smAmperageStab; 
     }
     RequestToFocusingStabilize(selectedValue);    
 }

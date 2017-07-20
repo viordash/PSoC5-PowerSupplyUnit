@@ -43,12 +43,6 @@ typedef enum {
 } TStabilizeMode;
 
 typedef enum {
-	pmInit = 0,
-	pmBipolar,
-    pmUnipolar
-} TPolarMode;
-
-typedef enum {
 	rrpuSlow = 0,
 	rrpuFast
 } TRiseRatePowerUp;
