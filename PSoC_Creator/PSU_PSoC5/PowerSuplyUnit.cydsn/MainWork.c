@@ -34,14 +34,19 @@ void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
+void CheckRegulatorStatus();
+void LoadFromStorage();
 
 void MainWork_Init() {
+    EEPROMStorage_Start();
+    RegulatorControl_Write(0x0A);
     MainWorkObj.State = mwsInit;
     MainWorkObj.PolarMode = pmInit;   
     MainWorkObj.ChangedValue = cvVoltageA;  
     MainWorkObj.StabilizeModeA = smVoltageStab;  
     MainWorkObj.StabilizeModeB = smAmperageStab; 
     InitMouse();
+    LoadFromStorage();
 }
 
 void MainWork_Task(){	    
@@ -50,19 +55,18 @@ void MainWork_Task(){
     ChangeState(mwsStandBy);  
     BYTE prevButtons = Buttons_Read();  
 	while (TRUE) {
-        {
-            BYTE bt = Buttons_Read();
-            if (prevButtons != bt) {
-                prevButtons = bt;
-                PolarModeChanged(bt & 0x08);
-                RiseRatePowerUpChanged(bt & 0x04);    
-                ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
-            } 
-            bt = MultiJog_Status_Read();
-            if (bt & MultiJog_Rotated) {
-                MultiJogChangingValue(bt);
-            }
-		}        
+        CheckRegulatorStatus();
+        BYTE bt = Buttons_Read();
+        if (prevButtons != bt) {
+            prevButtons = bt;
+            PolarModeChanged(bt & 0x08);
+            RiseRatePowerUpChanged(bt & 0x04);    
+            ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
+        } 
+        bt = MultiJog_Status_Read();
+        if (bt & MultiJog_Rotated) {
+            MultiJogChangingValue(bt);
+        }
         
         
         if (!MouseHandler()){
@@ -70,15 +74,17 @@ void MainWork_Task(){
                 
             }
         }
-		TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	
+		TaskSleep(&MainWorkFunction, SYSTICK_mS(50));	
 	}
 }
 
-void ChangeState(TMainWorkState newState){
-    MainWorkObj.State = newState;    
+void ChangeState(TMainWorkState newState){ 
+    MainWorkObj.State = newState;   
     if (newState != mwsWork) {
-        
-    }
+        RegulatorControl_Write(0x0A);        
+    } else {
+        RegulatorControl_Write(0x15);    
+    }    
 }
 
 void SuppressProtection(BOOL withOn) {
@@ -326,7 +332,6 @@ void ChangeValue(INT shiftValue) {
 
 /*----------------- Change values --------------<<<*/
 
-
 /*>>>-------------- Errors -----------------*/
 void ThrowException(PCHAR message) {
     ChangeState(mwsErrGlb); 
@@ -336,4 +341,44 @@ void ThrowException(PCHAR message) {
 void ResetErrorState() {
 }
 /*----------------- Errors --------------<<<*/
+
+/*>>>-------------- Regulator state & status -----------------*/
+void CheckRegulatorStatus() {
+CHAR buffer[60];   
+PCHAR pBuffer = buffer;
+    BYTE status = RegulatorStatus_Read();
+    if (!status) {
+        return;    
+    }
+    buffer[0] = 0;    
+    if (status & 0x01) {
+        pBuffer = _strncpy(pBuffer, "[A] HwVolt; ", sizeof("[A] HwVolt; ")); 
+    } 
+    if (status & 0x02) {
+        pBuffer = _strncpy(pBuffer, "[A] HwCurr; ", sizeof("[A] HwCurr; "));    
+    } 
+    if (status & 0x04) {
+        pBuffer = _strncpy(pBuffer, "[B] HwVolt; ", sizeof("[B] HwVolt; ")); 
+    } 
+    if (status & 0x08) {
+        pBuffer = _strncpy(pBuffer, "[B] HwCurr; ", sizeof("[B] HwCurr; "));    
+    }  
+
+    ThrowException(buffer); 
+}
+
+/*----------------- Regulator state & status --------------<<<*/
+
+/*>>>-------------- Storage -----------------*/
+void LoadFromStorage() {    
+    //memset(&MainWorkObj.Storage, 0, sizeof(TEepromStrorage)); 
+    PBYTE pBuffer = (PBYTE) &(MainWorkObj.Storage);
+    WORD adress;
+    for (adress = 0; adress < (INT)sizeof(TEepromStrorage); adress++){
+        *(pBuffer++) = EEPROMStorage_ReadByte(adress);       
+    }       
+}
+/*----------------- Storage --------------<<<*/
+
+
 /* [] END OF FILE */

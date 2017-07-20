@@ -30,7 +30,6 @@ BOOL ReadCalibratedValues() {
 }
 
 void Regulator_Init() {
-    RegulatorControl_Write(0);
     PWM_VoltageA_Start();
     PWM_VoltageA_WritePeriod(0);
     PWM_VoltageB_Start();
@@ -236,14 +235,14 @@ BOOL RegulatingChannelA() {
         RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageA(voltageMeasured);
         if (RegulatorObj.ChanelA.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
-            ThrowException("A. OverVoltage");
+            ThrowException("A. Voltage is over");
         }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageA(amperageMeasured);
         if (RegulatorObj.ChanelA.Amperage.Measured >= RegulatorObj.ChanelA.Amperage.CuttOff) {
-            ThrowException("A. OverCurrent");
+            ThrowException("A. Current is over");
         }
     }  
     return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
@@ -258,14 +257,14 @@ BOOL RegulatingChannelB() {
         RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageB(voltageMeasured);
         if (RegulatorObj.ChanelB.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
-            ThrowException("B. OverVoltage");
+            ThrowException("B. Voltage is over");
         }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageA(amperageMeasured);
         if (RegulatorObj.ChanelB.Amperage.Measured >= RegulatorObj.ChanelB.Amperage.CuttOff) {
-            ThrowException("B. OverCurrent");
+            ThrowException("B. Current is over");
         }
     }  
     return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);

@@ -34,3 +34,8 @@ INT i;
   Min += ch[4] - '0';
   sprintf(buffer, "v%u.%u %02d%02d%02d.%02d%02d", PROGRAM_VERSION_MAJOR, PROGRAM_VERSION_MINOR, Year, Mon, Day, Hour, Min);
 }
+
+PCHAR _strncpy(PCHAR dest, PCHAR src, DWORD len) { //аналог ANSI strncpy, но возвращает указатель на следующий за последним скопированным символом
+	while (len--) *(dest++) = *(src++);
+	return (dest);
+}

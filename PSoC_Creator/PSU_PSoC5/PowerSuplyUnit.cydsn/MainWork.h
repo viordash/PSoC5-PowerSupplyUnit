@@ -34,6 +34,7 @@ typedef struct {
     TElectrValue SetPointVoltageB;
     TElectrValue SetPointAmperageB;
     BOOL HwPrSupressed;
+    TEepromStrorage Storage;
 } TMainWork_Object, * PTMainWork_Object;
 
 extern TFunction MainWorkFunction;

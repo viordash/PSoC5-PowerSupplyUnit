@@ -115,5 +115,21 @@ typedef struct {
     BYTE Crc;
 } TCalibrateItem, *PTCalibrateItem;
 
+typedef struct {	
+	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
+	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
+    TElectrValue VoltageA;
+    TElectrValue AmperageA;
+    TElectrValue VoltageB;
+    TElectrValue AmperageB;
+    TStabilizeMode StabilizeModeA;
+    TStabilizeMode StabilizeModeB;
+    DWORD Crc;
+    BYTE Dummy[(sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) + (sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) 
+                + sizeof(TElectrValue)/*VoltageA*/ + sizeof(TElectrValue)/*AmperageA*/ + sizeof(TElectrValue)/*VoltageB*/ + sizeof(TElectrValue)/*AmperageB*/
+                + sizeof(TStabilizeMode)/*StabilizeModeA*/ + sizeof(TStabilizeMode)/*StabilizeModeB*/ + sizeof(DWORD)/*Crc*/];
+    
+} TEepromStrorage, *PTEepromStrorage;
+
 #endif  /* __DEVICE_H__ */
 /*[]*/
