@@ -92,9 +92,9 @@
   <block name="I_BtnOk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Buttons" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="Buttons_STATUS_REG" address="0x40006566" bitWidth="8" desc="" hidden="false" />
-    <register name="Buttons_MASK_REG" address="0x40006586" bitWidth="8" desc="" hidden="false" />
-    <register name="Buttons_STATUS_AUX_CTL_REG" address="0x40006596" bitWidth="8" desc="" hidden="false">
+    <register name="Buttons_STATUS_REG" address="0x40006463" bitWidth="8" desc="" hidden="false" />
+    <register name="Buttons_MASK_REG" address="0x40006483" bitWidth="8" desc="" hidden="false" />
+    <register name="Buttons_STATUS_AUX_CTL_REG" address="0x40006493" bitWidth="8" desc="" hidden="false">
       <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="ENABLED" value="1" desc="Enable counter" />
         <value name="DISABLED" value="0" desc="Disable counter" />
@@ -154,15 +154,15 @@
       <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-      <register name="MultiJog_Cnt8_COUNTER" address="0x40006407" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
-      <register name="MultiJog_Cnt8_PERIOD" address="0x40006427" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
-      <register name="MultiJog_Cnt8_COMPARE" address="0x40006437" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-      <register name="MultiJog_Cnt8_Control_Reg" address="0x40006479" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+      <register name="MultiJog_Cnt8_COUNTER" address="0x40006507" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
+      <register name="MultiJog_Cnt8_PERIOD" address="0x40006527" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
+      <register name="MultiJog_Cnt8_COMPARE" address="0x40006537" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+      <register name="MultiJog_Cnt8_Control_Reg" address="0x40006576" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
         <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
         <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
         <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
       </register>
-      <register name="MultiJog_Cnt8_STATUS_MASK" address="0x40006487" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+      <register name="MultiJog_Cnt8_STATUS_MASK" address="0x40006588" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
         <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
         <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
         <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -171,7 +171,7 @@
         <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
         <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
       </register>
-      <register name="MultiJog_Cnt8_STATUS_AUX_CTRL" address="0x40006497" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+      <register name="MultiJog_Cnt8_STATUS_AUX_CTRL" address="0x40006598" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
         <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
           <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
           <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -202,8 +202,8 @@
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bQuadDec" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="MultiJog_Cnt8_COUNTER" address="0x40006407" bitWidth="8" desc="Counter value" hidden="false" />
-    <register name="MultiJog_STATUS_REG" address="0x40006567" bitWidth="8" desc="Quadrature Decoder Status Register" hidden="false">
+    <register name="MultiJog_Cnt8_COUNTER" address="0x40006507" bitWidth="8" desc="Counter value" hidden="false" />
+    <register name="MultiJog_STATUS_REG" address="0x40006566" bitWidth="8" desc="Quadrature Decoder Status Register" hidden="false">
       <field name="OVERFLOW" from="0" to="0" access="R" resetVal="" desc="Counter overflow" hidden="false" />
       <field name="UNDERFLOW" from="1" to="1" access="R" resetVal="" desc="Counter underflow" hidden="false" />
       <field name="RESET" from="2" to="2" access="R" resetVal="" desc="Counter Reset due index" hidden="false" />
@@ -671,9 +671,9 @@
   <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RegulatorStatus" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RegulatorStatus_STATUS_REG" address="0x4000656B" bitWidth="8" desc="" hidden="false" />
-    <register name="RegulatorStatus_MASK_REG" address="0x4000658B" bitWidth="8" desc="" hidden="false" />
-    <register name="RegulatorStatus_STATUS_AUX_CTL_REG" address="0x4000659B" bitWidth="8" desc="" hidden="false">
+    <register name="RegulatorStatus_STATUS_REG" address="0x40006469" bitWidth="8" desc="" hidden="false" />
+    <register name="RegulatorStatus_MASK_REG" address="0x40006489" bitWidth="8" desc="" hidden="false" />
+    <register name="RegulatorStatus_STATUS_AUX_CTL_REG" address="0x40006499" bitWidth="8" desc="" hidden="false">
       <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="ENABLED" value="1" desc="Enable counter" />
         <value name="DISABLED" value="0" desc="Disable counter" />
@@ -907,9 +907,9 @@
   <block name="cy_srff_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Status_VoltageB_Eos" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="Status_VoltageB_Eos_STATUS_REG" address="0x40006463" bitWidth="8" desc="" hidden="false" />
-    <register name="Status_VoltageB_Eos_MASK_REG" address="0x40006483" bitWidth="8" desc="" hidden="false" />
-    <register name="Status_VoltageB_Eos_STATUS_AUX_CTL_REG" address="0x40006493" bitWidth="8" desc="" hidden="false">
+    <register name="Status_VoltageB_Eos_STATUS_REG" address="0x4000656B" bitWidth="8" desc="" hidden="false" />
+    <register name="Status_VoltageB_Eos_MASK_REG" address="0x4000658B" bitWidth="8" desc="" hidden="false" />
+    <register name="Status_VoltageB_Eos_STATUS_AUX_CTL_REG" address="0x4000659B" bitWidth="8" desc="" hidden="false">
       <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="ENABLED" value="1" desc="Enable counter" />
         <value name="DISABLED" value="0" desc="Disable counter" />
@@ -1534,20 +1534,20 @@
   <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MultiJog_Reset" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
-    <register name="COUNT" address="0x40006471" bitWidth="7" desc="Count value register" hidden="false" />
-    <register name="PERIOD" address="0x40006481" bitWidth="7" desc="Count7 period register" hidden="false" />
+    <register name="COUNT" address="0x40006470" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006480" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
   <block name="Debouncer_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MultiJog_FreqMeter" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
-    <register name="COUNT" address="0x40006470" bitWidth="7" desc="Count value register" hidden="false" />
-    <register name="PERIOD" address="0x40006480" bitWidth="7" desc="Count7 period register" hidden="false" />
+    <register name="COUNT" address="0x40006471" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006481" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
   <block name="Clock_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="EdgeDetect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LCD_DB_OutEnable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="LCD_DB_OutEnable_CONTROL_REG" address="0x40006579" bitWidth="8" desc="" hidden="false" />
+    <register name="LCD_DB_OutEnable_CONTROL_REG" address="0x40006474" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="I_MultiJogA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1587,7 +1587,7 @@
   <block name="SW_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RegulatorControl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RegulatorControl_CONTROL_REG" address="0x40006478" bitWidth="8" desc="" hidden="false" />
+    <register name="RegulatorControl_CONTROL_REG" address="0x40006479" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="and_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DieTemp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1984,8 +1984,8 @@
   <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="BtnOk_Reset" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
-    <register name="COUNT" address="0x40006578" bitWidth="7" desc="Count value register" hidden="false" />
-    <register name="PERIOD" address="0x40006588" bitWidth="7" desc="Count7 period register" hidden="false" />
+    <register name="COUNT" address="0x40006477" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006487" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
   <block name="Debouncer_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -2308,12 +2308,12 @@
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_VoltageB_COMPARE_Reg" address="0x40006524" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
-    <register name="PWM_VoltageB_Control_Reg" address="0x40006576" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+    <register name="PWM_VoltageB_Control_Reg" address="0x40006476" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
       <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" hidden="false" />
       <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" hidden="false" />
       <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" hidden="false" />
     </register>
+    <register name="PWM_VoltageB_COMPARE_Reg" address="0x40006524" bitWidth="16" desc="UDB.D0 - Assigned Compare Value" hidden="false" />
     <register name="PWM_VoltageB_STATUS_AUX_CTRLDP0" address="0x40006594" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />

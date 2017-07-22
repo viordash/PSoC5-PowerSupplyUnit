@@ -283,7 +283,7 @@ void ChangeValue(INT shiftValue) {
         if (MainWorkObj.StabilizeModeA == smAmperageStab) {
             Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);   
         } else {  //smVoltageStab
-            Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointVoltageA);             
+            Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointAmperageA);             
         }
         Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
         
@@ -301,7 +301,7 @@ void ChangeValue(INT shiftValue) {
         if (MainWorkObj.StabilizeModeB == smAmperageStab) {
             Regulator_RequestToChangeSetPointAmperageB(MainWorkObj.SetPointAmperageB);   
         } else {  //smVoltageStab
-            Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointVoltageB);             
+            Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointAmperageB);             
         }
         Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
         
@@ -333,7 +333,7 @@ void ResetErrorState() {
 void CheckRegulatorStatus() {
 CHAR buffer[60];   
 PCHAR pBuffer = buffer;
-    if (MainWorkObj.State != mwsStandBy && MainWorkObj.State != mwsWork) {
+    if (MainWorkObj.State != mwsWork) {
         return;      
     }
     BYTE status = RegulatorStatus_Read();
@@ -354,7 +354,7 @@ PCHAR pBuffer = buffer;
         pBuffer = _strncpy(pBuffer, "[B] HwCurr; ", sizeof("[B] HwCurr; "));    
     }  
 
-   // ThrowException(buffer); 
+    ThrowException(buffer); 
 }
 
 /*----------------- Regulator state & status --------------<<<*/

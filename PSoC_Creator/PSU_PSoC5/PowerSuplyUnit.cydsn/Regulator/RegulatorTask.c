@@ -65,37 +65,57 @@ void Regulator_Task() {
 	}
 }
 
+BYTE CalculateOverVoltageVDACValue(TElectrValue value) {
+    DWORD dw = (Voltage_MAX * 1000) / value;
+    dw = (255 * 1000) / dw;
+    return  (BYTE)dw;
+}
+
+BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
+    DWORD dw = (Amperage_MAX * 1000) / value;
+    dw = (255 * 1000) / dw;
+    return  (BYTE)dw;    
+}
+
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     RegulatorObj.ChanelA.Voltage.SetPoint = value;
+    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
 }
 
 void Regulator_RequestToChangeCuttOffVoltageA(TElectrValue value) {
     RegulatorObj.ChanelA.Voltage.CuttOff = value;
+    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
     RegulatorObj.ChanelA.Amperage.SetPoint = value;
+    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageVDACValue(value));
 }
 
 void Regulator_RequestToChangeCuttOffAmperageA(TElectrValue value) {
     RegulatorObj.ChanelA.Amperage.CuttOff = value;
+    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageVDACValue(value));
 }
 
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
     RegulatorObj.ChanelB.Voltage.SetPoint = value;
+    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
 }
      
 void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
     RegulatorObj.ChanelB.Voltage.CuttOff = value;
+    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.SetPoint = value;
+    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageVDACValue(value));
 }
 
 void Regulator_RequestToChangeCuttOffAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.CuttOff = value;
+    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageVDACValue(value));
 }
 /*----------------- Requests --------------<<<*/
 

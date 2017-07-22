@@ -301,7 +301,7 @@
     <peripheral>
       <name>Buttons</name>
       <description>No description available</description>
-      <baseAddress>0x40006566</baseAddress>
+      <baseAddress>0x40006463</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -466,7 +466,7 @@
         <register>
           <name>MultiJog_Cnt8_COUNTER</name>
           <description>Counter value</description>
-          <addressOffset>0x40006407</addressOffset>
+          <addressOffset>0x40006507</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -475,7 +475,7 @@
         <register>
           <name>MultiJog_STATUS_REG</name>
           <description>Quadrature Decoder Status Register</description>
-          <addressOffset>0x40006567</addressOffset>
+          <addressOffset>0x40006566</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -526,7 +526,7 @@
         <register>
           <name>MultiJog_Cnt8_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x40006407</addressOffset>
+          <addressOffset>0x40006507</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -535,7 +535,7 @@
         <register>
           <name>MultiJog_Cnt8_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006427</addressOffset>
+          <addressOffset>0x40006527</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -544,7 +544,7 @@
         <register>
           <name>MultiJog_Cnt8_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x40006437</addressOffset>
+          <addressOffset>0x40006537</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -553,7 +553,7 @@
         <register>
           <name>MultiJog_Cnt8_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006479</addressOffset>
+          <addressOffset>0x40006576</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -585,7 +585,7 @@
         <register>
           <name>MultiJog_Cnt8_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006487</addressOffset>
+          <addressOffset>0x40006588</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -645,7 +645,7 @@
         <register>
           <name>MultiJog_Cnt8_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006497</addressOffset>
+          <addressOffset>0x40006598</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2852,7 +2852,7 @@
     <peripheral>
       <name>RegulatorStatus</name>
       <description>No description available</description>
-      <baseAddress>0x4000656B</baseAddress>
+      <baseAddress>0x40006469</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4001,7 +4001,7 @@
     <peripheral>
       <name>Status_VoltageB_Eos</name>
       <description>No description available</description>
-      <baseAddress>0x40006463</baseAddress>
+      <baseAddress>0x4000656B</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -6953,7 +6953,7 @@
     <peripheral>
       <name>MultiJog_Reset</name>
       <description>Count7 debug registers</description>
-      <baseAddress>0x40006471</baseAddress>
+      <baseAddress>0x40006470</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -6983,7 +6983,7 @@
     <peripheral>
       <name>MultiJog_FreqMeter</name>
       <description>Count7 debug registers</description>
-      <baseAddress>0x40006470</baseAddress>
+      <baseAddress>0x40006471</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -7013,7 +7013,7 @@
     <peripheral>
       <name>LCD_DB_OutEnable</name>
       <description>No description available</description>
-      <baseAddress>0x40006579</baseAddress>
+      <baseAddress>0x40006474</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -7189,7 +7189,7 @@
     <peripheral>
       <name>RegulatorControl</name>
       <description>No description available</description>
-      <baseAddress>0x40006478</baseAddress>
+      <baseAddress>0x40006479</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -9050,7 +9050,7 @@
     <peripheral>
       <name>BtnOk_Reset</name>
       <description>Count7 debug registers</description>
-      <baseAddress>0x40006578</baseAddress>
+      <baseAddress>0x40006477</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -10012,18 +10012,9 @@
       </addressBlock>
       <registers>
         <register>
-          <name>PWM_VoltageB_COMPARE_Reg</name>
-          <description>UDB.D0 - Assigned Compare Value</description>
-          <addressOffset>0x40006524</addressOffset>
-          <size>16</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
           <name>PWM_VoltageB_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x40006576</addressOffset>
+          <addressOffset>0x40006476</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -10051,6 +10042,15 @@
               <access>read-write</access>
             </field>
           </fields>
+        </register>
+        <register>
+          <name>PWM_VoltageB_COMPARE_Reg</name>
+          <description>UDB.D0 - Assigned Compare Value</description>
+          <addressOffset>0x40006524</addressOffset>
+          <size>16</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
         </register>
         <register>
           <name>PWM_VoltageB_STATUS_AUX_CTRLDP0</name>
