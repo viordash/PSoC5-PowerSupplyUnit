@@ -52,6 +52,7 @@ void MainWork_Task(){
     ChangeState(mwsStart);
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
+    RefreshDisplay();
     BYTE prevButtons = Buttons_Read();  
 	while (TRUE) {
         CheckRegulatorStatus();
@@ -61,7 +62,7 @@ void MainWork_Task(){
            // PolarModeChanged(bt & 0x08);
             RiseRatePowerUpChanged(bt & 0x04);    
             ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
-            RefreshDisplay();
+          //  RefreshDisplay();
         } 
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
@@ -324,6 +325,7 @@ void ThrowException(PCHAR message) {
 }
 
 void ResetErrorState() {
+    ChangeState(mwsStandBy);    
 }
 /*----------------- Errors --------------<<<*/
 
@@ -331,6 +333,9 @@ void ResetErrorState() {
 void CheckRegulatorStatus() {
 CHAR buffer[60];   
 PCHAR pBuffer = buffer;
+    if (MainWorkObj.State != mwsStandBy && MainWorkObj.State != mwsWork) {
+        return;      
+    }
     BYTE status = RegulatorStatus_Read();
     if (!status) {
         return;    
@@ -349,7 +354,7 @@ PCHAR pBuffer = buffer;
         pBuffer = _strncpy(pBuffer, "[B] HwCurr; ", sizeof("[B] HwCurr; "));    
     }  
 
-    ThrowException(buffer); 
+   // ThrowException(buffer); 
 }
 
 /*----------------- Regulator state & status --------------<<<*/

@@ -62,7 +62,8 @@ void ChangeFocused();
 BOOL FlashSelected();
 PTValueIndicator GetCurrentFocused();
 
-BOOL ChangeValues();
+BOOL ChangeMeasuredValues();
+BOOL ChangeSetPointValues();
 BOOL ChangeSelection();
 BOOL ChangeFocusing();
 PTVariableValue GetVariableValue(TSelectValue selectValue);
@@ -77,26 +78,27 @@ BOOL ChangeMousePresentVisibility();
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
     memset(&DisplayObj.Requests, 0, sizeof(TDisplayRequests));
-    memset(&DisplayObj.Values, 0, sizeof(TDisplayValues));
+    memset(&DisplayObj.SetPointValues, 0, sizeof(TDisplaySetPointValues));
+    memset(&DisplayObj.MeasuredValues, 0, sizeof(TDisplayMeasuredValues));
     
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageA.Value.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
         89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageA.Value.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
         81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE);
     
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredVoltageB.Value.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
         89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.Values.MeasuredAmperageB.Value.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
         81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE);    
         
-    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
         15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageA.Indicator, omAmperage, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageA.Indicator, omAmperage, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
         15, 10, 0, 0, SetPointAmperageACoordY + 2, 1, 1, TRUE);        
 
-    ValueIndicator_Init(&DisplayObj.Values.SetPointVoltageB.Indicator, omVoltage, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageB.Indicator, omVoltage, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
         15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.Values.SetPointAmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
 
     ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 6, TemperatureCoordX, TemperatureCoordY, 
@@ -138,21 +140,25 @@ void Display_Task() {
 PTVariableValue GetVariableValue(TSelectValue selectValue) {
     PTVariableValue pVariableValue;
     switch(selectValue) {
-        case svMeasuredVoltageA : pVariableValue = &DisplayObj.Values.MeasuredVoltageA.Value; break;
-        case svMeasuredAmperageA : pVariableValue = &DisplayObj.Values.MeasuredAmperageA.Value; break;
-        case svMeasuredVoltageB : pVariableValue = &DisplayObj.Values.MeasuredVoltageB.Value; break;
-        case svMeasuredAmperageB : pVariableValue = &DisplayObj.Values.MeasuredAmperageB.Value; break;
-        case svSetPointVoltageA : pVariableValue = &DisplayObj.Values.SetPointVoltageA; break;
-        case svSetPointAmperageA : pVariableValue = &DisplayObj.Values.SetPointAmperageA; break;
-        case svSetPointVoltageB : pVariableValue = &DisplayObj.Values.SetPointVoltageB; break;
-        case svSetPointAmperageB : pVariableValue = &DisplayObj.Values.SetPointAmperageB; break;
+        case svMeasuredVoltageA : pVariableValue = &DisplayObj.MeasuredValues.VoltageA.Value; break;
+        case svMeasuredAmperageA : pVariableValue = &DisplayObj.MeasuredValues.AmperageA.Value; break;
+        case svMeasuredVoltageB : pVariableValue = &DisplayObj.MeasuredValues.VoltageB.Value; break;
+        case svMeasuredAmperageB : pVariableValue = &DisplayObj.MeasuredValues.AmperageB.Value; break;
+        case svSetPointVoltageA : pVariableValue = &DisplayObj.SetPointValues.VoltageA; break;
+        case svSetPointAmperageA : pVariableValue = &DisplayObj.SetPointValues.AmperageA; break;
+        case svSetPointVoltageB : pVariableValue = &DisplayObj.SetPointValues.VoltageB; break;
+        case svSetPointAmperageB : pVariableValue = &DisplayObj.SetPointValues.AmperageB; break;
         default : pVariableValue = NULL; break;        
     }
     return pVariableValue;
 }
 
-INT GetValuesCount() {
-    return ((INT)sizeof(DisplayObj.Values)) / ((INT)sizeof(TVariableValue));
+INT GetSetPointValuesCount() {
+    return ((INT)sizeof(DisplayObj.SetPointValues)) / ((INT)sizeof(TVariableValue));
+}
+
+INT GetMeasuredValuesCount() {
+    return ((INT)sizeof(DisplayObj.MeasuredValues)) / ((INT)sizeof(TMeasuredValue));
 }
 
 PTSymbol GetStabilizeSymbol(TSelectStabilizeMode selectValue) {
@@ -184,9 +190,12 @@ BOOL res = FALSE;
         res = TRUE;  
     }   
 
-    if (ChangeValues()) {
+    if (ChangeSetPointValues()) {
         res = TRUE;  
     } 
+    if (ChangeMeasuredValues()) {
+        res = TRUE;  
+    }
     if (ChangeSelection()) {
         res = TRUE;  
     }
@@ -268,8 +277,8 @@ void ChangeScreen() {
     if (DisplayObj.Properties.Screen == dsStart) {
         SetScreen_Start();        
     } else if (DisplayObj.Properties.Screen == dsWork) {
-        DisplayObj.Values.MeasuredVoltageB.Value.Indicator.Readonly = FALSE;
-        DisplayObj.Values.MeasuredAmperageB.Value.Indicator.Readonly = FALSE;
+        DisplayObj.MeasuredValues.VoltageB.Value.Indicator.Readonly = FALSE;
+        DisplayObj.MeasuredValues.AmperageB.Value.Indicator.Readonly = FALSE;
         SetScreen_WorkMode();
     } else if (DisplayObj.Properties.Screen == dsError) {
         SetScreen_Error();
@@ -277,15 +286,35 @@ void ChangeScreen() {
 }
 
 /*>>>-------------- Change ElectrValue -----------------*/
-BOOL ChangeValues() {
-    INT size = GetValuesCount();
-    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+BOOL ChangeSetPointValues() {
+    INT size = GetSetPointValuesCount();
+    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.SetPointValues;
     BOOL request = FALSE;
     while(size-- > 0){
         if (pVariableValue->RequestToChangeValue) {
             ValueIndicator_SetValue(&(pVariableValue->Indicator), pVariableValue->NewValue);
             pVariableValue->RequestToChangeValue = FALSE;
             ValueIndicator_Repaint(&(pVariableValue->Indicator));
+            request = TRUE;
+        }  
+        pVariableValue++;
+    }
+    if (request) {
+        Display_Flush();    
+        return TRUE;        
+    }    
+    return FALSE;      
+}
+
+BOOL ChangeMeasuredValues() {
+    INT size = GetMeasuredValuesCount();
+    PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
+    BOOL request = FALSE;
+    while(size-- > 0){
+        if (pVariableValue->Value.RequestToChangeValue) {
+            ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
+            pVariableValue->Value.RequestToChangeValue = FALSE;
+            ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
             request = TRUE;
         }  
         pVariableValue++;
@@ -319,30 +348,30 @@ void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value)
 
 
 void Display_RequestToChangeVoltageA(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.Values.MeasuredVoltageA, value);
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageA, value);
 }
 
 void Display_RequestToChangeAmperageA(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.Values.MeasuredAmperageA, value);
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageA, value);
 }
 
 void Display_RequestToChangeVoltageB(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.Values.MeasuredVoltageB, value);
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageB, value);
 }
 
 void Display_RequestToChangeAmperageB(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.Values.MeasuredAmperageB, value);
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageB, value);
 }
 /*----------------- Change ElectrValue --------------<<<*/
 
 
 /*>>>-------------- Selecting -----------------*/
 BOOL ChangeSelection() {
-    INT size = GetValuesCount();
-    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+    INT size = GetMeasuredValuesCount();
+    PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     BOOL request = FALSE;
     while(size-- > 0){
-        if (pVariableValue->RequestToSelect) {
+        if (pVariableValue->Value.RequestToSelect) {
             request = TRUE;
             break;  
         }  
@@ -352,19 +381,19 @@ BOOL ChangeSelection() {
         return FALSE;    
     }   
     
-    size = GetValuesCount();
-    PTVariableValue pDeselectVariableValue = (PTVariableValue)&DisplayObj.Values;
+    size = GetMeasuredValuesCount();
+    PTMeasuredValue pDeselectVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     while(size-- > 0){
-        if (pVariableValue != pDeselectVariableValue && ValueIndicator_GetSelected(&(pDeselectVariableValue->Indicator))) {
-            ValueIndicator_SetSelected(&(pDeselectVariableValue->Indicator), FALSE);   
+        if (pVariableValue != pDeselectVariableValue && ValueIndicator_GetSelected(&(pDeselectVariableValue->Value.Indicator))) {
+            ValueIndicator_SetSelected(&(pDeselectVariableValue->Value.Indicator), FALSE);   
         }  
         pDeselectVariableValue++;
     }    
-    ValueIndicator_SetSelected(&(pVariableValue->Indicator), TRUE);
-    pVariableValue->RequestToSelect = FALSE;
+    ValueIndicator_SetSelected(&(pVariableValue->Value.Indicator), TRUE);
+    pVariableValue->Value.RequestToSelect = FALSE;
     DisplayObj.Properties.SelectedTimeout = GetTickCount();
     DisplayObj.Properties.SelectedFlashingTick = 0;
-    DisplayObj.Properties.SelectedIndicator = &(pVariableValue->Indicator);
+    DisplayObj.Properties.SelectedIndicator = &(pVariableValue->Value.Indicator);
     Display_Flush();    
     return TRUE;
 }
@@ -377,10 +406,10 @@ void RequestToSelect(TSelectValue selectValue) {
 }
 
 void InternalSelect(BOOL state) {
-    INT size = GetValuesCount();
-    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+    INT size = GetMeasuredValuesCount();
+    PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     while(size-- > 0) {
-        PTValueIndicator pValueIndicator = &(pVariableValue->Indicator);
+        PTValueIndicator pValueIndicator = &(pVariableValue->Value.Indicator);
         if (pValueIndicator == DisplayObj.Properties.SelectedIndicator) {
             ValueIndicator_SetSelected(pValueIndicator, state);
         } else {
@@ -416,21 +445,21 @@ static BOOL state = FALSE;
 
 TSelectValue GetCurrentSelectedValue() {
     PTValueIndicator pValueIndicator = DisplayObj.Properties.SelectedIndicator;   
-    if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageA.Value.Indicator) {
+    if (pValueIndicator == &DisplayObj.MeasuredValues.VoltageA.Value.Indicator) {
         return svMeasuredVoltageA;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageA.Value.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.MeasuredValues.AmperageA.Value.Indicator) {
         return svMeasuredAmperageA;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredVoltageB.Value.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.MeasuredValues.VoltageB.Value.Indicator) {
         return svMeasuredVoltageB;
-    } else if (pValueIndicator == &DisplayObj.Values.MeasuredAmperageB.Value.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.MeasuredValues.AmperageB.Value.Indicator) {
         return svMeasuredAmperageB;
-    } else if (pValueIndicator == &DisplayObj.Values.SetPointVoltageA.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.SetPointValues.VoltageA.Indicator) {
         return svSetPointVoltageA;
-    } else if (pValueIndicator == &DisplayObj.Values.SetPointAmperageA.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.SetPointValues.AmperageA.Indicator) {
         return svSetPointAmperageA;
-    } else if (pValueIndicator == &DisplayObj.Values.SetPointVoltageB.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.SetPointValues.VoltageB.Indicator) {
         return svSetPointVoltageB;
-    } else if (pValueIndicator == &DisplayObj.Values.SetPointAmperageB.Indicator) {
+    } else if (pValueIndicator == &DisplayObj.SetPointValues.AmperageB.Indicator) {
         return svSetPointAmperageB;
     } else {
         return svNone;    
@@ -444,11 +473,11 @@ BOOL IsDisplayInSelectionMode() {
 
 /*>>>-------------- Focusing -----------------*/
 BOOL ChangeFocusing() {
-    INT size = GetValuesCount();
-    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+    INT size = GetMeasuredValuesCount();
+    PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     BOOL request = FALSE;
     while(size-- > 0){
-        if (pVariableValue->RequestToFocus) {
+        if (pVariableValue->Value.RequestToFocus) {
             request = TRUE;
             break;    
         }  
@@ -458,17 +487,17 @@ BOOL ChangeFocusing() {
         return FALSE;    
     }  
     
-    size = GetValuesCount();
-    PTVariableValue pDeselectVariableValue = (PTVariableValue)&DisplayObj.Values;
+    size = GetMeasuredValuesCount();
+    PTMeasuredValue pDeselectVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     while(size-- > 0){
-        if (pVariableValue != pDeselectVariableValue && ValueIndicator_GetFocused(&(pDeselectVariableValue->Indicator))) {
-            ValueIndicator_SetFocused(&(pDeselectVariableValue->Indicator), FALSE);   
+        if (pVariableValue != pDeselectVariableValue && ValueIndicator_GetFocused(&(pDeselectVariableValue->Value.Indicator))) {
+            ValueIndicator_SetFocused(&(pDeselectVariableValue->Value.Indicator), FALSE);   
         }  
         pDeselectVariableValue++;
     }    
-    ValueIndicator_SetFocused(&(pVariableValue->Indicator), TRUE);
+    ValueIndicator_SetFocused(&(pVariableValue->Value.Indicator), TRUE);
     DisplayObj.Properties.SelectedIndicator = NULL;
-    pVariableValue->RequestToFocus = FALSE;
+    pVariableValue->Value.RequestToFocus = FALSE;
     Display_Flush();    
     return TRUE;
 }
@@ -481,10 +510,10 @@ void RequestToFocusing(TSelectValue selectValue) {
 }
 
 PTValueIndicator GetCurrentFocused() {
-    INT size = GetValuesCount();
-    PTVariableValue pVariableValue = (PTVariableValue)&DisplayObj.Values;
+    INT size = GetMeasuredValuesCount();
+    PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     while(size-- > 0) {
-        PTValueIndicator pValueIndicator = &(pVariableValue->Indicator);
+        PTValueIndicator pValueIndicator = &(pVariableValue->Value.Indicator);
         if (ValueIndicator_GetFocused(pValueIndicator)) {
             return pValueIndicator;
         }
@@ -510,7 +539,7 @@ BOOL ChangeStabilizeSelection() {
         return FALSE;    
     }   
     
-    size = GetValuesCount();
+    size = GetMeasuredValuesCount();
     PTSymbol pDeselectSymbol = (PTSymbol)&DisplayObj.Symbols;
     while(size-- > 0){
         if (pSymbol != pDeselectSymbol && SymbolIndicator_GetSelected(&(pDeselectSymbol->Indicator))) {
@@ -604,7 +633,7 @@ BOOL ChangeFocusingStabilize() {
         return FALSE;    
     }  
     
-    size = GetValuesCount();
+    size = GetMeasuredValuesCount();
     PTSymbol pDeselectSymbol = (PTSymbol)&DisplayObj.Symbols;
     while(size-- > 0){
         if (pSymbol != pDeselectSymbol && SymbolIndicator_GetFocused(&(pDeselectSymbol->Indicator))) {

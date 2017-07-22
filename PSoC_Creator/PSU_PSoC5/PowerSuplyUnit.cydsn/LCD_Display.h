@@ -95,15 +95,18 @@ typedef struct {
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {   
-    TMeasuredValue MeasuredVoltageA;
-    TMeasuredValue MeasuredAmperageA;
-    TMeasuredValue MeasuredVoltageB;
-    TMeasuredValue MeasuredAmperageB;
-    TVariableValue SetPointVoltageA;
-    TVariableValue SetPointAmperageA;
-    TVariableValue SetPointVoltageB;
-    TVariableValue SetPointAmperageB;
-} TDisplayValues, * PTDisplayValues;
+    TVariableValue VoltageA;
+    TVariableValue AmperageA;
+    TVariableValue VoltageB;
+    TVariableValue AmperageB;
+} TDisplaySetPointValues, * PTDisplaySetPointValues;
+
+typedef struct {   
+    TMeasuredValue VoltageA;
+    TMeasuredValue AmperageA;
+    TMeasuredValue VoltageB;
+    TMeasuredValue AmperageB;
+} TDisplayMeasuredValues, * PTDisplayMeasuredValues;
 
 typedef struct {   
     TVariableValue Radiator;
@@ -127,7 +130,8 @@ typedef struct {
 typedef struct {
     TDisplayProperties Properties; 
     TDisplayRequests Requests;
-    TDisplayValues Values;
+    TDisplaySetPointValues SetPointValues;
+    TDisplayMeasuredValues MeasuredValues;
     TDisplaySymbols Symbols;
     TDisplayTemperature Temperatures;
     TDisplayStateSymbols StateSymbols;
