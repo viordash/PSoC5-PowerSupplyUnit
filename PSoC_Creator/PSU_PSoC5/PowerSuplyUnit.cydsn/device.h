@@ -34,8 +34,10 @@
     
 #define Voltage_MAX 15 * 100
 #define Voltage_MIN 0
+#define Voltage_Default 1260
 #define Amperage_MAX 8 * 1000
 #define Amperage_MIN 5
+#define Amperage_Default 1000
     
 typedef enum {
 	smVoltageStab = 0,

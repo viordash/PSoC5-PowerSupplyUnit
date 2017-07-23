@@ -16,28 +16,22 @@ void LoadFromStorage() {
     MainWorkObj.Storage.Ok = 0;
     i = sizeof(MainWorkObj.Storage.Dummy);
     memset(&MainWorkObj.Storage.Dummy, 0, i); 
-    if (crc != CalcCrc32((PBYTE) &(MainWorkObj.Storage), (INT)sizeof(TEepromStrorage))) {
-        return;
+    if (crc != CalcCrc32((PBYTE) &(MainWorkObj.Storage), (INT)sizeof(TEepromStrorage))) {        
+        MainWorkObj.SetPointVoltageA = Voltage_Default;
+        MainWorkObj.SetPointAmperageA = Amperage_Default;
+        MainWorkObj.StabilizeModeA = smVoltageStab;
+        MainWorkObj.SetPointVoltageB = Voltage_Default;
+        MainWorkObj.SetPointAmperageB = Amperage_Default;
+        MainWorkObj.StabilizeModeB = smVoltageStab;
+    } else {  
+        MainWorkObj.SetPointVoltageA = MainWorkObj.Storage.Settings.VoltageA;
+        MainWorkObj.SetPointAmperageA = MainWorkObj.Storage.Settings.AmperageA;
+        MainWorkObj.StabilizeModeA = MainWorkObj.Storage.Settings.StabilizeModeA;
+        MainWorkObj.SetPointVoltageB = MainWorkObj.Storage.Settings.VoltageB;
+        MainWorkObj.SetPointAmperageB = MainWorkObj.Storage.Settings.AmperageB;
+        MainWorkObj.StabilizeModeB = MainWorkObj.Storage.Settings.StabilizeModeB;
+        MainWorkObj.Storage.Ok = STORAGE_OK_MAGIC;
     }
-//    for (i = 0; i < (INT)(sizeof(MainWorkObj.Storage.CalibratedVoltage) / sizeof(TCalibrateItem)); i++){
-//        PTCalibrateItem pCalibrateItem = &(MainWorkObj.Storage.CalibratedVoltage[i]);
-//        if (pCalibrateItem->Crc != CalcCalibrateItemCrc8(pCalibrateItem)) {
-//            return;    
-//        }
-//    }
-//    for (i = 0; i < (INT)(sizeof(MainWorkObj.Storage.CalibratedAmperage) / sizeof(TCalibrateItem)); i++){
-//        PTCalibrateItem pCalibrateItem = &(MainWorkObj.Storage.CalibratedAmperage[i]);
-//        if (pCalibrateItem->Crc != CalcCalibrateItemCrc8(pCalibrateItem)) {
-//            return;    
-//        }
-//    }       
-    MainWorkObj.SetPointVoltageA = MainWorkObj.Storage.Settings.VoltageA;
-    MainWorkObj.SetPointAmperageA = MainWorkObj.Storage.Settings.AmperageA;
-    MainWorkObj.StabilizeModeA = MainWorkObj.Storage.Settings.StabilizeModeA;
-    MainWorkObj.SetPointVoltageB = MainWorkObj.Storage.Settings.VoltageB;
-    MainWorkObj.SetPointAmperageB = MainWorkObj.Storage.Settings.AmperageB;
-    MainWorkObj.StabilizeModeB = MainWorkObj.Storage.Settings.StabilizeModeB;
-    MainWorkObj.Storage.Ok = STORAGE_OK_MAGIC;
 }
 
 void SaveToStorage() {
@@ -62,7 +56,7 @@ void SaveToStorage() {
         }
         pBuffer += EEPROM_ROW_SIZE_BYTES;
         while (EEPROMStorage_Query() == CYRET_STARTED) {        
-		    TaskSleep(&MainWorkFunction, SYSTICK_mS(2));	
+		    TaskSleep(&MainWorkFunction, SYSTICK_mS(0));	
         }
     }  
 }
