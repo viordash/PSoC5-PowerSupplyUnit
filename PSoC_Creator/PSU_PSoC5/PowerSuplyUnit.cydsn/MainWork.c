@@ -334,7 +334,7 @@ void ResetErrorState() {
 
 /*>>>-------------- Regulator state & status -----------------*/
 void CheckRegulatorStatus() {
-CHAR buffer[60];   
+CHAR buffer[100];   
 PCHAR pBuffer = buffer;
     if (MainWorkObj.State != mwsWork) {
         return;      
@@ -342,22 +342,21 @@ PCHAR pBuffer = buffer;
     BYTE status = RegulatorStatus_Read();
     if (!status) {
         return;    
-    }
-    buffer[0] = 0;    
+    }    
     if (status & 0x01) {
-        pBuffer = _strncpy(pBuffer, "[A] HwVolt; ", sizeof("[A] HwVolt; ")); 
+        pBuffer = _strncpy(pBuffer, "Volt-A; ", sizeof("Volt-A; ") - 1); 
     } 
     if (status & 0x02) {
-        pBuffer = _strncpy(pBuffer, "[A] HwCurr; ", sizeof("[A] HwCurr; "));    
+        pBuffer = _strncpy(pBuffer, "Curr-A; ", sizeof("Curr-A; ") - 1);    
     } 
     if (status & 0x04) {
-        pBuffer = _strncpy(pBuffer, "[B] HwVolt; ", sizeof("[B] HwVolt; ")); 
+        pBuffer = _strncpy(pBuffer, "Volt-B; ", sizeof("Volt-B; ") - 1); 
     } 
     if (status & 0x08) {
-        pBuffer = _strncpy(pBuffer, "[B] HwCurr; ", sizeof("[B] HwCurr; "));    
+        pBuffer = _strncpy(pBuffer, "Curr-B; ", sizeof("Curr-B; ") - 1);    
     }  
-
-  //  ThrowException(buffer); 
+    *pBuffer = 0;
+    ThrowException(buffer); 
 }
 
 /*----------------- Regulator state & status --------------<<<*/

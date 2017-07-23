@@ -53,6 +53,9 @@
 #define MousePresentCoordX 175
 #define MousePresentCoordY 112
 
+#define MessageCoordX 1
+#define MessageCoordY 112
+
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
 static BOOL ProcessRequests();
@@ -74,6 +77,7 @@ BOOL ChangeFocusingStabilize();
 
 BOOL ChangeTemperatures();
 BOOL ChangeMousePresentVisibility();
+BOOL ShowError();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -212,6 +216,9 @@ BOOL res = FALSE;
         res = TRUE;  
     }
     if (ChangeMousePresentVisibility()) {
+        res = TRUE;  
+    }
+    if (ShowError()) {
         res = TRUE;  
     }
 
@@ -758,7 +765,18 @@ void RequestToRepaintMousePresent() {
 
 /*>>>-------------- Show error -----------------*/
 BOOL RequestToShowError(PCHAR errorMessage) {
+    memcpy(DisplayObj.Requests.Message, errorMessage, strlen(errorMessage));
+    DisplayObj.Requests.ShowError = TRUE;
+    return TRUE;
+}
 
+BOOL ShowError() {    
+    if (!DisplayObj.Requests.ShowError) {
+        return FALSE;
+    }
+    Display_SetFont(0);
+    Display_Print(DisplayObj.Requests.Message, tcNorm, MessageCoordX, MessageCoordY, TRUE); 
+    DisplayObj.Requests.ShowError = FALSE;
     return TRUE;
 }
 /*----------------- Show error --------------<<<*/

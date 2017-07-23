@@ -81,7 +81,9 @@ typedef struct {
 
 typedef struct {
     TDisplayScreen Screen; 
-    BOOL ScreenRequest;    
+    BOOL ScreenRequest;   
+    BOOL ShowError;
+    CHAR Message[200];
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {

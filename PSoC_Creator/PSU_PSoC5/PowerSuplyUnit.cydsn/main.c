@@ -36,7 +36,7 @@ void TasksInit(void) {
 	stack -= 0x500; //стек для основного цикла
 
 	TaskExecInit(&DisplayFunction, (POINTER)Display_Task, stack);
-	stack -= 0x700;
+	stack -= 0xA00;
 
 	TaskExecInit(&MainWorkFunction, (POINTER)MainWork_Task, stack);
 	stack -= 0x800;
