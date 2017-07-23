@@ -109,19 +109,26 @@ typedef struct {
     BYTE Crc;
 } TCalibrateItem, *PTCalibrateItem;
 
-typedef struct {	
-	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
-	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
+typedef struct {
     TElectrValue VoltageA;
     TElectrValue AmperageA;
     TElectrValue VoltageB;
     TElectrValue AmperageB;
     TStabilizeMode StabilizeModeA;
     TStabilizeMode StabilizeModeB;
+} TSettings, *PTSettings;
+
+#define STORAGE_OK_MAGIC 123
+#define EEPROM_ROW_SIZE_BYTES 16
+
+typedef struct {	
+	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
+	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
+    TSettings Settings;
     DWORD Crc;
-    BYTE Dummy[(sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) + (sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) 
-                + sizeof(TElectrValue)/*VoltageA*/ + sizeof(TElectrValue)/*AmperageA*/ + sizeof(TElectrValue)/*VoltageB*/ + sizeof(TElectrValue)/*AmperageB*/
-                + sizeof(TStabilizeMode)/*StabilizeModeA*/ + sizeof(TStabilizeMode)/*StabilizeModeB*/ + sizeof(DWORD)/*Crc*/];
+    BYTE Ok;
+    BYTE Dummy[((sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) + (sizeof(TCalibrateItem) * VOLTAGE_CALIBRATE_POINT_COUNT) 
+                + sizeof(TSettings)/*Settings*/ + sizeof(DWORD)/*Crc*/ + sizeof(BYTE)/*Ok*/) % EEPROM_ROW_SIZE_BYTES];
     
 } TEepromStrorage, *PTEepromStrorage;
 

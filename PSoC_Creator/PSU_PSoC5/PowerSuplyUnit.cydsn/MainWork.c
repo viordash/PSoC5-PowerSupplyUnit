@@ -17,6 +17,7 @@
 #include "Temperature\TemperControl.h"
 #include "MousePS2\MousePS2.h"
 #include "Regulator\RegulatorTask.h"
+#include "Storage.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -35,7 +36,6 @@ void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
 void CheckRegulatorStatus();
-void LoadFromStorage();
 
 void MainWork_Init() {
     EEPROMStorage_Start();
@@ -45,11 +45,11 @@ void MainWork_Init() {
     MainWorkObj.StabilizeModeA = smVoltageStab;  
     MainWorkObj.StabilizeModeB = smAmperageStab; 
     InitMouse();
-    LoadFromStorage();
 }
 
 void MainWork_Task(){	    
-    ChangeState(mwsStart);
+    ChangeState(mwsStart);    
+    LoadFromStorage();
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
     RefreshDisplay();
@@ -79,13 +79,16 @@ void MainWork_Task(){
 	}
 }
 
-void ChangeState(TMainWorkState newState){ 
-    MainWorkObj.State = newState;   
+void ChangeState(TMainWorkState newState){   
     if (newState != mwsWork) {
         RegulatorControl_Write(0x0A);        
     } else {
         RegulatorControl_Write(0x15);    
-    }    
+    }   
+    if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
+        SaveToStorage();
+    }
+    MainWorkObj.State = newState; 
 }
 
 void SuppressProtection(BOOL withOn) {
@@ -354,21 +357,11 @@ PCHAR pBuffer = buffer;
         pBuffer = _strncpy(pBuffer, "[B] HwCurr; ", sizeof("[B] HwCurr; "));    
     }  
 
-    ThrowException(buffer); 
+  //  ThrowException(buffer); 
 }
 
 /*----------------- Regulator state & status --------------<<<*/
 
-/*>>>-------------- Storage -----------------*/
-void LoadFromStorage() {    
-    //memset(&MainWorkObj.Storage, 0, sizeof(TEepromStrorage)); 
-    PBYTE pBuffer = (PBYTE) &(MainWorkObj.Storage);
-    WORD adress;
-    for (adress = 0; adress < (INT)sizeof(TEepromStrorage); adress++){
-        *(pBuffer++) = EEPROMStorage_ReadByte(adress);       
-    }       
-}
-/*----------------- Storage --------------<<<*/
 
 
 /* [] END OF FILE */
