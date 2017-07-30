@@ -174,10 +174,22 @@ static BOOL waitingAdcVoltageB = FALSE;
     if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
         return FALSE;    
     }
-    *pValue = ADC_VoltageB_GetResult16();
+    INT value = ADC_VoltageB_GetResult16();
     waitingAdcVoltageB = FALSE;
     ADC_VoltageB_StartConvert();
-    return TRUE;    
+    
+    if (MainWorkObj.State != mwsStart) {
+        value -= RegulatorObj.ChanelB.Voltage.Offset;  
+        if (value > 0) {
+            *pValue = value; 
+        } else {
+            *pValue = 0;    
+        }  
+        return TRUE;           
+    } else {
+        MedianFilter3_Push(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3), value);
+        return FALSE;    
+    }        
 }
 
 BOOL MeasureAmperageB(PTElectrValue pValue) {
@@ -193,10 +205,22 @@ static BOOL waitingAdcAmperageB = FALSE;
     if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
         return FALSE;    
     }
-    *pValue = ADC_VoltageB_GetResult16();
+    INT value = ADC_VoltageB_GetResult16();
     waitingAdcAmperageB = FALSE;
     ADC_VoltageB_StartConvert();
-    return TRUE;    
+    
+    if (MainWorkObj.State != mwsStart) {
+        value -= RegulatorObj.ChanelB.Amperage.Offset;  
+        if (value > 0) {
+            *pValue = value; 
+        } else {
+            *pValue = 0;    
+        }   
+        return TRUE;         
+    } else {
+        MedianFilter3_Push(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3), value);
+        return FALSE;    
+    }  
 }
 
 BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
@@ -320,6 +344,8 @@ void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState
     if (oldState == mwsStart && newState == mwsStandBy) {
         RegulatorObj.ChanelA.Voltage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelA.Voltage.OffsetMedianFilter3));
         RegulatorObj.ChanelA.Amperage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3));
+        RegulatorObj.ChanelB.Voltage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3));
+        RegulatorObj.ChanelB.Amperage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3));
     }
 }
 
