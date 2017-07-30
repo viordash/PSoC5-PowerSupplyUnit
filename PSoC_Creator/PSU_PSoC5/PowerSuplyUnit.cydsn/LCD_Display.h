@@ -17,6 +17,7 @@
 #include "Display\ValueIndicatorHelper.h"
 #include "Display\SymbolIndicator.h"
 #include "Display\SymbolIndicatorHelper.h"
+#include "Utils\MedianFilters.h"
 
 extern TFunction DisplayFunction;
 extern void Display_Init();
@@ -69,8 +70,7 @@ typedef struct {
 typedef struct {
     TVariableValue Value;
     DWORD UpdateTickCount;
-    TElectrValue PostponedValues[3];
-    BYTE PostponedIndex;
+    TMedianFilter3 MedianFilter3;
 } TMeasuredValue, * PTMeasuredValue;
 
 typedef struct {

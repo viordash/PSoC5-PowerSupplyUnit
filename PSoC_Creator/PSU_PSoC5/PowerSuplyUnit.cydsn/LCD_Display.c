@@ -13,7 +13,6 @@
 #include <device.h>
 #include <stdio.h>
 #include "LCD_Display.h"
-#include "Utils\Filters.h"
 
 #define VoltageACoordX 25
 #define VoltageACoordY 3
@@ -342,12 +341,9 @@ void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value) 
 }
 
 void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value) {
-    if (pMeasuredValue->PostponedIndex >= sizeof(pMeasuredValue->PostponedValues) / (sizeof(TElectrValue))) {
-        pMeasuredValue->PostponedIndex = 0;    
-    }
-    pMeasuredValue->PostponedValues[pMeasuredValue->PostponedIndex++] = value;
+    MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
     if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(400)) {         
-        pMeasuredValue->Value.NewValue = GetMedianOf3Value(pMeasuredValue->PostponedValues);
+        pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
         pMeasuredValue->Value.RequestToChangeValue = TRUE;
         pMeasuredValue->UpdateTickCount = GetTickCount();
     }

@@ -13,14 +13,14 @@
 #define __RegulatorTask_H__
 	
 #include <device.h>
+#include "Utils\MedianFilters.h"
 
 typedef struct { 
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
     TElectrValue Offset; 
-    TElectrValue OffsetValues[3];
-    BYTE OffsetValuesIndex;
+    TMedianFilter3 OffsetMedianFilter3;
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
@@ -28,8 +28,7 @@ typedef struct {
     TElectrValue CuttOff; 
     TElectrValue Measured; 
     TElectrValue Offset;     
-    TElectrValue OffsetValues[3];
-    BYTE OffsetValuesIndex;
+    TMedianFilter3 OffsetMedianFilter3;
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 

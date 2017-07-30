@@ -16,7 +16,6 @@
 #include "LCD_Display.h"
 #include "Regulator\RegulatorTask.h"
 #include "Utils\Calibrating.h"
-#include "Utils\Filters.h"
 
 
 TFunction RegulatorFunction;
@@ -146,11 +145,7 @@ BOOL MeasureAmperageA(PTElectrValue pValue) {
             *pValue = 0;    
         }           
     } else {
-        if (RegulatorObj.ChanelA.Amperage.OffsetValuesIndex >= 
-                sizeof(RegulatorObj.ChanelA.Amperage.OffsetValues) / (sizeof(RegulatorObj.ChanelA.Amperage.Offset))) {
-            RegulatorObj.ChanelA.Amperage.OffsetValuesIndex = 0;    
-        }        
-        RegulatorObj.ChanelA.Amperage.OffsetValues[RegulatorObj.ChanelA.Amperage.OffsetValuesIndex++] = value;
+        MedianFilter3_Push(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3), value);
         *pValue = 0;    
     }
     return TRUE; 
@@ -314,7 +309,7 @@ BOOL RegulatingChannelB() {
 
 void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
     if (newState == mwsWork) {
-        RegulatorObj.ChanelA.Amperage.Offset = GetMedianOf3Value(RegulatorObj.ChanelA.Amperage.OffsetValues);
+        RegulatorObj.ChanelA.Amperage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3));
     }
 }
 
