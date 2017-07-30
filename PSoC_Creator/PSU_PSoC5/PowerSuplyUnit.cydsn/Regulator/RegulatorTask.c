@@ -237,7 +237,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     if (diffValue < voltageMeasured / 1024) { //если несоответсвие менее 0.1% не регулировать
         return FALSE;
     }
-    TElectrValue pwmDiff;
+    SHORT pwmDiff;
     if (diffValue < voltageMeasured / 512) { //если разница менее 0.2%        
         pwmDiff = 1;        
     } else if (diffValue < voltageMeasured / 256) { //если разница менее 0.4%
@@ -281,7 +281,6 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
             pwmDiff = 128;
         }            
     }
-    TElectrValue pwmOld = readPwm();
     if (!isLessThanSetPoint) { //если напряжение меньше SetPoint        
     //если текущий ток еще замеряется, а предыдущее значение тока близко к максимуму, то pwmDiff установить на минимум. Чтобы не было скачка тока        
         INT amperageDiffValue = amperageSetPoint - amperageMeasured;
@@ -290,7 +289,13 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         }
         pwmDiff *= -1;     
     }
-    writePwm(pwmOld + pwmDiff);     
+    INT pwm = readPwm() + pwmDiff;
+    if (pwm > 65535) {
+        pwm = 65535;    
+    } else if (pwm < 0) {
+        pwm = 0;    
+    }
+    writePwm(pwm);     
     return TRUE;    
 }
 
