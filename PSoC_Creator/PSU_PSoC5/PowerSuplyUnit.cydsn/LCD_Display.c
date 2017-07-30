@@ -765,7 +765,7 @@ void RequestToRepaintMousePresent() {
 
 /*>>>-------------- Show error -----------------*/
 BOOL RequestToShowError(PCHAR errorMessage) {
-    memcpy(DisplayObj.Requests.Message, errorMessage, strlen(errorMessage));
+    memcpy(DisplayObj.Requests.Message, errorMessage, strlen(errorMessage) + 1);
     DisplayObj.Requests.ShowError = TRUE;
     return TRUE;
 }
@@ -775,6 +775,7 @@ BOOL ShowError() {
         return FALSE;
     }
     Display_SetFont(0);
+    ClipStringAlignLeft(DisplayObj.Requests.Message, ' ', 40);    
     Display_Print(DisplayObj.Requests.Message, tcNorm, MessageCoordX, MessageCoordY, TRUE); 
     DisplayObj.Requests.ShowError = FALSE;
     return TRUE;

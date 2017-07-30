@@ -39,3 +39,55 @@ PCHAR _strncpy(PCHAR dest, PCHAR src, DWORD len) { //аналог ANSI strncpy, но воз
 	while (len--) *(dest++) = *(src++);
 	return (dest);
 }
+
+void ClipStringAlignRight(PCHAR AString, CHAR AExtChar, DWORD ALimitLen) {
+	DWORD sLen = strlen(AString);
+	if (sLen > ALimitLen) AString[ALimitLen] = '\0';
+	else if (sLen < ALimitLen) {
+		DWORD sLen1 = sLen;
+		DWORD dw = ALimitLen;
+		while (sLen1 > 0) {
+			AString[--dw] = AString[--sLen1];
+		}
+		AString[ALimitLen] = '\0';
+		sLen1 = 0;
+		while (sLen++ < ALimitLen) {
+			AString[sLen1++] = AExtChar;
+		}
+	}
+}
+
+void ClipStringAlignLeft(PCHAR AString, CHAR AExtChar, DWORD ALimitLen) {
+	DWORD sLen = strlen(AString);
+	if (sLen > ALimitLen) AString[ALimitLen] = '\0';
+	else if (sLen < ALimitLen) {
+		while (sLen < ALimitLen) {
+			AString[sLen] = AExtChar;
+			sLen++;
+		}
+		AString[sLen] = '\0';
+	}
+}
+
+void ClipStringAlignMid(PCHAR AString, CHAR AExtChar, DWORD ALimitLen) {
+	DWORD sLen = strlen(AString);
+	if (sLen > ALimitLen) AString[ALimitLen] = '\0';
+	else if (sLen < ALimitLen) {
+		DWORD sLen1 = sLen;
+		DWORD sLenLeft = (ALimitLen - sLen) / 2;
+		DWORD sLenRight = (ALimitLen - sLen) - sLenLeft;
+		DWORD dw = ALimitLen - sLenRight;
+		while (sLen1 > 0) {
+			AString[--dw] = AString[--sLen1];
+		}
+		AString[ALimitLen] = '\0';
+		sLen1 = 0;
+		while (sLen1 < sLenLeft) {
+			AString[sLen1++] = AExtChar;
+		}
+		sLen1 = (ALimitLen - sLenRight);
+		while (sLen1 < ALimitLen) {
+			AString[sLen1++] = AExtChar;
+		}
+	}
+}
