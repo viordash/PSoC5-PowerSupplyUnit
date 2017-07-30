@@ -42,8 +42,8 @@ void Regulator_Init() {
     VDAC8_OverAmperageB_Start();
     Comp_OverAmperageB_Start();
     PGA_VoltageA_Start();
-    ADC_VoltageA_Start();
     ADC_VoltageA_SetPower(ADC_VoltageA__HIGHPOWER);
+    ADC_VoltageA_Start();
     VDAC8_OverVoltageA_Start();
     Comp_OverVoltageA_Start();
     VDAC8_OverVoltageB_Start();
@@ -57,6 +57,9 @@ void Regulator_Init() {
 }
 
 void Regulator_Task() {	 
+    TaskSleep(&RegulatorFunction, SYSTICK_mS(2000));  //waiting for start screen  
+    ADC_VoltageA_StartConvert();
+    ADC_AmperageA_StartConvert();
 	while (TRUE) {
         RegulatingChannelA();
 		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	

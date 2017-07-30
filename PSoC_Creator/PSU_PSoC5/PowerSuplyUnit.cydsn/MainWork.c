@@ -35,6 +35,7 @@ void ButtonOkPressed(BYTE value);
 void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
+void UpdateAllSetPoints();
 void CheckRegulatorStatus();
 void ClearRegulatorStatusAndErrors();
 
@@ -51,6 +52,7 @@ void MainWork_Init() {
 void MainWork_Task(){	    
     ChangeState(mwsStart);    
     LoadFromStorage();
+    UpdateAllSetPoints();
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
     RefreshDisplay();
@@ -321,6 +323,16 @@ void ChangeValue(INT shiftValue) {
     }   
 }
 
+void UpdateAllSetPoints() {    
+    Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA); 
+    Regulator_RequestToChangeCuttOffVoltageA(MainWorkObj.SetPointVoltageA);
+    Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);
+    Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointAmperageA);
+    Regulator_RequestToChangeSetPointVoltageB(MainWorkObj.SetPointVoltageB); 
+    Regulator_RequestToChangeCuttOffVoltageB(MainWorkObj.SetPointVoltageB);
+    Regulator_RequestToChangeSetPointAmperageB(MainWorkObj.SetPointAmperageB); 
+    Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointAmperageB);    
+}
 /*----------------- Change values --------------<<<*/
 
 /*>>>-------------- Errors -----------------*/
