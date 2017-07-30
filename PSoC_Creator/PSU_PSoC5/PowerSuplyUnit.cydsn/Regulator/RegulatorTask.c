@@ -147,12 +147,12 @@ static BOOL waitingAdcVoltageB = FALSE;
         AMuxChanelB_Next();
         waitingAdcVoltageB = TRUE; 
     }
-    if (ADC_VoltageB_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+    if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
         return FALSE;    
     }
-    *pValue = ADC_VoltageA_GetResult16();
+    *pValue = ADC_VoltageB_GetResult16();
     waitingAdcVoltageB = FALSE;
-    ADC_VoltageA_StartConvert();
+    ADC_VoltageB_StartConvert();
     return TRUE;    
 }
 
@@ -166,12 +166,12 @@ static BOOL waitingAdcAmperageB = FALSE;
         AMuxChanelB_Next();
         waitingAdcAmperageB = TRUE; 
     }
-    if (ADC_VoltageB_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+    if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
         return FALSE;    
     }
-    *pValue = ADC_VoltageA_GetResult16();
+    *pValue = ADC_VoltageB_GetResult16();
     waitingAdcAmperageB = FALSE;
-    ADC_VoltageA_StartConvert();
+    ADC_VoltageB_StartConvert();
     return TRUE;    
 }
 
