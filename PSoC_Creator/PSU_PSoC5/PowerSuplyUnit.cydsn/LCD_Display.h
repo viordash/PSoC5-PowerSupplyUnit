@@ -83,6 +83,7 @@ typedef struct {
     TDisplayScreen Screen; 
     BOOL ScreenRequest;   
     BOOL ShowError;
+    BOOL ClearError;
     CHAR Message[200];
 } TDisplayRequests, * PTDisplayRequests;
 
@@ -162,6 +163,7 @@ extern void RequestToRepaintTemperatures();
 extern BOOL RequestToVisibileMousePresent(BOOL visible);
 extern void RequestToRepaintMousePresent();
 extern BOOL RequestToShowError(PCHAR errorMessage);
+extern BOOL RequestToClearError();
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

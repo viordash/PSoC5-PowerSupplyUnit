@@ -78,6 +78,7 @@ BOOL ChangeFocusingStabilize();
 BOOL ChangeTemperatures();
 BOOL ChangeMousePresentVisibility();
 BOOL ShowError();
+BOOL ClearError();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -218,10 +219,9 @@ BOOL res = FALSE;
     if (ChangeMousePresentVisibility()) {
         res = TRUE;  
     }
-    if (ShowError()) {
+    if (ClearError() || ShowError()) {
         res = TRUE;  
     }
-
     return res;
 }
 
@@ -764,6 +764,12 @@ void RequestToRepaintMousePresent() {
 /*----------------- MousePresent Focusing --------------<<<*/
 
 /*>>>-------------- Show error -----------------*/
+void OutputError(PCHAR message) {    
+    Display_SetFont(0);
+    ClipStringAlignLeft(message, ' ', 40);    
+    Display_Print(message, tcNorm, MessageCoordX, MessageCoordY, TRUE); 
+}
+
 BOOL RequestToShowError(PCHAR errorMessage) {
     memcpy(DisplayObj.Requests.Message, errorMessage, strlen(errorMessage) + 1);
     DisplayObj.Requests.ShowError = TRUE;
@@ -774,10 +780,27 @@ BOOL ShowError() {
     if (!DisplayObj.Requests.ShowError) {
         return FALSE;
     }
-    Display_SetFont(0);
-    ClipStringAlignLeft(DisplayObj.Requests.Message, ' ', 40);    
-    Display_Print(DisplayObj.Requests.Message, tcNorm, MessageCoordX, MessageCoordY, TRUE); 
+    OutputError(DisplayObj.Requests.Message);
     DisplayObj.Requests.ShowError = FALSE;
+    return TRUE;
+}
+
+BOOL RequestToClearError() {
+    DisplayObj.Requests.ClearError = TRUE;
+    return TRUE;
+}
+
+BOOL ClearError() {    
+    if (!DisplayObj.Requests.ClearError) {
+        return FALSE;
+    }    
+//    if (DisplayObj.Requests.ShowError) {
+//        return FALSE;
+//    }
+    CHAR buffer[45];
+    buffer[0] = 0;
+    OutputError(buffer);
+    DisplayObj.Requests.ClearError = FALSE;
     return TRUE;
 }
 /*----------------- Show error --------------<<<*/

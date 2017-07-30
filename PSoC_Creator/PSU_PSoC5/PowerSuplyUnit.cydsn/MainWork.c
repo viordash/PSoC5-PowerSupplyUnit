@@ -36,6 +36,7 @@ void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
 void CheckRegulatorStatus();
+void ClearRegulatorStatusAndErrors();
 
 void MainWork_Init() {
     EEPROMStorage_Start();
@@ -83,6 +84,7 @@ void ChangeState(TMainWorkState newState){
     if (newState != mwsWork) {
         RegulatorControl_Write(0x0A);        
     } else {
+        ClearRegulatorStatusAndErrors();
         RegulatorControl_Write(0x15);    
     }   
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
@@ -357,6 +359,11 @@ PCHAR pBuffer = buffer;
     }  
     *pBuffer = 0;
     ThrowException(buffer); 
+}
+
+void ClearRegulatorStatusAndErrors() {
+    RegulatorStatus_Read();
+    RequestToClearError();
 }
 
 /*----------------- Regulator state & status --------------<<<*/
