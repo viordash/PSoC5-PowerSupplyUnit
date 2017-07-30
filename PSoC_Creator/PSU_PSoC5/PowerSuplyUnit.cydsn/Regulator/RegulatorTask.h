@@ -18,12 +18,18 @@ typedef struct {
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
+    TElectrValue Offset; 
+    TElectrValue OffsetValues[3];
+    BYTE OffsetValuesIndex;
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
+    TElectrValue Offset;     
+    TElectrValue OffsetValues[3];
+    BYTE OffsetValuesIndex;
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 
@@ -59,6 +65,7 @@ extern void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value);
 extern void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value);
 extern void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value);
 extern void Regulator_RequestToChangeCuttOffAmperageB(TElectrValue value);
+extern void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState);
 	
 #endif  /* __RegulatorTask_H__ */
 /* [] END OF FILE */

@@ -16,6 +16,7 @@
 #include "LCD_Display.h"
 #include "Regulator\RegulatorTask.h"
 #include "Utils\Calibrating.h"
+#include "Utils\Filters.h"
 
 
 TFunction RegulatorFunction;
@@ -57,7 +58,7 @@ void Regulator_Init() {
 }
 
 void Regulator_Task() {	 
-    TaskSleep(&RegulatorFunction, SYSTICK_mS(2000));  //waiting for start screen  
+    TaskSleep(&RegulatorFunction, SYSTICK_mS(2500));  //waiting for start screen  
     ADC_VoltageA_StartConvert();
     ADC_AmperageA_StartConvert();
 	while (TRUE) {
@@ -127,6 +128,7 @@ BOOL MeasureVoltageA(PTElectrValue pValue) {
     if (ADC_VoltageA_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
         return FALSE;    
     }
+    
     *pValue = ADC_VoltageA_GetResult16();
     return TRUE;    
 }
@@ -135,7 +137,22 @@ BOOL MeasureAmperageA(PTElectrValue pValue) {
     if (ADC_AmperageA_IsEndConversion(ADC_AmperageA_RETURN_STATUS) == 0) {
         return FALSE;    
     }
-    *pValue = ADC_AmperageA_GetResult16();
+    INT value = ADC_AmperageA_GetResult16();
+    if (MainWorkObj.State == mwsWork) {
+        value -= RegulatorObj.ChanelA.Amperage.Offset;  
+        if (value > 0) {
+            *pValue = value; 
+        } else {
+            *pValue = 0;    
+        }           
+    } else {
+        if (RegulatorObj.ChanelA.Amperage.OffsetValuesIndex >= 
+                sizeof(RegulatorObj.ChanelA.Amperage.OffsetValues) / (sizeof(RegulatorObj.ChanelA.Amperage.Offset))) {
+            RegulatorObj.ChanelA.Amperage.OffsetValuesIndex = 0;    
+        }        
+        RegulatorObj.ChanelA.Amperage.OffsetValues[RegulatorObj.ChanelA.Amperage.OffsetValuesIndex++] = value;
+        *pValue = 0;    
+    }
     return TRUE; 
 }
 
@@ -293,4 +310,12 @@ BOOL RegulatingChannelB() {
     return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
 }
 /*----------------- Measuring --------------<<<*/
+
+
+void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
+    if (newState == mwsWork) {
+        RegulatorObj.ChanelA.Amperage.Offset = GetMedianOf3Value(RegulatorObj.ChanelA.Amperage.OffsetValues);
+    }
+}
+
 /* [] END OF FILE */

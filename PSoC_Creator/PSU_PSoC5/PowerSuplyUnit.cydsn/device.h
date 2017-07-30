@@ -91,7 +91,7 @@ typedef enum {
 	ltInvisible
 } TLineType;
 
-typedef WORD TElectrValue, * PTElectrValue;     
+typedef SHORT TElectrValue, * PTElectrValue;     
 //typedef TElectrValue TVoltage;      /*voltage * 100*/
 //typedef TElectrValue TAmperage;     /*amperage * 1000*/
 
@@ -134,5 +134,12 @@ typedef struct {
     
 } TEepromStrorage, *PTEepromStrorage;
 
+typedef enum {
+	mwsInit = 0,
+	mwsStart,
+	mwsStandBy,
+	mwsWork,
+	mwsErrGlb
+} TMainWorkState;
 #endif  /* __DEVICE_H__ */
 /*[]*/

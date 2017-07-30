@@ -92,6 +92,7 @@ void ChangeState(TMainWorkState newState){
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
         SaveToStorage();
     }
+    Regulator_WorkStateChanged(MainWorkObj.State, newState);
     MainWorkObj.State = newState; 
 }
 

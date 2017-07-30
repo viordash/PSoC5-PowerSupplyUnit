@@ -14,13 +14,6 @@
 	
 #include <device.h>
 		
-typedef enum {
-	mwsInit = 0,
-	mwsStart,
-	mwsStandBy,
-	mwsWork,
-	mwsErrGlb
-} TMainWorkState;
 
 typedef struct {
     TMainWorkState State;
