@@ -324,7 +324,7 @@ BOOL RegulatingChannelB() {
     if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageB(voltageMeasured);
-        if (RegulatorObj.ChanelB.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
+        if (RegulatorObj.ChanelB.Voltage.Measured >= RegulatorObj.ChanelB.Voltage.CuttOff) {
             ThrowException("B. Voltage is over");
         }
     }
