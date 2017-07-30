@@ -59,6 +59,7 @@ void Regulator_Init() {
 void Regulator_Task() {	 
     ADC_VoltageA_StartConvert();
     ADC_AmperageA_StartConvert();
+    ADC_VoltageB_StartConvert();
 	while (TRUE) {
         RegulatingChannelA();
 		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	
@@ -305,7 +306,7 @@ BOOL RegulatingChannelB() {
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
-        Display_RequestToChangeAmperageA(amperageMeasured);
+        Display_RequestToChangeAmperageB(amperageMeasured);
         if (RegulatorObj.ChanelB.Amperage.Measured >= RegulatorObj.ChanelB.Amperage.CuttOff) {
             ThrowException("B. Current is over");
         }
