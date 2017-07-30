@@ -71,13 +71,13 @@ void Regulator_Task() {
 BYTE CalculateOverVoltageVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_MAX * 1000) / value;
     dw = (255 * 1000) / dw;
-    return  (BYTE)dw;
+    return 255;// (BYTE)dw;
 }
 
 BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
     DWORD dw = (Amperage_MAX * 1000) / value;
     dw = (255 * 1000) / dw;
-    return  (BYTE)dw;    
+    return 255;// (BYTE)dw;    
 }
 
 /*>>>-------------- Requests -----------------*/
