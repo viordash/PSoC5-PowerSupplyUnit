@@ -31,9 +31,9 @@ BOOL ReadCalibratedValues() {
 
 void Regulator_Init() {
     PWM_VoltageA_Start();
-    PWM_VoltageA_WritePeriod(0);
+    PWM_VoltageA_WriteCompare(0);
     PWM_VoltageB_Start();
-    PWM_VoltageB_WritePeriod(0);
+    PWM_VoltageB_WriteCompare(0);
     ADC_AmperageA_Start();
     PGA_AmperageA_Start();
     PGA_AmperageB_Start();
