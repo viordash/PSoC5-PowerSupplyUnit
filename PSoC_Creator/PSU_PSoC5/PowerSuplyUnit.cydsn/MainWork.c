@@ -289,7 +289,8 @@ void ChangeValue(INT shiftValue) {
     if (changedValue == cvAmperageA) {
         IncrementValue(&MainWorkObj.SetPointAmperageA, shiftValue, Amperage_MAX, Amperage_MIN); 
         if (MainWorkObj.StabilizeModeA == smAmperageStab) {
-            Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);   
+            Regulator_RequestToChangeSetPointAmperageA(MainWorkObj.SetPointAmperageA);  
+            Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointAmperageA);  
         } else {  //smVoltageStab
             Regulator_RequestToChangeCuttOffAmperageA(MainWorkObj.SetPointAmperageA);             
         }
@@ -298,7 +299,8 @@ void ChangeValue(INT shiftValue) {
     } else if (changedValue == cvVoltageB) {
         IncrementValue(&MainWorkObj.SetPointVoltageB, shiftValue, Voltage_MAX, Voltage_MIN);
         if (MainWorkObj.StabilizeModeB == smVoltageStab) {
-            Regulator_RequestToChangeSetPointVoltageB(MainWorkObj.SetPointVoltageB);   
+            Regulator_RequestToChangeSetPointVoltageB(MainWorkObj.SetPointVoltageB); 
+            Regulator_RequestToChangeCuttOffVoltageB(MainWorkObj.SetPointVoltageB);     
         } else {  //smAmperageStab
             Regulator_RequestToChangeCuttOffVoltageB(MainWorkObj.SetPointVoltageB);             
         }
@@ -307,7 +309,8 @@ void ChangeValue(INT shiftValue) {
     } else if (changedValue == cvAmperageB) {
         IncrementValue(&MainWorkObj.SetPointAmperageB, shiftValue, Amperage_MAX, Amperage_MIN);
         if (MainWorkObj.StabilizeModeB == smAmperageStab) {
-            Regulator_RequestToChangeSetPointAmperageB(MainWorkObj.SetPointAmperageB);   
+            Regulator_RequestToChangeSetPointAmperageB(MainWorkObj.SetPointAmperageB);  
+            Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointAmperageB);   
         } else {  //smVoltageStab
             Regulator_RequestToChangeCuttOffAmperageB(MainWorkObj.SetPointAmperageB);             
         }
@@ -316,7 +319,8 @@ void ChangeValue(INT shiftValue) {
     } else { //cvVoltageA
         IncrementValue(&MainWorkObj.SetPointVoltageA, shiftValue, Voltage_MAX, Voltage_MIN);
         if (MainWorkObj.StabilizeModeA == smVoltageStab) {
-            Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA);   
+            Regulator_RequestToChangeSetPointVoltageA(MainWorkObj.SetPointVoltageA);  
+            Regulator_RequestToChangeCuttOffVoltageA(MainWorkObj.SetPointVoltageA);  
         } else {  //smAmperageStab
             Regulator_RequestToChangeCuttOffVoltageA(MainWorkObj.SetPointVoltageA);             
         }
