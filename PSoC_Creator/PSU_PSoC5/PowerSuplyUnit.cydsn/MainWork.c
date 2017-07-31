@@ -347,35 +347,36 @@ void ThrowException(PCHAR message) {
 }
 
 void ResetErrorState() {
+    Display_RequestToErrorOver(ERROR_OVER_NONE);
     ChangeState(mwsStandBy);    
+}
+
+void ThrowErrorOver(TErrorOver errorOver) {
+    Display_RequestToErrorOver(errorOver);
+    ChangeState(mwsErrGlb); 
 }
 /*----------------- Errors --------------<<<*/
 
 /*>>>-------------- Regulator state & status -----------------*/
 void CheckRegulatorStatus() {
-CHAR buffer[100];   
-PCHAR pBuffer = buffer;
-    if (MainWorkObj.State != mwsWork) {
-        return;      
-    }
     BYTE status = RegulatorStatus_Read();
     if (!status) {
         return;    
-    }    
-    if (status & 0x01) {
-        pBuffer = _strncpy(pBuffer, "Volt-A; ", sizeof("Volt-A; ") - 1); 
+    }   
+    TErrorOver errorOver = ERROR_OVER_NONE;
+    if (status & 0x01) {        
+        errorOver |= ERROR_OVER_HW_VOLTAGE_A;
     } 
     if (status & 0x02) {
-        pBuffer = _strncpy(pBuffer, "Curr-A; ", sizeof("Curr-A; ") - 1);    
+        errorOver |= ERROR_OVER_HW_AMPERAGE_A;
     } 
     if (status & 0x04) {
-        pBuffer = _strncpy(pBuffer, "Volt-B; ", sizeof("Volt-B; ") - 1); 
+        errorOver |= ERROR_OVER_HW_VOLTAGE_B;
     } 
     if (status & 0x08) {
-        pBuffer = _strncpy(pBuffer, "Curr-B; ", sizeof("Curr-B; ") - 1);    
-    }  
-    *pBuffer = 0;
-    ThrowException(buffer); 
+        errorOver |= ERROR_OVER_HW_AMPERAGE_B;
+    } 
+    ThrowErrorOver(errorOver);
 }
 
 void ClearRegulatorStatusAndErrors() {

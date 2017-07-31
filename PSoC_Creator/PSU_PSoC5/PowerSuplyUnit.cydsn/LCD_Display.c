@@ -35,14 +35,32 @@
 #define StabilizeModeAmperageBCoordY (AmperageBCoordY)
 
 #define SetPointVoltageACoordX 2
-#define SetPointVoltageACoordY 35
+#define SetPointVoltageACoordY 33
+#define OverVoltageACoordX (SetPointVoltageACoordX - 1)
+#define OverVoltageACoordY (SetPointVoltageACoordY + 10)
+#define OverVoltageAWidth 31
+#define OverVoltageAHeight 10
+
 #define SetPointAmperageACoordX 2
-#define SetPointAmperageACoordY 35 + 56
+#define SetPointAmperageACoordY 33 + 54
+#define OverAmperageACoordX (SetPointAmperageACoordX - 1)
+#define OverAmperageACoordY (SetPointAmperageACoordY + 10)
+#define OverAmperageAWidth 31
+#define OverAmperageAHeight 10
 
 #define SetPointVoltageBCoordX 2 + 120
-#define SetPointVoltageBCoordY 35
+#define SetPointVoltageBCoordY 33
+#define OverVoltageBCoordX (SetPointVoltageBCoordX - 1)
+#define OverVoltageBCoordY (SetPointVoltageBCoordY + 10)
+#define OverVoltageBWidth 31
+#define OverVoltageBHeight 10
+
 #define SetPointAmperageBCoordX 2 + 120
-#define SetPointAmperageBCoordY 35 + 56
+#define SetPointAmperageBCoordY 33 + 54
+#define OverAmperageBCoordX (SetPointAmperageBCoordX - 1)
+#define OverAmperageBCoordY (SetPointAmperageBCoordY + 10)
+#define OverAmperageBWidth 31
+#define OverAmperageBHeight 10
 
 #define TemperatureCoordX 195
 #define TemperatureCoordY 112
@@ -54,6 +72,9 @@
 
 #define MessageCoordX 1
 #define MessageCoordY 112
+
+#define WorkstateCoordX 1
+#define WorkstateCoordY 120
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
@@ -78,6 +99,8 @@ BOOL ChangeTemperatures();
 BOOL ChangeMousePresentVisibility();
 BOOL ShowError();
 BOOL ClearError();
+BOOL ShowErrorOver();
+BOOL FlashErrorOver();
 
 void Display_Init() {    
     memset(&DisplayObj.Properties, 0, sizeof(TDisplayProperties));
@@ -133,10 +156,12 @@ void Display_Task() {
 	while (TRUE) {  
         if (!ProcessRequests()) {
             if (!FlashSelected()) {
-                FlashSelectedStabilize();    
+                if (!FlashSelectedStabilize()) {
+                    if (!FlashErrorOver()) {  
+                    }
+                }
             }
-        }
-        
+        }        
 		TaskSleep(&DisplayFunction, SYSTICK_mS(100));		
 	}
 }
@@ -219,6 +244,9 @@ BOOL res = FALSE;
         res = TRUE;  
     }
     if (ClearError() || ShowError()) {
+        res = TRUE;  
+    }
+    if (ShowErrorOver()) {
         res = TRUE;  
     }
     return res;
@@ -342,7 +370,7 @@ void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value) 
 
 void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value) {
     MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
-    if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(400)) {         
+    if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
         pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
         pMeasuredValue->Value.RequestToChangeValue = TRUE;
         pMeasuredValue->UpdateTickCount = GetTickCount();
@@ -790,9 +818,6 @@ BOOL ClearError() {
     if (!DisplayObj.Requests.ClearError) {
         return FALSE;
     }    
-//    if (DisplayObj.Requests.ShowError) {
-//        return FALSE;
-//    }
     CHAR buffer[45];
     buffer[0] = 0;
     OutputError(buffer);
@@ -800,3 +825,99 @@ BOOL ClearError() {
     return TRUE;
 }
 /*----------------- Show error --------------<<<*/
+
+/*>>>-------------- Show error for Over Voltage/Amperage -----------------*/
+BOOL Display_RequestToErrorOver(TErrorOver errorOver) {
+    DisplayObj.Requests.ErrorOver = errorOver;
+    DisplayObj.Requests.ErrorOverRequest = TRUE;
+    return TRUE;
+}
+
+void ErrorOverVoltageA(TLineType lineType, BOOL showFrame) {  
+    Display_FillRectangle(OverVoltageACoordX + 2, OverVoltageACoordY + 2, OverVoltageACoordX - 2 + OverVoltageAWidth, 
+        OverVoltageACoordY - 2 + OverVoltageAHeight, lineType, FALSE);
+    Display_DrawRectangle(OverVoltageACoordX, OverVoltageACoordY, OverVoltageACoordX + OverVoltageAWidth, 
+        OverVoltageACoordY + OverVoltageAHeight, showFrame ? ltSolid : ltInvisible, FALSE);
+}
+
+void ErrorOverAmperageA(TLineType lineType, BOOL showFrame) {  
+    Display_FillRectangle(OverAmperageACoordX, OverAmperageACoordY, OverAmperageACoordX + OverAmperageAWidth, 
+        OverAmperageACoordY + OverAmperageAHeight, lineType, FALSE);
+    Display_DrawRectangle(OverAmperageACoordX, OverAmperageACoordY, OverAmperageACoordX + OverAmperageAWidth, 
+        OverAmperageACoordY + OverAmperageAHeight, showFrame ? ltSolid : ltInvisible, FALSE);
+}
+
+void ErrorOverVoltageB(TLineType lineType, BOOL showFrame) {  
+    Display_FillRectangle(OverVoltageBCoordX, OverVoltageBCoordY, OverVoltageBCoordX + OverVoltageBWidth, 
+        OverVoltageBCoordY + OverVoltageBHeight, lineType, FALSE);
+    Display_DrawRectangle(OverVoltageBCoordX, OverVoltageBCoordY, OverVoltageBCoordX + OverVoltageBWidth, 
+        OverVoltageBCoordY + OverVoltageBHeight, showFrame ? ltSolid : ltInvisible, FALSE);
+}
+
+void ErrorOverAmperageB(TLineType lineType, BOOL showFrame) {  
+    Display_FillRectangle(OverAmperageBCoordX, OverAmperageBCoordY, OverAmperageBCoordX + OverAmperageBWidth, 
+        OverAmperageBCoordY + OverAmperageBHeight, lineType, FALSE);
+    Display_DrawRectangle(OverAmperageBCoordX, OverAmperageBCoordY, OverAmperageBCoordX + OverAmperageBWidth, 
+        OverAmperageBCoordY + OverAmperageBHeight, showFrame ? ltSolid : ltInvisible, FALSE);
+}
+
+BOOL ShowErrorOver() {    
+    if (!DisplayObj.Requests.ErrorOverRequest) {
+        return FALSE;
+    }
+    DisplayObj.Properties.ErrorOver = DisplayObj.Requests.ErrorOver;
+    DisplayObj.Properties.ErrorOverFlashingTick = 0; 
+    DisplayObj.Requests.ErrorOverRequest = FALSE;
+    if (DisplayObj.Properties.ErrorOver == ERROR_OVER_NONE) {
+        ErrorOverVoltageA(ltInvisible, FALSE);
+        ErrorOverAmperageA(ltInvisible, FALSE);
+        ErrorOverVoltageB(ltInvisible, FALSE);
+        ErrorOverAmperageB(ltInvisible, FALSE);
+        Display_Flush();
+    }
+    return TRUE;
+}
+
+BOOL FlashErrorOver() {  
+static BOOL state = FALSE;     
+    if (DisplayObj.Properties.ErrorOver == ERROR_OVER_NONE) {
+        return FALSE;    
+    } else if (GetElapsedPeriod(DisplayObj.Properties.ErrorOverFlashingTick) < SYSTICK_mS(300)) {
+        return FALSE;
+    } else {    
+        DisplayObj.Properties.ErrorOverFlashingTick = GetTickCount();   
+        TLineType hwOver;
+        TLineType swOver;
+        if (state) {
+            hwOver = ltSolid;   
+            swOver = ltDoted;
+        } else {
+            hwOver = ltInvisible;   
+            swOver = ltInvisible;
+        }
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_HW_VOLTAGE_A) {
+            ErrorOverVoltageA(hwOver, TRUE);
+        } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_VOLTAGE_A) {
+            ErrorOverVoltageA(swOver, TRUE);
+        }
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_HW_AMPERAGE_A) {
+            ErrorOverAmperageA(hwOver, TRUE);
+        } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_AMPERAGE_A) {
+            ErrorOverAmperageA(swOver, TRUE);
+        }
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_HW_VOLTAGE_B) {
+            ErrorOverVoltageB(hwOver, TRUE);
+        } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_VOLTAGE_B) {
+            ErrorOverVoltageB(swOver, TRUE);
+        }
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_HW_AMPERAGE_B) {
+            ErrorOverAmperageB(hwOver, TRUE);
+        } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_AMPERAGE_B) {
+            ErrorOverAmperageB(swOver, TRUE);
+        }        
+        Display_Flush();
+        state = !state;  
+        return TRUE;
+    }
+}
+/*----------------- Show error for Over Voltage/Amperage --------------<<<*/

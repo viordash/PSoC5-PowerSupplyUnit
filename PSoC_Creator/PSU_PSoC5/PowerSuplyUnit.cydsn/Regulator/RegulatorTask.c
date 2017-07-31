@@ -308,14 +308,14 @@ BOOL RegulatingChannelA() {
         RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageA(voltageMeasured);
         if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelA.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
-            ThrowException("A. Voltage is over");
+            ThrowErrorOver(ERROR_OVER_SW_VOLTAGE_A);
         }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageA(amperageMeasured);
         if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelA.Amperage.Measured >= RegulatorObj.ChanelA.Amperage.CuttOff) {
-            ThrowException("A. Current is over");
+            ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_A);
         }
     }  
     return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
@@ -330,14 +330,14 @@ BOOL RegulatingChannelB() {
         RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
         Display_RequestToChangeVoltageB(voltageMeasured);
         if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelB.Voltage.Measured >= RegulatorObj.ChanelB.Voltage.CuttOff) {
-            ThrowException("B. Voltage is over");
+            ThrowErrorOver(ERROR_OVER_SW_VOLTAGE_B);
         }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageB(amperageMeasured);
         if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelB.Amperage.Measured >= RegulatorObj.ChanelB.Amperage.CuttOff) {
-            ThrowException("B. Current is over");
+            ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
     return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);

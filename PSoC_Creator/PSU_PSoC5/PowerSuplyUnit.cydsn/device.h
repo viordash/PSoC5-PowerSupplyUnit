@@ -39,6 +39,19 @@
 #define Amperage_MIN 5
 #define Amperage_Default 1000
     
+    
+#define ERROR_OVER_NONE 0x00
+#define ERROR_OVER_HW_VOLTAGE_A 0x01
+#define ERROR_OVER_HW_AMPERAGE_A 0x02
+#define ERROR_OVER_HW_VOLTAGE_B 0x04
+#define ERROR_OVER_HW_AMPERAGE_B 0x08
+#define ERROR_OVER_SW_VOLTAGE_A 0x10
+#define ERROR_OVER_SW_AMPERAGE_A 0x20
+#define ERROR_OVER_SW_VOLTAGE_B 0x40
+#define ERROR_OVER_SW_AMPERAGE_B 0x80
+    
+typedef BYTE TErrorOver, * PTErrorOver;     
+    
 typedef enum {
 	smVoltageStab = 0,
 	smAmperageStab,

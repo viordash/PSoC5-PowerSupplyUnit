@@ -84,7 +84,9 @@ typedef struct {
     BOOL ScreenRequest;   
     BOOL ShowError;
     BOOL ClearError;
-    CHAR Message[200];
+    CHAR Message[200];  
+    BOOL ErrorOverRequest;
+    TErrorOver ErrorOver;
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
@@ -95,6 +97,8 @@ typedef struct {
     DWORD SelectedSymbolTimeout;
     DWORD SelectedSymbolFlashingTick;
     PTSymbolIndicator SelectedSymbol;
+    TErrorOver ErrorOver;
+    DWORD ErrorOverFlashingTick;
 } TDisplayProperties, * PTDisplayProperties;
 
 typedef struct {   
@@ -164,6 +168,7 @@ extern BOOL RequestToVisibileMousePresent(BOOL visible);
 extern void RequestToRepaintMousePresent();
 extern BOOL RequestToShowError(PCHAR errorMessage);
 extern BOOL RequestToClearError();
+extern BOOL Display_RequestToErrorOver(TErrorOver errorOver);
 
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */
