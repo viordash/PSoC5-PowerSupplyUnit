@@ -198,7 +198,7 @@ BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount
 
 BOOL MouseHandler() {
 	static DWORD mouseTick = 0;
-	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(100)){  //период опроса мыши 50мс
+	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(50)){  //период опроса мыши 50мс
         return FALSE; 
     }
     mouseTick = GetTickCount();
