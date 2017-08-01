@@ -97,8 +97,8 @@ BOOL ChangeFocusingStabilize();
 
 BOOL ChangeTemperatures();
 BOOL ChangeMousePresentVisibility();
-BOOL ShowError();
-BOOL ClearError();
+BOOL ShowMessage();
+BOOL ClearMessage();
 BOOL ShowErrorOver();
 BOOL FlashErrorOver();
 
@@ -243,7 +243,7 @@ BOOL res = FALSE;
     if (ChangeMousePresentVisibility()) {
         res = TRUE;  
     }
-    if (ClearError() || ShowError()) {
+    if (ClearMessage() || ShowMessage()) {
         res = TRUE;  
     }
     if (ShowErrorOver()) {
@@ -788,40 +788,41 @@ void RequestToRepaintMousePresent() {
 /*----------------- MousePresent Focusing --------------<<<*/
 
 /*>>>-------------- Show error -----------------*/
-void OutputError(PCHAR message) {    
-    Display_SetFont(0);
-    ClipStringAlignLeft(message, ' ', 40);    
-    Display_Print(message, tcNorm, MessageCoordX, MessageCoordY, TRUE); 
+void OutputMessage(PCHAR message) {    
+    Display_SetFont(1);
+    ClipStringAlignMid(message, ' ', 20);    
+    Display_Print(message, DisplayObj.Requests.MessageColor, MessageCoordX, MessageCoordY, TRUE); 
 }
 
-BOOL RequestToShowError(PCHAR errorMessage) {
-    memcpy(DisplayObj.Requests.Message, errorMessage, strlen(errorMessage) + 1);
-    DisplayObj.Requests.ShowError = TRUE;
+BOOL RequestToShowMessage(PCHAR message, TTextColor messageColor) {
+    memcpy(DisplayObj.Requests.Message, message, strlen(message) + 1);
+    DisplayObj.Requests.MessageColor = messageColor;
+    DisplayObj.Requests.ShowMessage = TRUE;
     return TRUE;
 }
 
-BOOL ShowError() {    
-    if (!DisplayObj.Requests.ShowError) {
+BOOL ShowMessage() {    
+    if (!DisplayObj.Requests.ShowMessage) {
         return FALSE;
     }
-    OutputError(DisplayObj.Requests.Message);
-    DisplayObj.Requests.ShowError = FALSE;
+    OutputMessage(DisplayObj.Requests.Message);
+    DisplayObj.Requests.ShowMessage = FALSE;
     return TRUE;
 }
 
-BOOL RequestToClearError() {
-    DisplayObj.Requests.ClearError = TRUE;
+BOOL RequestToClearMessage() {
+    DisplayObj.Requests.ClearMessage = TRUE;
     return TRUE;
 }
 
-BOOL ClearError() {    
-    if (!DisplayObj.Requests.ClearError) {
+BOOL ClearMessage() {    
+    if (!DisplayObj.Requests.ClearMessage) {
         return FALSE;
     }    
     CHAR buffer[45];
     buffer[0] = 0;
-    OutputError(buffer);
-    DisplayObj.Requests.ClearError = FALSE;
+    OutputMessage(buffer);
+    DisplayObj.Requests.ClearMessage = FALSE;
     return TRUE;
 }
 /*----------------- Show error --------------<<<*/

@@ -94,6 +94,13 @@ void ChangeState(TMainWorkState newState){
     }
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
     MainWorkObj.State = newState; 
+    if (MainWorkObj.State == mwsStandBy) {
+        RequestToShowMessage("Stand By", tcNorm);    
+    } else if (MainWorkObj.State == mwsWork) {
+        RequestToShowMessage("Power on", tcNorm);    
+    } else if (MainWorkObj.State == mwsErrGlb) {
+        RequestToShowMessage("!!!ERROR!!!", tcInvert);    
+    }    
 }
 
 void SuppressProtection(BOOL withOn) {
@@ -343,7 +350,7 @@ void UpdateAllSetPoints() {
 /*>>>-------------- Errors -----------------*/
 void ThrowException(PCHAR message) {
     ChangeState(mwsErrGlb); 
-    RequestToShowError(message);
+    RequestToShowMessage(message, 0);
 }
 
 void ResetErrorState() {
@@ -381,7 +388,6 @@ void CheckRegulatorStatus() {
 
 void ClearRegulatorStatusAndErrors() {
     RegulatorStatus_Read();
-    RequestToClearError();
 }
 
 /*----------------- Regulator state & status --------------<<<*/
