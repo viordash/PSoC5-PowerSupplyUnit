@@ -90,7 +90,7 @@
         <Data key="derive_type" value="NAMED_FREQ" />
         <Data key="desired_freq" value="4.7989999999999995" />
         <Data key="desired_unit" value="6" />
-        <Data key="divider" value="10" />
+        <Data key="divider" value="13" />
         <Data key="domain" value="DIGITAL" />
         <Data key="enabled" value="True" />
         <Data key="minus_accuracy" value="1" />
@@ -114,7 +114,7 @@
         <Data key="derive_type" value="NAMED_FREQ" />
         <Data key="desired_freq" value="50" />
         <Data key="desired_unit" value="3" />
-        <Data key="divider" value="1000" />
+        <Data key="divider" value="1280" />
         <Data key="domain" value="DIGITAL" />
         <Data key="enabled" value="True" />
         <Data key="minus_accuracy" value="1" />
@@ -162,7 +162,7 @@
         <Data key="derive_type" value="AUTO" />
         <Data key="desired_freq" value="5400000" />
         <Data key="desired_unit" value="0" />
-        <Data key="divider" value="9" />
+        <Data key="divider" value="12" />
         <Data key="domain" value="DIGITAL" />
         <Data key="enabled" value="True" />
         <Data key="minus_accuracy" value="1" />
@@ -521,7 +521,7 @@
         <Data key="derive_type" value="AUTO" />
         <Data key="desired_freq" value="5400000" />
         <Data key="desired_unit" value="0" />
-        <Data key="divider" value="9" />
+        <Data key="divider" value="12" />
         <Data key="domain" value="DIGITAL" />
         <Data key="enabled" value="True" />
         <Data key="minus_accuracy" value="1" />
@@ -616,7 +616,7 @@
         <Data key="check_tolerance" value="True" />
         <Data key="clock_version" value="v1" />
         <Data key="derive_type" value="BUILTIN" />
-        <Data key="desired_freq" value="50" />
+        <Data key="desired_freq" value="64" />
         <Data key="desired_unit" value="6" />
         <Data key="divider" value="0" />
         <Data key="domain" value="0" />
