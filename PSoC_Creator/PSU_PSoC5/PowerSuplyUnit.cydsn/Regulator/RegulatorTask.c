@@ -344,7 +344,7 @@ BOOL RegulatingChannelB() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
-    return !bVoltageInConversion /*&& Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion)*/;
+    return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
 }
 /*----------------- Measuring --------------<<<*/
 
