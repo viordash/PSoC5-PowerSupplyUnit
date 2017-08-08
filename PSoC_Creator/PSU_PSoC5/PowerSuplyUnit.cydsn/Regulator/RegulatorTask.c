@@ -160,67 +160,64 @@ BOOL MeasureAmperageA(PTElectrValue pValue) {
         return FALSE;    
     }
 }
+  
 
 BOOL MeasureVoltageB(PTElectrValue pValue) {
-static BOOL waitingAdcVoltageB = FALSE;    
+static BOOL waitingAdcVoltageB = FALSE;  
     if (waitingAdcVoltageB) {
-        if (AMuxChanelB_GetChannel() != 0) {
-            return FALSE;      
+        if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
+            return FALSE;    
+        }
+        INT value = ADC_VoltageB_GetResult16();
+        waitingAdcVoltageB = FALSE;
+        ADC_VoltageB_StartConvert();
+        
+        if (MainWorkObj.State != mwsStart) {
+            value -= RegulatorObj.ChanelB.Voltage.Offset;  
+            if (value > 0) {
+                *pValue = value; 
+            } else {
+                *pValue = 0;    
+            }  
+            return TRUE;           
+        } else {
+            MedianFilter3_Push(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3), value);
+            return FALSE;    
         }     
-    } else if (Status_VoltageB_Eos_Read() != 0) { //end of sampling
+    } else if (AMuxChanelB_GetChannel() == 0 && Status_VoltageB_Eos_Read() != 0) {
         AMuxChanelB_Next();
         waitingAdcVoltageB = TRUE; 
     }
-    if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
-        return FALSE;    
-    }
-    INT value = ADC_VoltageB_GetResult16();
-    waitingAdcVoltageB = FALSE;
-    ADC_VoltageB_StartConvert();
-    
-    if (MainWorkObj.State != mwsStart) {
-        value -= RegulatorObj.ChanelB.Voltage.Offset;  
-        if (value > 0) {
-            *pValue = value; 
-        } else {
-            *pValue = 0;    
-        }  
-        return TRUE;           
-    } else {
-        MedianFilter3_Push(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3), value);
-        return FALSE;    
-    }        
+    return FALSE;           
 }
 
 BOOL MeasureAmperageB(PTElectrValue pValue) {
-static BOOL waitingAdcAmperageB = FALSE;    
+static BOOL waitingAdcAmperageB = FALSE; 
     if (waitingAdcAmperageB) {
-        if (AMuxChanelB_GetChannel() != 1) {
-            return FALSE;      
+        if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
+            return FALSE;    
+        }
+        INT value = ADC_VoltageB_GetResult16();
+        waitingAdcAmperageB = FALSE;
+        ADC_VoltageB_StartConvert();
+        
+        if (MainWorkObj.State != mwsStart) {
+            value -= RegulatorObj.ChanelB.Amperage.Offset;  
+            if (value > 0) {
+                *pValue = value; 
+            } else {
+                *pValue = 0;    
+            }  
+            return TRUE;           
+        } else {
+            MedianFilter3_Push(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3), value);
+            return FALSE;    
         }     
-    } else if (Status_VoltageB_Eos_Read() != 0) { //end of sampling
+    } else if (AMuxChanelB_GetChannel() == 1 && Status_VoltageB_Eos_Read() != 0) {
         AMuxChanelB_Next();
         waitingAdcAmperageB = TRUE; 
     }
-    if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
-        return FALSE;    
-    }
-    INT value = ADC_VoltageB_GetResult16();
-    waitingAdcAmperageB = FALSE;
-    ADC_VoltageB_StartConvert();
-    
-    if (MainWorkObj.State != mwsStart) {
-        value -= RegulatorObj.ChanelB.Amperage.Offset;  
-        if (value > 0) {
-            *pValue = value; 
-        } else {
-            *pValue = 0;    
-        }   
-        return TRUE;         
-    } else {
-        MedianFilter3_Push(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3), value);
-        return FALSE;    
-    }  
+    return FALSE;         
 }
 
 BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
