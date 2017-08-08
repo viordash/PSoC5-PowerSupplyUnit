@@ -16,8 +16,14 @@
 #include <device.h>
 
 typedef enum {
-	omVoltage,
-	omAmperage,
+	omVoltageSetPointA,
+	omVoltageSetPointB,
+	omVoltageMeasA,
+	omVoltageMeasB,
+	omAmperageSetPointA,
+	omAmperageSetPointB,
+	omAmperageMeasA,
+	omAmperageMeasB,
 	omTemperature,
 	omTemperatureCpu
 } TOutputMode;

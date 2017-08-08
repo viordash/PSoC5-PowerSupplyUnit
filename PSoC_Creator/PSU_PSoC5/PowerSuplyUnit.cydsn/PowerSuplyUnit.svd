@@ -1361,7 +1361,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_TR0</name>
           <description>Comparator Trim Register_TR0</description>
-          <addressOffset>0x40004634</addressOffset>
+          <addressOffset>0x40004630</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1471,7 +1471,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_TR1</name>
           <description>Comparator Trim Register_TR1</description>
-          <addressOffset>0x40004635</addressOffset>
+          <addressOffset>0x40004631</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1581,7 +1581,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_CR</name>
           <description>Comparator Control Register</description>
-          <addressOffset>0x40005842</addressOffset>
+          <addressOffset>0x40005840</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1716,7 +1716,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_SW0</name>
           <description>Comparator Analog Routing Register 0</description>
-          <addressOffset>0x40005AD0</addressOffset>
+          <addressOffset>0x40005AC0</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1879,7 +1879,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_SW2</name>
           <description>Comparator Analog Routing Register 2</description>
-          <addressOffset>0x40005AD2</addressOffset>
+          <addressOffset>0x40005AC2</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1928,7 +1928,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_SW3</name>
           <description>Comparator Analog Routing Register 3</description>
-          <addressOffset>0x40005AD3</addressOffset>
+          <addressOffset>0x40005AC3</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2034,7 +2034,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_SW4</name>
           <description>Comparator Analog Routing Register 4</description>
-          <addressOffset>0x40005AD4</addressOffset>
+          <addressOffset>0x40005AC4</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2121,7 +2121,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_SW6</name>
           <description>Comparator Analog Routing Register 6</description>
-          <addressOffset>0x40005AD6</addressOffset>
+          <addressOffset>0x40005AC6</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2170,7 +2170,7 @@
         <register>
           <name>Comp_OverAmperageA_Comp_CLK</name>
           <description>Comparator Clock Control Register</description>
-          <addressOffset>0x40005AD7</addressOffset>
+          <addressOffset>0x40005AC7</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2355,7 +2355,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_TR0</name>
           <description>Comparator Trim Register_TR0</description>
-          <addressOffset>0x40004630</addressOffset>
+          <addressOffset>0x40004636</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2465,7 +2465,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_TR1</name>
           <description>Comparator Trim Register_TR1</description>
-          <addressOffset>0x40004631</addressOffset>
+          <addressOffset>0x40004637</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2575,7 +2575,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_CR</name>
           <description>Comparator Control Register</description>
-          <addressOffset>0x40005840</addressOffset>
+          <addressOffset>0x40005843</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2710,7 +2710,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_SW0</name>
           <description>Comparator Analog Routing Register 0</description>
-          <addressOffset>0x40005AC0</addressOffset>
+          <addressOffset>0x40005AD8</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2873,7 +2873,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_SW2</name>
           <description>Comparator Analog Routing Register 2</description>
-          <addressOffset>0x40005AC2</addressOffset>
+          <addressOffset>0x40005ADA</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2922,7 +2922,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_SW3</name>
           <description>Comparator Analog Routing Register 3</description>
-          <addressOffset>0x40005AC3</addressOffset>
+          <addressOffset>0x40005ADB</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3028,7 +3028,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_SW4</name>
           <description>Comparator Analog Routing Register 4</description>
-          <addressOffset>0x40005AC4</addressOffset>
+          <addressOffset>0x40005ADC</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3115,7 +3115,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_SW6</name>
           <description>Comparator Analog Routing Register 6</description>
-          <addressOffset>0x40005AC6</addressOffset>
+          <addressOffset>0x40005ADE</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3164,7 +3164,7 @@
         <register>
           <name>Comp_OverVoltageB_Comp_CLK</name>
           <description>Comparator Clock Control Register</description>
-          <addressOffset>0x40005AC7</addressOffset>
+          <addressOffset>0x40005ADF</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8091,7 +8091,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_TR0</name>
           <description>Comparator Trim Register_TR0</description>
-          <addressOffset>0x40004636</addressOffset>
+          <addressOffset>0x40004634</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8201,7 +8201,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_TR1</name>
           <description>Comparator Trim Register_TR1</description>
-          <addressOffset>0x40004637</addressOffset>
+          <addressOffset>0x40004635</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8311,7 +8311,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_CR</name>
           <description>Comparator Control Register</description>
-          <addressOffset>0x40005843</addressOffset>
+          <addressOffset>0x40005842</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8446,7 +8446,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_SW0</name>
           <description>Comparator Analog Routing Register 0</description>
-          <addressOffset>0x40005AD8</addressOffset>
+          <addressOffset>0x40005AD0</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8609,7 +8609,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_SW2</name>
           <description>Comparator Analog Routing Register 2</description>
-          <addressOffset>0x40005ADA</addressOffset>
+          <addressOffset>0x40005AD2</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8658,7 +8658,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_SW3</name>
           <description>Comparator Analog Routing Register 3</description>
-          <addressOffset>0x40005ADB</addressOffset>
+          <addressOffset>0x40005AD3</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8764,7 +8764,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_SW4</name>
           <description>Comparator Analog Routing Register 4</description>
-          <addressOffset>0x40005ADC</addressOffset>
+          <addressOffset>0x40005AD4</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8851,7 +8851,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_SW6</name>
           <description>Comparator Analog Routing Register 6</description>
-          <addressOffset>0x40005ADE</addressOffset>
+          <addressOffset>0x40005AD6</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -8900,7 +8900,7 @@
         <register>
           <name>Comp_OverVoltageA_Comp_CLK</name>
           <description>Comparator Clock Control Register</description>
-          <addressOffset>0x40005ADF</addressOffset>
+          <addressOffset>0x40005AD7</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -9453,7 +9453,7 @@
         <register>
           <name>SC_CR0</name>
           <description>Switched Capacitor Control Register 0</description>
-          <addressOffset>0x40005804</addressOffset>
+          <addressOffset>0x40005800</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -9542,7 +9542,7 @@
         <register>
           <name>SC_CR1</name>
           <description>Switched Capacitor Control Register 1</description>
-          <addressOffset>0x40005805</addressOffset>
+          <addressOffset>0x40005801</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -9649,7 +9649,7 @@
         <register>
           <name>SC_CR2</name>
           <description>Switched Capacitor Control Register 2</description>
-          <addressOffset>0x40005806</addressOffset>
+          <addressOffset>0x40005802</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -9863,7 +9863,7 @@
         <register>
           <name>SC__BST</name>
           <description>Switched Capacitor Boost Clock Selection Register</description>
-          <addressOffset>0x40005A1C</addressOffset>
+          <addressOffset>0x40005A0C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

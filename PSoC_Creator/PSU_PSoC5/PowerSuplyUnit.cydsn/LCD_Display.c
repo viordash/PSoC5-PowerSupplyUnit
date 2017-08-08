@@ -108,24 +108,24 @@ void Display_Init() {
     memset(&DisplayObj.SetPointValues, 0, sizeof(TDisplaySetPointValues));
     memset(&DisplayObj.MeasuredValues, 0, sizeof(TDisplayMeasuredValues));
     
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltage, 3, VoltageACoordX, VoltageACoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltageMeasA, 3, VoltageACoordX, VoltageACoordY, 
         89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperage, 2, AmperageACoordX, AmperageACoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperageMeasA, 2, AmperageACoordX, AmperageACoordY, 
         81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE);
     
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltage, 3, VoltageBCoordX, VoltageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltageMeasB, 3, VoltageBCoordX, VoltageBCoordY, 
         89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperage, 2, AmperageBCoordX, AmperageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperageMeasB, 2, AmperageBCoordX, AmperageBCoordY, 
         81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE);    
         
-    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltage, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltageSetPointA, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
         15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageA.Indicator, omAmperage, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageA.Indicator, omAmperageSetPointA, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
         15, 10, 0, 0, SetPointAmperageACoordY + 2, 1, 1, TRUE);        
 
-    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageB.Indicator, omVoltage, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageB.Indicator, omVoltageSetPointB, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
         15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageB.Indicator, omAmperage, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageB.Indicator, omAmperageSetPointB, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
         15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
 
     ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 6, TemperatureCoordX, TemperatureCoordY, 
