@@ -18,7 +18,7 @@
 #include "Display\ValueIndicator.h"
 
 void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT font, BYTE left, BYTE top, BYTE width, BYTE height, INT unitFont, 
-        INT decimalPointFont, BYTE secondaryTop, BYTE unitLeftSift, BYTE decimalPointLeftSift, BOOL readonly) {
+        INT decimalPointFont, BYTE secondaryTop, BYTE unitLeftSift, BYTE decimalPointLeftSift, BOOL readonly, TCalcDisplayValueFunction calcDisplayValueFunction) {
     pValueIndicator->Mode = mode;
     pValueIndicator->Font = font;
     pValueIndicator->Left = left;
@@ -32,7 +32,8 @@ void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT
     pValueIndicator->DecimalPointLeftSift = decimalPointLeftSift;
     pValueIndicator->Readonly = readonly;  
     pValueIndicator->Selected = FALSE;
-    pValueIndicator->Focused = FALSE;    
+    pValueIndicator->Focused = FALSE;  
+    pValueIndicator->CalcDisplayValueFunction = calcDisplayValueFunction;   
 }
 
 void ValueIndicator_SetSelected(PTValueIndicator pValueIndicator, BOOL value) {
@@ -69,34 +70,18 @@ BOOL ValueIndicator_GetFocused(PTValueIndicator pValueIndicator) {
 }
 
 void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue value) {
-    if (pValueIndicator->Mode == omVoltageMeasA) {
-     //   #define ADC_VoltageA_Range 4095
-        value = ADC_VoltageA_CountsTo_mVolts(value);
-        if (value < 0) {
-            value = 0;    
-        } else {        
-            value *= 8;   
-            value /= 10;  
-        }
-    //    value = Voltage_MAX / (ADC_VoltageA_Range / value); 
-        
+    if (pValueIndicator->Mode == omVoltageMeasure) {
+        INT val = pValueIndicator->CalcDisplayValueFunction(value);
+        sprintf(pValueIndicator->TextMajor, "%2u", val / 100);
+        sprintf(pValueIndicator->TextMinor, "%02u", val % 100);
+    } else if (pValueIndicator->Mode == omVoltageSetPoint) {
         sprintf(pValueIndicator->TextMajor, "%2u", value / 100);
         sprintf(pValueIndicator->TextMinor, "%02u", value % 100);
-    } else if (pValueIndicator->Mode == omVoltageMeasB || pValueIndicator->Mode == omVoltageSetPointA || pValueIndicator->Mode == omVoltageSetPointB) {
-        sprintf(pValueIndicator->TextMajor, "%2u", value / 100);
-        sprintf(pValueIndicator->TextMinor, "%02u", value % 100);
-    } else if (pValueIndicator->Mode == omAmperageMeasA) {
-        INT val = ADC_AmperageA_CountsTo_uVolts(value);
-        if (val < 0) {
-            val = 0;    
-        } else {        
-            val *= 20;   
-            val /= 1000;  
-        }
-        
+    } else if (pValueIndicator->Mode == omAmperageMeasure) {        
+        INT val = pValueIndicator->CalcDisplayValueFunction(value);
         sprintf(pValueIndicator->TextMajor, "%1u", val / 1000);
         sprintf(pValueIndicator->TextMinor, "%03u", val % 1000);
-    } else if (pValueIndicator->Mode == omAmperageMeasB || pValueIndicator->Mode == omAmperageSetPointA || pValueIndicator->Mode == omAmperageSetPointB) {
+    } else if (pValueIndicator->Mode == omAmperageSetPoint) {
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
         sprintf(pValueIndicator->TextMinor, "%03u", value % 1000);
     } else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
@@ -135,11 +120,9 @@ void ValueIndicator_Repaint(PTValueIndicator pValueIndicator) {
         shiftX = Display_Print(pValueIndicator->TextMinor, color, shiftX, pValueIndicator->Top, FALSE);
     }
     Display_SetFont(pValueIndicator->UnitFont);
-    if (pValueIndicator->Mode == omVoltageMeasA || pValueIndicator->Mode == omVoltageMeasB 
-            || pValueIndicator->Mode == omVoltageSetPointA || pValueIndicator->Mode == omVoltageSetPointB) {
+    if (pValueIndicator->Mode == omVoltageMeasure || pValueIndicator->Mode == omVoltageSetPoint) {
         Display_Print("v", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
-    } else if (pValueIndicator->Mode == omAmperageMeasA || pValueIndicator->Mode == omAmperageMeasB
-            || pValueIndicator->Mode == omAmperageSetPointA || pValueIndicator->Mode == omAmperageSetPointB) {
+    } else if (pValueIndicator->Mode == omAmperageMeasure || pValueIndicator->Mode == omAmperageSetPoint) {
         Display_Print("a", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 
     } else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
         Display_Print("C", color, shiftX + pValueIndicator->UnitLeftSift, pValueIndicator->SecondaryTop, FALSE); 

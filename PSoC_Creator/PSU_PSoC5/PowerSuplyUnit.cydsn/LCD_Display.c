@@ -13,6 +13,8 @@
 #include <device.h>
 #include <stdio.h>
 #include "LCD_Display.h"
+#include "MainWork.h"
+#include "Regulator\CalcAdcValue.h"
 
 #define VoltageACoordX 25
 #define VoltageACoordY 3
@@ -108,30 +110,30 @@ void Display_Init() {
     memset(&DisplayObj.SetPointValues, 0, sizeof(TDisplaySetPointValues));
     memset(&DisplayObj.MeasuredValues, 0, sizeof(TDisplayMeasuredValues));
     
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltageMeasA, 3, VoltageACoordX, VoltageACoordY, 
-        89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperageMeasA, 2, AmperageACoordX, AmperageACoordY, 
-        81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE);
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltageMeasure, 3, VoltageACoordX, VoltageACoordY, 
+        89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE, CalcDisplayValueVoltageA);
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperageMeasure, 2, AmperageACoordX, AmperageACoordY, 
+        81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE, CalcDisplayValueAmperageA);
     
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltageMeasB, 3, VoltageBCoordX, VoltageBCoordY, 
-        89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE);
-    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperageMeasB, 2, AmperageBCoordX, AmperageBCoordY, 
-        81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE);    
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltageMeasure, 3, VoltageBCoordX, VoltageBCoordY, 
+        89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE, CalcDisplayValueVoltageB);
+    ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperageMeasure, 2, AmperageBCoordX, AmperageBCoordY, 
+        81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE, CalcDisplayValueAmperageB);    
         
-    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltageSetPointA, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
-        15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageA.Indicator, omAmperageSetPointA, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
-        15, 10, 0, 0, SetPointAmperageACoordY + 2, 1, 1, TRUE);        
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltageSetPoint, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
+        15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE, NULL);
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageA.Indicator, omAmperageSetPoint, 5, SetPointAmperageACoordX, SetPointAmperageACoordY, 
+        15, 10, 0, 0, SetPointAmperageACoordY + 2, 1, 1, TRUE, NULL);        
 
-    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageB.Indicator, omVoltageSetPointB, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
-        15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE);
-    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageB.Indicator, omAmperageSetPointB, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
-        15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE);   
+    ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageB.Indicator, omVoltageSetPoint, 5, SetPointVoltageBCoordX, SetPointVoltageBCoordY, 
+        15, 10, 0, 0, SetPointVoltageBCoordY + 2, 1, 1, TRUE, NULL);
+    ValueIndicator_Init(&DisplayObj.SetPointValues.AmperageB.Indicator, omAmperageSetPoint, 5, SetPointAmperageBCoordX, SetPointAmperageBCoordY, 
+        15, 10, 0, 0, SetPointAmperageBCoordY + 2, 1, 1, TRUE, NULL);   
 
     ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 6, TemperatureCoordX, TemperatureCoordY, 
-        43, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE);
+        43, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE, NULL);
     ValueIndicator_Init(&DisplayObj.Temperatures.Cpu.Indicator, omTemperatureCpu, 6, TemperatureCpuCoordX, TemperatureCpuCoordY, 
-        43, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE);   
+        43, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE, NULL);   
     DisplayObj.Properties.SelectedIndicator = NULL;    
     
     
@@ -219,35 +221,37 @@ BOOL res = FALSE;
         res = TRUE;  
     }   
 
-    if (ChangeSetPointValues()) {
-        res = TRUE;  
-    } 
-    if (ChangeMeasuredValues()) {
-        res = TRUE;  
-    }
-    if (ChangeSelection()) {
-        res = TRUE;  
-    }
-    if (ChangeFocusing()) {
-        res = TRUE;  
-    }
-    if (ChangeStabilizeSelection()) {
-        res = TRUE;  
-    }
-    if (ChangeFocusingStabilize()) {
-        res = TRUE;  
-    }
-    if (ChangeTemperatures()) {
-        res = TRUE;  
-    }
-    if (ChangeMousePresentVisibility()) {
-        res = TRUE;  
-    }
-    if (ClearMessage() || ShowMessage()) {
-        res = TRUE;  
-    }
-    if (ShowErrorOver()) {
-        res = TRUE;  
+    if (MainWorkObj.State != mwsStart) {
+        if (ChangeSetPointValues()) {
+            res = TRUE;  
+        } 
+        if (ChangeMeasuredValues()) {
+            res = TRUE;  
+        }
+        if (ChangeSelection()) {
+            res = TRUE;  
+        }
+        if (ChangeFocusing()) {
+            res = TRUE;  
+        }
+        if (ChangeStabilizeSelection()) {
+            res = TRUE;  
+        }
+        if (ChangeFocusingStabilize()) {
+            res = TRUE;  
+        }
+        if (ChangeTemperatures()) {
+            res = TRUE;  
+        }
+        if (ChangeMousePresentVisibility()) {
+            res = TRUE;  
+        }
+        if (ClearMessage() || ShowMessage()) {
+            res = TRUE;  
+        }
+        if (ShowErrorOver()) {
+            res = TRUE;  
+        }
     }
     return res;
 }

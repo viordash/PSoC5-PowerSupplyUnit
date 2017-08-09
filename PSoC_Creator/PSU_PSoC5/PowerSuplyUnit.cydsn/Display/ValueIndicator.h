@@ -16,14 +16,10 @@
 #include <device.h>
 
 typedef enum {
-	omVoltageSetPointA,
-	omVoltageSetPointB,
-	omVoltageMeasA,
-	omVoltageMeasB,
-	omAmperageSetPointA,
-	omAmperageSetPointB,
-	omAmperageMeasA,
-	omAmperageMeasB,
+	omVoltageSetPoint,
+	omVoltageMeasure,
+	omAmperageSetPoint,
+	omAmperageMeasure,
 	omTemperature,
 	omTemperatureCpu
 } TOutputMode;
@@ -45,10 +41,11 @@ typedef struct {
     BYTE DecimalPointLeftSift;
     CHAR TextMajor[5];
     CHAR TextMinor[5];
+    TCalcDisplayValueFunction CalcDisplayValueFunction;
 } TValueIndicator, *PTValueIndicator;
   
 extern void ValueIndicator_Init(PTValueIndicator pValueIndicator, TOutputMode mode, INT font, BYTE left, BYTE top, BYTE width, BYTE height, INT unitFont, 
-        INT decimalPointFont, BYTE secondaryTop, BYTE unitLeftSift, BYTE decimalPointLeftSift, BOOL readonly);
+        INT decimalPointFont, BYTE secondaryTop, BYTE unitLeftSift, BYTE decimalPointLeftSift, BOOL readonly, TCalcDisplayValueFunction calcDisplayValueFunction);
 extern void ValueIndicator_SetSelected(PTValueIndicator pValueIndicator, BOOL value);
 extern BOOL ValueIndicator_GetSelected(PTValueIndicator pValueIndicator);
 extern void ValueIndicator_SetFocused(PTValueIndicator pValueIndicator, BOOL value);

@@ -128,18 +128,8 @@ BOOL MeasureVoltageA(PTElectrValue pValue) {
         return FALSE;    
     }       
     INT value = ADC_VoltageA_GetResult16();
-    if (MainWorkObj.State != mwsStart) {
-       // value -= RegulatorObj.ChanelA.Voltage.Offset;  
-       // if (value > 0) {
-            *pValue = value; 
-//        } else {
-//            *pValue = 0;    
-//        }  
-        return TRUE;           
-    } else {
-        MedianFilter3_Push(&(RegulatorObj.ChanelA.Voltage.OffsetMedianFilter3), value);
-        return FALSE;    
-    }      
+    *pValue = value;
+    return TRUE;             
 }
 
 BOOL MeasureAmperageA(PTElectrValue pValue) {
@@ -147,18 +137,8 @@ BOOL MeasureAmperageA(PTElectrValue pValue) {
         return FALSE;    
     }
     INT value = ADC_AmperageA_GetResult16();
-    if (MainWorkObj.State != mwsStart) {
-//        value -= RegulatorObj.ChanelA.Amperage.Offset;  
-//        if (value > 0) {
-            *pValue = value; 
-//        } else {
-//            *pValue = 0;    
-//        }   
-        return TRUE;         
-    } else {
-        MedianFilter3_Push(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3), value);
-        return FALSE;    
-    }
+    *pValue = value;
+    return TRUE; 
 }
   
 
@@ -171,19 +151,8 @@ static BOOL waitingAdcVoltageB = FALSE;
         INT value = ADC_VoltageB_GetResult16();
         waitingAdcVoltageB = FALSE;
         ADC_VoltageB_StartConvert();
-        
-        if (MainWorkObj.State != mwsStart) {
-            value -= RegulatorObj.ChanelB.Voltage.Offset;  
-            if (value > 0) {
-                *pValue = value; 
-            } else {
-                *pValue = 0;    
-            }  
-            return TRUE;           
-        } else {
-            MedianFilter3_Push(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3), value);
-            return FALSE;    
-        }     
+        *pValue = value; 
+        return TRUE;               
     } else if (AMuxChanelB_GetChannel() == 0 && Status_VoltageB_Eos_Read() != 0) {
         AMuxChanelB_Next();
         waitingAdcVoltageB = TRUE; 
@@ -200,19 +169,8 @@ static BOOL waitingAdcAmperageB = FALSE;
         INT value = ADC_VoltageB_GetResult16();
         waitingAdcAmperageB = FALSE;
         ADC_VoltageB_StartConvert();
-        
-        if (MainWorkObj.State != mwsStart) {
-            value -= RegulatorObj.ChanelB.Amperage.Offset;  
-            if (value > 0) {
-                *pValue = value; 
-            } else {
-                *pValue = 0;    
-            }  
-            return TRUE;           
-        } else {
-            MedianFilter3_Push(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3), value);
-            return FALSE;    
-        }     
+        *pValue = value; 
+        return TRUE;              
     } else if (AMuxChanelB_GetChannel() == 1 && Status_VoltageB_Eos_Read() != 0) {
         AMuxChanelB_Next();
         waitingAdcAmperageB = TRUE; 
@@ -348,12 +306,10 @@ BOOL RegulatingChannelB() {
 
 void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
     if (oldState == mwsStart && newState == mwsStandBy) {
-      //  RegulatorObj.ChanelA.Voltage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelA.Voltage.OffsetMedianFilter3));
-        RegulatorObj.ChanelA.Amperage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3));
-        RegulatorObj.ChanelB.Voltage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelB.Voltage.OffsetMedianFilter3));
-        RegulatorObj.ChanelB.Amperage.Offset = MedianFilter3_Calc(&(RegulatorObj.ChanelB.Amperage.OffsetMedianFilter3));
-     //   ADC_VoltageA_SetOffset(RegulatorObj.ChanelA.Voltage.Offset);
-        ADC_AmperageA_SetOffset(MedianFilter3_Calc(&(RegulatorObj.ChanelA.Amperage.OffsetMedianFilter3)));
+        ADC_VoltageA_SetOffset(GetAdcOffsetVoltageA());
+        ADC_VoltageA_SetScaledGain(GetAdcGainVoltageA());
+        ADC_AmperageA_SetOffset(GetAdcOffsetAmperageA());
+        ADC_AmperageA_SetGain(GetAdcGainAmperageA());
     }
 }
 

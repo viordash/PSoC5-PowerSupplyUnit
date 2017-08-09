@@ -19,16 +19,12 @@ typedef struct {
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
-    TElectrValue Offset; 
-    TMedianFilter3 OffsetMedianFilter3;
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
-    TElectrValue Offset;     
-    TMedianFilter3 OffsetMedianFilter3;
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 
