@@ -45,7 +45,7 @@
 #define GetAdcGainAmperageA() (ADC_AmperageA_CountsPerVolt + 0)
 #define GetAdcOffsetVoltageB() 0
 #define GetAdcGainVoltageB() (ADC_VoltageB_countsPer10Volt + 0)
-#define GetAdcOffsetAmperageB() -5
+#define GetAdcOffsetAmperageB() 44
 #define GetAdcGainAmperageB() (ADC_VoltageB_countsPer10Volt + 0)
     
     

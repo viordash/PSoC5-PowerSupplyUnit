@@ -142,40 +142,18 @@ BOOL MeasureAmperageA(PTElectrValue pValue) {
 }
   
 
-BOOL MeasureVoltageB(PTElectrValue pValue) {
-static BOOL waitingAdcVoltageB = FALSE;  
-    if (waitingAdcVoltageB) {
+BOOL MeasureChannelB(PTElectrValue pValue, BYTE chNum) {
+    if (AMuxChanelB_GetChannel() == chNum) {
         if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
             return FALSE;    
         }
+        AMuxChanelB_Next();
         INT value = ADC_VoltageB_GetResult16();
-        waitingAdcVoltageB = FALSE;
         ADC_VoltageB_StartConvert();
         *pValue = value; 
         return TRUE;               
-    } else if (AMuxChanelB_GetChannel() == 0 && Status_VoltageB_Eos_Read() != 0) {
-        AMuxChanelB_Next();
-        waitingAdcVoltageB = TRUE; 
     }
     return FALSE;           
-}
-
-BOOL MeasureAmperageB(PTElectrValue pValue) {
-static BOOL waitingAdcAmperageB = FALSE; 
-    if (waitingAdcAmperageB) {
-        if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
-            return FALSE;    
-        }
-        INT value = ADC_VoltageB_GetResult16();
-        waitingAdcAmperageB = FALSE;
-        ADC_VoltageB_StartConvert();
-        *pValue = value; 
-        return TRUE;              
-    } else if (AMuxChanelB_GetChannel() == 1 && Status_VoltageB_Eos_Read() != 0) {
-        AMuxChanelB_Next();
-        waitingAdcAmperageB = TRUE; 
-    }
-    return FALSE;         
 }
 
 BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
@@ -282,8 +260,8 @@ BOOL RegulatingChannelA() {
 
 BOOL RegulatingChannelB() {
     TElectrValue voltageMeasured, amperageMeasured;
-    BOOL bVoltageInConversion = !MeasureVoltageB(&voltageMeasured);
-    BOOL bAmperageInConversion = !MeasureAmperageB(&amperageMeasured);
+    BOOL bVoltageInConversion = !MeasureChannelB(&voltageMeasured, 0);
+    BOOL bAmperageInConversion = !MeasureChannelB(&amperageMeasured, 1);
 
     if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;

@@ -52,11 +52,11 @@ INT CalcDisplayValueVoltageB (TElectrValue value) {
 INT CalcDisplayValueAmperageB (TElectrValue value) {
     ADC_VoltageB_SetOffset(GetAdcOffsetAmperageB());
     ADC_VoltageB_SetScaledGain(GetAdcGainAmperageB());
-    INT val = ADC_AmperageA_CountsTo_uVolts(value);
+    INT val = ADC_VoltageB_CountsTo_uVolts(value);
     if (val < 0) {
         val = 0;    
     } else {        
-        val *= 20;   
+        val *= 5;   
         val /= 1000;  
     }
     return val;

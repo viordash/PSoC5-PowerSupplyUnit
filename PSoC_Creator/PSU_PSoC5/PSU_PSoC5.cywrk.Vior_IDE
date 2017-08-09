@@ -227,6 +227,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\PGA_AmperageB_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\PGA_VoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\PGA_VoltageA_PM.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Pin_1.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\portasm.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_VoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\PWM_VoltageA_PM.lst</v>
@@ -236,7 +237,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\RegulatorControl_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\RegulatorStatus.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\RegulatorTask.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Status_VoltageB_Eos.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Storage.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\SymbolIndicator.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\SymbolIndicatorHelper.lst</v>
