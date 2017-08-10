@@ -22,7 +22,26 @@ INT CalcDisplayValueVoltageA (TElectrValue value) {
         val *= 8;   
         val /= 10;  
     }
+    TElectrValue xx = CalcSetPointValueVoltageA(val);
+    if (xx ==1234) {
+        return -1;
+    }
     return val;
+}
+
+TElectrValue CalcSetPointValueVoltageA (TElectrValue value) {   
+    value *= 10;
+    value /= 8; 
+    TElectrValue adcCounts = ((value * ADC_VoltageA_countsPer10Volt) - (ADC_VoltageA_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
+    
+    adcCounts += ADC_VoltageA_offset;
+    if (adcCounts < 0) {
+        adcCounts = 0;    
+    }
+//      int  mVolts = (int16)( (( (int32)adcCounts * ADC_VoltageA_10MV_COUNTS ) + 
+//    ( (adcCounts > 0) ?  (ADC_VoltageA_countsPer10Volt / 2) : (-(ADC_VoltageA_countsPer10Volt / 2)) )) / ADC_VoltageA_countsPer10Volt);
+        
+    return adcCounts;
 }
 
 INT CalcDisplayValueAmperageA (TElectrValue value) {
@@ -47,6 +66,18 @@ INT CalcDisplayValueVoltageB (TElectrValue value) {
         val /= 10;  
     }
     return val;
+}
+
+TElectrValue CalcSetPointValueVoltageB (TElectrValue value) {   
+    value *= 10;
+    value /= 8; 
+    TElectrValue adcCounts = ((value * ADC_VoltageB_countsPer10Volt) - (ADC_VoltageB_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
+    
+    adcCounts += ADC_VoltageA_offset;
+    if (adcCounts < 0) {
+        adcCounts = 0;    
+    }
+    return adcCounts;
 }
 
 INT CalcDisplayValueAmperageB (TElectrValue value) {

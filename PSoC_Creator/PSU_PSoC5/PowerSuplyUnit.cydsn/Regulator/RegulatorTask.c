@@ -16,6 +16,7 @@
 #include "LCD_Display.h"
 #include "Regulator\RegulatorTask.h"
 #include "Utils\Calibrating.h"
+#include "Regulator\CalcAdcValue.h"
 
 
 TFunction RegulatorFunction;
@@ -82,11 +83,13 @@ BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
 
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
+    value = CalcSetPointValueVoltageA(value);
     RegulatorObj.ChanelA.Voltage.SetPoint = value;
     VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
 }
 
 void Regulator_RequestToChangeCuttOffVoltageA(TElectrValue value) {
+    value = CalcSetPointValueVoltageA(value);
     RegulatorObj.ChanelA.Voltage.CuttOff = value;
     VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
 }
@@ -102,11 +105,13 @@ void Regulator_RequestToChangeCuttOffAmperageA(TElectrValue value) {
 }
 
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
+    value = CalcSetPointValueVoltageB(value);
     RegulatorObj.ChanelB.Voltage.SetPoint = value;
     VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
 }
      
 void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
+    value = CalcSetPointValueVoltageB(value);
     RegulatorObj.ChanelB.Voltage.CuttOff = value;
     VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
 }
@@ -157,11 +162,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
     TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.SetPoint;
-        
-            TElectrValue pwmNew = GetCalibratedPwmValue(voltageSetPoint); 
-        writePwm(pwmNew); 
-        return TRUE;
-        
+                
     INT diffValue = voltageMeasured - voltageSetPoint;
     BOOL isLessThanSetPoint = diffValue < 0;
     if (isLessThanSetPoint) {
@@ -175,43 +176,43 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         pwmDiff = 1;        
     } else if (diffValue < voltageMeasured / 256) { //если разница менее 0.4%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 2;       
+            pwmDiff = 1;       
         } else {
-            pwmDiff = 4;
+            pwmDiff = 1;
         }
     } else if (diffValue < voltageMeasured / 128) { //если разница менее 0.8%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 4;  
+            pwmDiff = 1;  
         } else {
-            pwmDiff = 8;
+            pwmDiff = 1;
         }
     } else if (diffValue < voltageMeasured / 64) { //если разница менее 1.6%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 8;  
+            pwmDiff = 2;  
         } else {
-            pwmDiff = 16;
+            pwmDiff = 2;
         }
      } else if (diffValue < voltageMeasured / 32) { //если разница менее 3.2%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 16;  
+            pwmDiff = 4;  
         } else {
-            pwmDiff = 32;
+            pwmDiff = 4;
         }
     } else if (diffValue < voltageMeasured / 16) { //если разница менее 6.2%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 32;  
+            pwmDiff = 8;  
         } else {
-            pwmDiff = 64;
+            pwmDiff = 8;
         }
-    } else if (!isLessThanSetPoint) { //если новое значение резко уменьшилось, то установить сразу
-        TElectrValue pwmNew = GetCalibratedPwmValue(voltageSetPoint); 
+    } /*else if (!isLessThanSetPoint) { //если новое значение резко уменьшилось, то установить сразу
+        TElectrValue pwmNew = 0;//GetCalibratedPwmValue(voltageSetPoint); 
         writePwm(pwmNew); 
         return TRUE;
-    } else {
+    }*/ else {
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 64;  
+            pwmDiff = 16;  
         } else {
-            pwmDiff = 128;
+            pwmDiff = 16;
         }            
     }
     if (!isLessThanSetPoint) { //если напряжение меньше SetPoint        
@@ -223,8 +224,8 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         pwmDiff *= -1;     
     }
     INT pwm = readPwm() + pwmDiff;
-    if (pwm > 320) {
-        pwm = 320;    
+    if (pwm > 3000) {
+        pwm = 3000;    
     } else if (pwm < 0) {
         pwm = 0;    
     }
@@ -251,7 +252,7 @@ BOOL RegulatingChannelA() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_A);
         }
     }  
-    return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
 }
 
 BOOL RegulatingChannelB() {
@@ -273,7 +274,7 @@ BOOL RegulatingChannelB() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
-    return !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
 }
 /*----------------- Measuring --------------<<<*/
 

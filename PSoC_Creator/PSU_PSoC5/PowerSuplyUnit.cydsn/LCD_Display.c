@@ -109,7 +109,7 @@ void Display_Init() {
     memset(&DisplayObj.Requests, 0, sizeof(TDisplayRequests));
     memset(&DisplayObj.SetPointValues, 0, sizeof(TDisplaySetPointValues));
     memset(&DisplayObj.MeasuredValues, 0, sizeof(TDisplayMeasuredValues));
-    
+   // TElectrValue ddd = CalcSetPointValueVoltageA(15);
     ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltageMeasure, 3, VoltageACoordX, VoltageACoordY, 
         89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE, CalcDisplayValueVoltageA);
     ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperageMeasure, 2, AmperageACoordX, AmperageACoordY, 

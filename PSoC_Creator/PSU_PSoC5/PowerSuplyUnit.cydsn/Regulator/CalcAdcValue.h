@@ -9,17 +9,19 @@
  *
  * ========================================
 */
-#ifndef __RegulatorTask_H__
-#define __RegulatorTask_H__
+#ifndef __CalcAdcValue_H__
+#define __CalcAdcValue_H__
 	
 #include <device.h>
 #include "Utils\MedianFilters.h"
 
 
 extern INT CalcDisplayValueVoltageA (TElectrValue value);
+extern TElectrValue CalcSetPointValueVoltageA (TElectrValue value);
 extern INT CalcDisplayValueAmperageA (TElectrValue value);
 extern INT CalcDisplayValueVoltageB (TElectrValue value);
+extern TElectrValue CalcSetPointValueVoltageB (TElectrValue value);
 extern INT CalcDisplayValueAmperageB (TElectrValue value);
 	
-#endif  /* __RegulatorTask_H__ */
+#endif  /* __CalcAdcValue_H__ */
 /* [] END OF FILE */
