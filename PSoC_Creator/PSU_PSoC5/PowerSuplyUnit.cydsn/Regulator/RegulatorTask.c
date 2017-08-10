@@ -34,7 +34,7 @@ void Regulator_Init() {
     PWM_VoltageA_WriteCompare(0);
     PWM_VoltageB_Start();
     PWM_VoltageB_WriteCompare(0);
-    ADC_AmperageA_Start();
+    ADC_Amperage_Start();
     PGA_AmperageA_Start();
     PGA_AmperageB_Start();
     VDAC8_OverAmperageA_Start();
@@ -50,16 +50,16 @@ void Regulator_Init() {
     Comp_OverVoltageB_Start();
     ADC_VoltageB_Start();
     ADC_VoltageB_SetPower(ADC_VoltageB__HIGHPOWER);
-    AMuxChanelB_Start();
-    AMuxChanelB_Next(); 
+    AMuxAmperage_Start();
+    AMuxAmperage_Next(); 
     memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
     ReadCalibratedValues();
 }
 
 void Regulator_Task() {	 
     ADC_VoltageA_StartConvert();
-    ADC_AmperageA_StartConvert();
     ADC_VoltageB_StartConvert();
+    ADC_Amperage_StartConvert();
 	while (TRUE) {
         RegulatingChannelA();
 		TaskSleep(&RegulatorFunction, SYSTICK_mS(1));	
@@ -131,25 +131,21 @@ BOOL MeasureVoltageA(PTElectrValue pValue) {
     *pValue = value;
     return TRUE;             
 }
-
-BOOL MeasureAmperageA(PTElectrValue pValue) {
-    if (ADC_AmperageA_IsEndConversion(ADC_AmperageA_RETURN_STATUS) == 0) {
-        return FALSE;    
-    }
-    INT value = ADC_AmperageA_GetResult16();
-    *pValue = value;
-    return TRUE; 
-}
   
+BOOL MeasureVoltageB(PTElectrValue pValue) {
+    if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
+        return FALSE;    
+    }       
+    INT value = ADC_VoltageB_GetResult16();
+    *pValue = value;
+    return TRUE;             
+}
 
-BOOL MeasureChannelB(PTElectrValue pValue, BYTE chNum) {
-    if (AMuxChanelB_GetChannel() == chNum) {
-        if (ADC_VoltageB_IsEndConversion(ADC_VoltageB_RETURN_STATUS) == 0) {
-            return FALSE;    
-        }
-        AMuxChanelB_Next();
-        INT value = ADC_VoltageB_GetResult16();
-        ADC_VoltageB_StartConvert();
+BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
+    if (AMuxAmperage_GetChannel() == chNum && ADC_Amperage_IsEndConversion(ADC_Amperage_RETURN_STATUS) != 0) {
+        INT value = ADC_Amperage_GetResult16();
+        AMuxAmperage_Next();
+        ADC_Amperage_StartConvert();
         *pValue = value; 
         return TRUE;               
     }
@@ -239,7 +235,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
 BOOL RegulatingChannelA() {
     TElectrValue voltageMeasured, amperageMeasured;
     BOOL bVoltageInConversion = !MeasureVoltageA(&voltageMeasured);
-    BOOL bAmperageInConversion = !MeasureAmperageA(&amperageMeasured);
+    BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 0);
 
     if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
@@ -260,8 +256,8 @@ BOOL RegulatingChannelA() {
 
 BOOL RegulatingChannelB() {
     TElectrValue voltageMeasured, amperageMeasured;
-    BOOL bVoltageInConversion = !MeasureChannelB(&voltageMeasured, 0);
-    BOOL bAmperageInConversion = !MeasureChannelB(&amperageMeasured, 1);
+    BOOL bVoltageInConversion = !MeasureVoltageB(&voltageMeasured);
+    BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 1);
 
     if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
@@ -286,8 +282,8 @@ void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState
     if (oldState == mwsStart && newState == mwsStandBy) {
         ADC_VoltageA_SetOffset(GetAdcOffsetVoltageA());
         ADC_VoltageA_SetScaledGain(GetAdcGainVoltageA());
-        ADC_AmperageA_SetOffset(GetAdcOffsetAmperageA());
-        ADC_AmperageA_SetGain(GetAdcGainAmperageA());
+        ADC_VoltageB_SetOffset(GetAdcOffsetVoltageB());
+        ADC_VoltageB_SetScaledGain(GetAdcGainVoltageB());
     }
 }
 

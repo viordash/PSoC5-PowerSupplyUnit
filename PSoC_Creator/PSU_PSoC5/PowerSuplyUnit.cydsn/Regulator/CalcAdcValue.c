@@ -26,7 +26,9 @@ INT CalcDisplayValueVoltageA (TElectrValue value) {
 }
 
 INT CalcDisplayValueAmperageA (TElectrValue value) {
-    INT val = ADC_AmperageA_CountsTo_uVolts(value);
+    ADC_Amperage_SetOffset(GetAdcOffsetAmperageA());
+    ADC_Amperage_SetGain(GetAdcGainAmperageA());
+    INT val = ADC_Amperage_CountsTo_uVolts(value);
     if (val < 0) {
         val = 0;    
     } else {        
@@ -37,8 +39,6 @@ INT CalcDisplayValueAmperageA (TElectrValue value) {
 }
 
 INT CalcDisplayValueVoltageB (TElectrValue value) {
-    ADC_VoltageB_SetOffset(GetAdcOffsetVoltageB());
-    ADC_VoltageB_SetScaledGain(GetAdcGainVoltageB());
     INT val = ADC_VoltageB_CountsTo_mVolts(value);
     if (val < 0) {
         val = 0;    
@@ -50,13 +50,13 @@ INT CalcDisplayValueVoltageB (TElectrValue value) {
 }
 
 INT CalcDisplayValueAmperageB (TElectrValue value) {
-    ADC_VoltageB_SetOffset(GetAdcOffsetAmperageB());
-    ADC_VoltageB_SetScaledGain(GetAdcGainAmperageB());
-    INT val = ADC_VoltageB_CountsTo_uVolts(value);
+    ADC_Amperage_SetOffset(GetAdcOffsetAmperageB());
+    ADC_Amperage_SetGain(GetAdcGainAmperageB());
+    INT val = ADC_Amperage_CountsTo_uVolts(value);
     if (val < 0) {
         val = 0;    
     } else {        
-        val *= 5;   
+        val *= 20;   
         val /= 1000;  
     }
     return val;
