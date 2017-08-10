@@ -37,6 +37,7 @@ typedef struct {
 extern void _LCD_Init(void);
 extern void _LCD_WaitReady();
 extern void _LCD_Enable(void);
+extern void _LCD_Backlight(BYTE bright);
 extern void _LCD_Sleep(void);
 extern void _LCD_Reset(void);
 extern void _LCD_Clear(void);

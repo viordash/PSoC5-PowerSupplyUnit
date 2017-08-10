@@ -93,6 +93,7 @@ void ChangeState(TMainWorkState newState){
         SaveToStorage();
     }
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
+    Display_WorkStateChanged(MainWorkObj.State, newState);
     MainWorkObj.State = newState; 
     if (MainWorkObj.State == mwsStandBy) {
         RequestToShowMessage("Stand By", tcNorm);    

@@ -38,6 +38,7 @@ extern void Display_Task();
 #define Display_Print  _LCD_Print        
 
 #define Display_Enable _LCD_Enable
+#define Display_Backlight _LCD_Backlight
 #define Display_Sleep _LCD_Sleep
 #define Display_ClearLine _LCD_ClearLine
 #define Display_DrawPixel _LCD_DrawPixel
@@ -170,6 +171,6 @@ extern void RequestToRepaintMousePresent();
 extern BOOL RequestToShowMessage(PCHAR message, TTextColor messageColor);
 extern BOOL RequestToClearMessage();
 extern BOOL Display_RequestToErrorOver(TErrorOver errorOver);
-
+extern void Display_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState);
 #endif  /* __LCD_DISPLAY_H__ */
 /* [] END OF FILE */

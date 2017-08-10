@@ -926,3 +926,15 @@ static BOOL state = FALSE;
     }
 }
 /*----------------- Show error for Over Voltage/Amperage --------------<<<*/
+
+void Display_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
+    if (newState == mwsStart) {
+        Display_Backlight(50);
+    } else if (newState == mwsStandBy) {
+        Display_Backlight(140);
+    } else if (newState == mwsWork) {
+        Display_Backlight(210);
+    } else if (newState == mwsErrGlb) {
+        Display_Backlight(255);
+    }
+}
