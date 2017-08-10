@@ -64,13 +64,9 @@ TTemperature CheckTemper(void) {
     TTemperature res = {TEMPER_INIT, TEMPER_INIT, FALSE};
 	res.Radiator = ReadTemper();
     
-	SHORT CPUTemperature;
-	cystatus st = DieTemp_Query(&CPUTemperature);
-	if (st == CYRET_SUCCESS) {
-        res.Cpu = (INT)CPUTemperature;
-    } else {
-        res.Cpu = TEMPER_ERR;
-    }
+	static SHORT CPUTemperature = TEMPER_ERR;
+	DieTemp_Query(&CPUTemperature);
+    res.Cpu = (INT)CPUTemperature;
 	DieTemp_Start();
 	if (res.Radiator >= 80) {
 		FanCtrl_WriteCompare(255);
@@ -89,9 +85,13 @@ TTemperature CheckTemper(void) {
         res.FanIsOn = TRUE;
 	} else if (MainWorkObj.State == mwsWork && res.Radiator >= 35) {
 		FanCtrl_WriteCompare(32);
+	} else if (res.Cpu >= 45) {
+		FanCtrl_WriteCompare(90);
+        res.FanIsOn = TRUE;
 	} else if (res.Cpu >= 40) {
-		FanCtrl_WriteCompare(128);
-        res.FanIsOn = TemperatureSensorIsNorm(res.Cpu);
+		FanCtrl_WriteCompare(40);
+	} else if (res.Cpu >= 37) {
+		FanCtrl_WriteCompare(10);
 	} else {
 		FanCtrl_WriteCompare(0);
         res.FanIsOn = FALSE;
