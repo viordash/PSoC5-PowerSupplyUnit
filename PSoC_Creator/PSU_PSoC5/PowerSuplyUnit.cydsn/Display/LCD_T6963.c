@@ -93,8 +93,8 @@ void T6963_Write(BYTE value, DataType dataType, BYTE statusMask) {
 }
 
 void _LCD_Init() {
-    O_LCD_BKL_Write(FALSE);
-
+    PWM_LcdBackLight_Start();
+    PWM_LcdBackLight_WriteCompare(0);
 	T6963_DefaultPinState(0xFF);
 	_LCD_Reset();
 	Display_TaskSleep(100);        //задержка в 100mS
@@ -236,12 +236,12 @@ void _LCD_FillRectangle(BYTE coordX1, BYTE coordY1, BYTE coordX2, BYTE coordY2, 
 }
 
 void _LCD_Enable(void) {
-    O_LCD_BKL_Write(TRUE);
+    PWM_LcdBackLight_WriteCompare(180);
 	T6963_Write(T6963_CMD__DSPL_MODE_GRPH, dtCommand, STATUS_BUSY);	//Text off, graphic on
 }
 
 void _LCD_Sleep(void) {
-    O_LCD_BKL_Write(FALSE);
+    PWM_LcdBackLight_WriteCompare(10);
 	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand, STATUS_BUSY);	//Text off, graphic off
 }
 
