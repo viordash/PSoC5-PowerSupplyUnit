@@ -16,15 +16,24 @@
 #include "Utils\MedianFilters.h"
 
 typedef struct { 
+    INT PwmValue;
+    INT MinDifferenceValue;
+    TElectrValue MaxRipple; 
+    BOOL PowerOn;
+} TRegulating, * PTRegulating;
+    
+typedef struct { 
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
+    TRegulating Regulating; 
 } TRegulatorVoltage, * PTRegulatorVoltage;
 
 typedef struct { 
     TElectrValue SetPoint;  
     TElectrValue CuttOff; 
     TElectrValue Measured; 
+    TRegulating Regulating; 
 } TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 

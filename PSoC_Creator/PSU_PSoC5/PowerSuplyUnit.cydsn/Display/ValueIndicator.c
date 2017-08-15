@@ -70,20 +70,29 @@ BOOL ValueIndicator_GetFocused(PTValueIndicator pValueIndicator) {
 }
 
 void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue value) {
+    TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     if (pValueIndicator->Mode == omVoltageMeasure) {
         INT val = pValueIndicator->CalcDisplayValueFunction(value);
         sprintf(pValueIndicator->TextMajor, "%2u", val / 100);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
         sprintf(pValueIndicator->TextMinor, "%02u", val % 100);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     } else if (pValueIndicator->Mode == omVoltageSetPoint) {
         sprintf(pValueIndicator->TextMajor, "%2u", value / 100);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
         sprintf(pValueIndicator->TextMinor, "%02u", value % 100);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     } else if (pValueIndicator->Mode == omAmperageMeasure) {        
         INT val = pValueIndicator->CalcDisplayValueFunction(value);
         sprintf(pValueIndicator->TextMajor, "%1u", val / 1000);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
         sprintf(pValueIndicator->TextMinor, "%03u", val % 1000);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     } else if (pValueIndicator->Mode == omAmperageSetPoint) {
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
         sprintf(pValueIndicator->TextMinor, "%03u", value % 1000);
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     } else if (pValueIndicator->Mode == omTemperature || pValueIndicator->Mode == omTemperatureCpu) {
         if (value == TEMPER_ERR) {
             sprintf(pValueIndicator->TextMajor, "--");
@@ -96,6 +105,7 @@ void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue valu
         } else {
             sprintf(pValueIndicator->TextMajor, "%2d", value);
         }
+        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     }   
 }
 

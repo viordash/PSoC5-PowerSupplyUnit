@@ -38,6 +38,11 @@
 #define Amperage_MAX 8 * 1000
 #define Amperage_MIN 5
 #define Amperage_Default 1000
+    
+#define Voltage_ADC_MAX 4096   
+#define Amperage_ADC_MAX 8192  
+#define PWM_MAX_PERIOD 3000
+#define Voltage_Ripple_In_ADC_Counts 30   
 
 #define GetAdcOffsetVoltageA() -15
 #define GetAdcGainVoltageA() (ADC_VoltageA_countsPer10Volt + 200)

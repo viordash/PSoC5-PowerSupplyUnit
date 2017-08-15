@@ -22,10 +22,6 @@ INT CalcDisplayValueVoltageA (TElectrValue value) {
         val *= 8;   
         val /= 10;  
     }
-    TElectrValue xx = CalcSetPointValueVoltageA(val);
-    if (xx ==1234) {
-        return -1;
-    }
     return val;
 }
 
@@ -39,8 +35,7 @@ TElectrValue CalcSetPointValueVoltageA (TElectrValue value) {
         adcCounts = 0;    
     }
 //      int  mVolts = (int16)( (( (int32)adcCounts * ADC_VoltageA_10MV_COUNTS ) + 
-//    ( (adcCounts > 0) ?  (ADC_VoltageA_countsPer10Volt / 2) : (-(ADC_VoltageA_countsPer10Volt / 2)) )) / ADC_VoltageA_countsPer10Volt);
-        
+//    ( (adcCounts > 0) ?  (ADC_VoltageA_countsPer10Volt / 2) : (-(ADC_VoltageA_countsPer10Volt / 2)) )) / ADC_VoltageA_countsPer10Volt);  
     return adcCounts;
 }
 
