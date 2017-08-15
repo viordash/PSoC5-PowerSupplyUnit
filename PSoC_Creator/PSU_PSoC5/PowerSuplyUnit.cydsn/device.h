@@ -162,6 +162,7 @@ typedef enum {
 	mwsInit = 0,
 	mwsStart,
 	mwsStandBy,
+	mwsWorkStarting,
 	mwsWork,
 	mwsErrGlb
 } TMainWorkState;

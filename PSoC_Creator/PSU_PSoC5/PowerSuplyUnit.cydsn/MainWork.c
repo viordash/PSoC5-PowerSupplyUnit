@@ -78,17 +78,26 @@ void MainWork_Task(){
                 
             }
         }
+        
+        if (MainWorkObj.State == mwsWorkStarting) {
+            if (GetElapsedPeriod(MainWorkObj.WorkStartingPeriod) >= SYSTICK_mS(50)) {   //delay for switch on output relay
+                ChangeState(mwsWork);   
+            }
+        }
+        
 		TaskSleep(&MainWorkFunction, SYSTICK_mS(50));	
 	}
 }
 
 void ChangeState(TMainWorkState newState){   
-    if (newState != mwsWork) {
-        RegulatorControl_Write(0x0A);        
-    } else {
+    if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
-        RegulatorControl_Write(0x15);    
-    }   
+        RegulatorControl_Write(0x15);  
+        MainWorkObj.WorkStartingPeriod = GetTickCount();
+    } else if (newState != mwsWork) {
+        RegulatorControl_Write(0x0A);        
+    } 
+    
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
         SaveToStorage();
     }
@@ -111,7 +120,7 @@ void ChangeOutputState() {
     if (MainWorkObj.State == mwsWork || MainWorkObj.State == mwsErrGlb) {
         ChangeState(mwsStandBy);    
     } else if (MainWorkObj.State == mwsStandBy) { 
-        ChangeState(mwsWork);    
+        ChangeState(mwsWorkStarting);    
     }
 }
 

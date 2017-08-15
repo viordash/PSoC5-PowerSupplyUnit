@@ -16,6 +16,7 @@
 		
 
 typedef struct {
+    DWORD WorkStartingPeriod;
     TMainWorkState State;
     TRiseRatePowerUp RiseRatePowerUp;
     TStabilizeMode StabilizeModeA;
