@@ -43,7 +43,6 @@ void Regulator_Init() {
     Comp_OverAmperageA_Start();
     VDAC8_OverAmperageB_Start();
     Comp_OverAmperageB_Start();
-    PGA_VoltageA_Start();
     ADC_VoltageA_SetPower(ADC_VoltageA__HIGHPOWER);
     ADC_VoltageA_Start();
     VDAC8_OverVoltageA_Start();
@@ -55,6 +54,7 @@ void Regulator_Init() {
     AMuxAmperage_Start();
     AMuxAmperage_Next(); 
     PGA_OverVoltageA_Start();
+    PGA_OverVoltageB_Start();
     memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
     ReadCalibratedValues();
 }
@@ -79,7 +79,7 @@ BYTE CalculateOverVoltageAVDACValue(TElectrValue value) {
 
 BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_ADC_MAX * 1000) / value;
-    dw = ((256 / 2) * 1000) / dw;
+    dw = (256 * 1000) / dw;
     return (BYTE)dw + 1;
 }
 
@@ -261,11 +261,14 @@ BOOL RegulatingChannelA() {
     BOOL bVoltageInConversion = !MeasureVoltageA(&voltageMeasured);
     BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 0);
 
-    if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured)) {
-        RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
-        Display_RequestToChangeVoltageA(voltageMeasured);
-        if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelA.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
-          //  ThrowErrorOver(ERROR_OVER_SW_VOLTAGE_A);
+    if (!bVoltageInConversion) {
+        voltageMeasured = voltageMeasured + ((RegulatorObj.ChanelA.Amperage.Measured - GetAdcOffsetAmperageA()) / 20); //TEMP
+        if (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured) {
+            RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
+            Display_RequestToChangeVoltageA(voltageMeasured);
+            if (MainWorkObj.State == mwsWork && RegulatorObj.ChanelA.Voltage.Measured >= RegulatorObj.ChanelA.Voltage.CuttOff) {
+              //  ThrowErrorOver(ERROR_OVER_SW_VOLTAGE_A);
+            }
         }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
@@ -297,7 +300,7 @@ BOOL RegulatingChannelB() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
-    return MainWorkObj.State == mwsWork ;//&& !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
 }
 /*----------------- Measuring --------------<<<*/
 
