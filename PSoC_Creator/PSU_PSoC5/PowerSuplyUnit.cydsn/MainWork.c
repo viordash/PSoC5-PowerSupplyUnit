@@ -381,16 +381,10 @@ void CheckRegulatorStatus() {
         return;    
     }   
     TErrorOver errorOver = ERROR_OVER_NONE;
-    if (status & 0x01) {        
-        errorOver |= ERROR_OVER_HW_VOLTAGE_A;
-    } 
-    if (status & 0x02) {
+    if (status & 0x01) {
         errorOver |= ERROR_OVER_HW_AMPERAGE_A;
     } 
-    if (status & 0x04) {
-        errorOver |= ERROR_OVER_HW_VOLTAGE_B;
-    } 
-    if (status & 0x08) {
+    if (status & 0x02) {
         errorOver |= ERROR_OVER_HW_AMPERAGE_B;
     } 
     ThrowErrorOver(errorOver);

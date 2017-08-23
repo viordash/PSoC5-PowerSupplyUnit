@@ -54,6 +54,7 @@ void Regulator_Init() {
     ADC_VoltageB_SetPower(ADC_VoltageB__HIGHPOWER);
     AMuxAmperage_Start();
     AMuxAmperage_Next(); 
+    PGA_OverVoltageA_Start();
     memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
     ReadCalibratedValues();
 }
@@ -70,10 +71,16 @@ void Regulator_Task() {
 	}
 }
 
-BYTE CalculateOverVoltageVDACValue(TElectrValue value) {
-    DWORD dw = (Voltage_MAX * 1000) / value;
-    dw = (255 * 1000) / dw;
-    return 255;// (BYTE)dw;
+BYTE CalculateOverVoltageAVDACValue(TElectrValue value) {
+    DWORD dw = (Voltage_ADC_MAX * 1000) / value;
+    dw = (256 * 1000) / dw;
+    return (BYTE)dw + 1;
+}
+
+BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
+    DWORD dw = (Voltage_ADC_MAX * 1000) / value;
+    dw = ((256 / 2) * 1000) / dw;
+    return (BYTE)dw + 1;
 }
 
 BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
@@ -86,14 +93,14 @@ BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     value = CalcSetPointValueVoltageA(value);
     RegulatorObj.ChanelA.Voltage.SetPoint = value;
-    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
+    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageAVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelA.Voltage.Regulating);
 }
 
 void Regulator_RequestToChangeCuttOffVoltageA(TElectrValue value) {
     value = CalcSetPointValueVoltageA(value);
     RegulatorObj.ChanelA.Voltage.CuttOff = value;
-    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageVDACValue(value));
+    VDAC8_OverVoltageA_SetValue(CalculateOverVoltageAVDACValue(value));
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
@@ -110,14 +117,14 @@ void Regulator_RequestToChangeCuttOffAmperageA(TElectrValue value) {
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
     value = CalcSetPointValueVoltageB(value);
     RegulatorObj.ChanelB.Voltage.SetPoint = value;
-    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
+    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageBVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelB.Voltage.Regulating);
 }
      
 void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
     value = CalcSetPointValueVoltageB(value);
     RegulatorObj.ChanelB.Voltage.CuttOff = value;
-    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageVDACValue(value));
+    VDAC8_OverVoltageB_SetValue(CalculateOverVoltageBVDACValue(value));
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
@@ -229,9 +236,6 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
                 pwmDiff = 80;
             }   
         }  
-        if (!isLessThanSetPoint) { //если новое значение резко уменьшилось
-            pwmDiff *= 4;
-        }
     }
     if (!isLessThanSetPoint) { //если напряжение меньше SetPoint        
     //если текущий ток еще замеряется, а предыдущее значение тока близко к максимуму, то pwmDiff установить на минимум. Чтобы не было скачка тока        
@@ -241,6 +245,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         }
         pwmDiff *= -1;     
     }
+    
     pwm += pwmDiff;
     if (pwm > PWM_MAX_PERIOD) {
         pwm = PWM_MAX_PERIOD;    
