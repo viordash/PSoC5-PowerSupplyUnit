@@ -28,7 +28,7 @@
 TFunction MainWorkFunction;
 TMainWork_Object MainWorkObj;
 void ChangeState(TMainWorkState newState);
-//BOOL PolarModeChanged(BOOL btnBipolarModePressed);
+BOOL PolarModeChanged(BOOL btnBipolarModePressed);
 void RefreshDisplay();
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
@@ -62,7 +62,7 @@ void MainWork_Task(){
         BYTE bt = Buttons_Read();
         if (prevButtons != bt) {
             prevButtons = bt;
-           // PolarModeChanged(bt & 0x08);
+            PolarModeChanged(bt & 0x08);
             RiseRatePowerUpChanged(bt & 0x04);    
             ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
           //  RefreshDisplay();
@@ -124,26 +124,20 @@ void ChangeOutputState() {
     }
 }
 
-///*>>>-------------- Polar Output mode -----------------*/
-//BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
-//    BOOL res = FALSE;
-//    if (MainWorkObj.PolarMode == pmUnipolar) {
-//        if (btnBipolarModePressed) {
-//            ChangePolarMode(pmBipolar);
-//            res = TRUE;
-//        }
-//    } else if (MainWorkObj.PolarMode == pmBipolar) {
-//        if (!btnBipolarModePressed) {
-//            ChangePolarMode(pmUnipolar);
-//            res = TRUE;
-//        }
-//    } else if (MainWorkObj.PolarMode == pmInit) {
-//        ChangePolarMode(btnBipolarModePressed ? pmBipolar : pmUnipolar);
-//        res = TRUE;
-//    }
-//    return res;
-//}
-//
+/*>>>-------------- Polar Output mode -----------------*/
+BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
+    BOOL res = FALSE;
+    O_Led_Polar_Write(btnBipolarModePressed != 0);
+    if (btnBipolarModePressed != 0) {        
+        PWM_VoltageA_Ex_Write(0xFF);    
+        PWM_VoltageB_Ex_Write(0x00);
+    } else {       
+        PWM_VoltageA_Ex_Write(0x00);    
+        PWM_VoltageB_Ex_Write(0xFF);
+    }
+    return res;
+}
+
 void RefreshDisplay() {
     RequestToChangeScreen(dsWork);
     Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
@@ -170,16 +164,6 @@ void RefreshDisplay() {
     RequestToRepaintTemperatures();
     RequestToRepaintMousePresent();
 }
-//
-//void ChangePolarMode(TPolarMode polarMode) {
-//    MainWorkObj.PolarMode = polarMode;
-//    RefreshDisplay(polarMode);
-//    if (polarMode == pmBipolar) {
-//        O_Led_Polar_Write(0);
-//    } else if (polarMode == pmUnipolar) {  
-//        O_Led_Polar_Write(0xFF);
-//    }
-//}
 /*----------------- Polar Output mode --------------<<<*/
 
 

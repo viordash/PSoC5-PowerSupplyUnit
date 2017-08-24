@@ -74,13 +74,13 @@ void Regulator_Task() {
 BYTE CalculateOverVoltageAVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 1;
+    return (BYTE)dw + 3;
 }
 
 BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 1;
+    return (BYTE)dw + 3;
 }
 
 BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
@@ -173,8 +173,11 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
-    TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.SetPoint;
-                
+    TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.SetPoint;          
+    
+//    writePwm(voltageSetPoint);     
+//    return TRUE;    
+    
     INT diffValue = voltageMeasured - voltageSetPoint;
     BOOL isLessThanSetPoint = diffValue < 0;
     if (isLessThanSetPoint) {
