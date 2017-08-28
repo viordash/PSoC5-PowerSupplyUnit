@@ -182,10 +182,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_MultiJogB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_NegCurChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_NegCurChB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_NegVoltChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_PosCurChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_PosCurChB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_PosVoltChA.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_VoltChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_VoltChB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_DB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\LCD_DB_OutEnable.lst</v>

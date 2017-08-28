@@ -265,7 +265,6 @@ BOOL RegulatingChannelA() {
     BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 0);
 
     if (!bVoltageInConversion) {
-        voltageMeasured = voltageMeasured + ((RegulatorObj.ChanelA.Amperage.Measured - GetAdcOffsetAmperageA()) / 20); //TEMP
         if (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured) {
             RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
             Display_RequestToChangeVoltageA(voltageMeasured);

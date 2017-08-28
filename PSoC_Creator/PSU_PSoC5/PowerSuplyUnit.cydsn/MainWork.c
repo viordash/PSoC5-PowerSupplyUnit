@@ -70,8 +70,7 @@ void MainWork_Task(){
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
             MultiJogChangingValue(bt);
-        }
-        
+        }        
         
         if (!MouseHandler()){
             if(!TemperatureControl()) {
@@ -201,8 +200,7 @@ void ButtonOkPressed (BYTE value) {
             if(!IsDisplayInChangingStabilizeMode()) {
                 SelectStabilizeMode();
             }
-        }
-        
+        }        
     }
 }
 /*----------------- Button Ok pressed --------------<<<*/
