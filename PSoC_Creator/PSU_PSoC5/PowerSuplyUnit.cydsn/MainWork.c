@@ -57,6 +57,7 @@ void MainWork_Task(){
     TaskSleep(&MainWorkFunction, SYSTICK_mS(2000));  //waiting for start screen  
     ChangeState(mwsStandBy);  
     RefreshDisplay();
+    ResetErrorState();
     BYTE prevButtons = Buttons_Read();  
 	while (TRUE) {
         CheckRegulatorStatus();
@@ -93,7 +94,11 @@ void MainWork_Task(){
 void ChangeState(TMainWorkState newState){   
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
-        RegulatorControl_Write(0x15);  
+        if (MainWorkObj.ProtectiveBehavior == pbRestrict) {
+            RegulatorControl_Write(0x15 | 0x020);
+        } else {
+            RegulatorControl_Write(0x15);  
+        }
         MainWorkObj.WorkStartingPeriod = GetTickCount();
     } else if (newState != mwsWork) {
         RegulatorControl_Write(0x0A);        
@@ -104,14 +109,16 @@ void ChangeState(TMainWorkState newState){
     }
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
     Display_WorkStateChanged(MainWorkObj.State, newState);
-    MainWorkObj.State = newState; 
-    if (MainWorkObj.State == mwsStandBy) {
-        RequestToShowMessage("Stand By", tcNorm);    
-    } else if (MainWorkObj.State == mwsWork) {
-        RequestToShowMessage("Power on", tcNorm);    
-    } else if (MainWorkObj.State == mwsErrGlb) {
-        RequestToShowMessage("!!!ERROR!!!", tcInvert);    
-    }    
+    if (MainWorkObj.State != newState) {
+        if (newState == mwsStandBy) {
+            RequestToShowMessage("Stand By", tcNorm);    
+        } else if (newState == mwsWork) {
+            RequestToShowMessage("Power on", tcNorm);    
+        } else if (newState == mwsErrGlb) {
+            RequestToShowMessage("!!!ERROR!!!", tcInvert);    
+        }  
+    }
+    MainWorkObj.State = newState;   
 }
 
 void SuppressProtection(BOOL withOn) {
@@ -331,20 +338,24 @@ void ThrowException(PCHAR message) {
 }
 
 void ResetErrorState() {
+    RegulatorStatus_Read();
     Display_RequestToErrorOver(ERROR_OVER_NONE);
     ChangeState(mwsStandBy);    
 }
 
 void ThrowErrorOver(TErrorOver errorOver) {
     Display_RequestToErrorOver(errorOver);
-    ChangeState(mwsErrGlb); 
+    if ((MainWorkObj.ProtectiveBehavior == pbCutOff) && ((errorOver & ERROR_OVER_HW_AMPERAGE_A) || (errorOver & ERROR_OVER_HW_AMPERAGE_B))) {
+        ChangeState(mwsErrGlb); 
+    }
 }
 /*----------------- Errors --------------<<<*/
 
 /*>>>-------------- Regulator state & status -----------------*/
 void CheckRegulatorStatus() {
+    static TErrorOver prevErrorOver = ERROR_OVER_NONE;
     BYTE status = RegulatorStatus_Read();
-    if (!status) {
+    if (!status && prevErrorOver == ERROR_OVER_NONE) {
         return;    
     }   
     TErrorOver errorOver = ERROR_OVER_NONE;
@@ -355,6 +366,7 @@ void CheckRegulatorStatus() {
         errorOver |= ERROR_OVER_HW_AMPERAGE_B;
     } 
     ThrowErrorOver(errorOver);
+    prevErrorOver = errorOver;
 }
 
 void ClearRegulatorStatusAndErrors() {

@@ -83,10 +83,16 @@ BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
     return (BYTE)dw + 3;
 }
 
-BYTE CalculateOverAmperageVDACValue(TElectrValue value) {
-    DWORD dw = (Amperage_MAX * 1000) / value;
-    dw = (255 * 1000) / dw;
-    return 255;// (BYTE)dw;    
+BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
+    DWORD dw = (Amperage_ADC_MAX * 1000) / value;
+    dw = (256 * 1000) / dw;
+    return (BYTE)dw + 2;    
+}
+
+BYTE CalculateOverAmperageBVDACValue(TElectrValue value) {
+    DWORD dw = (Amperage_ADC_MAX * 1000) / value;
+    dw = (256 * 1000) / dw;
+    return 255;//(BYTE)dw + 2;    
 }
 
 /*>>>-------------- Requests -----------------*/
@@ -105,13 +111,13 @@ void Regulator_RequestToChangeCuttOffVoltageA(TElectrValue value) {
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
     RegulatorObj.ChanelA.Amperage.SetPoint = value;
-    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageVDACValue(value));
+    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelA.Amperage.Regulating);
 }
 
 void Regulator_RequestToChangeCuttOffAmperageA(TElectrValue value) {
     RegulatorObj.ChanelA.Amperage.CuttOff = value;
-    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageVDACValue(value));
+    VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
 }
 
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
@@ -129,13 +135,13 @@ void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.SetPoint = value;
-    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageVDACValue(value));
+    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
 }
 
 void Regulator_RequestToChangeCuttOffAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.CuttOff = value;
-    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageVDACValue(value));
+    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value));
 }
 /*----------------- Requests --------------<<<*/
 
