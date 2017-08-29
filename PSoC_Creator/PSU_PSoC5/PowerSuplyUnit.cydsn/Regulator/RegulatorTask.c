@@ -169,7 +169,7 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion) {
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion, reg8 * pPWM_VoltageEx) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
@@ -187,6 +187,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         return FALSE;
     }
     INT pwm = readPwm();
+    
     SHORT pwmDiff = 0;
     if (diffValue < /*5*/Voltage_Ripple_In_ADC_Counts) { //если разница менее 0.25%        
         if (pRegulatorChannel->Voltage.Regulating.MinDifferenceValue > diffValue) {
@@ -249,12 +250,17 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         pwmDiff *= -1;     
     }
     
+    pwm <<= 1;
+    pwm += *pPWM_VoltageEx;
     pwm += pwmDiff;
-    if (pwm > PWM_MAX_PERIOD) {
-        pwm = PWM_MAX_PERIOD;    
+    
+    if (pwm > PWM_MAX_PERIOD * 2) {
+        pwm = PWM_MAX_PERIOD * 2;    
     } else if (pwm < 0) {
         pwm = 0;    
     }
+    *pPWM_VoltageEx = pwm & 0x01;
+    pwm >>= 1;
     writePwm(pwm);     
     return TRUE;    
 }
@@ -280,7 +286,8 @@ BOOL RegulatingChannelA() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_A);
         }
     }  
-    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, bAmperageInConversion);
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, 
+        bAmperageInConversion, PWM_VoltageA_Ex_Control_PTR);
 }
 
 BOOL RegulatingChannelB() {
@@ -302,7 +309,8 @@ BOOL RegulatingChannelB() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
-    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, bAmperageInConversion);
+    return MainWorkObj.State == mwsWork ;//&& !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, 
+       // bAmperageInConversion, PWM_VoltageB_Ex_Control_PTR);
 }
 /*----------------- Measuring --------------<<<*/
 

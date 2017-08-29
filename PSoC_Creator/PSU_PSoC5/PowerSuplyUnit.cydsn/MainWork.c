@@ -127,13 +127,13 @@ void ChangeOutputState() {
 BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
     BOOL res = FALSE;
     O_Led_Polar_Write(btnBipolarModePressed != 0);
-    if (btnBipolarModePressed != 0) {        
-        PWM_VoltageA_Ex_Write(0xFF);    
-        PWM_VoltageB_Ex_Write(0x00);
-    } else {       
-        PWM_VoltageA_Ex_Write(0x00);    
-        PWM_VoltageB_Ex_Write(0xFF);
-    }
+//    if (btnBipolarModePressed != 0) {        
+//        PWM_VoltageA_Ex_Write(0xFF);    
+//        PWM_VoltageB_Ex_Write(0x00);
+//    } else {       
+//        PWM_VoltageA_Ex_Write(0x00);    
+//        PWM_VoltageB_Ex_Write(0xFF);
+//    }
     return res;
 }
 
