@@ -833,6 +833,9 @@ BOOL ClearMessage() {
 
 /*>>>-------------- Show error for Over Voltage/Amperage -----------------*/
 BOOL Display_RequestToErrorOver(TErrorOver errorOver) {
+    if (DisplayObj.Properties.ErrorOver == errorOver) {
+        return FALSE;
+    }
     DisplayObj.Requests.ErrorOver = errorOver;
     DisplayObj.Requests.ErrorOverRequest = TRUE;
     return TRUE;
