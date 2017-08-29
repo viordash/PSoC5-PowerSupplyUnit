@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\MainWork\MainWork.h">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -40,12 +40,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
-<v>PSU_PSoC5</v>
-<v>PSU_PSoC5\PowerSuplyUnit</v>
-<v>PSU_PSoC5\PowerSuplyUnit\TopDesign</v>
-<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
@@ -90,6 +84,12 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\Calibrating.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\Calibrating.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Utils\Crc.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\Crc.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\MedianFilters.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Utils\MedianFilters.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -174,9 +174,9 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\font_5.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\font_6.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\GeneralUtils.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_BtnBipolarMode.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_BtnChangePolarity.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_BtnOk.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_BtnProtectiveBehavior.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_BtnRiseRatePowerUp.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_MultiJogA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_MultiJogB.lst</v>
@@ -213,7 +213,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_LCD_RES.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_LCD_WR.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_Led_Error.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_Led_Polar.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_Led_ProtectiveBehavior.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_Led_RiseRatePowerUp.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_OnChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\O_OnChB.lst</v>
@@ -328,7 +328,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\font_5.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\font_6.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\GeneralUtils.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_BtnBipolarMode.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_BtnChangePolarity.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_BtnOk.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_BtnRiseRatePowerUp.lst</v>
@@ -367,7 +366,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_LCD_RES.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_LCD_WR.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_Error.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_Polar.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_RiseRatePowerUp.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_OnChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_OnChB.lst</v>
@@ -596,6 +594,9 @@
 <name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA_Ex.h" />
 <name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\cytypes.h" />
 <name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageB.c" />
+<name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
+<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\O_Led_ProtectiveBehavior.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -603,7 +604,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 741" SelectedTabbedMdiWindow="878128d4-42fa-4347-896e-1a8f21f16282"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="20aace29-8ebd-4702-ae6e-2af0e2108221" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="54930632-59f9-447e-8db7-609f393cfa26" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" Guid="6652a323-603b-463f-86e5-b2d412d71af1" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" Guid="0e340522-09b5-4214-b4d4-26e1d1f362a0" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA_Ex.c" Guid="4ad5e279-b592-45fa-b1fb-354bc8f42c9f" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA_Ex.h" Guid="d3938ea7-e0bd-45ff-baa0-206fbc284d6a" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\cytypes.h" Guid="60988ea1-4279-4086-a7fb-9235bdac8f7d" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageB.c" Guid="da0a75d6-1b9e-4a37-8eeb-9d4384bd46b7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1320, 741" SelectedTabbedMdiWindow="54930632-59f9-447e-8db7-609f393cfa26"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="20aace29-8ebd-4702-ae6e-2af0e2108221" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="54930632-59f9-447e-8db7-609f393cfa26" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" Guid="6652a323-603b-463f-86e5-b2d412d71af1" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" Guid="0e340522-09b5-4214-b4d4-26e1d1f362a0" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA_Ex.c" Guid="4ad5e279-b592-45fa-b1fb-354bc8f42c9f" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA_Ex.h" Guid="d3938ea7-e0bd-45ff-baa0-206fbc284d6a" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\cytypes.h" Guid="60988ea1-4279-4086-a7fb-9235bdac8f7d" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageB.c" Guid="da0a75d6-1b9e-4a37-8eeb-9d4384bd46b7" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="8fbffe21-c057-4a4b-b153-722fda8c5c8c" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="46556f27-4d2b-4fec-ad60-6281a61ddee6" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\O_Led_ProtectiveBehavior.c" Guid="50799b89-dbe1-4dfb-bd38-149f31d7a52c" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Debug" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

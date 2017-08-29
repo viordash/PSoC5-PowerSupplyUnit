@@ -28,7 +28,8 @@
 TFunction MainWorkFunction;
 TMainWork_Object MainWorkObj;
 void ChangeState(TMainWorkState newState);
-BOOL PolarModeChanged(BOOL btnBipolarModePressed);
+void ProtectiveBehaviorChanged(BOOL btnPressed);
+BOOL ProtectiveBehaviorIndicator();
 void RefreshDisplay();
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
@@ -62,10 +63,9 @@ void MainWork_Task(){
         BYTE bt = Buttons_Read();
         if (prevButtons != bt) {
             prevButtons = bt;
-            PolarModeChanged(bt & 0x08);
+            ProtectiveBehaviorChanged(bt & 0x08);
             RiseRatePowerUpChanged(bt & 0x04);    
             ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
-          //  RefreshDisplay();
         } 
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
@@ -73,8 +73,10 @@ void MainWork_Task(){
         }        
         
         if (!MouseHandler()){
-            if(!TemperatureControl()) {
-                
+            if(!TemperatureControl()) {                
+                if(!ProtectiveBehaviorIndicator()) {
+                    
+                }
             }
         }
         
@@ -123,47 +125,30 @@ void ChangeOutputState() {
     }
 }
 
-/*>>>-------------- Polar Output mode -----------------*/
-BOOL PolarModeChanged(BOOL btnBipolarModePressed) {
-    BOOL res = FALSE;
-    O_Led_Polar_Write(btnBipolarModePressed != 0);
-//    if (btnBipolarModePressed != 0) {        
-//        PWM_VoltageA_Ex_Write(0xFF);    
-//        PWM_VoltageB_Ex_Write(0x00);
-//    } else {       
-//        PWM_VoltageA_Ex_Write(0x00);    
-//        PWM_VoltageB_Ex_Write(0xFF);
-//    }
-    return res;
+/*>>>-------------- Protective Behavior-----------------*/
+void ProtectiveBehaviorChanged(BOOL btnPressed) {   
+    if (btnPressed == 0) {
+        MainWorkObj.ProtectiveBehavior = pbRestrict;
+        O_Led_ProtectiveBehavior_Write(TRUE);
+    } else {
+        MainWorkObj.ProtectiveBehavior = pbCutOff;
+        O_Led_ProtectiveBehavior_Write(FALSE);
+    }
 }
 
-void RefreshDisplay() {
-    RequestToChangeScreen(dsWork);
-    Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
-    Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
-    Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
-    Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
-    Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
-    Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
-    Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
-    Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
-    
-    RequestToFocusing(svMeasuredVoltageA);  
-    if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
-        RequestToFocusingStabilize(ssmAmperageA); 
-    } else {
-        RequestToFocusingStabilize(ssmVoltageA);
+BOOL ProtectiveBehaviorIndicator() {
+	static DWORD protectiveBehaviorFlashTick = 0;
+    if (MainWorkObj.ProtectiveBehavior != pbRestrict) {
+        return FALSE;    
     }
-    if (MainWorkObj.StabilizeModeB == smAmperageStab) { 
-        RequestToFocusingStabilize(ssmAmperageB); 
-    } else {
-        RequestToFocusingStabilize(ssmVoltageB);
-    }
-
-    RequestToRepaintTemperatures();
-    RequestToRepaintMousePresent();
+	if (GetElapsedPeriod(protectiveBehaviorFlashTick) < SYSTICK_mS(500)) {   
+        return FALSE;
+    }    
+    protectiveBehaviorFlashTick = GetTickCount(); 
+    O_Led_ProtectiveBehavior_Write(!O_Led_ProtectiveBehavior_Read());
+    return TRUE;
 }
-/*----------------- Polar Output mode --------------<<<*/
+/*----------------- Protective Behavior --------------<<<*/
 
 
 /*>>>-------------- Rise rate of voltage at power-up -----------------*/
@@ -378,6 +363,31 @@ void ClearRegulatorStatusAndErrors() {
 
 /*----------------- Regulator state & status --------------<<<*/
 
+void RefreshDisplay() {
+    RequestToChangeScreen(dsWork);
+    Display_RequestToChangeValue(svMeasuredVoltageA, MainWorkObj.SetPointVoltageA);
+    Display_RequestToChangeValue(svSetPointVoltageA, MainWorkObj.SetPointVoltageA);
+    Display_RequestToChangeValue(svMeasuredAmperageA, MainWorkObj.SetPointAmperageA);
+    Display_RequestToChangeValue(svSetPointAmperageA, MainWorkObj.SetPointAmperageA);
+    Display_RequestToChangeValue(svMeasuredVoltageB, MainWorkObj.SetPointVoltageB);
+    Display_RequestToChangeValue(svSetPointVoltageB, MainWorkObj.SetPointVoltageB);
+    Display_RequestToChangeValue(svMeasuredAmperageB, MainWorkObj.SetPointAmperageB);
+    Display_RequestToChangeValue(svSetPointAmperageB, MainWorkObj.SetPointAmperageB);
+    
+    RequestToFocusing(svMeasuredVoltageA);  
+    if (MainWorkObj.StabilizeModeA == smAmperageStab) { 
+        RequestToFocusingStabilize(ssmAmperageA); 
+    } else {
+        RequestToFocusingStabilize(ssmVoltageA);
+    }
+    if (MainWorkObj.StabilizeModeB == smAmperageStab) { 
+        RequestToFocusingStabilize(ssmAmperageB); 
+    } else {
+        RequestToFocusingStabilize(ssmVoltageB);
+    }
 
+    RequestToRepaintTemperatures();
+    RequestToRepaintMousePresent();
+}
 
 /* [] END OF FILE */

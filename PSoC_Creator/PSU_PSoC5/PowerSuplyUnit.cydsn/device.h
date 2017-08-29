@@ -167,6 +167,11 @@ typedef enum {
 	mwsErrGlb
 } TMainWorkState;
 
+typedef enum {
+	pbCutOff = 0,
+	pbRestrict
+} TProtectiveBehavior;
+
 typedef INT (*TCalcDisplayValueFunction) (TElectrValue value);	
 #endif  /* __DEVICE_H__ */
 /*[]*/

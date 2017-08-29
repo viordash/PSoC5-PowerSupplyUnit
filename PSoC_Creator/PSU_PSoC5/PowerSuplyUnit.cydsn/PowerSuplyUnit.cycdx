@@ -163,7 +163,7 @@
   <block name="I_MultiJogB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_BtnBipolarMode" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_BtnProtectiveBehavior" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SW_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_Led_RiseRatePowerUp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -260,7 +260,7 @@
   <block name="MouseClk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="P1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_BtnChangePolarity" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_Led_Polar" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_Led_ProtectiveBehavior" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MouseData" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
