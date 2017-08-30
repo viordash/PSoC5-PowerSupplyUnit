@@ -38,11 +38,8 @@ void Regulator_Init() {
     PWM_VoltageB_WriteCompare(0);
     ADC_Amperage_Start();
     PGA_AmperageA_Start();
-    PGA_AmperageB_Start();
     VDAC8_OverAmperageA_Start();
     Comp_OverAmperageA_Start();
-    VDAC8_OverAmperageB_Start();
-    Comp_OverAmperageB_Start();
     ADC_VoltageA_SetPower(ADC_VoltageA__HIGHPOWER);
     ADC_VoltageA_Start();
     VDAC8_OverVoltageA_Start();
@@ -89,12 +86,6 @@ BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
     return (BYTE)dw + 2;    
 }
 
-BYTE CalculateOverAmperageBVDACValue(TElectrValue value) {
-    DWORD dw = (Amperage_ADC_MAX * 1000) / value;
-    dw = (256 * 1000) / dw;
-    return 255;//(BYTE)dw + 2;    
-}
-
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     value = CalcSetPointValueVoltageA(value);
@@ -135,13 +126,11 @@ void Regulator_RequestToChangeCuttOffVoltageB(TElectrValue value) {
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.SetPoint = value;
-    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
 }
 
 void Regulator_RequestToChangeCuttOffAmperageB(TElectrValue value) {
     RegulatorObj.ChanelB.Amperage.CuttOff = value;
-    VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value));
 }
 /*----------------- Requests --------------<<<*/
 
@@ -315,8 +304,8 @@ BOOL RegulatingChannelB() {
           //  ThrowErrorOver(ERROR_OVER_SW_AMPERAGE_B);
         }
     }  
-    return MainWorkObj.State == mwsWork ;//&& !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, 
-       // bAmperageInConversion, PWM_VoltageB_Ex_Control_PTR);
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, 
+        bAmperageInConversion, PWM_VoltageB_Ex_Control_PTR);
 }
 /*----------------- Measuring --------------<<<*/
 

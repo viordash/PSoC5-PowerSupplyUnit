@@ -42,7 +42,7 @@ void ClearRegulatorStatusAndErrors();
 
 void MainWork_Init() {
     EEPROMStorage_Start();
-    RegulatorControl_Write(0x0A);
+    RegulatorControl_Write(0x02);
     MainWorkObj.State = mwsInit;
     MainWorkObj.ChangedValue = cvVoltageA;  
     MainWorkObj.StabilizeModeA = smVoltageStab;  
@@ -95,13 +95,13 @@ void ChangeState(TMainWorkState newState){
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
         if (MainWorkObj.ProtectiveBehavior == pbRestrict) {
-            RegulatorControl_Write(0x15 | 0x020);
+            RegulatorControl_Write(0x0D | 0x10);
         } else {
-            RegulatorControl_Write(0x15);  
+            RegulatorControl_Write(0x0D);  
         }
         MainWorkObj.WorkStartingPeriod = GetTickCount();
     } else if (newState != mwsWork) {
-        RegulatorControl_Write(0x0A);        
+        RegulatorControl_Write(0x02);        
     } 
     
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
@@ -361,9 +361,6 @@ void CheckRegulatorStatus() {
     TErrorOver errorOver = ERROR_OVER_NONE;
     if (status & 0x01) {
         errorOver |= ERROR_OVER_HW_AMPERAGE_A;
-    } 
-    if (status & 0x02) {
-        errorOver |= ERROR_OVER_HW_AMPERAGE_B;
     } 
     ThrowErrorOver(errorOver);
     prevErrorOver = errorOver;
