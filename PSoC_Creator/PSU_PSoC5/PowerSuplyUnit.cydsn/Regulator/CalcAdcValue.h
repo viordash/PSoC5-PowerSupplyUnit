@@ -22,6 +22,7 @@ extern INT CalcDisplayValueAmperageA (TElectrValue value);
 extern INT CalcDisplayValueVoltageB (TElectrValue value);
 extern TElectrValue CalcSetPointValueVoltageB (TElectrValue value);
 extern INT CalcDisplayValueAmperageB (TElectrValue value);
+extern TElectrValue CalcSetPointValueAmperage (TElectrValue value);
 	
 #endif  /* __CalcAdcValue_H__ */
 /* [] END OF FILE */

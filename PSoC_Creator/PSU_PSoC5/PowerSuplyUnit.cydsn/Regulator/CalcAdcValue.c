@@ -88,4 +88,21 @@ INT CalcDisplayValueAmperageB (TElectrValue value) {
     return val;
 }
 
+TElectrValue CalcSetPointValueAmperage (TElectrValue value) {   
+    int32 coefA;
+    int32 coefB;  
+    INT val = value * 1000;
+    val /= 20;    
+    /* ADC_Amperage__BITS_14 */ 
+    coefA = ADC_Amperage_1UV_COUNTS / ADC_Amperage_DIVISOR_8;
+    coefB = ADC_Amperage_DIVISOR_8;    
+    coefB = ADC_Amperage_CountsPerVolt / coefB;
+   // uVolts = ((coefA * adcCounts) / coefB) - ((coefA * ADC_Amperage_Offset) / coefB);    
+    TElectrValue adcCounts = ((val + ((coefA * ADC_Amperage_Offset) / coefB)) * coefB) / coefA;    
+    if (adcCounts < 0) {
+        adcCounts = 0;    
+    }    
+    return adcCounts;
+}
+
 /* [] END OF FILE */

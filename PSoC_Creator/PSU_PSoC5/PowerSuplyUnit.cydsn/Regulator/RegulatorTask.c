@@ -95,6 +95,7 @@ void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
+    value = CalcSetPointValueAmperage(value);
     RegulatorObj.ChanelA.Amperage.SetPoint = value;
     VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelA.Amperage.Regulating);
@@ -108,6 +109,7 @@ void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
+    value = CalcSetPointValueAmperage(value);
     RegulatorObj.ChanelB.Amperage.SetPoint = value;
     InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
 }
@@ -143,7 +145,7 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, BOOL bAmperageInConversion, reg8 * pPWM_VoltageEx) {
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
@@ -152,17 +154,29 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
 //    writePwm(voltageSetPoint);     
 //    return TRUE;    
     
-    INT diffValue = voltageMeasured - voltageSetPoint;
-    BOOL isLessThanSetPoint = diffValue < 0;
-    if (isLessThanSetPoint) {
-        diffValue *= -1;
-    }
-    if (diffValue < pRegulatorChannel->Voltage.Regulating.MaxRipple) { 
-        return FALSE;
-    }
-    INT pwm = readPwm();
-    
     SHORT pwmDiff = 0;
+    BOOL isLessThanSetPoint;
+    INT diffValue;
+    //если измеренный ток более SetPoint, то регулировать по току (уменьшать напряжение на выходе)
+    INT diffAmperageValue = amperageMeasured - amperageSetPoint;
+    if (diffAmperageValue < 0) { //если меньше чем SetPoint, то регулировать по напряжению
+        diffValue = voltageMeasured - voltageSetPoint;    
+        isLessThanSetPoint = diffValue < 0;
+        if (isLessThanSetPoint) {
+            diffValue *= -1;
+        }
+        if (diffValue < pRegulatorChannel->Voltage.Regulating.MaxRipple) { 
+            return FALSE;
+        }
+    } else {
+        diffValue = diffAmperageValue;
+        InitRegulating(&(pRegulatorChannel->Voltage.Regulating));
+        isLessThanSetPoint = FALSE;
+        pwmDiff = 1;
+    }    
+    
+    INT pwm = readPwm();    
+    
     if (diffValue < /*5*/Voltage_Ripple_In_ADC_Counts) { //если разница менее 0.25%        
         if (pRegulatorChannel->Voltage.Regulating.MinDifferenceValue > diffValue) {
             pRegulatorChannel->Voltage.Regulating.MinDifferenceValue = diffValue;    
@@ -215,12 +229,12 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
             }   
         }  
     }
-    if (!isLessThanSetPoint) { //если напряжение меньше SetPoint        
+    if (isLessThanSetPoint) { //если напряжение меньше SetPoint        
     //если текущий ток еще замеряется, а предыдущее значение тока близко к максимуму, то pwmDiff установить на минимум. Чтобы не было скачка тока        
-        INT amperageDiffValue = amperageSetPoint - amperageMeasured;
-        if (bAmperageInConversion && (amperageDiffValue < amperageSetPoint / 5)) {  //если Measured >= 80%
+        if (diffAmperageValue > amperageSetPoint / -5) {  //если Measured >= 80%
             pwmDiff = 1;    
         }
+    } else {
         pwmDiff *= -1;     
     }
     
@@ -261,7 +275,7 @@ BOOL RegulatingChannelA() {
         }
     }  
     return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, 
-        bAmperageInConversion, PWM_VoltageA_Ex_Control_PTR);
+        PWM_VoltageA_Ex_Control_PTR); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -284,7 +298,7 @@ BOOL RegulatingChannelB() {
         }
     }  
     return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, 
-        bAmperageInConversion, PWM_VoltageB_Ex_Control_PTR);
+        PWM_VoltageB_Ex_Control_PTR); //*/
 }
 /*----------------- Measuring --------------<<<*/
 
