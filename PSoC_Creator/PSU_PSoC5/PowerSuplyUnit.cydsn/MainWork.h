@@ -42,7 +42,7 @@ extern void MouseState(BOOL present);
 extern void MouseChangingValue (INT value);
 extern void ResetErrorState();
 extern void ThrowException(PCHAR message);
-extern void ThrowErrorOver(TErrorOver errorOver);
+extern void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver);
 	
 #endif  /* __MAINWORK_H__ */
 /* [] END OF FILE */

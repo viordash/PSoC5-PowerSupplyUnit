@@ -319,9 +319,18 @@ void ResetErrorState() {
     ChangeState(mwsStandBy);    
 }
 
-void ThrowErrorOver(TErrorOver errorOver) {
-    Display_RequestToErrorOver(errorOver);
-    if ((MainWorkObj.ProtectiveBehavior == pbCutOff) && ((errorOver & ERROR_OVER_HW_AMPERAGE_A) || (errorOver & ERROR_OVER_HW_AMPERAGE_B))) {
+void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
+    static TErrorOver prevErrorOver = ERROR_OVER_NONE;
+    prevErrorOver |= (setErrorOver & ~ERROR_OVER_URGENT_OFF);
+    prevErrorOver &= ~resetErrorOver;
+    
+    Display_RequestToErrorOver(prevErrorOver);
+    if ((MainWorkObj.ProtectiveBehavior == pbCutOff || setErrorOver & ERROR_OVER_URGENT_OFF) 
+    && ((prevErrorOver & ERROR_OVER_HW_AMPERAGE_A) 
+    || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_A) 
+    || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_B)
+    || (prevErrorOver & ERROR_OVER_SW_AMPERAGE_A) 
+    || (prevErrorOver & ERROR_OVER_SW_AMPERAGE_B))) {
         ChangeState(mwsErrGlb); 
     }
 }
@@ -329,17 +338,17 @@ void ThrowErrorOver(TErrorOver errorOver) {
 
 /*>>>-------------- Regulator state & status -----------------*/
 void CheckRegulatorStatus() {
-    static TErrorOver prevErrorOver = ERROR_OVER_NONE;
+    static BYTE prevStatus = 0;
     BYTE status = RegulatorStatus_Read();
-    if (!status && prevErrorOver == ERROR_OVER_NONE) {
+    if (status == prevStatus) {
         return;    
     }   
-    TErrorOver errorOver = ERROR_OVER_NONE;
+    prevStatus = status;
     if (status & 0x01) {
-        errorOver |= ERROR_OVER_HW_AMPERAGE_A;
-    } 
-    ThrowErrorOver(errorOver);
-    prevErrorOver = errorOver;
+        ThrowErrorOver(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
+    } else {
+        ThrowErrorOver(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
+    }
 }
 
 void ClearRegulatorStatusAndErrors() {

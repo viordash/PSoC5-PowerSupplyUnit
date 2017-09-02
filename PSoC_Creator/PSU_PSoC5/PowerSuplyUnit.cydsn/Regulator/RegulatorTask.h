@@ -24,19 +24,15 @@ typedef struct {
     
 typedef struct { 
     TElectrValue SetPoint;  
+    TElectrValue ImmediateCuttOff; 
+    TElectrValue Protect; 
     TElectrValue Measured; 
     TRegulating Regulating; 
-} TRegulatorVoltage, * PTRegulatorVoltage;
+} TRegulatorValue, * PTRegulatorValue;
 
 typedef struct { 
-    TElectrValue SetPoint;  
-    TElectrValue Measured; 
-    TRegulating Regulating; 
-} TRegulatorAmperage, * PTRegulatorAmperage;
-
-typedef struct { 
-    TRegulatorVoltage Voltage; 
-    TRegulatorAmperage Amperage; 
+    TRegulatorValue Voltage; 
+    TRegulatorValue Amperage; 
 } TRegulatorChannel, * PTRegulatorChannel;
 
 typedef struct {
