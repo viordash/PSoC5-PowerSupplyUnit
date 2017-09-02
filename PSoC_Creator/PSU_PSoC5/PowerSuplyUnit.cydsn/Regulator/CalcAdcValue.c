@@ -98,7 +98,7 @@ TElectrValue CalcSetPointValueAmperage (TElectrValue value) {
     coefB = ADC_Amperage_DIVISOR_8;    
     coefB = ADC_Amperage_CountsPerVolt / coefB;
    // uVolts = ((coefA * adcCounts) / coefB) - ((coefA * ADC_Amperage_Offset) / coefB);    
-    TElectrValue adcCounts = ((val + ((coefA * ADC_Amperage_Offset) / coefB)) * coefB) / coefA;    
+    TElectrValue adcCounts = ((coefB * val) / coefA) + ADC_Amperage_Offset;    
     if (adcCounts < 0) {
         adcCounts = 0;    
     }    
