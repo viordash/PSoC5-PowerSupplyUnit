@@ -99,7 +99,7 @@ void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
     value = CalcSetPointValueAmperage(value);
     RegulatorObj.ChanelA.Amperage.SetPoint = value;
-    RegulatorObj.ChanelA.Amperage.Protect = value + CalcSetPointValueAmperage(100) /*min 100 mA*/;
+    RegulatorObj.ChanelA.Amperage.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
     RegulatorObj.ChanelA.Amperage.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
     VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelA.Amperage.Regulating);
@@ -117,7 +117,7 @@ void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     value = CalcSetPointValueAmperage(value);
     RegulatorObj.ChanelB.Amperage.SetPoint = value;
-    RegulatorObj.ChanelB.Amperage.Protect = value + CalcSetPointValueAmperage(100) /*min 100 mA*/;
+    RegulatorObj.ChanelB.Amperage.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
     RegulatorObj.ChanelB.Amperage.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
     InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
 }
