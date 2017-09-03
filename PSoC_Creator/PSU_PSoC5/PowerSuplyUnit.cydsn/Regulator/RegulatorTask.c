@@ -83,7 +83,8 @@ BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
 BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
     DWORD dw = (Amperage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 20;    
+    dw = (dw * 1250) / 1000;
+    return (BYTE)dw + 5;    
 }
 
 /*>>>-------------- Requests -----------------*/
