@@ -37,12 +37,13 @@ void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
 void UpdateAllSetPoints();
-void CheckRegulatorStatus();
+BOOL CheckRegulatorStatusCore(BYTE status);
+BOOL CheckRegulatorStatus();
 void ClearRegulatorStatusAndErrors();
 
 void MainWork_Init() {
     EEPROMStorage_Start();
-    RegulatorControl_Write(0x02);
+    RegulatorControl_Write(0x0A);
     MainWorkObj.State = mwsInit;
     MainWorkObj.ChangedValue = cvVoltageA;  
     MainWorkObj.StabilizeModeA = smVoltageStab;  
@@ -95,13 +96,13 @@ void ChangeState(TMainWorkState newState){
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
         if (MainWorkObj.ProtectiveBehavior == pbRestrict) {
-            RegulatorControl_Write(0x0D | 0x10);
+            RegulatorControl_Write(0x15 | 0x20);
         } else {
-            RegulatorControl_Write(0x0D);  
+            RegulatorControl_Write(0x15);  
         }
         MainWorkObj.WorkStartingPeriod = GetTickCount();
     } else if (newState != mwsWork) {
-        RegulatorControl_Write(0x02);        
+        RegulatorControl_Write(0x0A);        
     } 
     
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
@@ -319,7 +320,7 @@ void ResetErrorState() {
     ChangeState(mwsStandBy);    
 }
 
-void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
+void ThrowErrorOverCore(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     static TErrorOver prevErrorOver = ERROR_OVER_NONE;
     prevErrorOver |= (setErrorOver & ~ERROR_OVER_URGENT_OFF);
     prevErrorOver &= ~resetErrorOver;
@@ -334,21 +335,32 @@ void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
         ChangeState(mwsErrGlb); 
     }
 }
+
+void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
+    if (!CheckRegulatorStatusCore(RegulatorStatus_Read())) {//если есть HW ошибка то отображать только ее 
+        ThrowErrorOverCore(setErrorOver, resetErrorOver);
+    }
+}
 /*----------------- Errors --------------<<<*/
 
 /*>>>-------------- Regulator state & status -----------------*/
-void CheckRegulatorStatus() {
+BOOL CheckRegulatorStatusCore(BYTE status) {
+    if (status & 0x01) {
+        ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
+        return TRUE; 
+    } else {
+        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
+        return FALSE; 
+    }
+}
+BOOL CheckRegulatorStatus() {
     static BYTE prevStatus = 0;
     BYTE status = RegulatorStatus_Read();
     if (status == prevStatus) {
-        return;    
+        return FALSE;    
     }   
     prevStatus = status;
-    if (status & 0x01) {
-        ThrowErrorOver(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
-    } else {
-        ThrowErrorOver(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
-    }
+    return CheckRegulatorStatusCore(status);
 }
 
 void ClearRegulatorStatusAndErrors() {

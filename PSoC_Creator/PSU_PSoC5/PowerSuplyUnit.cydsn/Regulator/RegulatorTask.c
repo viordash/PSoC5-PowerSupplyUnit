@@ -83,7 +83,7 @@ BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
 BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
     DWORD dw = (Amperage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 2;    
+    return (BYTE)dw + 20;    
 }
 
 /*>>>-------------- Requests -----------------*/
@@ -153,7 +153,7 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx) {
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx, BOOL bAmperageStabilize) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
@@ -165,8 +165,14 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     SHORT pwmDiff = 0;
     BOOL isLessThanSetPoint;
     INT diffValue;
+    INT diffAmperageValue;
+    if (bAmperageStabilize) {
     //если измеренный ток более SetPoint, то регулировать по току (уменьшать напряжение на выходе)
-    INT diffAmperageValue = amperageMeasured - amperageSetPoint;
+        diffAmperageValue = amperageMeasured - amperageSetPoint;
+    } else {
+        diffAmperageValue = -1;
+    }
+    
     if (diffAmperageValue < 0) { //если меньше чем SetPoint, то регулировать по напряжению
         diffValue = voltageMeasured - voltageSetPoint;    
         isLessThanSetPoint = diffValue < 0;
@@ -295,10 +301,12 @@ BOOL RegulatingChannelA() {
         RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
         Display_RequestToChangeAmperageA(amperageMeasured);
         static BOOL errorOverAmperageA = FALSE;
-        CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage, ERROR_OVER_SW_AMPERAGE_A, &errorOverAmperageA);
+     //   CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage, ERROR_OVER_SW_AMPERAGE_A, &errorOverAmperageA);
     }  
-    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, 
-        PWM_VoltageA_Ex_Control_PTR); //*/
+    return MainWorkObj.State == mwsWork 
+    && !bVoltageInConversion 
+    && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR,
+        MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -318,8 +326,10 @@ BOOL RegulatingChannelB() {
         static BOOL errorOverAmperageB = FALSE;
         CheckOverValue(amperageMeasured, &RegulatorObj.ChanelB.Amperage, ERROR_OVER_SW_AMPERAGE_B, &errorOverAmperageB);
     }  
-    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, 
-        PWM_VoltageB_Ex_Control_PTR); //*/
+    return MainWorkObj.State == mwsWork 
+        && !bVoltageInConversion 
+        && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR,
+            MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
 }
 /*----------------- Measuring --------------<<<*/
 
