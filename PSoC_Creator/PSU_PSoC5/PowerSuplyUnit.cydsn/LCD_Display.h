@@ -168,6 +168,7 @@ extern void RequestToChangeTemperatures(TTemperature temperatures);
 extern void RequestToRepaintTemperatures();
 extern BOOL RequestToVisibileMousePresent(BOOL visible);
 extern void RequestToRepaintMousePresent();
+extern BOOL RequestToShowMessage(PCHAR message, TTextColor messageColor);
 extern BOOL RequestToClearMessage();
 extern BOOL Display_RequestToErrorOver(TErrorOver errorOver);
 extern void Display_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState);
