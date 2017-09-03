@@ -791,7 +791,7 @@ void RequestToRepaintMousePresent() {
 }
 /*----------------- MousePresent Focusing --------------<<<*/
 
-/*>>>-------------- Show error -----------------*/
+/*>>>-------------- Show Message -----------------*/
 void OutputMessage(PCHAR message) {    
     Display_SetFont(1);
     ClipStringAlignMid(message, ' ', 20);    
@@ -809,8 +809,8 @@ BOOL ShowMessage() {
     if (!DisplayObj.Requests.ShowMessage) {
         return FALSE;
     }
-    OutputMessage(DisplayObj.Requests.Message);
     DisplayObj.Requests.ShowMessage = FALSE;
+    OutputMessage(DisplayObj.Requests.Message);
     return TRUE;
 }
 
@@ -823,13 +823,13 @@ BOOL ClearMessage() {
     if (!DisplayObj.Requests.ClearMessage) {
         return FALSE;
     }    
+    DisplayObj.Requests.ClearMessage = FALSE;
     CHAR buffer[45];
     buffer[0] = 0;
     OutputMessage(buffer);
-    DisplayObj.Requests.ClearMessage = FALSE;
     return TRUE;
 }
-/*----------------- Show error --------------<<<*/
+/*----------------- Show Message --------------<<<*/
 
 /*>>>-------------- Show error for Over Voltage/Amperage -----------------*/
 BOOL Display_RequestToErrorOver(TErrorOver errorOver) {
@@ -927,15 +927,19 @@ static BOOL state = FALSE;
     }
 }
 /*----------------- Show error for Over Voltage/Amperage --------------<<<*/
-
 void Display_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
-    if (newState == mwsStart) {
-        Display_Backlight(50);
-    } else if (newState == mwsStandBy) {
-        Display_Backlight(140);
-    } else if (newState == mwsWork) {
-        Display_Backlight(210);
-    } else if (newState == mwsErrGlb) {
-        Display_Backlight(255);
+    if (oldState != newState) {
+        if (newState == mwsStart) {        
+            Display_Backlight(50);
+        } else if (newState == mwsStandBy) {
+            RequestToShowMessage("Stand By", tcNorm);           
+            Display_Backlight(140);
+        } else if (newState == mwsWork) {
+            RequestToShowMessage("Power on", tcNorm);  
+            Display_Backlight(210);
+        } else if (newState == mwsErrGlb) {        
+            RequestToShowMessage("!!!ERROR!!!", tcInvert); 
+            Display_Backlight(255);
+        }
     }
 }

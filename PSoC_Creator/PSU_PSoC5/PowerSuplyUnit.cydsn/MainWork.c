@@ -110,15 +110,6 @@ void ChangeState(TMainWorkState newState){
     }
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
     Display_WorkStateChanged(MainWorkObj.State, newState);
-    if (MainWorkObj.State != newState) {
-        if (newState == mwsStandBy) {
-            RequestToShowMessage("Stand By", tcNorm);    
-        } else if (newState == mwsWork) {
-            RequestToShowMessage("Power on", tcNorm);    
-        } else if (newState == mwsErrGlb) {
-            RequestToShowMessage("!!!ERROR!!!", tcInvert);    
-        }  
-    }
     MainWorkObj.State = newState;   
 }
 

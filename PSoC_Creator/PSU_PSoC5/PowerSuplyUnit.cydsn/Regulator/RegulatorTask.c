@@ -299,6 +299,8 @@ BOOL RegulatingChannelA() {
             Display_RequestToChangeAmperageA(RegulatorObj.ChanelA.Amperage.Measured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeVoltageA(voltageMeasured, FALSE);
+        } else {
+            errorOverVoltageA = FALSE;    
         }
     }    
     if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
@@ -309,7 +311,9 @@ BOOL RegulatingChannelA() {
             Display_RequestToChangeAmperageA(amperageMeasured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeAmperageA(amperageMeasured, FALSE);
-        }      
+        } else {
+            errorOverAmperageA = FALSE;    
+        }    
     }  
     return MainWorkObj.State == mwsWork 
     && !bVoltageInConversion 
