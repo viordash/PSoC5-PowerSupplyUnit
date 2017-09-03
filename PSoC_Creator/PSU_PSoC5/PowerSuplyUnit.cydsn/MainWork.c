@@ -314,12 +314,6 @@ void ThrowException(PCHAR message) {
     RequestToShowMessage(message, 0);
 }
 
-void ResetErrorState() {
-    RegulatorStatus_Read();
-    Display_RequestToErrorOver(ERROR_OVER_NONE);
-    ChangeState(mwsStandBy);    
-}
-
 void ThrowErrorOverCore(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     static TErrorOver prevErrorOver = ERROR_OVER_NONE;
     prevErrorOver |= (setErrorOver & ~ERROR_OVER_URGENT_OFF);
@@ -340,6 +334,12 @@ void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     if (!CheckRegulatorStatusCore(RegulatorStatus_Read())) {//если есть HW ошибка то отображать только ее 
         ThrowErrorOverCore(setErrorOver, resetErrorOver);
     }
+}
+
+void ResetErrorState() {
+    RegulatorStatus_Read();
+    ThrowErrorOverCore(ERROR_OVER_NONE, ~ERROR_OVER_NONE);
+    ChangeState(mwsStandBy);    
 }
 /*----------------- Errors --------------<<<*/
 
