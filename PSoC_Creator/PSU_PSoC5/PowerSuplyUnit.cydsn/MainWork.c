@@ -348,10 +348,8 @@ BOOL CheckRegulatorStatusCore(BYTE status) {
     if (status & 0x01) {
         ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
         return TRUE; 
-    } else {
-        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
-        return FALSE; 
-    }
+    } 
+    return FALSE;
 }
 BOOL CheckRegulatorStatus() {
     static BYTE prevStatus = 0;
@@ -360,7 +358,12 @@ BOOL CheckRegulatorStatus() {
         return FALSE;    
     }   
     prevStatus = status;
-    return CheckRegulatorStatusCore(status);
+    if (CheckRegulatorStatusCore(status)) {
+        return TRUE;
+    } else {
+        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
+        return FALSE; 
+    } 
 }
 
 void ClearRegulatorStatusAndErrors() {

@@ -372,9 +372,9 @@ void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value) 
     }
 }
 
-void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value) {
+void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value, BOOL immediate) {
     MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
-    if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
+    if (immediate || GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
         pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
         pMeasuredValue->Value.RequestToChangeValue = TRUE;
         pMeasuredValue->UpdateTickCount = GetTickCount();
@@ -382,20 +382,20 @@ void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value)
 }
 
 
-void Display_RequestToChangeVoltageA(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageA, value);
+void Display_RequestToChangeVoltageA(TElectrValue value, BOOL immediate) {
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageA, value, immediate);
 }
 
-void Display_RequestToChangeAmperageA(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageA, value);
+void Display_RequestToChangeAmperageA(TElectrValue value, BOOL immediate) {
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageA, value, immediate);
 }
 
-void Display_RequestToChangeVoltageB(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageB, value);
+void Display_RequestToChangeVoltageB(TElectrValue value, BOOL immediate) {
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageB, value, immediate);
 }
 
-void Display_RequestToChangeAmperageB(TElectrValue value) {
-    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageB, value);
+void Display_RequestToChangeAmperageB(TElectrValue value, BOOL immediate) {
+    RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageB, value, immediate);
 }
 /*----------------- Change ElectrValue --------------<<<*/
 

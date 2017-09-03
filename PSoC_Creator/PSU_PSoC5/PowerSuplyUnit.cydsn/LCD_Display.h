@@ -149,10 +149,10 @@ typedef struct {
 extern void RequestToChangeScreen(TDisplayScreen newValue);
 
 extern void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value);
-extern void Display_RequestToChangeVoltageA(TElectrValue value);
-extern void Display_RequestToChangeAmperageA(TElectrValue value);
-extern void Display_RequestToChangeVoltageB(TElectrValue value);
-extern void Display_RequestToChangeAmperageB(TElectrValue value);
+extern void Display_RequestToChangeVoltageA(TElectrValue value, BOOL immediate);
+extern void Display_RequestToChangeAmperageA(TElectrValue value, BOOL immediate);
+extern void Display_RequestToChangeVoltageB(TElectrValue value, BOOL immediate);
+extern void Display_RequestToChangeAmperageB(TElectrValue value, BOOL immediate);
 
 extern void RequestToSelect(TSelectValue selectValue);
 extern TSelectValue GetCurrentSelectedValue();

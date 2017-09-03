@@ -293,15 +293,23 @@ BOOL RegulatingChannelA() {
 
     if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured)) {
         RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
-        Display_RequestToChangeVoltageA(voltageMeasured);
         static BOOL errorOverVoltageA = FALSE;
-        CheckOverValue(voltageMeasured, &RegulatorObj.ChanelA.Voltage, ERROR_OVER_SW_VOLTAGE_A, &errorOverVoltageA);
+        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelA.Voltage, ERROR_OVER_SW_VOLTAGE_A, &errorOverVoltageA)) {
+            Display_RequestToChangeVoltageA(voltageMeasured, TRUE);
+            Display_RequestToChangeAmperageA(RegulatorObj.ChanelA.Amperage.Measured, TRUE);
+        } else if (MainWorkObj.State != mwsErrGlb) {
+            Display_RequestToChangeVoltageA(voltageMeasured, FALSE);
+        }
     }    
     if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
-        Display_RequestToChangeAmperageA(amperageMeasured);
         static BOOL errorOverAmperageA = FALSE;
-     //   CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage, ERROR_OVER_SW_AMPERAGE_A, &errorOverAmperageA);
+        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage, ERROR_OVER_SW_AMPERAGE_A, &errorOverAmperageA)) {
+            Display_RequestToChangeVoltageA(RegulatorObj.ChanelA.Voltage.Measured, TRUE);
+            Display_RequestToChangeAmperageA(amperageMeasured, TRUE);
+        } else if (MainWorkObj.State != mwsErrGlb) {
+            Display_RequestToChangeAmperageA(amperageMeasured, FALSE);
+        }      
     }  
     return MainWorkObj.State == mwsWork 
     && !bVoltageInConversion 
@@ -315,16 +323,24 @@ BOOL RegulatingChannelB() {
     BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 1);
 
     if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
-        RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;
-        Display_RequestToChangeVoltageB(voltageMeasured);   
+        RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;  
         static BOOL errorOverVoltageB = FALSE; 
-        CheckOverValue(voltageMeasured, &RegulatorObj.ChanelB.Voltage, ERROR_OVER_SW_VOLTAGE_B, &errorOverVoltageB);    
+        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelB.Voltage, ERROR_OVER_SW_VOLTAGE_B, &errorOverVoltageB)) {
+            Display_RequestToChangeVoltageB(voltageMeasured, TRUE);
+            Display_RequestToChangeAmperageB(RegulatorObj.ChanelB.Amperage.Measured, TRUE);
+        } else if (MainWorkObj.State != mwsErrGlb) {
+            Display_RequestToChangeVoltageB(voltageMeasured, FALSE);
+        }
     }
     if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
         RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
-        Display_RequestToChangeAmperageB(amperageMeasured);
         static BOOL errorOverAmperageB = FALSE;
-        CheckOverValue(amperageMeasured, &RegulatorObj.ChanelB.Amperage, ERROR_OVER_SW_AMPERAGE_B, &errorOverAmperageB);
+        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelB.Amperage, ERROR_OVER_SW_AMPERAGE_B, &errorOverAmperageB)) {
+            Display_RequestToChangeVoltageB(RegulatorObj.ChanelB.Voltage.Measured, TRUE);
+            Display_RequestToChangeAmperageB(amperageMeasured, TRUE);
+        } else if (MainWorkObj.State != mwsErrGlb) {
+            Display_RequestToChangeAmperageB(amperageMeasured, FALSE);
+        }  
     }  
     return MainWorkObj.State == mwsWork 
         && !bVoltageInConversion 
