@@ -28,7 +28,7 @@ typedef struct {
     TElectrValue SetPointAmperageB;
     BOOL HwPrSupressed;
     TEepromStrorage Storage;
-    TProtectiveBehavior ProtectiveBehavior;
+    TProtectiveSensitivity ProtectiveSensitivity;
 } TMainWork_Object, * PTMainWork_Object;
 
 extern TFunction MainWorkFunction;

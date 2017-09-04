@@ -168,9 +168,9 @@ typedef enum {
 } TMainWorkState;
 
 typedef enum {
-	pbCutOff = 0,
-	pbRestrict
-} TProtectiveBehavior;
+	psNormal = 0,
+	psWeak
+} TProtectiveSensitivity;
 
 typedef INT (*TCalcDisplayValueFunction) (TElectrValue value);	
 #endif  /* __DEVICE_H__ */

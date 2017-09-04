@@ -275,7 +275,7 @@ BOOL CheckOverValue(TElectrValue measuredValue, PTRegulatorValue pRegulatorValue
             ThrowErrorOver(errorOver | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
             *pStoredState = TRUE;
             res = TRUE;
-        } else if (MainWorkObj.ProtectiveBehavior == pbCutOff && measuredValue >= pRegulatorValue->Protect) {
+        } else if (/*MainWorkObj.ProtectiveBehavior == pbCutOff &&*/ measuredValue >= pRegulatorValue->Protect) {
             ThrowErrorOver(errorOver, ERROR_OVER_NONE);
             *pStoredState = TRUE;
             res = TRUE;
@@ -319,7 +319,7 @@ BOOL RegulatingChannelA() {
     return MainWorkObj.State == mwsWork 
     && !bVoltageInConversion 
     && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR,
-        MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
+        MainWorkObj.StabilizeModeA == smAmperageStab); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -350,7 +350,7 @@ BOOL RegulatingChannelB() {
     return MainWorkObj.State == mwsWork 
         && !bVoltageInConversion 
         && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR,
-            MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
+            MainWorkObj.StabilizeModeB == smAmperageStab); //*/
 }
 /*----------------- Measuring --------------<<<*/
 

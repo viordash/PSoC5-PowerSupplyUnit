@@ -95,7 +95,7 @@ void MainWork_Task(){
 void ChangeState(TMainWorkState newState){   
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
-        if (MainWorkObj.ProtectiveBehavior == pbRestrict) {
+        if (MainWorkObj.StabilizeModeA == smAmperageStab) {
             RegulatorControl_Write(0x15 | 0x20);
         } else {
             RegulatorControl_Write(0x15);  
@@ -124,30 +124,30 @@ void ChangeOutputState() {
     }
 }
 
-/*>>>-------------- Protective Behavior-----------------*/
+/*>>>-------------- Protective Sensitivity-----------------*/
 void ProtectiveBehaviorChanged(BOOL btnPressed) {   
     if (btnPressed == 0) {
-        MainWorkObj.ProtectiveBehavior = pbRestrict;
-        O_Led_ProtectiveBehavior_Write(TRUE);
+        MainWorkObj.ProtectiveSensitivity = psWeak;
+        O_Led_ProtectiveSensitivity_Write(TRUE);
     } else {
-        MainWorkObj.ProtectiveBehavior = pbCutOff;
-        O_Led_ProtectiveBehavior_Write(FALSE);
+        MainWorkObj.ProtectiveSensitivity = psNormal;
+        O_Led_ProtectiveSensitivity_Write(FALSE);
     }
 }
 
 BOOL ProtectiveBehaviorIndicator() {
-	static DWORD protectiveBehaviorFlashTick = 0;
-    if (MainWorkObj.ProtectiveBehavior != pbRestrict) {
+	static DWORD protectiveSensitivityFlashTick = 0;
+    if (MainWorkObj.ProtectiveSensitivity != psWeak) {
         return FALSE;    
     }
-	if (GetElapsedPeriod(protectiveBehaviorFlashTick) < SYSTICK_mS(500)) {   
+	if (GetElapsedPeriod(protectiveSensitivityFlashTick) < SYSTICK_mS(500)) {   
         return FALSE;
     }    
-    protectiveBehaviorFlashTick = GetTickCount(); 
-    O_Led_ProtectiveBehavior_Write(!O_Led_ProtectiveBehavior_Read());
+    protectiveSensitivityFlashTick = GetTickCount(); 
+    O_Led_ProtectiveSensitivity_Write(!O_Led_ProtectiveSensitivity_Read());
     return TRUE;
 }
-/*----------------- Protective Behavior --------------<<<*/
+/*----------------- Protective Sensitivity --------------<<<*/
 
 
 /*>>>-------------- Rise rate of voltage at power-up -----------------*/
@@ -311,7 +311,7 @@ void ThrowErrorOverCore(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     prevErrorOver &= ~resetErrorOver;
     
     Display_RequestToErrorOver(prevErrorOver);
-    if ((MainWorkObj.ProtectiveBehavior == pbCutOff || setErrorOver & ERROR_OVER_URGENT_OFF) 
+    if ((MainWorkObj.StabilizeModeA == smAmperageStab || MainWorkObj.StabilizeModeB == smAmperageStab || setErrorOver & ERROR_OVER_URGENT_OFF) 
     && ((prevErrorOver & ERROR_OVER_HW_AMPERAGE_A) 
     || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_A) 
     || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_B)
