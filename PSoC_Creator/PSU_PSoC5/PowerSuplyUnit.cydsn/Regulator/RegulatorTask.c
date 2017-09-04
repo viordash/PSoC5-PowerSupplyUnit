@@ -154,8 +154,7 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx, BOOL bAmperageStabilize, 
-    TStabilizeMode stabilizeMode) {
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx, BOOL bAmperageStabilize) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
@@ -250,13 +249,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         if (diffAmperageValue > amperageSetPoint / -5) {  //если Measured >= 80%
             pwmDiff = 1;    
         }
-        if (stabilizeMode == smAmperageStab) {
-            pwmDiff = (pwmDiff / 16) + 1;       
-        }  
     } else {
-        if (stabilizeMode == smAmperageStab) {
-            pwmDiff = (pwmDiff / 8) + 1;       
-        } 
         pwmDiff *= -1;     
     }
     
@@ -326,7 +319,7 @@ BOOL RegulatingChannelA() {
     return MainWorkObj.State == mwsWork 
     && !bVoltageInConversion 
     && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR,
-        MainWorkObj.ProtectiveBehavior == pbRestrict, MainWorkObj.StabilizeModeA); //*/
+        MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -357,7 +350,7 @@ BOOL RegulatingChannelB() {
     return MainWorkObj.State == mwsWork 
         && !bVoltageInConversion 
         && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR,
-            MainWorkObj.ProtectiveBehavior == pbRestrict, MainWorkObj.StabilizeModeB); //*/
+            MainWorkObj.ProtectiveBehavior == pbRestrict); //*/
 }
 /*----------------- Measuring --------------<<<*/
 
