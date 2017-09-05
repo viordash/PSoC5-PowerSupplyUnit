@@ -27,12 +27,22 @@ typedef struct {
     TElectrValue ImmediateCuttOff; 
     TElectrValue Protect; 
     TElectrValue Measured; 
-    TRegulating Regulating; 
+    BOOL ErrorOver;
 } TRegulatorValue, * PTRegulatorValue;
+    
+typedef struct { 
+    TRegulatorValue Regulator; 
+    TRegulating Regulating; 
+} TRegulatorVoltage, * PTRegulatorVoltage;
+    
+typedef struct { 
+    TRegulatorValue Regulator; 
+} TRegulatorAmperage, * PTRegulatorAmperage;
 
 typedef struct { 
-    TRegulatorValue Voltage; 
-    TRegulatorValue Amperage; 
+    TRegulatorVoltage Voltage; 
+    TRegulatorAmperage Amperage; 
+    TStabilizeMode StabilizeMode;
 } TRegulatorChannel, * PTRegulatorChannel;
 
 typedef struct {
@@ -60,6 +70,7 @@ extern void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value);
 extern void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value);
 extern void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value);
 extern void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState);
+extern void Regulator_ChangeStabilizeMode();
 	
 #endif  /* __RegulatorTask_H__ */
 /* [] END OF FILE */

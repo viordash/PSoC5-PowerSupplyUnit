@@ -59,6 +59,7 @@ void MainWork_Task(){
     ChangeState(mwsStandBy);  
     RefreshDisplay();
     ResetErrorState();
+    Regulator_ChangeStabilizeMode();
     BYTE prevButtons = Buttons_Read();  
 	while (TRUE) {
         CheckRegulatorStatus();
@@ -311,12 +312,9 @@ void ThrowErrorOverCore(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     prevErrorOver &= ~resetErrorOver;
     
     Display_RequestToErrorOver(prevErrorOver);
-    if ((MainWorkObj.StabilizeModeA == smAmperageStab || MainWorkObj.StabilizeModeB == smAmperageStab || setErrorOver & ERROR_OVER_URGENT_OFF) 
-    && ((prevErrorOver & ERROR_OVER_HW_AMPERAGE_A) 
-    || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_A) 
-    || (prevErrorOver & ERROR_OVER_SW_VOLTAGE_B)
-    || (prevErrorOver & ERROR_OVER_SW_AMPERAGE_A) 
-    || (prevErrorOver & ERROR_OVER_SW_AMPERAGE_B))) {
+    if ((setErrorOver & ERROR_OVER_URGENT_OFF) 
+    || (MainWorkObj.StabilizeModeA == smVoltageStab && (prevErrorOver & (ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_SW_VOLTAGE_A | ERROR_OVER_SW_AMPERAGE_A)))
+    || (MainWorkObj.StabilizeModeB == smVoltageStab && (prevErrorOver & (ERROR_OVER_SW_VOLTAGE_B | ERROR_OVER_SW_AMPERAGE_B)))) {
         ChangeState(mwsErrGlb); 
     }
 }
@@ -390,4 +388,19 @@ void RefreshDisplay() {
     RequestToRepaintMousePresent();
 }
 
+
+/*>>>-------------- Change Stabilize Mode -----------------*/
+void MainWork_ChangeStabilizeMode(TSelectStabilizeMode selectedValue) {
+    if (selectedValue == ssmVoltageA) {
+        MainWorkObj.StabilizeModeA = smVoltageStab; 
+    } else if (selectedValue == ssmAmperageA) {
+        MainWorkObj.StabilizeModeA = smAmperageStab; 
+    } else if (selectedValue == ssmVoltageB) {
+        MainWorkObj.StabilizeModeB = smVoltageStab; 
+    } else if (selectedValue == ssmAmperageB) {
+        MainWorkObj.StabilizeModeB = smAmperageStab; 
+    } 
+    Regulator_ChangeStabilizeMode();
+}
+/*----------------- Change Stabilize Mode --------------<<<*/
 /* [] END OF FILE */

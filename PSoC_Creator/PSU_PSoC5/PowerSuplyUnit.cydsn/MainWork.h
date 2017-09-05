@@ -43,6 +43,7 @@ extern void MouseChangingValue (INT value);
 extern void ResetErrorState();
 extern void ThrowException(PCHAR message);
 extern void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver);
+extern void MainWork_ChangeStabilizeMode(TSelectStabilizeMode selectedValue);
 	
 #endif  /* __MAINWORK_H__ */
 /* [] END OF FILE */

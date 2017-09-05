@@ -90,37 +90,35 @@ BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     value = CalcSetPointValueVoltageA(value);
-    RegulatorObj.ChanelA.Voltage.SetPoint = value;
-    RegulatorObj.ChanelA.Voltage.Protect = value + CalcSetPointValueVoltageA(100) /*min 1 volt*/;
-    RegulatorObj.ChanelA.Voltage.ImmediateCuttOff = value + CalcSetPointValueVoltageA(200) /*min 2 volt*/;
+    RegulatorObj.ChanelA.Voltage.Regulator.SetPoint = value;
+    RegulatorObj.ChanelA.Voltage.Regulator.Protect = value + CalcSetPointValueVoltageA(100) /*min 1 volt*/;
+    RegulatorObj.ChanelA.Voltage.Regulator.ImmediateCuttOff = value + CalcSetPointValueVoltageA(200) /*min 2 volt*/;
     VDAC8_OverVoltageA_SetValue(CalculateOverVoltageAVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelA.Voltage.Regulating);
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
     value = CalcSetPointValueAmperage(value);
-    RegulatorObj.ChanelA.Amperage.SetPoint = value;
-    RegulatorObj.ChanelA.Amperage.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
-    RegulatorObj.ChanelA.Amperage.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
+    RegulatorObj.ChanelA.Amperage.Regulator.SetPoint = value;
+    RegulatorObj.ChanelA.Amperage.Regulator.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
+    RegulatorObj.ChanelA.Amperage.Regulator.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
     VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
-    InitRegulating(&RegulatorObj.ChanelA.Amperage.Regulating);
 }
 
 void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
     value = CalcSetPointValueVoltageB(value);
-    RegulatorObj.ChanelB.Voltage.SetPoint = value;
-    RegulatorObj.ChanelB.Voltage.Protect = value + CalcSetPointValueVoltageB(100) /*min 1 volt*/;
-    RegulatorObj.ChanelB.Voltage.ImmediateCuttOff = value + CalcSetPointValueVoltageB(200) /*min 2 volt*/;
+    RegulatorObj.ChanelB.Voltage.Regulator.SetPoint = value;
+    RegulatorObj.ChanelB.Voltage.Regulator.Protect = value + CalcSetPointValueVoltageB(100) /*min 1 volt*/;
+    RegulatorObj.ChanelB.Voltage.Regulator.ImmediateCuttOff = value + CalcSetPointValueVoltageB(200) /*min 2 volt*/;
     VDAC8_OverVoltageB_SetValue(CalculateOverVoltageBVDACValue(value));
     InitRegulating(&RegulatorObj.ChanelB.Voltage.Regulating);
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     value = CalcSetPointValueAmperage(value);
-    RegulatorObj.ChanelB.Amperage.SetPoint = value;
-    RegulatorObj.ChanelB.Amperage.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
-    RegulatorObj.ChanelB.Amperage.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
-    InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
+    RegulatorObj.ChanelB.Amperage.Regulator.SetPoint = value;
+    RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + CalcSetPointValueAmperage(10) /*min 10 mA*/;
+    RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + CalcSetPointValueAmperage(500) /*min 500 mA*/;
 }
 /*----------------- Requests --------------<<<*/
 
@@ -154,11 +152,11 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx, BOOL bAmperageStabilize) {
-    TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Measured;
-    TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.SetPoint;
-    TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Measured;
-    TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.SetPoint;          
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx) {
+    TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Regulator.Measured;
+    TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.Regulator.SetPoint;
+    TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Regulator.Measured;
+    TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.Regulator.SetPoint;          
     
 //    writePwm(voltageSetPoint);     
 //    return TRUE;    
@@ -167,7 +165,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     BOOL isLessThanSetPoint;
     INT diffValue;
     INT diffAmperageValue;
-    if (bAmperageStabilize) {
+    if (pRegulatorChannel->StabilizeMode == smAmperageStab) {
     //если измеренный ток более SetPoint, то регулировать по току (уменьшать напряжение на выходе)
         diffAmperageValue = amperageMeasured - amperageSetPoint;
     } else {
@@ -268,20 +266,20 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     return TRUE;    
 }
 
-BOOL CheckOverValue(TElectrValue measuredValue, PTRegulatorValue pRegulatorValue, TErrorOver errorOver, PBOOL pStoredState) {
+BOOL CheckOverValue(TElectrValue measuredValue, PTRegulatorValue pRegulatorValue, TErrorOver errorOver, TStabilizeMode stabilizeMode) {
     BOOL res = FALSE;    
     if (MainWorkObj.State == mwsWork) {
         if (measuredValue >= pRegulatorValue->ImmediateCuttOff) {
             ThrowErrorOver(errorOver | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
-            *pStoredState = TRUE;
+            pRegulatorValue->ErrorOver = TRUE;
             res = TRUE;
-        } else if (/*MainWorkObj.ProtectiveBehavior == pbCutOff &&*/ measuredValue >= pRegulatorValue->Protect) {
+        } else if (stabilizeMode == smVoltageStab && measuredValue >= pRegulatorValue->Protect) {
             ThrowErrorOver(errorOver, ERROR_OVER_NONE);
-            *pStoredState = TRUE;
+            pRegulatorValue->ErrorOver = TRUE;
             res = TRUE;
-        } else if (*pStoredState) {
+        } else if (pRegulatorValue->ErrorOver) {
             ThrowErrorOver(ERROR_OVER_NONE, errorOver);
-            *pStoredState = FALSE;
+            pRegulatorValue->ErrorOver = FALSE;
         }
     }      
     return res;
@@ -292,34 +290,33 @@ BOOL RegulatingChannelA() {
     BOOL bVoltageInConversion = !MeasureVoltageA(&voltageMeasured);
     BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 0);
 
-    if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Measured != voltageMeasured)) {
-        RegulatorObj.ChanelA.Voltage.Measured = voltageMeasured;
-        static BOOL errorOverVoltageA = FALSE;
-        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelA.Voltage, ERROR_OVER_SW_VOLTAGE_A, &errorOverVoltageA)) {
+    if (!bVoltageInConversion && (RegulatorObj.ChanelA.Voltage.Regulator.Measured != voltageMeasured)) {
+        RegulatorObj.ChanelA.Voltage.Regulator.Measured = voltageMeasured;
+        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelA.Voltage.Regulator, ERROR_OVER_SW_VOLTAGE_A, 
+                RegulatorObj.ChanelA.StabilizeMode)) {
             Display_RequestToChangeVoltageA(voltageMeasured, TRUE);
-            Display_RequestToChangeAmperageA(RegulatorObj.ChanelA.Amperage.Measured, TRUE);
+            Display_RequestToChangeAmperageA(RegulatorObj.ChanelA.Amperage.Regulator.Measured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeVoltageA(voltageMeasured, FALSE);
         } else {
-            errorOverVoltageA = FALSE;    
+            RegulatorObj.ChanelA.Voltage.Regulator.ErrorOver = FALSE;    
         }
     }    
-    if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Measured != amperageMeasured)) {
-        RegulatorObj.ChanelA.Amperage.Measured = amperageMeasured;
-        static BOOL errorOverAmperageA = FALSE;
-        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage, ERROR_OVER_SW_AMPERAGE_A, &errorOverAmperageA)) {
-            Display_RequestToChangeVoltageA(RegulatorObj.ChanelA.Voltage.Measured, TRUE);
+    if (!bAmperageInConversion && (RegulatorObj.ChanelA.Amperage.Regulator.Measured != amperageMeasured)) {
+        RegulatorObj.ChanelA.Amperage.Regulator.Measured = amperageMeasured;
+        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelA.Amperage.Regulator, ERROR_OVER_SW_AMPERAGE_A, 
+                RegulatorObj.ChanelA.StabilizeMode)) {
+            Display_RequestToChangeVoltageA(RegulatorObj.ChanelA.Voltage.Regulator.Measured, TRUE);
             Display_RequestToChangeAmperageA(amperageMeasured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeAmperageA(amperageMeasured, FALSE);
         } else {
-            errorOverAmperageA = FALSE;    
+            RegulatorObj.ChanelA.Amperage.Regulator.ErrorOver = FALSE;    
         }    
     }  
     return MainWorkObj.State == mwsWork 
     && !bVoltageInConversion 
-    && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR,
-        MainWorkObj.StabilizeModeA == smAmperageStab); //*/
+    && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -327,21 +324,21 @@ BOOL RegulatingChannelB() {
     BOOL bVoltageInConversion = !MeasureVoltageB(&voltageMeasured);
     BOOL bAmperageInConversion = !MeasureAmperage(&amperageMeasured, 1);
 
-    if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Measured != voltageMeasured)) {
-        RegulatorObj.ChanelB.Voltage.Measured = voltageMeasured;  
-        static BOOL errorOverVoltageB = FALSE; 
-        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelB.Voltage, ERROR_OVER_SW_VOLTAGE_B, &errorOverVoltageB)) {
+    if (!bVoltageInConversion && (RegulatorObj.ChanelB.Voltage.Regulator.Measured != voltageMeasured)) {
+        RegulatorObj.ChanelB.Voltage.Regulator.Measured = voltageMeasured; 
+        if (CheckOverValue(voltageMeasured, &RegulatorObj.ChanelB.Voltage.Regulator, ERROR_OVER_SW_VOLTAGE_B, 
+                RegulatorObj.ChanelB.StabilizeMode)) {
             Display_RequestToChangeVoltageB(voltageMeasured, TRUE);
-            Display_RequestToChangeAmperageB(RegulatorObj.ChanelB.Amperage.Measured, TRUE);
+            Display_RequestToChangeAmperageB(RegulatorObj.ChanelB.Amperage.Regulator.Measured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeVoltageB(voltageMeasured, FALSE);
         }
     }
-    if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Measured != amperageMeasured)) {
-        RegulatorObj.ChanelB.Amperage.Measured = amperageMeasured;
-        static BOOL errorOverAmperageB = FALSE;
-        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelB.Amperage, ERROR_OVER_SW_AMPERAGE_B, &errorOverAmperageB)) {
-            Display_RequestToChangeVoltageB(RegulatorObj.ChanelB.Voltage.Measured, TRUE);
+    if (!bAmperageInConversion && (RegulatorObj.ChanelB.Amperage.Regulator.Measured != amperageMeasured)) {
+        RegulatorObj.ChanelB.Amperage.Regulator.Measured = amperageMeasured;
+        if (CheckOverValue(amperageMeasured, &RegulatorObj.ChanelB.Amperage.Regulator, ERROR_OVER_SW_AMPERAGE_B, 
+                RegulatorObj.ChanelB.StabilizeMode)) {
+            Display_RequestToChangeVoltageB(RegulatorObj.ChanelB.Voltage.Regulator.Measured, TRUE);
             Display_RequestToChangeAmperageB(amperageMeasured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeAmperageB(amperageMeasured, FALSE);
@@ -349,8 +346,7 @@ BOOL RegulatingChannelB() {
     }  
     return MainWorkObj.State == mwsWork 
         && !bVoltageInConversion 
-        && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR,
-            MainWorkObj.StabilizeModeB == smAmperageStab); //*/
+        && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR); //*/
 }
 /*----------------- Measuring --------------<<<*/
 
@@ -362,9 +358,7 @@ void InitRegulating(PTRegulating pRegulating){
 
 void InitAllRegulating(){
     InitRegulating(&RegulatorObj.ChanelA.Voltage.Regulating);
-    InitRegulating(&RegulatorObj.ChanelA.Amperage.Regulating);
     InitRegulating(&RegulatorObj.ChanelB.Voltage.Regulating);
-    InitRegulating(&RegulatorObj.ChanelB.Amperage.Regulating);
 }
 
 void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
@@ -378,15 +372,24 @@ void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState
         PWM_VoltageB_WriteCompare(0);
         InitAllRegulating();
         RegulatorObj.ChanelA.Voltage.Regulating.PowerOn = TRUE;
-        RegulatorObj.ChanelA.Amperage.Regulating.PowerOn = TRUE;
         RegulatorObj.ChanelB.Voltage.Regulating.PowerOn = TRUE;
-        RegulatorObj.ChanelB.Amperage.Regulating.PowerOn = TRUE;
     } else if (newState == mwsWork) {
         RegulatorObj.ChanelA.Voltage.Regulating.PowerOn = TRUE;
-        RegulatorObj.ChanelA.Amperage.Regulating.PowerOn = TRUE;
         RegulatorObj.ChanelB.Voltage.Regulating.PowerOn = TRUE;
-        RegulatorObj.ChanelB.Amperage.Regulating.PowerOn = TRUE;
     }
 }
-
+/*>>>-------------- Change Stabilize Mode -----------------*/
+void Regulator_ChangeStabilizeMode() {
+    if (MainWorkObj.StabilizeModeA == smAmperageStab) {
+        RegulatorObj.ChanelA.StabilizeMode = smAmperageStab; 
+    } else {
+        RegulatorObj.ChanelA.StabilizeMode = smVoltageStab; 
+    }
+    if (MainWorkObj.StabilizeModeB == smAmperageStab) {
+        RegulatorObj.ChanelB.StabilizeMode = smAmperageStab; 
+    } else {
+        RegulatorObj.ChanelB.StabilizeMode = smVoltageStab; 
+    }      
+}
+/*----------------- Change Stabilize Mode --------------<<<*/
 /* [] END OF FILE */

@@ -57,15 +57,7 @@ void SelectPrevStabilizeIndicator() {
 /*>>>-------------- Focusing -----------------*/
 void ConfirmSelectionStabilize() {
     TSelectStabilizeMode selectedValue = GetCurrentSelectedStabilize();
-    if (selectedValue == ssmVoltageA) {
-        MainWorkObj.StabilizeModeA = smVoltageStab; 
-    } else if (selectedValue == ssmAmperageA) {
-        MainWorkObj.StabilizeModeA = smAmperageStab; 
-    } else if (selectedValue == ssmVoltageB) {
-        MainWorkObj.StabilizeModeB = smVoltageStab; 
-    } else if (selectedValue == ssmAmperageB) {
-        MainWorkObj.StabilizeModeB = smAmperageStab; 
-    }
+    MainWork_ChangeStabilizeMode(selectedValue);
     RequestToFocusingStabilize(selectedValue);    
 }
 /*----------------- Focusing --------------<<<*/
