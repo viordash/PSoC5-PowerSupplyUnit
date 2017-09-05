@@ -373,11 +373,17 @@ void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value) 
 }
 
 void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value, BOOL immediate) {
-    MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
-    if (immediate || GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
-        pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
+    if (immediate) {
+        pMeasuredValue->Value.NewValue = value;
         pMeasuredValue->Value.RequestToChangeValue = TRUE;
         pMeasuredValue->UpdateTickCount = GetTickCount();
+    } else {
+        MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
+        if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
+            pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
+            pMeasuredValue->Value.RequestToChangeValue = TRUE;
+            pMeasuredValue->UpdateTickCount = GetTickCount();
+        }
     }
 }
 
