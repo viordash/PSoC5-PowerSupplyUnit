@@ -78,6 +78,20 @@
 #define WorkstateCoordX 1
 #define WorkstateCoordY 120
 
+#define VoltageChartWidth 84 
+#define VoltageChartHeight 26    
+#define VoltageAChartCoordX 35   
+#define VoltageAChartCoordY 28    
+#define VoltageBChartCoordX (35 + 120)   
+#define VoltageBChartCoordY 28
+    
+#define AmperageChartWidth 84 
+#define AmperageChartHeight 26    
+#define AmperageAChartCoordX 35   
+#define AmperageAChartCoordY (28 + 54)      
+#define AmperageBChartCoordX (35 + 120)   
+#define AmperageBChartCoordY (28 + 54) 
+
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
 static BOOL ProcessRequests();
@@ -276,31 +290,13 @@ void SetScreen_WorkMode() {
     Display_DrawLine(119, 0, 119, 109, ltSolid, FALSE);
     Display_DrawLine(120, 0, 120, 109, ltSolid, FALSE);
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
-    Display_DrawLine(0, 109, 239, 109, ltSolid, FALSE);   
+    Display_DrawLine(0, 109, 239, 109, ltSolid, FALSE);  
     
-    Display_DrawLine(35, 28, 119, 28, ltDoted, FALSE);  
-    Display_DrawLine(35, 28, 35, 54, ltDoted, FALSE); 
-    Display_DrawLine(119, 28, 119, 54, ltDoted, FALSE);   
-    Display_DrawLine(12 + 23, 32, 40 + 23, 38, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23, 38, 80 + 23, 30, ltSolid, FALSE);    
-          
-    Display_DrawLine(35 + 120, 28, 119 + 120, 28, ltDoted, FALSE);  
-    Display_DrawLine(35 + 120, 28, 35 + 120, 54, ltDoted, FALSE); 
-    Display_DrawLine(119 + 120, 28, 119 + 120, 54, ltDoted, FALSE); 
-    Display_DrawLine(12 + 23 + 120, 36, 40 + 23 + 120, 42, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23 + 120, 42, 80 + 23 + 120, 38, ltSolid, FALSE);
-    
-    Display_DrawLine(35, 28 + 54, 119, 28 + 54, ltDoted, FALSE);  
-    Display_DrawLine(35, 28 + 54, 35, 54 + 54, ltDoted, FALSE); 
-    Display_DrawLine(119, 28 + 54, 119, 54 + 54, ltDoted, FALSE);  
-    Display_DrawLine(12 + 23, 36 + 54, 40 + 23, 44 + 54, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23, 44 + 54, 80 + 23, 42 + 54, ltSolid, FALSE);
-    
-    Display_DrawLine(35 + 120, 28 + 54, 119 + 120, 28 + 54, ltDoted, FALSE);  
-    Display_DrawLine(35 + 120, 28 + 54, 35 + 120, 54 + 54, ltDoted, FALSE); 
-    Display_DrawLine(119 + 120, 28 + 54, 119 + 120, 54 + 54, ltDoted, FALSE); 
-    Display_DrawLine(12 + 23 + 120, 30 + 54, 40 + 23 + 120, 32 + 54, ltSolid, FALSE);  
-    Display_DrawLine(40 + 23 + 120, 32 + 54, 80 + 23 + 120, 37 + 54, ltSolid, FALSE);    
+    Display_DrawRectangle(VoltageAChartCoordX, VoltageAChartCoordY, VoltageAChartCoordX + VoltageChartWidth, VoltageAChartCoordY + VoltageChartHeight, ltDoted, FALSE);  
+    Display_DrawRectangle(VoltageBChartCoordX, VoltageBChartCoordY, VoltageBChartCoordX + VoltageChartWidth, VoltageBChartCoordY + VoltageChartHeight, ltDoted, FALSE);  
+    Display_DrawRectangle(AmperageAChartCoordX, AmperageAChartCoordY, AmperageAChartCoordX + AmperageChartWidth, AmperageAChartCoordY + AmperageChartHeight, ltDoted, FALSE);  
+    Display_DrawRectangle(AmperageBChartCoordX, AmperageBChartCoordY, AmperageBChartCoordX + AmperageChartWidth, AmperageBChartCoordY + AmperageChartHeight, ltDoted, FALSE);   
+  
     Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE);     
     Display_Flush();
 }
@@ -939,7 +935,7 @@ void Display_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState){
             Display_Backlight(50);
         } else if (newState == mwsStandBy) {
             RequestToShowMessage("Stand By", tcNorm);           
-            Display_Backlight(140);
+            Display_Backlight(80);
         } else if (newState == mwsWork) {
             RequestToShowMessage("Power on", tcNorm);  
             Display_Backlight(210);
