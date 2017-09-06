@@ -130,9 +130,11 @@ void ProtectiveBehaviorChanged(BOOL btnPressed) {
     if (btnPressed == 0) {
         MainWorkObj.ProtectiveSensitivity = psWeak;
         O_Led_ProtectiveSensitivity_Write(TRUE);
+        UpdateAllSetPoints();
     } else {
         MainWorkObj.ProtectiveSensitivity = psNormal;
         O_Led_ProtectiveSensitivity_Write(FALSE);
+        UpdateAllSetPoints();
     }
 }
 
