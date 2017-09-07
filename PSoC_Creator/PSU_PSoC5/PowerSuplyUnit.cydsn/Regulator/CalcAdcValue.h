@@ -13,7 +13,6 @@
 #define __CalcAdcValue_H__
 	
 #include <device.h>
-#include "Utils\MedianFilters.h"
 
 
 extern INT CalcDisplayValueVoltageA (TElectrValue value);

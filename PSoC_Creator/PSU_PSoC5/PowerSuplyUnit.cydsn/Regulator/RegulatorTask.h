@@ -13,7 +13,6 @@
 #define __RegulatorTask_H__
 	
 #include <device.h>
-#include "Utils\MedianFilters.h"
 
 typedef struct { 
     INT PwmValue;

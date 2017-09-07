@@ -17,7 +17,7 @@
 #include "Display\ValueIndicatorHelper.h"
 #include "Display\SymbolIndicator.h"
 #include "Display\SymbolIndicatorHelper.h"
-#include "Utils\MedianFilters.h"
+#include "Utils\AggreagatedValues.h"
 
 extern TFunction DisplayFunction;
 extern void Display_Init();
@@ -70,8 +70,10 @@ typedef struct {
 
 typedef struct {
     TVariableValue Value;
-    DWORD UpdateTickCount;
-    TMedianFilter3 MedianFilter3;
+    DWORD ChartUpdateTickCount;
+    TAggreagatedValues ChartValues;
+    DWORD IndicatorUpdateTickCount;
+    TAggreagatedValues IndicatorValues;   
 } TMeasuredValue, * PTMeasuredValue;
 
 typedef struct {

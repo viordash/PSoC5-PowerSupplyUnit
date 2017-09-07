@@ -46,12 +46,15 @@
 
 #define GetAdcOffsetVoltageA() 0
 #define GetAdcGainVoltageA() (ADC_VoltageA_countsPer10Volt + 0)
-#define GetAdcOffsetAmperageA() -5
-#define GetAdcGainAmperageA() (ADC_Amperage_CountsPerVolt + 0)
+    
+#define GetAdcOffsetAmperageA() -3
+#define GetAdcGainAmperageA() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT + 150)
+    
 #define GetAdcOffsetVoltageB() 0
 #define GetAdcGainVoltageB() (ADC_VoltageB_countsPer10Volt + 0)
-#define GetAdcOffsetAmperageB() -5
-#define GetAdcGainAmperageB() (ADC_Amperage_CountsPerVolt + 0)
+    
+#define GetAdcOffsetAmperageB() -3
+#define GetAdcGainAmperageB() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT + 150)
     
     
 #define ERROR_OVER_NONE 0x00
@@ -62,7 +65,12 @@
 #define ERROR_OVER_SW_VOLTAGE_A 0x10
 #define ERROR_OVER_SW_AMPERAGE_A 0x20
 #define ERROR_OVER_SW_VOLTAGE_B 0x40
-#define ERROR_OVER_SW_AMPERAGE_B 0x80
+#define ERROR_OVER_SW_AMPERAGE_B 0x80    
+
+#define VoltageChartWidth 84 
+#define VoltageChartHeight 26   
+#define AmperageChartWidth 84 
+#define AmperageChartHeight 26     
     
 typedef BYTE TErrorOver, * PTErrorOver;     
     
@@ -118,7 +126,8 @@ typedef enum {
 	ltInvisible
 } TLineType;
 
-typedef SHORT TElectrValue, * PTElectrValue;     
+typedef SHORT TElectrValue, * PTElectrValue;  
+typedef INT TSumElectrValue, * PTSumElectrValue;    
 
 typedef struct {
 	INT Radiator;

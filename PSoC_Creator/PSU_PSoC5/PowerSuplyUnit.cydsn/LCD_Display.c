@@ -77,16 +77,12 @@
 
 #define WorkstateCoordX 1
 #define WorkstateCoordY 120
-
-#define VoltageChartWidth 84 
-#define VoltageChartHeight 26    
+ 
 #define VoltageAChartCoordX 35   
 #define VoltageAChartCoordY 28    
 #define VoltageBChartCoordX (35 + 120)   
 #define VoltageBChartCoordY 28
-    
-#define AmperageChartWidth 84 
-#define AmperageChartHeight 26    
+       
 #define AmperageAChartCoordX 35   
 #define AmperageAChartCoordY (28 + 54)      
 #define AmperageBChartCoordX (35 + 120)   
@@ -106,6 +102,7 @@ BOOL ChangeSetPointValues();
 BOOL ChangeSelection();
 BOOL ChangeFocusing();
 PTVariableValue GetVariableValue(TSelectValue selectValue);
+void InitMeasuredValues();
 
 BOOL ChangeStabilizeSelection();
 BOOL FlashSelectedStabilize();
@@ -162,7 +159,9 @@ void Display_Init() {
     DisplayObj.Properties.SelectedSymbol = NULL;
     
     SymbolIndicator_Init(&DisplayObj.StateSymbols.MousePresent, simMousePresent, 4, MousePresentCoordX, MousePresentCoordY, 
-        14, 13, FALSE);   
+        14, 13, FALSE);  
+    
+    InitMeasuredValues();
 }
 
 void Display_Task() {	
@@ -372,17 +371,22 @@ void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value,
     if (immediate) {
         pMeasuredValue->Value.NewValue = value;
         pMeasuredValue->Value.RequestToChangeValue = TRUE;
-        pMeasuredValue->UpdateTickCount = GetTickCount();
+        pMeasuredValue->ChartUpdateTickCount = GetTickCount();
+        pMeasuredValue->IndicatorUpdateTickCount = GetTickCount();
     } else {
-        MedianFilter3_Push(&(pMeasuredValue->MedianFilter3), value);
-        if (GetElapsedPeriod(pMeasuredValue->UpdateTickCount) >= SYSTICK_mS(500)) {         
-            pMeasuredValue->Value.NewValue = MedianFilter3_Calc(&(pMeasuredValue->MedianFilter3));
-            pMeasuredValue->Value.RequestToChangeValue = TRUE;
-            pMeasuredValue->UpdateTickCount = GetTickCount();
+        AggreagatedValues_Push(&(pMeasuredValue->ChartValues), value);
+        if (GetElapsedPeriod(pMeasuredValue->ChartUpdateTickCount) >= SYSTICK_mS(150)) {         
+            TElectrValue chartValue = AggreagatedValues_Pop(&(pMeasuredValue->ChartValues));
+            AggreagatedValues_Push(&(pMeasuredValue->IndicatorValues), chartValue);
+            pMeasuredValue->ChartUpdateTickCount = GetTickCount();
+            if (GetElapsedPeriod(pMeasuredValue->IndicatorUpdateTickCount) >= SYSTICK_mS(450)) {         
+                pMeasuredValue->Value.NewValue = AggreagatedValues_Pop(&(pMeasuredValue->IndicatorValues));
+                pMeasuredValue->Value.RequestToChangeValue = TRUE;
+                pMeasuredValue->IndicatorUpdateTickCount = GetTickCount();
+            }
         }
     }
 }
-
 
 void Display_RequestToChangeVoltageA(TElectrValue value, BOOL immediate) {
     RequestToChangeMeasured(&DisplayObj.MeasuredValues.VoltageA, value, immediate);
@@ -398,6 +402,17 @@ void Display_RequestToChangeVoltageB(TElectrValue value, BOOL immediate) {
 
 void Display_RequestToChangeAmperageB(TElectrValue value, BOOL immediate) {
     RequestToChangeMeasured(&DisplayObj.MeasuredValues.AmperageB, value, immediate);
+}
+
+void InitMeasuredValues() {
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.ChartValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.IndicatorValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.ChartValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.IndicatorValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.ChartValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.IndicatorValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.ChartValues);
+    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.IndicatorValues);
 }
 /*----------------- Change ElectrValue --------------<<<*/
 
