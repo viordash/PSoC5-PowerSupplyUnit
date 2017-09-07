@@ -3,17 +3,11 @@
 
 #include <device.h>
     
-#define AGG_BUFFER_SIZE 512 /*(VoltageChartWidth > AmperageChartWidth ? VoltageChartWidth : AmperageChartWidth)*/
-#define AGG_BUFFER_SIZE_MASK (AGG_BUFFER_SIZE - 1)
-    
-typedef struct {       
-  DWORD Push;               //указывает на последний принятый байт + 1
-  DWORD Pop;                //указывает на считанный байт + 1
-  TElectrValue Buffer[AGG_BUFFER_SIZE];         //указывает на начало буфера приема
-} TRingBuffer, * PTRingBuffer;
+#define AGG_BUFFER_SIZE 1024 /*(VoltageChartWidth > AmperageChartWidth ? VoltageChartWidth : AmperageChartWidth)*/
  
 typedef struct {
-    TRingBuffer RingBuffer;
+  INT Index;
+  TElectrValue Buffer[AGG_BUFFER_SIZE];      
 } TAggreagatedValues, *PTAggreagatedValues;
     
 extern void AggreagatedValues_Init(PTAggreagatedValues pAggreagatedValues);
