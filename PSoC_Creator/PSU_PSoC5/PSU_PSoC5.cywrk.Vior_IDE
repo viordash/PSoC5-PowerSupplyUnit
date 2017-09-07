@@ -280,6 +280,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\ADC_VoltageB_IRQ.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\ADC_VoltageB_PM.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\ADC_VoltageB_theACLK.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\AggreagatedValues.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\AGND.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\AMuxAmperage.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\BtnOk_Reset.lst</v>
@@ -360,6 +361,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_LCD_RES.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_LCD_WR.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_Error.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_ProtectiveSensitivity.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_Led_RiseRatePowerUp.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_OnChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\O_OnChB.lst</v>
@@ -529,16 +531,16 @@
 <name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
 <name v=".\PowerSuplyUnit.cydsn\MainWork.h" />
-<name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" />
-<name v=".\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.h" />
-<name v=".\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" />
-<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" />
-<name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 <name v=".\PowerSuplyUnit.cydsn\Display\SymbolIndicator.c" />
 <name v=".\PowerSuplyUnit.cydsn\Storage.c" />
-<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_VoltageA.c" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\AggreagatedValues.h" />
+<name v=".\PowerSuplyUnit.cydsn\Utils\AggreagatedValues.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 <name v=".\PowerSuplyUnit.cydsn\LCD_Display.h" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
+<name v=".\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" />
+<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_Amperage.c" />
+<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_Amperage.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -546,8 +548,8 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 741" SelectedTabbedMdiWindow="d4d461ac-2036-4fcb-a110-752595c36d80"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="3c9d1716-b568-4948-b712-bc9658125027" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="c0231fb4-a494-4c97-a70e-33cc6ccdb3bd" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="163ae064-7826-4399-9746-1767a4e9e825" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.h" Guid="1b39c952-7e0a-42ff-94c4-f3e04340bc08" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" Guid="6652a323-603b-463f-86e5-b2d412d71af1" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicatorHelper.c" Guid="0fabcf4e-a826-4db1-98d2-9f31582b0dcb" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="d4d461ac-2036-4fcb-a110-752595c36d80" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicator.c" Guid="81f83dcc-bcee-4e04-a70f-76c4d86f5450" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Storage.c" Guid="247d8cfe-9388-484b-8bbb-27df87296a2c" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_VoltageA.c" Guid="1365d12c-ee8f-48be-982a-ac3b3e80e909" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="9ae6c50e-2176-4972-9209-24ab18a7dcbb" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
-<config v="Debug" />
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 741" SelectedTabbedMdiWindow="ee55ebe1-9ade-41d7-bb43-3f3c8783ed07"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.h" Guid="3c9d1716-b568-4948-b712-bc9658125027" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\SymbolIndicator.c" Guid="81f83dcc-bcee-4e04-a70f-76c4d86f5450" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Storage.c" Guid="247d8cfe-9388-484b-8bbb-27df87296a2c" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\AggreagatedValues.h" Guid="04101993-73c6-441f-9030-4746a339ab13" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Utils\AggreagatedValues.c" Guid="ee55ebe1-9ade-41d7-bb43-3f3c8783ed07" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="d4d461ac-2036-4fcb-a110-752595c36d80" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.h" Guid="d6737f00-4267-4ed7-849e-18f43e8b555b" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="2bc24561-7623-42d0-9b3c-86fadeb72ca8" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\CalcAdcValue.c" Guid="196788ca-a82d-487b-af23-f718cfdc56a4" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_Amperage.c" Guid="92e1e350-b41c-4830-bfe7-e4f9d6995d62" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\ADC_Amperage.h" Guid="04682881-2c0d-43f3-b387-57b3434fc2f5" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
 </CyXmlSerializer>
