@@ -1,36 +1,36 @@
-#include "Utils\AggreagatedValues.h"
+#include "Utils\AggregatedValues.h"
 
 TElectrValue MedianFilter3(TElectrValue a, TElectrValue b, TElectrValue c);
 
-void AggreagatedValues_Init(PTAggreagatedValues pAggreagatedValues, PTElectrValue buffer, INT size) {      
-    pAggreagatedValues->Index = 0;      
-    pAggreagatedValues->Buffer = buffer;      
-    pAggreagatedValues->Size = size;   
+void AggregatedValues_Init(PTAggregatedValues pAggregatedValues, PTElectrValue buffer, INT size) {      
+    pAggregatedValues->Index = 0;      
+    pAggregatedValues->Buffer = buffer;      
+    pAggregatedValues->Size = size;   
 }
 
-void AggreagatedValues_Push(PTAggreagatedValues pAggreagatedValues, TElectrValue value) {
-    pAggreagatedValues->Buffer[pAggreagatedValues->Index] = value;
-    if (++pAggreagatedValues->Index >= pAggreagatedValues->Size) {
-        pAggreagatedValues->Index = 0;
+void AggregatedValues_Push(PTAggregatedValues pAggregatedValues, TElectrValue value) {
+    pAggregatedValues->Buffer[pAggregatedValues->Index] = value;
+    if (++pAggregatedValues->Index >= pAggregatedValues->Size) {
+        pAggregatedValues->Index = 0;
     }
 }
 
-TElectrValue AggreagatedValues_Pop(PTAggreagatedValues pAggreagatedValues, TProcessTasks pProcessTasks) {
-    INT size = pAggreagatedValues->Index + 1;  
+TElectrValue AggregatedValues_Pop(PTAggregatedValues pAggregatedValues, TProcessTasks pProcessTasks) {
+    INT size = pAggregatedValues->Index + 1;  
     TSumElectrValue res = 0;
     INT medianRest = size % 3;
     PTElectrValue pBuffer;
     if (size <= medianRest) {
         INT size_t = size;
-        pBuffer = pAggreagatedValues->Buffer;
+        pBuffer = pAggregatedValues->Buffer;
         while (size--) {
             res += *(pBuffer++);            
         }
         res = res / (TSumElectrValue)size_t;
-        pAggreagatedValues->Index = 0; 
+        pAggregatedValues->Index = 0; 
         return (TElectrValue)res;
     }    
-    pBuffer = &(pAggreagatedValues->Buffer[medianRest]);
+    pBuffer = &(pAggregatedValues->Buffer[medianRest]);
     size -= medianRest;
     INT processTasks = 0;
     DWORD size_t = size / 3;
@@ -46,7 +46,7 @@ TElectrValue AggreagatedValues_Pop(PTAggreagatedValues pAggreagatedValues, TProc
         }
     }
     res = res / (TSumElectrValue)size_t;
-    pAggreagatedValues->Index = 0; 
+    pAggregatedValues->Index = 0; 
     return (TElectrValue)res;
 }
 

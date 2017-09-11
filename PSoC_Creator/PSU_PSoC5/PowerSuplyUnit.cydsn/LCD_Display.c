@@ -352,10 +352,10 @@ BOOL ChangeMeasuredValues() {
             if (pVariableValue->Value.RequestToImmediateChangeValue) {                
                 ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
             } else {
-                TElectrValue chartValue = AggreagatedValues_Pop(&(pVariableValue->ChartValues), ChangeMeasuredValues_ProcessTasks);
-                AggreagatedValues_Push(&(pVariableValue->IndicatorValues), chartValue);
+                TElectrValue chartValue = AggregatedValues_Pop(&(pVariableValue->ChartValues), ChangeMeasuredValues_ProcessTasks);
+                AggregatedValues_Push(&(pVariableValue->IndicatorValues), chartValue);
                 if (GetElapsedPeriod(pVariableValue->IndicatorUpdateTickCount) >= SYSTICK_mS(450)) { 
-                    pVariableValue->Value.NewValue = AggreagatedValues_Pop(&(pVariableValue->IndicatorValues), ChangeMeasuredValues_ProcessTasks);
+                    pVariableValue->Value.NewValue = AggregatedValues_Pop(&(pVariableValue->IndicatorValues), ChangeMeasuredValues_ProcessTasks);
                     ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
                     pVariableValue->IndicatorUpdateTickCount = GetTickCount();
                 }
@@ -389,7 +389,7 @@ void RequestToChangeMeasured(PTMeasuredValue pMeasuredValue, TElectrValue value,
         pMeasuredValue->ChartUpdateTickCount = GetTickCount();
         pMeasuredValue->IndicatorUpdateTickCount = GetTickCount();
     } else {
-        AggreagatedValues_Push(&(pMeasuredValue->ChartValues), value);
+        AggregatedValues_Push(&(pMeasuredValue->ChartValues), value);
         if (GetElapsedPeriod(pMeasuredValue->ChartUpdateTickCount) >= SYSTICK_mS(150)) {    
             pMeasuredValue->Value.RequestToChangeValue = TRUE;
             pMeasuredValue->ChartUpdateTickCount = GetTickCount();
@@ -414,14 +414,14 @@ void Display_RequestToChangeAmperageB(TElectrValue value, BOOL immediate) {
 }
 
 void InitMeasuredValues() {
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.ChartValues, DisplayObj.MeasuredValues.VoltageA.ChartBuffer, AGG_CHART_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.IndicatorValues, DisplayObj.MeasuredValues.VoltageA.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.ChartValues, DisplayObj.MeasuredValues.AmperageA.ChartBuffer, AGG_CHART_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.IndicatorValues, DisplayObj.MeasuredValues.AmperageA.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.ChartValues, DisplayObj.MeasuredValues.VoltageB.ChartBuffer, AGG_CHART_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.IndicatorValues, DisplayObj.MeasuredValues.VoltageB.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.ChartValues, DisplayObj.MeasuredValues.AmperageB.ChartBuffer, AGG_CHART_BUFFER_SIZE);
-    AggreagatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.IndicatorValues, DisplayObj.MeasuredValues.AmperageB.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.ChartValues, DisplayObj.MeasuredValues.VoltageA.ChartBuffer, AGG_CHART_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.VoltageA.IndicatorValues, DisplayObj.MeasuredValues.VoltageA.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.ChartValues, DisplayObj.MeasuredValues.AmperageA.ChartBuffer, AGG_CHART_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.AmperageA.IndicatorValues, DisplayObj.MeasuredValues.AmperageA.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.ChartValues, DisplayObj.MeasuredValues.VoltageB.ChartBuffer, AGG_CHART_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.VoltageB.IndicatorValues, DisplayObj.MeasuredValues.VoltageB.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.ChartValues, DisplayObj.MeasuredValues.AmperageB.ChartBuffer, AGG_CHART_BUFFER_SIZE);
+    AggregatedValues_Init(&DisplayObj.MeasuredValues.AmperageB.IndicatorValues, DisplayObj.MeasuredValues.AmperageB.IndicatorBuffer, AGG_IND_BUFFER_SIZE);
 }
 /*----------------- Change ElectrValue --------------<<<*/
 
