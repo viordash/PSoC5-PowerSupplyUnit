@@ -19,6 +19,7 @@ typedef struct _TFunction{
 #define GetTickCount() SysTickCount
 #define GetElapsedPeriod(fromTickCount) ((GetTickCount() >= fromTickCount) ? GetTickCount() - fromTickCount : (HI_DWORD - fromTickCount) + GetTickCount())
 
+typedef void(*TProcessTasks) (void);
 
 extern volatile DWORD SysTickCount;
 extern void TaskSleep(PTFunction AFunction, DWORD ADelayTicks);

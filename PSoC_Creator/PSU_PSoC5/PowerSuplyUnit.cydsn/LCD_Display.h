@@ -64,6 +64,7 @@ typedef struct {
     TValueIndicator Indicator;
     TElectrValue NewValue;
     BOOL RequestToChangeValue;
+    BOOL RequestToImmediateChangeValue;
     BOOL RequestToSelect;
     BOOL RequestToFocus;
 } TVariableValue, * PTVariableValue;
@@ -71,9 +72,11 @@ typedef struct {
 typedef struct {
     TVariableValue Value;
     DWORD ChartUpdateTickCount;
+    TElectrValue ChartBuffer[AGG_CHART_BUFFER_SIZE];
     TAggreagatedValues ChartValues;
     DWORD IndicatorUpdateTickCount;
-    TAggreagatedValues IndicatorValues;   
+    TAggreagatedValues IndicatorValues; 
+    TElectrValue IndicatorBuffer[AGG_IND_BUFFER_SIZE];  
 } TMeasuredValue, * PTMeasuredValue;
 
 typedef struct {
