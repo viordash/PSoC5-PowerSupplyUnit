@@ -68,6 +68,9 @@ void Chart_SetValue(PTChart pChart, TElectrValue value) {
     dw = (pChart->Height * 1000) / dw;
     BYTE coordY = pChart->_private.WorkAreaBottom - (BYTE)dw;
     ShiftWorkSpace(pChart);
+    if (coordY < pChart->_private.WorkAreaTop) {
+        coordY = pChart->_private.WorkAreaTop;
+    }
     pChart->_private.Points[0] = coordY;
     CleanWorkSpace(pChart);
     DrawWorkSpace(pChart);  
