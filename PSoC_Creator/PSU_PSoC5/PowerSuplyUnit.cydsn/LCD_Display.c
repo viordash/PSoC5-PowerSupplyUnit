@@ -362,6 +362,8 @@ BOOL ChangeMeasuredValues() {
             if (pVariableValue->Value.RequestToImmediateChangeValue) {                
                 ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
                 ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
+                Chart_SetValue(&(pVariableValue->Chart), pVariableValue->Value.NewValue); 
+                request = TRUE;
             } else {
                 TElectrValue chartValue = AggregatedValues_Pop(&(pVariableValue->ChartValues), ChangeMeasuredValues_ProcessTasks);
                 AggregatedValues_Push(&(pVariableValue->IndicatorValues), chartValue);
