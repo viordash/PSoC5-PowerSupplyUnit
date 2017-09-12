@@ -365,21 +365,18 @@ BOOL ChangeMeasuredValues() {
             } else {
                 TElectrValue chartValue = AggregatedValues_Pop(&(pVariableValue->ChartValues), ChangeMeasuredValues_ProcessTasks);
                 AggregatedValues_Push(&(pVariableValue->IndicatorValues), chartValue);
-                   // if (pVariableValue == &DisplayObj.MeasuredValues.VoltageA) {
-                        Chart_SetValue(&(pVariableValue->Chart), chartValue); 
-                   // }  
+                Chart_SetValue(&(pVariableValue->Chart), chartValue); 
                 if (GetElapsedPeriod(pVariableValue->IndicatorUpdateTickCount) >= SYSTICK_mS(450)) {                   
                     pVariableValue->Value.NewValue = AggregatedValues_Pop(&(pVariableValue->IndicatorValues), ChangeMeasuredValues_ProcessTasks);
-
-                    
                     ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
                     pVariableValue->IndicatorUpdateTickCount = GetTickCount();
                     ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
+                    request = TRUE;
                 }
             }
             pVariableValue->Value.RequestToChangeValue = FALSE;
             pVariableValue->Value.RequestToImmediateChangeValue = FALSE;
-            request = TRUE;
+            
         }  
         pVariableValue++;
     }
