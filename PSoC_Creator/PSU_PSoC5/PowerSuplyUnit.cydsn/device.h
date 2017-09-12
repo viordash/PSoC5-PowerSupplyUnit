@@ -67,11 +67,6 @@
 #define ERROR_OVER_SW_VOLTAGE_B 0x40
 #define ERROR_OVER_SW_AMPERAGE_B 0x80    
 
-#define VoltageChartWidth 84 
-#define VoltageChartHeight 26   
-#define AmperageChartWidth 84 
-#define AmperageChartHeight 26     
-    
 typedef BYTE TErrorOver, * PTErrorOver;     
     
 typedef enum {

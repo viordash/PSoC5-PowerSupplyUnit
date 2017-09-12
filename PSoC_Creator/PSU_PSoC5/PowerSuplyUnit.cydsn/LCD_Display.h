@@ -18,6 +18,7 @@
 #include "Display\SymbolIndicator.h"
 #include "Display\SymbolIndicatorHelper.h"
 #include "Utils\AggregatedValues.h"
+#include "Display\Chart.h"
 
 extern TFunction DisplayFunction;
 extern void Display_Init();
@@ -77,6 +78,7 @@ typedef struct {
     DWORD IndicatorUpdateTickCount;
     TAggregatedValues IndicatorValues; 
     TElectrValue IndicatorBuffer[AGG_IND_BUFFER_SIZE];  
+    TChart Chart;
 } TMeasuredValue, * PTMeasuredValue;
 
 typedef struct {

@@ -88,6 +88,11 @@
 #define AmperageBChartCoordX (35 + 120)   
 #define AmperageBChartCoordY (28 + 54) 
 
+#define VoltageChartWidth 84 
+#define VoltageChartHeight 26   
+#define AmperageChartWidth 84 
+#define AmperageChartHeight 26        
+
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
 static BOOL ProcessRequests();
@@ -159,7 +164,12 @@ void Display_Init() {
     DisplayObj.Properties.SelectedSymbol = NULL;
     
     SymbolIndicator_Init(&DisplayObj.StateSymbols.MousePresent, simMousePresent, 4, MousePresentCoordX, MousePresentCoordY, 
-        14, 13, FALSE);  
+        14, 13, FALSE);      
+    
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageA.Chart, VoltageAChartCoordX, VoltageAChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageB.Chart, VoltageBChartCoordX, VoltageBChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageA.Chart, AmperageAChartCoordX, AmperageAChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageB.Chart, AmperageBChartCoordX, AmperageBChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX); 
     
     InitMeasuredValues();
 }
@@ -291,11 +301,11 @@ void SetScreen_WorkMode() {
     Display_DrawLine(0, 55, 239, 55, ltSolid, FALSE);
     Display_DrawLine(0, 109, 239, 109, ltSolid, FALSE);  
     
-    Display_DrawRectangle(VoltageAChartCoordX, VoltageAChartCoordY, VoltageAChartCoordX + VoltageChartWidth, VoltageAChartCoordY + VoltageChartHeight, ltDoted, FALSE);  
-    Display_DrawRectangle(VoltageBChartCoordX, VoltageBChartCoordY, VoltageBChartCoordX + VoltageChartWidth, VoltageBChartCoordY + VoltageChartHeight, ltDoted, FALSE);  
-    Display_DrawRectangle(AmperageAChartCoordX, AmperageAChartCoordY, AmperageAChartCoordX + AmperageChartWidth, AmperageAChartCoordY + AmperageChartHeight, ltDoted, FALSE);  
-    Display_DrawRectangle(AmperageBChartCoordX, AmperageBChartCoordY, AmperageBChartCoordX + AmperageChartWidth, AmperageBChartCoordY + AmperageChartHeight, ltDoted, FALSE);   
-  
+    Chart_DrawBorder(&DisplayObj.MeasuredValues.VoltageA.Chart); 
+    Chart_DrawBorder(&DisplayObj.MeasuredValues.VoltageB.Chart); 
+    Chart_DrawBorder(&DisplayObj.MeasuredValues.AmperageA.Chart); 
+    Chart_DrawBorder(&DisplayObj.MeasuredValues.AmperageB.Chart); 
+
     Display_DrawLine(TemperatureCoordX - 2, 109, TemperatureCoordX - 2, GLCD_H_SIZE - 1, ltSolid, FALSE);     
     Display_Flush();
 }
@@ -351,18 +361,24 @@ BOOL ChangeMeasuredValues() {
         if (pVariableValue->Value.RequestToChangeValue || pVariableValue->Value.RequestToImmediateChangeValue) {    
             if (pVariableValue->Value.RequestToImmediateChangeValue) {                
                 ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
+                ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
             } else {
                 TElectrValue chartValue = AggregatedValues_Pop(&(pVariableValue->ChartValues), ChangeMeasuredValues_ProcessTasks);
                 AggregatedValues_Push(&(pVariableValue->IndicatorValues), chartValue);
-                if (GetElapsedPeriod(pVariableValue->IndicatorUpdateTickCount) >= SYSTICK_mS(450)) { 
+                   // if (pVariableValue == &DisplayObj.MeasuredValues.VoltageA) {
+                        Chart_SetValue(&(pVariableValue->Chart), chartValue); 
+                   // }  
+                if (GetElapsedPeriod(pVariableValue->IndicatorUpdateTickCount) >= SYSTICK_mS(450)) {                   
                     pVariableValue->Value.NewValue = AggregatedValues_Pop(&(pVariableValue->IndicatorValues), ChangeMeasuredValues_ProcessTasks);
+
+                    
                     ValueIndicator_SetValue(&(pVariableValue->Value.Indicator), pVariableValue->Value.NewValue);
                     pVariableValue->IndicatorUpdateTickCount = GetTickCount();
+                    ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
                 }
             }
             pVariableValue->Value.RequestToChangeValue = FALSE;
             pVariableValue->Value.RequestToImmediateChangeValue = FALSE;
-            ValueIndicator_Repaint(&(pVariableValue->Value.Indicator));
             request = TRUE;
         }  
         pVariableValue++;
