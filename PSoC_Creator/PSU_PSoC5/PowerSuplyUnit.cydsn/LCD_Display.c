@@ -127,14 +127,14 @@ void Display_Init() {
     memset(&DisplayObj.MeasuredValues, 0, sizeof(TDisplayMeasuredValues));
    // TElectrValue ddd = CalcSetPointValueVoltageA(15);
     ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageA.Value.Indicator, omVoltageMeasure, 3, VoltageACoordX, VoltageACoordY, 
-        89, 22, 4, 4, VoltageACoordY + 3, 3, 1, FALSE, CalcDisplayValueVoltageA);
+        89, 22, 4, 4, VoltageACoordY + 3, 3, 0, FALSE, CalcDisplayValueVoltageA);
     ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageA.Value.Indicator, omAmperageMeasure, 2, AmperageACoordX, AmperageACoordY, 
-        81, 19, 4, 4, AmperageACoordY, 3, 1, FALSE, CalcDisplayValueAmperageA);
+        81, 19, 4, 4, AmperageACoordY, 3, 0, FALSE, CalcDisplayValueAmperageA);
     
     ValueIndicator_Init(&DisplayObj.MeasuredValues.VoltageB.Value.Indicator, omVoltageMeasure, 3, VoltageBCoordX, VoltageBCoordY, 
-        89, 22, 4, 4, VoltageBCoordY + 3, 3, 1, FALSE, CalcDisplayValueVoltageB);
+        89, 22, 4, 4, VoltageBCoordY + 3, 3, 0, FALSE, CalcDisplayValueVoltageB);
     ValueIndicator_Init(&DisplayObj.MeasuredValues.AmperageB.Value.Indicator, omAmperageMeasure, 2, AmperageBCoordX, AmperageBCoordY, 
-        81, 19, 4, 4, AmperageBCoordY, 3, 1, FALSE, CalcDisplayValueAmperageB);    
+        81, 19, 4, 4, AmperageBCoordY, 3, 0, FALSE, CalcDisplayValueAmperageB);    
         
     ValueIndicator_Init(&DisplayObj.SetPointValues.VoltageA.Indicator, omVoltageSetPoint, 5, SetPointVoltageACoordX, SetPointVoltageACoordY, 
         15, 10, 0, 0, SetPointVoltageACoordY + 2, 1, 1, TRUE, NULL);

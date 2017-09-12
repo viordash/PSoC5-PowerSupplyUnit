@@ -18,7 +18,7 @@
 // Character bitmaps for Arial 20pt
 const uint_8 font_4Bitmaps[] = 
 {
-	// @0 '.' (4 pixels wide)
+	// @0 '.' (6 pixels wide)
 	0b00000000, //     
 	0b00000000, //     
 	0b00000000, //     
@@ -35,10 +35,10 @@ const uint_8 font_4Bitmaps[] =
 	0b00000000, //     
 	0b00000000, //     
 	0b00000000, //     
-	0b11110000, // ####
-	0b11110000, // ####
-	0b11110000, // ####
-	0b11110000, // ####
+	0b01111000, // ####
+	0b01111000, // ####
+	0b01111000, // ####
+	0b01111000, // ####
 
 	// @20 'S' (16 pixels wide)
 	0b11111111, 0b11111110, //      ######     
@@ -155,7 +155,7 @@ const uint_8 font_4Bitmaps[] =
 // { [Char width in bits], [Offset into arial_20ptCharBitmaps in bytes] }
 const FONT_CHAR_INFO font_4Descriptors[] = 
 {
-	{4, 0}, 		// . 
+	{6, 0}, 		// . 
 	{0, 0}, 		// / 
 	{0, 0}, 		// 0 
 	{0, 0}, 		// 1 

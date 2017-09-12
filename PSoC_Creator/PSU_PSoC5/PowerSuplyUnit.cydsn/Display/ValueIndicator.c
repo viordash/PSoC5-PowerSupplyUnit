@@ -84,10 +84,18 @@ void ValueIndicator_SetValue(PTValueIndicator pValueIndicator, TElectrValue valu
         TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
     } else if (pValueIndicator->Mode == omAmperageMeasure) {        
         INT val = pValueIndicator->CalcDisplayValueFunction(value);
-        sprintf(pValueIndicator->TextMajor, "%1u", val / 1000);
-        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
-        sprintf(pValueIndicator->TextMinor, "%03u", val % 1000);
-        TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
+        if (val < 10000) {        
+            sprintf(pValueIndicator->TextMajor, "%1u", val / 1000);
+            TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
+            sprintf(pValueIndicator->TextMinor, "%03u", val % 1000);
+            TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
+        } else {
+            val = val / 10;
+            sprintf(pValueIndicator->TextMajor, "%2u", val / 100);
+            TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
+            sprintf(pValueIndicator->TextMinor, "%02u", val % 100);
+            TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
+        }
     } else if (pValueIndicator->Mode == omAmperageSetPoint) {
         sprintf(pValueIndicator->TextMajor, "%1u", value / 1000);
         TaskSleep(&DisplayFunction, SYSTICK_mS(1));	
