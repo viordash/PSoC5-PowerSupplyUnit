@@ -166,10 +166,10 @@ void Display_Init() {
     SymbolIndicator_Init(&DisplayObj.StateSymbols.MousePresent, simMousePresent, 4, MousePresentCoordX, MousePresentCoordY, 
         14, 13, FALSE);      
     
-    Chart_Init(&DisplayObj.MeasuredValues.VoltageA.Chart, VoltageAChartCoordX, VoltageAChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.VoltageB.Chart, VoltageBChartCoordX, VoltageBChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.AmperageA.Chart, AmperageAChartCoordX, AmperageAChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.AmperageB.Chart, AmperageBChartCoordX, AmperageBChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageA.Chart, VoltageAChartCoordX, VoltageAChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageB.Chart, VoltageBChartCoordX, VoltageBChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageA.Chart, AmperageAChartCoordX, AmperageAChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageB.Chart, AmperageBChartCoordX, AmperageBChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_MAX); 
     
     InitMeasuredValues();
 }
@@ -338,6 +338,15 @@ BOOL ChangeSetPointValues() {
             ValueIndicator_SetValue(&(pVariableValue->Indicator), pVariableValue->NewValue);
             pVariableValue->RequestToChangeValue = FALSE;
             ValueIndicator_Repaint(&(pVariableValue->Indicator));
+            if (pVariableValue == &DisplayObj.SetPointValues.VoltageA) {                
+                Chart_SetPoint(&(DisplayObj.MeasuredValues.VoltageA.Chart), pVariableValue->NewValue);
+            } else if (pVariableValue == &DisplayObj.SetPointValues.AmperageA) {                
+                Chart_SetPoint(&(DisplayObj.MeasuredValues.AmperageA.Chart), pVariableValue->NewValue);
+            } else if (pVariableValue == &DisplayObj.SetPointValues.VoltageB) {                
+                Chart_SetPoint(&(DisplayObj.MeasuredValues.VoltageB.Chart), pVariableValue->NewValue);
+            } else if (pVariableValue == &DisplayObj.SetPointValues.AmperageB) {                
+                Chart_SetPoint(&(DisplayObj.MeasuredValues.AmperageB.Chart), pVariableValue->NewValue);
+            }
             request = TRUE;
         }  
         pVariableValue++;

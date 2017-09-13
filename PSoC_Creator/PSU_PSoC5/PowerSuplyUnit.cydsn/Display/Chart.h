@@ -23,6 +23,8 @@ typedef struct {
     BYTE WorkAreaTop;
     BYTE WorkAreaLeft;
     BYTE WorkAreaRight;
+    BYTE SetPointLeft;
+    BYTE SetPointRight;
     BYTE Points[POINTS_COUNT];
 } TChartPrivate, *PTChartPrivate;
     
@@ -33,13 +35,14 @@ typedef struct {
     BYTE Height;
     BYTE SetPointPos;
     INT AdcMax;
+    INT ValueMax;
     TChartPrivate _private;
 } TChart, *PTChart;
   
-extern void Chart_Init(PTChart pChart, BYTE left, BYTE top, BYTE width, BYTE height, INT adcMax);
+extern void Chart_Init(PTChart pChart, BYTE left, BYTE top, BYTE width, BYTE height, INT adcMax, INT valueMax);
 extern void Chart_DrawBorder(PTChart pChart);
 extern void Chart_SetValue(PTChart pChart, TElectrValue value);
-
+extern void Chart_SetPoint(PTChart pChart, TElectrValue value);
 #endif /* __Chart_H */
 
 /* [] END OF FILE */
