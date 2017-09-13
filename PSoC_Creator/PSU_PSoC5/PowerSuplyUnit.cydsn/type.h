@@ -67,6 +67,7 @@ union uWORD {
 #define HI_WORD  USHRT_MAX
 #define HI_DWORD  ULONG_MAX
 #define HI_INT  LONG_MAX
+#define HI_BYTE  0xFF
 #define SWAP16(x) ((WORD)((x >> 8) | (x << 8)))
 
 
