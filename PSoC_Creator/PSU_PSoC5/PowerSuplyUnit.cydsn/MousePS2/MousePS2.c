@@ -159,6 +159,7 @@ void MouseTransmit(BYTE Data) {
 #define MSMode_RXByteReady(MinCount) ((MouseByteNum >= MinCount) && (SysClk_GetPeriod(MouseLastAct) > MSFrame_DelayMs))
 
 void InitMouse() {
+    MouseState(FALSE);
 	MSMode_StateSET(MSMode_StateReset);
 	MouseMode |= MSMode_TX;
 	MouseBitNum = 0x00;

@@ -33,6 +33,7 @@ BOOL ProtectiveBehaviorIndicator();
 void RefreshDisplay();
 BOOL RiseRatePowerUpChanged(BOOL btnRiseRatePowerUpPressed);
 void ButtonOkPressed(BYTE value);
+void ButtonOnOrChangePolarityPressed (BYTE value);
 void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
@@ -77,6 +78,10 @@ void MainWork_Task(){
             if (prevButtons & (BtnOk_LongPress | BtnOk_Pressed) || bt & (BtnOk_LongPress | BtnOk_Pressed)) {
                 ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
             }
+            if (!(prevButtons & 0x10) && bt & 0x10) {
+                ButtonOnOrChangePolarityPressed(bt & 0x10);  
+            }
+            
             prevButtons = bt;
         } 
         bt = MultiJog_Status_Read();
@@ -200,12 +205,24 @@ void ButtonOkPressed (BYTE value) {
             if(!IsDisplayInChangingStabilizeMode()) {
                 SelectStabilizeMode();
             }
-        }        
+        }
     } else if (MainWorkObj.State == mwsErrGlb) {
-    	ResetErrorState();
+    	ResetErrorState();        
     }
 }
 /*----------------- Button Ok pressed --------------<<<*/
+
+/*>>>-------------- Button On or Change polarity pressed -----------------*/
+void ButtonOnOrChangePolarityPressed (BYTE value) {
+    if (!value) {
+        return;            
+    }
+
+    if (!MainWorkObj.MousePresent) {
+        ChangeOutputState();
+    }
+}
+/*----------------- Button On or Change polarity pressed --------------<<<*/
 
 /*>>>-------------- MultiJog Changing Value -----------------*/
 void MultiJogChangingValue (BYTE value) {
@@ -247,6 +264,7 @@ void MouseState(BOOL present) {
     while (!RequestToVisibileMousePresent(present)) {
         TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	    
     }
+    MainWorkObj.MousePresent = present;
 }
 
 void MouseChangingValue(INT value) {

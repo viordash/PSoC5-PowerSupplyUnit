@@ -301,7 +301,7 @@
     <peripheral>
       <name>MultiJog_Status</name>
       <description>No description available</description>
-      <baseAddress>0x40006467</baseAddress>
+      <baseAddress>0x40006565</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -456,7 +456,7 @@
     <peripheral>
       <name>MultiJog_Reset</name>
       <description>Count7 debug registers</description>
-      <baseAddress>0x40006472</baseAddress>
+      <baseAddress>0x40006476</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -702,7 +702,7 @@
         <register>
           <name>MultiJog_Cnt8_COUNTER</name>
           <description>Counter value</description>
-          <addressOffset>0x40006405</addressOffset>
+          <addressOffset>0x40006403</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -711,7 +711,7 @@
         <register>
           <name>MultiJog_STATUS_REG</name>
           <description>Quadrature Decoder Status Register</description>
-          <addressOffset>0x40006464</addressOffset>
+          <addressOffset>0x40006465</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -762,7 +762,7 @@
         <register>
           <name>MultiJog_Cnt8_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x40006405</addressOffset>
+          <addressOffset>0x40006403</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -771,7 +771,7 @@
         <register>
           <name>MultiJog_Cnt8_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x40006425</addressOffset>
+          <addressOffset>0x40006423</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -780,7 +780,7 @@
         <register>
           <name>MultiJog_Cnt8_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x40006435</addressOffset>
+          <addressOffset>0x40006433</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -821,7 +821,7 @@
         <register>
           <name>MultiJog_Cnt8_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x40006485</addressOffset>
+          <addressOffset>0x40006483</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -881,7 +881,7 @@
         <register>
           <name>MultiJog_Cnt8_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x40006495</addressOffset>
+          <addressOffset>0x40006493</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1655,7 +1655,7 @@
     <peripheral>
       <name>MultiJog_FreqMeter</name>
       <description>Count7 debug registers</description>
-      <baseAddress>0x40006476</baseAddress>
+      <baseAddress>0x40006576</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -6313,7 +6313,7 @@
     <peripheral>
       <name>RegulatorStatus</name>
       <description>No description available</description>
-      <baseAddress>0x40006566</baseAddress>
+      <baseAddress>0x40006567</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>

@@ -29,6 +29,7 @@ typedef struct {
     BOOL HwPrSupressed;
     TEepromStrorage Storage;
     TProtectiveSensitivity ProtectiveSensitivity;
+    BOOL MousePresent;
 } TMainWork_Object, * PTMainWork_Object;
 
 extern TFunction MainWorkFunction;
