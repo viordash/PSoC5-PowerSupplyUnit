@@ -25,10 +25,10 @@ INT CalcDisplayValueVoltageA (TElectrValue value) {
     return val;
 }
 
-TElectrValue CalcSetPointValueVoltageA (TElectrValue value) {   
-    value *= 10;
-    value /= 8; 
-    TElectrValue adcCounts = ((value * ADC_VoltageA_countsPer10Volt) - (ADC_VoltageA_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
+TElectrValue CalcSetPointValueVoltageA (TElectrValue value) {  
+    INT val = value * 10;    
+    val /= 8; 
+    TElectrValue adcCounts = ((val * ADC_VoltageA_countsPer10Volt) - (ADC_VoltageA_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
     
     adcCounts += ADC_VoltageA_offset;
     if (adcCounts < 0) {
@@ -63,10 +63,10 @@ INT CalcDisplayValueVoltageB (TElectrValue value) {
     return val;
 }
 
-TElectrValue CalcSetPointValueVoltageB (TElectrValue value) {   
-    value *= 10;
-    value /= 8; 
-    TElectrValue adcCounts = ((value * ADC_VoltageB_countsPer10Volt) - (ADC_VoltageB_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
+TElectrValue CalcSetPointValueVoltageB (TElectrValue value) {       
+    INT val = value * 10;    
+    val /= 8; 
+    TElectrValue adcCounts = ((val * ADC_VoltageB_countsPer10Volt) - (ADC_VoltageB_countsPer10Volt / 2)) / ADC_VoltageA_10MV_COUNTS;
     
     adcCounts += ADC_VoltageA_offset;
     if (adcCounts < 0) {
