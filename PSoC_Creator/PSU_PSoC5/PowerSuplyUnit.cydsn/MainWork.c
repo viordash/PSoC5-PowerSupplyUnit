@@ -37,6 +37,7 @@ void MultiJogChangingValue(BYTE value);
 BOOL TemperatureControl();
 void ChangeValue(INT shiftValue);
 void UpdateAllSetPoints();
+BOOL ErrorIndicator();
 BOOL CheckRegulatorStatusCore(BYTE status);
 BOOL CheckRegulatorStatus();
 void ClearRegulatorStatusAndErrors();
@@ -76,9 +77,11 @@ void MainWork_Task(){
         }        
         
         if (!MouseHandler()){
-            if(!TemperatureControl()) {                
-                if(!ProtectiveBehaviorIndicator()) {
-                    
+            if(!TemperatureControl()) {  
+                if (!ErrorIndicator()) {
+                    if(!ProtectiveBehaviorIndicator()) {
+                        
+                    }
                 }
             }
         }
@@ -108,6 +111,8 @@ void ChangeState(TMainWorkState newState){
     
     if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
         SaveToStorage();
+    } else if (MainWorkObj.State == mwsErrGlb && newState != mwsErrGlb) {              
+        O_Led_Error_Write(FALSE);    
     }
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
     Display_WorkStateChanged(MainWorkObj.State, newState);
@@ -188,6 +193,8 @@ void ButtonOkPressed (BYTE value) {
                 SelectStabilizeMode();
             }
         }        
+    } else if (MainWorkObj.State == mwsErrGlb) {
+    	ResetErrorState();
     }
 }
 /*----------------- Button Ok pressed --------------<<<*/
@@ -330,7 +337,20 @@ void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
 void ResetErrorState() {
     RegulatorStatus_Read();
     ThrowErrorOverCore(ERROR_OVER_NONE, ~ERROR_OVER_NONE);
-    ChangeState(mwsStandBy);    
+    ChangeState(mwsStandBy);  
+}
+
+BOOL ErrorIndicator() {
+	static DWORD errorFlashTick = 0;
+    if (MainWorkObj.State != mwsErrGlb) {
+        return FALSE;    
+    }
+	if (GetElapsedPeriod(errorFlashTick) < SYSTICK_mS(150)) {   
+        return FALSE;
+    }    
+    errorFlashTick = GetTickCount(); 
+    O_Led_Error_Write(!O_Led_Error_Read());
+    return TRUE;
 }
 /*----------------- Errors --------------<<<*/
 
