@@ -166,10 +166,10 @@ void Display_Init() {
     SymbolIndicator_Init(&DisplayObj.StateSymbols.MousePresent, simMousePresent, 4, MousePresentCoordX, MousePresentCoordY, 
         14, 13, FALSE);      
     
-    Chart_Init(&DisplayObj.MeasuredValues.VoltageA.Chart, VoltageAChartCoordX, VoltageAChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.VoltageB.Chart, VoltageBChartCoordX, VoltageBChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.AmperageA.Chart, AmperageAChartCoordX, AmperageAChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_MAX); 
-    Chart_Init(&DisplayObj.MeasuredValues.AmperageB.Chart, AmperageBChartCoordX, AmperageBChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_MAX); 
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageA.Chart, VoltageAChartCoordX, VoltageAChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_HIGH); 
+    Chart_Init(&DisplayObj.MeasuredValues.VoltageB.Chart, VoltageBChartCoordX, VoltageBChartCoordY, VoltageChartWidth, VoltageChartHeight, Voltage_ADC_MAX, Voltage_HIGH); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageA.Chart, AmperageAChartCoordX, AmperageAChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_HIGH); 
+    Chart_Init(&DisplayObj.MeasuredValues.AmperageB.Chart, AmperageBChartCoordX, AmperageBChartCoordY, AmperageChartWidth, AmperageChartHeight, Amperage_ADC_MAX, Amperage_HIGH); 
     
     InitMeasuredValues();
 }

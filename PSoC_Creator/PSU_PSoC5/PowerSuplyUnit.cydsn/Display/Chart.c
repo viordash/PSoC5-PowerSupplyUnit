@@ -71,7 +71,7 @@ void DrawWorkSpace(PTChart pChart) {
 
 void Chart_SetValue(PTChart pChart, TElectrValue value) {
     DWORD dw = (pChart->AdcMax * 1000) / value;
-    dw = (pChart->Height * 1000) / dw;
+    dw = (pChart->_private.WorkAreaHeight * 1000) / dw;
     BYTE coordY = pChart->_private.WorkAreaBottom - (BYTE)dw; 
     ShiftWorkSpace(pChart);
     if (coordY < pChart->_private.WorkAreaTop) {
@@ -85,7 +85,7 @@ void Chart_SetValue(PTChart pChart, TElectrValue value) {
 
 void Chart_SetPoint(PTChart pChart, TElectrValue value) {
     DWORD dw = (pChart->ValueMax * 1000) / value;
-    dw = (pChart->Height * 1000) / dw;
+    dw = (pChart->_private.WorkAreaHeight * 1000) / dw;
     BYTE coordY = pChart->_private.WorkAreaBottom - (BYTE)dw;  
     if (coordY < pChart->_private.WorkAreaTop) {
         coordY = pChart->_private.WorkAreaTop;

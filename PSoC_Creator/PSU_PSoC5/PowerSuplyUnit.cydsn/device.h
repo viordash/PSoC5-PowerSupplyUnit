@@ -32,9 +32,11 @@
 #define TEMPER_INIT (TEMPER_BUS_SHORT - 1)
 #define TemperatureSensorIsNorm(value) (value != TEMPER_ERR && value != TEMPER_NO_DEVICE && value != TEMPER_BUS_SHORT && value != TEMPER_INIT)
     
+#define Voltage_HIGH 1638
 #define Voltage_MAX 15 * 100
 #define Voltage_MIN 0
 #define Voltage_Default 1260
+#define Amperage_HIGH 10240
 #define Amperage_MAX 8 * 1000
 #define Amperage_MIN 5
 #define Amperage_Default 1000

@@ -24,7 +24,7 @@ typedef struct {
     BYTE WorkAreaLeft;
     BYTE WorkAreaRight;
     BYTE SetPointLeft;
-    BYTE SetPointRight;
+    BYTE SetPointRight;    
     BYTE Points[POINTS_COUNT];
 } TChartPrivate, *PTChartPrivate;
     
