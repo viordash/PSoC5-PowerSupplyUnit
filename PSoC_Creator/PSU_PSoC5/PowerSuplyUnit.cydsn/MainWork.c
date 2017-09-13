@@ -61,15 +61,23 @@ void MainWork_Task(){
     RefreshDisplay();
     ResetErrorState();
     Regulator_ChangeStabilizeMode();
-    BYTE prevButtons = Buttons_Read();  
+    Buttons_Read();  
+    BYTE prevButtons = 0xFF;  
 	while (TRUE) {
         CheckRegulatorStatus();
         BYTE bt = Buttons_Read();
         if (prevButtons != bt) {
+            
+            if (prevButtons & 0x08 || bt & 0x08) {
+                ProtectiveBehaviorChanged(bt & 0x08);
+            }
+            if (prevButtons & 0x04 || bt & 0x04) {
+                RiseRatePowerUpChanged(bt & 0x04);  
+            }
+            if (prevButtons & (BtnOk_LongPress | BtnOk_Pressed) || bt & (BtnOk_LongPress | BtnOk_Pressed)) {
+                ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
+            }
             prevButtons = bt;
-            ProtectiveBehaviorChanged(bt & 0x08);
-            RiseRatePowerUpChanged(bt & 0x04);    
-            ButtonOkPressed(bt & (BtnOk_LongPress | BtnOk_Pressed)); 
         } 
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
