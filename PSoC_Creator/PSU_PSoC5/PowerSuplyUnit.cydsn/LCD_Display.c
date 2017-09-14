@@ -95,7 +95,7 @@
 
 TFunction DisplayFunction;
 TDisplayObject DisplayObj;
-static BOOL ProcessRequests();
+static void ProcessRequests();
 void ChangeScreen();
 void ChangeSelected();
 void ChangeFocused();
@@ -179,14 +179,13 @@ void Display_Task() {
     _LCD_WaitReady();
     RequestToChangeScreen(dsStart);
 	while (TRUE) {  
-        if (!ProcessRequests()) {
-            if (!FlashSelected()) {
-                if (!FlashSelectedStabilize()) {
-                    if (!FlashErrorOver()) {  
-                    }
+        ProcessRequests();
+        if (!FlashSelected()) {
+            if (!FlashSelectedStabilize()) {
+                if (!FlashErrorOver()) {  
                 }
             }
-        }        
+        }
 		TaskSleep(&DisplayFunction, SYSTICK_mS(100));		
 	}
 }
@@ -236,47 +235,25 @@ void RequestToChangeScreen(TDisplayScreen newValue) {
     DisplayObj.Requests.ScreenRequest = TRUE;
 }
 
-static BOOL ProcessRequests() {
-BOOL res = FALSE;    
+static void ProcessRequests() {  
     if (DisplayObj.Requests.ScreenRequest) {
         ChangeScreen();
         DisplayObj.Requests.ScreenRequest = FALSE;
-        res = TRUE;  
     }   
 
     if (MainWorkObj.State != mwsStart) {
-        if (ChangeSetPointValues()) {
-            res = TRUE;  
-        } 
-        if (ChangeMeasuredValues()) {
-            res = TRUE;  
-        }
-        if (ChangeSelection()) {
-            res = TRUE;  
-        }
-        if (ChangeFocusing()) {
-            res = TRUE;  
-        }
-        if (ChangeStabilizeSelection()) {
-            res = TRUE;  
-        }
-        if (ChangeFocusingStabilize()) {
-            res = TRUE;  
-        }
-        if (ChangeTemperatures()) {
-            res = TRUE;  
-        }
-        if (ChangeMousePresentVisibility()) {
-            res = TRUE;  
-        }
-        if (ClearMessage() || ShowMessage()) {
-            res = TRUE;  
-        }
-        if (ShowErrorOver()) {
-            res = TRUE;  
-        }
+        ChangeSetPointValues();
+        ChangeMeasuredValues();
+        ChangeSelection();
+        ChangeFocusing();
+        ChangeStabilizeSelection();
+        ChangeFocusingStabilize();
+        ChangeTemperatures();
+        ChangeMousePresentVisibility();
+        ClearMessage();
+        ShowMessage();
+        ShowErrorOver();
     }
-    return res;
 }
 
 void SetScreen_Start() {   
@@ -478,6 +455,7 @@ BOOL ChangeSelection() {
     pVariableValue->Value.RequestToSelect = FALSE;
     DisplayObj.Properties.SelectedTimeout = GetTickCount();
     DisplayObj.Properties.SelectedFlashingTick = 0;
+    DisplayObj.Properties.SelectedFlashingState = TRUE;
     DisplayObj.Properties.SelectedIndicator = &(pVariableValue->Value.Indicator);
     Display_Flush();    
     return TRUE;
@@ -490,13 +468,13 @@ void RequestToSelect(TSelectValue selectValue) {
     }
 }
 
-void InternalSelect(BOOL state) {
+void InternalSelect() {
     INT size = GetMeasuredValuesCount();
     PTMeasuredValue pVariableValue = (PTMeasuredValue)&DisplayObj.MeasuredValues;
     while(size-- > 0) {
         PTValueIndicator pValueIndicator = &(pVariableValue->Value.Indicator);
         if (pValueIndicator == DisplayObj.Properties.SelectedIndicator) {
-            ValueIndicator_SetSelected(pValueIndicator, state);
+            ValueIndicator_SetSelected(pValueIndicator, DisplayObj.Properties.SelectedFlashingState);
         } else {
             ValueIndicator_SetSelected(pValueIndicator, FALSE);
         }
@@ -504,12 +482,12 @@ void InternalSelect(BOOL state) {
     }    
 }
 
-BOOL FlashSelected() {  
-static BOOL state = FALSE;    
+BOOL FlashSelected() {    
     if (DisplayObj.Properties.SelectedIndicator == NULL) {
         return FALSE;    
     } else if (GetElapsedPeriod(DisplayObj.Properties.SelectedTimeout) >= SYSTICK_mS(5000)) {   
-        InternalSelect(FALSE);
+        DisplayObj.Properties.SelectedFlashingState = FALSE;
+        InternalSelect();
         PTValueIndicator pCurrentFocused = GetCurrentFocused();
         if (pCurrentFocused != NULL) {
             ValueIndicator_SetFocused(pCurrentFocused, TRUE);
@@ -521,9 +499,9 @@ static BOOL state = FALSE;
         return FALSE;
     } else {    
         DisplayObj.Properties.SelectedFlashingTick = GetTickCount();   
-        InternalSelect(state);
+        InternalSelect();
         Display_Flush();
-        state = !state;  
+        DisplayObj.Properties.SelectedFlashingState = !DisplayObj.Properties.SelectedFlashingState;  
         return TRUE;
     }
 }
@@ -636,6 +614,7 @@ BOOL ChangeStabilizeSelection() {
     pSymbol->RequestToSelect = FALSE;
     DisplayObj.Properties.SelectedSymbolTimeout = GetTickCount();
     DisplayObj.Properties.SelectedSymbolFlashingTick = 0;
+    DisplayObj.Properties.SelectedSymbolFlashingState = TRUE;
     DisplayObj.Properties.SelectedSymbol = &(pSymbol->Indicator);
     Display_Flush();    
     return TRUE;
@@ -648,13 +627,13 @@ void RequestToSelectStabilize(TSelectStabilizeMode selectValue) {
     }
 }
 
-void InternalSelectStabilize(BOOL state) {
+void InternalSelectStabilize() {
     INT size = GetSymbolsCount();
     PTSymbol pSymbol = (PTSymbol)&DisplayObj.Symbols;
     while(size-- > 0) {
         PTSymbolIndicator pSymbolIndicator = &(pSymbol->Indicator);
         if (pSymbolIndicator == DisplayObj.Properties.SelectedSymbol) {
-            SymbolIndicator_SetSelected(pSymbolIndicator, state);
+            SymbolIndicator_SetSelected(pSymbolIndicator, DisplayObj.Properties.SelectedSymbolFlashingState);
         } else {
             SymbolIndicator_SetSelected(pSymbolIndicator, FALSE);
         }
@@ -662,12 +641,12 @@ void InternalSelectStabilize(BOOL state) {
     }    
 }
 
-BOOL FlashSelectedStabilize() {  
-static BOOL state = FALSE;    
+BOOL FlashSelectedStabilize() {   
     if (DisplayObj.Properties.SelectedSymbol == NULL) {
         return FALSE;    
     } else if (GetElapsedPeriod(DisplayObj.Properties.SelectedSymbolTimeout) >= SYSTICK_mS(5000)) {   
-        InternalSelectStabilize(FALSE);
+        DisplayObj.Properties.SelectedSymbolFlashingState = FALSE;
+        InternalSelectStabilize();
         Display_Flush();
         DisplayObj.Properties.SelectedSymbol = NULL; 
         return FALSE;
@@ -675,9 +654,9 @@ static BOOL state = FALSE;
         return FALSE;
     } else {    
         DisplayObj.Properties.SelectedSymbolFlashingTick = GetTickCount();   
-        InternalSelectStabilize(state);
+        InternalSelectStabilize();
         Display_Flush();
-        state = !state;  
+        DisplayObj.Properties.SelectedSymbolFlashingState = !DisplayObj.Properties.SelectedSymbolFlashingState;  
         return TRUE;
     }
 }

@@ -102,9 +102,11 @@ typedef struct {
     TDisplayScreen Screen; 
     DWORD SelectedTimeout;
     DWORD SelectedFlashingTick;
+    DWORD SelectedFlashingState;
     PTValueIndicator SelectedIndicator;
     DWORD SelectedSymbolTimeout;
     DWORD SelectedSymbolFlashingTick;
+    BOOL SelectedSymbolFlashingState;
     PTSymbolIndicator SelectedSymbol;
     TErrorOver ErrorOver;
     DWORD ErrorOverFlashingTick;

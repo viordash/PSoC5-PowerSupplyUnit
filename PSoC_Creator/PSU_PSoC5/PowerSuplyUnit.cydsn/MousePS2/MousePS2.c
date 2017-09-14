@@ -204,7 +204,7 @@ BOOL MouseHandler() {
             return FALSE; 
         }
     } else {
-    	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(500)){  //период опроса мыши 50мс
+    	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(500)){ 
             return FALSE; 
         }  
     }
