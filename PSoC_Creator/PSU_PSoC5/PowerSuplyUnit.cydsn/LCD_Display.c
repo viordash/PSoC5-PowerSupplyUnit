@@ -828,7 +828,7 @@ BOOL ChangeMousePresentVisibility() {
 }
 
 BOOL RequestToVisibileMousePresent(BOOL visible) {
-    if (DisplayObj.StateSymbols.MousePresentRepaint) {
+    if (DisplayObj.StateSymbols.MousePresentRepaint || DisplayObj.StateSymbols.MousePresentVisible == visible) {
         return FALSE;
     }
     DisplayObj.StateSymbols.MousePresentVisible = visible;

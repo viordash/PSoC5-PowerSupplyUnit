@@ -261,9 +261,7 @@ static DWORD prevTick = 0;
 
 /*>>>-------------- Mouse Changing Value -----------------*/
 void MouseState(BOOL present) {
-    while (!RequestToVisibileMousePresent(present)) {
-        TaskSleep(&MainWorkFunction, SYSTICK_mS(100));	    
-    }
+    RequestToVisibileMousePresent(present);
     MainWorkObj.MousePresent = present;
 }
 
