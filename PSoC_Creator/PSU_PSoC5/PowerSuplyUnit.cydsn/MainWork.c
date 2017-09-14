@@ -112,13 +112,21 @@ void MainWork_Task(){
 void ChangeState(TMainWorkState newState){   
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
+        BYTE ctrl = 0x15;
         if (MainWorkObj.StabilizeModeA == smAmperageStab) {
-            RegulatorControl_Write(0x15 | 0x20);
-        } else {
-            RegulatorControl_Write(0x15);  
+            ctrl |= 0x20; 
+        } else {            
+            if (MainWorkObj.StabilizeModeA == smVoltageStab && MainWorkObj.StabilizeModeB == smVoltageStab) {
+                BYTE bt = Buttons_Read();
+                if (MainWorkObj.MousePresent && !(bt & 0x10)) {
+                    ctrl |= 0x40; 
+                }
+            }  
         }
+        RegulatorControl_Write(ctrl);
         MainWorkObj.WorkStartingPeriod = GetTickCount();
     } else if (newState != mwsWork) {
+        O_OUT_POLARITY_Write(FALSE);
         RegulatorControl_Write(0x0A);        
     } 
     
