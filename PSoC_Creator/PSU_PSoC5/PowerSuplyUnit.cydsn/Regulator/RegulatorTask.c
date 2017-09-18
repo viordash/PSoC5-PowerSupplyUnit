@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "MainWork.h"
 #include "LCD_Display.h"
 #include "Regulator\RegulatorTask.h"
@@ -210,7 +211,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
     //если измеренный ток более SetPoint, то регулировать по току (уменьшать напряжение на выходе)
         diffAmperageValue = amperageMeasured - amperageSetPoint;
     } else {
-        diffAmperageValue = -1;
+        diffAmperageValue = INT_MIN;
     }
     
     if (diffAmperageValue < 0) { //если меньше чем SetPoint, то регулировать по напряжению
@@ -273,13 +274,13 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
             if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
                 pwmDiff = 16;  
             } else {
-                pwmDiff = 50;
+                pwmDiff = 80;
             }
         } else {
             if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-                pwmDiff = 32;  
+                pwmDiff = 64;  
             } else {
-                pwmDiff = 80;
+                pwmDiff = 160;
             }   
         }  
     }
