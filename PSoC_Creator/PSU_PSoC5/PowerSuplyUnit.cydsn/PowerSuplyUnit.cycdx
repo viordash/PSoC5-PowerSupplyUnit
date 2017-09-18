@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="D_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_Led_RiseRatePowerUp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_Led_ProtectiveSensitivity" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_BtnOnOrChangePolarity" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_Led_ProtectiveSensitivity" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_33" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_36" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_Led_RiseRatePowerUp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="FAN_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="FanCtrl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -72,68 +72,29 @@
     <register name="FanCtrl_PERIOD" address="0x40004F04" bitWidth="8" desc="TMRx.PER0 - Assigned Period" hidden="false" />
     <register name="FanCtrl_COMPARE" address="0x40004F06" bitWidth="8" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
   </block>
+  <block name="R_34" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_35" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="FAN_CTRL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_44" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MultiJog_Status" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="MultiJog_Status_STATUS_REG" address="0x40006568" bitWidth="8" desc="" hidden="false" />
-    <register name="MultiJog_Status_MASK_REG" address="0x40006588" bitWidth="8" desc="" hidden="false" />
-    <register name="MultiJog_Status_STATUS_AUX_CTL_REG" address="0x40006598" bitWidth="8" desc="" hidden="false">
-      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Enable counter" />
-        <value name="DISABLED" value="0" desc="Disable counter" />
-      </field>
-      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
-        <value name="ENABLED" value="1" desc="Interrupt enabled" />
-        <value name="DISABLED" value="0" desc="Interrupt disabled" />
-      </field>
-      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
-        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-      </field>
-      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
-        <value name="ENABLED" value="1" desc="Clear FIFO state" />
-        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
-      </field>
-    </register>
-  </block>
-  <block name="SW_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Debouncer_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MultiJog_Reset" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
     <register name="COUNT" address="0x40006579" bitWidth="7" desc="Count value register" hidden="false" />
     <register name="PERIOD" address="0x40006589" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
-  <block name="Debouncer_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="LCD_DB_OutEnable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="LCD_DB_OutEnable_CONTROL_REG" address="0x40006474" bitWidth="8" desc="" hidden="false" />
+  <block name="Clock_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MultiJog_FreqMeter" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
+    <register name="COUNT" address="0x40006578" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006588" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
-  <block name="I_MultiJogA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Vdd_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Debouncer_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Buttons" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="Buttons_STATUS_REG" address="0x40006460" bitWidth="8" desc="" hidden="false" />
-    <register name="Buttons_MASK_REG" address="0x40006480" bitWidth="8" desc="" hidden="false" />
-    <register name="Buttons_STATUS_AUX_CTL_REG" address="0x40006490" bitWidth="8" desc="" hidden="false">
+  <block name="Clock_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="EdgeDetect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MultiJog_Status" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="MultiJog_Status_STATUS_REG" address="0x40006567" bitWidth="8" desc="" hidden="false" />
+    <register name="MultiJog_Status_MASK_REG" address="0x40006587" bitWidth="8" desc="" hidden="false" />
+    <register name="MultiJog_Status_STATUS_AUX_CTL_REG" address="0x40006597" bitWidth="8" desc="" hidden="false">
       <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="ENABLED" value="1" desc="Enable counter" />
         <value name="DISABLED" value="0" desc="Disable counter" />
@@ -160,22 +121,66 @@
       </field>
     </register>
   </block>
-  <block name="I_MultiJogB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_BtnOk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="BtnOk_Reset" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
-    <register name="COUNT" address="0x40006477" bitWidth="7" desc="Count value register" hidden="false" />
-    <register name="PERIOD" address="0x40006487" bitWidth="7" desc="Count7 period register" hidden="false" />
+  <block name="C_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_45" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="LCD_DB_OutEnable" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="LCD_DB_OutEnable_CONTROL_REG" address="0x40006473" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="Clock_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Debouncer_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_MultiJogA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Q_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="BtnOk_Reset" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
+    <register name="COUNT" address="0x40006575" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006585" bitWidth="7" desc="Count7 period register" hidden="false" />
+  </block>
+  <block name="D_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Debouncer_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MouseClk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_Led_Error" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Buttons" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="Buttons_STATUS_REG" address="0x40006469" bitWidth="8" desc="" hidden="false" />
+    <register name="Buttons_MASK_REG" address="0x40006489" bitWidth="8" desc="" hidden="false" />
+    <register name="Buttons_STATUS_AUX_CTL_REG" address="0x40006499" bitWidth="8" desc="" hidden="false">
+      <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Enable counter" />
+        <value name="DISABLED" value="0" desc="Disable counter" />
+      </field>
+      <field name="INTRENBL" from="4" to="4" access="RW" resetVal="" desc="Enables or disables the Interrupt" hidden="false">
+        <value name="ENABLED" value="1" desc="Interrupt enabled" />
+        <value name="DISABLED" value="0" desc="Interrupt disabled" />
+      </field>
+      <field name="FIFO1LEVEL" from="3" to="3" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO0LEVEL" from="2" to="2" access="RW" resetVal="" desc="FIFO level" hidden="false">
+        <value name="ENABLED" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+        <value name="DISABLED" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+      </field>
+      <field name="FIFO1CLEAR" from="1" to="1" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+      <field name="FIFO0CLEAR" from="0" to="0" access="RW" resetVal="" desc="FIFO clear" hidden="false">
+        <value name="ENABLED" value="1" desc="Clear FIFO state" />
+        <value name="DISABLED" value="0" desc="Normal FIFO operation" />
+      </field>
+    </register>
+  </block>
+  <block name="U_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="K_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_BtnOk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Debouncer_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="MultiJog" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -192,10 +197,7 @@
       <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
       <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-      <register name="MultiJog_Cnt8_COUNTER" address="0x40006407" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
-      <register name="MultiJog_Cnt8_PERIOD" address="0x40006427" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
-      <register name="MultiJog_Cnt8_COMPARE" address="0x40006437" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
-      <register name="MultiJog_Cnt8_STATUS_MASK" address="0x40006483" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
+      <register name="MultiJog_Cnt8_STATUS_MASK" address="0x40006480" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register" hidden="false">
         <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" hidden="false" />
         <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" hidden="false" />
         <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " hidden="false" />
@@ -204,7 +206,7 @@
         <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " hidden="false" />
         <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " hidden="false" />
       </register>
-      <register name="MultiJog_Cnt8_STATUS_AUX_CTRL" address="0x40006493" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
+      <register name="MultiJog_Cnt8_STATUS_AUX_CTRL" address="0x40006490" bitWidth="8" desc="UDB Auxilliary Control Register" hidden="false">
         <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
           <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
           <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -230,7 +232,10 @@
           <value name="E_CNT_START1" value="1" desc="Enable counter" />
         </field>
       </register>
-      <register name="MultiJog_Cnt8_Control_Reg" address="0x40006578" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
+      <register name="MultiJog_Cnt8_COUNTER" address="0x40006507" bitWidth="8" desc="UDB.A0 - Current Counter Value" hidden="false" />
+      <register name="MultiJog_Cnt8_PERIOD" address="0x40006527" bitWidth="8" desc="UDB.D0 - Assigned Period" hidden="false" />
+      <register name="MultiJog_Cnt8_COMPARE" address="0x40006537" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" hidden="false" />
+      <register name="MultiJog_Cnt8_Control_Reg" address="0x40006574" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value" hidden="false">
         <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" hidden="false" />
         <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" hidden="false" />
         <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" hidden="false" />
@@ -240,214 +245,87 @@
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bQuadDec" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="MultiJog_Cnt8_COUNTER" address="0x40006407" bitWidth="8" desc="Counter value" hidden="false" />
-    <register name="MultiJog_STATUS_REG" address="0x40006464" bitWidth="8" desc="Quadrature Decoder Status Register" hidden="false">
+    <register name="MultiJog_Cnt8_COUNTER" address="0x40006507" bitWidth="8" desc="Counter value" hidden="false" />
+    <register name="MultiJog_STATUS_REG" address="0x40006564" bitWidth="8" desc="Quadrature Decoder Status Register" hidden="false">
       <field name="OVERFLOW" from="0" to="0" access="R" resetVal="" desc="Counter overflow" hidden="false" />
       <field name="UNDERFLOW" from="1" to="1" access="R" resetVal="" desc="Counter underflow" hidden="false" />
       <field name="RESET" from="2" to="2" access="R" resetVal="" desc="Counter Reset due index" hidden="false" />
       <field name="INVALID_IN" from="3" to="3" access="R" resetVal="" desc="Invalid state transition on the A and B inputs" hidden="false" />
     </register>
   </block>
-  <block name="U_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_37" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_Led_Error" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MouseISR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="OneWire" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_41" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_MultiJogB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MouseClk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MouseData" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MouseISR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_41" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="OneWire" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_42" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Vdd_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_50" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="AMuxAmperage" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_49" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_constant_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="or_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MouseData" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_38" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_40" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_39" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM_VoltageA_Ex" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="PWM_VoltageA_Ex_CONTROL_REG" address="0x40006470" bitWidth="8" desc="" hidden="false" />
+    <register name="PWM_VoltageA_Ex_CONTROL_REG" address="0x40006577" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="EdgeDetect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_47" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWM_VoltageB_Ex" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="PWM_VoltageB_Ex_CONTROL_REG" address="0x40006477" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_48" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="EEPROMStorage" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="EdgeDetect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="nand_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="or_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_VoltageB_Ex" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="PWM_VoltageB_Ex_CONTROL_REG" address="0x40006473" bitWidth="8" desc="" hidden="false" />
+  <block name="R_49" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="AMuxAmperage" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_50" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Count7_OverVoltageA" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
+    <register name="COUNT" address="0x40006474" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006484" bitWidth="7" desc="Count7 period register" hidden="false" />
   </block>
+  <block name="Clock_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Count7_OverAmperageA" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
+    <register name="COUNT" address="0x40006471" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006481" bitWidth="7" desc="Count7 period register" hidden="false" />
+  </block>
+  <block name="Count7_OverVoltageB" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
+    <register name="COUNT" address="0x40006476" bitWidth="7" desc="Count value register" hidden="false" />
+    <register name="PERIOD" address="0x40006486" bitWidth="7" desc="Count7 period register" hidden="false" />
+  </block>
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="and_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="EdgeDetect_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_LcdBackLight" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_LcdBackLight_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
-      <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." hidden="false" />
-    </register>
-    <register name="PWM_LcdBackLight_CONTROL" address="0x40004F0C" bitWidth="8" desc="TMRx.CFG0" hidden="false">
-      <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." hidden="false" />
-      <field name="MODE" from="1" to="1" access="RW" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)" hidden="false">
-        <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
-        <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
-      </field>
-      <field name="ONESHOT" from="2" to="2" access="RW" resetVal="" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block." hidden="false" />
-      <field name="CMP_BUFF" from="3" to="3" access="RW" resetVal="" desc="Buffer compare register. Compare register updates only on timer terminal count." hidden="false" />
-      <field name="INV" from="4" to="4" access="RW" resetVal="" desc="Invert sense of TIMEREN signal" hidden="false" />
-      <field name="DB" from="5" to="5" access="RW" resetVal="" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively." hidden="false">
-        <value name="Timer" value="0" desc="CMP and TC are output." />
-        <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
-      </field>
-      <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" hidden="false" />
-    </register>
-    <register name="PWM_LcdBackLight_CONTROL2" address="0x40004F0D" bitWidth="8" desc="TMRx.CFG1" hidden="false">
-      <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" hidden="false" />
-      <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled." hidden="false">
-        <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
-        <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
-      </field>
-      <field name="DCOR" from="2" to="2" access="RW" resetVal="" desc="Disable Clear on Read (DCOR) of Status Register SR0." hidden="false" />
-      <field name="DBMODE" from="3" to="3" access="RW" resetVal="" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND)." hidden="false" />
-      <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." hidden="false" />
-      <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." hidden="false" />
-    </register>
-    <register name="PWM_LcdBackLight_CONTROL3_" address="0x40004F0E" bitWidth="8" desc="TMRx.CFG2" hidden="false">
-      <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ" hidden="false">
-        <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
-        <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
-        <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
-        <value name="Irq" value="11" desc="Timer runs until IRQ." />
-      </field>
-      <field name="COD" from="2" to="2" access="RW" resetVal="" desc="Clear On Disable (COD). Clears or gates outputs to zero." hidden="false" />
-      <field name="ROD" from="3" to="3" access="RW" resetVal="" desc="Reset On Disable (ROD). Resets internal state of output logic" hidden="false" />
-      <field name="CMP_CFG" from="6" to="4" access="RW" resetVal="" desc="Comparator configurations" hidden="false">
-        <value name="Equal" value="0" desc="Compare Equal " />
-        <value name="Less than" value="1" desc="Compare Less Than " />
-        <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
-        <value name="Greater" value="11" desc="Compare Greater Than ." />
-        <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
-      </field>
-      <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." hidden="false" />
-    </register>
-    <register name="PWM_LcdBackLight_PERIOD" address="0x40004F10" bitWidth="8" desc="TMRx.PER0 - Assigned Period" hidden="false" />
-    <register name="PWM_LcdBackLight_COMPARE" address="0x40004F12" bitWidth="8" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
-  </block>
-  <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_BtnRiseRatePowerUp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="RegulatorControl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RegulatorControl_CONTROL_REG" address="0x40006576" bitWidth="8" desc="" hidden="false" />
-  </block>
+  <block name="nand_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="and_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="DieTemp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWM_VoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="PWM_VoltageA_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
-      <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." hidden="false" />
-    </register>
-    <register name="PWM_VoltageA_CONTROL" address="0x40004F18" bitWidth="8" desc="TMRx.CFG0" hidden="false">
-      <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." hidden="false" />
-      <field name="MODE" from="1" to="1" access="R" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)" hidden="false">
-        <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
-        <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
-      </field>
-      <field name="ONESHOT" from="2" to="2" access="RW" resetVal="" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block." hidden="false" />
-      <field name="CMP_BUFF" from="3" to="3" access="RW" resetVal="" desc="Buffer compare register. Compare register updates only on timer terminal count." hidden="false" />
-      <field name="INV" from="4" to="4" access="RW" resetVal="" desc="Invert sense of TIMEREN signal" hidden="false" />
-      <field name="DB" from="5" to="5" access="RW" resetVal="" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively." hidden="false">
-        <value name="Timer" value="0" desc="CMP and TC are output." />
-        <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
-      </field>
-      <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" hidden="false" />
-    </register>
-    <register name="PWM_VoltageA_CONTROL2" address="0x40004F19" bitWidth="8" desc="TMRx.CFG1" hidden="false">
-      <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" hidden="false" />
-      <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled." hidden="false">
-        <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
-        <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
-      </field>
-      <field name="DCOR" from="2" to="2" access="RW" resetVal="" desc="Disable Clear on Read (DCOR) of Status Register SR0." hidden="false" />
-      <field name="DBMODE" from="3" to="3" access="RW" resetVal="" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND)." hidden="false" />
-      <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." hidden="false" />
-      <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." hidden="false" />
-    </register>
-    <register name="PWM_VoltageA_CONTROL3_" address="0x40004F1A" bitWidth="8" desc="TMRx.CFG2" hidden="false">
-      <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ" hidden="false">
-        <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
-        <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
-        <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
-        <value name="Irq" value="11" desc="Timer runs until IRQ." />
-      </field>
-      <field name="COD" from="2" to="2" access="RW" resetVal="" desc="Clear On Disable (COD). Clears or gates outputs to zero." hidden="false" />
-      <field name="ROD" from="3" to="3" access="RW" resetVal="" desc="Reset On Disable (ROD). Resets internal state of output logic" hidden="false" />
-      <field name="CMP_CFG" from="6" to="4" access="RW" resetVal="" desc="Comparator configurations" hidden="false">
-        <value name="Equal" value="0" desc="Compare Equal " />
-        <value name="Less than" value="1" desc="Compare Less Than " />
-        <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
-        <value name="Greater" value="11" desc="Compare Greater Than ." />
-        <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
-      </field>
-      <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." hidden="false" />
-    </register>
-    <register name="PWM_VoltageA_PERIOD" address="0x40004F1C" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
-    <register name="PWM_VoltageA_COMPARE" address="0x40004F1E" bitWidth="16" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
-  </block>
-  <block name="MultiJog_FreqMeter" BASE="0x0" SIZE="0x0" desc="Count7 debug registers" visible="true" hidden="false">
-    <register name="COUNT" address="0x40006479" bitWidth="7" desc="Count value register" hidden="false" />
-    <register name="PERIOD" address="0x40006489" bitWidth="7" desc="Count7 period register" hidden="false" />
-  </block>
-  <block name="Clock_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="EdgeDetect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_BtnProtectiveBehavior" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Comp_OverVoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ctComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -651,11 +529,68 @@
       <field name="cmp0_out" from="0" to="0" access="R" resetVal="" desc="Comparator Output" hidden="false" />
     </register>
   </block>
-  <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="and_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Clock_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="VDAC8_OverAmperageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+  <block name="PWM_VoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="PWM_VoltageA_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
+      <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." hidden="false" />
+    </register>
+    <register name="PWM_VoltageA_CONTROL" address="0x40004F18" bitWidth="8" desc="TMRx.CFG0" hidden="false">
+      <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." hidden="false" />
+      <field name="MODE" from="1" to="1" access="R" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)" hidden="false">
+        <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
+        <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
+      </field>
+      <field name="ONESHOT" from="2" to="2" access="RW" resetVal="" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block." hidden="false" />
+      <field name="CMP_BUFF" from="3" to="3" access="RW" resetVal="" desc="Buffer compare register. Compare register updates only on timer terminal count." hidden="false" />
+      <field name="INV" from="4" to="4" access="RW" resetVal="" desc="Invert sense of TIMEREN signal" hidden="false" />
+      <field name="DB" from="5" to="5" access="RW" resetVal="" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively." hidden="false">
+        <value name="Timer" value="0" desc="CMP and TC are output." />
+        <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
+      </field>
+      <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" hidden="false" />
+    </register>
+    <register name="PWM_VoltageA_CONTROL2" address="0x40004F19" bitWidth="8" desc="TMRx.CFG1" hidden="false">
+      <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" hidden="false" />
+      <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled." hidden="false">
+        <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
+        <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
+      </field>
+      <field name="DCOR" from="2" to="2" access="RW" resetVal="" desc="Disable Clear on Read (DCOR) of Status Register SR0." hidden="false" />
+      <field name="DBMODE" from="3" to="3" access="RW" resetVal="" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND)." hidden="false" />
+      <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." hidden="false" />
+      <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." hidden="false" />
+    </register>
+    <register name="PWM_VoltageA_CONTROL3_" address="0x40004F1A" bitWidth="8" desc="TMRx.CFG2" hidden="false">
+      <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ" hidden="false">
+        <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
+        <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
+        <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
+        <value name="Irq" value="11" desc="Timer runs until IRQ." />
+      </field>
+      <field name="COD" from="2" to="2" access="RW" resetVal="" desc="Clear On Disable (COD). Clears or gates outputs to zero." hidden="false" />
+      <field name="ROD" from="3" to="3" access="RW" resetVal="" desc="Reset On Disable (ROD). Resets internal state of output logic" hidden="false" />
+      <field name="CMP_CFG" from="6" to="4" access="RW" resetVal="" desc="Comparator configurations" hidden="false">
+        <value name="Equal" value="0" desc="Compare Equal " />
+        <value name="Less than" value="1" desc="Compare Less Than " />
+        <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
+        <value name="Greater" value="11" desc="Compare Greater Than ." />
+        <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
+      </field>
+      <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." hidden="false" />
+    </register>
+    <register name="PWM_VoltageA_PERIOD" address="0x40004F1C" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
+    <register name="PWM_VoltageA_COMPARE" address="0x40004F1E" bitWidth="16" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
+  </block>
+  <block name="RegulatorControl" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="RegulatorControl_CONTROL_REG" address="0x40006475" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="VDAC8_OverVoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="viDAC8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -667,10 +602,10 @@
     <register name="VDAC8_PM_STBY_CFG" address="0x400043B8" bitWidth="8" desc="Standby Power Mode Configuration Register 8" hidden="false">
       <field name="en_dac" from="4" to="0" access="RW" resetVal="" desc="Enable DAC block(s). Populated subsystems are counted from the LSB" hidden="false" />
     </register>
-    <register name="VDAC8_TR" address="0x40004608" bitWidth="8" desc="VDAC8_TR" hidden="false">
+    <register name="VDAC8_TR" address="0x40004609" bitWidth="8" desc="VDAC8_TR" hidden="false">
       <field name="tr" from="7" to="0" access="RW" resetVal="" desc="8 Calibration bits" hidden="false" />
     </register>
-    <register name="VDAC8_CR0" address="0x40005820" bitWidth="8" desc="DAC Block Control Register 0" hidden="false">
+    <register name="VDAC8_CR0" address="0x40005824" bitWidth="8" desc="DAC Block Control Register 0" hidden="false">
       <field name="mode" from="4" to="4" access="R" resetVal="" desc="Mode Bit" hidden="false">
         <value name="DAC_MODE_V" value="0" desc="voltage DAC" />
         <value name="DAC_MODE_I" value="1" desc="current DAC" />
@@ -686,7 +621,7 @@
         <value name="DAC_HS_HIGHSPEED" value="1" desc="high speed (higher power)" />
       </field>
     </register>
-    <register name="VDAC8_CR1" address="0x40005821" bitWidth="8" desc="DAC Block Control Register 1" hidden="false">
+    <register name="VDAC8_CR1" address="0x40005825" bitWidth="8" desc="DAC Block Control Register 1" hidden="false">
       <field name="mx_data" from="5" to="5" access="RW" resetVal="" desc="Select DATA source" hidden="false">
         <value name="MX_DATA_REG" value="0" desc="Select register source (DACxn_D)" />
         <value name="MX_DATA_UDB" value="1" desc="Select UDB source" />
@@ -704,7 +639,7 @@
         <value name="RESET_UDB_EN_ENABLE" value="1" desc="Enable DAC Reset Source from UDB" />
       </field>
     </register>
-    <register name="VDAC8_SW0" address="0x40005A80" bitWidth="8" desc="DAC Analog Routing Register 0" hidden="false">
+    <register name="VDAC8_SW0" address="0x40005A88" bitWidth="8" desc="DAC Analog Routing Register 0" hidden="false">
       <field name="v_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect voltage output to analog global of same side" hidden="false">
         <value name="AG_NC" value="0" desc="not connected" />
         <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
@@ -714,7 +649,7 @@
         <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
       </field>
     </register>
-    <register name="VDAC8_SW2" address="0x40005A82" bitWidth="8" desc="DAC Analog Routing Register 2" hidden="false">
+    <register name="VDAC8_SW2" address="0x40005A8A" bitWidth="8" desc="DAC Analog Routing Register 2" hidden="false">
       <field name="v_abus3" from="3" to="3" access="RW" resetVal="" desc="Connect voltage output to analog (local) bus of the same side " hidden="false">
         <value name="ABUS_NC" value="0" desc="not connected" />
         <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
@@ -724,7 +659,7 @@
         <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
       </field>
     </register>
-    <register name="VDAC8_SW3" address="0x40005A83" bitWidth="8" desc="DAC Analog Routing Register 3" hidden="false">
+    <register name="VDAC8_SW3" address="0x40005A8B" bitWidth="8" desc="DAC Analog Routing Register 3" hidden="false">
       <field name="iout" from="7" to="7" access="RW" resetVal="" desc="Connect current output to pad" hidden="false">
         <value name="IOUT_NC" value="0" desc="not connected" />
         <value name="IOUT_CONNECT" value="1" desc="Connect to pad" />
@@ -738,7 +673,7 @@
         <value name="AMX_CONNECTED" value="1" desc="Connect to AMUXBUS" />
       </field>
     </register>
-    <register name="VDAC8_SW4" address="0x40005A84" bitWidth="8" desc="DAC Analog Routing Register 4" hidden="false">
+    <register name="VDAC8_SW4" address="0x40005A8C" bitWidth="8" desc="DAC Analog Routing Register 4" hidden="false">
       <field name="i_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect current output to analog global of same side" hidden="false">
         <value name="AG_NC" value="0" desc="not connected" />
         <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
@@ -748,7 +683,7 @@
         <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
       </field>
     </register>
-    <register name="VDAC8_STROBE" address="0x40005A87" bitWidth="8" desc="DAC Strobe Register" hidden="false">
+    <register name="VDAC8_STROBE" address="0x40005A8F" bitWidth="8" desc="DAC Strobe Register" hidden="false">
       <field name="mx_strobe" from="2" to="0" access="RW" resetVal="" desc="Strobe source selection" hidden="false">
         <value name="MX_STROBE_BUSWRITE" value="000" desc="Select bus write strobe source (Enable gater regardless of strobe_en setting)" />
         <value name="MX_STROBE_UDB_SRC" value="001" desc="Select UDB strobe source" />
@@ -764,11 +699,236 @@
         <value name="STROBE_EN_1" value="1" desc="enable strobe" />
       </field>
     </register>
-    <register name="VDAC8_DATA" address="0x40005B80" bitWidth="8" desc="DAC Data Register" hidden="false">
+    <register name="VDAC8_DATA" address="0x40005B81" bitWidth="8" desc="DAC Data Register" hidden="false">
       <field name="data" from="7" to="0" access="RW" resetVal="" desc="8 DAC Data bits" hidden="false" />
     </register>
   </block>
-  <block name="Clock_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PGA_OverVoltageB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="SC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="SC__PM_ACT_CFG" address="0x400043A9" bitWidth="8" desc="Active Power Mode Configuration Register 9" hidden="false">
+      <field name="en_swcap" from="3" to="0" access="R" resetVal="" desc="Enable switchcap block(s)" hidden="false">
+        <value name="en_swcap[0]" value="0001" desc="Enables SC Block 0" />
+        <value name="en_swcap[1]" value="0010" desc="Enables SC Block 1" />
+        <value name="en_swcap[2]" value="0100" desc="Enables SC Block 2" />
+        <value name="en_swcap[3]" value="1000" desc="Enables SC Block 3" />
+      </field>
+    </register>
+    <register name="SC__PM_STBY_CFG" address="0x400043B9" bitWidth="8" desc="Standby Power Mode Configuration Register 9" hidden="false">
+      <field name="en_swcap" from="3" to="0" access="R" resetVal="" desc="Enable switchcap block(s)" hidden="false">
+        <value name="en_swcap[0]" value="0001" desc="Enables SC Block 0" />
+        <value name="en_swcap[1]" value="0010" desc="Enables SC Block 1" />
+        <value name="en_swcap[2]" value="0100" desc="Enables SC Block 2" />
+        <value name="en_swcap[3]" value="1000" desc="Enables SC Block 3" />
+      </field>
+    </register>
+    <register name="SC_CR0" address="0x4000580C" bitWidth="8" desc="Switched Capacitor Control Register 0" hidden="false">
+      <field name="mode" from="3" to="1" access="R" resetVal="" desc="Configuration select for the SC block " hidden="false">
+        <value name="SC_MODE_NAKED_OPAMP" value="000" desc="Naked Op-Amp" />
+        <value name="SC_MODE_TIA" value="001" desc="Transimpedance Amplifier " />
+        <value name="SC_MODE_CTMIXER" value="010" desc="Continuous Time Mixer" />
+        <value name="SC_MODE_NRZ_SH" value="011" desc="Discrete Time Mixer - NRZ S/H" />
+        <value name="SC_MODE_UNITY" value="100" desc="Unity Gain Buffer" />
+        <value name="SC_MODE_1ST_MOD" value="101" desc="First Order Modulator" />
+        <value name="SC_MODE_PGA" value="110" desc="Programmable Gain Amplifier (PGA)" />
+        <value name="SC_MODE_TRACKANDHOLD" value="111" desc="Track and Hold" />
+      </field>
+      <field name="dft" from="5" to="4" access="R" resetVal="" desc="Configuration select for the SC block" hidden="false">
+        <value name="SC_DFT_NORMAL" value="00" desc="Normal Operation" />
+        <value name="SC_DFT_VBOOST" value="01" desc="Vboost DFT" />
+        <value name="SC_DFT_MODE_DEPENDENT" value="10" desc="Mode Dependent (PGA Mode = Voltage Integrator, TIA Mode = Charge Integrator, Naked Opamp Mode = Comparator)" />
+        <value name="SC_DFT_RESET" value="11" desc="DFT reset" />
+      </field>
+    </register>
+    <register name="SC_CR1" address="0x4000580D" bitWidth="8" desc="Switched Capacitor Control Register 1" hidden="false">
+      <field name="drive" from="1" to="0" access="R" resetVal="" desc="Selects between current settings (I_Load (uA)) in the output buffer" hidden="false">
+        <value name="I_LOAD_175UA" value="00" desc="175 uA" />
+        <value name="I_LOAD_260UA" value="01" desc="260 uA" />
+        <value name="I_LOAD_330UA" value="10" desc="330 uA" />
+        <value name="I_LOAD_400UA" value="11" desc="400 uA" />
+      </field>
+      <field name="comp" from="3" to="2" access="R" resetVal="" desc="Selects between various compensation capacitor sizes" hidden="false">
+        <value name="SC_COMP_3P0PF" value="00" desc="3.0pF" />
+        <value name="SC_COMP_3P6PF" value="01" desc="3.6pF" />
+        <value name="SC_COMP_4P35PF" value="10" desc="4.35pF" />
+        <value name="SC_COMP_5P1PF" value="11" desc="5.1pF" />
+      </field>
+      <field name="div2" from="4" to="4" access="R" resetVal="" desc="When 0, the sample clock only needs to be half the desired sample frequency for S/H Mixer mode " hidden="false">
+        <value name="SC_DIV2_DISABLEF" value="0" desc="no frequency division" />
+        <value name="SC_DIV2_ENABLE" value="1" desc="SC CLK is divided by two" />
+      </field>
+      <field name="gain" from="5" to="5" access="R" resetVal="" desc="Controls the ratio of the feedback cap for S/H Mixer mode and PGA mode " hidden="false">
+        <value name="GAIN_0DB" value="0" desc="0 dB" />
+        <value name="GAIN_6DB" value="1" desc="6 dB" />
+      </field>
+    </register>
+    <register name="SC_CR2" address="0x4000580E" bitWidth="8" desc="Switched Capacitor Control Register 2" hidden="false">
+      <field name="bias_ctrl" from="0" to="0" access="R" resetVal="" desc="Toggles the bias current in the amplifier between normal and 1/2 " hidden="false">
+        <value name="BIAS_1X" value="0" desc="1x current reference reduces bandwidth to increase stability" />
+        <value name="BIAS_2X" value="1" desc="normal operation - 2x current reference to increase bandwidth" />
+      </field>
+      <field name="r20_40b" from="1" to="1" access="RW" resetVal="" desc="PGA Mode: input impedance (Rin), Mixer Mode: input and feedback impedance (Rmix)" hidden="false">
+        <value name="SC_R20_40B_40K" value="0" desc="40kOhm" />
+        <value name="SC_R20_40B_20K" value="1" desc="20kOhm" />
+      </field>
+      <field name="redc" from="3" to="2" access="RW" resetVal="" desc="Another stability control setting. Adjusts capactiance between amplifier output and first stage " hidden="false">
+        <value name="SC_REDC_00" value="00" desc="Varies depending on mode. See Switched Cap documentation" />
+        <value name="SC_REDC_01" value="01" desc="Varies depending on mode. See Switched Cap documentation" />
+        <value name="SC_REDC_10" value="10" desc="Varies depending on mode. See Switched Cap documentation" />
+        <value name="SC_REDC_11" value="11" desc="Varies depending on mode. See Switched Cap documentation" />
+      </field>
+      <field name="rval" from="6" to="4" access="RW" resetVal="" desc="Programmable Gain Amplifier (PGA) and Transimpedance Amplifier (TIA): Feedback resistor (Rfb)" hidden="false">
+        <value name="SC_RVAL_20" value="000" desc="20 kOhm" />
+        <value name="SC_RVAL_30" value="001" desc="30 kOhm" />
+        <value name="SC_RVAL_40" value="010" desc="40 kOhm" />
+        <value name="SC_RVAL_80" value="011" desc="80 kOhm" />
+        <value name="SC_RVAL_120" value="100" desc="120 kOhm" />
+        <value name="SC_RVAL_250" value="101" desc="250 kOhm" />
+        <value name="SC_RVAL_500" value="110" desc="500 kOhm" />
+        <value name="SC_RVAL_1000" value="111" desc="1 MegaOhm" />
+      </field>
+      <field name="pga_gndvref" from="7" to="7" access="R" resetVal="" desc="Programmable Gain Amplifier Application - Ground VREF)" hidden="false">
+        <value name="SC_PGA_GNDVREF_DIS" value="0" desc="VREF not grounded" />
+        <value name="SC_PGA_GNDVREF_EN" value="1" desc="VREF grounded" />
+      </field>
+    </register>
+    <register name="PUMP_CR1" address="0x40005877" bitWidth="8" desc="Pump Configuration Register 1" hidden="false">
+      <field name="npump_sc_selclk" from="7" to="7" access="R" resetVal="" desc="Switched Cap Negative Pump Clock Selection" hidden="false">
+        <value name="NPUMP_SC_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
+        <value name="NPUMP_SC_SELCLK_INTERNAL " value="1" desc="Negative pump internal clock selected" />
+      </field>
+      <field name="npump_opamp_selclk" from="6" to="6" access="R" resetVal="" desc="Opamp Negative Pump Clock Selection" hidden="false">
+        <value name="NPUMP_OPAMP_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
+        <value name="NPUMP_OPAMP_SELCLK_INTERNAL " value="1" desc="Negative pump internal clock selected" />
+      </field>
+      <field name="npump_dsm_selclk" from="2" to="2" access="R" resetVal="" desc="DSM Negative Pump Clock Selection" hidden="false">
+        <value name="NPUMP_DSM_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
+        <value name="NPUMP_DSM_SELCLK_INTERNAL" value="1" desc="Negative pump internal clock selectedd" />
+      </field>
+    </register>
+    <register name="SC__BST" address="0x40005A3C" bitWidth="8" desc="Switched Capacitor Boost Clock Selection Register" hidden="false">
+      <field name="mx_bst_clk" from="2" to="0" access="RW" resetVal="" desc="Clock Selection" hidden="false">
+        <value name="MX_CLK_0" value="000" desc="Select clk_a0 and clk_a0_dig" />
+        <value name="MX_CLK_1" value="001" desc="Select clk_a1 and clk_a1_dig" />
+        <value name="MX_CLK_2" value="010" desc="Select clk_a2 and clk_a2_dig" />
+        <value name="MX_CLK_3" value="011" desc="Select clk_a3 and clk_a3_dig" />
+        <value name="MX_CLK_4" value="100" desc="Select UDB generated clock" />
+        <value name="MX_CLK_5" value="101" desc="Reserved" />
+        <value name="MX_CLK_6" value="110" desc="Reserved" />
+        <value name="MX_CLK_7" value="111" desc="Reserved" />
+      </field>
+      <field name="bst_clk_en" from="3" to="3" access="RW" resetVal="" desc="Clock gating control" hidden="false">
+        <value name="CLK_EN_0" value="0" desc="disable clock" />
+        <value name="CLK_EN_1" value="1" desc="enable clock" />
+      </field>
+    </register>
+    <register name="SC_MISC" address="0x40005B56" bitWidth="8" desc="Switched Cap Miscellaneous Control Register" hidden="false">
+      <field name="diff_pga_0_2" from="0" to="0" access="R" resetVal="" desc="Switched Cap Pair Connect for Differential Amplifier Applications" hidden="false">
+        <value name="SC_DIFF_PGA_DISABLED" value="0" desc="Differential PGA pair connect disabled" />
+        <value name="SC_DIFF_PGA_ENABLED " value="1" desc="Differential PGA pair connect enabled" />
+      </field>
+      <field name="diff_pga_1_3" from="1" to="1" access="R" resetVal="" desc="Switched Cap Pair Connect for Differential Amplifier Applications" hidden="false">
+        <value name="SC_DIFF_PGA_DISABLED" value="0" desc="Differential PGA pair connect disabled" />
+        <value name="SC_DIFF_PGA_ENABLED" value="1" desc="Differential PGA pair connect enabled" />
+      </field>
+    </register>
+  </block>
+  <block name="ADC_VoltageB" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
+    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_1024" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Bypass" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="SAR_TR0" address="0x40004614" bitWidth="8" desc="SAR trim register" hidden="false" />
+    <register name="SAR_CSR0" address="0x40005900" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
+    <register name="SAR_CSR1" address="0x40005901" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
+    <register name="SAR_CSR2" address="0x40005902" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
+    <register name="SAR_CSR3" address="0x40005903" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
+    <register name="SAR_CSR4" address="0x40005904" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
+    <register name="SAR_CSR5" address="0x40005905" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
+    <register name="SAR_CSR6" address="0x40005906" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
+    <register name="SAR_SW0" address="0x40005B20" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
+    <register name="SAR_SW2" address="0x40005B22" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
+    <register name="SAR_SW3" address="0x40005B23" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
+    <register name="SAR_SW4" address="0x40005B24" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
+    <register name="SAR_SW6" address="0x40005B26" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
+    <register name="SAR_CLK" address="0x40005B27" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
+    <register name="SAR_WRK" address="0x40005BA0" bitWidth="16" desc="SAR working register" hidden="false" />
+  </block>
+  <block name="ADC_VoltageA" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
+    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vRef_1024" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="Bypass" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="SAR_TR0" address="0x40004616" bitWidth="8" desc="SAR trim register" hidden="false" />
+    <register name="SAR_CSR0" address="0x40005908" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
+    <register name="SAR_CSR1" address="0x40005909" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
+    <register name="SAR_CSR2" address="0x4000590A" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
+    <register name="SAR_CSR3" address="0x4000590B" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
+    <register name="SAR_CSR4" address="0x4000590C" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
+    <register name="SAR_CSR5" address="0x4000590D" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
+    <register name="SAR_CSR6" address="0x4000590E" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
+    <register name="SAR_SW0" address="0x40005B28" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
+    <register name="SAR_SW2" address="0x40005B2A" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
+    <register name="SAR_SW3" address="0x40005B2B" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
+    <register name="SAR_SW4" address="0x40005B2C" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
+    <register name="SAR_SW6" address="0x40005B2E" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
+    <register name="SAR_CLK" address="0x40005B2F" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
+    <register name="SAR_WRK" address="0x40005BA2" bitWidth="16" desc="SAR working register" hidden="false" />
+  </block>
+  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="DieTemp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_BtnProtectiveBehavior" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_BtnRiseRatePowerUp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PGA_AmperageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="SC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -904,6 +1064,71 @@
       </field>
     </register>
   </block>
+  <block name="PWM_LcdBackLight" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="PWMHW" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="PWM_LcdBackLight_GLOBAL_ENABLE" address="0x400043A3" bitWidth="8" desc="PM.ACT.CFG" hidden="false">
+      <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." hidden="false" />
+    </register>
+    <register name="PWM_LcdBackLight_CONTROL" address="0x40004F0C" bitWidth="8" desc="TMRx.CFG0" hidden="false">
+      <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." hidden="false" />
+      <field name="MODE" from="1" to="1" access="RW" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)" hidden="false">
+        <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
+        <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
+      </field>
+      <field name="ONESHOT" from="2" to="2" access="RW" resetVal="" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block." hidden="false" />
+      <field name="CMP_BUFF" from="3" to="3" access="RW" resetVal="" desc="Buffer compare register. Compare register updates only on timer terminal count." hidden="false" />
+      <field name="INV" from="4" to="4" access="RW" resetVal="" desc="Invert sense of TIMEREN signal" hidden="false" />
+      <field name="DB" from="5" to="5" access="RW" resetVal="" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively." hidden="false">
+        <value name="Timer" value="0" desc="CMP and TC are output." />
+        <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
+      </field>
+      <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" hidden="false" />
+    </register>
+    <register name="PWM_LcdBackLight_CONTROL2" address="0x40004F0D" bitWidth="8" desc="TMRx.CFG1" hidden="false">
+      <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" hidden="false" />
+      <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled." hidden="false">
+        <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
+        <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
+      </field>
+      <field name="DCOR" from="2" to="2" access="RW" resetVal="" desc="Disable Clear on Read (DCOR) of Status Register SR0." hidden="false" />
+      <field name="DBMODE" from="3" to="3" access="RW" resetVal="" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND)." hidden="false" />
+      <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." hidden="false" />
+      <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." hidden="false" />
+    </register>
+    <register name="PWM_LcdBackLight_CONTROL3_" address="0x40004F0E" bitWidth="8" desc="TMRx.CFG2" hidden="false">
+      <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ" hidden="false">
+        <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
+        <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
+        <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
+        <value name="Irq" value="11" desc="Timer runs until IRQ." />
+      </field>
+      <field name="COD" from="2" to="2" access="RW" resetVal="" desc="Clear On Disable (COD). Clears or gates outputs to zero." hidden="false" />
+      <field name="ROD" from="3" to="3" access="RW" resetVal="" desc="Reset On Disable (ROD). Resets internal state of output logic" hidden="false" />
+      <field name="CMP_CFG" from="6" to="4" access="RW" resetVal="" desc="Comparator configurations" hidden="false">
+        <value name="Equal" value="0" desc="Compare Equal " />
+        <value name="Less than" value="1" desc="Compare Less Than " />
+        <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
+        <value name="Greater" value="11" desc="Compare Greater Than ." />
+        <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
+      </field>
+      <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." hidden="false" />
+    </register>
+    <register name="PWM_LcdBackLight_PERIOD" address="0x40004F10" bitWidth="8" desc="TMRx.PER0 - Assigned Period" hidden="false" />
+    <register name="PWM_LcdBackLight_COMPARE" address="0x40004F12" bitWidth="8" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
+  </block>
+  <block name="GlitchFilter_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_46" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_47" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Comp_OverAmperageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ctComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1107,343 +1332,13 @@
       <field name="cmp0_out" from="0" to="0" access="R" resetVal="" desc="Comparator Output" hidden="false" />
     </register>
   </block>
-  <block name="GlitchFilter_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PGA_OverVoltageB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="SC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_noconnect_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="SC__PM_ACT_CFG" address="0x400043A9" bitWidth="8" desc="Active Power Mode Configuration Register 9" hidden="false">
-      <field name="en_swcap" from="3" to="0" access="R" resetVal="" desc="Enable switchcap block(s)" hidden="false">
-        <value name="en_swcap[0]" value="0001" desc="Enables SC Block 0" />
-        <value name="en_swcap[1]" value="0010" desc="Enables SC Block 1" />
-        <value name="en_swcap[2]" value="0100" desc="Enables SC Block 2" />
-        <value name="en_swcap[3]" value="1000" desc="Enables SC Block 3" />
-      </field>
-    </register>
-    <register name="SC__PM_STBY_CFG" address="0x400043B9" bitWidth="8" desc="Standby Power Mode Configuration Register 9" hidden="false">
-      <field name="en_swcap" from="3" to="0" access="R" resetVal="" desc="Enable switchcap block(s)" hidden="false">
-        <value name="en_swcap[0]" value="0001" desc="Enables SC Block 0" />
-        <value name="en_swcap[1]" value="0010" desc="Enables SC Block 1" />
-        <value name="en_swcap[2]" value="0100" desc="Enables SC Block 2" />
-        <value name="en_swcap[3]" value="1000" desc="Enables SC Block 3" />
-      </field>
-    </register>
-    <register name="SC_CR0" address="0x4000580C" bitWidth="8" desc="Switched Capacitor Control Register 0" hidden="false">
-      <field name="mode" from="3" to="1" access="R" resetVal="" desc="Configuration select for the SC block " hidden="false">
-        <value name="SC_MODE_NAKED_OPAMP" value="000" desc="Naked Op-Amp" />
-        <value name="SC_MODE_TIA" value="001" desc="Transimpedance Amplifier " />
-        <value name="SC_MODE_CTMIXER" value="010" desc="Continuous Time Mixer" />
-        <value name="SC_MODE_NRZ_SH" value="011" desc="Discrete Time Mixer - NRZ S/H" />
-        <value name="SC_MODE_UNITY" value="100" desc="Unity Gain Buffer" />
-        <value name="SC_MODE_1ST_MOD" value="101" desc="First Order Modulator" />
-        <value name="SC_MODE_PGA" value="110" desc="Programmable Gain Amplifier (PGA)" />
-        <value name="SC_MODE_TRACKANDHOLD" value="111" desc="Track and Hold" />
-      </field>
-      <field name="dft" from="5" to="4" access="R" resetVal="" desc="Configuration select for the SC block" hidden="false">
-        <value name="SC_DFT_NORMAL" value="00" desc="Normal Operation" />
-        <value name="SC_DFT_VBOOST" value="01" desc="Vboost DFT" />
-        <value name="SC_DFT_MODE_DEPENDENT" value="10" desc="Mode Dependent (PGA Mode = Voltage Integrator, TIA Mode = Charge Integrator, Naked Opamp Mode = Comparator)" />
-        <value name="SC_DFT_RESET" value="11" desc="DFT reset" />
-      </field>
-    </register>
-    <register name="SC_CR1" address="0x4000580D" bitWidth="8" desc="Switched Capacitor Control Register 1" hidden="false">
-      <field name="drive" from="1" to="0" access="R" resetVal="" desc="Selects between current settings (I_Load (uA)) in the output buffer" hidden="false">
-        <value name="I_LOAD_175UA" value="00" desc="175 uA" />
-        <value name="I_LOAD_260UA" value="01" desc="260 uA" />
-        <value name="I_LOAD_330UA" value="10" desc="330 uA" />
-        <value name="I_LOAD_400UA" value="11" desc="400 uA" />
-      </field>
-      <field name="comp" from="3" to="2" access="R" resetVal="" desc="Selects between various compensation capacitor sizes" hidden="false">
-        <value name="SC_COMP_3P0PF" value="00" desc="3.0pF" />
-        <value name="SC_COMP_3P6PF" value="01" desc="3.6pF" />
-        <value name="SC_COMP_4P35PF" value="10" desc="4.35pF" />
-        <value name="SC_COMP_5P1PF" value="11" desc="5.1pF" />
-      </field>
-      <field name="div2" from="4" to="4" access="R" resetVal="" desc="When 0, the sample clock only needs to be half the desired sample frequency for S/H Mixer mode " hidden="false">
-        <value name="SC_DIV2_DISABLEF" value="0" desc="no frequency division" />
-        <value name="SC_DIV2_ENABLE" value="1" desc="SC CLK is divided by two" />
-      </field>
-      <field name="gain" from="5" to="5" access="R" resetVal="" desc="Controls the ratio of the feedback cap for S/H Mixer mode and PGA mode " hidden="false">
-        <value name="GAIN_0DB" value="0" desc="0 dB" />
-        <value name="GAIN_6DB" value="1" desc="6 dB" />
-      </field>
-    </register>
-    <register name="SC_CR2" address="0x4000580E" bitWidth="8" desc="Switched Capacitor Control Register 2" hidden="false">
-      <field name="bias_ctrl" from="0" to="0" access="R" resetVal="" desc="Toggles the bias current in the amplifier between normal and 1/2 " hidden="false">
-        <value name="BIAS_1X" value="0" desc="1x current reference reduces bandwidth to increase stability" />
-        <value name="BIAS_2X" value="1" desc="normal operation - 2x current reference to increase bandwidth" />
-      </field>
-      <field name="r20_40b" from="1" to="1" access="RW" resetVal="" desc="PGA Mode: input impedance (Rin), Mixer Mode: input and feedback impedance (Rmix)" hidden="false">
-        <value name="SC_R20_40B_40K" value="0" desc="40kOhm" />
-        <value name="SC_R20_40B_20K" value="1" desc="20kOhm" />
-      </field>
-      <field name="redc" from="3" to="2" access="RW" resetVal="" desc="Another stability control setting. Adjusts capactiance between amplifier output and first stage " hidden="false">
-        <value name="SC_REDC_00" value="00" desc="Varies depending on mode. See Switched Cap documentation" />
-        <value name="SC_REDC_01" value="01" desc="Varies depending on mode. See Switched Cap documentation" />
-        <value name="SC_REDC_10" value="10" desc="Varies depending on mode. See Switched Cap documentation" />
-        <value name="SC_REDC_11" value="11" desc="Varies depending on mode. See Switched Cap documentation" />
-      </field>
-      <field name="rval" from="6" to="4" access="RW" resetVal="" desc="Programmable Gain Amplifier (PGA) and Transimpedance Amplifier (TIA): Feedback resistor (Rfb)" hidden="false">
-        <value name="SC_RVAL_20" value="000" desc="20 kOhm" />
-        <value name="SC_RVAL_30" value="001" desc="30 kOhm" />
-        <value name="SC_RVAL_40" value="010" desc="40 kOhm" />
-        <value name="SC_RVAL_80" value="011" desc="80 kOhm" />
-        <value name="SC_RVAL_120" value="100" desc="120 kOhm" />
-        <value name="SC_RVAL_250" value="101" desc="250 kOhm" />
-        <value name="SC_RVAL_500" value="110" desc="500 kOhm" />
-        <value name="SC_RVAL_1000" value="111" desc="1 MegaOhm" />
-      </field>
-      <field name="pga_gndvref" from="7" to="7" access="R" resetVal="" desc="Programmable Gain Amplifier Application - Ground VREF)" hidden="false">
-        <value name="SC_PGA_GNDVREF_DIS" value="0" desc="VREF not grounded" />
-        <value name="SC_PGA_GNDVREF_EN" value="1" desc="VREF grounded" />
-      </field>
-    </register>
-    <register name="PUMP_CR1" address="0x40005877" bitWidth="8" desc="Pump Configuration Register 1" hidden="false">
-      <field name="npump_sc_selclk" from="7" to="7" access="R" resetVal="" desc="Switched Cap Negative Pump Clock Selection" hidden="false">
-        <value name="NPUMP_SC_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
-        <value name="NPUMP_SC_SELCLK_INTERNAL " value="1" desc="Negative pump internal clock selected" />
-      </field>
-      <field name="npump_opamp_selclk" from="6" to="6" access="R" resetVal="" desc="Opamp Negative Pump Clock Selection" hidden="false">
-        <value name="NPUMP_OPAMP_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
-        <value name="NPUMP_OPAMP_SELCLK_INTERNAL " value="1" desc="Negative pump internal clock selected" />
-      </field>
-      <field name="npump_dsm_selclk" from="2" to="2" access="R" resetVal="" desc="DSM Negative Pump Clock Selection" hidden="false">
-        <value name="NPUMP_DSM_SELCLK_EXTERNAL" value="0" desc="External (DSI) clock selected" />
-        <value name="NPUMP_DSM_SELCLK_INTERNAL" value="1" desc="Negative pump internal clock selectedd" />
-      </field>
-    </register>
-    <register name="SC__BST" address="0x40005A3C" bitWidth="8" desc="Switched Capacitor Boost Clock Selection Register" hidden="false">
-      <field name="mx_bst_clk" from="2" to="0" access="RW" resetVal="" desc="Clock Selection" hidden="false">
-        <value name="MX_CLK_0" value="000" desc="Select clk_a0 and clk_a0_dig" />
-        <value name="MX_CLK_1" value="001" desc="Select clk_a1 and clk_a1_dig" />
-        <value name="MX_CLK_2" value="010" desc="Select clk_a2 and clk_a2_dig" />
-        <value name="MX_CLK_3" value="011" desc="Select clk_a3 and clk_a3_dig" />
-        <value name="MX_CLK_4" value="100" desc="Select UDB generated clock" />
-        <value name="MX_CLK_5" value="101" desc="Reserved" />
-        <value name="MX_CLK_6" value="110" desc="Reserved" />
-        <value name="MX_CLK_7" value="111" desc="Reserved" />
-      </field>
-      <field name="bst_clk_en" from="3" to="3" access="RW" resetVal="" desc="Clock gating control" hidden="false">
-        <value name="CLK_EN_0" value="0" desc="disable clock" />
-        <value name="CLK_EN_1" value="1" desc="enable clock" />
-      </field>
-    </register>
-    <register name="SC_MISC" address="0x40005B56" bitWidth="8" desc="Switched Cap Miscellaneous Control Register" hidden="false">
-      <field name="diff_pga_0_2" from="0" to="0" access="R" resetVal="" desc="Switched Cap Pair Connect for Differential Amplifier Applications" hidden="false">
-        <value name="SC_DIFF_PGA_DISABLED" value="0" desc="Differential PGA pair connect disabled" />
-        <value name="SC_DIFF_PGA_ENABLED " value="1" desc="Differential PGA pair connect enabled" />
-      </field>
-      <field name="diff_pga_1_3" from="1" to="1" access="R" resetVal="" desc="Switched Cap Pair Connect for Differential Amplifier Applications" hidden="false">
-        <value name="SC_DIFF_PGA_DISABLED" value="0" desc="Differential PGA pair connect disabled" />
-        <value name="SC_DIFF_PGA_ENABLED" value="1" desc="Differential PGA pair connect enabled" />
-      </field>
-    </register>
-  </block>
-  <block name="VDAC8_OverVoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="viDAC8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="VDAC8_PM_ACT_CFG" address="0x400043A8" bitWidth="8" desc="Active Power Mode Configuration Register 8" hidden="false">
-      <field name="en_dac" from="4" to="0" access="RW" resetVal="" desc="Enable DAC block(s). Populated subsystems are counted from the LSB" hidden="false" />
-    </register>
-    <register name="VDAC8_PM_STBY_CFG" address="0x400043B8" bitWidth="8" desc="Standby Power Mode Configuration Register 8" hidden="false">
-      <field name="en_dac" from="4" to="0" access="RW" resetVal="" desc="Enable DAC block(s). Populated subsystems are counted from the LSB" hidden="false" />
-    </register>
-    <register name="VDAC8_TR" address="0x40004609" bitWidth="8" desc="VDAC8_TR" hidden="false">
-      <field name="tr" from="7" to="0" access="RW" resetVal="" desc="8 Calibration bits" hidden="false" />
-    </register>
-    <register name="VDAC8_CR0" address="0x40005824" bitWidth="8" desc="DAC Block Control Register 0" hidden="false">
-      <field name="mode" from="4" to="4" access="R" resetVal="" desc="Mode Bit" hidden="false">
-        <value name="DAC_MODE_V" value="0" desc="voltage DAC" />
-        <value name="DAC_MODE_I" value="1" desc="current DAC" />
-      </field>
-      <field name="range" from="3" to="2" access="RW" resetVal="" desc="Ranges for mode=0 (VDAC) and mode=1 (IDAC)" hidden="false">
-        <value name="DAC_RANGE_0" value="00" desc="x0=0V to 4*vref (1.024V); 0 to 31.875uA" />
-        <value name="DAC_RANGE_1" value="01" desc="x1=0V to 16*vref (4.096V); 0 to 255uA" />
-        <value name="DAC_RANGE_2" value="10" desc="x0=0V to 4*vref (1.024V); 0 to 2.040mA" />
-        <value name="DAC_RANGE_3" value="11" desc="x1=0V to 16*vref (4.096V); not used" />
-      </field>
-      <field name="hs" from="1" to="1" access="RW" resetVal="" desc="High Speed Bit" hidden="false">
-        <value name="DAC_HS_LOWPOWER" value="0" desc="regular (low power)" />
-        <value name="DAC_HS_HIGHSPEED" value="1" desc="high speed (higher power)" />
-      </field>
-    </register>
-    <register name="VDAC8_CR1" address="0x40005825" bitWidth="8" desc="DAC Block Control Register 1" hidden="false">
-      <field name="mx_data" from="5" to="5" access="RW" resetVal="" desc="Select DATA source" hidden="false">
-        <value name="MX_DATA_REG" value="0" desc="Select register source (DACxn_D)" />
-        <value name="MX_DATA_UDB" value="1" desc="Select UDB source" />
-      </field>
-      <field name="mx_idir" from="3" to="3" access="RW" resetVal="" desc="Mux selection for DAC current direction control" hidden="false">
-        <value name="MX_IDIR_REG" value="0" desc="Register source idirbit selected" />
-        <value name="MX_IDIR_UDB" value="1" desc="UDB ictrl selected" />
-      </field>
-      <field name="mx_ioff" from="1" to="1" access="RW" resetVal="" desc="Mux selection for DAC current off control" hidden="false">
-        <value name="MX_IOFF_REG" value="0" desc="Register source ioffbit selected" />
-        <value name="MX_IOFF_UDB" value="1" desc="UDB ictrl selected" />
-      </field>
-      <field name="reset_udb_en" from="4" to="4" access="RW" resetVal="" desc="DAC reset enable" hidden="false">
-        <value name="RESET_UDB_EN_DISABLE" value="0" desc="Disable DAC Reset Source from UDB (System reset always resets)" />
-        <value name="RESET_UDB_EN_ENABLE" value="1" desc="Enable DAC Reset Source from UDB" />
-      </field>
-    </register>
-    <register name="VDAC8_SW0" address="0x40005A88" bitWidth="8" desc="DAC Analog Routing Register 0" hidden="false">
-      <field name="v_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect voltage output to analog global of same side" hidden="false">
-        <value name="AG_NC" value="0" desc="not connected" />
-        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
-      </field>
-      <field name="v_ag0" from="0" to="0" access="RW" resetVal="" desc="Connect voltage output to analog global of same side" hidden="false">
-        <value name="AG_NC" value="0" desc="not connected" />
-        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
-      </field>
-    </register>
-    <register name="VDAC8_SW2" address="0x40005A8A" bitWidth="8" desc="DAC Analog Routing Register 2" hidden="false">
-      <field name="v_abus3" from="3" to="3" access="RW" resetVal="" desc="Connect voltage output to analog (local) bus of the same side " hidden="false">
-        <value name="ABUS_NC" value="0" desc="not connected" />
-        <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
-      </field>
-      <field name="v_abus1" from="1" to="1" access="RW" resetVal="" desc="Connect voltage output to analog (local) bus of the same side " hidden="false">
-        <value name="ABUS_NC" value="0" desc="not connected" />
-        <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
-      </field>
-    </register>
-    <register name="VDAC8_SW3" address="0x40005A8B" bitWidth="8" desc="DAC Analog Routing Register 3" hidden="false">
-      <field name="iout" from="7" to="7" access="RW" resetVal="" desc="Connect current output to pad" hidden="false">
-        <value name="IOUT_NC" value="0" desc="not connected" />
-        <value name="IOUT_CONNECT" value="1" desc="Connect to pad" />
-      </field>
-      <field name="i_amx" from="4" to="4" access="RW" resetVal="" desc="Connect current output to Analog Mux Bus" hidden="false">
-        <value name="AMX_NC" value="0" desc="not connected" />
-        <value name="AMX_CONNECTED" value="1" desc="Connect to AMUXBUS" />
-      </field>
-      <field name="v_amx" from="0" to="0" access="RW" resetVal="" desc="Connect voltage output to Analog Mux Bus" hidden="false">
-        <value name="AMX_NC" value="0" desc="not connected" />
-        <value name="AMX_CONNECTED" value="1" desc="Connect to AMUXBUS" />
-      </field>
-    </register>
-    <register name="VDAC8_SW4" address="0x40005A8C" bitWidth="8" desc="DAC Analog Routing Register 4" hidden="false">
-      <field name="i_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect current output to analog global of same side" hidden="false">
-        <value name="AG_NC" value="0" desc="not connected" />
-        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
-      </field>
-      <field name="i_ag0" from="0" to="0" access="RW" resetVal="" desc="Connect current output to analog global of same side" hidden="false">
-        <value name="AG_NC" value="0" desc="not connected" />
-        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
-      </field>
-    </register>
-    <register name="VDAC8_STROBE" address="0x40005A8F" bitWidth="8" desc="DAC Strobe Register" hidden="false">
-      <field name="mx_strobe" from="2" to="0" access="RW" resetVal="" desc="Strobe source selection" hidden="false">
-        <value name="MX_STROBE_BUSWRITE" value="000" desc="Select bus write strobe source (Enable gater regardless of strobe_en setting)" />
-        <value name="MX_STROBE_UDB_SRC" value="001" desc="Select UDB strobe source" />
-        <value name="MX_STROBE_NC_2" value="010" desc="NC" />
-        <value name="MX_STROBE_NC_3" value="011" desc="NC" />
-        <value name="MX_STROBE_CLK_A0_DIG" value="100" desc="Select clk_a0_dig" />
-        <value name="MX_STROBE_CLK_A1_DIG" value="101" desc="Select clk_a1_dig" />
-        <value name="MX_STROBE_CLK_A2_DIG" value="110" desc="Select clk_a2_dig" />
-        <value name="MX_STROBE_CLK_A3_DIG" value="111" desc="Select clk_a3_dig" />
-      </field>
-      <field name="strobe_en" from="3" to="3" access="RW" resetVal="" desc="Strobe gating control (See mx_strobe==3'h0)" hidden="false">
-        <value name="STROBE_EN_0" value="0" desc="disable strobe" />
-        <value name="STROBE_EN_1" value="1" desc="enable strobe" />
-      </field>
-    </register>
-    <register name="VDAC8_DATA" address="0x40005B81" bitWidth="8" desc="DAC Data Register" hidden="false">
-      <field name="data" from="7" to="0" access="RW" resetVal="" desc="8 DAC Data bits" hidden="false" />
-    </register>
-  </block>
-  <block name="ADC_VoltageA" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
-    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vRef_1024" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="Bypass" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="SAR_TR0" address="0x40004616" bitWidth="8" desc="SAR trim register" hidden="false" />
-    <register name="SAR_CSR0" address="0x40005908" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
-    <register name="SAR_CSR1" address="0x40005909" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
-    <register name="SAR_CSR2" address="0x4000590A" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
-    <register name="SAR_CSR3" address="0x4000590B" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
-    <register name="SAR_CSR4" address="0x4000590C" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
-    <register name="SAR_CSR5" address="0x4000590D" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
-    <register name="SAR_CSR6" address="0x4000590E" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
-    <register name="SAR_SW0" address="0x40005B28" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
-    <register name="SAR_SW2" address="0x40005B2A" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
-    <register name="SAR_SW3" address="0x40005B2B" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
-    <register name="SAR_SW4" address="0x40005B2C" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
-    <register name="SAR_SW6" address="0x40005B2E" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
-    <register name="SAR_CLK" address="0x40005B2F" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
-    <register name="SAR_WRK" address="0x40005BA2" bitWidth="16" desc="SAR working register" hidden="false" />
-  </block>
-  <block name="ADC_VoltageB" BASE="0x0" SIZE="0x0" desc="SAR ADC" visible="true" hidden="false">
-    <block name="theACLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ADC_SAR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="Clock_VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="or_internalClock" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="vRef_1024" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="Bypass" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="noconnect" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="cy_analog_virtualmux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="IRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <register name="SAR_TR0" address="0x40004614" bitWidth="8" desc="SAR trim register" hidden="false" />
-    <register name="SAR_CSR0" address="0x40005900" bitWidth="8" desc="SAR status and control register 0" hidden="false" />
-    <register name="SAR_CSR1" address="0x40005901" bitWidth="8" desc="SAR status and control register 1" hidden="false" />
-    <register name="SAR_CSR2" address="0x40005902" bitWidth="8" desc="SAR status and control register 2" hidden="false" />
-    <register name="SAR_CSR3" address="0x40005903" bitWidth="8" desc="SAR status and control register 3" hidden="false" />
-    <register name="SAR_CSR4" address="0x40005904" bitWidth="8" desc="SAR status and control register 4" hidden="false" />
-    <register name="SAR_CSR5" address="0x40005905" bitWidth="8" desc="SAR status and control register 5" hidden="false" />
-    <register name="SAR_CSR6" address="0x40005906" bitWidth="8" desc="SAR status and control register 6" hidden="false" />
-    <register name="SAR_SW0" address="0x40005B20" bitWidth="8" desc="SAR Analog Routing Register 0" hidden="false" />
-    <register name="SAR_SW2" address="0x40005B22" bitWidth="8" desc="SAR Analog Routing Register 2" hidden="false" />
-    <register name="SAR_SW3" address="0x40005B23" bitWidth="8" desc="SAR Analog Routing Register 3" hidden="false" />
-    <register name="SAR_SW4" address="0x40005B24" bitWidth="8" desc="SAR Analog Routing Register 4" hidden="false" />
-    <register name="SAR_SW6" address="0x40005B26" bitWidth="8" desc="SAR Analog Routing Register 6" hidden="false" />
-    <register name="SAR_CLK" address="0x40005B27" bitWidth="8" desc="SAR Clock Selection Register" hidden="false" />
-    <register name="SAR_WRK" address="0x40005BA0" bitWidth="16" desc="SAR working register" hidden="false" />
-  </block>
   <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="RegulatorStatus" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="RegulatorStatus_STATUS_REG" address="0x40006565" bitWidth="8" desc="" hidden="false" />
-    <register name="RegulatorStatus_MASK_REG" address="0x40006585" bitWidth="8" desc="" hidden="false" />
-    <register name="RegulatorStatus_STATUS_AUX_CTL_REG" address="0x40006595" bitWidth="8" desc="" hidden="false">
+    <register name="RegulatorStatus_STATUS_REG" address="0x40006566" bitWidth="8" desc="" hidden="false" />
+    <register name="RegulatorStatus_MASK_REG" address="0x40006586" bitWidth="8" desc="" hidden="false" />
+    <register name="RegulatorStatus_STATUS_AUX_CTL_REG" address="0x40006596" bitWidth="8" desc="" hidden="false">
       <field name="FIFO0" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear" hidden="false">
         <value name="ENABLED" value="1" desc="Enable counter" />
         <value name="DISABLED" value="0" desc="Disable counter" />
@@ -1470,15 +1365,133 @@
       </field>
     </register>
   </block>
-  <block name="O_PwmChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Clock_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="VDAC8_OverAmperageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="viDAC8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="cy_analog_noconnect_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <register name="VDAC8_PM_ACT_CFG" address="0x400043A8" bitWidth="8" desc="Active Power Mode Configuration Register 8" hidden="false">
+      <field name="en_dac" from="4" to="0" access="RW" resetVal="" desc="Enable DAC block(s). Populated subsystems are counted from the LSB" hidden="false" />
+    </register>
+    <register name="VDAC8_PM_STBY_CFG" address="0x400043B8" bitWidth="8" desc="Standby Power Mode Configuration Register 8" hidden="false">
+      <field name="en_dac" from="4" to="0" access="RW" resetVal="" desc="Enable DAC block(s). Populated subsystems are counted from the LSB" hidden="false" />
+    </register>
+    <register name="VDAC8_TR" address="0x40004608" bitWidth="8" desc="VDAC8_TR" hidden="false">
+      <field name="tr" from="7" to="0" access="RW" resetVal="" desc="8 Calibration bits" hidden="false" />
+    </register>
+    <register name="VDAC8_CR0" address="0x40005820" bitWidth="8" desc="DAC Block Control Register 0" hidden="false">
+      <field name="mode" from="4" to="4" access="R" resetVal="" desc="Mode Bit" hidden="false">
+        <value name="DAC_MODE_V" value="0" desc="voltage DAC" />
+        <value name="DAC_MODE_I" value="1" desc="current DAC" />
+      </field>
+      <field name="range" from="3" to="2" access="RW" resetVal="" desc="Ranges for mode=0 (VDAC) and mode=1 (IDAC)" hidden="false">
+        <value name="DAC_RANGE_0" value="00" desc="x0=0V to 4*vref (1.024V); 0 to 31.875uA" />
+        <value name="DAC_RANGE_1" value="01" desc="x1=0V to 16*vref (4.096V); 0 to 255uA" />
+        <value name="DAC_RANGE_2" value="10" desc="x0=0V to 4*vref (1.024V); 0 to 2.040mA" />
+        <value name="DAC_RANGE_3" value="11" desc="x1=0V to 16*vref (4.096V); not used" />
+      </field>
+      <field name="hs" from="1" to="1" access="RW" resetVal="" desc="High Speed Bit" hidden="false">
+        <value name="DAC_HS_LOWPOWER" value="0" desc="regular (low power)" />
+        <value name="DAC_HS_HIGHSPEED" value="1" desc="high speed (higher power)" />
+      </field>
+    </register>
+    <register name="VDAC8_CR1" address="0x40005821" bitWidth="8" desc="DAC Block Control Register 1" hidden="false">
+      <field name="mx_data" from="5" to="5" access="RW" resetVal="" desc="Select DATA source" hidden="false">
+        <value name="MX_DATA_REG" value="0" desc="Select register source (DACxn_D)" />
+        <value name="MX_DATA_UDB" value="1" desc="Select UDB source" />
+      </field>
+      <field name="mx_idir" from="3" to="3" access="RW" resetVal="" desc="Mux selection for DAC current direction control" hidden="false">
+        <value name="MX_IDIR_REG" value="0" desc="Register source idirbit selected" />
+        <value name="MX_IDIR_UDB" value="1" desc="UDB ictrl selected" />
+      </field>
+      <field name="mx_ioff" from="1" to="1" access="RW" resetVal="" desc="Mux selection for DAC current off control" hidden="false">
+        <value name="MX_IOFF_REG" value="0" desc="Register source ioffbit selected" />
+        <value name="MX_IOFF_UDB" value="1" desc="UDB ictrl selected" />
+      </field>
+      <field name="reset_udb_en" from="4" to="4" access="RW" resetVal="" desc="DAC reset enable" hidden="false">
+        <value name="RESET_UDB_EN_DISABLE" value="0" desc="Disable DAC Reset Source from UDB (System reset always resets)" />
+        <value name="RESET_UDB_EN_ENABLE" value="1" desc="Enable DAC Reset Source from UDB" />
+      </field>
+    </register>
+    <register name="VDAC8_SW0" address="0x40005A80" bitWidth="8" desc="DAC Analog Routing Register 0" hidden="false">
+      <field name="v_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect voltage output to analog global of same side" hidden="false">
+        <value name="AG_NC" value="0" desc="not connected" />
+        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
+      </field>
+      <field name="v_ag0" from="0" to="0" access="RW" resetVal="" desc="Connect voltage output to analog global of same side" hidden="false">
+        <value name="AG_NC" value="0" desc="not connected" />
+        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
+      </field>
+    </register>
+    <register name="VDAC8_SW2" address="0x40005A82" bitWidth="8" desc="DAC Analog Routing Register 2" hidden="false">
+      <field name="v_abus3" from="3" to="3" access="RW" resetVal="" desc="Connect voltage output to analog (local) bus of the same side " hidden="false">
+        <value name="ABUS_NC" value="0" desc="not connected" />
+        <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
+      </field>
+      <field name="v_abus1" from="1" to="1" access="RW" resetVal="" desc="Connect voltage output to analog (local) bus of the same side " hidden="false">
+        <value name="ABUS_NC" value="0" desc="not connected" />
+        <value name="ABUS_CONNECTED" value="1" desc="Connect to Analog (local) Bus" />
+      </field>
+    </register>
+    <register name="VDAC8_SW3" address="0x40005A83" bitWidth="8" desc="DAC Analog Routing Register 3" hidden="false">
+      <field name="iout" from="7" to="7" access="RW" resetVal="" desc="Connect current output to pad" hidden="false">
+        <value name="IOUT_NC" value="0" desc="not connected" />
+        <value name="IOUT_CONNECT" value="1" desc="Connect to pad" />
+      </field>
+      <field name="i_amx" from="4" to="4" access="RW" resetVal="" desc="Connect current output to Analog Mux Bus" hidden="false">
+        <value name="AMX_NC" value="0" desc="not connected" />
+        <value name="AMX_CONNECTED" value="1" desc="Connect to AMUXBUS" />
+      </field>
+      <field name="v_amx" from="0" to="0" access="RW" resetVal="" desc="Connect voltage output to Analog Mux Bus" hidden="false">
+        <value name="AMX_NC" value="0" desc="not connected" />
+        <value name="AMX_CONNECTED" value="1" desc="Connect to AMUXBUS" />
+      </field>
+    </register>
+    <register name="VDAC8_SW4" address="0x40005A84" bitWidth="8" desc="DAC Analog Routing Register 4" hidden="false">
+      <field name="i_ag1" from="1" to="1" access="RW" resetVal="" desc="Connect current output to analog global of same side" hidden="false">
+        <value name="AG_NC" value="0" desc="not connected" />
+        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
+      </field>
+      <field name="i_ag0" from="0" to="0" access="RW" resetVal="" desc="Connect current output to analog global of same side" hidden="false">
+        <value name="AG_NC" value="0" desc="not connected" />
+        <value name="AG_CONNECTED" value="1" desc="Connect to Analog Global" />
+      </field>
+    </register>
+    <register name="VDAC8_STROBE" address="0x40005A87" bitWidth="8" desc="DAC Strobe Register" hidden="false">
+      <field name="mx_strobe" from="2" to="0" access="RW" resetVal="" desc="Strobe source selection" hidden="false">
+        <value name="MX_STROBE_BUSWRITE" value="000" desc="Select bus write strobe source (Enable gater regardless of strobe_en setting)" />
+        <value name="MX_STROBE_UDB_SRC" value="001" desc="Select UDB strobe source" />
+        <value name="MX_STROBE_NC_2" value="010" desc="NC" />
+        <value name="MX_STROBE_NC_3" value="011" desc="NC" />
+        <value name="MX_STROBE_CLK_A0_DIG" value="100" desc="Select clk_a0_dig" />
+        <value name="MX_STROBE_CLK_A1_DIG" value="101" desc="Select clk_a1_dig" />
+        <value name="MX_STROBE_CLK_A2_DIG" value="110" desc="Select clk_a2_dig" />
+        <value name="MX_STROBE_CLK_A3_DIG" value="111" desc="Select clk_a3_dig" />
+      </field>
+      <field name="strobe_en" from="3" to="3" access="RW" resetVal="" desc="Strobe gating control (See mx_strobe==3'h0)" hidden="false">
+        <value name="STROBE_EN_0" value="0" desc="disable strobe" />
+        <value name="STROBE_EN_1" value="1" desc="enable strobe" />
+      </field>
+    </register>
+    <register name="VDAC8_DATA" address="0x40005B80" bitWidth="8" desc="DAC Data Register" hidden="false">
+      <field name="data" from="7" to="0" access="RW" resetVal="" desc="8 DAC Data bits" hidden="false" />
+    </register>
+  </block>
+  <block name="not_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="and_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_OnChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="U_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_PosCurChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_PwmChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_NegCurChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_PosCurChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="U_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1488,16 +1501,16 @@
   <block name="U_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_PwmChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="U_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="U_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="I_NegCurChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1507,16 +1520,16 @@
   <block name="C_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Q_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Q_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="L_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="D_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PGA_OverVoltageA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="SC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1974,16 +1987,16 @@
   <block name="PWR_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="L_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="L_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1993,6 +2006,16 @@
   <block name="Q_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="F_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SW_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWM_VoltageB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -2051,71 +2074,65 @@
     <register name="PWM_VoltageB_PERIOD" address="0x40004F28" bitWidth="16" desc="TMRx.PER0 - Assigned Period" hidden="false" />
     <register name="PWM_VoltageB_COMPARE" address="0x40004F2A" bitWidth="16" desc="TMRx.CNT_CMP0 - Assigned Compare Value" hidden="false" />
   </block>
-  <block name="PWR_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="AGND" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="P_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_16" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="F_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SW_9" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Clock_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_LCD_BKL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_constant_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_31" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="P_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="AGND" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_constant_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="K_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_constant_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="K_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Q_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_14" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="C_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_30" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_29" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="C_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="C_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="PWR_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="U_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_OUT_ON" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_VoltChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="I_VoltChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_51" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_25" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_52" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_26" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_51" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_VoltChA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_18" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_15" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_17" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_43" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="I_VoltChB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_21" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_20" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="GND_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_23" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_19" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_22" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_LCD_WR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_LCD_RD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="O_LCD_CD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="TP_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="O_LCD_RES" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="LCD_DB" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_LCD_RD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_LCD_CD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="TP_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_LCD_BKL" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_13" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_OUT_ON" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="O_LCD_WR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="D_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC_Amperage" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="Bypass_P32" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="Ext_CP_Clk" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -2937,11 +2954,9 @@
     </register>
   </block>
   <block name="D_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="GND_10" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="PWR_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_24" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="R_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="GND_11" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="PWR_12" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Q_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="R_28" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="D_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="R_27" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

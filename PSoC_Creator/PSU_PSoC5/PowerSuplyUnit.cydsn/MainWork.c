@@ -388,6 +388,18 @@ BOOL ErrorIndicator() {
 
 /*>>>-------------- Regulator state & status -----------------*/
 BOOL CheckRegulatorStatusCore(BYTE status) {
+    if (status & 0x02) {
+        ThrowErrorOverCore(ERROR_OVER_HW_VOLTAGE_A | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+        return TRUE; 
+    } 
+    if (status & 0x04) {
+        ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+        return TRUE; 
+    }
+    if (status & 0x08) {
+        ThrowErrorOverCore(ERROR_OVER_HW_VOLTAGE_B | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+        return TRUE; 
+    } 
     if (status & 0x01) {
         ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
         return TRUE; 
@@ -404,7 +416,7 @@ BOOL CheckRegulatorStatus() {
     if (CheckRegulatorStatusCore(status)) {
         return TRUE;
     } else {
-        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A);
+        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_HW_VOLTAGE_A | ERROR_OVER_HW_VOLTAGE_B);
         return FALSE; 
     } 
 }

@@ -55,6 +55,9 @@ void Regulator_Init() {
     PGA_OverVoltageB_Start();
     memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
     ReadCalibratedValues();
+    Count7_OverVoltageA_Start();
+    Count7_OverAmperageA_Start();
+    Count7_OverVoltageB_Start();
 }
 
 void Regulator_Task() {	 
