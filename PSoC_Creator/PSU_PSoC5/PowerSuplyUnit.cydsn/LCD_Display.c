@@ -149,7 +149,7 @@ void Display_Init() {
     ValueIndicator_Init(&DisplayObj.Temperatures.Radiator.Indicator, omTemperature, 6, TemperatureCoordX, TemperatureCoordY, 
         43, 6, 0, 0, TemperatureCoordY, 1, 1, FALSE, NULL);
     ValueIndicator_Init(&DisplayObj.Temperatures.Cpu.Indicator, omTemperatureCpu, 6, TemperatureCpuCoordX, TemperatureCpuCoordY, 
-        43, 6, 0, 0, TemperatureCpuCoordY, 1, 1, TRUE, NULL);   
+        43, 6, 0, 0, TemperatureCpuCoordY, 1, 1, FALSE, NULL);   
     DisplayObj.Properties.SelectedIndicator = NULL;    
     
     
@@ -909,7 +909,8 @@ BOOL ShowErrorOver() {
         ErrorOverVoltageA(ltInvisible, FALSE);
         ErrorOverAmperageA(ltInvisible, FALSE);
         ErrorOverVoltageB(ltInvisible, FALSE);
-        ErrorOverAmperageB(ltInvisible, FALSE);
+        ErrorOverAmperageB(ltInvisible, FALSE);  
+        ValueIndicator_SetFocused(&DisplayObj.Temperatures.Cpu.Indicator, FALSE);
         Display_Flush();
     }
     return TRUE;
@@ -949,7 +950,13 @@ static BOOL state = FALSE;
         }
         if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_AMPERAGE_B) {
             ErrorOverAmperageB(swOver, TRUE);
-        }        
+        }  
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_RADIATOR_TEMPER) {
+            ValueIndicator_SetFocused(&DisplayObj.Temperatures.Radiator.Indicator, state);
+        }  
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_CPU_TEMPER) {
+            ValueIndicator_SetFocused(&DisplayObj.Temperatures.Cpu.Indicator, state);
+        }     
         Display_Flush();
         state = !state;  
         return TRUE;

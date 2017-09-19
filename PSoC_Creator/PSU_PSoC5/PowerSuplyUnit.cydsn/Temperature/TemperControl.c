@@ -68,7 +68,14 @@ TTemperature CheckTemper(void) {
 	DieTemp_Query(&CPUTemperature);
     res.Cpu = (INT)CPUTemperature;
 	DieTemp_Start();
-	if (res.Radiator >= 80) {
+    
+    if (res.Radiator < TEMPER_INIT && res.Radiator >= 90) {
+        ThrowErrorOver(ERROR_OVER_RADIATOR_TEMPER | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+	} 
+    if (res.Cpu < TEMPER_INIT && res.Cpu >= 75) {
+        ThrowErrorOver(ERROR_OVER_CPU_TEMPER | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+	} 
+    if (res.Radiator >= 80) {
 		FanCtrl_WriteCompare(255);
         res.FanIsOn = TRUE;
 	} else if (res.Radiator >= 70) {
