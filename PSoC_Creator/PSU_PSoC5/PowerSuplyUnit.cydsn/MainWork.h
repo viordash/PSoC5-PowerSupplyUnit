@@ -38,7 +38,6 @@ extern TMainWork_Object MainWorkObj;
 
 extern void MainWork_Init();
 extern void MainWork_Task();
-extern void SuppressProtection(BOOL withOn);
 extern void ChangeOutputState();
 extern void MouseState(BOOL present); 
 extern void MouseChangingValue (INT value);

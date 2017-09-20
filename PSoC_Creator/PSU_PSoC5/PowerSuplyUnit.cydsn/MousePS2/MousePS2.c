@@ -266,18 +266,10 @@ BOOL res = FALSE;
 						if (MainWorkObj.State == mwsErrGlb) {
 							ResetErrorState();
 						} else {
-							if ((O_OUT_ON_Read() == 0) && (msDt & 0x02)) { //MSS_MSBtnRight; при включении выхода, правой кнопкой блокировать защиту	
-								SuppressProtection(TRUE);
-							} else {
-								SuppressProtection(FALSE);
-							}
 							ChangeOutputState();
 						}
                         res = TRUE;
 					}
-				}
-				if (MainWorkObj.HwPrSupressed && ((msDt & 0x02) == 0) /*&& (OUT_ON_R_Read() != 0)*/) { //MSS_MSBtnRight; 
-					SuppressProtection(FALSE);
 				}
                 if (pX != NULL && pY != NULL) {
                     INT x, y;

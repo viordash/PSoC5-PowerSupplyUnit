@@ -146,9 +146,6 @@ void ChangeState(TMainWorkState newState){
     MainWorkObj.State = newState; 
 }
 
-void SuppressProtection(BOOL withOn) {
-}
-
 void ChangeOutputState() {
     if (MainWorkObj.State == mwsWork || MainWorkObj.State == mwsErrGlb) {
         ChangeState(mwsStandBy);    
