@@ -197,7 +197,7 @@ BOOL MouseStateMachine(BYTE TXData, BYTE ExpectRXAnswer_0, BYTE ExpectRXMinCount
 	return (FALSE);
 }
 
-BOOL MouseHandler() {
+BOOL MouseHandler(PINT pX, PINT pY) {
 	static DWORD mouseTick = 0;
     if (MainWorkObj.MousePresent) {
     	if (GetElapsedPeriod(mouseTick) < SYSTICK_mS(50)){  //период опроса мыши 50мс
@@ -279,6 +279,19 @@ BOOL res = FALSE;
 				if (MainWorkObj.HwPrSupressed && ((msDt & 0x02) == 0) /*&& (OUT_ON_R_Read() != 0)*/) { //MSS_MSBtnRight; 
 					SuppressProtection(FALSE);
 				}
+                if (pX != NULL && pY != NULL) {
+                    INT x, y;
+                    x = MouseData[2];           
+                    y = MouseData[3];                   
+                    if (msDt & 0x10) {
+                        x = x * -1;
+                    }  
+                    if (msDt & 0x20) {
+                        y = y * -1;
+                    }   
+                    *pX = x;
+                    *pY = y;
+                }
 			}
 		}
 	}

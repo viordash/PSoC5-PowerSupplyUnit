@@ -58,7 +58,7 @@ typedef enum {
 	dsInit = 0,
 	dsStart,
 	dsWork,
-	dsError
+	dsPowerOff
 } TDisplayScreen;
 
 typedef struct {
@@ -96,6 +96,7 @@ typedef struct {
     TTextColor MessageColor;
     BOOL ErrorOverRequest;
     TErrorOver ErrorOver;
+    BOOL PowerOff;
 } TDisplayRequests, * PTDisplayRequests;
 
 typedef struct {
@@ -155,6 +156,7 @@ typedef struct {
     TDisplayStateSymbols StateSymbols;
 } TDisplayObject, * PTDisplayObject;
 
+extern void Display_RequestToPowerOff();
 extern void RequestToChangeScreen(TDisplayScreen newValue);
 
 extern void Display_RequestToChangeValue(TSelectValue selectValue, TElectrValue value);

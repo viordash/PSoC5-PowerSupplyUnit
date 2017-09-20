@@ -30,6 +30,7 @@ typedef struct {
     TEepromStrorage Storage;
     TProtectiveSensitivity ProtectiveSensitivity;
     BOOL MousePresent;
+    DWORD IdleTimer;
 } TMainWork_Object, * PTMainWork_Object;
 
 extern TFunction MainWorkFunction;
@@ -45,6 +46,6 @@ extern void ResetErrorState();
 extern void ThrowException(PCHAR message);
 extern void ThrowErrorOver(TErrorOver setErrorOver, TErrorOver resetErrorOver);
 extern void MainWork_ChangeStabilizeMode(TSelectStabilizeMode selectedValue);
-	
+extern BOOL MainWork_EnteringToSleepMode();	
 #endif  /* __MAINWORK_H__ */
 /* [] END OF FILE */

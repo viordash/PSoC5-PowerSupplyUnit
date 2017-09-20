@@ -18,6 +18,7 @@
 #include "MousePS2\MousePS2.h"
 #include "Regulator\RegulatorTask.h"
 #include "Storage.h"
+#include "Sleep.h"
 
 #define BtnOk_Pressed 0x02
 #define BtnOk_LongPress 0x01
@@ -51,6 +52,7 @@ void MainWork_Init() {
     MainWorkObj.StabilizeModeA = smVoltageStab;  
     MainWorkObj.StabilizeModeB = smAmperageStab; 
     InitMouse();
+    IdleTimer_Init();
 }
 
 void MainWork_Task(){	    
@@ -80,9 +82,9 @@ void MainWork_Task(){
             }
             if (!(prevButtons & 0x10) && bt & 0x10) {
                 ButtonOnOrChangePolarityPressed(bt & 0x10);  
-            }
-            
+            }            
             prevButtons = bt;
+            IdleTimer_Reset();
         } 
         bt = MultiJog_Status_Read();
         if (bt & MultiJog_Rotated) {
@@ -93,7 +95,9 @@ void MainWork_Task(){
             if(!TemperatureControl()) {  
                 if (!ErrorIndicator()) {
                     if(!ProtectiveBehaviorIndicator()) {
-                        
+                        if (!IdleTimer_Handle()) {            
+                            
+                        }
                     }
                 }
             }
@@ -135,9 +139,11 @@ void ChangeState(TMainWorkState newState){
     } else if (MainWorkObj.State == mwsErrGlb && newState != mwsErrGlb) {              
         O_Led_Error_Write(FALSE);    
     }
+
     Regulator_WorkStateChanged(MainWorkObj.State, newState);
-    Display_WorkStateChanged(MainWorkObj.State, newState);
-    MainWorkObj.State = newState;   
+    Display_WorkStateChanged(MainWorkObj.State, newState); 
+    IdleTimer_Reset();    
+    MainWorkObj.State = newState; 
 }
 
 void SuppressProtection(BOOL withOn) {
@@ -275,8 +281,8 @@ void MouseState(BOOL present) {
 
 void MouseChangingValue(INT value) {
     ChangeValue(value);
+    IdleTimer_Reset();
 }
-
 /*----------------- Mouse Changing Value --------------<<<*/
 
 
@@ -449,8 +455,8 @@ void RefreshDisplay() {
     } else {
         RequestToFocusingStabilize(ssmVoltageB);
     }
-
     RequestToRepaintTemperatures();
+    RequestToVisibileMousePresent(MainWorkObj.MousePresent);
     RequestToRepaintMousePresent();
 }
 
@@ -469,4 +475,40 @@ void MainWork_ChangeStabilizeMode(TSelectStabilizeMode selectedValue) {
     Regulator_ChangeStabilizeMode();
 }
 /*----------------- Change Stabilize Mode --------------<<<*/
+
+/*>>>-------------- Entering to Sleep Mode -----------------*/
+BOOL MainWork_EnteringToSleepMode() {
+    if (MainWorkObj.State != mwsStandBy) {
+        return FALSE;
+    }
+    ChangeState(mwsPowerOff);
+    RequestToChangeScreen(dsPowerOff); 
+    INT mouseX = INT_MIN;
+    INT mouseY = INT_MIN;
+    BYTE bt = Buttons_Read();
+    DWORD waitTimer = GetTickCount();
+    while (GetElapsedPeriod(waitTimer) < SYSTICK_mS(10000)) {
+        TaskSleep(&MainWorkFunction, SYSTICK_mS(50));  //display message  
+        if (bt != Buttons_Read()) {
+            break;    
+        }
+        MouseHandler(&mouseX, &mouseY);
+        if (mouseX != INT_MIN && mouseX != 0 
+            && mouseY != INT_MIN && mouseY != 0) {
+            break;        
+        }
+    }
+    
+    if (GetElapsedPeriod(waitTimer) >= SYSTICK_mS(10000)) {
+        Display_RequestToPowerOff();
+        TaskSleep(&MainWorkFunction, SYSTICK_mS(300));  //sleep display
+        return TRUE;
+    } else {
+        ChangeState(mwsStandBy);
+        RefreshDisplay();        
+        return FALSE;
+    }
+}
+/*----------------- Entering to Sleep Mode --------------<<<*/
+
 /* [] END OF FILE */

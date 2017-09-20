@@ -174,6 +174,10 @@ void Display_Init() {
     InitMeasuredValues();
 }
 
+void Display_RequestToPowerOff() { 
+    DisplayObj.Requests.PowerOff = TRUE;
+}
+
 void Display_Task() {	
     _LCD_Init();
     _LCD_WaitReady();
@@ -241,7 +245,7 @@ static void ProcessRequests() {
         DisplayObj.Requests.ScreenRequest = FALSE;
     }   
 
-    if (MainWorkObj.State != mwsStart) {
+    if (DisplayObj.Properties.Screen == dsWork) {
         ChangeSetPointValues();
         ChangeMeasuredValues();
         ChangeSelection();
@@ -253,6 +257,9 @@ static void ProcessRequests() {
         ClearMessage();
         ShowMessage();
         ShowErrorOver();
+    } else if (DisplayObj.Requests.PowerOff) {
+        DisplayObj.Requests.PowerOff = FALSE;
+        Display_Sleep();
     }
 }
 
@@ -287,8 +294,13 @@ void SetScreen_WorkMode() {
     Display_Flush();
 }
 
-void SetScreen_Error() {    
-
+void SetScreen_PowerOff() {      
+    Display_Backlight(10);
+    Display_DrawRectangle(10, 10, 230, 120, ltSolid, FALSE); 
+    Display_DrawRectangle(11, 11, 229, 119, ltDoted, FALSE);     
+    Display_SetFont(1);
+    Display_Print("Entering power save mode...", tcNorm, 20, 55, FALSE);      
+    Display_Flush();
 }
 
 void ChangeScreen() {  
@@ -300,8 +312,8 @@ void ChangeScreen() {
         DisplayObj.MeasuredValues.VoltageB.Value.Indicator.Readonly = FALSE;
         DisplayObj.MeasuredValues.AmperageB.Value.Indicator.Readonly = FALSE;
         SetScreen_WorkMode();
-    } else if (DisplayObj.Properties.Screen == dsError) {
-        SetScreen_Error();
+    } else if (DisplayObj.Properties.Screen == dsPowerOff) {
+        SetScreen_PowerOff();
     }
 }
 

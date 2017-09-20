@@ -241,7 +241,7 @@ void _LCD_Enable(void) {
 }
 
 void _LCD_Sleep(void) {
-    _LCD_Backlight(10);
+    PWM_LcdBackLight_Stop();
 	T6963_Write(T6963_CMD__DSPL_OFF, dtCommand, STATUS_BUSY);	//Text off, graphic off
 }
 

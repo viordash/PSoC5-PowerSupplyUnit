@@ -60,6 +60,26 @@ void Regulator_Init() {
     Count7_OverVoltageB_Start();
 }
 
+void Regulator_Stop() {
+    PWM_VoltageA_Stop();
+    PWM_VoltageB_Stop();
+    ADC_Amperage_Stop();
+    PGA_AmperageA_Stop();
+    VDAC8_OverAmperageA_Stop();
+    Comp_OverAmperageA_Stop();
+    ADC_VoltageA_Stop();
+    VDAC8_OverVoltageA_Stop();
+    Comp_OverVoltageA_Stop();
+    VDAC8_OverVoltageB_Stop();
+    Comp_OverVoltageB_Stop();
+    ADC_VoltageB_Stop();
+    PGA_OverVoltageA_Stop();
+    PGA_OverVoltageB_Stop();
+    Count7_OverVoltageA_Stop();
+    Count7_OverAmperageA_Stop();
+    Count7_OverVoltageB_Stop();
+}
+
 void Regulator_Task() {	 
     ADC_VoltageA_StartConvert();
     ADC_VoltageB_StartConvert();

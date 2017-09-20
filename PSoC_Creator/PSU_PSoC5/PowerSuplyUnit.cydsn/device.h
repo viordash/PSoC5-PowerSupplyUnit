@@ -172,7 +172,8 @@ typedef enum {
 	mwsStandBy,
 	mwsWorkStarting,
 	mwsWork,
-	mwsErrGlb
+	mwsErrGlb,
+	mwsPowerOff
 } TMainWorkState;
 
 typedef enum {

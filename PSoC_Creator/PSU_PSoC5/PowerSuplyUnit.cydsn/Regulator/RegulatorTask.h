@@ -62,6 +62,7 @@ extern TFunction RegulatorFunction;
 extern TRegulatorObject RegulatorObj;
 
 extern void Regulator_Init();
+extern void Regulator_Stop();
 extern void Regulator_Task();
 
 extern void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value);
