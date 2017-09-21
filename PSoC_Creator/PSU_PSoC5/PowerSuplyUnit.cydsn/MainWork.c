@@ -114,6 +114,9 @@ void MainWork_Task(){
 }
 
 void ChangeState(TMainWorkState newState){   
+    TMainWorkState oldState = MainWorkObj.State;
+    MainWorkObj.State = newState; 
+    
     if (newState == mwsWorkStarting) {
         ClearRegulatorStatusAndErrors();
         BYTE ctrl = 0x15;
@@ -134,16 +137,15 @@ void ChangeState(TMainWorkState newState){
         RegulatorControl_Write(0x0A);        
     } 
     
-    if (MainWorkObj.State == mwsWork && newState == mwsStandBy) {        
+    if (oldState == mwsWork && newState == mwsStandBy) {        
         SaveToStorage();
-    } else if (MainWorkObj.State == mwsErrGlb && newState != mwsErrGlb) {              
+    } else if (oldState == mwsErrGlb && newState != mwsErrGlb) {              
         O_Led_Error_Write(FALSE);    
     }
 
-    Regulator_WorkStateChanged(MainWorkObj.State, newState);
-    Display_WorkStateChanged(MainWorkObj.State, newState); 
+    Regulator_WorkStateChanged(oldState, newState);
+    Display_WorkStateChanged(oldState, newState); 
     IdleTimer_Reset();    
-    MainWorkObj.State = newState; 
 }
 
 void ChangeOutputState() {
@@ -412,9 +414,10 @@ BOOL CheckRegulatorStatusCore(BYTE status) {
 BOOL CheckRegulatorStatus() {
     static BYTE prevStatus = 0;
     BYTE status = RegulatorStatus_Read();
-    if (status == prevStatus) {
+    if (status == prevStatus || MainWorkObj.State != mwsWork) {
         return FALSE;    
     }   
+
     prevStatus = status;
     if (CheckRegulatorStatusCore(status)) {
         return TRUE;
