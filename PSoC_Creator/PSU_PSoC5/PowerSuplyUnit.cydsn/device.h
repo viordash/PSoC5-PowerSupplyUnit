@@ -50,13 +50,13 @@
 #define GetAdcGainVoltageA() (ADC_VoltageA_countsPer10Volt + 0)
     
 #define GetAdcOffsetAmperageA() -3
-#define GetAdcGainAmperageA() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT + 150)
+#define GetAdcGainAmperageA() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT - 00)
     
 #define GetAdcOffsetVoltageB() 0
 #define GetAdcGainVoltageB() (ADC_VoltageB_countsPer10Volt + 0)
     
 #define GetAdcOffsetAmperageB() -3
-#define GetAdcGainAmperageB() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT + 150)
+#define GetAdcGainAmperageB() ((int32)ADC_Amperage_CFG1_COUNTS_PER_VOLT - 00)
     
     
 #define ERROR_OVER_NONE 0x00
