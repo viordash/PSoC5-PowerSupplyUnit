@@ -15,7 +15,6 @@
 #include <device.h>
 
 typedef struct { 
-    INT PwmValue;
     INT MinDifferenceValue;
     TElectrValue MaxRipple; 
     BOOL PowerOn;
@@ -26,7 +25,9 @@ typedef struct {
     TElectrValue ImmediateCuttOff; 
     TElectrValue Protect; 
     TElectrValue Measured; 
-    BOOL ErrorOver;
+    BOOL ErrorOver;    
+    INT Pwm;
+    BOOL PwmChanged;
 } TRegulatorValue, * PTRegulatorValue;
     
 typedef struct { 

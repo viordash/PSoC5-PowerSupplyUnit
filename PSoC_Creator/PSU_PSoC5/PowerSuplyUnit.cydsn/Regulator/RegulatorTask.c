@@ -32,11 +32,49 @@ BOOL ReadCalibratedValues() {
     return TRUE;
 }
 
+CY_ISR(PwmVoltageAIrqHandler) {
+    BYTE bt = PWM_VoltageA_ReadStatusRegister();
+    if (bt & PWM_VoltageA_STATUS_TC && RegulatorObj.ChanelA.Voltage.Regulator.PwmChanged) {
+        INT pwm = RegulatorObj.ChanelA.Voltage.Regulator.Pwm;    
+        if (pwm > PWM_MAX_PERIOD * 4) {
+            pwm = PWM_MAX_PERIOD * 4;    
+        } else if (pwm < 0) {
+            pwm = 0;    
+        }
+        *PWM_VoltageA_Ex_Control_PTR = pwm & 0x03;
+        pwm >>= 2;
+        PWM_VoltageA_WriteCompare1(pwm);   
+        PWM_VoltageA_WriteCompare2(pwm + 1); 
+        RegulatorObj.ChanelA.Voltage.Regulator.PwmChanged = FALSE; 
+    }
+}
+
+CY_ISR(PwmVoltageBIrqHandler) {
+    BYTE bt = PWM_VoltageB_ReadStatusRegister();
+    if (bt & PWM_VoltageB_STATUS_TC && RegulatorObj.ChanelB.Voltage.Regulator.PwmChanged) {
+        INT pwm = RegulatorObj.ChanelB.Voltage.Regulator.Pwm;    
+        if (pwm > PWM_MAX_PERIOD * 4) {
+            pwm = PWM_MAX_PERIOD * 4;    
+        } else if (pwm < 0) {
+            pwm = 0;    
+        }
+        *PWM_VoltageA_Ex_Control_PTR = pwm & 0x03;
+        pwm >>= 2;
+        PWM_VoltageB_WriteCompare1(pwm);   
+        PWM_VoltageB_WriteCompare2(pwm + 1); 
+        RegulatorObj.ChanelB.Voltage.Regulator.PwmChanged = FALSE; 
+    }
+}
+
 void Regulator_Init() {
     PWM_VoltageA_Start();
-    PWM_VoltageA_WriteCompare(0);
+    PWM_VoltageA_WriteCompare1(0);
+    PWM_VoltageA_WriteCompare2(0);
+    RegulatorObj.ChanelA.Voltage.Regulator.Pwm = 0;
     PWM_VoltageB_Start();
-    PWM_VoltageB_WriteCompare(0);
+    PWM_VoltageB_WriteCompare1(0);
+    PWM_VoltageB_WriteCompare2(0);
+    RegulatorObj.ChanelB.Voltage.Regulator.Pwm = 0;
     ADC_Amperage_Start();
     PGA_AmperageA_Start();
     VDAC8_OverAmperageA_Start();
@@ -58,9 +96,15 @@ void Regulator_Init() {
     Count7_OverVoltageA_Start();
     Count7_OverAmperageA_Start();
     Count7_OverVoltageB_Start();
+    Count7_VoltageA_Ex_Start();
+    Count7_VoltageB_Ex_Start();
+	IsrPwmVoltageA_StartEx(PwmVoltageAIrqHandler);
+	IsrPwmVoltageB_StartEx(PwmVoltageBIrqHandler);
 }
 
 void Regulator_Stop() {
+	IsrPwmVoltageA_Stop();
+	IsrPwmVoltageB_Stop();
     PWM_VoltageA_Stop();
     PWM_VoltageB_Stop();
     ADC_Amperage_Stop();
@@ -78,6 +122,8 @@ void Regulator_Stop() {
     Count7_OverVoltageA_Stop();
     Count7_OverAmperageA_Stop();
     Count7_OverVoltageB_Stop();
+    Count7_VoltageA_Ex_Stop();
+    Count7_VoltageB_Ex_Stop();
 }
 
 void Regulator_Task() {	 
@@ -217,14 +263,11 @@ BOOL MeasureAmperage(PTElectrValue pValue, BYTE chNum) {
     return FALSE;           
 }
 
-BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadPwm readPwm, reg8 * pPWM_VoltageEx) {
+BOOL Regulating(PTRegulatorChannel pRegulatorChannel) {
     TElectrValue voltageMeasured = pRegulatorChannel->Voltage.Regulator.Measured;
     TElectrValue voltageSetPoint = pRegulatorChannel->Voltage.Regulator.SetPoint;
     TElectrValue amperageMeasured = pRegulatorChannel->Amperage.Regulator.Measured;
     TElectrValue amperageSetPoint = pRegulatorChannel->Amperage.Regulator.SetPoint;          
-    
-//    writePwm(voltageSetPoint);     
-//    return TRUE;    
     
     SHORT pwmDiff = 0;
     BOOL isLessThanSetPoint;
@@ -251,20 +294,18 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         InitRegulating(&(pRegulatorChannel->Voltage.Regulating));
         isLessThanSetPoint = FALSE;
         pwmDiff = 1;
-    }    
-    
-    INT pwm = readPwm();    
+    }            
     
     if (diffValue < /*5*/Voltage_Ripple_In_ADC_Counts) { //если разница менее 0.25%        
         if (pRegulatorChannel->Voltage.Regulating.MinDifferenceValue > diffValue) {
             pRegulatorChannel->Voltage.Regulating.MinDifferenceValue = diffValue;    
-            pRegulatorChannel->Voltage.Regulating.PwmValue = pwm; 
         } else {
             pRegulatorChannel->Voltage.Regulating.MaxRipple = amperageMeasured / 10;
             if (pRegulatorChannel->Voltage.Regulating.MaxRipple < Voltage_Ripple_In_ADC_Counts) {
                 pRegulatorChannel->Voltage.Regulating.MaxRipple = Voltage_Ripple_In_ADC_Counts;    
+            } else if (pRegulatorChannel->Voltage.Regulating.MaxRipple > Voltage_Ripple_In_ADC_Counts * 10) {
+                pRegulatorChannel->Voltage.Regulating.MaxRipple = Voltage_Ripple_In_ADC_Counts * 10;    
             }
-            pwm = pRegulatorChannel->Voltage.Regulating.PwmValue;
             pRegulatorChannel->Voltage.Regulating.PowerOn = FALSE;
         }        
     } else if (diffValue < /*20*/(Voltage_Ripple_In_ADC_Counts * 2)) { //если разница менее 0.5%
@@ -275,7 +316,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         }
     } else if ((diffValue < /*60*/(Voltage_Ripple_In_ADC_Counts * 4)) || pRegulatorChannel->Voltage.Regulating.PowerOn) { //если разница менее 1.25%
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
-            pwmDiff = 1;  
+            pwmDiff = 2;  
         } else {
             pwmDiff = 8;
         }
@@ -289,7 +330,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
             pwmDiff = 8;  
         } else {
-            pwmDiff = 25;
+            pwmDiff = 32;
         }
     } else {
         InitRegulating(&(pRegulatorChannel->Voltage.Regulating));
@@ -303,7 +344,7 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
             if (MainWorkObj.RiseRatePowerUp == rrpuSlow) {
                 pwmDiff = 64;  
             } else {
-                pwmDiff = 160;
+                pwmDiff = 200;
             }   
         }  
     }
@@ -316,18 +357,8 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel, TWritePwm writePwm, TReadP
         pwmDiff *= -1;     
     }
     
-    pwm <<= 1;
-    pwm += *pPWM_VoltageEx;
-    pwm += pwmDiff;
-    
-    if (pwm > PWM_MAX_PERIOD * 2) {
-        pwm = PWM_MAX_PERIOD * 2;    
-    } else if (pwm < 0) {
-        pwm = 0;    
-    }
-    *pPWM_VoltageEx = pwm & 0x01;
-    pwm >>= 1;
-    writePwm(pwm);     
+    pRegulatorChannel->Voltage.Regulator.PwmChanged = TRUE;
+    pRegulatorChannel->Voltage.Regulator.Pwm += pwmDiff;    
     return TRUE;    
 }
 
@@ -378,10 +409,8 @@ BOOL RegulatingChannelA() {
         } else {
             RegulatorObj.ChanelA.Amperage.Regulator.ErrorOver = FALSE;    
         }    
-    }  
-    return MainWorkObj.State == mwsWork 
-    && !bVoltageInConversion 
-    && Regulating(&RegulatorObj.ChanelA, PWM_VoltageA_WriteCompare, PWM_VoltageA_ReadCompare, PWM_VoltageA_Ex_Control_PTR); //*/
+    }    
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelA); //*/
 }
 
 BOOL RegulatingChannelB() {
@@ -409,16 +438,13 @@ BOOL RegulatingChannelB() {
             Display_RequestToChangeAmperageB(amperageMeasured, FALSE);
         }  
     }  
-    return MainWorkObj.State == mwsWork 
-        && !bVoltageInConversion 
-        && Regulating(&RegulatorObj.ChanelB, PWM_VoltageB_WriteCompare, PWM_VoltageB_ReadCompare, PWM_VoltageB_Ex_Control_PTR); //*/
+    return MainWorkObj.State == mwsWork && !bVoltageInConversion && Regulating(&RegulatorObj.ChanelB); //*/
 }
 /*----------------- Measuring --------------<<<*/
 
 void InitRegulating(PTRegulating pRegulating){
     pRegulating->MaxRipple = 0;
     pRegulating->MinDifferenceValue = INT_MAX;
-    pRegulating->PwmValue = 0;
 }
 
 void InitAllRegulating(){
@@ -433,8 +459,12 @@ void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState
         ADC_VoltageB_SetOffset(GetAdcOffsetVoltageB());
         ADC_VoltageB_SetScaledGain(GetAdcGainVoltageB());
     } else if (oldState == mwsWork) {
-        PWM_VoltageA_WriteCompare(0);
-        PWM_VoltageB_WriteCompare(0);
+        PWM_VoltageA_WriteCompare1(0);
+        PWM_VoltageA_WriteCompare2(0);
+        RegulatorObj.ChanelA.Voltage.Regulator.Pwm = 0;
+        PWM_VoltageB_WriteCompare1(0);
+        PWM_VoltageB_WriteCompare2(0);
+        RegulatorObj.ChanelB.Voltage.Regulator.Pwm = 0;
         InitAllRegulating();
         RegulatorObj.ChanelA.Voltage.Regulating.PowerOn = TRUE;
         RegulatorObj.ChanelB.Voltage.Regulating.PowerOn = TRUE;
