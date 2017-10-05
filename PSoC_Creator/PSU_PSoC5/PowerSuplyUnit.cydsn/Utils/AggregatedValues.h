@@ -15,5 +15,5 @@ typedef struct {
 extern void AggregatedValues_Init(PTAggregatedValues pAggregatedValues, PTElectrValue Buffer, INT size);
 extern void AggregatedValues_Push(PTAggregatedValues pAggregatedValues, TElectrValue value);
 extern TElectrValue AggregatedValues_Pop(PTAggregatedValues pAggregatedValues, TProcessTasks pProcessTasks);
-
+extern TElectrValue MedianFilter3(TElectrValue a, TElectrValue b, TElectrValue c);
 #endif /* end __AggregatedValues_H */

@@ -18,6 +18,7 @@
 #include "Regulator\RegulatorTask.h"
 #include "Utils\Calibrating.h"
 #include "Regulator\CalcAdcValue.h"
+#include "Utils\AggregatedValues.h"
 
 
 TFunction RegulatorFunction;
@@ -27,9 +28,10 @@ BOOL RegulatingChannelA();
 BOOL RegulatingChannelB();
 //void InitRegulating(PTRegulatorVoltage pRegulatorVoltage);
 
-BOOL ReadCalibratedValues() {
-    
-    return TRUE;
+CY_ISR(DmaAdcVoltageAIrqHandler) {
+  //  if (!RegulatorObj.ChanelA.Voltage.AdcRawReady) {
+        RegulatorObj.ChanelA.Voltage.AdcRawReady = TRUE;
+  //  }
 }
 
 CY_ISR(PwmVoltageAIrqHandler) {
@@ -66,6 +68,36 @@ CY_ISR(PwmVoltageBIrqHandler) {
     }
 }
 
+volatile BYTE DmaAdcVoltageA_Chan;
+volatile BYTE DmaAdcVoltageA_TD[1];
+
+void InitAdcDma_A() {
+    /* Defines for DmaAdcVoltageA */
+#define DmaAdcVoltageA_BYTES_PER_BURST 2
+#define DmaAdcVoltageA_REQUEST_PER_BURST 1
+#define DmaAdcVoltageA_SRC_BASE (CYDEV_PERIPH_BASE)
+#define DmaAdcVoltageA_DST_BASE (CYDEV_SRAM_BASE)
+    
+    DmaAdcVoltageA_Chan = DmaAdcVoltageA_DmaInitialize(DmaAdcVoltageA_BYTES_PER_BURST, DmaAdcVoltageA_REQUEST_PER_BURST, 
+        HI16(DmaAdcVoltageA_SRC_BASE), HI16(DmaAdcVoltageA_DST_BASE));
+    DmaAdcVoltageA_TD[0] = CyDmaTdAllocate();
+    
+
+}
+
+void StopAdcDma() {
+    CyDmaChDisable(DmaAdcVoltageA_Chan);
+}
+
+void StartAdcVoltageA() {
+    RegulatorObj.ChanelA.Voltage.AdcRawReady = FALSE;    
+    CyDmaTdSetConfiguration(DmaAdcVoltageA_TD[0], 3 * 2, CY_DMA_DISABLE_TD, DmaAdcVoltageA__TD_TERMOUT_EN | CY_DMA_TD_INC_DST_ADR);
+    CyDmaTdSetAddress(DmaAdcVoltageA_TD[0], LO16((uint32)ADC_VoltageA_SAR_WRK0_PTR), LO16((uint32)&(RegulatorObj.ChanelA.Voltage.AdcRawValues)));
+    CyDmaChSetInitialTd(DmaAdcVoltageA_Chan, DmaAdcVoltageA_TD[0]);
+    CyDmaChEnable(DmaAdcVoltageA_Chan, 1);    
+    //ADC_VoltageA_StartConvert();
+}
+
 void Regulator_Init() {
     PWM_VoltageA_Start();
     PWM_VoltageA_WriteCompare1(0);
@@ -91,8 +123,7 @@ void Regulator_Init() {
     AMuxAmperage_Next(); 
     PGA_OverVoltageA_Start();
     PGA_OverVoltageB_Start();
-    memset(&RegulatorObj, 0, sizeof(TRegulatorObject));   
-    ReadCalibratedValues();
+    memset(&RegulatorObj, 0, sizeof(TRegulatorObject));  
     Count7_OverVoltageA_Start();
     Count7_OverAmperageA_Start();
     Count7_OverVoltageB_Start();
@@ -100,11 +131,16 @@ void Regulator_Init() {
     Count7_VoltageB_Ex_Start();
 	IsrPwmVoltageA_StartEx(PwmVoltageAIrqHandler);
 	IsrPwmVoltageB_StartEx(PwmVoltageBIrqHandler);
+    
+    InitAdcDma_A();
+	IsrDmaAdcVoltageA_StartEx(DmaAdcVoltageAIrqHandler);
 }
 
 void Regulator_Stop() {
 	IsrPwmVoltageA_Stop();
 	IsrPwmVoltageB_Stop();
+    IsrDmaAdcVoltageA_Stop();
+    StopAdcDma();
     PWM_VoltageA_Stop();
     PWM_VoltageB_Stop();
     ADC_Amperage_Stop();
@@ -128,6 +164,7 @@ void Regulator_Stop() {
 
 void Regulator_Task() {	 
     ADC_VoltageA_StartConvert();
+    StartAdcVoltageA();
     ADC_VoltageB_StartConvert();
     ADC_Amperage_StartConvert();
     BOOL adcA = FALSE;
@@ -140,8 +177,7 @@ void Regulator_Task() {
 		TaskSleep(&RegulatorFunction, 1);
         adcB = RegulatingChannelB();
         if (adcA) {
-		    TaskSleep(&RegulatorFunction, 5);
-            ADC_VoltageA_StartConvert();
+		    StartAdcVoltageA();
         }
 		TaskSleep(&RegulatorFunction, 1);	
 	}
@@ -244,12 +280,18 @@ void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
 
 /*>>>-------------- Measuring -----------------*/
 BOOL MeasureVoltageA(PTElectrValue pValue) {
-    if (ADC_VoltageA_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
-        return FALSE;    
-    }       
-    INT value = ADC_VoltageA_GetResult16();
-    *pValue = value;
-    return TRUE;             
+    if (!RegulatorObj.ChanelA.Voltage.AdcRawReady) {
+        return FALSE;     
+    }
+    *pValue = MedianFilter3(RegulatorObj.ChanelA.Voltage.AdcRawValues[0], RegulatorObj.ChanelA.Voltage.AdcRawValues[1], RegulatorObj.ChanelA.Voltage.AdcRawValues[2]);
+    return TRUE;  
+    
+//    if (ADC_VoltageA_IsEndConversion(ADC_VoltageA_RETURN_STATUS) == 0) {
+//        return FALSE;    
+//    }       
+//    INT value = ADC_VoltageA_GetResult16();
+//    *pValue = value;
+//    return TRUE;             
 }
   
 BOOL MeasureVoltageB(PTElectrValue pValue) {
