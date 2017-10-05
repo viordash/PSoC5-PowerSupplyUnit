@@ -14,11 +14,16 @@
 	
 #include <device.h>
 
-typedef struct { 
-    INT MinDifferenceValue;
-    TElectrValue MaxRipple; 
-    BOOL PowerOn;
-} TRegulating, * PTRegulating;
+//typedef struct { 
+//    INT MinDifferenceValue;
+////    TElectrValue MaxRipple; 
+//} TRegulating, * PTRegulating;
+
+//typedef struct { 
+//    INT PwmDiff;
+//    TElectrValue PrevMeasured; 
+//    TElectrValue Value; 
+//} TPwmImpact, * PTPwmImpact;
     
 typedef struct { 
     TElectrValue SetPoint;  
@@ -26,13 +31,15 @@ typedef struct {
     TElectrValue Protect; 
     TElectrValue Measured; 
     BOOL ErrorOver;    
-    INT Pwm;
-    BOOL PwmChanged;
 } TRegulatorValue, * PTRegulatorValue;
     
 typedef struct { 
     TRegulatorValue Regulator; 
-    TRegulating Regulating; 
+//    TRegulating Regulating; 
+    INT Pwm;
+    BOOL PwmChanged;
+//    TPwmImpact PwmImpact;
+    BOOL PowerOn;
 } TRegulatorVoltage, * PTRegulatorVoltage;
     
 typedef struct { 

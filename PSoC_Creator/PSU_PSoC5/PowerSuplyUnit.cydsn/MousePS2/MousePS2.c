@@ -255,7 +255,7 @@ BOOL res = FALSE;
                 if (i8 != 0) {
                     if (msDt & 0x01) i8 =  i8 * 100; //BtnLeft;
     				else if (msDt & 0x02) i8 =  i8 * 10; //MSS_MSBtnRight;
-                    else i8 =  i8 * 5;
+                    else i8 =  i8 * 1;
                     MouseChangingValue(i8);
                     res = TRUE;
                 }
