@@ -41,7 +41,6 @@ typedef struct {
 //    TPwmImpact PwmImpact;
     BOOL PowerOn;
     TElectrValue AdcRawValues[4]; 
-    BOOL AdcRawReady;
 } TRegulatorVoltage, * PTRegulatorVoltage;
     
 typedef struct { 
