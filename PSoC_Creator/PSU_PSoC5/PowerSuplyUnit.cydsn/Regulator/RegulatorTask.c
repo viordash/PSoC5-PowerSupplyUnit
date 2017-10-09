@@ -226,7 +226,6 @@ void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
         RegulatorObj.ChanelA.Voltage.Regulator.ImmediateCuttOff = value + value200 /*min 2 volt*/;
         VDAC8_OverVoltageA_SetValue(CalculateOverVoltageAVDACValue(value));
     }
-//    InitRegulating(&RegulatorObj.ChanelA.Voltage);
 }
 
 void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
@@ -264,7 +263,6 @@ void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
         RegulatorObj.ChanelB.Voltage.Regulator.ImmediateCuttOff = value + value200 /*min 2 volt*/;
         VDAC8_OverVoltageB_SetValue(CalculateOverVoltageBVDACValue(value));
     }
-//    InitRegulating(&RegulatorObj.ChanelB.Voltage);
 }
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
@@ -342,7 +340,6 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel) {
         }
     } else {
         diffValue = diffAmperageValue;
-//        InitRegulating(&(pRegulatorChannel->Voltage));
         isLessThanSetPoint = FALSE;
         pwmDiff = 1;
     }      
