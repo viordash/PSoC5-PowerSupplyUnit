@@ -39,9 +39,11 @@ CY_ISR(PwmVoltageAIrqHandler) {
     if (bt & PWM_VoltageA_STATUS_TC && RegulatorObj.ChanelA.Voltage.PwmChanged) {
         INT pwm = RegulatorObj.ChanelA.Voltage.Pwm;    
         if (pwm > PWM_MAX_PERIOD * 4) {
-            pwm = PWM_MAX_PERIOD * 4;    
+            pwm = PWM_MAX_PERIOD * 4;   
+            RegulatorObj.ChanelA.Voltage.Pwm = pwm; 
         } else if (pwm < 0) {
-            pwm = 0;    
+            pwm = 0; 
+            RegulatorObj.ChanelA.Voltage.Pwm = pwm;    
         }
         *PWM_VoltageA_Ex_Control_PTR = pwm & 0x03;
         pwm >>= 2;
@@ -57,8 +59,10 @@ CY_ISR(PwmVoltageBIrqHandler) {
         INT pwm = RegulatorObj.ChanelB.Voltage.Pwm;    
         if (pwm > PWM_MAX_PERIOD * 4) {
             pwm = PWM_MAX_PERIOD * 4;    
+            RegulatorObj.ChanelB.Voltage.Pwm = pwm;
         } else if (pwm < 0) {
-            pwm = 0;    
+            pwm = 0;  
+            RegulatorObj.ChanelB.Voltage.Pwm = pwm;  
         }
         *PWM_VoltageA_Ex_Control_PTR = pwm & 0x03;
         pwm >>= 2;
