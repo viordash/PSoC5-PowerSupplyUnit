@@ -196,20 +196,32 @@ void Regulator_Task() {
 BYTE CalculateOverVoltageAVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 3;
+    dw += 3;
+    if (dw > 255) {
+        dw = 255;        
+    }
+    return (BYTE)dw;
 }
 
 BYTE CalculateOverVoltageBVDACValue(TElectrValue value) {
     DWORD dw = (Voltage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
-    return (BYTE)dw + 3;
+    dw += 3;
+    if (dw > 255) {
+        dw = 255;        
+    }
+    return (BYTE)dw;
 }
 
 BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
     DWORD dw = (Amperage_ADC_MAX * 1000) / value;
     dw = (256 * 1000) / dw;
     dw = (dw * 1250) / 1000;
-    return (BYTE)dw + 5;    
+    dw += 5;
+    if (dw > 255) {
+        dw = 255;        
+    }
+    return (BYTE)dw;   
 }
 
 /*>>>-------------- Requests -----------------*/
