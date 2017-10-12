@@ -91,7 +91,7 @@ void MainWork_Task(){
             MultiJogChangingValue(bt);
         }        
         
-        if (!MouseHandler()){
+        if (!MouseHandler(NULL, NULL)){
             if(!TemperatureControl()) {  
                 if (!ErrorIndicator()) {
                     if(!ProtectiveBehaviorIndicator()) {
