@@ -20,7 +20,6 @@
 #include "Regulator\CalcAdcValue.h"
 #include "Utils\AggregatedValues.h"
 
-
 TFunction RegulatorFunction;
 TRegulatorObject RegulatorObj;
 
@@ -394,7 +393,6 @@ BOOL Regulating(PTRegulatorChannel pRegulatorChannel) {
     } else {
         pwmDiff *= -1;     
     }
-        
     pRegulatorChannel->Voltage.PwmChanged = TRUE;
     pRegulatorChannel->Voltage.Pwm += pwmDiff;    
     return TRUE;    

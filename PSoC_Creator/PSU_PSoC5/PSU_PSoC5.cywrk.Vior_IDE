@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Utils\AggregatedValues.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="PSU_PSoC5\PowerSuplyUnit\Display\ValueIndicator.c">
 <ExpandedNodeIds>
 <v>PSU_PSoC5</v>
 <v>PSU_PSoC5\PowerSuplyUnit</v>
@@ -46,6 +46,16 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Generated_Source\PSoC5</v>
 </ExpandedNodeIds>
 <VisibleNodeIds>
+<v>PSU_PSoC5</v>
+<v>PSU_PSoC5\PowerSuplyUnit</v>
+<v>PSU_PSoC5\PowerSuplyUnit\TopDesign</v>
+<v>PSU_PSoC5\PowerSuplyUnit\PowerSuplyUnit.cydwr</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Fonts</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Chart.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\Chart.h</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.c</v>
+<v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_Display.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\LCD_T6963.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Display\SymbolIndicator.c</v>
@@ -86,16 +96,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\DS1821.h</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.c</v>
 <v>PSU_PSoC5\PowerSuplyUnit\Temperature\TemperControl.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\AggregatedValues.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\AggregatedValues.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\Calibrating.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\Calibrating.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\Crc.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\Crc.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.c</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Utils\GeneralUtils.h</v>
-<v>PSU_PSoC5\PowerSuplyUnit\Generated_Source</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -179,6 +179,7 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\cyutils.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DieTemp.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaAdcVoltageA_dma.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DmaAdcVoltageB_dma.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\DS1821.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\EEPROMStorage.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\FAN_CTRL.lst</v>
@@ -204,7 +205,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_PosCurChB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_VoltChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\I_VoltChB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\IsrDmaAdcVoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\IsrPwmVoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\IsrPwmVoltageB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\IsrWakeup.lst</v>
@@ -265,6 +265,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\RegulatorStatus.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\RegulatorTask.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Sleep.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\StatusAdcVoltageA.lst</v>
+<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\StatusAdcVoltageB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\Storage.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\SymbolIndicator.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Debug\Listing Files\SymbolIndicatorHelper.lst</v>
@@ -370,7 +372,6 @@
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_PosCurChB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_VoltChA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\I_VoltChB.lst</v>
-<v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\IsrDmaAdcVoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\IsrPwmVoltageA.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\IsrPwmVoltageB.lst</v>
 <v>PSU_PSoC5\PowerSuplyUnit\CortexM3\ARM_GCC_541\Release\Listing Files\IsrWakeup.lst</v>
@@ -532,7 +533,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_constant_v1_0\cy_constant_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\cy_dma_v1_70.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_dma_v1_70</v>
+<v>PSU_PSoC5\PowerSuplyUnit\cy_dma_v1_70\cy_dma_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\cy_pins_v2_20</v>
@@ -562,8 +564,8 @@
 <v>PSU_PSoC5\PowerSuplyUnit\Inductor_v1_0\Inductor_v1_0.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0</v>
 <v>PSU_PSoC5\PowerSuplyUnit\LED_v1_0\LED_v1_0.pdf</v>
-<v>PSU_PSoC5\PowerSuplyUnit\LUT_v1_50</v>
-<v>PSU_PSoC5\PowerSuplyUnit\LUT_v1_50\LUT_v1_50.pdf</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LUT_v1_60</v>
+<v>PSU_PSoC5\PowerSuplyUnit\LUT_v1_60\LUT_v1_60.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\mux_v1_10</v>
 <v>PSU_PSoC5\PowerSuplyUnit\mux_v1_10\mux_v1_10.pdf</v>
 <v>PSU_PSoC5\PowerSuplyUnit\nand_v1_0.pdf</v>
@@ -624,11 +626,11 @@
 <name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" />
 <name v=".\PowerSuplyUnit.cydsn\device.h" />
 <name v=".\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" />
 <name v=".\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" />
 <name v=".\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" />
 <name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.h" />
-<name v=".\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\CyDmac.c" />
+<name v=".\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" />
+<name v=".\PowerSuplyUnit.cydsn\LCD_Display.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -636,8 +638,8 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1559, 741" SelectedTabbedMdiWindow="878128d4-42fa-4347-896e-1a8f21f16282"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="039114c0-0d43-42eb-9d60-63b1da3c2912" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.c" Guid="f4610137-d74c-4f52-8e8e-3a4e85c44315" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="c00aac8b-5ffb-46ff-af97-f92a65cf051b" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="dbc71bef-a9eb-49f5-84a2-b00127ee6d11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.h" Guid="e0fdd249-f4be-4743-b4c3-25cd0f2e2e30" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\CyDmac.c" Guid="c900ab14-438d-4ae5-b717-b87fbc591dd1" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
-<config v="Release" />
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1320, 741" SelectedTabbedMdiWindow="039114c0-0d43-42eb-9d60-63b1da3c2912"><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\main.c" Guid="075bb0ee-6c14-4dbc-988b-46464ae5db38" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\MainWork.c" Guid="edf8b598-efd1-4720-b962-c86b9953dd11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.c" Guid="878128d4-42fa-4347-896e-1a8f21f16282" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\device.h" Guid="26b1af3e-3eca-4ae8-9b9a-75d21c09bdf9" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\TopDesign\TopDesign.cysch" Guid="039114c0-0d43-42eb-9d60-63b1da3c2912" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Regulator\RegulatorTask.h" Guid="c00aac8b-5ffb-46ff-af97-f92a65cf051b" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\PowerSuplyUnit.cydwr" Guid="dbc71bef-a9eb-49f5-84a2-b00127ee6d11" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Generated_Source\PSoC5\PWM_VoltageA.h" Guid="e0fdd249-f4be-4743-b4c3-25cd0f2e2e30" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\Display\ValueIndicator.c" Guid="43e50ace-2c2d-4f82-bdcf-fd24391c6c35" /><DocumentWindow Key="Z:\PROJECTS\PowerSupplyUnit\PSoC5\PSoC_Creator\PSU_PSoC5\PowerSuplyUnit.cydsn\LCD_Display.c" Guid="b0b8c028-3d4e-468b-a885-e97d69cf7c6b" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="512e4581-8c50-4edc-9006-ab2cd4638eda" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+<config v="Debug" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
 </CyXmlSerializer>
