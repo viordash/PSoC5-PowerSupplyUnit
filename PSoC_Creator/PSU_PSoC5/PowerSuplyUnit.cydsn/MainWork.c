@@ -125,11 +125,15 @@ void ChangeState(TMainWorkState newState){
         } else {            
             if (MainWorkObj.StabilizeModeA == smVoltageStab && MainWorkObj.StabilizeModeB == smVoltageStab) {
                 BYTE bt = Buttons_Read();
-                if (MainWorkObj.MousePresent && !(bt & 0x10)) {
+                if (MainWorkObj.MousePresent && !(bt & 0x10)) {//change polarity
                     ctrl |= 0x40; 
                 }
             }  
         }
+        if (MainWorkObj.StabilizeModeB == smAmperageStab) {
+            ctrl |= 0x80; 
+        }
+        
         RegulatorControl_Write(ctrl);
         MainWorkObj.WorkStartingPeriod = GetTickCount();
     } else if (newState != mwsWork) {
@@ -360,7 +364,7 @@ void ThrowErrorOverCore(TErrorOver setErrorOver, TErrorOver resetErrorOver) {
     Display_RequestToErrorOver(prevErrorOver);
     if ((setErrorOver & ERROR_OVER_URGENT_OFF) 
     || (MainWorkObj.StabilizeModeA == smVoltageStab && (prevErrorOver & (ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_SW_VOLTAGE_A | ERROR_OVER_SW_AMPERAGE_A)))
-    || (MainWorkObj.StabilizeModeB == smVoltageStab && (prevErrorOver & (ERROR_OVER_SW_VOLTAGE_B | ERROR_OVER_SW_AMPERAGE_B)))) {
+    || (MainWorkObj.StabilizeModeB == smVoltageStab && (prevErrorOver & (ERROR_OVER_HW_AMPERAGE_B | ERROR_OVER_SW_VOLTAGE_B | ERROR_OVER_SW_AMPERAGE_B)))) {
         ChangeState(mwsErrGlb); 
     }
 }
@@ -409,6 +413,14 @@ BOOL CheckRegulatorStatusCore(BYTE status) {
         ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_A, ERROR_OVER_NONE);
         return TRUE; 
     } 
+    if (status & 0x20) {
+        ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_B, ERROR_OVER_NONE);
+        return TRUE; 
+    } 
+    if (status & 0x10) {
+        ThrowErrorOverCore(ERROR_OVER_HW_AMPERAGE_B | ERROR_OVER_URGENT_OFF, ERROR_OVER_NONE);
+        return TRUE; 
+    }
     return FALSE;
 }
 BOOL CheckRegulatorStatus() {
@@ -422,7 +434,7 @@ BOOL CheckRegulatorStatus() {
     if (CheckRegulatorStatusCore(status)) {
         return TRUE;
     } else {
-        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_HW_VOLTAGE_A | ERROR_OVER_HW_VOLTAGE_B);
+        ThrowErrorOverCore(ERROR_OVER_NONE, ERROR_OVER_HW_AMPERAGE_A | ERROR_OVER_HW_AMPERAGE_B | ERROR_OVER_HW_VOLTAGE_A | ERROR_OVER_HW_VOLTAGE_B);
         return FALSE; 
     } 
 }

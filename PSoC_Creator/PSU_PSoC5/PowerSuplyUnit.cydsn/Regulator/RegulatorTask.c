@@ -124,7 +124,10 @@ void Regulator_Init() {
     ADC_VoltageA_SetPower(ADC_VoltageA__HIGHPOWER);
     ADC_VoltageA_Start();
     VDAC8_OverVoltageA_Start();
-    Comp_OverVoltageA_Start();
+    Comp_OverVoltageA_Start();    
+    PGA_AmperageB_Start();
+    VDAC8_OverAmperageB_Start();
+    Comp_OverAmperageB_Start();
     VDAC8_OverVoltageB_Start();
     Comp_OverVoltageB_Start();
     ADC_VoltageB_Start();
@@ -137,6 +140,7 @@ void Regulator_Init() {
     Count7_OverVoltageA_Start();
     Count7_OverAmperageA_Start();
     Count7_OverVoltageB_Start();
+    Count7_OverAmperageB_Start();
     Count7_VoltageA_Ex_Start();
     Count7_VoltageB_Ex_Start();
 	IsrPwmVoltageA_StartEx(PwmVoltageAIrqHandler);
@@ -159,6 +163,9 @@ void Regulator_Stop() {
     ADC_VoltageA_Stop();
     VDAC8_OverVoltageA_Stop();
     Comp_OverVoltageA_Stop();
+    PGA_AmperageB_Stop();
+    VDAC8_OverAmperageB_Stop();
+    Comp_OverAmperageB_Stop();    
     VDAC8_OverVoltageB_Stop();
     Comp_OverVoltageB_Stop();
     ADC_VoltageB_Stop();
@@ -254,11 +261,13 @@ void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
     if (MainWorkObj.ProtectiveSensitivity == psWeak) {
         RegulatorObj.ChanelA.Amperage.Regulator.Protect = value + value100 /*min 100 mA*/;
         RegulatorObj.ChanelA.Amperage.Regulator.ImmediateCuttOff = value + value1000 /*min 1000 mA*/;
-        VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value + value100));
+        VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value + value100));       
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + value100) / 2);
     } else {
         RegulatorObj.ChanelA.Amperage.Regulator.Protect = value + value10  /*min 10 mA*/;
         RegulatorObj.ChanelA.Amperage.Regulator.ImmediateCuttOff = value + value500  /*min 500 mA*/;
         VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + value500) / 2);
     }
 }
 
@@ -291,9 +300,11 @@ void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     if (MainWorkObj.ProtectiveSensitivity == psWeak) {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + value100 /*min 100 mA*/;
         RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + value1000 /*min 1000 mA*/;
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + value100) / 2);
     } else {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + value10  /*min 10 mA*/;
         RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + value500  /*min 500 mA*/;
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + value500) / 2);
     }
 }
 /*----------------- Requests --------------<<<*/

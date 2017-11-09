@@ -70,6 +70,7 @@
 #define ERROR_OVER_SW_AMPERAGE_B 0x0080  
 #define ERROR_OVER_RADIATOR_TEMPER 0x0100    
 #define ERROR_OVER_CPU_TEMPER 0x0200   
+#define ERROR_OVER_HW_AMPERAGE_B 0x0400
 
 typedef WORD TErrorOver, * PTErrorOver;     
     

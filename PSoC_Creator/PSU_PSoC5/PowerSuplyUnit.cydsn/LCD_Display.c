@@ -960,7 +960,9 @@ static BOOL state = FALSE;
         } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_VOLTAGE_B) {
             ErrorOverVoltageB(swOver, TRUE);
         }
-        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_AMPERAGE_B) {
+        if (DisplayObj.Properties.ErrorOver & ERROR_OVER_HW_AMPERAGE_B) {
+            ErrorOverAmperageB(hwOver, TRUE);
+        } else if (DisplayObj.Properties.ErrorOver & ERROR_OVER_SW_AMPERAGE_B) {
             ErrorOverAmperageB(swOver, TRUE);
         }  
         if (DisplayObj.Properties.ErrorOver & ERROR_OVER_RADIATOR_TEMPER) {
