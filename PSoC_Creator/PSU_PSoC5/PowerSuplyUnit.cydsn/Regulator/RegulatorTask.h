@@ -53,11 +53,21 @@ typedef struct {
     TStabilizeMode StabilizeMode;
 } TRegulatorChannel, * PTRegulatorChannel;
 
+typedef struct { 
+    TElectrValue value10;
+    TElectrValue value100;
+    TElectrValue value200;
+    TElectrValue value400; 
+    TElectrValue value500;  
+    TElectrValue value1000;      
+} TPreCalculatedValues, * PTPreCalculatedValues;
+
 typedef struct {
     TRegulatorChannel ChanelA; 
     TRegulatorChannel ChanelB; 
 	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
 	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
+    TPreCalculatedValues PreCalculatedValues;
 } TRegulatorObject, * PTRegulatorObject;
 
 
