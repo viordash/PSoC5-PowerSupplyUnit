@@ -238,6 +238,17 @@ BYTE CalculateOverAmperageAVDACValue(TElectrValue value) {
     return (BYTE)dw;   
 }
 
+BYTE CalculateOverAmperageBVDACValue(TElectrValue value) {
+    DWORD dw = (Amperage_ADC_MAX * 1000) / (value / 2);
+    dw = (256 * 1000) / dw;
+    dw = (dw * 1250) / 1000;
+    dw += 5;
+    if (dw > 255) {
+        dw = 255;        
+    }
+    return (BYTE)dw;   
+}
+
 /*>>>-------------- Requests -----------------*/
 void Regulator_RequestToChangeSetPointVoltageA(TElectrValue value) {
     value = CalcSetPointValueVoltageA(value);
@@ -262,12 +273,10 @@ void Regulator_RequestToChangeSetPointAmperageA(TElectrValue value) {
         RegulatorObj.ChanelA.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value100 /*min 100 mA*/;
         RegulatorObj.ChanelA.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value1000 /*min 1000 mA*/;
         VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.PreCalculatedValues.value100));       
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + RegulatorObj.PreCalculatedValues.value100) / 2);
     } else {
         RegulatorObj.ChanelA.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value10  /*min 10 mA*/;
         RegulatorObj.ChanelA.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value500  /*min 500 mA*/;
         VDAC8_OverAmperageA_SetValue(CalculateOverAmperageAVDACValue(value));
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + RegulatorObj.PreCalculatedValues.value500) / 2);
     }
 }
 
@@ -293,11 +302,13 @@ void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     if (MainWorkObj.ProtectiveSensitivity == psWeak) {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value100 /*min 100 mA*/;
         RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value1000 /*min 1000 mA*/;
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + RegulatorObj.PreCalculatedValues.value100) / 2);
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value 
+            + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value500));        
     } else {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value10  /*min 10 mA*/;
         RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value500  /*min 500 mA*/;
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageAVDACValue(value + RegulatorObj.ChanelA.Amperage.Regulator.SetPoint + RegulatorObj.PreCalculatedValues.value500) / 2);
+        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value 
+            + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value100));
     }
 }
 /*----------------- Requests --------------<<<*/
@@ -458,6 +469,15 @@ BOOL RegulatingChannelA() {
             Display_RequestToChangeAmperageA(amperageMeasured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
             Display_RequestToChangeAmperageA(amperageMeasured, FALSE);
+            
+            if (MainWorkObj.ProtectiveSensitivity == psWeak) {
+                VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(RegulatorObj.ChanelB.Amperage.Regulator.SetPoint 
+                    + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value500));
+            } else {
+                VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(RegulatorObj.ChanelB.Amperage.Regulator.SetPoint 
+                    + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value100));
+            }
+    
         } else {
             RegulatorObj.ChanelA.Amperage.Regulator.ErrorOver = FALSE;    
         }    

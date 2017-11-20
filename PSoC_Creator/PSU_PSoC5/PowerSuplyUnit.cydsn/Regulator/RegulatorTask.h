@@ -67,7 +67,7 @@ typedef struct {
     TRegulatorChannel ChanelB; 
 	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
 	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
-    TPreCalculatedValues PreCalculatedValues;
+    TPreCalculatedValues PreCalculatedValues; 
 } TRegulatorObject, * PTRegulatorObject;
 
 
