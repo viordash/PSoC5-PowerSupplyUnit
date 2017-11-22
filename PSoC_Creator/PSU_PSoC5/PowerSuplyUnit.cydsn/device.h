@@ -20,6 +20,7 @@
     
 #include <project.h>
 #include "type.h"
+#include "limits.h"
 #include "OS\SystemOS.h"    
 #include "Utils\GeneralUtils.h"
 
@@ -127,7 +128,9 @@ typedef enum {
 } TLineType;
 
 typedef SHORT TElectrValue, * PTElectrValue;  
-typedef INT TSumElectrValue, * PTSumElectrValue;    
+typedef INT TSumElectrValue, * PTSumElectrValue; 
+#define ElectrValueMax SHRT_MAX
+#define ElectrValueMin SHRT_MIN
 
 typedef struct {
 	INT Radiator;

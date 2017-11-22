@@ -62,12 +62,20 @@ typedef struct {
     TElectrValue value1000;      
 } TPreCalculatedValues, * PTPreCalculatedValues;
 
+typedef struct { 
+    TElectrValue Calculated;
+    TElectrValue SetPointWithShift;
+    TElectrValue MeasuredHisMax;
+    TElectrValue MeasuredHisMin;
+} TCalculatedSetPoint, * PTCalculatedSetPoint;
+
 typedef struct {
     TRegulatorChannel ChanelA; 
     TRegulatorChannel ChanelB; 
 	TCalibrateItem CalibratedVoltage[VOLTAGE_CALIBRATE_POINT_COUNT];
 	TCalibrateItem CalibratedAmperage[VOLTAGE_CALIBRATE_POINT_COUNT];
     TPreCalculatedValues PreCalculatedValues; 
+    TCalculatedSetPoint ChanelBCalculatedSetPoint;
 } TRegulatorObject, * PTRegulatorObject;
 
 

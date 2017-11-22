@@ -154,7 +154,7 @@ void Regulator_Init() {
     RegulatorObj.PreCalculatedValues.value200 = CalcSetPointValueVoltageA(200);
     RegulatorObj.PreCalculatedValues.value400 = CalcSetPointValueVoltageA(400);  
     RegulatorObj.PreCalculatedValues.value500 = CalcSetPointValueAmperage(500);  
-    RegulatorObj.PreCalculatedValues.value1000 = CalcSetPointValueAmperage(1000);      
+    RegulatorObj.PreCalculatedValues.value1000 = CalcSetPointValueAmperage(1000);   
 }
 
 void Regulator_Stop() {
@@ -294,6 +294,31 @@ void Regulator_RequestToChangeSetPointVoltageB(TElectrValue value) {
         VDAC8_OverVoltageB_SetValue(CalculateOverVoltageBVDACValue(value));
     }
 }
+
+
+void CachedChangeSetPointAmperageB(BOOL changeImmediate) {
+    TElectrValue value;
+    if (changeImmediate) {        
+        if (MainWorkObj.ProtectiveSensitivity == psWeak) {
+            value = RegulatorObj.PreCalculatedValues.value500;
+        } else {        
+            value = RegulatorObj.PreCalculatedValues.value100;
+        }
+        RegulatorObj.ChanelBCalculatedSetPoint.SetPointWithShift = RegulatorObj.ChanelB.Amperage.Regulator.SetPoint + value; 
+    } else if (RegulatorObj.ChanelA.Amperage.Regulator.Measured <= RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMax 
+            && RegulatorObj.ChanelA.Amperage.Regulator.Measured >= RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMin) {
+        return;   
+    }
+    RegulatorObj.ChanelBCalculatedSetPoint.Calculated = CalculateOverAmperageBVDACValue(RegulatorObj.ChanelBCalculatedSetPoint.SetPointWithShift 
+        + RegulatorObj.ChanelA.Amperage.Regulator.Measured);
+    value = RegulatorObj.ChanelA.Amperage.Regulator.Measured / 10;
+    if (value < 0) {
+        value *= -1;       
+    }
+    RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMax = RegulatorObj.ChanelA.Amperage.Regulator.Measured + value;
+    RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMin = RegulatorObj.ChanelA.Amperage.Regulator.Measured - value;
+    VDAC8_OverAmperageB_SetValue(RegulatorObj.ChanelBCalculatedSetPoint.Calculated); 
+}
      
 void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
     value = CalcSetPointValueAmperage(value);
@@ -301,15 +326,12 @@ void Regulator_RequestToChangeSetPointAmperageB(TElectrValue value) {
      
     if (MainWorkObj.ProtectiveSensitivity == psWeak) {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value100 /*min 100 mA*/;
-        RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value1000 /*min 1000 mA*/;
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value 
-            + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value500));        
+        RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value1000 /*min 1000 mA*/;        
     } else {
         RegulatorObj.ChanelB.Amperage.Regulator.Protect = value + RegulatorObj.PreCalculatedValues.value10  /*min 10 mA*/;
         RegulatorObj.ChanelB.Amperage.Regulator.ImmediateCuttOff = value + RegulatorObj.PreCalculatedValues.value500  /*min 500 mA*/;
-        VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(value 
-            + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value100));
     }
+    CachedChangeSetPointAmperageB(TRUE);
 }
 /*----------------- Requests --------------<<<*/
 
@@ -468,16 +490,8 @@ BOOL RegulatingChannelA() {
             Display_RequestToChangeVoltageA(RegulatorObj.ChanelA.Voltage.Regulator.Measured, TRUE);
             Display_RequestToChangeAmperageA(amperageMeasured, TRUE);
         } else if (MainWorkObj.State != mwsErrGlb) {
-            Display_RequestToChangeAmperageA(amperageMeasured, FALSE);
-            
-            if (MainWorkObj.ProtectiveSensitivity == psWeak) {
-                VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(RegulatorObj.ChanelB.Amperage.Regulator.SetPoint 
-                    + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value500));
-            } else {
-                VDAC8_OverAmperageB_SetValue(CalculateOverAmperageBVDACValue(RegulatorObj.ChanelB.Amperage.Regulator.SetPoint 
-                    + RegulatorObj.ChanelA.Amperage.Regulator.Measured + RegulatorObj.PreCalculatedValues.value100));
-            }
-    
+            Display_RequestToChangeAmperageA(amperageMeasured, FALSE);            
+            CachedChangeSetPointAmperageB(FALSE);    
         } else {
             RegulatorObj.ChanelA.Amperage.Regulator.ErrorOver = FALSE;    
         }    
@@ -544,6 +558,10 @@ void Regulator_WorkStateChanged(TMainWorkState oldState, TMainWorkState newState
     } else if (newState == mwsWork) {
         RegulatorObj.ChanelA.Voltage.PowerOn = TRUE;
         RegulatorObj.ChanelB.Voltage.PowerOn = TRUE;
+    }
+    if (newState == mwsWorkStarting) {
+        RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMax = ElectrValueMin; 
+        RegulatorObj.ChanelBCalculatedSetPoint.MeasuredHisMin = ElectrValueMax;
     }
 }
 /*>>>-------------- Change Stabilize Mode -----------------*/
