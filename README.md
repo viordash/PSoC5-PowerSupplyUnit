@@ -1,6 +1,8 @@
 # PowerSupplyUnit PSoC5
 Источник питания с микропроцессорным управлением, процессор PSoC® 5LP: CY8C5888LTI-LP097
 
+[схема!](PSoC5_PowerSuplyUnit_Schematic.pdf)
+
 Основные возможности блока питания:
 - Два режима работы:
 
